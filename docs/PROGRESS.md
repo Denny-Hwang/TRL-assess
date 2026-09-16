@@ -56,10 +56,23 @@ tab stop, and results are announced through `aria-live="polite"`.
 
 ### Cross-browser status
 
-Chromium is exercised on every run. Firefox and WebKit are configured in `playwright.config.ts`
-behind `CROSS_BROWSER=1`, and the CI e2e job installs and runs all three. **They could not be run in
-the build sandbox** — Playwright's browser downloads are blocked by its egress policy — so those two
-browsers are untested locally and depend on the CI run.
+**Confirmed in CI on 2026-09-16** (run 8, commit `66ba139`): the e2e job installs Chromium, Firefox
+and WebKit and runs with `CROSS_BROWSER=1`. Result: **42 tests, 41 passed, 1 skipped** (the skipped
+one is the screenshot utility, which only runs with `CAPTURE_SCREENSHOTS=1`). Chromium runs the full
+suite; Firefox and WebKit run the smoke and cross-browser specs, including an Excel download and a
+large-session export.
+
+They still cannot be run inside the build sandbox — Playwright's browser downloads are blocked by
+its egress policy — so local runs remain Chromium-only, using the prebuilt browser via
+`PLAYWRIGHT_CHROMIUM_PATH`.
+
+CI also required three fixes that only the runners exposed:
+
+| Symptom in CI                                      | Cause                                                                                                                     | Fix                                                                          |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `ERR_INVALID_ARG_TYPE` from `crypto.subtle.digest` | jsdom's `TextEncoder` and `FileReader` return buffers from another realm, which Node's Web Crypto rejects                 | `sha256Hex` copies into a freshly allocated `Uint8Array` first               |
+| `ENOENT … dist/assets` in the bundle-budget suite  | `describe.skip` still evaluates its callback, which read `dist/` before the build existed                                 | directory reads moved inside the tests; CI re-runs the suite after the build |
+| `Timed out waiting 120000ms from config.webServer` | `localhost` resolves to `::1` first on the runner, so Vite's preview server listened on IPv6 while Playwright polled IPv4 | the preview server is started with `--host 127.0.0.1`                        |
 
 ### Performance
 

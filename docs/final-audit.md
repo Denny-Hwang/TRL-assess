@@ -129,7 +129,7 @@ Coverage on `src/domain`: **99.3 % lines, 95.8 % branches** (311 unit and compon
 1. **USER VERIFY U1–U4** (open both workbooks in Microsoft Excel, click a relative link in an
    unzipped package, run `sha256sum -c`). U4 has been verified programmatically against a generated
    package; U1–U3 need a human with Excel.
-2. **Firefox and WebKit smoke runs** — configured and wired into CI, not runnable in the build
-   sandbox.
+2. ~~**Firefox and WebKit smoke runs**~~ — **done**: confirmed green in CI on 2026-09-16 (42 tests,
+   41 passed, 1 skipped screenshot utility). They remain unrunnable inside the build sandbox.
 3. **GitHub Pages** must be enabled (Settings → Pages → Source: GitHub Actions) for the deploy
    workflow to publish.
