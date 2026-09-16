@@ -7,6 +7,7 @@ import { serializeSession } from '@/domain/json';
 import { downloadBlob, sessionSlug, timestampForFilename } from '@/export/download';
 import { Callout, Disclaimer, PageHeader, Stat } from '@/components/ui';
 import { TrlLadder } from '@/components/viz/TrlLadder';
+import { StatusGlyph } from '@/components/viz/StatusGlyph';
 import { MatrixHeatmap } from '@/components/viz/MatrixHeatmap';
 import type { TrlLevel } from '@/domain/schemas';
 
@@ -31,7 +32,10 @@ export function QuickResult() {
   if (!session.tier1 || !result) return <Navigate to="/quick" replace />;
 
   const nextLevel = Math.min(9, result.contiguousTrl + 1) as TrlLevel;
-  const nextCriteria = criteriaByLevel(framework, nextLevel).slice(0, 8);
+  const allNext = criteriaByLevel(framework, nextLevel);
+  // The mandatory ones are what actually gate the level; the rest are counted, not listed.
+  const nextCriteria = allNext.filter((c) => c.mandatory);
+  const optionalCount = allNext.length - nextCriteria.length;
 
   const downloadJson = () => {
     const name = `TRL_Tier1_${sessionSlug(session)}_${timestampForFilename()}.json`;
@@ -133,16 +137,27 @@ export function QuickResult() {
       <section className="card">
         <h2 className="text-lg font-semibold">What typically comes next</h2>
         <p className="mt-1 text-sm text-slate-600">
-          Criteria at TRL {nextLevel} in {framework.framework.name}. In a Tier 2 assessment each of
-          these needs evidence.
+          {nextCriteria.length > 0
+            ? `What TRL ${nextLevel} requires — each of these needs evidence in a Tier 2 assessment.`
+            : `Criteria at TRL ${nextLevel}. This framework marks none of them mandatory, so an assessor decides.`}
         </p>
-        <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-700">
-          {nextCriteria.map((c) => (
-            <li key={c.id}>
-              <span className="font-mono text-xs text-slate-500">{c.id}</span> — {c.text}
+        <ul className="mt-3 space-y-2 text-sm text-slate-700">
+          {(nextCriteria.length > 0 ? nextCriteria : allNext.slice(0, 5)).map((c) => (
+            <li key={c.id} className="flex gap-2">
+              <StatusGlyph kind="Not assessed" size={14} className="mt-0.5 shrink-0" />
+              <span>
+                {c.text}{' '}
+                <span className="font-mono text-xs text-slate-500">{c.id}</span>
+              </span>
             </li>
           ))}
         </ul>
+        {optionalCount > 0 ? (
+          <p className="mt-2 text-xs text-slate-500">
+            …plus {optionalCount} optional {optionalCount === 1 ? 'criterion' : 'criteria'} at this
+            level, shown in the evidence assessment.
+          </p>
+        ) : null}
       </section>
 
       <section className="card">

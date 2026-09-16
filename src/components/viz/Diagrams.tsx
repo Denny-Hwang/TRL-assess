@@ -309,7 +309,7 @@ export function SheetMap({ className }: { className?: string }) {
             <ol className="mt-2 space-y-1">
               {book.sheets.map((sheet, i) => (
                 <li key={sheet} className="flex items-center gap-2 text-xs">
-                  <span className="w-4 text-right tabular-nums text-slate-400">{i + 1}</span>
+                  <span className="w-4 text-right tabular-nums text-slate-500">{i + 1}</span>
                   <span
                     className="rounded px-2 py-0.5 font-mono"
                     style={{ background: i === 0 ? VIZ.brandSoft : '#f1f5f9' }}
