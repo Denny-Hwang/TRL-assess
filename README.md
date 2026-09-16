@@ -305,7 +305,10 @@ GitHub Pages, via `.github/workflows/deploy.yml`, on every push to `main` and on
 (`workflow_dispatch`). The workflow builds with `VITE_GIT_SHA` set to the commit, uploads the Pages
 artifact and deploys it with the official Pages actions.
 
-First-time setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**. The base path
+**First-time setup, required once:** repository **Settings → Pages → Build and deployment →
+Source: GitHub Actions**, then re-run the "Deploy to GitHub Pages" workflow. Until Pages is enabled
+the deploy job fails at `actions/configure-pages` with "Get Pages site failed … Not Found"; the
+workflow's own token is not permitted to create the site. The base path
 must match the repository name — if you fork under another name, change `REPO_NAME` in
 `src/config/app.config.ts` (and the default in `vite.config.ts`).
 
