@@ -1,6 +1,6 @@
 cff-version: 1.2.0
-title: "TRL Assess"
-message: "If you use this software, please cite it as below."
+title: 'TRL Assess'
+message: 'If you use this software, please cite it as below.'
 type: software
 abstract: >-
   A two-tier Technology Readiness Level self-assessment web application. Tier 1 gives a quick,
@@ -8,13 +8,13 @@ abstract: >-
   Elements with Excel export and a hash-verified evidence package. It runs entirely in the browser
   and is not an independent Technology Readiness Assessment.
 authors:
-  - name: "TRL Assess contributors"
-    website: "https://github.com/Denny-Hwang/TRL-assess"
-repository-code: "https://github.com/Denny-Hwang/TRL-assess"
-url: "https://denny-hwang.github.io/TRL-assess/"
+  - name: 'TRL Assess contributors'
+    website: 'https://github.com/Denny-Hwang/TRL-assess'
+repository-code: 'https://github.com/Denny-Hwang/TRL-assess'
+url: 'https://denny-hwang.github.io/TRL-assess/'
 license: MIT
-version: 0.1.0
-date-released: "2026-09-16"
+version: 1.0.0
+date-released: '2026-09-16'
 keywords:
   - technology readiness level
   - TRL
@@ -24,13 +24,13 @@ keywords:
   - self-assessment
 references:
   - type: report
-    title: "Technology Readiness Assessment Guidebook"
+    title: 'Technology Readiness Assessment Guidebook'
     authors:
-      - name: "U.S. Department of Defense, Office of the Under Secretary of Defense for Research and Engineering"
+      - name: 'U.S. Department of Defense, Office of the Under Secretary of Defense for Research and Engineering'
     year: 2025
-    url: "https://www.cto.mil/wp-content/uploads/2025/03/TRA-Guide-Feb2025.v2-Cleared.pdf"
+    url: 'https://www.cto.mil/wp-content/uploads/2025/03/TRA-Guide-Feb2025.v2-Cleared.pdf'
   - type: report
-    title: "EERE R 540.112-02: Technology Readiness Levels (TRLs)"
+    title: 'EERE R 540.112-02: Technology Readiness Levels (TRLs)'
     authors:
-      - name: "U.S. Department of Energy, Office of Energy Efficiency and Renewable Energy"
-    url: "https://www.energy.gov/sites/default/files/2022-08/EERE_R_540.112-02_Technology_Readiness_Levels_%28TRLs%29.pdf"
+      - name: 'U.S. Department of Energy, Office of Energy Efficiency and Renewable Energy'
+    url: 'https://www.energy.gov/sites/default/files/2022-08/EERE_R_540.112-02_Technology_Readiness_Levels_%28TRLs%29.pdf'

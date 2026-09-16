@@ -5,9 +5,10 @@ Progress and phase status live in `docs/PROGRESS.md`.
 
 ## Current phase
 
-> **Phase 9 — Release v1.0.0 — IN PROGRESS**
+> **Phase 9 — Release v1.0.0 — PREPARED, awaiting the USER VERIFY items in docs/PROGRESS.md**
 >
-> Phases 0–8 complete (merged 2026-09-16).
+> Phases 0–8 complete (merged 2026-09-16). Version is 1.0.0; the tag and GitHub Release are held
+> until the Excel checks (U1–U3) are confirmed by the user.
 
 Update this pointer at the end of every phase.
 

@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/Denny-Hwang/TRL-assess/actions/workflows/ci.yml/badge.svg)](https://github.com/Denny-Hwang/TRL-assess/actions/workflows/ci.yml)
 [![Deploy](https://github.com/Denny-Hwang/TRL-assess/actions/workflows/deploy.yml/badge.svg)](https://github.com/Denny-Hwang/TRL-assess/actions/workflows/deploy.yml)
-![Version](https://img.shields.io/badge/version-0.1.0-blue)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## What it is
@@ -245,7 +245,7 @@ src/
 ├── components/                 # shared UI
 └── content/guide/*.md          # every word of the in-app Guide
 scripts/                        # validate-criteria.ts, check-docs-links.ts
-tests/{unit,component,e2e}/     # 249 unit/component tests, 9 Playwright tests
+tests/{unit,component,e2e}/     # 309 unit/component tests, 27 Playwright tests
 docs/                           # BUILD_SPEC, PROGRESS, ADRs, SOURCES, screenshots
 ```
 

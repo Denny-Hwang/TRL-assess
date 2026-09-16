@@ -66,3 +66,18 @@ the Firefox and WebKit results are untested locally and depend on the CI run.
 | #   | Item                                                                                                                                                                                                                                                                                      | Raised in | Status             |
 | --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------------------ |
 | 1   | Source PDFs for `doe-g413-3-4a` (DOE G 413.3-4A) and `gao-20-48g` could not be downloaded — the session's egress proxy denies `directives.doe.gov`, `energy.gov` and `gao.gov`. The user supplied EERE R 540.112-02, the DoD TRA Guide (Feb 2025) and the DoD MRL Matrix (2018) manually. | Phase 0   | Partially resolved |
+
+## Post-v1 backlog (file as GitHub issues)
+
+| #   | Item                                                                                     |
+| --- | ---------------------------------------------------------------------------------------- |
+| B1  | Korean UI (`ko.json`) and a language toggle.                                             |
+| B2  | Import an edited Tier 2 workbook back into the app (round-trip from Excel).              |
+| B3  | TPL and MRL side modules.                                                                |
+| B4  | IRL between CTE pairs, and an SRL view.                                                  |
+| B5  | PDF summary report.                                                                      |
+| B6  | Multi-assessor comparison: merge two JSON sessions and show disagreements.               |
+| B7  | Criteria-correction workflow page linked to GitHub issues.                               |
+| B8  | Optional PWA offline install.                                                            |
+| B9  | Transcribe DOE G 413.3-4A Appendix F once the PDF can be supplied, as a third framework. |
+| B10 | Confirm the NREL marine-energy risk framework report number for SOURCES.md.              |

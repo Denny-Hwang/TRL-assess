@@ -19,3 +19,4 @@ playwright/.cache/
 
 # Stray JS emitted by a misconfigured tsc run
 *.tsbuildinfo
+release-artifacts/

@@ -127,11 +127,15 @@ export interface BuiltPackage {
   entries: string[];
 }
 
+export type BlobReader = (blobKey: string) => Promise<Blob | undefined>;
+
 export async function buildEvidencePackage(
   framework: ResolvedFramework,
   session: AssessmentSession,
   onProgress: (message: string) => void = () => {},
   at: Date = new Date(),
+  /** Seam for tests and for the release-artifact script, which run outside a browser. */
+  readBlob: BlobReader = getBlob,
 ): Promise<BuiltPackage> {
   const check = preflight(session);
   if (!check.withinLimit) throw new Error(check.message);
@@ -175,7 +179,7 @@ export async function buildEvidencePackage(
   for (const item of bundled) {
     index += 1;
     onProgress(`Adding evidence ${index} of ${bundled.length}…`);
-    const blob = await getBlob(item.file!.blobKey);
+    const blob = await readBlob(item.file!.blobKey);
     if (!blob) continue;
     const bytes = new Uint8Array(await blobToArrayBuffer(blob));
     const path = bundledPaths[item.id]!;
@@ -204,7 +208,7 @@ export async function exportEvidencePackage(
   onProgress?: (message: string) => void,
   at: Date = new Date(),
 ): Promise<string> {
-  const built = await buildEvidencePackage(framework, session, onProgress, at);
+  const built = await buildEvidencePackage(framework, session, onProgress, at, getBlob);
   downloadBlob(built.blob, built.filename);
   return built.filename;
 }
