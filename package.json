@@ -15,8 +15,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "validate:criteria": "tsx scripts/validate-criteria.ts",
-    "check:links": "tsx scripts/check-docs-links.ts",
+    "validate:criteria": "tsx --tsconfig tsconfig.node.json scripts/validate-criteria.ts",
+    "check:links": "tsx --tsconfig tsconfig.node.json scripts/check-docs-links.ts",
     "verify": "npm run lint && npm run typecheck && npm run test && npm run validate:criteria && npm run build"
   },
   "dependencies": {

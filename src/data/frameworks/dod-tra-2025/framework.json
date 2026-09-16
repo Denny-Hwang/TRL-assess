@@ -1,0 +1,9 @@
+{
+  "id": "dod-tra-2025",
+  "name": "DoD TRA Guidebook (Feb 2025) — generic",
+  "shortDescription": "Generic hardware and software TRL criteria transcribed from the DoD Technology Readiness Assessment Guidebook.",
+  "version": "1.0.0",
+  "description": "Generic Technology Readiness Level criteria transcribed verbatim from the U.S. Department of Defense Technology Readiness Assessment Guidebook (February 2025), Tables 2-1 (hardware) and 2-2 (software) plus the relevant/operational environment criteria in Section 2. Hardware criteria are also offered for CTEs of kind “process”, which the source does not treat separately; that mapping is a decision of this tool, not of the source. The source does not designate criteria as mandatory or optional, so every criterion is marked mandatory=false with mandatoryBasis “not specified in source”.",
+  "sources": ["dod-tra-2025"],
+  "disclaimer": "Transcribed from a U.S. Government public-domain document. Using these criteria does not make an assessment a DoD Technology Readiness Assessment; a TRA is conducted by an independent team under DoD policy."
+}

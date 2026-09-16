@@ -1,0 +1,410 @@
+[
+  {
+    "id": "MEE-T2-L1-01",
+    "refId": "DOD-T2-L1-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["hardware", "process"]
+  },
+  {
+    "id": "MEE-T2-SW-L1-01",
+    "refId": "DOD-T2-SW-L1-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["software"]
+  },
+  {
+    "id": "MEE-T2-L1-02",
+    "refId": "DOD-T2-L1-02"
+  },
+  {
+    "id": "MEE-T2-SW-L1-02",
+    "refId": "DOD-T2-SW-L1-02"
+  },
+  {
+    "id": "MEE-T2-L1-03",
+    "refId": "DOD-T2-L1-03"
+  },
+  {
+    "id": "MEE-T2-SW-L1-03",
+    "refId": "DOD-T2-SW-L1-03"
+  },
+  {
+    "id": "MEE-T2-L2-01",
+    "refId": "DOD-T2-L2-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["hardware", "process"]
+  },
+  {
+    "id": "MEE-T2-SW-L2-01",
+    "refId": "DOD-T2-SW-L2-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["software"]
+  },
+  {
+    "id": "MEE-T2-L2-02",
+    "refId": "DOD-T2-L2-02"
+  },
+  {
+    "id": "MEE-T2-SW-L2-02",
+    "refId": "DOD-T2-SW-L2-02"
+  },
+  {
+    "id": "MEE-T2-L2-03",
+    "refId": "DOD-T2-L2-03"
+  },
+  {
+    "id": "MEE-T2-SW-L2-03",
+    "refId": "DOD-T2-SW-L2-03"
+  },
+  {
+    "id": "MEE-T2-L3-01",
+    "refId": "DOD-T2-L3-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["hardware", "process"]
+  },
+  {
+    "id": "MEE-T2-SW-L3-01",
+    "refId": "DOD-T2-SW-L3-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["software"]
+  },
+  {
+    "id": "MEE-T2-L3-02",
+    "refId": "DOD-T2-L3-02"
+  },
+  {
+    "id": "MEE-T2-SW-L3-02",
+    "refId": "DOD-T2-SW-L3-02"
+  },
+  {
+    "id": "MEE-T2-L3-03",
+    "refId": "DOD-T2-L3-03"
+  },
+  {
+    "id": "MEE-T2-SW-L3-03",
+    "refId": "DOD-T2-SW-L3-03"
+  },
+  {
+    "id": "MEE-T2-L4-01",
+    "refId": "DOD-T2-L4-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["hardware", "process"]
+  },
+  {
+    "id": "MEE-T2-SW-L4-01",
+    "refId": "DOD-T2-SW-L4-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["software"]
+  },
+  {
+    "id": "MEE-T2-L4-02",
+    "refId": "DOD-T2-L4-02"
+  },
+  {
+    "id": "MEE-T2-SW-L4-02",
+    "refId": "DOD-T2-SW-L4-02"
+  },
+  {
+    "id": "MEE-T2-L4-03",
+    "refId": "DOD-T2-L4-03"
+  },
+  {
+    "id": "MEE-T2-SW-L4-03",
+    "refId": "DOD-T2-SW-L4-03"
+  },
+  {
+    "id": "MEE-T2-L5-01",
+    "refId": "DOD-T2-L5-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["hardware", "process"]
+  },
+  {
+    "id": "MEE-T2-SW-L5-01",
+    "refId": "DOD-T2-SW-L5-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["software"]
+  },
+  {
+    "id": "MEE-T2-L5-02",
+    "refId": "DOD-T2-L5-02"
+  },
+  {
+    "id": "MEE-T2-SW-L5-02",
+    "refId": "DOD-T2-SW-L5-02"
+  },
+  {
+    "id": "MEE-T2-L5-03",
+    "refId": "DOD-T2-L5-03"
+  },
+  {
+    "id": "MEE-T2-SW-L5-03",
+    "refId": "DOD-T2-SW-L5-03"
+  },
+  {
+    "id": "MEE-T2-L6-01",
+    "refId": "DOD-T2-L6-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["hardware", "process"]
+  },
+  {
+    "id": "MEE-T2-SW-L6-01",
+    "refId": "DOD-T2-SW-L6-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["software"]
+  },
+  {
+    "id": "MEE-T2-L6-02",
+    "refId": "DOD-T2-L6-02"
+  },
+  {
+    "id": "MEE-T2-SW-L6-02",
+    "refId": "DOD-T2-SW-L6-02"
+  },
+  {
+    "id": "MEE-T2-L6-03",
+    "refId": "DOD-T2-L6-03"
+  },
+  {
+    "id": "MEE-T2-SW-L6-03",
+    "refId": "DOD-T2-SW-L6-03"
+  },
+  {
+    "id": "MEE-T2-L7-01",
+    "refId": "DOD-T2-L7-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["hardware", "process"]
+  },
+  {
+    "id": "MEE-T2-SW-L7-01",
+    "refId": "DOD-T2-SW-L7-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["software"]
+  },
+  {
+    "id": "MEE-T2-L7-02",
+    "refId": "DOD-T2-L7-02"
+  },
+  {
+    "id": "MEE-T2-SW-L7-02",
+    "refId": "DOD-T2-SW-L7-02"
+  },
+  {
+    "id": "MEE-T2-L7-03",
+    "refId": "DOD-T2-L7-03"
+  },
+  {
+    "id": "MEE-T2-SW-L7-03",
+    "refId": "DOD-T2-SW-L7-03"
+  },
+  {
+    "id": "MEE-T2-L8-01",
+    "refId": "DOD-T2-L8-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["hardware", "process"]
+  },
+  {
+    "id": "MEE-T2-SW-L8-01",
+    "refId": "DOD-T2-SW-L8-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["software"]
+  },
+  {
+    "id": "MEE-T2-L8-02",
+    "refId": "DOD-T2-L8-02"
+  },
+  {
+    "id": "MEE-T2-SW-L8-02",
+    "refId": "DOD-T2-SW-L8-02"
+  },
+  {
+    "id": "MEE-T2-L8-03",
+    "refId": "DOD-T2-L8-03"
+  },
+  {
+    "id": "MEE-T2-SW-L8-03",
+    "refId": "DOD-T2-SW-L8-03"
+  },
+  {
+    "id": "MEE-T2-L9-01",
+    "refId": "DOD-T2-L9-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["hardware", "process"]
+  },
+  {
+    "id": "MEE-T2-SW-L9-01",
+    "refId": "DOD-T2-SW-L9-01",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored by the marine-energy-eere framework: the demonstration named in the level definition is treated as mandatory so that a level cannot be claimed without it. The underlying sources do not classify criteria as mandatory or optional.",
+    "appliesTo": ["software"]
+  },
+  {
+    "id": "MEE-T2-L9-02",
+    "refId": "DOD-T2-L9-02"
+  },
+  {
+    "id": "MEE-T2-SW-L9-02",
+    "refId": "DOD-T2-SW-L9-02"
+  },
+  {
+    "id": "MEE-T2-L9-03",
+    "refId": "DOD-T2-L9-03"
+  },
+  {
+    "id": "MEE-T2-SW-L9-03",
+    "refId": "DOD-T2-SW-L9-03"
+  },
+  {
+    "id": "MEE-T2-L5-90",
+    "refId": "DOD-T2-L5-90"
+  },
+  {
+    "id": "MEE-T2-L6-90",
+    "refId": "DOD-T2-L6-90"
+  },
+  {
+    "id": "MEE-T2-L7-90",
+    "refId": "DOD-T2-L7-90"
+  },
+  {
+    "id": "MEE-T2-L8-90",
+    "refId": "DOD-T2-L8-90"
+  },
+  {
+    "id": "MEE-T2-L4-T01",
+    "level": 4,
+    "text": "A risk register and an FMECA (failure modes, effects and criticality analysis) exist for this element and are current.",
+    "guidance": "Keep both under revision control and reference the revision in the evidence entry. Applies from TRL 4 upwards.",
+    "category": "marine tailoring",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored requirement of this framework; see rationale.",
+    "evidenceHints": ["Document"],
+    "source": {
+      "sourceId": "nrel-me-risk"
+    },
+    "origin": "tailored",
+    "rationale": "The NREL Marine Energy Technology Development Risk Management Framework requires a risk register and an FMECA from TRL 4 upwards for WPTO open-water projects."
+  },
+  {
+    "id": "MEE-T2-L5-T01",
+    "level": 5,
+    "text": "The relevant-environment test used conductive seawater (or a documented, justified equivalent) wherever electrical coupling, galvanic effects or corrosion are plausible.",
+    "guidance": "If the element cannot be exposed to seawater (for example, a dry-cabinet subsystem), mark the criterion N/A and justify it.",
+    "category": "marine tailoring",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored requirement of this framework; see rationale.",
+    "evidenceHints": ["Test data", "Photo/Video"],
+    "source": {
+      "sourceId": "nrel-me-risk"
+    },
+    "origin": "tailored",
+    "rationale": "Ocean-specific coupling paths — conductivity, galvanic corrosion, biofouling-driven leakage — do not appear in air-only or fresh-water tests, so an air-only test does not demonstrate the relevant environment for a marine deployment."
+  },
+  {
+    "id": "MEE-T2-L5-T02",
+    "level": 5,
+    "text": "Environmental extremes representative of the deployment were tested (temperature and cold soak, humidity inside the enclosure, immersion or pressure) and the conditions were recorded with the results.",
+    "guidance": "Applies from TRL 5 through TRL 6. Record the actual measured conditions, not the specification.",
+    "category": "marine tailoring",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored requirement of this framework; see rationale.",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "nrel-me-risk"
+    },
+    "origin": "tailored",
+    "rationale": "Arctic and open-ocean deployments expose equipment to cold, condensation inside enclosures and hydrostatic pressure; a test whose conditions were not recorded cannot be shown to be relevant."
+  },
+  {
+    "id": "MEE-T2-L6-T01",
+    "level": 6,
+    "text": "A pre-deployment test plan exists that distinguishes deck or dockside results from open-water results.",
+    "guidance": "Name which results were obtained alongside or on deck and which were obtained at sea.",
+    "category": "marine tailoring",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored requirement of this framework; see rationale.",
+    "evidenceHints": ["Document", "Test data"],
+    "source": {
+      "sourceId": "nrel-me-risk"
+    },
+    "origin": "tailored",
+    "rationale": "Deck and dockside conditions can misrepresent at-sea performance, especially for communications, motion response and grounding, so results from the two settings must not be pooled."
+  },
+  {
+    "id": "MEE-T2-L6-T02",
+    "level": 6,
+    "text": "Field duration and failure events are logged, with a root-cause status recorded for each failure.",
+    "guidance": "Applies from TRL 6 through TRL 7. A failure without a root-cause status counts as open.",
+    "category": "marine tailoring",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored requirement of this framework; see rationale.",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "nrel-me-risk"
+    },
+    "origin": "tailored",
+    "rationale": "Claiming that engineering feasibility is fully demonstrated requires knowing how long the element ran and why it stopped; an unexplained failure leaves the demonstration unproven."
+  },
+  {
+    "id": "MEE-T2-L7-T01",
+    "level": 7,
+    "text": "Critical functions of the prototype use production-intended parts; any hand-built critical part is covered by a documented build specification.",
+    "guidance": "List the critical parts and state, for each, whether it is production-intended or hand-built.",
+    "category": "marine tailoring",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored requirement of this framework; see rationale.",
+    "evidenceHints": ["Document", "Drawing/CAD"],
+    "source": {
+      "sourceId": "eere-r540-112-02",
+      "section": "TRL-7 definition",
+      "page": "1"
+    },
+    "origin": "tailored",
+    "rationale": "The EERE TRL 7 definition requires a near-production-quality prototype; a hand-built critical part without a build specification cannot be reproduced and so is not near-production-quality."
+  },
+  {
+    "id": "MEE-T2-L7-T02",
+    "level": 7,
+    "text": "The calibration procedure and the data path are documented, and transmitted values have been shown to match the calibrated values.",
+    "guidance": "Applies from TRL 7 through TRL 8. Include the comparison between the raw, calibrated and transmitted values for at least one deployment.",
+    "category": "marine tailoring",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored requirement of this framework; see rationale.",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "goos-foo"
+    },
+    "origin": "tailored",
+    "rationale": "For observing-system use the number that reaches the user is the product; an undocumented data path can silently alter calibrated values."
+  },
+  {
+    "id": "MEE-T2-L8-T01",
+    "level": 8,
+    "text": "A data submission pathway to the intended observing programme is established and has been exercised (where the technology feeds an observing programme).",
+    "guidance": "Mark N/A with a justification if the technology does not feed an observing programme.",
+    "category": "marine tailoring",
+    "mandatory": true,
+    "mandatoryBasis": "Tailored requirement of this framework; see rationale.",
+    "evidenceHints": ["Document", "Web link"],
+    "source": {
+      "sourceId": "goos-foo"
+    },
+    "origin": "tailored",
+    "rationale": "For ocean-observing technologies the end-user specification includes delivery into the observing system, so a device that cannot submit data has not demonstrated the end-user specification."
+  }
+]

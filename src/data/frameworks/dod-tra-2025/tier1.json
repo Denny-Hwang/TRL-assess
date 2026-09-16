@@ -1,0 +1,119 @@
+[
+  {
+    "id": "DOD-T1-L9",
+    "level": 9,
+    "text": "Has the actual system been proven through successful mission operations — that is, applied in its final form and under mission conditions?",
+    "helpText": "DoD definition: “Actual system proven through successful mission operations.” Actual application of the technology in its final form and under mission conditions, such as those encountered in operational test and evaluation (OT&E).",
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "7"
+    },
+    "origin": "adapted",
+    "rationale": "The source states the level as a definition, not as a question; the wording is restructured into a yes/no screening question without changing its meaning."
+  },
+  {
+    "id": "DOD-T1-L8",
+    "level": 8,
+    "text": "Has the actual system been completed and qualified through test and demonstration, proven to work in its final form and under expected conditions?",
+    "helpText": "DoD definition: “Actual system completed and qualified through test and demonstration.” Technology has been proven to work in its final form and under expected conditions. In almost all cases, this TRL represents the end of true system development.",
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "7"
+    },
+    "origin": "adapted",
+    "rationale": "The source states the level as a definition, not as a question; the wording is restructured into a yes/no screening question without changing its meaning."
+  },
+  {
+    "id": "DOD-T1-L7",
+    "level": 7,
+    "text": "Has a system prototype, near or at the planned operational system, been demonstrated in an operational environment?",
+    "helpText": "DoD definition: “System prototype demonstration in an operational environment.” Prototype near or at planned operational system.",
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "7"
+    },
+    "origin": "adapted",
+    "rationale": "The source states the level as a definition, not as a question; the wording is restructured into a yes/no screening question without changing its meaning."
+  },
+  {
+    "id": "DOD-T1-L6",
+    "level": 6,
+    "text": "Has a representative system/subsystem model or prototype been demonstrated in a relevant environment?",
+    "helpText": "DoD definition: “System/subsystem model or prototype demonstration in a relevant environment.” Representative model or prototype system, which is well beyond that of TRL 5, is tested in a relevant environment. Represents a major step up in a technology's demonstrated readiness.",
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "7"
+    },
+    "origin": "adapted",
+    "rationale": "The source states the level as a definition, not as a question; the wording is restructured into a yes/no screening question without changing its meaning."
+  },
+  {
+    "id": "DOD-T1-L5",
+    "level": 5,
+    "text": "Has the component or breadboard been validated in a relevant environment, integrated with reasonably realistic supporting elements?",
+    "helpText": "DoD definition: “Component and/or breadboard validation in a relevant environment.” Fidelity of breadboard technology increases significantly.",
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "adapted",
+    "rationale": "The source states the level as a definition, not as a question; the wording is restructured into a yes/no screening question without changing its meaning."
+  },
+  {
+    "id": "DOD-T1-L4",
+    "level": 4,
+    "text": "Has the component or breadboard been validated in a laboratory environment, with basic technological components integrated to establish that they work together?",
+    "helpText": "DoD definition: “Component and/or breadboard validation in a laboratory environment.” Basic technological components are integrated to establish that they will work together.",
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "adapted",
+    "rationale": "The source states the level as a definition, not as a question; the wording is restructured into a yes/no screening question without changing its meaning."
+  },
+  {
+    "id": "DOD-T1-L3",
+    "level": 3,
+    "text": "Has analytical and experimental proof of concept of the critical function or characteristic been achieved through analytical and laboratory studies?",
+    "helpText": "DoD definition: “Analytical and experimental critical function and/or characteristic proof of concept.” Active R&D is initiated. This includes analytical studies and laboratory studies to physically validate the analytical predictions of separate elements of the technology.",
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "adapted",
+    "rationale": "The source states the level as a definition, not as a question; the wording is restructured into a yes/no screening question without changing its meaning."
+  },
+  {
+    "id": "DOD-T1-L2",
+    "level": 2,
+    "text": "Has the technology concept and/or application been formulated, with practical applications invented from the observed basic principles?",
+    "helpText": "DoD definition: “Technology concept and/or application formulated.” Invention begins. Once basic principles are observed, practical applications can be invented.",
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "adapted",
+    "rationale": "The source states the level as a definition, not as a question; the wording is restructured into a yes/no screening question without changing its meaning."
+  },
+  {
+    "id": "DOD-T1-L1",
+    "level": 1,
+    "text": "Have the basic principles been observed and reported, with scientific research beginning to be translated into applied research and development?",
+    "helpText": "DoD definition: “Basic principles observed and reported.” Scientific research begins to be translated into applied research and development (R&D).",
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "adapted",
+    "rationale": "The source states the level as a definition, not as a question; the wording is restructured into a yes/no screening question without changing its meaning."
+  }
+]
