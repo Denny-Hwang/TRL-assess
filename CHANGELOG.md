@@ -33,3 +33,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   checks, with negative-fixture tests.
 - ADR-0002 recording the framework data model and the substitution of the DoD guidebook for the
   unavailable DOE G 413.3-4A.
+- Phase 2: Tier 1 scoring engine implementing BUILD_SPEC D-2.1 (first-yes, contiguous, matrix
+  cross-check, gap and unsure flags, consistency rating).
+- Tier 2 scoring engine implementing D-2.2 (criterion satisfaction, level achievement with
+  contiguity and lock state, CTE TRL, next-level completeness, conservative system summary with
+  limiting CTEs, evidence coverage, tier delta) plus gap analysis.
+- Session model with immutable update helpers, schema migration hooks and typed version errors.
+- Persistence: debounced session autosave to localStorage, evidence blobs in IndexedDB, typed
+  quota and storage-unavailable errors, and "Clear all local data".
+- Lossless JSON export/import with provenance envelope and version-mismatch warnings.
+- SHA-256 helper over Web Crypto, and stable EV-/CTE- id generators.
+- Fictional wave-buoy example session (3 CTEs, 10 evidence items, no real data).
