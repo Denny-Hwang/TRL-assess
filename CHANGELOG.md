@@ -60,3 +60,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tier 1 workbook export (README, Summary, Context, Responses, Next_Evidence_Placeholders,
   References) wired to the "Download Excel" button, with ExcelJS loaded on demand.
 - Bundle-budget test asserting ExcelJS and JSZip stay out of the entry chunk.
+- Phase 5: Tier 2 "Evidence-Based Assessment" UI at `/assess` — three-pane responsive workbench
+  (CTE register | criteria | evidence drawer).
+- CTE register: add, edit, reorder, delete (with confirmation and cascade), critical flag, kind,
+  target TRL, owner, and "import from the quick estimate".
+- Criteria view: collapsible TRL accordions showing achieved / not achieved, completeness, lock
+  state and the "no mandatory criteria" flag; per-criterion status, justification (required for
+  N/A), assessor note, linked evidence chips, origin and mandatory badges, source references and
+  tailoring rationales.
+- Evidence library: type-specific fields (file, repo + commit SHA, DOI, URL), SHA-256 on add,
+  IndexedDB blob storage with the size limit, marking selector that refuses files for
+  "Sensitive — reference only", verification status, link/unlink to criteria and a reverse
+  "used by" view.
+- Tier 2 results page: per-CTE table, conservative system summary with limiting CTEs, tier delta
+  with explanation, gap list, honest label and JSON export/import.
+- "Open fictional example" loads the bundled example session after confirmation.

@@ -5,9 +5,9 @@ Progress and phase status live in `docs/PROGRESS.md`.
 
 ## Current phase
 
-> **Phase 5 — Tier 2 UI: Evidence-Based Assessment — IN PROGRESS**
+> **Phase 6 — Tier 2 Excel export + evidence package (.zip) — IN PROGRESS**
 >
-> Phases 0–4 complete (merged 2026-09-16).
+> Phases 0–5 complete (merged 2026-09-16).
 
 Update this pointer at the end of every phase.
 

@@ -3,6 +3,7 @@ import { Layout } from '@/components/Layout';
 import { HomePage } from '@/features/home/HomePage';
 import { AboutPage } from '@/features/about/AboutPage';
 import { QuickPage } from '@/features/tier1/QuickPage';
+import { AssessPage } from '@/features/tier2/AssessPage';
 
 function Placeholder({ title }: { title: string }) {
   return (
@@ -19,7 +20,7 @@ export default function App() {
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="/quick/*" element={<QuickPage />} />
-        <Route path="/assess/*" element={<Placeholder title="Evidence-Based Assessment" />} />
+        <Route path="/assess/*" element={<AssessPage />} />
         <Route path="/guide/*" element={<Placeholder title="Guide" />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
