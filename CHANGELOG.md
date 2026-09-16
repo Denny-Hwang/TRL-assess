@@ -44,3 +44,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Lossless JSON export/import with provenance envelope and version-mismatch warnings.
 - SHA-256 helper over Web Crypto, and stable EV-/CTE- id generators.
 - Fictional wave-buoy example session (3 CTEs, 10 evidence items, no real data).
+- Phase 3: Tier 1 "Quick Estimate" UI at `/quick` — framework selector, context step, screening
+  questions presented TRL 9 → 1 with Yes / No / Unsure, per-question notes, source tooltips,
+  Y/N/U keyboard shortcuts and arrow-key navigation, progress and autosave indicators, and a
+  confirmed reset.
+- Tier 1 result page with the contiguous TRL headline, first-yes and matrix cross-check figures,
+  consistency rating, plain-language flags, the honest label and disclaimer, a "what typically
+  comes next" list and JSON download.
+- zustand session store with debounced localStorage autosave, flushed on page hide.
