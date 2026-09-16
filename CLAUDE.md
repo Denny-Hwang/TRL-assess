@@ -5,10 +5,10 @@ Progress and phase status live in `docs/PROGRESS.md`.
 
 ## Current phase
 
-> **Phase 9 — Release v1.0.0 — PREPARED, awaiting the USER VERIFY items in docs/PROGRESS.md**
->
-> Phases 0–8 complete (merged 2026-09-16). Version is 1.0.0; the tag and GitHub Release are held
-> until the Excel checks (U1–U3) are confirmed by the user.
+> **Released — v1.0.0 (2026-09-16).** Phases 0–9 of `docs/spec/BUILD_SPEC.md` are complete and
+> merged to `main`, which is now the default branch. The tag `v1.0.0` was created at the owner's
+> direction; USER VERIFY U1–U3 (opening both workbooks in Microsoft Excel and following a relative
+> evidence link) were still unconfirmed at that point — see `docs/PROGRESS.md`.
 
 Update this pointer at the end of every phase.
 
@@ -21,6 +21,7 @@ Update this pointer at the end of every phase.
 | PAGES_BASE_PATH   | `/TRL-assess/`           |
 | License           | MIT                      |
 | Default framework | `marine-energy-eere`     |
+| Default branch    | `main`                   |
 | UI language       | English (i18n-ready)     |
 
 ## Commands
