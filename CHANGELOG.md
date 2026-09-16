@@ -90,3 +90,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Structural changes (adding a CTE or evidence, linking, importing) now persist immediately
   instead of waiting for the autosave debounce.
 - Favicon.
+- Phase 7: full README following the specified outline, with a Mermaid flow diagram and three
+  screenshots captured by Playwright.
+- Eleven in-app Guide pages at `/guide/*` (overview, how to use, methodology with three worked
+  examples, CTEs, evidence, Excel, frameworks, marine & ocean tailoring, stage crosswalk, FAQ with
+  13 questions, glossary), with left navigation, "on this page" anchors and prev/next links.
+- The Guide route is lazy-loaded, keeping react-markdown and the prose out of the entry chunk.
+- About page listing build metadata, the frameworks in the build with their sources, the full
+  source table and the complete disclaimer.
+- CITATION.cff, a completed CONTRIBUTING.md and docs/security-review.md.
+- `npm run check:links` — documentation link and anchor checker, wired into `npm run verify`.
+- `npm run screenshots` — regenerates docs/img/*.png.

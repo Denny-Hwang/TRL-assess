@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "TRL Assess — two-tier Technology Readiness Level self-assessment web app (client-side only).",
+  "description": "TRL Assess \u2014 two-tier Technology Readiness Level self-assessment web app (client-side only).",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -17,7 +17,8 @@
     "test:e2e": "playwright test",
     "validate:criteria": "tsx --tsconfig tsconfig.node.json scripts/validate-criteria.ts",
     "check:links": "tsx --tsconfig tsconfig.node.json scripts/check-docs-links.ts",
-    "verify": "npm run lint && npm run typecheck && npm run test && npm run validate:criteria && npm run build"
+    "verify": "npm run lint && npm run typecheck && npm run test && npm run validate:criteria && npm run check:links && npm run build",
+    "screenshots": "CAPTURE_SCREENSHOTS=1 playwright test tests/e2e/screenshots.spec.ts"
   },
   "dependencies": {
     "exceljs": "^4.4.0",
