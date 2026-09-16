@@ -326,3 +326,30 @@ describe('schema guards', () => {
     expect(() => parseSession(s)).toThrow();
   });
 });
+
+describe('sha256 works with values from other realms', () => {
+  it('hashes a jsdom FileReader ArrayBuffer (the evidence-file path)', async () => {
+    const { blobToArrayBuffer } = await import('@/domain/hash');
+    const blob = new Blob(['abc']);
+    // Force the FileReader branch, which is what browsers without Blob.arrayBuffer use.
+    const original = Object.getOwnPropertyDescriptor(Blob.prototype, 'arrayBuffer');
+    Object.defineProperty(Blob.prototype, 'arrayBuffer', { value: undefined, configurable: true });
+    try {
+      const buffer = await blobToArrayBuffer(blob);
+      expect(await sha256Hex(buffer)).toBe(
+        'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad',
+      );
+    } finally {
+      if (original) Object.defineProperty(Blob.prototype, 'arrayBuffer', original);
+      else delete (Blob.prototype as { arrayBuffer?: unknown }).arrayBuffer;
+    }
+  });
+
+  it('hashes a DataView and a subarray view without copying the wrong bytes', async () => {
+    const full = new Uint8Array([0, 0, 97, 98, 99, 0]);
+    const view = full.subarray(2, 5); // "abc"
+    expect(await sha256Hex(view)).toBe(
+      'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad',
+    );
+  });
+});

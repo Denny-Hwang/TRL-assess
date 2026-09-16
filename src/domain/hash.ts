@@ -3,19 +3,26 @@
  * Works in the browser and under Node (globalThis.crypto.subtle exists in Node 20+).
  */
 export async function sha256Hex(data: ArrayBuffer | Uint8Array | string): Promise<string> {
-  const bytes =
-    typeof data === 'string'
-      ? new TextEncoder().encode(data)
-      : data instanceof Uint8Array
-        ? data
-        : new Uint8Array(data);
   const subtle = globalThis.crypto?.subtle;
   if (!subtle) throw new Error('Web Crypto (crypto.subtle) is not available in this environment');
-  const buffer = bytes.buffer.slice(
-    bytes.byteOffset,
-    bytes.byteOffset + bytes.byteLength,
-  ) as ArrayBuffer;
-  const digest = await subtle.digest('SHA-256', buffer);
+
+  const source =
+    typeof data === 'string'
+      ? new TextEncoder().encode(data)
+      : ArrayBuffer.isView(data)
+        ? new Uint8Array(data.buffer, data.byteOffset, data.byteLength)
+        : new Uint8Array(data);
+
+  /*
+   * Copy into a freshly allocated array before hashing. A Uint8Array or ArrayBuffer that came from
+   * another realm — jsdom's FileReader and TextEncoder both produce them — is rejected by Node's
+   * Web Crypto implementation with ERR_INVALID_ARG_TYPE, even though it looks like a BufferSource.
+   * Copying costs one pass over the bytes and makes the function work in every environment.
+   */
+  const bytes = new Uint8Array(source.byteLength);
+  bytes.set(source);
+
+  const digest = await subtle.digest('SHA-256', bytes);
   return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
