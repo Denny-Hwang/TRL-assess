@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2026-09-16
 
-First release. Phases 0–9 of `docs/spec/BUILD_SPEC.md` are complete: 309 unit and component tests,
+First release. Phases 0–9 of `docs/spec/BUILD_SPEC.md` are complete: 311 unit and component tests,
 27 end-to-end tests, zero serious or critical accessibility violations, and a documented final audit
 in `docs/final-audit.md`.
 

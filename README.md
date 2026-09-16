@@ -245,7 +245,7 @@ src/
 ├── components/                 # shared UI
 └── content/guide/*.md          # every word of the in-app Guide
 scripts/                        # validate-criteria.ts, check-docs-links.ts
-tests/{unit,component,e2e}/     # 309 unit/component tests, 27 Playwright tests
+tests/{unit,component,e2e}/     # 311 unit/component tests, 27 Playwright tests
 docs/                           # BUILD_SPEC, PROGRESS, ADRs, SOURCES, screenshots
 ```
 

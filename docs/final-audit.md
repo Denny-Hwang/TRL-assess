@@ -47,7 +47,7 @@ inspection; **Deviation** — implemented differently, with the reason recorded.
 | Gap analysis                 | `gapsForLevel`      | "gap analysis" (3 cases)                                                 |
 | Tier 1 matrix values         | `tier1-matrix.json` | "tier 1 heuristic matrix — matches BUILD_SPEC D-2.1 exactly"             |
 
-Coverage on `src/domain`: **99.3 % lines, 95.8 % branches**, thresholds enforced by `npm test`.
+Coverage on `src/domain`: **99.3 % lines, 95.8 % branches** (311 unit and component tests, 27 Playwright tests), thresholds enforced by `npm test`.
 
 ## Part D-3 — workbooks
 
