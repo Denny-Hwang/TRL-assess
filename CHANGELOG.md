@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-09-16
+
+First release. Phases 0–9 of `docs/spec/BUILD_SPEC.md` are complete: 309 unit and component tests,
+27 end-to-end tests, zero serious or critical accessibility violations, and a documented final audit
+in `docs/final-audit.md`.
+
 ### Added
 
 - Phase 0: project bootstrap — Vite + React + TypeScript (strict), Tailwind, ESLint, Prettier,
@@ -116,3 +122,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Colour contrast on the selected CTE card and its badges (WCAG AA).
 - Invalid `<dl>` markup in the evidence library that axe flagged as a definition-list violation.
+
+### Known limitations in 1.0.0
+
+- `doe-g413-3-4a` (DOE G 413.3-4A Appendix F) and `gao-20-48g` are **not implemented**: neither
+  document could be retrieved in the build environment, and no content is attributed to them.
+- The generic `dod-tra-2025` framework marks no criterion mandatory, because its source does not
+  classify them; every level in that framework is flagged for assessor confirmation.
+- Exported workbooks cannot be re-imported; session JSON round-trips losslessly.
+- Firefox and WebKit smoke tests are configured and run in CI but could not be executed in the
+  build sandbox.
+
+[Unreleased]: https://github.com/Denny-Hwang/TRL-assess/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/Denny-Hwang/TRL-assess/releases/tag/v1.0.0

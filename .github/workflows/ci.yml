@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, claude/clever-davinci-b09dto]
   workflow_dispatch:
 
 concurrency:
