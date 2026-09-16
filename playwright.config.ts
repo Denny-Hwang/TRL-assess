@@ -27,6 +27,22 @@ export default defineConfig({
           : {},
       },
     },
+    // Cross-browser smoke (BUILD_SPEC Phase 8, task 5). Enabled where the browsers are
+    // installed: `npx playwright install firefox webkit`, then CROSS_BROWSER=1.
+    ...(process.env.CROSS_BROWSER
+      ? [
+          {
+            name: 'firefox',
+            use: { ...devices['Desktop Firefox'] },
+            testMatch: /smoke\.spec\.ts|cross-browser\.spec\.ts/,
+          },
+          {
+            name: 'webkit',
+            use: { ...devices['Desktop Safari'] },
+            testMatch: /smoke\.spec\.ts|cross-browser\.spec\.ts/,
+          },
+        ]
+      : []),
   ],
   webServer: {
     command: `npm run preview -- --port ${PORT} --strictPort`,

@@ -115,7 +115,7 @@ export function EvidenceLibrary({ focusCriterion, onClose }: Props) {
               <p className="mt-1 text-xs text-slate-600">{item.description}</p>
             ) : null}
 
-            <dl className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-600">
+            <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-600">
               {item.url ? (
                 <span>
                   <a
@@ -147,7 +147,7 @@ export function EvidenceLibrary({ focusCriterion, onClose }: Props) {
                   </button>
                 </span>
               ) : null}
-            </dl>
+            </div>
 
             <p className="mt-1 text-xs text-slate-500">
               Used by:{' '}

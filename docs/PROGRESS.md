@@ -32,6 +32,35 @@ Phase status log for the BUILD_SPEC v1.0 build. See `docs/spec/BUILD_SPEC.md`.
 | --- | ---------- | ----- | ------ |
 | —   | (none yet) |       |        |
 
+## Phase 8 records
+
+### Keyboard-only walkthrough (2026-09-16, Chromium)
+
+| Flow   | Steps taken with the keyboard alone                                                                                                                                                                                                                                                                  | Result                                                                                                        |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Tier 1 | Tab to _Project name_ → type → Tab through _Technology_, _Assessor_, the optional fields and both dropdowns → Tab to _Continue to the questions_ → Enter → answer nine cards with `Y`/`N`/`U` → arrow keys to revisit a card → Tab to _See the estimate_ → Enter                                     | Complete; asserted by `tests/e2e/a11y.spec.ts` ("the whole Tier 1 flow is reachable with the keyboard alone") |
+| Tier 2 | Tab into the CTE form → type a name → Tab to _Add CTE_ → Enter → Tab to the CTE button in the list → Enter to select → Tab to a level header → Enter to expand → Tab to a _Status_ select → arrow keys to choose → Tab to _Manage_ → Enter → Tab through the evidence form → Enter on _Add evidence_ | Complete; focus order follows the visual order and every control is reachable                                 |
+| Guide  | Tab through the left navigation → Enter → Tab to the "on this page" anchors and prev/next links                                                                                                                                                                                                      | Complete                                                                                                      |
+
+Focus is visible everywhere (`:focus-visible` ring in `src/index.css`), the skip link is the first
+tab stop, and results are announced through `aria-live="polite"`.
+
+### Cross-browser status
+
+Chromium is exercised on every run. Firefox and WebKit are configured in `playwright.config.ts`
+behind `CROSS_BROWSER=1` and run in CI, which installs all three browsers. **They could not be run
+in the build sandbox** — Playwright's browser downloads are blocked by the egress policy there — so
+the Firefox and WebKit results are untested locally and depend on the CI run.
+
+### Performance
+
+| Measure                                      | Value                              | Budget                                                         |
+| -------------------------------------------- | ---------------------------------- | -------------------------------------------------------------- |
+| Entry JavaScript chunk                       | ~102 kB gzip                       | ≤ 300 kB gzip (enforced by `tests/unit/bundle-budget.test.ts`) |
+| ExcelJS chunk (lazy)                         | 271 kB gzip, loaded only on export | —                                                              |
+| `scoreTier2` on 30 CTEs / 300 evidence items | 13 ms                              | —                                                              |
+| Tier 2 workbook build for that session       | ~500 ms                            | No Web Worker needed — see ADR-0003                            |
+
 ## Open questions / items needing user review
 
 | #   | Item                                                                                                                                                                                                                                                                                      | Raised in | Status             |
