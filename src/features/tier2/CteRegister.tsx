@@ -115,23 +115,23 @@ export function CteRegister({ selectedId, onSelect }: Props) {
                 aria-current={selectedId === cte.id}
                 onClick={() => onSelect(cte.id)}
               >
-                <span className="font-mono text-xs text-slate-500">{cte.id}</span>
+                <span className="font-mono text-xs text-slate-600">{cte.id}</span>
                 <span className="ml-2 font-medium">{cte.name}</span>
                 <span className="mt-1 flex flex-wrap gap-1 text-xs">
-                  <span className="badge border-slate-300 bg-white text-slate-600">
+                  <span className="badge border-slate-400 bg-white text-slate-700">
                     {cte.kind ?? 'unspecified'}
                   </span>
                   <span
                     className={`badge ${
                       cte.critical
                         ? 'border-amber-300 bg-amber-50 text-amber-800'
-                        : 'border-slate-200 bg-white text-slate-500'
+                        : 'border-slate-300 bg-white text-slate-700'
                     }`}
                   >
                     {cte.critical ? 'critical' : 'not critical'}
                   </span>
                   {cte.targetTrl ? (
-                    <span className="badge border-slate-300 bg-white text-slate-600">
+                    <span className="badge border-slate-400 bg-white text-slate-700">
                       target TRL {cte.targetTrl}
                     </span>
                   ) : null}

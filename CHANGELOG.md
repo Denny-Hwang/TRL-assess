@@ -101,3 +101,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CITATION.cff, a completed CONTRIBUTING.md and docs/security-review.md.
 - `npm run check:links` — documentation link and anchor checker, wired into `npm run verify`.
 - `npm run screenshots` — regenerates docs/img/*.png.
+- Phase 8: axe accessibility checks on all 12 routes (0 serious or critical violations), a
+  keyboard-only walkthrough test and an `aria-live` result announcement test.
+- Robustness tests: 30-CTE / 300-evidence sessions, near-limit files, corrupted JSON, older and
+  newer schema versions, localStorage unavailable and IndexedDB unavailable.
+- Security tests: formula-injection escaping, zip-slip-safe file names, the http/https URL
+  allow-list, no `dangerouslySetInnerHTML`, no `fetch`/`XHR`/`WebSocket`/`sendBeacon`/`eval` in
+  `src/`, markdown rendered without raw HTML, and the example containing nothing real.
+- Cross-browser smoke suite (Chromium always; Firefox and WebKit behind `CROSS_BROWSER=1`, run in
+  CI) including an Excel-download check and a large-session export that keeps the UI responsive.
+- ADR-0003 recording the export performance measurements and the decision not to use a Web Worker.
+
+### Fixed
+
+- Colour contrast on the selected CTE card and its badges (WCAG AA).
+- Invalid `<dl>` markup in the evidence library that axe flagged as a definition-list violation.

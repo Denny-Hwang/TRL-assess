@@ -5,9 +5,9 @@ Progress and phase status live in `docs/PROGRESS.md`.
 
 ## Current phase
 
-> **Phase 8 — Hardening: accessibility, QA, performance, security review — IN PROGRESS**
+> **Phase 9 — Release v1.0.0 — IN PROGRESS**
 >
-> Phases 0–7 complete (merged 2026-09-16).
+> Phases 0–8 complete (merged 2026-09-16).
 
 Update this pointer at the end of every phase.
 
