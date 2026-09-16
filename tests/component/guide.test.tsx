@@ -5,6 +5,7 @@ import { GuideIndex, GuideRoute } from '@/features/guide/GuidePage';
 import { GUIDE_PAGES } from '@/content/guide';
 import { AboutPage } from '@/features/about/AboutPage';
 import { SOURCES } from '@/data/sources';
+import { GUIDE_FIGURES, GuideFigure, splitFigures } from '@/features/guide/figures';
 
 function renderGuide(slug: string) {
   return render(
@@ -113,5 +114,80 @@ describe('about page', () => {
       screen.getAllByText(/not an independent Technology Readiness Assessment/).length,
     ).toBeGreaterThan(0);
     expect(screen.getByRole('link', { name: 'CHANGELOG.md' })).toBeInTheDocument();
+  });
+});
+
+describe('guide figures', () => {
+  it('splits a page into markdown chunks and figure ids, in order', () => {
+    const chunks = splitFigures(['# Title', '', ':::figure trl-scale:::', '', 'After.'].join('\n'));
+    expect(chunks.map((c) => c.kind)).toEqual(['markdown', 'figure', 'markdown']);
+    expect(chunks[1]!.value).toBe('trl-scale');
+    expect(chunks[2]!.value).toBe('After.');
+  });
+
+  it('ignores a token that is not alone on its line', () => {
+    const chunks = splitFigures('text :::figure trl-scale::: more');
+    expect(chunks).toHaveLength(1);
+    expect(chunks[0]!.kind).toBe('markdown');
+  });
+
+  it('renders every registered figure with text and a named graphic', () => {
+    for (const id of Object.keys(GUIDE_FIGURES)) {
+      const { container, unmount } = render(
+        <MemoryRouter>
+          <GuideFigure id={id} />
+        </MemoryRouter>,
+      );
+      // Something readable is always present — a caption, a legend or a table.
+      expect(container.textContent?.trim().length, `figure ${id} renders no text`).toBeGreaterThan(
+        20,
+      );
+      // Any graphic that is exposed to assistive technology carries its own description.
+      for (const graphic of container.querySelectorAll('[role="img"]')) {
+        const described =
+          graphic.getAttribute('aria-label') ?? graphic.querySelector('title')?.textContent ?? '';
+        expect(described.length, `${id}: a graphic has no accessible name`).toBeGreaterThan(10);
+      }
+      unmount();
+    }
+  });
+
+  it('flags an unknown figure id instead of rendering nothing', () => {
+    render(
+      <MemoryRouter>
+        <GuideFigure id="does-not-exist" />
+      </MemoryRouter>,
+    );
+    expect(screen.getByRole('alert')).toHaveTextContent('Unknown figure');
+  });
+
+  it('every figure token used in the guide resolves to a registered figure', () => {
+    for (const page of GUIDE_PAGES) {
+      for (const chunk of splitFigures(page.body)) {
+        if (chunk.kind !== 'figure') continue;
+        expect(Object.keys(GUIDE_FIGURES), `${page.slug} uses ${chunk.value}`).toContain(
+          chunk.value,
+        );
+      }
+    }
+  });
+
+  it('illustrates the pages where a diagram replaces prose', () => {
+    const withFigures = GUIDE_PAGES.filter((p) =>
+      splitFigures(p.body).some((c) => c.kind === 'figure'),
+    ).map((p) => p.slug);
+    expect(withFigures).toEqual(
+      expect.arrayContaining([
+        'overview',
+        'how-to-use',
+        'methodology',
+        'cte',
+        'evidence',
+        'excel',
+        'frameworks',
+        'marine-and-ocean',
+        'stage-crosswalk',
+      ]),
+    );
   });
 });

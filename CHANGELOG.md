@@ -6,6 +6,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- A diagram layer (`src/components/viz/`) so the app shows its reasoning instead of describing it:
+  the TRL ladder (filled where confirmed, hatched where a level was claimed over an unconfirmed
+  one), the answer rail while answering Tier 1, shape-first status glyphs with a legend, per-level
+  segmented bars, completeness and coverage meters, the build × environment cross-check as a grid,
+  and per-CTE bars with the system-summary line.
+- Twelve figures in the Guide, referenced from Markdown with a `:::figure id:::` line and resolved
+  through a registry, including a CTE decomposition tree, the "what makes a criterion count"
+  decision flow, an environment-fidelity ladder, a workbook sheet map, the framework relationship
+  and the stage ↔ TRL crosswalk.
+- A three-step flow and the ladder on the home page.
+- ADR-0004 recording why the layer is hand-rolled SVG with no chart library.
+
+### Changed
+
+- Guide prose cut by about a third (paragraph text 4,272 → 2,713 words): figures replaced the
+  paragraphs that described them, several prose passages became tables, and duplicated explanations
+  across pages now point at one another.
+- Source references under each criterion are shortened to `doc · section · page`, with the full
+  reference in the tooltip.
+- The Tier 2 results page leads with the per-CTE chart; the table no longer repeats it.
+
 ## [1.0.0] - 2026-09-16
 
 First release. Phases 0–9 of `docs/spec/BUILD_SPEC.md` are complete: 311 unit and component tests,

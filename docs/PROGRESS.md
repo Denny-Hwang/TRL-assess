@@ -104,6 +104,12 @@ Two were found and fixed during the phase — colour contrast on the selected CT
 | 7   | ~~The default branch is `claude/clever-davinci-b09dto`~~ — **resolved 2026-09-16**: everything was merged to `main`, now the repository's default and only remote branch. The workflow trigger lists still name both branches and can be trimmed to `main` at any time.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Phase 9   | Resolved                  |
 | 8   | **The `v1.0.0` tag could not be pushed from this session.** The annotated tag exists locally, but `git push origin v1.0.0` is refused by GitHub with HTTP 403 (this session's credentials may push branches but not tags), and the GitHub MCP server offers no release-creation tool. Both can be done in one step in the UI: **Releases → Draft a new release → Choose a tag → type `v1.0.0` → "Create new tag: v1.0.0 on publish" → target `main`**, paste `release-artifacts/RELEASE_NOTES_v1.0.0.md`, attach the three example exports, publish. BUILD_SPEC Phase 9 would hold the release until U1–U3 pass; the owner directed that it be tagged anyway.                                                                                                | Phase 9   | **Needs user action**     |
 
+## Post-1.0 work
+
+| Item                                                                                             | Status                                                                                                     |
+| ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
+| Diagram layer across the assessment flow, and a Guide prose cut (owner request: "too much text") | Done 2026-09-16 — ADR-0004. 12 figures; paragraph text down 36%; entry chunk 110 kB gzip; axe still clean. |
+
 ## Post-v1 backlog (filed as GitHub issues, 2026-09-16)
 
 | #   | Item                                                                                     | Issue                                                      |

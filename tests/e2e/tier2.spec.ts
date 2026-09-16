@@ -35,7 +35,12 @@ test.describe('Tier 2 evidence-based assessment', () => {
     await writeFile(file, 'fictional bench test record');
 
     for (const [index, criterion] of ['MEE-T2-L1-01', 'MEE-T2-L2-01', 'MEE-T2-L3-01'].entries()) {
-      const header = page.getByRole('button', { name: new RegExp(`^TRL ${index + 1}`) });
+      // The level accordion header, not the ladder rung of the same name.
+      const header = page
+        .getByRole('button', { name: new RegExp(`^TRL ${index + 1} `) })
+        .filter({ has: page.locator('[aria-expanded], svg') })
+        .or(page.locator(`h3 > button:has-text("TRL ${index + 1}")`))
+        .first();
       if ((await header.getAttribute('aria-expanded')) !== 'true') await header.click();
       await page.getByLabel(`Status for ${criterion}`).selectOption('Met');
       await page

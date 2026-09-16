@@ -114,9 +114,9 @@ export function StatusGlyph({
         width={size}
         height={size}
         viewBox={`0 0 ${size} ${size}`}
-        role="img"
-        aria-label={withLabel ? undefined : spec.title}
-        aria-hidden={withLabel || undefined}
+        {...(withLabel
+          ? { 'aria-hidden': true as const }
+          : { role: 'img' as const, 'aria-label': spec.title })}
         className="shrink-0"
       >
         {withLabel ? null : <title>{spec.title}</title>}
