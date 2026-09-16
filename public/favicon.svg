@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="TRL Assess">
+  <rect width="32" height="32" rx="6" fill="#1b63f0"/>
+  <path d="M6 23V9h4v10h5v4H6z" fill="#fff"/>
+  <path d="M18 23V9h4l4 7V9h2v14h-4l-4-7v7h-2z" fill="#fff" opacity="0.85"/>
+</svg>

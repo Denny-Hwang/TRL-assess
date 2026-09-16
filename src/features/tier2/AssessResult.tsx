@@ -47,9 +47,26 @@ export function AssessResult() {
     }
   };
 
-  // The Tier 2 workbook and the evidence package land in Phase 6.
-  const runExport = async (_kind: 'excel' | 'zip') => {
-    setBusy(null);
+  const runExport = async (kind: 'excel' | 'zip') => {
+    setBusy(kind === 'excel' ? 'excel' : 'Preparing the package…');
+    setError(null);
+    setMessage(null);
+    try {
+      if (kind === 'excel') {
+        // Lazy-loaded so ExcelJS never lands in the initial bundle.
+        const { exportTier2Workbook } = await import('@/export/excel/tier2');
+        const name = await exportTier2Workbook(framework, session);
+        setMessage(`Workbook created: ${name}`);
+      } else {
+        const { exportEvidencePackage } = await import('@/export/zip/package');
+        const name = await exportEvidencePackage(framework, session, (msg) => setBusy(msg));
+        setMessage(`Package created: ${name}`);
+      }
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusy(null);
+    }
   };
 
   if (!result || result.ctes.length === 0) {
@@ -172,17 +189,17 @@ export function AssessResult() {
             type="button"
             className="btn-primary"
             onClick={() => void runExport('excel')}
-            disabled
+            disabled={Boolean(busy)}
           >
-            {busy === 'excel' ? 'Building the workbook…' : 'Download Excel (coming in Phase 6)'}
+            {busy === 'excel' ? 'Building the workbook…' : 'Download Excel'}
           </button>
           <button
             type="button"
             className="btn-secondary"
             onClick={() => void runExport('zip')}
-            disabled
+            disabled={Boolean(busy)}
           >
-            {busy && busy !== 'excel' ? busy : 'Download evidence package (coming in Phase 6)'}
+            {busy && busy !== 'excel' ? busy : 'Download evidence package (.zip)'}
           </button>
           <button type="button" className="btn-secondary" onClick={downloadJson}>
             Download JSON

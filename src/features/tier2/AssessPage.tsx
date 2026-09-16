@@ -116,7 +116,72 @@ function EvidencePage() {
       <div className="card">
         <EvidenceLibrary />
       </div>
+      <EvidenceExports />
     </div>
+  );
+}
+
+function EvidenceExports() {
+  const framework = useSessionStore((s) => s.framework);
+  const session = useSessionStore((s) => s.session);
+  const [busy, setBusy] = useState<string | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const run = async (kind: 'excel' | 'zip') => {
+    setBusy(kind === 'excel' ? 'Building the workbook…' : 'Preparing the package…');
+    setError(null);
+    setMessage(null);
+    try {
+      if (kind === 'excel') {
+        const { exportTier2Workbook } = await import('@/export/excel/tier2');
+        setMessage(`Workbook created: ${await exportTier2Workbook(framework, session)}`);
+      } else {
+        const { exportEvidencePackage } = await import('@/export/zip/package');
+        setMessage(`Package created: ${await exportEvidencePackage(framework, session, setBusy)}`);
+      }
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  return (
+    <section className="card">
+      <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">Export</h2>
+      <div className="mt-2 flex flex-wrap gap-2">
+        <button
+          type="button"
+          className="btn-secondary"
+          onClick={() => void run('excel')}
+          disabled={Boolean(busy)}
+        >
+          {busy?.includes('workbook') ? busy : 'Download Excel'}
+        </button>
+        <button
+          type="button"
+          className="btn-secondary"
+          onClick={() => void run('zip')}
+          disabled={Boolean(busy)}
+        >
+          {busy && !busy.includes('workbook') ? busy : 'Download evidence package (.zip)'}
+        </button>
+      </div>
+      {message ? (
+        <p className="mt-2 text-sm text-emerald-800" role="status">
+          {message}
+        </p>
+      ) : null}
+      {error ? (
+        <p className="mt-2 text-sm text-red-700" role="alert">
+          {error}
+        </p>
+      ) : null}
+      <p className="mt-2 text-xs text-slate-500">
+        Evidence marked “Sensitive — reference only” is listed in the workbook but never bundled.
+      </p>
+    </section>
   );
 }
 
