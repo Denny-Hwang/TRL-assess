@@ -1,0 +1,21 @@
+node_modules/
+dist/
+dist-ssr/
+coverage/
+references/
+*.local
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+npm-debug.log*
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+.vite/
+.tmp/
+
+# Stray JS emitted by a misconfigured tsc run
+*.tsbuildinfo
