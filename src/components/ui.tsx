@@ -144,6 +144,12 @@ export function Callout({
   );
 }
 
+/** "Table 2-1. DoD Hardware TRL Definitions, …" → "Table 2-1"; the full text stays in the tooltip. */
+function shortSection(section: string): string {
+  const head = section.split(/[.—:]/)[0]!.trim();
+  return head.length > 0 && head.length <= 28 ? head : `${section.slice(0, 26).trim()}…`;
+}
+
 export function SourceNote({
   sourceId,
   section,
@@ -155,9 +161,25 @@ export function SourceNote({
   page?: string;
   clause?: string;
 }) {
-  const parts = [sourceId];
-  if (section) parts.push(section);
-  if (page) parts.push(`p. ${page}`);
-  if (clause) parts.push(`clause ${clause}`);
-  return <span className="text-xs text-slate-500">Source: {parts.join(' · ')}</span>;
+  const full = [
+    sourceId,
+    section,
+    page ? `p. ${page}` : undefined,
+    clause ? `clause ${clause}` : undefined,
+  ]
+    .filter(Boolean)
+    .join(' · ');
+  const short = [
+    sourceId,
+    section ? shortSection(section) : undefined,
+    page ? `p. ${page}` : undefined,
+    clause ? `clause ${clause}` : undefined,
+  ]
+    .filter(Boolean)
+    .join(' · ');
+  return (
+    <span className="text-xs text-slate-500" title={`Source: ${full}`}>
+      Source: {short}
+    </span>
+  );
 }

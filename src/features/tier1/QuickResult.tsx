@@ -6,6 +6,8 @@ import { formatTrl, scoreTier1 } from '@/domain/tier1';
 import { serializeSession } from '@/domain/json';
 import { downloadBlob, sessionSlug, timestampForFilename } from '@/export/download';
 import { Callout, Disclaimer, PageHeader, Stat } from '@/components/ui';
+import { TrlLadder } from '@/components/viz/TrlLadder';
+import { MatrixHeatmap } from '@/components/viz/MatrixHeatmap';
 import type { TrlLevel } from '@/domain/schemas';
 
 const CONSISTENCY_HELP: Record<string, string> = {
@@ -57,7 +59,29 @@ export function QuickResult() {
         lead={`${session.tier1.context.technologyName} · ${session.tier1.context.projectName}`}
       />
 
-      <div className="grid gap-4 sm:grid-cols-3" aria-live="polite">
+      <section className="card" aria-live="polite">
+        <TrlLadder
+          achieved={result.contiguousTrl}
+          gaps={result.flags.find((f) => f.code === 'gap')?.levels ?? []}
+          current={nextLevel}
+          markers={[
+            { level: Math.max(1, result.contiguousTrl), label: 'estimate' },
+            ...(result.firstYesTrl > result.contiguousTrl
+              ? [{ level: result.firstYesTrl, label: 'claimed', tone: 'critical' as const }]
+              : []),
+            ...(result.matrixTrl > 0 && result.matrixTrl !== result.contiguousTrl
+              ? [{ level: result.matrixTrl, label: 'cross-check', tone: 'muted' as const }]
+              : []),
+          ]}
+          label={`Estimated TRL ${result.contiguousTrl} of 9. Highest level claimed: ${result.firstYesTrl}. Build and environment cross-check: ${result.matrixTrl}.`}
+        />
+        <p className="mt-2 text-xs text-slate-500">
+          Filled rungs are confirmed. A hatched rung is a level you claimed while a level below it
+          is unconfirmed — the chain stops there.
+        </p>
+      </section>
+
+      <div className="grid gap-4 sm:grid-cols-3">
         <Stat
           label="Estimated TRL"
           value={formatTrl(result.contiguousTrl)}
@@ -83,6 +107,13 @@ export function QuickResult() {
         <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
           Consistency: {result.consistency}
         </h2>
+        <div className="mt-3">
+          <MatrixHeatmap
+            matrix={framework.matrix}
+            build={session.tier1.context.build}
+            environment={session.tier1.context.environment}
+          />
+        </div>
         <p className="mt-2 text-sm text-slate-700">{CONSISTENCY_HELP[result.consistency]}</p>
         {result.flags.length ? (
           <ul className="mt-3 space-y-2">

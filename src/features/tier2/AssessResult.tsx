@@ -6,6 +6,8 @@ import { formatTrl, scoreTier1 } from '@/domain/tier1';
 import { deserializeSession, serializeSession } from '@/domain/json';
 import { downloadBlob, sessionSlug, timestampForFilename } from '@/export/download';
 import { Callout, Disclaimer, PageHeader, Stat } from '@/components/ui';
+import { CteBars } from '@/components/viz/CteBars';
+import { Meter } from '@/components/viz/Meter';
 
 export function AssessResult() {
   const framework = useSessionStore((s) => s.framework);
@@ -123,6 +125,17 @@ export function AssessResult() {
         </Callout>
       ) : null}
 
+      <section className="card">
+        <h2 className="text-lg font-semibold">Where the system stands</h2>
+        <div className="mt-3">
+          <CteBars
+            ctes={result.ctes}
+            systemTrl={result.system.trl}
+            limitingIds={result.system.limitingCteIds}
+          />
+        </div>
+      </section>
+
       <section className="card overflow-x-auto">
         <h2 className="text-lg font-semibold">Per-CTE results</h2>
         <table className="mt-3 w-full text-sm">
@@ -145,8 +158,21 @@ export function AssessResult() {
                 <td className="py-2 pr-3">{c.cte.critical ? 'Yes' : 'No'}</td>
                 <td className="py-2 pr-3 font-medium">{formatTrl(c.trl)}</td>
                 <td className="py-2 pr-3">{c.cte.targetTrl ?? '—'}</td>
-                <td className="py-2 pr-3">{c.nextLevelCompletenessPct}%</td>
-                <td className="py-2 pr-3">{c.evidenceCoveragePct}%</td>
+                <td className="py-2 pr-3">
+                  <Meter
+                    value={c.nextLevelCompletenessPct}
+                    label={`${c.cte.id} next-level completeness`}
+                    width={64}
+                  />
+                </td>
+                <td className="py-2 pr-3">
+                  <Meter
+                    value={c.evidenceCoveragePct}
+                    label={`${c.cte.id} evidence coverage`}
+                    width={64}
+                    tone="good"
+                  />
+                </td>
               </tr>
             ))}
           </tbody>

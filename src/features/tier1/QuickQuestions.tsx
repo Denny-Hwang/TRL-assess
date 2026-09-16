@@ -3,8 +3,9 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useSessionStore } from '@/state/sessionStore';
 import { tier1QuestionsTopDown } from '@/domain/frameworks';
 import { PageHeader, SourceNote } from '@/components/ui';
+import { AnswerRail } from '@/components/viz/AnswerRail';
 import { SaveIndicator } from '@/components/SaveIndicator';
-import type { AnswerValue } from '@/domain/schemas';
+import type { AnswerValue, TrlLevel } from '@/domain/schemas';
 
 const VALUES: AnswerValue[] = ['Yes', 'No', 'Unsure'];
 const SHORTCUT: Record<string, AnswerValue> = { y: 'Yes', n: 'No', u: 'Unsure' };
@@ -19,6 +20,14 @@ export function QuickQuestions() {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const answers = useMemo(() => session.tier1?.answers ?? {}, [session.tier1]);
+  const byLevel = useMemo(() => {
+    const map: Partial<Record<TrlLevel, AnswerValue>> = {};
+    for (const q of questions) {
+      const answer = answers[q.id];
+      if (answer) map[q.level] = answer.value;
+    }
+    return map;
+  }, [answers, questions]);
   const answeredCount = questions.filter((q) => answers[q.id]).length;
   const current = questions[index];
 
@@ -77,16 +86,16 @@ export function QuickQuestions() {
         <SaveIndicator />
       </PageHeader>
 
-      <div className="flex items-center gap-3" aria-hidden="true">
-        <div className="h-2 flex-1 rounded-full bg-slate-200">
-          <div
-            className="h-2 rounded-full bg-brand-600 transition-all"
-            style={{ width: `${(answeredCount / questions.length) * 100}%` }}
-          />
-        </div>
-        <span className="text-xs text-slate-500">
-          {answeredCount} / {questions.length} answered
-        </span>
+      <div className="card py-2">
+        <AnswerRail
+          answers={byLevel}
+          current={current.level}
+          onSelect={(level) => setIndex(questions.findIndex((q) => q.level === level))}
+        />
+        <p className="mt-1 text-center text-xs text-slate-500">
+          {answeredCount} / {questions.length} answered · the unbroken run of <strong>Y</strong>{' '}
+          from TRL 1 is your estimate
+        </p>
       </div>
 
       <div
@@ -186,27 +195,6 @@ export function QuickQuestions() {
           See the estimate
         </button>
       </div>
-
-      <ol className="grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-9">
-        {questions.map((q, i) => {
-          const a = answers[q.id];
-          return (
-            <li key={q.id}>
-              <button
-                type="button"
-                onClick={() => setIndex(i)}
-                aria-current={i === index ? 'step' : undefined}
-                className={`w-full rounded border px-2 py-1 text-xs ${
-                  i === index ? 'border-brand-600 ring-1 ring-brand-600' : 'border-slate-300'
-                } ${a ? 'bg-white font-medium' : 'bg-slate-50 text-slate-500'}`}
-              >
-                TRL {q.level}
-                <span className="block text-[10px]">{a?.value ?? '—'}</span>
-              </button>
-            </li>
-          );
-        })}
-      </ol>
 
       <p className="text-xs text-slate-500">
         Not sure what a level means? See the{' '}

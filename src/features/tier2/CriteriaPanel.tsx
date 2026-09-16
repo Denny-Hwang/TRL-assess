@@ -3,6 +3,10 @@ import { useSessionStore } from '@/state/sessionStore';
 import { evaluateCte, type LevelOutcome } from '@/domain/tier2';
 import { formatTrl } from '@/domain/tier1';
 import { Callout, MandatoryBadge, OriginBadge, SourceNote } from '@/components/ui';
+import { TrlLadder } from '@/components/viz/TrlLadder';
+import { LevelBar, type LevelCounts } from '@/components/viz/LevelBar';
+import { Meter } from '@/components/viz/Meter';
+import { StatusGlyph } from '@/components/viz/StatusGlyph';
 import { CRITERION_STATUSES, type CriterionStatus, type Cte } from '@/domain/schemas';
 
 interface Props {
@@ -45,10 +49,33 @@ export function CriteriaPanel({ cte, onOpenEvidence }: Props) {
         {cte.whyCritical ? (
           <p className="mt-1 text-sm text-slate-600">Why critical: {cte.whyCritical}</p>
         ) : null}
-        <p className="mt-1 text-xs text-slate-500">
-          Next level ({result.nextLevel ?? '—'}) completeness: {result.nextLevelCompletenessPct}% ·
-          evidence coverage {result.evidenceCoveragePct}%
-        </p>
+        <div className="mt-3">
+          <TrlLadder
+            achieved={result.trl}
+            current={result.nextLevel}
+            onSelect={(level) =>
+              setOpen((prev) => (prev.includes(level) ? prev : [...prev, level]))
+            }
+            label={`${cte.name}: achieved TRL ${result.trl} of 9. Select a level to open its criteria.`}
+          />
+        </div>
+        <dl className="mt-2 flex flex-wrap items-center gap-x-6 gap-y-1 text-xs text-slate-600">
+          <div className="flex items-center gap-2">
+            <dt>TRL {result.nextLevel ?? '—'} complete</dt>
+            <dd>
+              <Meter
+                value={result.nextLevelCompletenessPct}
+                label={`TRL ${result.nextLevel ?? ''} completeness`}
+              />
+            </dd>
+          </div>
+          <div className="flex items-center gap-2">
+            <dt>Evidence coverage</dt>
+            <dd>
+              <Meter value={result.evidenceCoveragePct} label="Evidence coverage" tone="good" />
+            </dd>
+          </div>
+        </dl>
       </header>
 
       {result.levels.map((level) => (
@@ -72,14 +99,14 @@ export function CriteriaPanel({ cte, onOpenEvidence }: Props) {
                       mandatory={outcome.criterion.mandatory}
                       basis={outcome.criterion.mandatoryBasis}
                     />
-                    <span
-                      className={`badge ${
-                        outcome.satisfied
-                          ? 'border-emerald-300 bg-emerald-50 text-emerald-800'
-                          : 'border-slate-200 bg-white text-slate-500'
-                      }`}
-                    >
-                      {outcome.satisfied ? 'satisfied' : 'not satisfied'}
+                    <span className="inline-flex items-center gap-1">
+                      <StatusGlyph
+                        kind={outcome.satisfied ? 'Satisfied' : outcome.status}
+                        size={14}
+                      />
+                      <span className="text-xs text-slate-600">
+                        {outcome.satisfied ? 'satisfied' : outcome.status.toLowerCase()}
+                      </span>
                     </span>
                   </div>
                   <p className="mt-1 text-sm">{outcome.criterion.text}</p>
@@ -224,6 +251,18 @@ export function CriteriaPanel({ cte, onOpenEvidence }: Props) {
   );
 }
 
+function countOutcomes(level: LevelOutcome): LevelCounts {
+  const counts: LevelCounts = { satisfied: 0, partial: 0, notMet: 0, na: 0, notAssessed: 0 };
+  for (const outcome of level.applicable) {
+    if (outcome.satisfied) counts.satisfied += 1;
+    else if (outcome.status === 'Partially met') counts.partial += 1;
+    else if (outcome.status === 'Not met' || outcome.status === 'Met') counts.notMet += 1;
+    else if (outcome.status === 'N/A') counts.na += 1;
+    else counts.notAssessed += 1;
+  }
+  return counts;
+}
+
 function LevelAccordion({
   level,
   expanded,
@@ -267,8 +306,8 @@ function LevelAccordion({
               {level.flag}
             </span>
           ) : null}
-          <span className="ml-auto text-xs text-slate-500">
-            {level.completenessPct}% complete · {level.applicable.length} criteria
+          <span className="ml-auto">
+            <LevelBar counts={countOutcomes(level)} />
           </span>
           <span aria-hidden="true" className="text-slate-400">
             {expanded ? '▾' : '▸'}

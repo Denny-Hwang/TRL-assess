@@ -225,7 +225,8 @@ describe('Tier 2 — results', () => {
     renderAssess('/assess/result');
     const rows = await screen.findAllByRole('row');
     expect(rows.length).toBe(4); // header + 3 CTEs
-    expect(screen.getByText('Wave energy harvester')).toBeInTheDocument();
+    // The name appears in the table and in the "where the system stands" chart.
+    expect(screen.getAllByText('Wave energy harvester').length).toBeGreaterThan(0);
   });
 
   it('lists the gaps at each CTE next level', async () => {
