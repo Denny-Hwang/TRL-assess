@@ -2,18 +2,18 @@
 
 Phase status log for the BUILD_SPEC v1.0 build. See `docs/spec/BUILD_SPEC.md`.
 
-| Phase                                           | Status      | PR / merge | Date       | Notes |
-| ----------------------------------------------- | ----------- | ---------- | ---------- | ----- |
-| 0 — Bootstrap, guardrails, CI/CD, library spike | In progress | —          | 2026-09-16 |       |
-| 1 — Framework data model & source transcription | Not started | —          |            |       |
-| 2 — Domain engine                               | Not started | —          |            |       |
-| 3 — Tier 1 UI                                   | Not started | —          |            |       |
-| 4 — Excel export (Tier 1)                       | Not started | —          |            |       |
-| 5 — Tier 2 UI                                   | Not started | —          |            |       |
-| 6 — Tier 2 Excel + evidence package             | Not started | —          |            |       |
-| 7 — Documentation                               | Not started | —          |            |       |
-| 8 — Hardening                                   | Not started | —          |            |       |
-| 9 — Release v1.0.0                              | Not started | —          |            |       |
+| Phase                                           | Status      | PR / merge                       | Date       | Notes                                                                            |
+| ----------------------------------------------- | ----------- | -------------------------------- | ---------- | -------------------------------------------------------------------------------- |
+| 0 — Bootstrap, guardrails, CI/CD, library spike | Done        | local merge `phase/00-bootstrap` | 2026-09-16 | `npm run verify` green; 3 Playwright smoke tests green; initial JS 56.8 kB gzip. |
+| 1 — Framework data model & source transcription | In progress | —                                | 2026-09-16 |                                                                                  |
+| 2 — Domain engine                               | Not started | —                                |            |                                                                                  |
+| 3 — Tier 1 UI                                   | Not started | —                                |            |                                                                                  |
+| 4 — Excel export (Tier 1)                       | Not started | —                                |            |                                                                                  |
+| 5 — Tier 2 UI                                   | Not started | —                                |            |                                                                                  |
+| 6 — Tier 2 Excel + evidence package             | Not started | —                                |            |                                                                                  |
+| 7 — Documentation                               | Not started | —                                |            |                                                                                  |
+| 8 — Hardening                                   | Not started | —                                |            |                                                                                  |
+| 9 — Release v1.0.0                              | Not started | —                                |            |                                                                                  |
 
 ## Deviations from PROJECT CONFIG (approved by the user, 2026-09-16)
 
