@@ -176,3 +176,37 @@ describe('debounce', () => {
     expect(fn).not.toHaveBeenCalled();
   });
 });
+
+describe('clear-all covers a session that has evidence blobs', () => {
+  beforeEach(() => {
+    localStorage.clear();
+    idb.map.clear();
+    idb.fail.value = null;
+    __resetBlobStore();
+  });
+
+  it('leaves no trace of the assessment', async () => {
+    const { addEvidence, createSession } = await import('@/domain/session');
+    const base = createSession('marine-energy-eere', '1.0.0');
+    const { session } = addEvidence(base, {
+      type: 'Document',
+      title: 'A report',
+      marking: 'Public',
+      verification: 'Unverified',
+      linkedCriteria: [],
+      file: {
+        name: 'r.pdf',
+        sizeBytes: 3,
+        sha256: 'a'.repeat(64),
+        blobKey: 'blob:EV-0001',
+      },
+    });
+    saveSession(session);
+    await putBlob('blob:EV-0001', new Blob(['abc']));
+
+    await clearAllLocalData();
+
+    expect(loadSession()).toBeNull();
+    expect(await listBlobKeys()).toEqual([]);
+  });
+});
