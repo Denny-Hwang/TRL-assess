@@ -75,3 +75,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tier 2 results page: per-CTE table, conservative system summary with limiting CTEs, tier delta
   with explanation, gap list, honest label and JSON export/import.
 - "Open fictional example" loads the bundled example session after confirmation.
+- Phase 6: Tier 2 workbook export (README, Summary, CTE_Register, Criteria_Assessment,
+  Evidence_Register, Gap_Actions, Review_Signoff, References, Metadata) with 50 pre-formatted
+  blank evidence placeholder rows, 20 blank gap-action rows and an "Additional evidence
+  (placeholder)" column on every criterion row.
+- Evidence package (.zip): workbook, session JSON, `evidence/` files named
+  `<EV-ID>_<sanitized-name>`, `MANIFEST.sha256.txt` covering every packaged file, and a README
+  with hash-verification commands for Linux/macOS and Windows.
+- Inside the package the workbook's "Local file (relative path)" cells hyperlink to `evidence/…`,
+  so links work once the folder is unzipped; standalone exports mark those files "not bundled".
+- Pre-flight size check against the 250 MB package limit with per-file sizes, and progress
+  messages while the package is built.
+- Evidence marked "Sensitive — reference only" is listed but never bundled.
+- Structural changes (adding a CTE or evidence, linking, importing) now persist immediately
+  instead of waiting for the autosave debounce.
+- Favicon.

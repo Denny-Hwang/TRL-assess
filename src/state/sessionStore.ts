@@ -84,10 +84,29 @@ export const useSessionStore = create<SessionState>((set, get) => {
     }
   }, AUTOSAVE_DEBOUNCE_MS);
 
-  const apply = (updater: (s: AssessmentSession) => AssessmentSession) => {
+  const writeNow = (session: AssessmentSession) => {
+    persist.cancel();
+    try {
+      saveSession(session);
+      set({ saveState: 'saved', saveError: undefined });
+    } catch (e) {
+      set({ saveState: 'error', saveError: e instanceof Error ? e.message : String(e) });
+    }
+  };
+
+  /**
+   * Text edits are debounced; structural changes (adding a CTE, adding or linking evidence,
+   * importing a session) are written straight away so a reload immediately afterwards cannot
+   * lose them.
+   */
+  const apply = (
+    updater: (s: AssessmentSession) => AssessmentSession,
+    options: { immediate?: boolean } = {},
+  ) => {
     const next = updater(get().session);
     set({ session: next, saveState: 'saving' });
-    persist(next);
+    if (options.immediate) writeNow(next);
+    else persist(next);
   };
 
   // A reload or tab switch must not lose the last few hundred milliseconds of work.
@@ -109,17 +128,19 @@ export const useSessionStore = create<SessionState>((set, get) => {
     setFramework: (id) => {
       const framework = resolveFramework(id);
       set({ framework });
-      apply(() => createSession(id, framework.framework.version));
+      apply(() => createSession(id, framework.framework.version), { immediate: true });
     },
 
     replaceSession: (next) => {
       set({ framework: resolveFramework(next.frameworkId) });
-      apply(() => next);
+      apply(() => next, { immediate: true });
     },
 
     resetSession: () => {
       const { framework } = get();
-      apply(() => createSession(framework.framework.id, framework.framework.version));
+      apply(() => createSession(framework.framework.id, framework.framework.version), {
+        immediate: true,
+      });
     },
 
     clearEverything: async () => {
@@ -133,30 +154,30 @@ export const useSessionStore = create<SessionState>((set, get) => {
       });
     },
 
-    setTier1: (tier1) => apply((s) => setTier1On(s, tier1)),
+    setTier1: (tier1) => apply((s) => setTier1On(s, tier1), { immediate: true }),
     setAnswer: (questionId, value) => apply((s) => setAnswerIn(s, questionId, value)),
-    addCte: (cte) => apply((s) => addCteTo(s, cte)),
+    addCte: (cte) => apply((s) => addCteTo(s, cte), { immediate: true }),
     updateCte: (id, patch) => apply((s) => updateCteIn(s, id, patch)),
-    removeCte: (id) => apply((s) => removeCteFrom(s, id)),
-    reorderCtes: (ids) => apply((s) => reorderCtesIn(s, ids)),
+    removeCte: (id) => apply((s) => removeCteFrom(s, id), { immediate: true }),
+    reorderCtes: (ids) => apply((s) => reorderCtesIn(s, ids), { immediate: true }),
     setAssessment: (assessment) => apply((s) => setAssessmentIn(s, assessment)),
 
     addEvidence: (evidence) => {
       const result = addEvidenceTo(get().session, evidence);
       set({ session: result.session, saveState: 'saving' });
-      persist(result.session);
+      writeNow(result.session);
       return result.id;
     },
     updateEvidence: (id, patch) => apply((s) => updateEvidenceIn(s, id, patch)),
     removeEvidence: (id) => {
       const item = get().session.tier2?.evidence.find((e) => e.id === id);
       if (item?.file?.blobKey) void deleteBlob(item.file.blobKey).catch(() => undefined);
-      apply((s) => removeEvidenceFrom(s, id));
+      apply((s) => removeEvidenceFrom(s, id), { immediate: true });
     },
     linkEvidence: (evidenceId, cteId, criterionId) =>
-      apply((s) => linkEvidenceIn(s, evidenceId, cteId, criterionId)),
+      apply((s) => linkEvidenceIn(s, evidenceId, cteId, criterionId), { immediate: true }),
     unlinkEvidence: (evidenceId, cteId, criterionId) =>
-      apply((s) => unlinkEvidenceIn(s, evidenceId, cteId, criterionId)),
+      apply((s) => unlinkEvidenceIn(s, evidenceId, cteId, criterionId), { immediate: true }),
     setGapActions: (actions) => apply((s) => setGapActionsIn(s, actions)),
   };
 });

@@ -76,7 +76,8 @@ test.describe('Tier 2 evidence-based assessment', () => {
     await writeFile(file, 'persisted content');
     await page.getByLabel(/^File/).setInputFiles(file);
     await page.getByRole('button', { name: 'Add evidence' }).last().click();
-    await expect(page.getByText('persisted.txt', { exact: false })).toBeVisible();
+    // Wait for the saved row (EV-0001), not the form's file preview, before reloading.
+    await expect(page.getByText('EV-0001')).toBeVisible();
 
     await page.reload();
     await expect(page.getByText('Persisted report')).toBeVisible();
