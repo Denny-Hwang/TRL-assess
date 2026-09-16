@@ -36,11 +36,18 @@ export function QuickResult() {
     downloadBlob(new Blob([serializeSession(session)], { type: 'application/json' }), name);
   };
 
-  // Excel export lands in Phase 4; the button stays disabled until then.
   const downloadExcel = async () => {
     setBusy(true);
     setError(null);
-    setBusy(false);
+    try {
+      // Lazy-loaded so ExcelJS never lands in the initial bundle.
+      const { exportTier1Workbook } = await import('@/export/excel/tier1');
+      await exportTier1Workbook(framework, session);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusy(false);
+    }
   };
 
   return (
@@ -110,8 +117,8 @@ export function QuickResult() {
       <section className="card">
         <h2 className="text-lg font-semibold">Take it away</h2>
         <div className="mt-3 flex flex-wrap gap-2">
-          <button type="button" className="btn-primary" onClick={downloadExcel} disabled>
-            {busy ? 'Building the workbook…' : 'Download Excel (coming in Phase 4)'}
+          <button type="button" className="btn-primary" onClick={downloadExcel} disabled={busy}>
+            {busy ? 'Building the workbook…' : 'Download Excel'}
           </button>
           <button type="button" className="btn-secondary" onClick={downloadJson}>
             Download JSON

@@ -52,3 +52,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   consistency rating, plain-language flags, the honest label and disclaimer, a "what typically
   comes next" list and JSON download.
 - zustand session store with debounced localStorage autosave, flushed on page hide.
+- Phase 4: shared Excel infrastructure — style tokens, header styling, freeze panes, autofilter,
+  column widths, list and whole-number validation, conditional formatting, hyperlink and formula
+  helpers, a metadata block writer, the README-sheet writer and D-3.0 file naming.
+- Formula-injection guard: any user text written to a cell that starts with `=`, `+`, `-` or `@`
+  is prefixed with an apostrophe.
+- Tier 1 workbook export (README, Summary, Context, Responses, Next_Evidence_Placeholders,
+  References) wired to the "Download Excel" button, with ExcelJS loaded on demand.
+- Bundle-budget test asserting ExcelJS and JSZip stay out of the entry chunk.
