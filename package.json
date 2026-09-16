@@ -12,7 +12,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "tsc -b --pretty",
-    "test": "vitest run",
+    "test": "vitest run --coverage",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "validate:criteria": "tsx --tsconfig tsconfig.node.json scripts/validate-criteria.ts",
