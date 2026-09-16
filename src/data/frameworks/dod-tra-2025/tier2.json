@@ -1,0 +1,984 @@
+[
+  {
+    "id": "DOD-T2-L1-01",
+    "level": 1,
+    "text": "Basic principles observed and reported.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Published research that identifies the principles that underlie this technology. References to who, where, when.",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Publication (DOI)", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L1-02",
+    "level": 1,
+    "text": "Scientific research begins to be translated into applied research and development (R&D).",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Published research that identifies the principles that underlie this technology. References to who, where, when.",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Publication (DOI)", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L1-03",
+    "level": 1,
+    "text": "Examples might include paper studies of a technology's basic properties.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Published research that identifies the principles that underlie this technology. References to who, where, when.",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Publication (DOI)", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L2-01",
+    "level": 2,
+    "text": "Technology concept and/or application formulated.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Publications or other references that outline the application being considered and that provide analysis to support the concept.",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Document", "Publication (DOI)"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L2-02",
+    "level": 2,
+    "text": "Invention begins. Once basic principles are observed, practical applications can be invented.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Publications or other references that outline the application being considered and that provide analysis to support the concept.",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Document", "Publication (DOI)"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L2-03",
+    "level": 2,
+    "text": "Applications are speculative, and there may be no proof or detailed analysis to support the assumptions. Examples are limited to analytic studies.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Publications or other references that outline the application being considered and that provide analysis to support the concept.",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Document", "Publication (DOI)"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L3-01",
+    "level": 3,
+    "text": "Analytical and experimental critical function and/or characteristic proof of concept.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results of laboratory tests performed to measure parameters of interest and comparison to analytical predictions for critical subsystems. References to who, where, and when these tests and comparisons were performed.",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L3-02",
+    "level": 3,
+    "text": "Active R&D is initiated. This includes analytical studies and laboratory studies to physically validate the analytical predictions of separate elements of the technology.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results of laboratory tests performed to measure parameters of interest and comparison to analytical predictions for critical subsystems. References to who, where, and when these tests and comparisons were performed.",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L3-03",
+    "level": 3,
+    "text": "Examples include components that are not yet integrated or representative.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results of laboratory tests performed to measure parameters of interest and comparison to analytical predictions for critical subsystems. References to who, where, and when these tests and comparisons were performed.",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L4-01",
+    "level": 4,
+    "text": "Component and/or breadboard validation in a laboratory environment.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: System concepts that have been considered and the results of testing laboratory-scale breadboard(s). References to who performed this work and when. Provides an estimate of how breadboard hardware and test results differ from the expected system goals.",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Photo/Video", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L4-02",
+    "level": 4,
+    "text": "Basic technological components are integrated to establish that they will work together.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: System concepts that have been considered and the results of testing laboratory-scale breadboard(s). References to who performed this work and when. Provides an estimate of how breadboard hardware and test results differ from the expected system goals.",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Photo/Video", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L4-03",
+    "level": 4,
+    "text": "This is relatively “low fidelity” compared with the eventual system. Examples include integration of “ad hoc” hardware in the laboratory.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: System concepts that have been considered and the results of testing laboratory-scale breadboard(s). References to who performed this work and when. Provides an estimate of how breadboard hardware and test results differ from the expected system goals.",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Photo/Video", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L5-01",
+    "level": 5,
+    "text": "Component and/or breadboard validation in a relevant environment.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results from testing a laboratory breadboard system are integrated with other supporting elements in a simulated operational environment. How does the “relevant environment” differ from the expected operational environment? How do the test results compare with expectations? What problems, if any, were encountered? Was the breadboard system refined to more nearly match the expected system goals?",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L5-02",
+    "level": 5,
+    "text": "Fidelity of breadboard technology increases significantly.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results from testing a laboratory breadboard system are integrated with other supporting elements in a simulated operational environment. How does the “relevant environment” differ from the expected operational environment? How do the test results compare with expectations? What problems, if any, were encountered? Was the breadboard system refined to more nearly match the expected system goals?",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L5-03",
+    "level": 5,
+    "text": "The basic technological components are integrated with reasonably realistic supporting elements so they can be tested in a simulated environment. Examples include “high-fidelity” laboratory integration of components.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results from testing a laboratory breadboard system are integrated with other supporting elements in a simulated operational environment. How does the “relevant environment” differ from the expected operational environment? How do the test results compare with expectations? What problems, if any, were encountered? Was the breadboard system refined to more nearly match the expected system goals?",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "6"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L6-01",
+    "level": 6,
+    "text": "System/subsystem model or prototype demonstration in a relevant environment.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results from laboratory testing of a prototype system that is near the desired configuration in terms of performance, weight, and volume. How did the test environment differ from the operational environment? Who performed the tests? How did the test compare with expectations? What problems, if any, were encountered? What are/were the plans, options, or actions to resolve problems before moving to the next level?",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Drawing/CAD", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "7"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L6-02",
+    "level": 6,
+    "text": "Representative model or prototype system, which is well beyond that of TRL 5, is tested in a relevant environment. Represents a major step up in a technology's demonstrated readiness.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results from laboratory testing of a prototype system that is near the desired configuration in terms of performance, weight, and volume. How did the test environment differ from the operational environment? Who performed the tests? How did the test compare with expectations? What problems, if any, were encountered? What are/were the plans, options, or actions to resolve problems before moving to the next level?",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Drawing/CAD", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "7"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L6-03",
+    "level": 6,
+    "text": "Examples include testing a prototype in a high-fidelity laboratory environment or in a simulated operational environment.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results from laboratory testing of a prototype system that is near the desired configuration in terms of performance, weight, and volume. How did the test environment differ from the operational environment? Who performed the tests? How did the test compare with expectations? What problems, if any, were encountered? What are/were the plans, options, or actions to resolve problems before moving to the next level?",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Drawing/CAD", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "7"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L7-01",
+    "level": 7,
+    "text": "System prototype demonstration in an operational environment.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results from testing a prototype system in an operational environment. Who performed the tests? How did the test compare with expectations? What problems, if any, were encountered? What are/were the plans, options, or actions to resolve problems before moving to the next level?",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Photo/Video", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "7"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L7-02",
+    "level": 7,
+    "text": "Prototype near or at planned operational system.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results from testing a prototype system in an operational environment. Who performed the tests? How did the test compare with expectations? What problems, if any, were encountered? What are/were the plans, options, or actions to resolve problems before moving to the next level?",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Photo/Video", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "7"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L7-03",
+    "level": 7,
+    "text": "Represents a major step up from TRL 6 by requiring demonstration of an actual system prototype in an operational environment (e.g., in an aircraft, in a vehicle, or in space).",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results from testing a prototype system in an operational environment. Who performed the tests? How did the test compare with expectations? What problems, if any, were encountered? What are/were the plans, options, or actions to resolve problems before moving to the next level?",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Photo/Video", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "7"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L8-01",
+    "level": 8,
+    "text": "Actual system completed and qualified through test and demonstration.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results of testing the system in its final configuration under the expected range of environmental conditions in which it will be expected to operate. Assessment of whether it will meet its operational requirements. What problems, if any, were encountered? What are/were the plans, options, or actions to resolve problems before finalizing the design?",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "7"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L8-02",
+    "level": 8,
+    "text": "Technology has been proven to work in its final form and under expected conditions. In almost all cases, this TRL represents the end of true system development.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results of testing the system in its final configuration under the expected range of environmental conditions in which it will be expected to operate. Assessment of whether it will meet its operational requirements. What problems, if any, were encountered? What are/were the plans, options, or actions to resolve problems before finalizing the design?",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "7"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L8-03",
+    "level": 8,
+    "text": "Examples include developmental test and evaluation of the system in its intended weapon system to determine if it meets design specifications.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results of testing the system in its final configuration under the expected range of environmental conditions in which it will be expected to operate. Assessment of whether it will meet its operational requirements. What problems, if any, were encountered? What are/were the plans, options, or actions to resolve problems before finalizing the design?",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "7"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L9-01",
+    "level": 9,
+    "text": "Actual system proven through successful mission operations.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: OT&E reports.",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Document", "Test data"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "7"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L9-02",
+    "level": 9,
+    "text": "Actual application of the technology in its final form and under mission conditions, such as those encountered in operational test and evaluation (OT&E).",
+    "guidance": "Supporting information the DoD guidebook expects for this level: OT&E reports.",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Document", "Test data"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "7"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L9-03",
+    "level": 9,
+    "text": "Examples include using the system under operational mission conditions.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: OT&E reports.",
+    "category": "technical",
+    "appliesTo": ["hardware", "process"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Document", "Test data"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-1. DoD Hardware TRL Definitions, Descriptions, and Supporting Information",
+      "page": "7"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L1-01",
+    "level": 1,
+    "text": "Basic principles observed and reported.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Basic research activities, research articles, peer-reviewed white papers, point papers, early lab model of basic concept may be useful for substantiating the TRL.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Publication (DOI)", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "8"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L1-02",
+    "level": 1,
+    "text": "Lowest level of software technology readiness. A new software domain is being investigated by the basic research community.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Basic research activities, research articles, peer-reviewed white papers, point papers, early lab model of basic concept may be useful for substantiating the TRL.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Publication (DOI)", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "8"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L1-03",
+    "level": 1,
+    "text": "This level extends to the development of basic use, basic properties of software architecture, mathematical formulations, and general algorithms.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Basic research activities, research articles, peer-reviewed white papers, point papers, early lab model of basic concept may be useful for substantiating the TRL.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Publication (DOI)", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "8"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L2-01",
+    "level": 2,
+    "text": "Technology concept and/or application formulated.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Applied research activities, analytic studies, small code units, and papers comparing competing technologies.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Code repository", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "8"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L2-02",
+    "level": 2,
+    "text": "Once basic principles are observed, practical applications can be invented.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Applied research activities, analytic studies, small code units, and papers comparing competing technologies.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Code repository", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "8"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L2-03",
+    "level": 2,
+    "text": "Applications are speculative, and there may be no proof or detailed analysis to support the assumptions. Examples are limited to analytic studies using synthetic data.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Applied research activities, analytic studies, small code units, and papers comparing competing technologies.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Code repository", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "8"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L3-01",
+    "level": 3,
+    "text": "Analytical and experimental critical function and/or characteristic proof of concept.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Algorithms run on a surrogate processor in a laboratory environment, instrumented components operating in a laboratory environment, laboratory results showing validation of critical properties.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Code repository", "Test data"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "8"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L3-02",
+    "level": 3,
+    "text": "Active R&D is initiated. The level at which scientific feasibility is demonstrated through analytical and laboratory studies.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Algorithms run on a surrogate processor in a laboratory environment, instrumented components operating in a laboratory environment, laboratory results showing validation of critical properties.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Code repository", "Test data"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "8"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L3-03",
+    "level": 3,
+    "text": "This level extends to the development of limited functionality environments to validate critical properties including cybersecurity and analytical predictions using non-integrated software components and partially representative data.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Algorithms run on a surrogate processor in a laboratory environment, instrumented components operating in a laboratory environment, laboratory results showing validation of critical properties.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Code repository", "Test data"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "8"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L4-01",
+    "level": 4,
+    "text": "Module and/or subsystem validation in a laboratory environment (i.e., software prototype development environment).",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Advanced technology development, stand-alone prototype solving a synthetic full-scale problem, or stand-alone prototype processing fully representative data sets.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Code repository", "Test data"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "9"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L4-02",
+    "level": 4,
+    "text": "Basic software components are integrated to establish that they will work together. They are relatively primitive with regard to efficiency and robustness compared with the eventual system.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Advanced technology development, stand-alone prototype solving a synthetic full-scale problem, or stand-alone prototype processing fully representative data sets.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Code repository", "Test data"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "9"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L4-03",
+    "level": 4,
+    "text": "Architecture development initiated to include interoperability, reliability, maintainability, extensibility, scalability, and security issues.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Advanced technology development, stand-alone prototype solving a synthetic full-scale problem, or stand-alone prototype processing fully representative data sets.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Code repository", "Test data"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "9"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L5-01",
+    "level": 5,
+    "text": "Module and/or subsystem validation in a relevant environment.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: System architecture diagram around technology element with critical performance requirements defined. Processor selection analysis, Simulation/Stimulation (Sim/Stim) Laboratory buildup plan. Software placed under configuration management. Commercial-of-the-shelf/government-off-the-shelf (COTS/GOTS) components in the system software architecture are identified.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Code repository", "Drawing/CAD", "Test data"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "9"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L5-02",
+    "level": 5,
+    "text": "Level at which software technology is ready to start integration with existing systems. The prototype implementations conform to target environment/interfaces.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: System architecture diagram around technology element with critical performance requirements defined. Processor selection analysis, Simulation/Stimulation (Sim/Stim) Laboratory buildup plan. Software placed under configuration management. Commercial-of-the-shelf/government-off-the-shelf (COTS/GOTS) components in the system software architecture are identified.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Code repository", "Drawing/CAD", "Test data"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "9"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L5-03",
+    "level": 5,
+    "text": "Algorithms run on a processor(s) with characteristics expected in the operational environment.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: System architecture diagram around technology element with critical performance requirements defined. Processor selection analysis, Simulation/Stimulation (Sim/Stim) Laboratory buildup plan. Software placed under configuration management. Commercial-of-the-shelf/government-off-the-shelf (COTS/GOTS) components in the system software architecture are identified.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Code repository", "Drawing/CAD", "Test data"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "9"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L6-01",
+    "level": 6,
+    "text": "Module and/or subsystem validation in a relevant end-to-end environment.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results from laboratory testing of a prototype package that is near the desired configuration in terms of performance, including physical, logical, data, and security interfaces. Comparisons between tested environment and operational environment analytically understood. Analysis and test measurements quantifying contribution to system-wide requirements such as throughput, scalability, and reliability. Analysis of human-computer (user environment) begun.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Code repository"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "9"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L6-02",
+    "level": 6,
+    "text": "Level at which the engineering feasibility of a software technology is demonstrated. This level extends to laboratory prototype implementations on full-scale realistic problems in which the software technology is partially integrated with existing hardware/software systems.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results from laboratory testing of a prototype package that is near the desired configuration in terms of performance, including physical, logical, data, and security interfaces. Comparisons between tested environment and operational environment analytically understood. Analysis and test measurements quantifying contribution to system-wide requirements such as throughput, scalability, and reliability. Analysis of human-computer (user environment) begun.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Code repository"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "9"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L6-03",
+    "level": 6,
+    "text": "Cybersecurity verification should be included in the testing.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Results from laboratory testing of a prototype package that is near the desired configuration in terms of performance, including physical, logical, data, and security interfaces. Comparisons between tested environment and operational environment analytically understood. Analysis and test measurements quantifying contribution to system-wide requirements such as throughput, scalability, and reliability. Analysis of human-computer (user environment) begun.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Code repository"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "9"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L7-01",
+    "level": 7,
+    "text": "System prototype demonstration in an operational, high-fidelity environment.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Critical technological properties, including cybersecurity, are measured against requirements in an operational environment.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "10"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L7-02",
+    "level": 7,
+    "text": "Level at which the program feasibility of a software technology is demonstrated.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Critical technological properties, including cybersecurity, are measured against requirements in an operational environment.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "10"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L7-03",
+    "level": 7,
+    "text": "This level extends to operational environment prototype implementations, where critical technical risk functionality is available for demonstration and a test in which the software technology is well integrated with operational hardware/software systems.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Critical technological properties, including cybersecurity, are measured against requirements in an operational environment.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "10"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L8-01",
+    "level": 8,
+    "text": "Actual system completed and mission qualified through test and demonstration in an operational environment.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Published documentation and product technology refresh build schedule. Software resource reserve measured and tracked. All severity 1 and severity 2 defects are resolved/confirmed, and a reasonably low level of severity 3 defects remain open.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Document", "Test data"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "10"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L8-02",
+    "level": 8,
+    "text": "Level at which a software technology is fully integrated with operational hardware and software systems. Software development documentation is complete.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Published documentation and product technology refresh build schedule. Software resource reserve measured and tracked. All severity 1 and severity 2 defects are resolved/confirmed, and a reasonably low level of severity 3 defects remain open.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Document", "Test data"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "10"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L8-03",
+    "level": 8,
+    "text": "All functionality and cybersecurity measures tested in simulated and operational scenarios.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Published documentation and product technology refresh build schedule. Software resource reserve measured and tracked. All severity 1 and severity 2 defects are resolved/confirmed, and a reasonably low level of severity 3 defects remain open.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Document", "Test data"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "10"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L9-01",
+    "level": 9,
+    "text": "Actual system proven through successful mission-proven operational capabilities.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Production configuration management reports. Defect resolution system and process is in place for deployed software to address defects discovered in production.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Document", "Code repository"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "10"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L9-02",
+    "level": 9,
+    "text": "Level at which a software technology is readily repeatable and reusable. The software based on the technology is fully integrated with operational hardware/software systems.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Production configuration management reports. Defect resolution system and process is in place for deployed software to address defects discovered in production.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Document", "Code repository"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "10"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-SW-L9-03",
+    "level": 9,
+    "text": "All software documentation verified. Successful operational experience. Sustaining software engineering support in place.",
+    "guidance": "Supporting information the DoD guidebook expects for this level: Production configuration management reports. Defect resolution system and process is in place for deployed software to address defects discovered in production.",
+    "category": "software",
+    "appliesTo": ["software"],
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Document", "Code repository"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "Table 2-2. DoD Software TRL Definitions, Descriptions, and Supporting Information",
+      "page": "10"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L5-90",
+    "level": 5,
+    "text": "A relevant environment is a set of stressing conditions, representative of the full spectrum of intended operational employments, which are applied to a CTE as part of a component (TRL 5) or system/subsystem (TRL 6) to identify whether any design changes to support the required (threshold) functionality are needed.",
+    "guidance": "Record which stressing conditions were applied and how they map to the intended operational employments. “Relevant environment” is defined in Table 2-3 as a testing environment that simulates both the most important and most stressing aspects of the operational environment.",
+    "category": "environment",
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "2.5 Assessing Hardware CTEs — relevant environment criteria",
+      "page": "12"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L6-90",
+    "level": 6,
+    "text": "Demonstration of a CTE as part of a component or system/subsystem in a relevant environment requires successful trial testing that either validates that the CTE satisfies the required functionality across the full spectrum of intended operational employments, or validates that the CTE satisfies the functional need for important, intended operational employment(s) and then uses accepted/approved analytical techniques to extend confidence in supporting the required functionality across the required, intended operational employments.",
+    "guidance": "One or a few demonstrations under only the most favourable conditions are not sufficient; an effective assessment requires a body of data or accepted theory covering the full spectrum of employments.",
+    "category": "environment",
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "2.5 Assessing Hardware CTEs — relevant environment criteria",
+      "page": "12"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L7-90",
+    "level": 7,
+    "text": "An operational environment is a set of conditions, representative of the full spectrum of employments, which are applied to a CTE, prototype (TRL 7) or actual system (TRL 8) to identify whether any previously unknown or undiscovered design problems might impact required functionality.",
+    "guidance": "TRL 7 requires the CTE to be embedded or installed in a prototype of the planned operational system in the operational environment.",
+    "category": "environment",
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Photo/Video"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "2.5 Assessing Hardware CTEs — operational environment criteria",
+      "page": "13"
+    },
+    "origin": "verbatim"
+  },
+  {
+    "id": "DOD-T2-L8-90",
+    "level": 8,
+    "text": "Demonstration of a CTE in an operational environment requires successful testing that either validates that the CTE satisfies the required functionality across the full spectrum of operational employments, or validates that the CTE satisfies the functional need for important, operational employment(s) and then uses accepted analytical techniques to extend confidence in supporting the required functionality over all the required operational employments.",
+    "guidance": "Record the operational employments covered by test and those covered by analysis, and name the analytical technique used.",
+    "category": "environment",
+    "mandatory": false,
+    "mandatoryBasis": "not specified in source",
+    "evidenceHints": ["Test data", "Document"],
+    "source": {
+      "sourceId": "dod-tra-2025",
+      "section": "2.5 Assessing Hardware CTEs — operational environment criteria",
+      "page": "13"
+    },
+    "origin": "verbatim"
+  }
+]

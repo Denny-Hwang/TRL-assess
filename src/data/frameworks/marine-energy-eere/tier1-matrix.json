@@ -1,0 +1,108 @@
+{
+  "id": "tier1-heuristic-matrix",
+  "status": "heuristic, not a standard",
+  "note": "This cross-check maps a build-maturity code and an environment code onto an approximate TRL. It is a tailored aid created for this tool (BUILD_SPEC D-2.1), not an agency standard, and it never overrides the screening answers. It exists only to flag internal inconsistency.",
+  "environments": [
+    {
+      "code": "E0",
+      "label": "Analysis only — no physical test",
+      "help": "Paper studies, simulation or modelling only. Nothing has been exercised in hardware or with real data."
+    },
+    {
+      "code": "E1",
+      "label": "Laboratory environment",
+      "help": "Bench or laboratory conditions, chosen for convenience of measurement rather than to reproduce the deployment. DoD Table 2-3 calls a laboratory breadboard test “low fidelity” compared with the eventual system."
+    },
+    {
+      "code": "E2",
+      "label": "Relevant / simulated operational environment",
+      "help": "A testing environment that simulates both the most important and most stressing aspects of the operational environment (DoD TRA Guidebook, Table 2-3, p. 11). Examples: high-fidelity laboratory integration, wave tank, environmental chamber, seawater immersion rig."
+    },
+    {
+      "code": "E3",
+      "label": "Operational environment — limited duration or scope",
+      "help": "The real deployment environment, but for a short deployment, in a favourable season, or with only part of the mission profile exercised."
+    },
+    {
+      "code": "E4",
+      "label": "Operational environment — full mission range",
+      "help": "The real deployment environment across the full spectrum of expected employments and conditions, including stressing cases."
+    }
+  ],
+  "builds": [
+    {
+      "code": "B0",
+      "label": "Concept / analysis only",
+      "help": "No hardware or code beyond models, drawings and analysis."
+    },
+    {
+      "code": "B1",
+      "label": "Breadboard / immature proof-of-concept",
+      "help": "Integrated components that represent the system well enough to determine concept feasibility; may resemble the final system in function only (DoD Table 2-3, p. 11)."
+    },
+    {
+      "code": "B2",
+      "label": "Component prototype (alpha/beta)",
+      "help": "A stand-alone component or module prototype, tested on its own or with simulated interfaces."
+    },
+    {
+      "code": "B3",
+      "label": "System prototype, partially integrated",
+      "help": "A system-level prototype partially integrated with the existing systems it must work with."
+    },
+    {
+      "code": "B4",
+      "label": "Near-production-quality system prototype",
+      "help": "At or near full scale, most functions available, built largely from production-intended parts."
+    },
+    {
+      "code": "B5",
+      "label": "Final-form system (qualified)",
+      "help": "The actual system in its final form, completed and qualified through test and demonstration."
+    }
+  ],
+  "matrix": {
+    "B0": {
+      "E0": 2,
+      "E1": 2,
+      "E2": 2,
+      "E3": 2,
+      "E4": 2
+    },
+    "B1": {
+      "E0": 2,
+      "E1": 3,
+      "E2": 3,
+      "E3": 3,
+      "E4": 3
+    },
+    "B2": {
+      "E0": 3,
+      "E1": 4,
+      "E2": 5,
+      "E3": 5,
+      "E4": 5
+    },
+    "B3": {
+      "E0": 3,
+      "E1": 4,
+      "E2": 6,
+      "E3": 6,
+      "E4": 6
+    },
+    "B4": {
+      "E0": 3,
+      "E1": 4,
+      "E2": 6,
+      "E3": 7,
+      "E4": 7
+    },
+    "B5": {
+      "E0": 3,
+      "E1": 4,
+      "E2": 6,
+      "E3": 8,
+      "E4": 9
+    }
+  }
+}

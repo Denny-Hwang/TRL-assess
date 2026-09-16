@@ -5,9 +5,9 @@ Progress and phase status live in `docs/PROGRESS.md`.
 
 ## Current phase
 
-> **Phase 1 — Framework data model & source transcription — IN PROGRESS**
+> **Phase 2 — Domain engine: scoring, rollup, session, persistence — IN PROGRESS**
 >
-> Phase 0 complete (merged 2026-09-16).
+> Phases 0–1 complete (merged 2026-09-16).
 
 Update this pointer at the end of every phase.
 
