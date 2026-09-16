@@ -95,7 +95,8 @@ describe('Tier 2 — criteria', () => {
   it('shows the lock state on a level whose predecessor is not achieved', async () => {
     const user = userEvent.setup();
     renderAssess();
-    await user.click(screen.getByRole('button', { name: /TRL 3/ }));
+    // The header button carries the badges; the ladder rung is a separate control.
+    await user.click(screen.getByRole('button', { name: /^TRL 3 not achieved/ }));
     expect(screen.getAllByText(/locked — lower level not achieved/).length).toBeGreaterThan(0);
   });
 

@@ -222,14 +222,16 @@ describe('FlowSteps', () => {
 describe('tokens', () => {
   it('maps magnitude onto a single hue, light to dark', () => {
     expect(sequentialFill(0)).toBe(VIZ.neutral.empty);
-    const low = VIZ.sequential.indexOf(sequentialFill(2));
-    const high = VIZ.sequential.indexOf(sequentialFill(9));
+    const ramp: readonly string[] = VIZ.sequential;
+    const low = ramp.indexOf(sequentialFill(2));
+    const high = ramp.indexOf(sequentialFill(9));
     expect(low).toBeLessThan(high);
   });
 
   it('keeps the reserved status palette out of the sequential ramp', () => {
+    const ramp: readonly string[] = VIZ.sequential;
     for (const status of Object.values(VIZ.status)) {
-      expect(VIZ.sequential).not.toContain(status);
+      expect(ramp).not.toContain(status);
     }
   });
 });
