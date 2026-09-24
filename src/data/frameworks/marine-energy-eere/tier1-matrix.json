@@ -1,7 +1,7 @@
 {
   "id": "tier1-heuristic-matrix",
   "status": "heuristic, not a standard",
-  "note": "This cross-check maps a build-maturity code and an environment code onto an approximate TRL. It is a tailored aid created for this tool (BUILD_SPEC D-2.1), not an agency standard, and it never overrides the screening answers. It exists only to flag internal inconsistency.",
+  "note": "This cross-check maps a build-maturity code and an environment code onto an approximate TRL. It is a tailored aid created for this tool, not an agency standard, and it never overrides the screening answers. It exists only to flag internal inconsistency.",
   "environments": [
     {
       "code": "E0",

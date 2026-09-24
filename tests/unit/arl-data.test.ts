@@ -1,5 +1,5 @@
 /**
- * ARL rubric data (ADR-0005): the transcription is checked against the source's
+ * ARL rubric data: the transcription is checked against the source's
  * structure, and the loaders reject every malformed shape the scoring rules depend on.
  */
 import { describe, it, expect } from 'vitest';

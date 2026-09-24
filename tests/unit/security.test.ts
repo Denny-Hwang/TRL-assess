@@ -1,5 +1,5 @@
 /**
- * Security controls (BUILD_SPEC Phase 8, task 4 and docs/security-review.md).
+ * Security controls.
  */
 import { describe, it, expect } from 'vitest';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
@@ -158,7 +158,7 @@ describe('no unsafe rendering or network code in src/', () => {
 describe('the example contains nothing real', () => {
   it('uses only example.org hosts and fictional DOIs', () => {
     const raw = readFileSync(
-      path.resolve('src/data/examples/fictional-wave-buoy.session.json'),
+      path.resolve('src/data/examples/fictional-sensor-node.session.json'),
       'utf8',
     );
     for (const url of raw.match(/https?:\/\/[^"]+/g) ?? []) {

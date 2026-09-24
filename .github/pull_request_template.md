@@ -1,10 +1,10 @@
 ## Summary
 
-<!-- What changed and why. Reference the BUILD_SPEC phase. -->
+<!-- What changed and why. -->
 
 ## Acceptance criteria
 
-<!-- Copy the phase acceptance list from docs/spec/BUILD_SPEC.md and tick what is done. -->
+<!-- What must be true for this change to be done. -->
 
 - [ ]
 
@@ -25,4 +25,4 @@ npm run verify
 - [ ] No fabricated criteria — every new criterion has a `source` and an `origin`
 - [ ] No runtime network calls, analytics or telemetry added
 - [ ] Tests added or updated; no test was skipped, deleted or weakened
-- [ ] CHANGELOG.md `[Unreleased]` and docs/PROGRESS.md updated
+- [ ] CHANGELOG.md `[Unreleased]` updated

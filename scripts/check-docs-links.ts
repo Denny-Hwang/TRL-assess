@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 /**
- * Documentation link check (BUILD_SPEC Phase 7, task 7).
+ * Documentation link check.
  *
  * Verifies, without touching the network:
  *   - relative links and image paths in markdown files resolve to a file that exists

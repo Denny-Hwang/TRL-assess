@@ -3,8 +3,6 @@ export const tier2 = {
   'tier2.evidenceCoverage': 'Evidence coverage',
 
   'tier2.page.title': 'Evidence-Based Assessment',
-  'tier2.page.lead':
-    'Break the system into Critical Technology Elements, assess the criteria at each TRL, and link the evidence behind every claim.',
   'tier2.page.evidenceLink': 'Evidence library',
   'tier2.page.resultsLink': 'Results',
   'tier2.page.empty.title': 'Nothing assessed yet',
@@ -16,8 +14,6 @@ export const tier2 = {
   'tier2.page.selectCte': 'Select or add a CTE to assess its criteria.',
 
   'tier2.evidencePage.title': 'Evidence library',
-  'tier2.evidencePage.lead':
-    'Everything you have recorded as proof, and what each item is used for.',
   'tier2.evidencePage.back': 'Back to the assessment',
 
   'tier2.export.heading': 'Export',
@@ -37,7 +33,6 @@ export const tier2 = {
   'tier2.result.untitled': 'Untitled assessment',
   'tier2.result.stat.system': 'System summary',
   'tier2.result.stat.limiting': 'Limiting CTE(s)',
-  'tier2.result.stat.limitingHint': 'The critical CTE(s) holding the system summary down.',
   'tier2.result.stat.tier1': 'Tier 1 comparison',
   'tier2.result.stat.noTier1': 'No quick estimate',
   'tier2.result.stat.tier1Hint': 'Difference between the quick estimate and this assessment.',
@@ -63,7 +58,7 @@ export const tier2 = {
 
   'tier2.cte.heading': 'Critical Technology Elements',
   'tier2.cte.empty':
-    'Start by naming the parts of the system whose maturity actually decides whether it works.',
+    'No CTEs yet. Add the parts of the system whose maturity decides whether it works.',
   'tier2.cte.importFromTier1': 'Import “{name}” from the quick estimate',
   'tier2.cte.unspecified': 'unspecified',
   'tier2.cte.critical': 'critical',

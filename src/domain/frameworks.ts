@@ -1,5 +1,5 @@
 /**
- * Framework loading and `extends` resolution (BUILD_SPEC D-1).
+ * Framework loading and `extends` resolution.
  * Pure functions over the JSON registry — no React, no browser APIs.
  */
 import {

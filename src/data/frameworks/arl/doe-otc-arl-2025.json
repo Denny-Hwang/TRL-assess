@@ -3,7 +3,7 @@
   "name": "DOE Adoption Readiness Assessment",
   "shortDescription": "The DOE Office of Technology Commercialization rubric: 17 adoption-risk dimensions in four core risk areas, combined into an ARL of 1–9 with the source’s own look-up table.",
   "version": "April 2025",
-  "description": "Transcribed verbatim from the Adoption Readiness Assessment published by the U.S. Department of Energy Office of Technology Commercialization (Version: April 2025; file ARL_Assessment_9-23-25_0.pdf). Each of the 17 dimensions is rated Low, Medium or High risk, or N/A, and the ARL number comes from the look-up table on p. 13, used unmodified. The source calls the number optional; this tool shows the risk profile first. This tool counts Unsure, Not assessed and N/A without a rationale as High risk — a conservative convention of this tool (ADR-0005), not a rule of the source.",
+  "description": "Transcribed verbatim from the Adoption Readiness Assessment published by the U.S. Department of Energy Office of Technology Commercialization (Version: April 2025; file ARL_Assessment_9-23-25_0.pdf). Each of the 17 dimensions is rated Low, Medium or High risk, or N/A, and the ARL number comes from the look-up table on p. 13, used unmodified. The source calls the number optional; this tool shows the risk profile first. This tool counts Unsure, Not assessed and N/A without a rationale as High risk — a conservative convention of this tool, not a rule of the source.",
   "sources": ["doe-otc-arl-2025"],
   "disclaimer": "Using this rubric does not make a result a DOE assessment. The ratings, and therefore the ARL, are the assessor’s own; DOE does not review or endorse them.",
   "areas": [

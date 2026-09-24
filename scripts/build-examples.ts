@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 /**
- * Generates the example export files attached to a release (BUILD_SPEC Phase 9, task 4):
+ * Generates the example export files attached to a release:
  * a Tier 1 workbook, a Tier 2 workbook and an evidence package, all built from the fictional
  * example session. Output goes to release-artifacts/ (git-ignored).
  */
@@ -31,15 +31,15 @@ async function main() {
   await mkdir(OUT, { recursive: true });
   const base = parseSession(FICTIONAL_EXAMPLE);
   const framework = resolveFramework(base.frameworkId);
-  console.log('Building example exports from the fictional wave-buoy session:');
+  console.log('Building example exports from the fictional sensor-node session:');
 
   // One fictional attachment so the package example actually contains an evidence file.
   const attachment = new Blob([
     'Fictional bench test record\n',
     'Article: harvester alpha prototype, rev B\n',
     'Date: 2024-06-05  Operator: Example Laboratory\n',
-    'Conditions: laboratory wave tank, fresh water, 18 C, 40 minutes\n',
-    'Result: mean output 1.9 W against a predicted 2.0 W (-5%).\n',
+    'Conditions: laboratory bench, 23 C, 40 minutes\n',
+    'Result: mean output 19 mW against a predicted 20 mW (-5%).\n',
   ]);
   const sha256 = await sha256Hex(new Uint8Array(await attachment.arrayBuffer()));
   const added = addEvidence(base, {
@@ -61,7 +61,7 @@ async function main() {
       blobKey: 'blob:example',
     },
   });
-  const session = linkEvidence(added.session, added.id, 'CTE-01', 'MEE-T2-L4-01');
+  const session = linkEvidence(added.session, added.id, 'CTE-01', 'DOD-T2-L4-01');
   const readBlob = async (key: string) => (key === 'blob:example' ? attachment : undefined);
 
   const tier1 = await buildTier1Workbook(framework, session, at);

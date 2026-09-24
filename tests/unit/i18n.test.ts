@@ -8,6 +8,7 @@ import { LANGUAGES, directionOf, isLang } from '@/i18n/languages';
 import { createTranslator, format, EN } from '@/i18n/translate';
 import { loadMessages, useLangStore, initLanguage } from '@/i18n/store';
 import { STORAGE_KEY_UI } from '@/config/app.config';
+import { GUIDE_PAGES, hasGuideTranslation, loadGuideBody } from '@/content/guide';
 
 const placeholders = (text: string) => [...text.matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort();
 
@@ -100,4 +101,21 @@ describe('language store', () => {
     initLanguage();
     expect(useLangStore.getState().translator.lang).toBe('en');
   });
+});
+
+describe('guide translations', () => {
+  const figures = (md: string) => [...md.matchAll(/^:::figure ([\w-]+):::$/gm)].map((m) => m[1]);
+  const others = LANGUAGES.map((l) => l.code).filter((code) => code !== 'en');
+
+  it.each(others)(
+    '%s has every guide page, with the same figures in the same order',
+    async (lang) => {
+      for (const page of GUIDE_PAGES) {
+        expect(hasGuideTranslation(page.slug, lang), `${lang}/${page.slug}`).toBe(true);
+        const body = await loadGuideBody(page.slug, lang);
+        expect(body, `${lang}/${page.slug}`).toBeTruthy();
+        expect(figures(body!), `${lang}/${page.slug}`).toEqual(figures(page.body));
+      }
+    },
+  );
 });

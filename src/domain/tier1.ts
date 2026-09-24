@@ -1,5 +1,5 @@
 /**
- * Tier 1 scoring (BUILD_SPEC D-2.1). Pure functions — every rule has a named test.
+ * Tier 1 scoring. Pure functions — every rule has a named test.
  */
 import { TIER1_LABEL } from '@/config/app.config';
 import type { ResolvedFramework } from './frameworks';

@@ -1,5 +1,5 @@
 /**
- * Cross-browser smoke (BUILD_SPEC Phase 8, task 5). Runs in Chromium always, and in Firefox and
+ * Cross-browser smoke. Runs in Chromium always, and in Firefox and
  * WebKit when CROSS_BROWSER=1 and those browsers are installed.
  */
 import { test, expect } from '@playwright/test';
@@ -60,13 +60,13 @@ test('a large assessment exports without locking the interface', async ({ page }
       title: `Evidence ${i + 1}`,
       marking: 'Internal (unrestricted)',
       verification: 'Unverified',
-      linkedCriteria: [{ cteId: ctes[i % 30]!.id, criterionId: 'MEE-T2-L1-01' }],
+      linkedCriteria: [{ cteId: ctes[i % 30]!.id, criterionId: 'DOD-T2-L1-01' }],
     }));
     const session = {
       schemaVersion: 1,
       appVersion: '0.0.0-test',
       gitSha: 'test',
-      frameworkId: 'marine-energy-eere',
+      frameworkId: 'dod-tra-2025',
       frameworkVersion: '1.0.0',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
@@ -74,7 +74,7 @@ test('a large assessment exports without locking the interface', async ({ page }
         ctes,
         assessments: ctes.map((c) => ({
           cteId: c.id,
-          criterionId: 'MEE-T2-L1-01',
+          criterionId: 'DOD-T2-L1-01',
           status: 'Met',
         })),
         evidence,

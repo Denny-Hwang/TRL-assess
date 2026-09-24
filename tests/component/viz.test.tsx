@@ -157,7 +157,7 @@ describe('CteBars', () => {
     );
     const figure = screen.getByRole('img');
     expect(figure.getAttribute('aria-label')).toContain('System summary TRL 3');
-    expect(figure.getAttribute('aria-label')).toContain('Wave energy harvester 4');
+    expect(figure.getAttribute('aria-label')).toContain('Energy harvester 4');
     expect(figure.getAttribute('aria-label')).toContain('CTE-02, CTE-03');
   });
 
@@ -179,7 +179,7 @@ describe('CteBars', () => {
 });
 
 describe('MatrixHeatmap', () => {
-  const framework = resolveFramework('marine-energy-eere');
+  const framework = resolveFramework('dod-tra-2025');
 
   it('prints every cell value as text and names the user’s combination', () => {
     render(<MatrixHeatmap matrix={framework.matrix} build="B2" environment="E2" />);

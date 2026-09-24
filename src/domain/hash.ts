@@ -1,5 +1,5 @@
 /**
- * SHA-256 via Web Crypto (BUILD_SPEC Phase 2, task 7).
+ * SHA-256 via Web Crypto.
  * Works in the browser and under Node (globalThis.crypto.subtle exists in Node 20+).
  */
 export async function sha256Hex(data: ArrayBuffer | Uint8Array | string): Promise<string> {

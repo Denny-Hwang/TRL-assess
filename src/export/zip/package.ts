@@ -1,5 +1,5 @@
 /**
- * Evidence package (BUILD_SPEC D-4).
+ * Evidence package.
  *
  *   TRL_Tier2_<slug>_<ts>/
  *   ├─ TRL_Tier2_<slug>_<ts>.xlsx

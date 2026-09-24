@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 /**
- * Framework validator (BUILD_SPEC Phase 1, task 5).
+ * Framework validator.
  *
  * Checks, for every framework in the registry:
  *   1. schema validity (zod)
@@ -11,7 +11,7 @@
  *   5. `refId` references across frameworks resolve
  *   6. no ISO body text — `iso-16290` may only be cited by clause, never quoted
  *
- * and, for the ARL side module (ADR-0005):
+ * and, for the ARL side module:
  *   7. the rubric loads (structure, look-up table, bands) and every item passes rules 4 and 6
  */
 import { RAW_FRAMEWORKS } from '../src/data/frameworks/index.ts';

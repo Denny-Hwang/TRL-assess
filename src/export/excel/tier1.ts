@@ -1,5 +1,5 @@
 /**
- * Tier 1 workbook (BUILD_SPEC D-3.1).
+ * Tier 1 workbook.
  * Sheets, in order: README, Summary, Context, Responses, Next_Evidence_Placeholders, References.
  */
 import { BLANK_NEXT_EVIDENCE_ROWS } from '@/config/app.config';

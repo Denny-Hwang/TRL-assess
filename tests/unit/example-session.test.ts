@@ -10,7 +10,7 @@ describe('fictional example session', () => {
   const framework = resolveFramework(session.frameworkId);
 
   it('validates against the session schema', () => {
-    expect(session.frameworkId).toBe('marine-energy-eere');
+    expect(session.frameworkId).toBe('dod-tra-2025');
     expect(session.tier1).toBeDefined();
     expect(session.tier2?.ctes).toHaveLength(3);
   });
@@ -61,22 +61,34 @@ describe('fictional example session', () => {
     expect(delta.significant).toBe(false);
   });
 
-  it('demonstrates the "Met without evidence does not count" rule', () => {
+  it('demonstrates the "Met without usable evidence does not count" rule', () => {
     const t2 = scoreTier2(framework, session.tier2!);
     const cte02 = t2.ctes.find((c) => c.cte.id === 'CTE-02')!;
     const l4 = cte02.levels.find((l) => l.level === 4)!;
     expect(l4.achieved).toBe(false);
-    // "Met" with a Web link counts; the blocker at L4 is the tailored FMECA criterion.
-    expect(l4.mandatoryUnmet.map((o) => o.criterion.id)).toContain('MEE-T2-L4-T01');
+    // The source designates no mandatory criteria, so a level needs one satisfied criterion.
+    expect(l4.noMandatoryCriteria).toBe(true);
+    expect(l4.applicable.some((o) => o.satisfied)).toBe(false);
+    // "Met", but the only linked evidence is Rejected, so it does not count.
+    const met = l4.applicable.find((o) => o.criterion.id === 'DOD-T2-L4-01')!;
+    expect(met.status).toBe('Met');
+    expect(met.satisfied).toBe(false);
+    expect(met.evidenceIds).toEqual([]);
+    expect(met.warning).toMatch(/no evidence is linked/);
+    const linked = session.tier2!.evidence.filter((e) =>
+      e.linkedCriteria.some((l) => l.cteId === 'CTE-02' && l.criterionId === 'DOD-T2-L4-01'),
+    );
+    expect(linked.map((e) => e.verification)).toEqual(['Rejected']);
   });
 
   it('demonstrates an N/A with justification counting as satisfied', () => {
     const t2 = scoreTier2(framework, session.tier2!);
     const cte03 = t2.ctes.find((c) => c.cte.id === 'CTE-03')!;
-    const l4 = cte03.levels.find((l) => l.level === 4)!;
-    const na = l4.applicable.find((o) => o.criterion.id === 'MEE-T2-L4-T01')!;
+    const l2 = cte03.levels.find((l) => l.level === 2)!;
+    const na = l2.applicable.find((o) => o.criterion.id === 'DOD-T2-SW-L2-03')!;
     expect(na.status).toBe('N/A');
     expect(na.satisfied).toBe(true);
+    expect(na.justification).toBeTruthy();
   });
 
   it('includes a sensitive, reference-only evidence item with no file', () => {

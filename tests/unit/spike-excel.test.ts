@@ -1,7 +1,6 @@
 /**
- * Library spike (BUILD_SPEC Phase 0, task 10) — proves that every Excel feature the
- * Tier 1/Tier 2 workbooks depend on survives a write → read round-trip with ExcelJS.
- * Findings are recorded in docs/adr/0001-excel-library.md.
+ * Proves that every Excel feature the Tier 1/Tier 2 workbooks depend on survives a write → read
+ * round-trip with ExcelJS.
  */
 import { describe, it, expect } from 'vitest';
 import ExcelJS from 'exceljs';

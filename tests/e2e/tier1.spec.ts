@@ -11,8 +11,8 @@ test.describe('Tier 1 quick estimate', () => {
 
     await page.goto('./#/quick');
 
-    await page.getByLabel('Project name').fill('Fictional Nearshore Wave Buoy (example data)');
-    await page.getByLabel('Technology name').fill('Wave-powered sensor buoy');
+    await page.getByLabel('Project name').fill('Fictional Remote Sensor Node (example data)');
+    await page.getByLabel('Technology name').fill('Self-powered remote sensor node');
     await page.getByLabel('Assessor name').fill('Example Assessor');
     await page.getByLabel('Environment reached').selectOption('E2');
     await page.getByLabel('Build maturity').selectOption('B2');

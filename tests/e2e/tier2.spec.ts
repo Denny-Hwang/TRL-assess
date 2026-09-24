@@ -15,7 +15,7 @@ test.describe('Tier 2 evidence-based assessment', () => {
     await page.goto('./#/assess');
 
     // Two CTEs: one hardware (critical), one software (critical).
-    await page.getByLabel(/^Name/).fill('Wave energy harvester');
+    await page.getByLabel(/^Name/).fill('Energy harvester');
     await page.getByLabel(/^Kind/).selectOption('hardware');
     await page.getByRole('button', { name: 'Add CTE' }).click();
 
@@ -25,7 +25,7 @@ test.describe('Tier 2 evidence-based assessment', () => {
 
     await expect(page.getByText('CTE-02').first()).toBeVisible();
 
-    // Mark TRL 1-3 met on CTE-01 and attach evidence to each mandatory criterion.
+    // Mark one criterion per level met on CTE-01 for TRL 1-3 and attach evidence to each.
     await page
       .getByRole('button', { name: /CTE-01/ })
       .first()
@@ -34,7 +34,7 @@ test.describe('Tier 2 evidence-based assessment', () => {
     const file = testInfo.outputPath('bench-test.txt');
     await writeFile(file, 'fictional bench test record');
 
-    for (const [index, criterion] of ['MEE-T2-L1-01', 'MEE-T2-L2-01', 'MEE-T2-L3-01'].entries()) {
+    for (const [index, criterion] of ['DOD-T2-L1-01', 'DOD-T2-L2-01', 'DOD-T2-L3-01'].entries()) {
       // The level accordion header, not the ladder rung of the same name.
       const header = page
         .getByRole('button', { name: new RegExp(`^TRL ${index + 1} `) })
@@ -66,7 +66,7 @@ test.describe('Tier 2 evidence-based assessment', () => {
     await expect(page.getByTestId('limiting-ctes')).toContainText('CTE-02');
 
     // CTE-01 itself reached TRL 3.
-    await expect(page.getByRole('row', { name: /Wave energy harvester/ })).toContainText('TRL 3');
+    await expect(page.getByRole('row', { name: /Energy harvester/ })).toContainText('TRL 3');
 
     expect(offenders, `unexpected network requests: ${offenders.join(', ')}`).toHaveLength(0);
   });
@@ -93,10 +93,18 @@ test.describe('Tier 2 evidence-based assessment', () => {
     await page.goto('./#/assess');
     await page.getByRole('button', { name: 'open the fictional example' }).click();
     await page.getByRole('button', { name: 'Yes, load it' }).click();
-    await expect(page.getByText('Wave energy harvester').first()).toBeVisible();
+    await expect(page.getByText('Energy harvester').first()).toBeVisible();
 
     await expect
       .poll(async () => page.evaluate(() => localStorage.getItem('trl-assess:session:v1') ?? ''))
-      .toContain('Wave energy harvester');
+      .toContain('Energy harvester');
+
+    await page.goto('./#/about');
+    await page.getByRole('button', { name: 'Clear all local data' }).click();
+    await page.getByRole('button', { name: 'Yes, delete everything' }).click();
+    await expect(page.getByText('All local data has been cleared.')).toBeVisible();
+    await expect
+      .poll(async () => page.evaluate(() => localStorage.getItem('trl-assess:session:v1')))
+      .toBeNull();
   });
 });

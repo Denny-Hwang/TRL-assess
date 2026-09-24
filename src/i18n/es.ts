@@ -41,9 +41,9 @@ export const es: Messages = {
     'Autoevaluación de la preparación para la adopción — no revisada ni avalada por el DOE',
   'label.arlTarget': 'Objetivo — previsto, no alcanzado',
   'disclaimer.trl':
-    '{app} solo produce una autoevaluación. No es una Evaluación de madurez tecnológica (TRA) independiente, ni una auditoría, ni una certificación. Los resultados dependen por completo de la información introducida por el usuario; la herramienta no verifica nada. Los criterios de evaluación difieren entre agencias y programas: conviene comprobar los criterios y las fuentes antes de utilizar un resultado en cualquier presentación formal.',
+    '{app} solo produce una autoevaluación — no una Evaluación de madurez tecnológica (TRA) independiente, ni una auditoría, ni una certificación. Los resultados dependen por completo de la información introducida; la herramienta no verifica nada. Los criterios difieren entre agencias: conviene comprobarlos antes de utilizar un resultado en una presentación formal.',
   'disclaimer.arl':
-    '{app} solo produce una autoevaluación. Las cifras de ARL aplican la rúbrica de la Evaluación de preparación para la adopción del DOE a las calificaciones introducidas: la herramienta no verifica nada y el DOE no revisa ni avala el resultado. La fuente califica la puntuación numérica de opcional y advierte contra la falsa precisión: es el perfil de riesgo, no el número, lo que muestra dónde están las barreras. El ARL complementa el TRL; esta herramienta nunca combina ambos en una sola cifra.',
+    '{app} solo produce una autoevaluación. Las cifras de ARL aplican la rúbrica de la Evaluación de preparación para la adopción del DOE a las calificaciones introducidas; la herramienta no verifica nada y el DOE no revisa ni avala el resultado.',
   'notice.sensitive':
     'No introducir información controlada, clasificada, sujeta a control de exportaciones ni sensible de ningún otro tipo. Esta herramienta se ejecuta en el navegador desde un sitio estático público; para ese tipo de material, utilizar entradas de evidencia «Sensible — solo referencia» que apunten a él en lugar de adjuntarlo.',
   'notice.dismiss': 'Cerrar',
@@ -111,7 +111,7 @@ export const es: Messages = {
   'tier2.reason.N/A': 'Marcado como «N/A» sin justificación.',
   'tier2.reason.Not assessed': 'Aún no evaluado.',
   'tier2.delta.lower':
-    'La evaluación basada en evidencias es notablemente inferior a la estimación rápida. Es lo habitual: la Fase 2 exige evidencias para cada afirmación, solo cuenta un nivel cuando se han alcanzado todos los inferiores y toma el mínimo de los CTE críticos. Conviene comprobar qué CTE es el limitante y qué criterios siguen sin evidencias.',
+    'La evaluación basada en evidencias es notablemente inferior a la estimación rápida. Conviene comprobar qué CTE es el limitante y qué criterios siguen sin evidencias.',
   'tier2.delta.higher':
     'La evaluación basada en evidencias es notablemente superior a la estimación rápida. Conviene comprobar si en la estimación rápida se respondió «Sin certeza» o «No» en un nivel bajo y si cada CTE marcado como crítico es realmente crítico.',
   'arl.flag.unsure':
@@ -129,12 +129,12 @@ export const es: Messages = {
   'arl.reason.N/A':
     'N/A sin justificación — contabilizado como riesgo alto hasta que se registre una',
   'flags.none': 'No se ha generado ninguna alerta.',
-  'home.lead': '¿Hasta qué punto se ha demostrado esta tecnología y se puede probar?',
+  'home.lead':
+    'Autoevaluación de la madurez tecnológica (TRL) y de la preparación para la adopción (ARL).',
   'home.ladder.marker': 'posición actual',
   'home.ladder.label':
     'La escala TRL va de 1 a 9; una evaluación determina el nivel más alto cuyas evidencias se sostienen.',
-  'home.ladder.caption':
-    'Un nivel solo cuenta cuando cuentan todos los inferiores. Esta herramienta encuentra dónde se interrumpe la cadena y qué haría falta para subir un peldaño.',
+  'home.ladder.caption': 'Un nivel solo cuenta cuando cuentan todos los inferiores.',
   'home.flow.heading': 'Cómo funciona',
   'home.flow.quick.title': '1. Estimación rápida',
   'home.flow.quick.detail': 'Nueve preguntas, unos cinco minutos, sin necesidad de documentos.',
@@ -145,20 +145,17 @@ export const es: Messages = {
   'home.flow.export.detail':
     'Libro de Excel, o un ZIP con los archivos de evidencia y un manifiesto SHA-256.',
   'home.tier1.heading': 'Fase 1 — Estimación rápida',
-  'home.tier1.body': 'Responder nueve preguntas y obtener un TRL con el razonamiento a la vista.',
   'home.tier1.start': 'Iniciar estimación rápida',
   'home.tier2.heading': 'Fase 2 — Evaluación basada en evidencias',
-  'home.tier2.body':
-    'Criterios por elemento, cada uno respaldado por un documento, un registro de ensayo o un commit fijado.',
   'home.tier2.start': 'Iniciar evaluación con evidencias',
-  'home.arl.heading': 'Módulo complementario — Nivel de preparación para la adopción (ARL)',
+  'home.arl.heading': 'Nivel de preparación para la adopción (ARL)',
   'home.arl.body':
-    'Lo que separa una tecnología que funciona de su uso real: calificar las 17 dimensiones de riesgo de adopción de la Evaluación de preparación para la adopción del DOE, ahora y al final del proyecto, y obtener el ARL inicial y el ARL final a partir de la propia tabla de consulta de la fuente. Se mantiene separado del resultado TRL; nunca se combinan en una sola cifra.',
+    'Calificar las 17 dimensiones de riesgo de adopción de la Evaluación de preparación para la adopción del DOE, ahora y al final del proyecto. Se presenta por separado del TRL.',
   'home.arl.start': 'Iniciar preparación para la adopción',
   'home.disclaimer.heading': 'Aviso legal',
   'about.title': 'Acerca de {app}',
   'about.lead':
-    'Herramienta de autoevaluación del Nivel de madurez tecnológica (TRL) en dos fases. La Fase 1 ofrece una estimación rápida y autodeclarada; la Fase 2 produce una evaluación respaldada por evidencias de los elementos tecnológicos críticos, exportable a Excel y empaquetable con los archivos de evidencia y un manifiesto SHA-256. Todo se ejecuta en el navegador: no hay backend, ni cuentas, ni telemetría.',
+    'Herramienta de autoevaluación del Nivel de madurez tecnológica en dos fases, con un módulo de Nivel de preparación para la adopción. Todo se ejecuta en el navegador: no hay backend, ni cuentas, ni telemetría.',
   'about.build.heading': 'Compilación',
   'about.build.version': 'Versión',
   'about.build.sha': 'SHA de Git',
@@ -190,14 +187,11 @@ export const es: Messages = {
     'La matriz construcción × entorno es una ayuda heurística creada para esta herramienta, no una norma.',
   'about.disclaimer.system':
     'El resumen del sistema es el mínimo de los CTE críticos: una convención conservadora de presentación de informes, no una fórmula obligatoria.',
-  'about.disclaimer.unverified': 'La herramienta no verifica nada de lo que se introduce.',
   'tier1.reset.button': 'Restablecer',
   'tier1.reset.confirm': '¿Descartar esta evaluación?',
   'tier1.reset.yes': 'Sí, restablecer',
   'tier1.reset.cancel': 'Cancelar',
   'tier1.context.title': 'Estimación rápida — paso 1 de 2: contexto',
-  'tier1.context.lead':
-    'Unas líneas sobre lo que se evalúa. Nada de lo que se introduce aquí sale del navegador.',
   'tier1.context.framework': 'Marco',
   'tier1.context.projectName': 'Nombre del proyecto',
   'tier1.context.technologyName': 'Nombre de la tecnología',
@@ -209,13 +203,12 @@ export const es: Messages = {
   'tier1.context.testWhat': 'Qué se ensayó',
   'tier1.context.testWhere': 'Dónde',
   'tier1.context.testWhen': 'Cuándo (mes/año)',
-  'tier1.context.testWhenHint': 'Por ejemplo, 2026-04.',
   'tier1.context.testWhenPlaceholder': 'AAAA-MM',
   'tier1.context.crossCheckHeading': 'Datos para la comprobación cruzada',
   'tier1.context.environment': 'Entorno alcanzado',
   'tier1.context.build': 'Madurez de construcción',
   'tier1.context.crossCheckNote':
-    'Estas dos respuestas alimentan una comprobación cruzada heurística ({status}). Nunca prevalece sobre las respuestas: solo señala una incoherencia.',
+    'Solo se usa para una comprobación cruzada heurística ({status}); nunca prevalece sobre las respuestas.',
   'tier1.context.missing.projectName': 'nombre del proyecto',
   'tier1.context.missing.technologyName': 'nombre de la tecnología',
   'tier1.context.missing.assessorName': 'nombre del evaluador',
@@ -224,8 +217,7 @@ export const es: Messages = {
   'tier1.q.title': 'Estimación rápida — paso 2 de 2: preguntas de cribado',
   'tier1.q.lead':
     'Avanzar desde TRL 9 hacia abajo. Responder para la tecnología en su conjunto, según lo que realmente se ha hecho.',
-  'tier1.q.progress.before': '{answered} / {total} respondidas · la serie ininterrumpida de ',
-  'tier1.q.progress.after': ' (sí) desde TRL 1 constituye la estimación',
+  'tier1.q.progress': '{answered} / {total} respondidas',
   'tier1.q.counter': 'Pregunta {n} de {total}',
   'tier1.q.helpSummary': 'Qué significa este nivel',
   'tier1.q.answerGroup': 'Respuesta',
@@ -236,9 +228,6 @@ export const es: Messages = {
   'tier1.q.keyboard':
     'Teclado: Y / N / U para responder (sí / no / sin certeza), flechas para desplazarse.',
   'tier1.q.seeEstimate': 'Ver la estimación',
-  'tier1.q.guide.before': '¿Dudas sobre el significado de un nivel? Consultar la ',
-  'tier1.q.guide.link': 'Guía',
-  'tier1.q.guide.after': '.',
   'tier1.result.title': 'Estimación rápida — resultado',
   'tier1.result.marker.estimate': 'estimación',
   'tier1.result.marker.claimed': 'declarado',
@@ -307,8 +296,6 @@ export const es: Messages = {
   'tier2.common.cancel': 'Cancelar',
   'tier2.evidenceCoverage': 'Cobertura de evidencias',
   'tier2.page.title': 'Evaluación basada en evidencias',
-  'tier2.page.lead':
-    'Descomponer el sistema en elementos tecnológicos críticos, evaluar los criterios de cada TRL y vincular las evidencias que respaldan cada afirmación.',
   'tier2.page.evidenceLink': 'Biblioteca de evidencias',
   'tier2.page.resultsLink': 'Resultados',
   'tier2.page.empty.title': 'Aún no se ha evaluado nada',
@@ -319,7 +306,6 @@ export const es: Messages = {
   'tier2.page.empty.after': 'para ver una evaluación completa.',
   'tier2.page.selectCte': 'Seleccionar o añadir un CTE para evaluar sus criterios.',
   'tier2.evidencePage.title': 'Biblioteca de evidencias',
-  'tier2.evidencePage.lead': 'Todo lo registrado como prueba y el uso de cada elemento.',
   'tier2.evidencePage.back': 'Volver a la evaluación',
   'tier2.export.heading': 'Exportación',
   'tier2.export.buildingWorkbook': 'Generando el libro…',
@@ -337,7 +323,6 @@ export const es: Messages = {
   'tier2.result.untitled': 'Evaluación sin título',
   'tier2.result.stat.system': 'Resumen del sistema',
   'tier2.result.stat.limiting': 'CTE limitante(s)',
-  'tier2.result.stat.limitingHint': 'El CTE o los CTE críticos que limitan el resumen del sistema.',
   'tier2.result.stat.tier1': 'Comparación con la Fase 1',
   'tier2.result.stat.noTier1': 'Sin estimación rápida',
   'tier2.result.stat.tier1Hint': 'Diferencia entre la estimación rápida y esta evaluación.',
@@ -362,7 +347,7 @@ export const es: Messages = {
   'tier2.result.imported': 'Sesión importada.',
   'tier2.cte.heading': 'Elementos tecnológicos críticos',
   'tier2.cte.empty':
-    'Empezar por nombrar las partes del sistema cuya madurez determina realmente si funciona.',
+    'Aún no hay CTE. Añadir las partes del sistema cuya madurez determina si funciona.',
   'tier2.cte.importFromTier1': 'Importar «{name}» de la estimación rápida',
   'tier2.cte.unspecified': 'sin especificar',
   'tier2.cte.critical': 'crítico',
@@ -469,8 +454,7 @@ export const es: Messages = {
   'evidence.form.doiHint': 'Por ejemplo, 10.1234/abcd.2026.5678',
   'evidence.form.citation': 'Cita bibliográfica',
   'evidence.form.url': 'Ubicación / URL',
-  'evidence.form.urlHint':
-    'Solo http o https. Usar para cualquier material que ya esté disponible en un lugar accesible.',
+  'evidence.form.urlHint': 'Solo http o https.',
   'evidence.form.marking': 'Marcado',
   'evidence.form.verification': 'Verificación',
   'evidence.form.verifiedBy': 'Verificado por',
@@ -479,8 +463,7 @@ export const es: Messages = {
   'evidence.form.sensitiveBody':
     'Registrar el título, el custodio y un número de referencia para que un revisor pueda localizar el material por el cauce adecuado.',
   'evidence.form.file': 'Archivo',
-  'evidence.form.fileHint':
-    'Se almacena solo en este navegador (IndexedDB). Máximo {limit} MB. Al añadirlo se calcula un hash SHA-256.',
+  'evidence.form.fileHint': 'Se almacena solo en este navegador. Máximo {limit} MB.',
   'evidence.form.pickedFile': '{name} — {size} kB',
   'evidence.form.attachedFile': 'Adjunto: {name} — {size} kB ·',
   'evidence.form.sha256': 'SHA-256',
@@ -504,8 +487,7 @@ export const es: Messages = {
   'evidence.library.closeEditor': 'Cerrar el editor',
   'evidence.library.edit': 'Editar',
   'evidence.library.delete': 'Eliminar',
-  'evidence.library.empty':
-    'Aún no hay evidencias. Las evidencias son lo que convierte una afirmación en una evaluación: un informe, un registro de ensayo, un commit fijado, un DOI o una referencia a un documento controlado.',
+  'evidence.library.empty': 'Aún no hay evidencias.',
   'evidence.library.newHeading': 'Nueva evidencia',
   'evidence.library.add': 'Añadir evidencia',
   'arl.common.start': 'ARL inicial',
@@ -517,10 +499,8 @@ export const es: Messages = {
   'arl.reset.cancel': 'Cancelar',
   'arl.unavailable.title': 'La rúbrica ARL de esta sesión no está disponible',
   'arl.unavailable.body':
-    'Esta sesión se calificó con la rúbrica ARL «{id}», que esta versión de la aplicación no incluye ({detail}). Restablecer las calificaciones ARL para empezar de nuevo con la rúbrica actual.',
+    'Esta versión no incluye la rúbrica ARL «{id}» ({detail}). Restablecer las calificaciones ARL para empezar de nuevo.',
   'arl.scope.title': 'Preparación para la adopción — paso 1 de 3: alcance',
-  'arl.scope.lead':
-    'Qué se evalúa y respecto a qué mercado. Nada de lo que se introduce aquí sale del navegador.',
   'arl.scope.versionSource': 'Versión: {version} · Fuente: {source}',
   'arl.scope.projectName': 'Nombre del proyecto',
   'arl.scope.technologyName': 'Nombre de la tecnología',
@@ -543,7 +523,7 @@ export const es: Messages = {
   'arl.rate.meter': 'Dimensiones calificadas',
   'arl.rate.rated': '{rated} de {total} calificadas',
   'arl.rate.conservative':
-    'Todo lo que quede sin calificar, «Sin certeza» o N/A sin justificación cuenta como riesgo alto hasta que se resuelva. Los objetivos describen el final del proyecto: objetivo — previsto, no alcanzado.',
+    'Lo que quede sin calificar, «Sin certeza» o N/A sin justificación cuenta como riesgo alto.',
   'arl.rate.areasNav': 'Áreas de riesgo principales',
   'arl.rate.currentRisk': 'Riesgo actual',
   'arl.rate.naOption': 'N/A — no aplica a este alcance',
@@ -567,9 +547,8 @@ export const es: Messages = {
     '{band} — {medium} de riesgo medio y {high} de riesgo alto contabilizadas.',
   'arl.result.endHint': '{band} — {target}.',
   'arl.result.change': 'Variación a lo largo del proyecto',
-  'arl.result.changeHint': 'ARL final menos ARL inicial.',
   'arl.result.scopeMissing.before':
-    'El alcance tecnológico o el horizonte temporal de la evaluación está en blanco. La fuente pide definir ambos antes de calificar: la misma tecnología puede obtener una calificación distinta con otro alcance.',
+    'El alcance tecnológico o el horizonte temporal de la evaluación está en blanco.',
   'arl.result.scopeMissing.link': 'Completar el alcance',
   'arl.result.scopeMissing.after': '.',
   'arl.result.profile': 'Perfil de riesgo',
@@ -587,11 +566,9 @@ export const es: Messages = {
   'arl.result.flags.targets': 'Objetivos',
   'arl.result.howRead': 'Cómo se lee la cifra',
   'arl.result.howRead.body':
-    'La fuente cuenta las dimensiones de riesgo medio y alto y obtiene el ARL de su tabla de consulta. Esta herramienta utiliza la tabla exactamente tal como está publicada.',
+    'La fuente cuenta las dimensiones de riesgo medio y de riesgo alto y obtiene el ARL de su tabla de consulta.',
   'arl.result.mark.start': 'Inicial',
   'arl.result.mark.target': 'Objetivo',
-  'arl.result.modify':
-    'Esta herramienta no lo hace: todos los resultados utilizan la tabla publicada, de modo que siguen siendo comparables.',
   'arl.result.takeAway': 'Exportar',
   'arl.result.building': 'Generando el libro…',
   'arl.result.downloadExcel': 'Descargar Excel',
@@ -644,34 +621,33 @@ export const es: Messages = {
     'Ejemplo 2 — el peldaño rayado es TRL 2, respondido «no». Estimación ',
   'guide.fig.tier1Gap.caption.after':
     ', nivel más alto declarado 4, se genera la alerta de brecha.',
-  'guide.fig.tier2.harvester': 'Captador',
-  'guide.fig.tier2.converter': 'Convertidor de potencia',
+  'guide.fig.tier2.harvester': 'Captador de energía',
+  'guide.fig.tier2.converter': 'Módulo de gestión de energía',
   'guide.fig.tier2.firmware': 'Firmware de telemetría',
   'guide.fig.tier2.cteLabel': '{name}: {trl}',
   'guide.fig.tier2.limiting': '◀ limita el sistema',
   'guide.fig.tier2.caption.before': 'Ejemplo 3 — el resumen del sistema es ',
   'guide.fig.tier2.caption.formula': 'min(4, 3, 3) = TRL 3',
-  'guide.fig.tier2.caption.after': '. El 4 del captador no lo eleva y no se promedia nada.',
+  'guide.fig.tier2.caption.after': '. No se promedia nada.',
   'guide.fig.statusLegend.caption':
     'Solo los dos primeros cuentan para un nivel: «Cumplido» con evidencias utilizables y «N/A» con una justificación.',
   'guide.fig.arlLookup.mark': 'Ejemplo',
   'guide.fig.arlLookup.caption.before':
     'Ejemplo — tres dimensiones de riesgo medio y una de riesgo alto se leen como ',
   'guide.fig.arlLookup.caption.value': 'ARL 6',
-  'guide.fig.arlLookup.caption.after':
-    '. Con dos calificaciones altas más, el mismo perfil se lee como ARL 3: los riesgos altos son los que más pesan.',
+  'guide.fig.arlLookup.caption.after': '. Los riesgos altos son los que más pesan.',
   'guide.fig.cte.label':
-    'Una boya de oleaje dividida en cinco elementos: captador de energía, conversión de potencia, firmware de telemetría y envolvente y estanqueidad —todos críticos— y el procedimiento de fondeo y recuperación, que es un proceso y aquí no es crítico.',
-  'guide.fig.cte.system': 'Boya de oleaje (sistema)',
+    'Un nodo sensor remoto dividido en cinco elementos: captador de energía, gestión de energía, firmware de telemetría y envolvente y estanqueidad —todos críticos— y el procedimiento de instalación, que es un proceso y aquí no es crítico.',
+  'guide.fig.cte.system': 'Nodo sensor remoto (sistema)',
   'guide.fig.cte.harvester': 'Captador\nde energía',
-  'guide.fig.cte.power': 'Conversión\nde potencia',
+  'guide.fig.cte.power': 'Gestión\nde energía',
   'guide.fig.cte.firmware': 'Firmware de\ntelemetría',
   'guide.fig.cte.enclosure': 'Envolvente\ny estanqueidad',
-  'guide.fig.cte.mooring': 'Fondeo y\nrecuperación',
+  'guide.fig.cte.install': 'Procedimiento\nde instalación',
   'guide.fig.cte.critical': 'crítico',
   'guide.fig.cte.notCritical': 'no crítico',
   'guide.fig.cte.caption':
-    'Cada elemento se evalúa por separado. Un proceso puede ser un CTE; «crítico» determina qué cuenta para el resumen del sistema.',
+    'Cada elemento se evalúa por separado; solo los críticos cuentan para el resumen del sistema.',
   'guide.fig.evidence.label':
     'Cómo se satisface un criterio: estado «Cumplido» más al menos una evidencia no rechazada, o estado «N/A» con una justificación. «Cumplido parcialmente», «No cumplido» y «No evaluado» nunca se satisfacen.',
   'guide.fig.evidence.criterion': 'Criterio',
@@ -686,21 +662,21 @@ export const es: Messages = {
   'guide.fig.evidence.caption':
     '«Cumplido» sin evidencias utilizables y «N/A» sin justificación pasan ambos a la vía inferior.',
   'guide.fig.env.label':
-    'La fidelidad del entorno aumenta desde el análisis únicamente, pasando por el laboratorio y un entorno relevante como un tanque de agua de mar, hasta un despliegue operativo limitado y, finalmente, el rango completo de la misión. TRL 5 y 6 requieren un entorno relevante; TRL 7 y 8, el entorno operativo.',
+    'La fidelidad del entorno aumenta desde el análisis únicamente, pasando por el laboratorio y un entorno relevante que reproduce las condiciones exigentes clave, hasta un ensayo operativo limitado y, finalmente, el rango completo de la misión. TRL 5 y 6 requieren un entorno relevante; TRL 7 y 8, el entorno operativo.',
   'guide.fig.env.e0.name': 'Solo análisis',
   'guide.fig.env.e0.note': 'modelos, sin hardware',
   'guide.fig.env.e1.name': 'Laboratorio',
-  'guide.fig.env.e1.note': 'banco, aire, temperatura ambiente',
+  'guide.fig.env.e1.note': 'banco, condiciones ambientales',
   'guide.fig.env.e2.name': 'Relevante',
-  'guide.fig.env.e2.note': 'tanque de agua de mar, movimiento, frío',
+  'guide.fig.env.e2.note': 'se reproducen las condiciones exigentes clave',
   'guide.fig.env.e3.name': 'Operativo (limitado)',
-  'guide.fig.env.e3.note': 'despliegue corto, temporada de calma',
+  'guide.fig.env.e3.note': 'ensayo de campo breve',
   'guide.fig.env.e4.name': 'Operativo (completo)',
   'guide.fig.env.e4.note': 'rango completo de la misión',
   'guide.fig.env.relevantNeed': 'TRL 5–6 lo requieren',
   'guide.fig.env.operationalNeed': 'TRL 7–8 lo requieren',
   'guide.fig.env.caption':
-    'Un ensayo en tanque de agua dulce no es un entorno relevante para un modo de fallo que requiere agua de mar conductora.',
+    'Un ensayo solo constituye un entorno relevante si reproduce las condiciones exigentes que importan para este elemento.',
   'guide.fig.sheets.label':
     'El libro de la Fase 1 tiene {tier1Count} hojas: {tier1}. El libro de la Fase 2 tiene {tier2Count}: {tier2}.',
   'guide.fig.sheets.tier1': 'Libro de la Fase 1',
@@ -708,11 +684,11 @@ export const es: Messages = {
   'guide.fig.sheets.caption':
     'El orden de las hojas es fijo y todos los libros se abren en su README.',
   'guide.fig.frameworks.label':
-    'marine-energy-eere amplía dod-tra-2025: reutiliza los criterios del DoD, añade ocho elementos marinos a medida y toma sus preguntas de la Fase 1 de las definiciones de EERE, con TRL 9 de la tabla del DoD.',
+    'dod-tra-2025, el marco predeterminado, contiene los criterios del DoD. marine-energy-eere lo amplía: reutiliza los criterios del DoD, añade ocho elementos marinos a medida y toma sus preguntas de la Fase 1 de las definiciones de EERE, con TRL 9 de la tabla del DoD.',
   'guide.fig.frameworks.dodCriteria': '58 criterios, literales',
   'guide.fig.frameworks.dodTables': 'tablas de hardware + software',
   'guide.fig.frameworks.extends': 'amplía',
-  'guide.fig.frameworks.marine': 'marine-energy-eere (predeterminado)',
+  'guide.fig.frameworks.default': '{id} (predeterminado)',
   'guide.fig.frameworks.marineCriteria': 'remite a los criterios del DoD + 8 elementos a medida',
   'guide.fig.frameworks.marineMandatory':
     'convierte en obligatorio el criterio que define el nivel',
@@ -745,37 +721,32 @@ export const es: Messages = {
     '. Los modelos de etapas son específicos de cada organización; no sirven de base para puntuar.',
   'guide.page.overview.title': 'Visión general',
   'guide.page.overview.summary':
-    'Qué son los TRL, de dónde procede la escala del 1 al 9 y qué lugar ocupa esta herramienta.',
+    'Qué son los TRL, los nueve niveles y qué lugar ocupa esta herramienta.',
   'guide.page.how-to-use.title': 'Cómo usar esta herramienta',
   'guide.page.how-to-use.summary':
-    'Paso a paso por ambas fases, además de cómo guardar, reanudar y borrar datos.',
+    'Paso a paso por ambas fases y el ARL, además de cómo guardar y borrar datos.',
   'guide.page.methodology.title': 'Metodología',
   'guide.page.methodology.summary':
     'Todas las reglas de puntuación en lenguaje claro, con tres ejemplos prácticos.',
   'guide.page.cte.title': 'Elementos tecnológicos críticos',
-  'guide.page.cte.summary':
-    'Cómo descomponer un sistema en CTE, con ejemplos y errores frecuentes.',
+  'guide.page.cte.summary': 'Cómo descomponer un sistema en CTE, y errores frecuentes.',
   'guide.page.evidence.title': 'Evidencias',
   'guide.page.evidence.summary':
     'Qué cuenta como evidencia, ejemplos buenos y débiles, marcado y verificación.',
   'guide.page.excel.title': 'Salida en Excel',
-  'guide.page.excel.summary':
-    'Ambos libros hoja por hoja y cómo funcionan los marcadores de posición.',
+  'guide.page.excel.summary': 'Los libros y cómo añadir evidencias en Excel.',
   'guide.page.frameworks.title': 'Marcos y fuentes',
-  'guide.page.frameworks.summary': 'Qué contiene cada marco, de dónde procede y sus limitaciones.',
+  'guide.page.frameworks.summary': 'Qué contiene cada marco y de dónde procede.',
   'guide.page.arl.title': 'Preparación para la adopción (ARL)',
   'guide.page.arl.summary':
     'El módulo complementario ARL: 17 dimensiones de riesgo de adopción y la tabla de consulta.',
-  'guide.page.marine-and-ocean.title': 'Adaptación al medio marino y oceánico',
-  'guide.page.marine-and-ocean.summary':
-    'Qué significa «entorno relevante» en el mar y escalas de madurez relacionadas.',
   'guide.page.stage-crosswalk.title': 'Correspondencia de etapas',
   'guide.page.stage-crosswalk.summary':
-    'Un modelo de etapas de desarrollo de sensores asignado a TRL; solo a título informativo.',
+    'Un modelo de etapas de desarrollo de hardware asignado a TRL; solo a título informativo.',
   'guide.page.faq.title': 'Preguntas frecuentes',
-  'guide.page.faq.summary': 'Quince preguntas que se plantean realmente.',
+  'guide.page.faq.summary': 'Preguntas habituales, con respuestas breves.',
   'guide.page.glossary.title': 'Glosario',
-  'guide.page.glossary.summary': 'TRL, TRA, CTE, entorno relevante, TPL, MRL, IRL, SRL, ARL y más.',
+  'guide.page.glossary.summary': 'TRL, TRA, CTE, entorno relevante, ARL, MRL, TPL y más.',
   'excel.readme.title': '{app} — cómo leer este libro',
   'excel.readme.label': 'Etiqueta',
   'excel.readme.disclaimer': 'Aviso legal',
@@ -1082,4 +1053,13 @@ export const es: Messages = {
   'excel.package.readme.not.heading': 'Lo que este paquete no es',
   'excel.package.readme.not.body':
     'Una autoevaluación, no una Evaluación de madurez tecnológica independiente. Las evidencias marcadas como\n«Sensible — solo referencia» nunca se incluyen en el paquete: esas filas apuntan a material conservado\nen otro lugar.',
+  'about.data.heading': 'Datos locales',
+  'about.data.body':
+    'Las evaluaciones y los archivos de evidencia se guardan solo en este navegador. Exporte lo que quiera conservar antes de borrar.',
+  'about.data.clear': 'Borrar todos los datos locales',
+  'about.data.confirm':
+    '¿Eliminar la evaluación y todos los archivos de evidencia almacenados en este navegador? No se puede deshacer.',
+  'about.data.yes': 'Sí, eliminar todo',
+  'about.data.cancel': 'Cancelar',
+  'about.data.done': 'Se han borrado todos los datos locales.',
 };

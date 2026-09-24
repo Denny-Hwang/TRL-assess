@@ -72,9 +72,8 @@ commercialization"). It contains no TRL 9 definition. The TRL 9 screening questi
 adapted from the DoD TRA Guidebook, another U.S. Government public-domain source, and the
 substitution is stated in the question's help text inside the app.
 
-Wording check against BUILD_SPEC D-6.1: the eight questions supplied in the spec match the EERE
-definitions on every substantive element (scale, environment, integration, end-user
-specifications). No adjustment was needed, apart from the TRL 9 substitution above.
+The eight TRL 1–8 questions match the EERE definitions on every substantive element (scale,
+environment, integration, end-user specifications).
 
 ### `doe-otc-arl-2025` → ARL side module (`src/data/frameworks/arl/doe-otc-arl-2025.json`)
 
@@ -93,12 +92,12 @@ Delivered Cost "Low" text keeps its `a.` / `b.` list structure as line breaks. T
 "Version: April 2025"; the file name and PDF metadata date the file 2025-09-23.
 
 **What the tool adds.** Counting Unsure, Not assessed and N/A-without-rationale as High is this
-tool's conservative convention (ADR-0005), not a rule of the source, and is labelled as such in the
+tool's conservative convention, not a rule of the source, and is labelled as such in the
 app, the Guide and the workbook.
 
 ### Tailored items (`origin: "tailored"`)
 
-The eight marine and ocean tailoring items (`MEE-T2-*-T0*`) come from BUILD_SPEC D-6.2. Each
+The eight marine and ocean tailoring items (`MEE-T2-*-T0*`) were written for this tool. Each
 carries a rationale in the data file. Their `source` ids point at `nrel-me-risk`,
 `eere-r540-112-02` or `goos-foo` as the basis of the rationale — **not** as the source of the
 wording, which is this tool's own. No text is quoted from those documents.
@@ -108,9 +107,7 @@ wording, which is this tool's own. No text is quoted from those documents.
 `doe-g413-3-4a` (DOE G 413.3-4A Appendix F TRL Calculator) and `gao-20-48g` (GAO-20-48G) could not
 be downloaded: the build environment's egress proxy denies `directives.doe.gov`, `energy.gov` and
 `gao.gov` (HTTP 403 on CONNECT). No content from either document appears anywhere in this
-repository, and no framework claims them as a source. Transcribing DOE G 413.3-4A Appendix F is
-tracked as follow-up work in `docs/PROGRESS.md`.
+repository, and no framework claims them as a source.
 
 `nrel-me-risk` was not obtained either. It is cited only as the _basis_ of tailored rationales, in
-the wording BUILD_SPEC D-6.2 supplied; no text from it is reproduced, and the report number is
-still to be confirmed by the project owner.
+the tool's own wording; no text from it is reproduced.

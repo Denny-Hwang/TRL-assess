@@ -18,7 +18,6 @@ import evidence from './evidence.md?raw';
 import excel from './excel.md?raw';
 import frameworks from './frameworks.md?raw';
 import arl from './arl.md?raw';
-import marineAndOcean from './marine-and-ocean.md?raw';
 import stageCrosswalk from './stage-crosswalk.md?raw';
 import faq from './faq.md?raw';
 import glossary from './glossary.md?raw';
@@ -84,12 +83,6 @@ const ENTRIES: GuidePageEntry[] = [
     titleKey: 'guide.page.arl.title',
     summaryKey: 'guide.page.arl.summary',
     body: arl,
-  },
-  {
-    slug: 'marine-and-ocean',
-    titleKey: 'guide.page.marine-and-ocean.title',
-    summaryKey: 'guide.page.marine-and-ocean.summary',
-    body: marineAndOcean,
   },
   {
     slug: 'stage-crosswalk',

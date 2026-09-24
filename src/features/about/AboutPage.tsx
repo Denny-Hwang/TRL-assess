@@ -13,6 +13,7 @@ import { listFrameworks } from '@/domain/frameworks';
 import { SOURCES, SOURCES_BY_ID } from '@/data/sources';
 import { disclaimerText } from '@/i18n/domainText';
 import { useT } from '@/i18n/store';
+import { ClearDataSection } from './ClearDataSection';
 
 export function AboutPage() {
   const tr = useT();
@@ -142,6 +143,8 @@ export function AboutPage() {
         </table>
       </section>
 
+      <ClearDataSection />
+
       <section id="disclaimer" className="card border-amber-200 bg-amber-50">
         <h2 className="text-lg font-semibold text-amber-900">{t('about.disclaimer.heading')}</h2>
         <p className="mt-2 text-sm text-amber-900">{disclaimerText(tr)}</p>
@@ -153,7 +156,6 @@ export function AboutPage() {
           </li>
           <li>{t('about.disclaimer.matrix')}</li>
           <li>{t('about.disclaimer.system')}</li>
-          <li>{t('about.disclaimer.unverified')}</li>
         </ul>
       </section>
     </div>

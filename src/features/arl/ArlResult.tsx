@@ -45,8 +45,6 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
   const scopeMissing =
     !arl.context.technologyScope?.trim() || !arl.context.evaluationTimeline?.trim();
   const falsePrecision = guidance(framework, 'false-precision');
-  const powerLaw = guidance(framework, 'power-law');
-  const modify = guidance(framework, 'modify-lookup');
   const targetById = new Map(end.outcomes.map((o) => [o.dimension.id, o]));
 
   const downloadJson = () => {
@@ -110,7 +108,6 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
         <Stat
           label={t('arl.result.change')}
           value={result.change > 0 ? `+${result.change}` : String(result.change)}
-          hint={t('arl.result.changeHint')}
           testId="arl-change"
         />
       </div>
@@ -237,16 +234,6 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
             },
           ]}
         />
-        {powerLaw ? (
-          <p className="text-xs text-slate-600">
-            “{powerLaw.text}” <SourceNote {...powerLaw.source} compact />
-          </p>
-        ) : null}
-        {modify ? (
-          <p className="text-xs text-slate-600">
-            “{modify.text}” {t('arl.result.modify')}
-          </p>
-        ) : null}
       </section>
 
       <section className="card border-amber-200 bg-amber-50" aria-label={t('ui.disclaimer.aria')}>

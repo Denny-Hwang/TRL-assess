@@ -24,7 +24,7 @@ function Workbench() {
 
   return (
     <div className="space-y-4">
-      <PageHeader title={t('tier2.page.title')} lead={t('tier2.page.lead')}>
+      <PageHeader title={t('tier2.page.title')}>
         <div className="flex flex-col items-end gap-1">
           <SaveIndicator />
           <div className="flex gap-2 text-xs">
@@ -105,7 +105,7 @@ function EvidencePage() {
   const { t } = useT();
   return (
     <div className="max-w-4xl space-y-4">
-      <PageHeader title={t('tier2.evidencePage.title')} lead={t('tier2.evidencePage.lead')}>
+      <PageHeader title={t('tier2.evidencePage.title')}>
         <Link className="text-xs underline" to="/assess">
           {t('tier2.evidencePage.back')}
         </Link>

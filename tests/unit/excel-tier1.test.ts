@@ -1,5 +1,5 @@
 /**
- * BUILD_SPEC D-3.0 / D-3.1 — the Tier 1 workbook is generated, read back with ExcelJS and
+ * The Tier 1 workbook is generated, read back with ExcelJS and
  * asserted sheet by sheet.
  */
 import { describe, it, expect, beforeAll } from 'vitest';
@@ -146,7 +146,7 @@ describe('Tier 1 workbook — README sheet', () => {
 
   it('records the tool version, framework, git SHA and generation timestamp', () => {
     const body = text();
-    expect(body).toContain('Framework: marine-energy-eere');
+    expect(body).toContain('Framework: dod-tra-2025');
     expect(body).toContain('Framework version: 1.0.0');
     expect(body).toContain('Git SHA:');
     expect(body).toContain(`Generated at (UTC): ${generatedAt.toISOString()}`);
@@ -173,7 +173,7 @@ describe('Tier 1 workbook — Summary sheet', () => {
     expect(v['Project']).toBe(session.tier1!.context.projectName);
     expect(v['Technology']).toBe(session.tier1!.context.technologyName);
     expect(v['Assessor']).toBe(session.tier1!.context.assessorName);
-    expect(v['Framework']).toContain('marine-energy-eere');
+    expect(v['Framework']).toContain('dod-tra-2025');
   });
 
   it('carries the label and the disclaimer', () => {
@@ -212,12 +212,12 @@ describe('Tier 1 workbook — Responses sheet', () => {
 
   it('records the answers, notes, origin and source', () => {
     const ws = sheet('Responses');
-    const row = ws.getRow(6); // TRL 5 wa the "Unsure" answer in the example
-    expect(String(row.getCell(2).value)).toBe('MEE-T1-L5');
+    const row = ws.getRow(6); // TRL 5 was the "Unsure" answer in the example
+    expect(String(row.getCell(2).value)).toBe('DOD-T1-L5');
     expect(String(row.getCell(4).value)).toBe('Unsure');
-    expect(String(row.getCell(5).value)).toContain('fresh water');
+    expect(String(row.getCell(5).value)).toContain('temperature cycling only');
     expect(String(row.getCell(6).value)).toBe('adapted');
-    expect(String(row.getCell(7).value)).toContain('eere-r540-112-02');
+    expect(String(row.getCell(7).value)).toContain('dod-tra-2025');
   });
 
   it('validates the Answer column against Yes / No / Unsure', () => {
@@ -261,10 +261,28 @@ describe('Tier 1 workbook — Next_Evidence_Placeholders sheet', () => {
 describe('Tier 1 workbook — References sheet', () => {
   it('lists the framework sources with clickable URLs', () => {
     const ids = columnValues('References', 'A').filter(Boolean);
-    expect(ids).toContain('eere-r540-112-02');
+    expect(ids).toEqual([...framework.framework.sources]);
     expect(ids).toContain('dod-tra-2025');
     const link = sheet('References').getCell('E2').value as { hyperlink?: string };
     expect(link.hyperlink).toMatch(/^https:\/\//);
+  });
+
+  it('lists every source of a framework that cites several', async () => {
+    const marine = resolveFramework('marine-energy-eere');
+    const workbook = await buildTier1Workbook(
+      marine,
+      { ...session, frameworkId: 'marine-energy-eere' },
+      generatedAt,
+    );
+    const buffer = await workbook.xlsx.writeBuffer();
+    const reloaded = new ExcelJS.Workbook();
+    await reloaded.xlsx.load(buffer as ArrayBuffer);
+    const ids: string[] = [];
+    reloaded.getWorksheet('References')!.eachRow((row, index) => {
+      if (index > 1) ids.push(String(row.getCell(1).value ?? ''));
+    });
+    expect(ids).toContain('eere-r540-112-02');
+    expect(ids).toContain('dod-tra-2025');
   });
 });
 

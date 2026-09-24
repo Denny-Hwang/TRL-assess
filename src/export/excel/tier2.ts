@@ -1,5 +1,5 @@
 /**
- * Tier 2 workbook (BUILD_SPEC D-3.2).
+ * Tier 2 workbook.
  * Sheets, in order: README, Summary, CTE_Register, Criteria_Assessment, Evidence_Register,
  * Gap_Actions, Review_Signoff, References, Metadata.
  */

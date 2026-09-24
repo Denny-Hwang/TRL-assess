@@ -1,6 +1,5 @@
 /**
- * The initial JavaScript chunk must stay small and must not contain ExcelJS or JSZip
- * (BUILD_SPEC Phase 4 task 4, Phase 8 task 3).
+ * The initial JavaScript chunk must stay small and must not contain ExcelJS or JSZip.
  *
  * The suite reads `dist/`, so it only asserts once a build exists. `npm run verify` runs the tests
  * before the build, so on a clean checkout this suite skips; CI re-runs it after the build through

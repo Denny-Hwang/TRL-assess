@@ -1,5 +1,5 @@
 /**
- * ARL workbook (BUILD_SPEC D-3.3, ADR-0005).
+ * ARL workbook.
  * Sheets, in order: README, Summary, Scope, Risk_Assessment, ARL_Lookup, References, Metadata.
  * The TRL workbooks are not touched.
  */

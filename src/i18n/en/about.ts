@@ -2,7 +2,7 @@
 export const about = {
   'about.title': 'About {app}',
   'about.lead':
-    'A two-tier Technology Readiness Level self-assessment tool. Tier 1 gives a quick, self-reported estimate; Tier 2 produces an evidence-backed assessment of Critical Technology Elements, exportable to Excel and packageable with the evidence files and a SHA-256 manifest. Everything runs in your browser — there is no backend, no account and no telemetry.',
+    'A two-tier Technology Readiness Level self-assessment tool with an Adoption Readiness Level module. Everything runs in your browser — no backend, no account, no telemetry.',
   'about.build.heading': 'Build',
   'about.build.version': 'Version',
   'about.build.sha': 'Git SHA',
@@ -34,5 +34,13 @@ export const about = {
     'The build × environment matrix is a heuristic aid created for this tool, not a standard.',
   'about.disclaimer.system':
     'The system summary is the minimum across critical CTEs — a conservative reporting convention, not a mandated formula.',
-  'about.disclaimer.unverified': 'Nothing you enter is verified by the tool.',
+  'about.data.heading': 'Local data',
+  'about.data.body':
+    'Assessments and evidence files are stored only in this browser. Export anything you want to keep before clearing.',
+  'about.data.clear': 'Clear all local data',
+  'about.data.confirm':
+    'Delete the assessment and every stored evidence file from this browser? This cannot be undone.',
+  'about.data.yes': 'Yes, delete everything',
+  'about.data.cancel': 'Cancel',
+  'about.data.done': 'All local data has been cleared.',
 } as const;

@@ -1,5 +1,5 @@
 /**
- * BUILD_SPEC D-3.0 / D-3.3 — the ARL workbook is generated, read back with ExcelJS and asserted
+ * The ARL workbook is generated, read back with ExcelJS and asserted
  * sheet by sheet.
  */
 import { describe, it, expect, beforeAll } from 'vitest';
@@ -12,12 +12,12 @@ import { resolveFramework } from '@/domain/frameworks';
 import { parseSession, setArl } from '@/domain/session';
 import { FICTIONAL_EXAMPLE } from '@/data/examples';
 import type { ArlData, AssessmentSession } from '@/domain/schemas';
-import {
-  ARL_DISCLAIMER,
-  ARL_LABEL,
-  DEFAULT_ARL_FRAMEWORK,
-  SCHEMA_VERSION,
-} from '@/config/app.config';
+import { ARL_LABEL, DEFAULT_ARL_FRAMEWORK, SCHEMA_VERSION } from '@/config/app.config';
+import { disclaimerText } from '@/i18n/domainText';
+import { EN } from '@/i18n/translate';
+
+/** The workbook carries the same ARL disclaimer as the app. */
+const ARL_DISCLAIMER = disclaimerText(EN, 'arl');
 
 const arlFramework = loadArlFramework(DEFAULT_ARL_FRAMEWORK);
 const base = parseSession(FICTIONAL_EXAMPLE);
@@ -29,10 +29,10 @@ const arl: ArlData = {
   frameworkId: arlFramework.id,
   frameworkVersion: arlFramework.version,
   context: {
-    projectName: 'Fictional buoy project',
-    technologyName: 'Fictional wave buoy',
+    projectName: 'Fictional sensor project',
+    technologyName: 'Fictional sensor node',
     assessorName: 'A. Assessor',
-    technologyScope: 'The buoy and its data link',
+    technologyScope: 'The sensor node and its data link',
     valueChainScope: 'Manufacture to deployment',
     evaluationTimeline: 'As of today; 5-year window',
     policyEnvironment: 'Current policy, no changes assumed',
@@ -146,7 +146,7 @@ describe('ARL workbook — structure', () => {
 
   it('names the file ARL_<project-slug>_<timestamp>.xlsx', () => {
     expect(arlWorkbookFilename(session, generatedAt)).toBe(
-      `ARL_fictional-buoy-project_${timestampForFilename(generatedAt)}.xlsx`,
+      `ARL_fictional-sensor-project_${timestampForFilename(generatedAt)}.xlsx`,
     );
   });
 });
@@ -161,6 +161,9 @@ describe('ARL workbook — README', () => {
   it('carries the ARL label, the ARL disclaimer and the static-values warning', () => {
     expect(text()).toContain(ARL_LABEL);
     expect(text()).toContain(ARL_DISCLAIMER);
+    expect(ARL_DISCLAIMER).toContain('self-assessment only');
+    expect(ARL_DISCLAIMER).toContain('nothing is verified by the tool');
+    expect(ARL_DISCLAIMER).toContain('DOE does not review or endorse the result');
     expect(text()).toContain(ARL_STATIC_VALUES_NOTE);
     expect(text()).not.toContain('Edits in this workbook do not recompute the TRL');
   });

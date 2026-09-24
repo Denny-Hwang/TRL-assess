@@ -1,5 +1,5 @@
 /**
- * Robustness (BUILD_SPEC Phase 8, task 2): large sessions, near-limit files, storage failures,
+ * Robustness: large sessions, near-limit files, storage failures,
  * corrupted and out-of-version imports.
  */
 import { describe, it, expect, vi, beforeEach } from 'vitest';

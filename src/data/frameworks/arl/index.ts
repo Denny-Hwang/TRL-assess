@@ -1,5 +1,5 @@
 /**
- * ARL side-module registry (ADR-0005). Content is data, as for the TRL frameworks: the DOE
+ * ARL side-module registry. Content is data, as for the TRL frameworks: the DOE
  * Adoption Readiness Assessment rubric is JSON next to this file and is validated at load time
  * by src/domain/arl.ts.
  */

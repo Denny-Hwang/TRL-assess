@@ -6,9 +6,9 @@ export const domain = {
   'label.arl': 'Adoption readiness self-assessment — not reviewed or endorsed by DOE',
   'label.arlTarget': 'Target — planned, not achieved',
   'disclaimer.trl':
-    '{app} produces a self-assessment only. It is not an independent Technology Readiness Assessment (TRA), not an audit, and not a certification. Results depend entirely on the information the user enters; nothing is verified by the tool. Assessment criteria differ between agencies and programmes — check the criteria and sources before using a result in any formal submission.',
+    '{app} produces a self-assessment only — not an independent Technology Readiness Assessment (TRA), an audit or a certification. Results depend entirely on what you enter; nothing is verified by the tool. Criteria differ between agencies — check them before using a result in a formal submission.',
   'disclaimer.arl':
-    '{app} produces a self-assessment only. The ARL figures apply the DOE Adoption Readiness Assessment rubric to the ratings you enter: nothing is verified by the tool, and DOE does not review or endorse the result. The source calls the numerical score optional and warns against false precision — the risk profile, not the number, shows where the barriers are. ARL complements TRL; this tool never combines the two into one figure.',
+    '{app} produces a self-assessment only. The ARL figures apply the DOE Adoption Readiness Assessment rubric to the ratings you enter; nothing is verified by the tool, and DOE does not review or endorse the result.',
   'notice.sensitive':
     'Do not enter controlled, classified, export-controlled or otherwise sensitive information. This tool runs in your browser on a public static site; use "Sensitive — reference only" evidence entries to point at such material instead of attaching it.',
   'notice.dismiss': 'Dismiss',
@@ -82,7 +82,7 @@ export const domain = {
   'tier2.reason.N/A': 'Marked "N/A" without a justification.',
   'tier2.reason.Not assessed': 'Not assessed yet.',
   'tier2.delta.lower':
-    'The evidence-based assessment is markedly lower than the quick estimate. That is the usual direction: Tier 2 requires evidence for every claim, counts a level only when all lower levels are achieved, and takes the minimum across critical CTEs. Check which CTE is limiting and which criteria still lack evidence.',
+    'The evidence-based assessment is markedly lower than the quick estimate. Check which CTE is limiting and which criteria still lack evidence.',
   'tier2.delta.higher':
     'The evidence-based assessment is markedly higher than the quick estimate. Check whether the quick estimate answered "Unsure" or "No" at a low level, and whether every CTE marked critical really is critical.',
 

@@ -6,8 +6,6 @@ export const tier1 = {
   'tier1.reset.cancel': 'Cancel',
 
   'tier1.context.title': 'Quick Estimate — step 1 of 2: context',
-  'tier1.context.lead':
-    'A few lines about what is being assessed. Nothing here leaves your browser.',
   'tier1.context.framework': 'Framework',
   'tier1.context.projectName': 'Project name',
   'tier1.context.technologyName': 'Technology name',
@@ -19,13 +17,12 @@ export const tier1 = {
   'tier1.context.testWhat': 'What was tested',
   'tier1.context.testWhere': 'Where',
   'tier1.context.testWhen': 'When (month/year)',
-  'tier1.context.testWhenHint': 'For example 2026-04.',
   'tier1.context.testWhenPlaceholder': 'YYYY-MM',
   'tier1.context.crossCheckHeading': 'Cross-check inputs',
   'tier1.context.environment': 'Environment reached',
   'tier1.context.build': 'Build maturity',
   'tier1.context.crossCheckNote':
-    'These two answers drive a heuristic cross-check ({status}). It never overrides your answers — it only flags an inconsistency.',
+    'Used only for a heuristic cross-check ({status}); it never overrides your answers.',
   'tier1.context.missing.projectName': 'project name',
   'tier1.context.missing.technologyName': 'technology name',
   'tier1.context.missing.assessorName': 'assessor name',
@@ -35,8 +32,7 @@ export const tier1 = {
   'tier1.q.title': 'Quick Estimate — step 2 of 2: screening questions',
   'tier1.q.lead':
     'Work from TRL 9 downwards. Answer for the technology as a whole, based on what has actually been done.',
-  'tier1.q.progress.before': '{answered} / {total} answered · the unbroken run of ',
-  'tier1.q.progress.after': ' from TRL 1 is your estimate',
+  'tier1.q.progress': '{answered} / {total} answered',
   'tier1.q.counter': 'Question {n} of {total}',
   'tier1.q.helpSummary': 'What this level means',
   'tier1.q.answerGroup': 'Answer',
@@ -46,9 +42,6 @@ export const tier1 = {
   'tier1.q.next': 'Next →',
   'tier1.q.keyboard': 'Keyboard: Y / N / U to answer, arrow keys to move.',
   'tier1.q.seeEstimate': 'See the estimate',
-  'tier1.q.guide.before': 'Not sure what a level means? See the ',
-  'tier1.q.guide.link': 'Guide',
-  'tier1.q.guide.after': '.',
 
   'tier1.result.title': 'Quick Estimate — result',
   'tier1.result.marker.estimate': 'estimate',

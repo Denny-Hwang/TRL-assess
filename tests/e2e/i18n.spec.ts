@@ -35,6 +35,15 @@ test.describe('interface languages', () => {
     expect(offenders, `unexpected network requests: ${offenders.join(', ')}`).toHaveLength(0);
   });
 
+  test('the Guide shows the translated page, not the English fallback', async ({ page }) => {
+    await page.goto('./');
+    await page.getByTestId('language-select').selectOption('ko');
+    await page.goto('./#/guide/overview');
+    await expect(page.locator('main h1').first()).toBeVisible();
+    await expect(page.getByText('This page is not yet available in your language')).toHaveCount(0);
+    await expect(page.locator('main')).toContainText('기술성숙도');
+  });
+
   for (const lang of ['ko', 'ar', 'hi']) {
     test(`axe: home and the quick estimate have no serious violations in ${lang}`, async ({
       page,
@@ -42,7 +51,7 @@ test.describe('interface languages', () => {
       await page.goto('./');
       await page.getByTestId('language-select').selectOption(lang);
       await expect(page.locator('html')).toHaveAttribute('lang', lang);
-      for (const route of ['./', './#/quick', './#/arl']) {
+      for (const route of ['./', './#/quick', './#/arl', './#/guide/methodology']) {
         await page.goto(route);
         await page.waitForLoadState('networkidle');
         const results = await new AxeBuilder({ page })

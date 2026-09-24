@@ -47,7 +47,6 @@ export function HomePage() {
       <section className="grid gap-4 md:grid-cols-2">
         <article className="card">
           <h2 className="text-xl font-semibold">{t('home.tier1.heading')}</h2>
-          <p className="mt-2 text-sm text-slate-600">{t('home.tier1.body')}</p>
           <p className="mt-2 text-xs font-medium text-amber-700">{t('label.tier1')}</p>
           <Link to="/quick" className="btn-primary mt-4">
             {t('home.tier1.start')}
@@ -56,7 +55,6 @@ export function HomePage() {
 
         <article className="card">
           <h2 className="text-xl font-semibold">{t('home.tier2.heading')}</h2>
-          <p className="mt-2 text-sm text-slate-600">{t('home.tier2.body')}</p>
           <p className="mt-2 text-xs font-medium text-amber-700">{t('label.tier2')}</p>
           <Link to="/assess" className="btn-secondary mt-4">
             {t('home.tier2.start')}

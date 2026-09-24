@@ -29,8 +29,7 @@ export const evidence = {
   'evidence.form.doiHint': 'For example 10.1234/abcd.2026.5678',
   'evidence.form.citation': 'Citation',
   'evidence.form.url': 'Location / URL',
-  'evidence.form.urlHint':
-    'http or https only. Use this for anything that already lives somewhere reachable.',
+  'evidence.form.urlHint': 'http or https only.',
   'evidence.form.marking': 'Marking',
   'evidence.form.verification': 'Verification',
   'evidence.form.verifiedBy': 'Verified by',
@@ -39,8 +38,7 @@ export const evidence = {
   'evidence.form.sensitiveBody':
     'Record the title, the custodian and a reference number so a reviewer can find the material through the proper channel.',
   'evidence.form.file': 'File',
-  'evidence.form.fileHint':
-    'Stored in this browser only (IndexedDB). Maximum {limit} MB. A SHA-256 hash is computed when you add it.',
+  'evidence.form.fileHint': 'Stored in this browser only. Maximum {limit} MB.',
   'evidence.form.pickedFile': '{name} — {size} kB',
   'evidence.form.attachedFile': 'Attached: {name} — {size} kB ·',
   'evidence.form.sha256': 'SHA-256',
@@ -65,8 +63,7 @@ export const evidence = {
   'evidence.library.closeEditor': 'Close editor',
   'evidence.library.edit': 'Edit',
   'evidence.library.delete': 'Delete',
-  'evidence.library.empty':
-    'No evidence yet. Evidence is what turns a claim into an assessment: a report, a test record, a pinned commit, a DOI, or a pointer to a controlled document.',
+  'evidence.library.empty': 'No evidence yet.',
   'evidence.library.newHeading': 'New evidence',
   'evidence.library.add': 'Add evidence',
 } as const;

@@ -18,7 +18,7 @@ test.describe('screenshots', () => {
   test('capture the three README screenshots', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 900 });
     const example = JSON.parse(
-      await readFile(path.resolve('src/data/examples/fictional-wave-buoy.session.json'), 'utf8'),
+      await readFile(path.resolve('src/data/examples/fictional-sensor-node.session.json'), 'utf8'),
     );
 
     // Seed the browser with the fictional example so the screenshots show a complete assessment.
@@ -37,7 +37,7 @@ test.describe('screenshots', () => {
     await page.screenshot({ path: path.join(OUT, 'tier1-result.png'), fullPage: true });
 
     await page.goto('./#/assess');
-    await expect(page.getByText('Wave energy harvester').first()).toBeVisible();
+    await expect(page.getByText('Energy harvester').first()).toBeVisible();
     await page.screenshot({ path: path.join(OUT, 'tier2-criteria.png'), fullPage: true });
 
     await page.goto('./#/assess/result');
