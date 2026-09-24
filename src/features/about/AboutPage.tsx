@@ -13,6 +13,7 @@ import { listFrameworks } from '@/domain/frameworks';
 import { SOURCES, SOURCES_BY_ID } from '@/data/sources';
 import { disclaimerText } from '@/i18n/domainText';
 import { useT } from '@/i18n/store';
+import { SourceText, SourceTranslation } from '@/components/ui';
 import { ClearDataSection } from './ClearDataSection';
 
 export function AboutPage() {
@@ -76,8 +77,11 @@ export function AboutPage() {
                 <span className="font-mono text-xs text-slate-500">
                   {f.id} · v{f.version}
                 </span>
+                <SourceTranslation text={f.name} />
               </p>
-              <p className="mt-1 text-slate-600">{f.description}</p>
+              <p className="mt-1 text-slate-600">
+                <SourceText text={f.description} />
+              </p>
               <p className="mt-1 text-xs text-slate-500">
                 {t('about.frameworks.sources', { list: f.sources.join(', ') })}
               </p>

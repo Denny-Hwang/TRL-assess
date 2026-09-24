@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { useT } from '@/i18n/store';
 import { disclaimerText } from '@/i18n/domainText';
 import type { Origin } from '@/domain/schemas';
+import type { Translator } from '@/i18n/translate';
 
 export function PageHeader({
   title,
@@ -34,7 +35,7 @@ export function Field({
 }: {
   label: string;
   htmlFor: string;
-  hint?: string;
+  hint?: ReactNode;
   required?: boolean;
   children: ReactNode;
 }) {
@@ -70,7 +71,8 @@ export function OriginBadge({ origin }: { origin: Origin }) {
 }
 
 export function MandatoryBadge({ mandatory, basis }: { mandatory: boolean; basis?: string }) {
-  const { t } = useT();
+  const tr = useT();
+  const { t } = tr;
   return (
     <span
       className={`badge ${
@@ -78,7 +80,11 @@ export function MandatoryBadge({ mandatory, basis }: { mandatory: boolean; basis
           ? 'border-slate-400 bg-slate-100 text-slate-800'
           : 'border-slate-200 bg-white text-slate-500'
       }`}
-      title={basis ?? t(mandatory ? 'ui.mandatory.title' : 'ui.optional.title')}
+      title={
+        basis
+          ? withTranslation(tr, basis)
+          : t(mandatory ? 'ui.mandatory.title' : 'ui.optional.title')
+      }
     >
       {t(mandatory ? 'ui.mandatory' : 'ui.optional')}
     </span>
@@ -194,4 +200,54 @@ export function SourceNote({
       {t('ui.source', { ref: short })}
     </span>
   );
+}
+
+/**
+ * The unofficial reference translation of a piece of English source content, in parentheses, or
+ * nothing when the interface is in English or no translation exists. `inline` keeps it on the
+ * same line (chips, headings); otherwise it sits on its own line under the English.
+ */
+export function SourceTranslation({
+  text,
+  inline = false,
+}: {
+  text: string | undefined;
+  inline?: boolean;
+}) {
+  const { st, lang } = useT();
+  const translated = st(text);
+  if (!translated) return null;
+  return (
+    <span lang={lang} className={`${inline ? 'ms-1' : 'mt-0.5 block'} font-normal text-slate-600`}>
+      {inParentheses(translated)}
+    </span>
+  );
+}
+
+/** Wraps a translation in parentheses unless it already is (some source text is parenthetical). */
+function inParentheses(text: string): string {
+  return /^[(（].*[)）]$/su.test(text.trim()) ? text : `(${text})`;
+}
+
+/** English source content (criterion, question, rubric text…) exactly as published + translation. */
+export function SourceText({
+  text,
+  inline = false,
+}: {
+  text: string | undefined;
+  inline?: boolean;
+}) {
+  if (!text) return null;
+  return (
+    <>
+      {text}
+      <SourceTranslation text={text} inline={inline} />
+    </>
+  );
+}
+
+/** For places that take plain text (an `<option>`, a tooltip): "English (translation)". */
+export function withTranslation(tr: Translator, text: string): string {
+  const translated = tr.st(text);
+  return translated ? `${text} ${inParentheses(translated)}` : text;
 }

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useSessionStore } from '@/state/sessionStore';
 import { tier1QuestionsTopDown } from '@/domain/frameworks';
-import { PageHeader, SourceNote } from '@/components/ui';
+import { PageHeader, SourceNote, SourceText } from '@/components/ui';
 import { AnswerRail } from '@/components/viz/AnswerRail';
 import { SaveIndicator } from '@/components/SaveIndicator';
 import type { AnswerValue, TrlLevel } from '@/domain/schemas';
@@ -115,14 +115,18 @@ export function QuickQuestions() {
             {t('tier1.q.counter', { n: index + 1, total: questions.length })}
           </span>
         </div>
-        <p className="mt-2 text-lg">{current.text}</p>
+        <p className="mt-2 text-lg">
+          <SourceText text={current.text} />
+        </p>
         {lang !== 'en' ? (
           <p className="mt-1 text-xs italic text-slate-500">{t('sourceText.note')}</p>
         ) : null}
         {current.helpText ? (
           <details className="mt-3 text-sm text-slate-600">
             <summary className="cursor-pointer text-brand-700">{t('tier1.q.helpSummary')}</summary>
-            <p className="mt-2">{current.helpText}</p>
+            <p className="mt-2">
+              <SourceText text={current.helpText} />
+            </p>
           </details>
         ) : null}
         <p className="mt-2">

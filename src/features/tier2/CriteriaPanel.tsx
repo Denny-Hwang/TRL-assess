@@ -1,7 +1,14 @@
 import { useMemo, useState } from 'react';
 import { useSessionStore } from '@/state/sessionStore';
 import { evaluateCte, type LevelOutcome } from '@/domain/tier2';
-import { Callout, MandatoryBadge, OriginBadge, SourceNote } from '@/components/ui';
+import {
+  Callout,
+  MandatoryBadge,
+  OriginBadge,
+  SourceNote,
+  SourceText,
+  SourceTranslation,
+} from '@/components/ui';
 import { TrlLadder } from '@/components/viz/TrlLadder';
 import { LevelBar, type LevelCounts } from '@/components/viz/LevelBar';
 import { Meter } from '@/components/viz/Meter';
@@ -126,17 +133,22 @@ export function CriteriaPanel({ cte, onOpenEvidence }: Props) {
                       </span>
                     </span>
                   </div>
-                  <p className="mt-1 text-sm">{outcome.criterion.text}</p>
+                  <p className="mt-1 text-sm">
+                    <SourceText text={outcome.criterion.text} />
+                  </p>
                   {outcome.criterion.guidance ? (
                     <details className="mt-1 text-xs text-slate-600">
                       <summary className="cursor-pointer text-brand-700">
                         {t('tier2.criteria.guidance')}
                       </summary>
-                      <p className="mt-1">{outcome.criterion.guidance}</p>
+                      <p className="mt-1">
+                        <SourceText text={outcome.criterion.guidance} />
+                      </p>
                       {outcome.criterion.rationale ? (
                         <p className="mt-1">
                           <strong>{t('tier2.criteria.rationale')}</strong>{' '}
                           {outcome.criterion.rationale}
+                          <SourceTranslation text={outcome.criterion.rationale} />
                         </p>
                       ) : null}
                     </details>

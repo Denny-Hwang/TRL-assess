@@ -1,7 +1,7 @@
 # Glossar
 
-Begriffe mit Quellenangabe werden aus dieser Quelle im englischen Original zitiert; die übrigen sind
-allgemein verständliche Definitionen.
+Begriffe mit Quellenangabe werden aus dieser Quelle im englischen Original zitiert, mit einer
+inoffiziellen Übersetzung; die übrigen sind allgemein verständliche Definitionen.
 
 ## Die Bewertung
 
@@ -15,12 +15,12 @@ allgemein verständliche Definitionen.
 
 ## Umgebungen und Prüflinge
 
-| Begriff                           | Bedeutung                                                                                                                                                                                                                         |
-| --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Relevante Umgebung**            | „Testing environment that simulates both the most important and most stressing aspects of the operational environment“ (`dod-tra-2025`, Table 2-3, S. 11). Angewendet auf eine Komponente bei TRL 5, ein System/Teilsystem bei 6. |
-| **Einsatzumgebung**               | „Environment that addresses user operational requirements and specifications required of the final system to include platform/packaging“ (ebd.). Angewendet auf einen Prototyp bei TRL 7, das tatsächliche System bei 8.          |
-| **Breadboard**                    | „Integrated components that provide a representation of a system/subsystem… typically configured for laboratory use… may resemble final system/subsystem in function only“ (ebd.).                                                |
-| **Hohe / niedrige Realitätsnähe** | Hohe Realitätsnähe (high fidelity) „addresses form, fit, and function“; niedrige Realitätsnähe liefert kaum mehr als Informationen erster Ordnung (`dod-tra-2025`, Table 2-3, S. 11).                                             |
+| Begriff                           | Bedeutung                                                                                                                                                                                                                                                                                                                                                                                                    |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Relevante Umgebung**            | „Testing environment that simulates both the most important and most stressing aspects of the operational environment“ (Übersetzung: „Testumgebung, die sowohl die wichtigsten als auch die am stärksten belastenden Aspekte der Einsatzumgebung nachbildet“) (`dod-tra-2025`, Table 2-3, S. 11). Angewendet auf eine Komponente bei TRL 5, ein System/Teilsystem bei 6.                                     |
+| **Einsatzumgebung**               | „Environment that addresses user operational requirements and specifications required of the final system to include platform/packaging“ (Übersetzung: „Umgebung, die die betrieblichen Anforderungen des Nutzers und die für das endgültige System geforderten Spezifikationen einschließlich Plattform/Packaging abdeckt“) (ebd.). Angewendet auf einen Prototyp bei TRL 7, das tatsächliche System bei 8. |
+| **Breadboard**                    | „Integrated components that provide a representation of a system/subsystem… typically configured for laboratory use… may resemble final system/subsystem in function only“ (Übersetzung: „integrierte Komponenten, die ein System/Teilsystem abbilden … typischerweise für den Laboreinsatz konfiguriert … können dem endgültigen System/Teilsystem nur in der Funktion ähneln“) (ebd.).                     |
+| **Hohe / niedrige Realitätsnähe** | Hohe Realitätsnähe (high fidelity) „addresses form, fit, and function“ (Übersetzung: „berücksichtigt Form, Passung und Funktion“); niedrige Realitätsnähe liefert kaum mehr als Informationen erster Ordnung (`dod-tra-2025`, Table 2-3, S. 11).                                                                                                                                                             |
 
 ## Benachbarte Skalen
 

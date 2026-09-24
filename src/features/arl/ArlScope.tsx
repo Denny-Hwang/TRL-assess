@@ -3,7 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { guidance } from '@/domain/arl';
 import type { ArlContext, ArlFramework } from '@/domain/schemas';
 import { useSessionStore } from '@/state/sessionStore';
-import { Callout, Field, PageHeader, SourceNote } from '@/components/ui';
+import {
+  Callout,
+  Field,
+  PageHeader,
+  SourceNote,
+  SourceTranslation,
+  withTranslation,
+} from '@/components/ui';
 import { SaveIndicator } from '@/components/SaveIndicator';
 import { useT } from '@/i18n/store';
 
@@ -36,13 +43,16 @@ function QuotedHint({
     <span id={hintId} className="mt-1 block text-xs text-slate-500">
       “{withLabel && g.label ? `${g.label} ` : ''}
       {g.text}” <SourceNote {...g.source} compact />
+      {withLabel ? <SourceTranslation text={g.label} /> : null}
+      <SourceTranslation text={g.text} />
     </span>
   );
 }
 
 export function ArlScope({ framework }: { framework: ArlFramework }) {
   const navigate = useNavigate();
-  const { t, lang } = useT();
+  const tr = useT();
+  const { t, lang } = tr;
   const session = useSessionStore((s) => s.session);
   const setArl = useSessionStore((s) => s.setArl);
 
@@ -90,7 +100,7 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
         <SaveIndicator />
       </PageHeader>
 
-      <Callout tone="info" title={framework.name}>
+      <Callout tone="info" title={withTranslation(tr, framework.name)}>
         <p>
           {framework.shortDescription}{' '}
           <span className="text-xs">
@@ -99,6 +109,7 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
               source: framework.sources[0] ?? '',
             })}
           </span>
+          <SourceTranslation text={framework.shortDescription} />
         </p>
       </Callout>
 
@@ -149,6 +160,8 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
             <p className="mt-1 text-xs text-slate-500">
               “{scopeHeading.label} {scopeHeading.text}”{' '}
               <SourceNote {...scopeHeading.source} compact />
+              <SourceTranslation text={scopeHeading.label} />
+              <SourceTranslation text={scopeHeading.text} />
             </p>
           ) : null}
           {lang !== 'en' ? (

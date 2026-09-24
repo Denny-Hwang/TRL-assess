@@ -33,7 +33,7 @@ Telemetrie-Firmware. Auch ein Verfahren, etwa die Installation, kann ein CTE sei
 | ----------------------------------- | ---------------------------------------------------------------------------------------- |
 | Ein CTE für das ganze System        | Teilen Sie dort auf, wo Teilsysteme sichtbar unterschiedlich weit sind.                  |
 | Ein CTE je Platine oder Bauteil     | Führen Sie Elemente zusammen, die immer denselben Status und dieselben Nachweise hätten. |
-| Alles als kritisch gekennzeichnet   | Kennzeichnen Sie nur, was die Mission bestimmt; die Zusammenfassung ist das Minimum.     |
+| Alles als kritisch gekennzeichnet   | Kennzeichnen Sie nur, wovon die Mission abhängt; die Zusammenfassung ist das Minimum.    |
 | Nichts als kritisch gekennzeichnet  | Kennzeichnen Sie mindestens eines, sonst wird keine Systemzusammenfassung berechnet.     |
 | „Kritisch“ als „wichtig“ verstanden | Ein wichtiges Teil ist nur dann ein CTE, wenn etwas daran noch nicht erprobt ist.        |
 

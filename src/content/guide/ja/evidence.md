@@ -27,7 +27,7 @@
 
 :::figure environment-fidelity:::
 
-- **関連環境** とは "a set of stressing conditions, representative of the full spectrum of intended operational employments"（訳：意図された運用の全範囲を代表する、負荷の厳しい一連の条件）であり、構成要素の一部としての要素（TRL 5）またはシステム/サブシステム（TRL 6）に適用されます — `dod-tra-2025`、p. 12。
+- **関連環境** とは "a set of stressing conditions, representative of the full spectrum of intended operational employments"（訳：意図された運用の全範囲を代表する、負荷の厳しい一連の条件）であり、構成要素（TRL 5）またはシステム/サブシステム（TRL 6）の一部としての要素に適用されます — `dod-tra-2025`、p. 12。
 - **運用環境** とは "a set of conditions, representative of the full spectrum of employments"（訳：運用の全範囲を代表する一連の条件）であり、プロトタイプ（TRL 7）または実システム（TRL 8）に適用されます — `dod-tra-2025`、p. 13。
 
 「全範囲（full spectrum）」とは、条件の良い試験 1 回では不十分だということです。

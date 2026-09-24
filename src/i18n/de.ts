@@ -47,7 +47,7 @@ export const de: Messages = {
     'Geben Sie keine kontrollierten, eingestuften, exportkontrollierten oder anderweitig sensiblen Informationen ein. Dieses Tool läuft in Ihrem Browser auf einer öffentlichen statischen Website; verwenden Sie Nachweiseinträge mit der Kennzeichnung „Sensibel — nur Verweis“, um auf solches Material zu verweisen, statt es anzuhängen.',
   'notice.dismiss': 'Ausblenden',
   'sourceText.note':
-    'Kriterien, Prüffragen und Texte des Bewertungsrasters werden auf Englisch angezeigt, genau so, wie ihre Quellen sie veröffentlichen.',
+    'Kriterien, Prüffragen und Texte des Bewertungsrasters werden auf Englisch angezeigt, genau so, wie ihre Quellen sie veröffentlichen. Der Text in Klammern ist eine inoffizielle Übersetzung und dient nur zur Orientierung.',
   'trl.belowOne': '< TRL 1',
   'trl.level': 'TRL {level}',
   'answer.Yes': 'Ja',
@@ -838,14 +838,14 @@ export const de: Messages = {
     'Fügen Sie niemals kontrollierte oder sensible Inhalte in diese Arbeitsmappe ein. Erfassen Sie stattdessen einen Verweis.',
   'excel.tier1.readme.calc.heading': 'So wird die Schätzung berechnet',
   'excel.tier1.readme.calc.estimate':
-    'Der geschätzte TRL ist die höchste Stufe, bei der diese Stufe und jede Stufe darunter mit „Ja“ beantwortet wurden.',
-  'excel.tier1.readme.calc.unsure': '„Unsicher“ zählt nie als „Ja“.',
+    'Der geschätzte TRL ist die höchste Stufe, bei der diese Stufe und jede Stufe darunter mit „Yes“ (Ja) beantwortet wurden.',
+  'excel.tier1.readme.calc.unsure': '„Unsure“ (Unsicher) zählt nie als „Yes“ (Ja).',
   'excel.tier1.readme.calc.claimed':
-    'Die höchste beanspruchte Stufe ist das höchste einzelne „Ja“, Lücken unberücksichtigt.',
+    'Die höchste beanspruchte Stufe ist das höchste einzelne „Yes“ (Ja), Lücken unberücksichtigt.',
   'excel.tier1.readme.calc.matrix':
     'Die Gegenprüfung Aufbau × Umgebung ist eine heuristische Hilfe, kein Standard, und setzt Ihre Antworten nie außer Kraft.',
   'excel.tier1.summary.estimate': 'Geschätzter TRL (Hauptergebnis)',
-  'excel.tier1.summary.claimed': 'Höchste beanspruchte Stufe (erstes „Ja“)',
+  'excel.tier1.summary.claimed': 'Höchste beanspruchte Stufe (erstes „Yes“)',
   'excel.tier1.summary.matrix': 'Gegenprüfung Aufbau × Umgebung',
   'excel.tier1.summary.consistency': 'Konsistenzbewertung',
   'excel.tier1.summary.flags': 'Warnhinweise',
@@ -891,14 +891,14 @@ export const de: Messages = {
   'excel.tier2.readme.attach.open':
     '(c) Die Spalte „Öffnen“ macht aus beidem einen anklickbaren Link.',
   'excel.tier2.readme.attach.sensitive':
-    '(d) Fügen Sie niemals sensible Inhalte in diese Arbeitsmappe ein. Verwenden Sie stattdessen eine Zeile mit der Kennzeichnung „Sensibel — nur Verweis“, die auf das Material verweist.',
+    '(d) Fügen Sie niemals sensible Inhalte in diese Arbeitsmappe ein. Verwenden Sie stattdessen eine Zeile mit der Kennzeichnung „Sensitive — reference only“ (Sensibel — nur Verweis), die auf das Material verweist.',
   'excel.tier2.readme.attach.zip':
     'Diese Arbeitsmappe wurde innerhalb eines Nachweispakets exportiert: Die relativen Pfade verweisen bereits auf den beigefügten Ordner evidence/.',
   'excel.tier2.readme.attach.standalone':
     'Diese Arbeitsmappe wurde einzeln exportiert. Relative Pfade werden zur Information angezeigt, die Dateien sind jedoch nicht beigefügt — exportieren Sie das Nachweispaket, um sie zu erhalten.',
   'excel.tier2.readme.calc.heading': 'So wird die Bewertung berechnet',
   'excel.tier2.readme.calc.satisfied':
-    'Ein Kriterium ist anerkannt, wenn es „Erfüllt“ ist und mindestens ein verknüpfter, nicht abgelehnter Nachweis vorliegt, oder wenn es „N/A“ mit Begründung ist.',
+    'Ein Kriterium ist anerkannt, wenn es „Met“ (Erfüllt) ist und mindestens ein verknüpfter, nicht abgelehnter Nachweis vorliegt, oder wenn es „N/A“ mit Begründung ist.',
   'excel.tier2.readme.calc.level':
     'Eine Stufe ist erreicht, wenn jedes anwendbare verpflichtende Kriterium auf dieser Stufe anerkannt ist und die Stufe darunter erreicht ist.',
   'excel.tier2.readme.calc.cte': 'Der TRL eines CTE ist die höchste erreichte Stufe.',
@@ -975,11 +975,11 @@ export const de: Messages = {
   'excel.arl.readme.contents.metadata': 'Metadata — Herkunftsangaben zu diesem Export.',
   'excel.arl.readme.calc.heading': 'So wird der ARL berechnet',
   'excel.arl.readme.calc.rated':
-    'Jede Dimension wird anhand des Bewertungsrasters des DOE Adoption Readiness Assessment als geringes, mittleres oder hohes Risiko oder als N/A eingestuft.',
+    'Jede Dimension wird anhand des Bewertungsrasters des DOE Adoption Readiness Assessment als „Low“ (geringes Risiko), „Medium“ (mittleres Risiko) oder „High“ (hohes Risiko) oder als „N/A“ eingestuft.',
   'excel.arl.readme.calc.tally':
     'Die Dimensionen mit mittlerem und hohem Risiko werden gezählt, und der ARL wird unverändert aus der Nachschlagetabelle der Quelle auf S. 13 abgelesen.',
   'excel.arl.readme.calc.conservative':
-    'Dieses Tool wertet „Unsicher“, „Nicht bewertet“ und „N/A“ ohne Begründung als hohes Risiko — eine konservative Konvention des Tools, keine Regel der Quelle.',
+    'Dieses Tool wertet „Unsure“ (Unsicher), „Not assessed“ (Nicht bewertet) und „N/A“ ohne Begründung als „High“ (hohes Risiko) — eine konservative Konvention des Tools, keine Regel der Quelle.',
   'excel.arl.readme.calc.end':
     'ARL Ende verwendet die Ziele zum Projektende; wo keines gesetzt ist, wird die aktuelle Einstufung übernommen. {target}.',
   'excel.arl.readme.calc.trl':
@@ -1052,7 +1052,7 @@ export const de: Messages = {
   'excel.package.readme.hashes.heading': 'Hashwerte überprüfen',
   'excel.package.readme.not.heading': 'Was dieses Paket nicht ist',
   'excel.package.readme.not.body':
-    'Eine Selbstbewertung, keine unabhängige Technologiereifebewertung (TRA). Mit\n„Sensibel — nur Verweis“ gekennzeichnete Nachweise werden nie beigefügt: Diese Zeilen\nverweisen auf Material, das an anderer Stelle aufbewahrt wird.',
+    'Eine Selbstbewertung, keine unabhängige Technologiereifebewertung (TRA). Mit\n„Sensitive — reference only“ (Sensibel — nur Verweis) gekennzeichnete Nachweise werden nie beigefügt: Diese Zeilen\nverweisen auf Material, das an anderer Stelle aufbewahrt wird.',
   'about.data.heading': 'Lokale Daten',
   'about.data.body':
     'Bewertungen und Nachweisdateien werden nur in diesem Browser gespeichert. Exportieren Sie vor dem Löschen alles, was Sie behalten möchten.',

@@ -30,8 +30,8 @@ commercialization window", 번역: 3~5년의 상용화 기간을 고려하는 �
 
 :::figure arl-lookup:::
 
-중간 위험과 높은 위험의 개수를 p. 13의 조회표에서 읽습니다: 1–3 **Low Readiness**, 4–6 **Medium
-Readiness**, 7–9 **High Readiness**. 출처는 수치를 선택 사항으로 규정하므로, 결과 페이지는 위험
+중간 위험과 높은 위험의 개수로 p. 13의 조회표에서 수치를 읽습니다: 1–3 **Low Readiness**(낮은
+준비도), 4–6 **Medium Readiness**(중간 준비도), 7–9 **High Readiness**(높은 준비도). 출처는 수치를 선택 사항으로 규정하므로, 결과 페이지는 위험
 프로파일을 먼저 보여 줍니다. 조회표는 수정 없이 사용됩니다.
 
 ## 등급 집계 방식

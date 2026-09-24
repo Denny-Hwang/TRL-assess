@@ -44,7 +44,8 @@ export const ko: Messages = {
   'notice.sensitive':
     '통제 대상, 기밀, 수출 통제 대상 또는 기타 민감한 정보를 입력하지 마십시오. 이 도구는 공개 정적 사이트에서 브라우저로 실행됩니다. 이러한 자료는 첨부하지 말고 “민감 — 참조 전용” 증거 항목으로 위치를 기록하십시오.',
   'notice.dismiss': '닫기',
-  'sourceText.note': '기준, 선별 질문 및 루브릭 텍스트는 출처가 게시한 그대로 영어로 표시됩니다.',
+  'sourceText.note':
+    '기준, 선별 질문 및 루브릭 텍스트는 출처가 게시한 그대로 영어로 표시됩니다. 괄호 안의 내용은 참고용 비공식 번역입니다.',
   'trl.belowOne': '< TRL 1',
   'trl.level': 'TRL {level}',
   'answer.Yes': '예',
@@ -144,7 +145,7 @@ export const ko: Messages = {
   'home.disclaimer.heading': '면책 고지',
   'about.title': '{app} 소개',
   'about.lead':
-    '도입 준비도(ARL) 모듈을 갖춘 2단계 기술성숙도(TRL) 자체 평가 도구입니다. 모든 작업은 브라우저에서 실행되며, 백엔드, 계정, 원격 측정이 없습니다.',
+    '도입 준비도(ARL) 모듈을 갖춘, 두 Tier로 구성된 기술성숙도(TRL) 자체 평가 도구입니다. 모든 작업은 브라우저에서 실행되며, 백엔드, 계정, 원격 측정이 없습니다.',
   'about.build.heading': '빌드',
   'about.build.version': '버전',
   'about.build.sha': 'Git SHA',
@@ -300,7 +301,7 @@ export const ko: Messages = {
   'tier2.export.excel': 'Excel 다운로드',
   'tier2.export.zip': '증거 패키지 다운로드 (.zip)',
   'tier2.export.sensitiveNote':
-    '“{marking}”으로 표시된 증거는 워크북에 목록으로만 기재되며, 패키지에 포함되지 않습니다.',
+    '“{marking}”으로 표시된 증거는 워크북에 목록으로만 기재되며, 결코 패키지에 포함되지 않습니다.',
   'tier2.result.title': '증거 기반 평가 — 결과',
   'tier2.result.empty.before': '결과를 보기 전에',
   'tier2.result.empty.link': '평가 페이지에서',
@@ -429,7 +430,8 @@ export const ko: Messages = {
   'evidence.form.owner': '소유자 / 관리자',
   'evidence.form.repoUrl': '저장소 URL',
   'evidence.form.commitSha': '커밋 SHA',
-  'evidence.form.commitShaHint': '항상 커밋을 고정하십시오. 브랜치 이름은 이동합니다.',
+  'evidence.form.commitShaHint':
+    '항상 커밋을 고정하십시오. 브랜치 이름이 가리키는 커밋은 계속 바뀝니다.',
   'evidence.form.repoPath': '저장소 내 경로',
   'evidence.form.tag': '태그 / 릴리스',
   'evidence.form.doi': 'DOI',
@@ -798,13 +800,14 @@ export const ko: Messages = {
     '통제 대상이거나 민감한 내용을 이 워크북에 붙여 넣지 마십시오. 대신 위치 정보를 기록하십시오.',
   'excel.tier1.readme.calc.heading': '추정치 계산 방법',
   'excel.tier1.readme.calc.estimate':
-    '추정 TRL은 해당 수준과 그 아래의 모든 수준이 “예”로 답변된 가장 높은 수준입니다.',
-  'excel.tier1.readme.calc.unsure': '“불확실”은 결코 “예”로 간주되지 않습니다.',
-  'excel.tier1.readme.calc.claimed': '주장된 최고 수준은 공백을 무시한 가장 높은 단일 “예”입니다.',
+    '추정 TRL은 해당 수준과 그 아래의 모든 수준이 “Yes”(예)로 답변된 가장 높은 수준입니다.',
+  'excel.tier1.readme.calc.unsure': '“Unsure”(불확실)는 결코 “Yes”(예)로 간주되지 않습니다.',
+  'excel.tier1.readme.calc.claimed':
+    '주장된 최고 수준은 공백을 무시한 가장 높은 단일 “Yes”(예)입니다.',
   'excel.tier1.readme.calc.matrix':
     '제작 × 환경 교차 점검은 경험적 보조 수단이며 표준이 아니고, 결코 답변을 대체하지 않습니다.',
   'excel.tier1.summary.estimate': '추정 TRL (대표값)',
-  'excel.tier1.summary.claimed': '주장된 최고 수준 (첫 번째 “예”)',
+  'excel.tier1.summary.claimed': '주장된 최고 수준 (첫 번째 “Yes”)',
   'excel.tier1.summary.matrix': '제작 × 환경 교차 점검',
   'excel.tier1.summary.consistency': '일관성 등급',
   'excel.tier1.summary.flags': '플래그',
@@ -845,14 +848,14 @@ export const ko: Messages = {
     '(b) “로컬 파일 (상대 경로)” 열에 상대 경로를 입력하고, 파일은 이 워크북 옆의 evidence/ 폴더에 보관하십시오.',
   'excel.tier2.readme.attach.open': '(c) “열기” 열은 두 경우 모두를 클릭 가능한 링크로 바꿉니다.',
   'excel.tier2.readme.attach.sensitive':
-    '(d) 민감한 내용을 이 워크북에 붙여 넣지 마십시오. 대신 해당 자료를 가리키는 “민감 — 참조 전용” 표시 행을 사용하십시오.',
+    '(d) 민감한 내용을 이 워크북에 붙여 넣지 마십시오. 대신 해당 자료를 가리키는 “Sensitive — reference only”(민감 — 참조 전용) 표시 행을 사용하십시오.',
   'excel.tier2.readme.attach.zip':
     '이 워크북은 증거 패키지 안에 포함되어 내보내졌습니다. 상대 경로는 이미 함께 묶인 evidence/ 폴더를 가리킵니다.',
   'excel.tier2.readme.attach.standalone':
     '이 워크북은 단독으로 내보내졌습니다. 상대 경로는 참고용으로 표시되지만 파일은 포함되어 있지 않습니다 — 파일을 받으려면 증거 패키지를 내보내십시오.',
   'excel.tier2.readme.calc.heading': '평가 계산 방법',
   'excel.tier2.readme.calc.satisfied':
-    '기준은 “충족”이면서 거부되지 않은 연결된 증거 항목이 하나 이상 있거나, “해당 없음”이면서 사유가 있을 때 충족 인정됩니다.',
+    '기준은 “Met”(충족)이면서 거부되지 않은 연결된 증거 항목이 하나 이상 있거나, “N/A”(해당 없음)이면서 사유가 있을 때 충족 인정됩니다.',
   'excel.tier2.readme.calc.level':
     '어떤 수준은 해당 수준에 적용되는 모든 필수 기준이 충족 인정되고 그 아래 수준이 달성되었을 때 달성됩니다.',
   'excel.tier2.readme.calc.cte': 'CTE의 TRL은 달성한 가장 높은 수준입니다.',
@@ -928,11 +931,11 @@ export const ko: Messages = {
   'excel.arl.readme.contents.metadata': 'Metadata — 이 내보내기의 출처 정보.',
   'excel.arl.readme.calc.heading': 'ARL 계산 방법',
   'excel.arl.readme.calc.rated':
-    '각 차원은 DOE 도입 준비도 평가(Adoption Readiness Assessment) 루브릭에 따라 낮은 위험, 중간 위험, 높은 위험 또는 해당 없음으로 평가됩니다.',
+    '각 차원은 DOE 도입 준비도 평가(Adoption Readiness Assessment) 루브릭에 따라 “Low”(낮은 위험), “Medium”(중간 위험), “High”(높은 위험) 또는 “N/A”(해당 없음)로 평가됩니다.',
   'excel.arl.readme.calc.tally':
     '중간 위험 및 높은 위험 차원의 수를 집계하고, 13쪽의 출처 조회표에서 수정 없이 ARL을 읽습니다.',
   'excel.arl.readme.calc.conservative':
-    '이 도구는 불확실, 미평가, 근거 없는 해당 없음을 높은 위험으로 간주합니다 — 이는 출처의 규칙이 아니라 이 도구의 보수적 관례입니다.',
+    '이 도구는 “Unsure”(불확실), “Not assessed”(미평가), 근거 없는 “N/A”(해당 없음)를 “High”(높은 위험)로 간주합니다 — 이는 출처의 규칙이 아니라 이 도구의 보수적 관례입니다.',
   'excel.arl.readme.calc.end':
     'ARL 종료는 프로젝트 종료 시점 목표를 사용하며, 목표가 설정되지 않은 경우 현재 등급을 그대로 적용합니다. {target}.',
   'excel.arl.readme.calc.trl':
@@ -1005,7 +1008,7 @@ export const ko: Messages = {
   'excel.package.readme.hashes.heading': '해시 검증',
   'excel.package.readme.not.heading': '이 패키지가 아닌 것',
   'excel.package.readme.not.body':
-    '자체 평가이며, 독립적인 기술성숙도 평가(TRA)가 아닙니다. “민감 — 참조 전용”으로\n표시된 증거는 결코 패키지에 포함되지 않습니다. 해당 행은 다른 곳에 보관된\n자료를 가리킵니다.',
+    '자체 평가이며, 독립적인 기술성숙도 평가(TRA)가 아닙니다. “Sensitive — reference only”\n(민감 — 참조 전용)로 표시된 증거는 결코 패키지에 포함되지 않습니다. 해당 행은\n다른 곳에 보관된 자료를 가리킵니다.',
   'about.data.heading': '로컬 데이터',
   'about.data.body':
     '평가와 증거 파일은 이 브라우저에만 저장됩니다. 삭제하기 전에 보관할 내용을 내보내세요.',

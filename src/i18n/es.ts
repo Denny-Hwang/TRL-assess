@@ -41,14 +41,14 @@ export const es: Messages = {
     'Autoevaluación de la preparación para la adopción — no revisada ni avalada por el DOE',
   'label.arlTarget': 'Objetivo — previsto, no alcanzado',
   'disclaimer.trl':
-    '{app} solo produce una autoevaluación — no una Evaluación de madurez tecnológica (TRA) independiente, ni una auditoría, ni una certificación. Los resultados dependen por completo de la información introducida; la herramienta no verifica nada. Los criterios difieren entre agencias: conviene comprobarlos antes de utilizar un resultado en una presentación formal.',
+    '{app} solo produce una autoevaluación — no una Evaluación de madurez tecnológica (TRA) independiente, ni una auditoría, ni una certificación. Los resultados dependen por completo de la información introducida; la herramienta no verifica nada. Los criterios difieren entre agencias: compruébelos antes de utilizar un resultado en una presentación formal.',
   'disclaimer.arl':
     '{app} solo produce una autoevaluación. Las cifras de ARL aplican la rúbrica de la Evaluación de preparación para la adopción del DOE a las calificaciones introducidas; la herramienta no verifica nada y el DOE no revisa ni avala el resultado.',
   'notice.sensitive':
     'No introducir información controlada, clasificada, sujeta a control de exportaciones ni sensible de ningún otro tipo. Esta herramienta se ejecuta en el navegador desde un sitio estático público; para ese tipo de material, utilizar entradas de evidencia «Sensible — solo referencia» que apunten a él en lugar de adjuntarlo.',
   'notice.dismiss': 'Cerrar',
   'sourceText.note':
-    'Los criterios, las preguntas de cribado y el texto de la rúbrica se muestran en inglés, tal como los publican sus fuentes.',
+    'Los criterios, las preguntas de cribado y el texto de la rúbrica se muestran en inglés, tal como los publican sus fuentes. El texto entre paréntesis es una traducción no oficial, solo como referencia.',
   'trl.belowOne': '< TRL 1',
   'trl.level': 'TRL {level}',
   'answer.Yes': 'Sí',
@@ -516,7 +516,7 @@ export const es: Messages = {
   'arl.scope.evaluationTimeline': 'Horizonte temporal de la evaluación',
   'arl.scope.evaluationTimeline.placeholder':
     'p. ej., a fecha de hoy, ventana de comercialización de 5 años',
-  'arl.scope.policyEnvironment': 'Entorno normativo y de políticas supuesto',
+  'arl.scope.policyEnvironment': 'Entorno de políticas públicas supuesto',
   'arl.scope.continue': 'Continuar con las calificaciones',
   'arl.rate.title': 'Preparación para la adopción — paso 2 de 3: calificar las dimensiones',
   'arl.rate.progress': 'Progreso',
@@ -666,7 +666,7 @@ export const es: Messages = {
   'guide.fig.env.e0.name': 'Solo análisis',
   'guide.fig.env.e0.note': 'modelos, sin hardware',
   'guide.fig.env.e1.name': 'Laboratorio',
-  'guide.fig.env.e1.note': 'banco, condiciones ambientales',
+  'guide.fig.env.e1.note': 'banco, condiciones ambiente',
   'guide.fig.env.e2.name': 'Relevante',
   'guide.fig.env.e2.note': 'se reproducen las condiciones exigentes clave',
   'guide.fig.env.e3.name': 'Operativo (limitado)',
@@ -837,14 +837,14 @@ export const es: Messages = {
     'No pegar nunca contenido controlado o sensible en este libro. Registrar en su lugar una referencia.',
   'excel.tier1.readme.calc.heading': 'Cómo se calcula la estimación',
   'excel.tier1.readme.calc.estimate':
-    'El TRL estimado es el nivel más alto en el que ese nivel y todos los inferiores se respondieron con «Sí».',
-  'excel.tier1.readme.calc.unsure': '«Sin certeza» nunca cuenta como «Sí».',
+    'El TRL estimado es el nivel más alto en el que ese nivel y todos los inferiores se respondieron con «Yes» (Sí).',
+  'excel.tier1.readme.calc.unsure': '«Unsure» (Sin certeza) nunca cuenta como «Yes» (Sí).',
   'excel.tier1.readme.calc.claimed':
-    'El nivel más alto declarado es el «Sí» individual más alto, sin tener en cuenta las brechas.',
+    'El nivel más alto declarado es el «Yes» (Sí) individual más alto, sin tener en cuenta las brechas.',
   'excel.tier1.readme.calc.matrix':
     'La comprobación cruzada construcción × entorno es una ayuda heurística, no una norma, y nunca prevalece sobre las respuestas.',
   'excel.tier1.summary.estimate': 'TRL estimado (principal)',
-  'excel.tier1.summary.claimed': 'Nivel más alto declarado (primer «Sí»)',
+  'excel.tier1.summary.claimed': 'Nivel más alto declarado (primer «Yes»)',
   'excel.tier1.summary.matrix': 'Comprobación cruzada construcción × entorno',
   'excel.tier1.summary.consistency': 'Calificación de coherencia',
   'excel.tier1.summary.flags': 'Alertas',
@@ -889,14 +889,14 @@ export const es: Messages = {
   'excel.tier2.readme.attach.open':
     '(c) La columna «Abrir» convierte cualquiera de los dos en un enlace en el que se puede hacer clic.',
   'excel.tier2.readme.attach.sensitive':
-    '(d) No pegar nunca contenido sensible en este libro. Utilizar en su lugar una fila marcada como «Sensible — solo referencia» que apunte al material.',
+    '(d) No pegar nunca contenido sensible en este libro. Utilizar en su lugar una fila con el marcado «Sensitive — reference only» (Sensible — solo referencia) que apunte al material.',
   'excel.tier2.readme.attach.zip':
     'Este libro se exportó dentro de un paquete de evidencias: las rutas relativas ya apuntan a la carpeta evidence/ incluida.',
   'excel.tier2.readme.attach.standalone':
     'Este libro se exportó por separado. Las rutas relativas se muestran como referencia, pero los archivos no están incluidos: exportar el paquete de evidencias para obtenerlos.',
   'excel.tier2.readme.calc.heading': 'Cómo se calcula la evaluación',
   'excel.tier2.readme.calc.satisfied':
-    'Un criterio está satisfecho cuando está «Cumplido» con al menos un elemento de evidencia vinculado y no rechazado, o es «N/A» con una justificación.',
+    'Un criterio está satisfecho cuando su estado es «Met» (Cumplido) con al menos un elemento de evidencia vinculado y no rechazado, o «N/A» con una justificación.',
   'excel.tier2.readme.calc.level':
     'Un nivel se alcanza cuando todos los criterios obligatorios aplicables de ese nivel están satisfechos y se ha alcanzado el nivel inferior.',
   'excel.tier2.readme.calc.cte': 'El TRL de un CTE es el nivel más alto alcanzado.',
@@ -964,7 +964,7 @@ export const es: Messages = {
   'excel.arl.readme.contents.summary':
     'Summary — ARL inicial, ARL final (objetivo), los recuentos en que se basan y las alertas generadas.',
   'excel.arl.readme.contents.scope':
-    'Scope — el alcance tecnológico, el alcance de la cadena de valor, el horizonte temporal y el entorno normativo y de políticas que suponen las calificaciones.',
+    'Scope — el alcance tecnológico, el alcance de la cadena de valor, el horizonte temporal y el entorno de políticas públicas que suponen las calificaciones.',
   'excel.arl.readme.contents.risk':
     'Risk_Assessment — cada dimensión: calificación actual, justificación, evidencia, objetivo y acción prevista, con el texto de la rúbrica.',
   'excel.arl.readme.contents.lookup':
@@ -973,11 +973,11 @@ export const es: Messages = {
   'excel.arl.readme.contents.metadata': 'Metadata — procedencia de esta exportación.',
   'excel.arl.readme.calc.heading': 'Cómo se calcula el ARL',
   'excel.arl.readme.calc.rated':
-    'Cada dimensión se califica como riesgo bajo, medio o alto, o N/A, según la rúbrica de la Evaluación de preparación para la adopción del DOE.',
+    'Cada dimensión se califica como Low (riesgo bajo), Medium (riesgo medio) o High (riesgo alto), o N/A, según la rúbrica de la Evaluación de preparación para la adopción del DOE.',
   'excel.arl.readme.calc.tally':
     'Se cuentan las dimensiones de riesgo medio y alto y el ARL se obtiene de la tabla de consulta de la fuente de la pág. 13, sin modificaciones.',
   'excel.arl.readme.calc.conservative':
-    'Esta herramienta cuenta «Sin certeza», «No evaluado» y N/A sin justificación como riesgo alto: una convención conservadora de la herramienta, no una regla de la fuente.',
+    'Esta herramienta cuenta «Unsure» (Sin certeza), «Not assessed» (No evaluado) y N/A sin justificación como High (riesgo alto): una convención conservadora de la herramienta, no una regla de la fuente.',
   'excel.arl.readme.calc.end':
     'El ARL final utiliza los objetivos de final de proyecto; cuando no se ha fijado ninguno, se mantiene la calificación actual. {target}.',
   'excel.arl.readme.calc.trl':
@@ -1003,7 +1003,7 @@ export const es: Messages = {
   'excel.arl.scope.technologyScope': 'Alcance tecnológico',
   'excel.arl.scope.valueChain': 'Alcance de la cadena de valor',
   'excel.arl.scope.timeline': 'Horizonte temporal de la evaluación',
-  'excel.arl.scope.policy': 'Entorno normativo y de políticas supuesto',
+  'excel.arl.scope.policy': 'Entorno de políticas públicas supuesto',
   'excel.arl.scope.trlFramework': 'Marco TRL de esta sesión',
   'excel.arl.col.area': 'Área principal',
   'excel.arl.col.dimensionId': 'ID de la dimensión',
@@ -1052,7 +1052,7 @@ export const es: Messages = {
   'excel.package.readme.hashes.heading': 'Verificar los hashes',
   'excel.package.readme.not.heading': 'Lo que este paquete no es',
   'excel.package.readme.not.body':
-    'Una autoevaluación, no una Evaluación de madurez tecnológica independiente. Las evidencias marcadas como\n«Sensible — solo referencia» nunca se incluyen en el paquete: esas filas apuntan a material conservado\nen otro lugar.',
+    'Una autoevaluación, no una Evaluación de madurez tecnológica independiente. Las evidencias marcadas como\n«Sensitive — reference only» (Sensible — solo referencia) nunca se incluyen en el paquete: esas filas apuntan a material conservado\nen otro lugar.',
   'about.data.heading': 'Datos locales',
   'about.data.body':
     'Las evaluaciones y los archivos de evidencia se guardan solo en este navegador. Exporte lo que quiera conservar antes de borrar.',

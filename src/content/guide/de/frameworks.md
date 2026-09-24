@@ -31,7 +31,7 @@ formulieren diese Definitionen als Fragen um (`adapted`).
 Dieses Dokument definiert nur TRL 1–8, daher stammt die Frage zu TRL 9 aus `dod-tra-2025`,
 Table 2-1.
 
-**Tier 2.** Die Kriterien aus `dod-tra-2025`, wobei das stufendefinierende Kriterium jeder TRL
+**Tier 2.** Die Kriterien aus `dod-tra-2025`, wobei das stufendefinierende Kriterium jedes TRL
 verpflichtend gemacht wurde, plus acht **zugeschnittene** Einträge, alle verpflichtend: ein
 Risikoregister und eine FMECA (TRL 4); Tests in leitfähigem Meerwasser und unter
 Umweltextremen (5); ein Testplan, der Hafenbecken und offenes Wasser trennt, sowie protokollierte

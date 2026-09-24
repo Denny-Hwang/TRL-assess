@@ -17,7 +17,7 @@ import {
   type ArlRisk,
 } from '@/domain/schemas';
 import { useSessionStore } from '@/state/sessionStore';
-import { PageHeader, SourceNote } from '@/components/ui';
+import { PageHeader, SourceNote, SourceText, SourceTranslation } from '@/components/ui';
 import { SaveIndicator } from '@/components/SaveIndicator';
 import { Meter } from '@/components/viz/Meter';
 import { RiskGlyph, RiskLegend } from '@/components/viz/RiskGlyph';
@@ -73,9 +73,11 @@ const DimensionCard = memo(function DimensionCard({
       <header>
         <h3 id={`${id}-title`} className="text-base font-semibold">
           <span className="me-2 font-mono text-xs text-slate-600">{id}</span>
-          {dimension.title}
+          <SourceText text={dimension.title} inline />
         </h3>
-        <p className="mt-1 text-sm text-slate-600">{dimension.description}</p>
+        <p className="mt-1 text-sm text-slate-600">
+          <SourceText text={dimension.description} />
+        </p>
         <SourceNote {...dimension.source} compact />
       </header>
 
@@ -100,7 +102,7 @@ const DimensionCard = memo(function DimensionCard({
                   {riskText(tr, risk)}
                 </span>
                 <span className="mt-1 block whitespace-pre-line text-slate-700">
-                  {dimension.levels[risk]}
+                  <SourceText text={dimension.levels[risk]} />
                 </span>
               </span>
             </label>
@@ -244,6 +246,7 @@ export function ArlRate({ framework }: { framework: ArlFramework }) {
         {rate ? (
           <p className="text-xs text-slate-500">
             “{rate.text}” <SourceNote {...rate.source} compact /> {t('arl.rate.conservative')}
+            <SourceTranslation text={rate.text} />
           </p>
         ) : null}
         {lang !== 'en' ? <p className="text-xs text-slate-500">{t('sourceText.note')}</p> : null}
@@ -251,7 +254,7 @@ export function ArlRate({ framework }: { framework: ArlFramework }) {
         <nav aria-label={t('arl.rate.areasNav')} className="flex flex-wrap gap-2 text-sm">
           {groups.map(({ area }) => (
             <a key={area.id} href={`#area-${area.id}`} className="underline">
-              {area.id}. {area.name}
+              {area.id}. <SourceText text={area.name} inline />
             </a>
           ))}
         </nav>
@@ -261,10 +264,11 @@ export function ArlRate({ framework }: { framework: ArlFramework }) {
         <section key={area.id} className="space-y-3" aria-labelledby={`area-${area.id}`}>
           <div>
             <h2 id={`area-${area.id}`} className="scroll-mt-4 text-xl font-semibold">
-              {area.id}. {area.name}
+              {area.id}. <SourceText text={area.name} inline />
             </h2>
             <p className="mt-1 text-sm text-slate-600">
               {area.description} <SourceNote {...area.source} compact />
+              <SourceTranslation text={area.description} />
             </p>
           </div>
           {dimensions.map((dimension) => (

@@ -5,7 +5,13 @@
 import { create } from 'zustand';
 import { STORAGE_KEY_UI } from '@/config/app.config';
 import { DEFAULT_LANG, directionOf, isLang, type Lang } from './languages';
-import { createTranslator, EN, type Messages, type Translator } from './translate';
+import {
+  createTranslator,
+  EN,
+  type Messages,
+  type SourceTranslations,
+  type Translator,
+} from './translate';
 
 const LOADERS: Record<Exclude<Lang, 'en'>, () => Promise<Messages>> = {
   ko: () => import('./ko').then((m) => m.ko),
@@ -17,8 +23,23 @@ const LOADERS: Record<Exclude<Lang, 'en'>, () => Promise<Messages>> = {
   ar: () => import('./ar').then((m) => m.ar),
 };
 
+const SOURCE_LOADERS: Record<Exclude<Lang, 'en'>, () => Promise<SourceTranslations>> = {
+  ko: () => import('./source/ko.json').then((m) => m.default),
+  zh: () => import('./source/zh.json').then((m) => m.default),
+  ja: () => import('./source/ja.json').then((m) => m.default),
+  es: () => import('./source/es.json').then((m) => m.default),
+  de: () => import('./source/de.json').then((m) => m.default),
+  hi: () => import('./source/hi.json').then((m) => m.default),
+  ar: () => import('./source/ar.json').then((m) => m.default),
+};
+
 export async function loadMessages(lang: Lang): Promise<Messages> {
   return lang === 'en' ? EN.messages : LOADERS[lang]();
+}
+
+/** Reference translations of source content; empty for English. */
+export async function loadSourceTranslations(lang: Lang): Promise<SourceTranslations> {
+  return lang === 'en' ? {} : SOURCE_LOADERS[lang]();
 }
 
 function storedLang(): Lang {
@@ -53,10 +74,13 @@ interface LangState {
 export const useLangStore = create<LangState>((set) => ({
   translator: EN,
   setLang: async (lang) => {
-    const messages = await loadMessages(lang);
+    const [messages, source] = await Promise.all([
+      loadMessages(lang),
+      loadSourceTranslations(lang),
+    ]);
     remember(lang);
     applyToDocument(lang);
-    set({ translator: createTranslator(lang, messages) });
+    set({ translator: createTranslator(lang, messages, source) });
   },
 }));
 

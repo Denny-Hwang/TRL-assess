@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useSessionStore } from '@/state/sessionStore';
 import { EvidenceForm } from './EvidenceForm';
-import { Callout } from '@/components/ui';
+import { Callout, SourceText } from '@/components/ui';
 import { getBlob } from '@/storage/blobStore';
 import { downloadBlob } from '@/export/download';
 import { SENSITIVE_MARKING, type EvidenceItem } from '@/domain/schemas';
@@ -70,7 +70,7 @@ export function EvidenceLibrary({ focusCriterion, onClose }: Props) {
 
       {focusCriterion && criterion ? (
         <Callout tone="info" title={t('evidence.library.linkingTo', { id: criterion.id })}>
-          {criterion.text}
+          <SourceText text={criterion.text} />
         </Callout>
       ) : null}
 

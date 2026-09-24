@@ -1,6 +1,6 @@
 # 采用就绪度（ARL）
 
-TRL 问的是一项技术已经得到了多大程度的演示。采用就绪度等级问的是，在一项可行的技术与其实际应用之间还隔着什么——市场、资金、供应链、许可。ARL "represents important factors for private sector uptake beyond technology readiness"（译：代表了技术就绪度之外、影响私营部门采用的重要因素）（`doe-otc-arl-2025`，p. 1）。
+TRL 问的是一项技术已经得到了多大程度的演示。采用就绪度等级问的是，在一项可行的技术与其实际应用之间还隔着什么——市场、资金、供应链、许可。ARL "represents important factors for private sector uptake beyond technology readiness"（译：代表了技术成熟度之外、影响私营部门采用的重要因素）（`doe-otc-arl-2025`，p. 1）。
 
 本工具在[采用就绪度](/arl)中实现了 DOE 技术商业化办公室（Office of Technology Commercialization）的《Adoption Readiness Assessment》（Version: April 2025）。它绝不改变 TRL 结果，二者也绝不合并。
 
@@ -34,12 +34,12 @@ TRL 问的是一项技术已经得到了多大程度的演示。采用就绪度�
 
 计为高风险的这些默认做法是本工具的保守惯例，并非来源的规定。
 
-**ARL 起点**来自当前评级�**�ARL 终点**来自项目结束时的目标，并标注为*目标——计划中，尚未实现*。如果目标降低了某项风险却没有计划行动，则会给出警告。
+**ARL 起点**来自当前评级。**ARL 终点**来自项目结束时的目标，并标注为*目标——计划中，尚未实现*。如果目标降低了某项风险却没有计划行动，则会给出警告。
 
 ## 局限性
 
-- **评级是您自己的�**�DOE 不审查或认可该结果。
-- **维度之间存在重叠�**�"some risks may fall into more than one dimension"（译：有些风险可能属于不止一个维度）（p. 2）。每项风险只记录一次，记在它最重要的地方。
-- **证据只是一种引用�**�请写明文件名称，或[证据评估](/assess)中的证据标识；ARL 评级不包含在证据包中。
+- **评级是您自己的**。DOE 不审查或认可该结果。
+- **维度之间存在重叠**："some risks may fall into more than one dimension"（译：有些风险可能属于不止一个维度）（p. 2）。每项风险只记录一次，记在它最重要的地方。
+- **证据只是一种引用**。请写明文件名称，或[证据评估](/assess)中的证据标识；ARL 评级不包含在证据包中。
 
 ARL 工作簿的说明见 [Excel 输出](/guide/excel)。

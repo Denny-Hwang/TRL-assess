@@ -47,7 +47,7 @@ export const ja: Messages = {
     '管理対象情報、秘密指定情報、輸出管理対象情報、その他の機微な情報を入力しないでください。このツールは公開された静的サイト上でブラウザー内で動作します。そのような資料は添付せず、「機微 — 参照のみ」のエビデンス項目でその所在を示してください。',
   'notice.dismiss': '閉じる',
   'sourceText.note':
-    '基準、スクリーニング質問、ルーブリックのテキストは、出典が公開しているとおりに英語で表示しています。',
+    '基準、スクリーニング質問、ルーブリックのテキストは、出典が公開しているとおりに英語で表示しています。括弧内は参考用の非公式訳です。',
   'trl.belowOne': '< TRL 1',
   'trl.level': 'TRL {level}',
   'answer.Yes': 'はい',
@@ -817,14 +817,15 @@ export const ja: Messages = {
     '管理対象の内容や機微な内容をこのワークブックに貼り付けないでください。代わりにその所在を記録してください。',
   'excel.tier1.readme.calc.heading': '推定値の算出方法',
   'excel.tier1.readme.calc.estimate':
-    '推定 TRL は、そのレベルと、その下のすべてのレベルに「はい」と回答した最も高いレベルです。',
-  'excel.tier1.readme.calc.unsure': '「不明」が「はい」として数えられることはありません。',
+    '推定 TRL は、そのレベルと、その下のすべてのレベルに「Yes」（はい）と回答した最も高いレベルです。',
+  'excel.tier1.readme.calc.unsure':
+    '「Unsure」（不明）が「Yes」（はい）として数えられることはありません。',
   'excel.tier1.readme.calc.claimed':
-    '申告された最高レベルは、途切れを無視した、単独の「はい」の最高レベルです。',
+    '申告された最高レベルは、途切れを無視した、単独の「Yes」（はい）の最高レベルです。',
   'excel.tier1.readme.calc.matrix':
     'ビルド × 環境のクロスチェックはヒューリスティックな補助であり、標準ではありません。回答を上書きすることもありません。',
   'excel.tier1.summary.estimate': '推定 TRL（主要結果）',
-  'excel.tier1.summary.claimed': '申告された最高レベル（最初の「はい」）',
+  'excel.tier1.summary.claimed': '申告された最高レベル（最初の「Yes」）',
   'excel.tier1.summary.matrix': 'ビルド × 環境のクロスチェック',
   'excel.tier1.summary.consistency': '整合性の評価',
   'excel.tier1.summary.flags': 'フラグ',
@@ -868,14 +869,14 @@ export const ja: Messages = {
   'excel.tier2.readme.attach.open':
     '(c) 「開く」列により、上記のいずれもクリック可能なリンクになります。',
   'excel.tier2.readme.attach.sensitive':
-    '(d) 機微な内容をこのワークブックに貼り付けないでください。代わりに、資料の所在を示す「機微 — 参照のみ」の行を使用してください。',
+    '(d) 機微な内容をこのワークブックに貼り付けないでください。代わりに、「区分表示」を「Sensitive — reference only」（機微 — 参照のみ）とした行で資料の所在を示してください。',
   'excel.tier2.readme.attach.zip':
     'このワークブックはエビデンスパッケージの一部としてエクスポートされました。相対パスは、同梱の evidence/ フォルダーをすでに指しています。',
   'excel.tier2.readme.attach.standalone':
     'このワークブックは単独でエクスポートされました。相対パスは参考として表示されていますが、ファイルは同梱されていません。ファイルを入手するには、エビデンスパッケージをエクスポートしてください。',
   'excel.tier2.readme.calc.heading': '評価の算出方法',
   'excel.tier2.readme.calc.satisfied':
-    '基準が充足されるのは、却下されていないエビデンスが少なくとも 1 件リンクされた「達成」である場合、または理由の記載がある「該当なし」である場合です。',
+    '基準が充足されるのは、却下されていないエビデンスが少なくとも 1 件リンクされた「Met」（達成）である場合、または理由の記載がある「N/A」（該当なし）である場合です。',
   'excel.tier2.readme.calc.level':
     'あるレベルが達成されるのは、そのレベルで適用されるすべての必須基準が充足され、かつ 1 つ下のレベルが達成されている場合です。',
   'excel.tier2.readme.calc.cte': 'CTE の TRL は、達成された最も高いレベルです。',
@@ -952,11 +953,11 @@ export const ja: Messages = {
   'excel.arl.readme.contents.metadata': 'Metadata — このエクスポートの来歴。',
   'excel.arl.readme.calc.heading': 'ARL の算出方法',
   'excel.arl.readme.calc.rated':
-    '各観点は、DOE Adoption Readiness Assessment のルーブリックに照らして、低リスク、中リスク、高リスク、または該当なしで評定されます。',
+    '各観点は、DOE Adoption Readiness Assessment のルーブリックに照らして、Low（低リスク）、Medium（中リスク）、High（高リスク）、または N/A（該当なし）で評定されます。',
   'excel.arl.readme.calc.tally':
     '中リスクと高リスクの観点を集計し、13 ページにある出典の参照表から、変更を加えずに ARL を読み取ります。',
   'excel.arl.readme.calc.conservative':
-    'このツールは「不明」、「未評価」、および根拠なしの「該当なし」を高リスクとして集計します。これはツール独自の保守的な慣例であり、出典の規則ではありません。',
+    'このツールは「Unsure」（不明）、「Not assessed」（未評価）、および根拠なしの「N/A」（該当なし）を High（高リスク）として集計します。これはツール独自の保守的な慣例であり、出典の規則ではありません。',
   'excel.arl.readme.calc.end':
     'ARL 終了にはプロジェクト終了時の目標を使用します。目標が設定されていない場合は、現在の評定を引き継ぎます。{target}。',
   'excel.arl.readme.calc.trl':
@@ -1002,7 +1003,7 @@ export const ja: Messages = {
   'excel.arl.lookup.target': '目標',
   'excel.arl.lookup.counts': '中 {medium} 件、高 {high} 件 → ARL {arl}',
   'excel.arl.lookup.note':
-    '印を付けたセルには、その内容を示すメモが付いています。印刷された表を変更せずに使用しています。',
+    '印を付けたセルには、その内容を示すメモが付いています。出典に掲載された表を変更せずに使用しています。',
   'excel.arl.meta.workbook': 'ワークブック',
   'excel.arl.meta.workbookValue': 'ARL（サイドモジュール）',
   'excel.arl.meta.trlFramework': 'セッションの TRL フレームワーク',
@@ -1028,15 +1029,15 @@ export const ja: Messages = {
   'excel.package.readme.links.body':
     'まずフォルダー全体を、構造を保ったまま展開してください。Evidence_Register の\n「ローカルファイル（相対パス）」のセルは、ワークブックからの相対パスで evidence/… を\n指しているため、フォルダーを展開すると「開く」列が機能します。',
   'excel.package.readme.hashes.heading': 'ハッシュの検証',
-  'excel.package.readme.not.heading': 'このパッケージが該当しないもの',
+  'excel.package.readme.not.heading': 'このパッケージは何ではないか',
   'excel.package.readme.not.body':
-    'これは自己評価であり、独立した技術成熟度評価ではありません。「機微 — 参照のみ」と\nマークされたエビデンスは同梱されません。これらの行は、別の場所に保管されている\n資料を指しています。',
+    'これは自己評価であり、独立した技術成熟度評価ではありません。「Sensitive — reference only」（機微 — 参照のみ）と\nマークされたエビデンスは同梱されません。これらの行は、別の場所に保管されている\n資料を指しています。',
   'about.data.heading': 'ローカルデータ',
   'about.data.body':
-    '評価とエビデンスファイルはこのブラウザにのみ保存されます。消去する前に、残したい内容をエクスポートしてください。',
+    '評価とエビデンスファイルはこのブラウザーにのみ保存されます。消去する前に、残したい内容をエクスポートしてください。',
   'about.data.clear': 'ローカルデータをすべて消去',
   'about.data.confirm':
-    'このブラウザから評価と保存済みのすべてのエビデンスファイルを削除しますか？元に戻せません。',
+    'このブラウザーから評価と保存済みのすべてのエビデンスファイルを削除しますか。元に戻せません。',
   'about.data.yes': 'はい、すべて削除します',
   'about.data.cancel': 'キャンセル',
   'about.data.done': 'すべてのローカルデータを消去しました。',

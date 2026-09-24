@@ -19,8 +19,9 @@ diese.
 
 ## Warum ist mein Ergebnis in Tier 2 niedriger als meine Schätzung in Tier 1?
 
-Tier 2 verlangt einen Nachweis für jede Aussage und jedes verpflichtende Kriterium einer Stufe und
-übernimmt das _Minimum_ über die kritischen CTEs. Sehen Sie sich zuerst das begrenzende CTE an.
+Tier 2 verlangt einen Nachweis für jede Aussage und für eine Stufe alle verpflichtenden Kriterien,
+und es übernimmt das _Minimum_ über die kritischen CTEs. Sehen Sie sich zuerst das begrenzende CTE
+an.
 
 ## Warum zählt „Unsicher“ wie „Nein“?
 

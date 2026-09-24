@@ -35,6 +35,22 @@ test.describe('interface languages', () => {
     expect(offenders, `unexpected network requests: ${offenders.join(', ')}`).toHaveLength(0);
   });
 
+  test('source text stays English, with the reference translation in parentheses', async ({
+    page,
+  }) => {
+    await page.goto('./');
+    await page.getByTestId('language-select').selectOption('ko');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'ko');
+    await page.goto('./#/quick');
+    const options = await page.locator('#environment option').allTextContents();
+    expect(options.some((o) => o.startsWith('E1 — Laboratory environment ('))).toBe(true);
+
+    await page.getByTestId('language-select').selectOption('en');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+    const english = await page.locator('#environment option').allTextContents();
+    expect(english).toContain('E1 — Laboratory environment');
+  });
+
   test('the Guide shows the translated page, not the English fallback', async ({ page }) => {
     await page.goto('./');
     await page.getByTestId('language-select').selectOption('ko');

@@ -1,5 +1,6 @@
 import type { ArlFramework } from '@/domain/schemas';
 import { useT } from '@/i18n/store';
+import { SourceText } from '@/components/ui';
 
 const AREA_TONE = ['border-teal-300', 'border-sky-300', 'border-blue-300', 'border-indigo-300'];
 
@@ -26,7 +27,7 @@ export function ArlDimensionMap({
               className={`rounded-md border-s-4 bg-white p-3 shadow-sm ${AREA_TONE[index % AREA_TONE.length]}`}
             >
               <p className="text-sm font-semibold">
-                {area.id}. {area.name}{' '}
+                {area.id}. <SourceText text={area.name} inline />{' '}
                 <span className="font-normal text-slate-500">
                   —{' '}
                   {t(dimensions.length === 1 ? 'arl.map.count.one' : 'arl.map.count.other', {
@@ -41,7 +42,7 @@ export function ArlDimensionMap({
                     className="rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-xs text-slate-800"
                   >
                     <span className="font-mono text-slate-600">{d.id.replace('ARL-', '')}</span>{' '}
-                    {d.title}
+                    <SourceText text={d.title} inline />
                   </li>
                 ))}
               </ul>
