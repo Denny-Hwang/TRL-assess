@@ -17,7 +17,7 @@ Aquí se hace corresponder un modelo habitual de etapas de desarrollo de hardwar
 | 5     | Prototipo integrado                    | 5          | Validar el funcionamiento de extremo a extremo en condiciones representativas.                                                  |
 | 6     | Prototipo miniaturizado                | 5–6        | Validar el factor de forma, el peso, el comportamiento térmico, el encapsulado y la usabilidad.                                 |
 | 7     | Prototipo orientado a producción       | 6–7        | Respaldar la validación del diseño, la fiabilidad y la preparación regulatoria y de fabricación.                                |
-| 8     | Fabricación piloto                     | 7–8        | Verificar la fabricabilidad, el rendimiento de producción, la calibración, el ensayo de fin de línea y la cadena de suministro. |
+| 8     | Producción piloto                      | 7–8        | Verificar la fabricabilidad, el rendimiento de producción, la calibración, el ensayo de fin de línea y la cadena de suministro. |
 | 9     | Transferencia de tecnología / licencia | 8–9        | Permitir que un socio cualifique, fabrique, venda y dé soporte al producto.                                                     |
 
 ## Por qué los rangos son amplios
