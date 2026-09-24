@@ -5,7 +5,7 @@ import { criteriaByLevel } from '@/domain/frameworks';
 import { scoreTier1 } from '@/domain/tier1';
 import { serializeSession } from '@/domain/json';
 import { downloadBlob, sessionSlug, timestampForFilename } from '@/export/download';
-import { Callout, Disclaimer, PageHeader, Stat } from '@/components/ui';
+import { Callout, Disclaimer, PageHeader, SourceTranslation, Stat } from '@/components/ui';
 import { TrlLadder } from '@/components/viz/TrlLadder';
 import { StatusGlyph } from '@/components/viz/StatusGlyph';
 import { MatrixHeatmap } from '@/components/viz/MatrixHeatmap';
@@ -168,6 +168,7 @@ export function QuickResult() {
               <StatusGlyph kind="Not assessed" size={14} className="mt-0.5 shrink-0" />
               <span>
                 {c.text} <span className="font-mono text-xs text-slate-500">{c.id}</span>
+                <SourceTranslation text={c.text} />
               </span>
             </li>
           ))}

@@ -16,19 +16,37 @@ export function format(template: string, params: Params = {}): string {
   );
 }
 
+/**
+ * Unofficial translations of source content (criteria, questions, rubric text, framework
+ * descriptions), keyed by the exact English text. The English stays authoritative and is always
+ * shown; a translation is displayed beside it, in parentheses, for reference only.
+ */
+export type SourceTranslations = Record<string, string>;
+
 export interface Translator {
   lang: Lang;
   messages: Messages;
   t: (key: MessageKey, params?: Params) => string;
+  /** The translation of a piece of English source text, or undefined (always, in English). */
+  st: (english: string | undefined) => string | undefined;
 }
 
-export function createTranslator(lang: Lang, messages: Messages): Translator {
+export function createTranslator(
+  lang: Lang,
+  messages: Messages,
+  source: SourceTranslations = {},
+): Translator {
   const lookup = (key: string): string =>
     (messages as Record<string, string>)[key] ?? (en as Record<string, string>)[key] ?? key;
   return {
     lang,
     messages,
     t: (key, params) => format(lookup(key), params),
+    st: (english) => {
+      if (lang === 'en' || !english) return undefined;
+      const translated = source[english.trim()];
+      return translated && translated !== english ? translated : undefined;
+    },
   };
 }
 

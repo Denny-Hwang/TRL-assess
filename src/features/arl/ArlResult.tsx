@@ -5,7 +5,15 @@ import type { ArlFramework } from '@/domain/schemas';
 import { serializeSession } from '@/domain/json';
 import { downloadBlob, slugify, timestampForFilename } from '@/export/download';
 import { useSessionStore } from '@/state/sessionStore';
-import { Callout, PageHeader, SourceNote, Stat } from '@/components/ui';
+import {
+  Callout,
+  PageHeader,
+  SourceNote,
+  SourceText,
+  SourceTranslation,
+  Stat,
+  withTranslation,
+} from '@/components/ui';
 import { ArlScale } from '@/components/viz/ArlScale';
 import { ArlLookupGrid } from '@/components/viz/ArlLookupGrid';
 import { RiskGlyph, RiskLegend } from '@/components/viz/RiskGlyph';
@@ -80,9 +88,9 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
           end={end.arl}
           label={t('arl.result.scaleLabel', {
             start: start.arl,
-            startBand: start.band,
+            startBand: withTranslation(tr, start.band),
             end: end.arl,
-            endBand: end.band,
+            endBand: withTranslation(tr, end.band),
           })}
         />
       </section>
@@ -92,7 +100,7 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
           label={t('arl.common.start')}
           value={t('arl.common.value', { level: start.arl })}
           hint={t('arl.result.startHint', {
-            band: start.band,
+            band: withTranslation(tr, start.band),
             medium: start.tally.Medium,
             high: start.tally.High,
           })}
@@ -102,7 +110,10 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
         <Stat
           label={t('arl.common.endTarget')}
           value={t('arl.common.value', { level: end.arl })}
-          hint={t('arl.result.endHint', { band: end.band, target: t('label.arlTarget') })}
+          hint={t('arl.result.endHint', {
+            band: withTranslation(tr, end.band),
+            target: t('label.arlTarget'),
+          })}
           testId="arl-end"
         />
         <Stat
@@ -128,6 +139,7 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
           {falsePrecision ? (
             <p className="mt-1 text-xs text-slate-600">
               “{falsePrecision.text}” <SourceNote {...falsePrecision.source} compact />
+              <SourceTranslation text={falsePrecision.text} />
             </p>
           ) : null}
         </div>
@@ -156,7 +168,7 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
                 <tr className="bg-slate-50">
                   <th scope="rowgroup" colSpan={4} className="px-2 py-2 text-start">
                     <span className="font-semibold">
-                      {area.id}. {area.name}
+                      {area.id}. <SourceText text={area.name} inline />
                     </span>{' '}
                     <RiskTallyBar tally={tally} className="ms-2 align-middle" />
                   </th>
@@ -169,7 +181,7 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
                         <span className="me-2 font-mono text-xs text-slate-600">
                           {o.dimension.id}
                         </span>
-                        {o.dimension.title}
+                        <SourceText text={o.dimension.title} inline />
                       </th>
                       <td className="py-2 pe-3">
                         <RiskGlyph rating={o.rating} withLabel />
@@ -239,7 +251,9 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
       <section className="card border-amber-200 bg-amber-50" aria-label={t('ui.disclaimer.aria')}>
         <p className="text-sm font-semibold text-amber-900">{t('label.arl')}</p>
         <p className="mt-2 text-xs text-amber-900/90">{disclaimerText(tr, 'arl')}</p>
-        <p className="mt-2 text-xs text-amber-900/90">{framework.disclaimer}</p>
+        <p className="mt-2 text-xs text-amber-900/90">
+          <SourceText text={framework.disclaimer} />
+        </p>
       </section>
 
       <section className="card">

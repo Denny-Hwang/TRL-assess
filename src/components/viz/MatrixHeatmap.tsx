@@ -19,7 +19,7 @@ export function MatrixHeatmap({
   environment?: EnvironmentCode;
   className?: string;
 }) {
-  const { t } = useT();
+  const { t, st } = useT();
   const [hover, setHover] = useState<{ b: string; e: string } | null>(null);
   const builds = matrix.builds;
   const environments = matrix.environments;
@@ -113,8 +113,8 @@ export function MatrixHeatmap({
               })}
             </strong>{' '}
             {t('tier1.matrix.activeText', {
-              build: activeBuild.label.toLowerCase(),
-              environment: activeEnv.label.toLowerCase(),
+              build: (st(activeBuild.label) ?? activeBuild.label).toLowerCase(),
+              environment: (st(activeEnv.label) ?? activeEnv.label).toLowerCase(),
             })}
           </>
         ) : (

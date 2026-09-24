@@ -36,7 +36,10 @@ npm run build && npm run preview
 - Interface text: `src/i18n/en/*.ts` (English) and `src/i18n/<lang>.ts`; every catalog must carry
   every English key. Guide bodies: `src/content/guide/*.md`, translations in
   `src/content/guide/<lang>/<slug>.md`.
-- Criteria, questions, rubric text, sheet names and dropdown values stay in English.
+- Criteria, questions, rubric text, sheet names and dropdown values stay in English. On screen, source
+  text in another language also shows an unofficial reference translation in parentheses, from
+  `src/i18n/source/<lang>.json` (keyed by the exact English text; must cover every string
+  `src/i18n/sourceStrings.ts` collects).
 
 ## Non-negotiable principles
 

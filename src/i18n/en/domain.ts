@@ -13,7 +13,7 @@ export const domain = {
     'Do not enter controlled, classified, export-controlled or otherwise sensitive information. This tool runs in your browser on a public static site; use "Sensitive — reference only" evidence entries to point at such material instead of attaching it.',
   'notice.dismiss': 'Dismiss',
   'sourceText.note':
-    'Criteria, screening questions and rubric text are shown in English, exactly as their sources publish them.',
+    'Criteria, screening questions and rubric text are shown in English, exactly as their sources publish them. The text in parentheses is an unofficial translation, for reference only.',
 
   'trl.belowOne': '< TRL 1',
   'trl.level': 'TRL {level}',

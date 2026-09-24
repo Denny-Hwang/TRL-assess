@@ -43,7 +43,8 @@ export const zh: Messages = {
   'notice.sensitive':
     '请勿输入受控、涉密、受出口管制或其他敏感信息。本工具在您的浏览器中运行，托管于公开的静态网站；对于此类材料，请使用“敏感——仅作引用”证据条目指向该材料，而不要附加文件。',
   'notice.dismiss': '关闭',
-  'sourceText.note': '准则、筛查问题和评分细则文本以英文显示，与其来源发布的内容完全一致。',
+  'sourceText.note':
+    '准则、筛查问题和评分细则文本以英文显示，与其来源发布的内容完全一致。括号内为非官方译文，仅供参考。',
   'trl.belowOne': '< TRL 1',
   'trl.level': 'TRL {level}',
   'answer.Yes': '是',

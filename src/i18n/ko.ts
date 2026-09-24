@@ -44,7 +44,8 @@ export const ko: Messages = {
   'notice.sensitive':
     '통제 대상, 기밀, 수출 통제 대상 또는 기타 민감한 정보를 입력하지 마십시오. 이 도구는 공개 정적 사이트에서 브라우저로 실행됩니다. 이러한 자료는 첨부하지 말고 “민감 — 참조 전용” 증거 항목으로 위치를 기록하십시오.',
   'notice.dismiss': '닫기',
-  'sourceText.note': '기준, 선별 질문 및 루브릭 텍스트는 출처가 게시한 그대로 영어로 표시됩니다.',
+  'sourceText.note':
+    '기준, 선별 질문 및 루브릭 텍스트는 출처가 게시한 그대로 영어로 표시됩니다. 괄호 안의 내용은 참고용 비공식 번역입니다.',
   'trl.belowOne': '< TRL 1',
   'trl.level': 'TRL {level}',
   'answer.Yes': '예',

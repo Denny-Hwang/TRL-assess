@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { listFrameworks } from '@/domain/frameworks';
 import { useSessionStore } from '@/state/sessionStore';
-import { Field, PageHeader } from '@/components/ui';
+import { Field, PageHeader, SourceText, withTranslation } from '@/components/ui';
 import { SaveIndicator } from '@/components/SaveIndicator';
 import { useT } from '@/i18n/store';
 import type { BuildCode, EnvironmentCode, Tier1Context } from '@/domain/schemas';
@@ -23,7 +23,8 @@ const EMPTY: Tier1Context = {
 
 export function QuickContext() {
   const navigate = useNavigate();
-  const { t, lang } = useT();
+  const tr = useT();
+  const { t, lang } = tr;
   const framework = useSessionStore((s) => s.framework);
   const session = useSessionStore((s) => s.session);
   const setTier1 = useSessionStore((s) => s.setTier1);
@@ -73,12 +74,14 @@ export function QuickContext() {
           >
             {frameworks.map((f) => (
               <option key={f.id} value={f.id}>
-                {f.name}
+                {withTranslation(tr, f.name)}
               </option>
             ))}
           </select>
           <p className="mt-1 text-xs text-slate-500">
-            {frameworks.find((f) => f.id === framework.framework.id)?.shortDescription}
+            <SourceText
+              text={frameworks.find((f) => f.id === framework.framework.id)?.shortDescription}
+            />
           </p>
         </Field>
       </section>
@@ -172,7 +175,11 @@ export function QuickContext() {
         <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500 md:col-span-2">
           {t('tier1.context.crossCheckHeading')}
         </h2>
-        <Field label={t('tier1.context.environment')} htmlFor="environment" hint={envHelp}>
+        <Field
+          label={t('tier1.context.environment')}
+          htmlFor="environment"
+          hint={envHelp ? <SourceText text={envHelp} /> : undefined}
+        >
           <select
             id="environment"
             className="input"
@@ -181,12 +188,16 @@ export function QuickContext() {
           >
             {environments.map((e) => (
               <option key={e.code} value={e.code}>
-                {e.code} — {e.label}
+                {e.code} — {withTranslation(tr, e.label)}
               </option>
             ))}
           </select>
         </Field>
-        <Field label={t('tier1.context.build')} htmlFor="build" hint={buildHelp}>
+        <Field
+          label={t('tier1.context.build')}
+          htmlFor="build"
+          hint={buildHelp ? <SourceText text={buildHelp} /> : undefined}
+        >
           <select
             id="build"
             className="input"
@@ -195,7 +206,7 @@ export function QuickContext() {
           >
             {builds.map((b) => (
               <option key={b.code} value={b.code}>
-                {b.code} — {b.label}
+                {b.code} — {withTranslation(tr, b.label)}
               </option>
             ))}
           </select>

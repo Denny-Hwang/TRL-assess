@@ -19,6 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Clear all local data** on the About page removes the assessment and every stored evidence file
   from this browser, after a confirmation.
 - The Guide is translated into all eight languages; quoted source text stays in English.
+- Criteria, screening questions, build/environment codes and the ARL rubric keep their English
+  source text and, in another interface language, show an unofficial reference translation in
+  parentheses beneath it.
 - Diagrams in the app and the Guide: the TRL ladder, status glyphs, per-level bars, coverage meters,
   the build × environment grid and per-CTE bars.
 

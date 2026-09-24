@@ -48,7 +48,7 @@ export const es: Messages = {
     'No introducir información controlada, clasificada, sujeta a control de exportaciones ni sensible de ningún otro tipo. Esta herramienta se ejecuta en el navegador desde un sitio estático público; para ese tipo de material, utilizar entradas de evidencia «Sensible — solo referencia» que apunten a él en lugar de adjuntarlo.',
   'notice.dismiss': 'Cerrar',
   'sourceText.note':
-    'Los criterios, las preguntas de cribado y el texto de la rúbrica se muestran en inglés, tal como los publican sus fuentes.',
+    'Los criterios, las preguntas de cribado y el texto de la rúbrica se muestran en inglés, tal como los publican sus fuentes. El texto entre paréntesis es una traducción no oficial, solo como referencia.',
   'trl.belowOne': '< TRL 1',
   'trl.level': 'TRL {level}',
   'answer.Yes': 'Sí',

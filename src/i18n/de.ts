@@ -47,7 +47,7 @@ export const de: Messages = {
     'Geben Sie keine kontrollierten, eingestuften, exportkontrollierten oder anderweitig sensiblen Informationen ein. Dieses Tool läuft in Ihrem Browser auf einer öffentlichen statischen Website; verwenden Sie Nachweiseinträge mit der Kennzeichnung „Sensibel — nur Verweis“, um auf solches Material zu verweisen, statt es anzuhängen.',
   'notice.dismiss': 'Ausblenden',
   'sourceText.note':
-    'Kriterien, Prüffragen und Texte des Bewertungsrasters werden auf Englisch angezeigt, genau so, wie ihre Quellen sie veröffentlichen.',
+    'Kriterien, Prüffragen und Texte des Bewertungsrasters werden auf Englisch angezeigt, genau so, wie ihre Quellen sie veröffentlichen. Der Text in Klammern ist eine inoffizielle Übersetzung und dient nur zur Orientierung.',
   'trl.belowOne': '< TRL 1',
   'trl.level': 'TRL {level}',
   'answer.Yes': 'Ja',

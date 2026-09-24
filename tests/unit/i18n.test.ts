@@ -6,7 +6,8 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { en } from '@/i18n/en';
 import { LANGUAGES, directionOf, isLang } from '@/i18n/languages';
 import { createTranslator, format, EN } from '@/i18n/translate';
-import { loadMessages, useLangStore, initLanguage } from '@/i18n/store';
+import { loadMessages, loadSourceTranslations, useLangStore, initLanguage } from '@/i18n/store';
+import { collectSourceStrings } from '@/i18n/sourceStrings';
 import { STORAGE_KEY_UI } from '@/config/app.config';
 import { GUIDE_PAGES, hasGuideTranslation, loadGuideBody } from '@/content/guide';
 
@@ -118,4 +119,34 @@ describe('guide translations', () => {
       }
     },
   );
+});
+
+describe('source-content translations', () => {
+  const english = collectSourceStrings();
+  const others = LANGUAGES.map((l) => l.code).filter((code) => code !== 'en');
+
+  it('collects the displayed source text of every framework and the ARL rubric', () => {
+    expect(english.length).toBeGreaterThan(250);
+    expect(english).toContain('Basic principles observed and reported.');
+    expect(english).toContain('Delivered Cost');
+  });
+
+  it.each(others)('%s translates every source string, and nothing else', async (lang) => {
+    const source = await loadSourceTranslations(lang);
+    expect(Object.keys(source).sort()).toEqual(english);
+    for (const [en, translated] of Object.entries(source)) {
+      expect(translated.trim(), `${lang}: ${en}`).not.toBe('');
+      expect(translated.split('\n').length, `${lang} line breaks: ${en}`).toBe(
+        en.split('\n').length,
+      );
+    }
+  });
+
+  it('shows no translation in English, and the reference translation in another language', () => {
+    expect(EN.st('Delivered Cost')).toBeUndefined();
+    const ko = createTranslator('ko', en, { 'Delivered Cost': '공급 비용' });
+    expect(ko.st('Delivered Cost')).toBe('공급 비용');
+    expect(ko.st('Not in the table')).toBeUndefined();
+    expect(ko.st(undefined)).toBeUndefined();
+  });
 });
