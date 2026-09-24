@@ -69,9 +69,8 @@ npm run validate:criteria
 - `src/export/` builds the workbooks and the evidence package. ExcelJS and JSZip are dynamically
   imported so they stay out of the entry chunk.
 - `src/features/` holds the UI. It reads the domain layer; it never re-implements a rule.
-- `src/content/guide/*.md` is every word of the in-app Guide.
-
-Any deviation from the stack or the structure needs an ADR in `docs/adr/`.
+- `src/i18n/` holds the interface text: English in `en/`, one catalog per language beside it.
+- `src/content/guide/*.md` is the in-app Guide; translations live in `src/content/guide/<lang>/`.
 
 ## What will be rejected
 
@@ -83,7 +82,7 @@ Any deviation from the stack or the structure needs an ADR in `docs/adr/`.
   to make a change fit.
 - Real project data, device names or controlled information in examples or tests. The fictional
   example uses `example.org` and `10.5555/fictional.*` only.
-- A scoring change that is not in `docs/spec/BUILD_SPEC.md` D-2 without a spec change and an ADR.
+- A scoring change without the maintainer's agreement and a named test for the new rule.
 
 ## Commits and pull requests
 
@@ -92,7 +91,7 @@ Any deviation from the stack or the structure needs an ADR in `docs/adr/`.
 - One pull request per logical change; squash-merge.
 - Fill in the pull-request template: summary, acceptance checklist, commands run, and screenshots if
   the UI changed.
-- Update `CHANGELOG.md` `[Unreleased]` and, during the phased build, `docs/PROGRESS.md`.
+- Update `CHANGELOG.md` `[Unreleased]`.
 
 ## Tests
 

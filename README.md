@@ -1,6 +1,6 @@
 # TRL Assess
 
-**A two-tier Technology Readiness Level self-assessment that shows its working — in your browser, with no backend.**
+**A general-purpose Technology Readiness Level (TRL) and Adoption Readiness Level (ARL) self-assessment — in your browser, with no backend.**
 
 [![CI](https://github.com/Denny-Hwang/TRL-assess/actions/workflows/ci.yml/badge.svg)](https://github.com/Denny-Hwang/TRL-assess/actions/workflows/ci.yml)
 [![Deploy](https://github.com/Denny-Hwang/TRL-assess/actions/workflows/deploy.yml/badge.svg)](https://github.com/Denny-Hwang/TRL-assess/actions/workflows/deploy.yml)
@@ -63,6 +63,8 @@ This tool does three things about that:
 - **Evidence package** — a `.zip` containing the workbook, the session JSON, the evidence files and a
   `MANIFEST.sha256.txt` a reviewer can verify.
 - **JSON save/restore** — a lossless round-trip of the whole assessment.
+- **Eight interface languages** — English, 한국어, 中文, 日本語, Español, Deutsch, हिन्दी, العربية
+  (right-to-left).
 - **Offline-capable static site** — no backend, no accounts, no telemetry, no third-party requests.
 
 ## How it works
@@ -100,14 +102,13 @@ High. See **Guide › [Adoption readiness](https://denny-hwang.github.io/TRL-ass
 
 ## Frameworks & sources
 
-| Framework                        | Scope                                     | Tier 1                                | Tier 2                                                   |
-| -------------------------------- | ----------------------------------------- | ------------------------------------- | -------------------------------------------------------- |
-| `marine-energy-eere` _(default)_ | Marine energy and ocean-observing devices | Adapted from DOE EERE TRL definitions | DoD criteria + 8 marine/ocean tailoring items            |
-| `dod-tra-2025`                   | Generic hardware, software and process    | Adapted from the DoD hardware table   | Verbatim DoD hardware, software and environment criteria |
+| Framework                  | Scope                                     | Tier 1                                | Tier 2                                                   |
+| -------------------------- | ----------------------------------------- | ------------------------------------- | -------------------------------------------------------- |
+| `dod-tra-2025` _(default)_ | Generic hardware, software and process    | Adapted from the DoD hardware table   | Verbatim DoD hardware, software and environment criteria |
+| `marine-energy-eere`       | Marine energy and ocean-observing devices | Adapted from DOE EERE TRL definitions | DoD criteria + 8 marine/ocean tailoring items            |
 
 The ARL side module scores against `doe-otc-arl-2025` — the DOE Adoption Readiness Assessment's 17
 dimensions, rating text and look-up table, transcribed verbatim.
-See [ADR-0005](docs/adr/0005-arl-side-module.md).
 
 | Source id                     | Document                                                              | Held                                             | Quotable                                  |
 | ----------------------------- | --------------------------------------------------------------------- | ------------------------------------------------ | ----------------------------------------- |
@@ -145,7 +146,7 @@ of the held documents are in [docs/sources/SOURCES.md](docs/sources/SOURCES.md).
   items are never bundled into an evidence package.
 - A restrictive Content-Security-Policy meta tag limits the page to same-origin resources.
 
-See [SECURITY.md](SECURITY.md) and [docs/security-review.md](docs/security-review.md).
+See [SECURITY.md](SECURITY.md).
 
 ## Excel output
 
@@ -268,18 +269,19 @@ src/
 ├── data/
 │   ├── frameworks/<id>/        # framework.json, tier1.json, tier2.json, tier1-matrix.json
 │   ├── frameworks/arl/         # ARL rubric (doe-otc-arl-2025.json)
-│   ├── examples/               # the fictional wave-buoy session
+│   ├── examples/               # the fictional example session
 │   └── sources.ts              # machine-readable mirror of docs/sources/SOURCES.md
+├── i18n/                       # interface text: en/ (English) + one catalog per language
 ├── domain/                     # pure TypeScript: schemas, scoring, session, hashing (no React)
 ├── export/                     # excel/ (shared, tier1, tier2, arl), zip/ (package), download helpers
 ├── storage/                    # localStorage session store, IndexedDB blob store
 ├── state/                      # zustand store with autosave
 ├── features/                   # home, tier1, tier2, arl, guide, about
 ├── components/                 # shared UI
-└── content/guide/*.md          # every word of the in-app Guide
+└── content/guide/              # the in-app Guide (English *.md, translations in <lang>/)
 scripts/                        # validate-criteria.ts, check-docs-links.ts
-tests/{unit,component,e2e}/     # 427 unit/component tests, 34 Playwright tests
-docs/                           # BUILD_SPEC, PROGRESS, ADRs, SOURCES, screenshots
+tests/{unit,component,e2e}/     # Vitest unit/component tests, Playwright end-to-end tests
+docs/                           # SOURCES, screenshots
 ```
 
 ## Configuration
@@ -291,7 +293,7 @@ Everything tunable lives in `src/config/app.config.ts`:
 | `APP_NAME`                                          | `TRL Assess`                 | Title, footer, export metadata                                |
 | `GITHUB_OWNER` / `REPO_NAME`                        | `Denny-Hwang` / `TRL-assess` | Source and issue links, Pages URL                             |
 | `PAGES_BASE_PATH`                                   | `/TRL-assess/`               | Vite `base`; must equal `/<REPO_NAME>/`                       |
-| `DEFAULT_FRAMEWORK`                                 | `marine-energy-eere`         | Framework selected for a new session                          |
+| `DEFAULT_FRAMEWORK`                                 | `dod-tra-2025`               | Framework selected for a new session                          |
 | `MAX_EVIDENCE_FILE_MB`                              | `50`                         | Largest single evidence file accepted                         |
 | `MAX_PACKAGE_TOTAL_MB`                              | `250`                        | Pre-flight limit for the evidence package                     |
 | `BLANK_EVIDENCE_PLACEHOLDER_ROWS`                   | `50`                         | Blank rows appended to `Evidence_Register`                    |
@@ -326,9 +328,9 @@ To report a problem with a criterion rather than fix it, open a **Criteria corre
 what CI enforces on every pull request.
 
 - **Coverage:** `src/domain` must stay at ≥ 95 % lines, functions and statements and ≥ 85 % branches
-  (currently 98.8 % lines). Every rule in the specification has a named test.
+  Every scoring rule has a named test.
 - **Bundle budget:** the entry chunk must stay under 300 kB gzip and must not contain ExcelJS or
-  JSZip (currently ~102 kB gzip).
+  JSZip.
 - **Accessibility:** axe checks run against every route in Playwright; zero serious or critical
   issues are allowed.
 - **Network guard:** the end-to-end tests fail if the app issues any cross-origin request.
@@ -390,8 +392,9 @@ material is cited by clause only and never reproduced.
 ## Acknowledgments
 
 Criteria are transcribed from work published by the U.S. Department of Defense (OUSD(R&E)) and the
-U.S. Department of Energy, Office of Energy Efficiency and Renewable Energy. Marine tailoring is
-informed by NREL's marine-energy risk framework and by the GOOS Framework for Ocean Observing.
+U.S. Department of Energy (Office of Energy Efficiency and Renewable Energy; Office of Technology
+Commercialization). The optional marine tailoring is informed by NREL's marine-energy risk framework
+and by the GOOS Framework for Ocean Observing.
 
 ## Contact
 
