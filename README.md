@@ -15,7 +15,9 @@ assessment** in which every claim is tied to a report, a test record, a pinned c
 export to Excel; the evidence-based one can be packaged as a `.zip` with the evidence files and a
 SHA-256 manifest. A separate **Adoption Readiness Level (ARL)** module rates the 17 adoption-risk
 dimensions of the DOE Adoption Readiness Assessment — what stands between a working technology and
-its use. Everything runs client-side:
+its use. The interface is available in English (default), Korean, Chinese, Japanese, Spanish,
+German, Hindi and Arabic — pick a language from the selector in the header. Everything runs
+client-side:
 the app makes no network requests at runtime, and nothing you enter leaves your browser except in
 files you download.
 
