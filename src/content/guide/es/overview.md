@@ -9,20 +9,20 @@ gestiona el proyecto.
 ## Los nueve niveles
 
 Las definiciones siguientes son las definiciones de hardware del DoD (`dod-tra-2025`, Table 2-1,
-pp. 6–7) y se reproducen en inglés, tal como las publica la fuente. Cada marco muestra su propia
-definición en el texto de ayuda de cada pregunta.
+pp. 6–7) y se reproducen en inglés, tal como las publica la fuente, con una traducción no oficial
+entre paréntesis. Cada marco muestra su propia definición en el texto de ayuda de cada pregunta.
 
-| TRL | Definición                                                                           | Entorno               |
-| --- | ------------------------------------------------------------------------------------ | --------------------- |
-| 1   | Basic principles observed and reported                                               | —                     |
-| 2   | Technology concept and/or application formulated                                     | análisis              |
-| 3   | Analytical and experimental critical function and/or characteristic proof of concept | laboratorio           |
-| 4   | Component and/or breadboard validation in a laboratory environment                   | laboratorio           |
-| 5   | Component and/or breadboard validation in a relevant environment                     | relevante             |
-| 6   | System/subsystem model or prototype demonstration in a relevant environment          | relevante             |
-| 7   | System prototype demonstration in an operational environment                         | operativo             |
-| 8   | Actual system completed and qualified through test and demonstration                 | condiciones previstas |
-| 9   | Actual system proven through successful mission operations                           | condiciones de misión |
+| TRL | Definición                                                                                                                                                                                 | Entorno               |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------- |
+| 1   | Basic principles observed and reported (traducción: «principios básicos observados y comunicados»)                                                                                         | —                     |
+| 2   | Technology concept and/or application formulated (traducción: «concepto tecnológico y/o aplicación formulados»)                                                                            | análisis              |
+| 3   | Analytical and experimental critical function and/or characteristic proof of concept (traducción: «prueba de concepto analítica y experimental de funciones críticas y/o características») | laboratorio           |
+| 4   | Component and/or breadboard validation in a laboratory environment (traducción: «validación de componentes y/o placa de pruebas en un entorno de laboratorio»)                             | laboratorio           |
+| 5   | Component and/or breadboard validation in a relevant environment (traducción: «validación de componentes y/o placa de pruebas en un entorno relevante»)                                    | relevante             |
+| 6   | System/subsystem model or prototype demonstration in a relevant environment (traducción: «demostración de un modelo o prototipo de sistema/subsistema en un entorno relevante»)            | relevante             |
+| 7   | System prototype demonstration in an operational environment (traducción: «demostración de un prototipo del sistema en un entorno operativo»)                                              | operativo             |
+| 8   | Actual system completed and qualified through test and demonstration (traducción: «sistema real completado y cualificado mediante ensayos y demostraciones»)                               | condiciones previstas |
+| 9   | Actual system proven through successful mission operations (traducción: «sistema real probado mediante operaciones de misión satisfactorias»)                                              | condiciones de misión |
 
 El nivel lo decide _qué_ se ensayó y _dónde_.
 

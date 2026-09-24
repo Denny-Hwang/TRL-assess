@@ -56,7 +56,7 @@ Nachweis ÷ _erfüllte_ Kriterien.
 **Differenz zwischen den Tiers.** Zusammenfassung aus Tier 2 minus Schätzung aus Tier 1; ab einem
 Wert von 2 wird sie erläutert.
 
-Die Art eines Nachweises wird nie gewichtet; nur _abgelehnte_ Nachweise verändern das Ergebnis.
+Der Typ eines Nachweises wird nie gewichtet; nur _abgelehnte_ Nachweise verändern das Ergebnis.
 
 ## Rechenbeispiel 1 — ein sauberes Tier 1
 

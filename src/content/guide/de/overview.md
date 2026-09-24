@@ -8,21 +8,21 @@ die Güte der Projektführung.
 
 ## Die neun Stufen
 
-Die folgenden Definitionen sind die DoD-Hardwaredefinitionen im englischen Originalwortlaut
-(`dod-tra-2025`, Table 2-1, S. 6–7). Jedes Framework zeigt im Hilfetext jeder Frage seine eigene
+Die folgenden Definitionen sind die DoD-Hardwaredefinitionen im englischen Originalwortlaut, jeweils
+mit einer inoffiziellen Übersetzung in Klammern (`dod-tra-2025`, Table 2-1, S. 6–7). Jedes Framework zeigt im Hilfetext jeder Frage seine eigene
 Definition.
 
-| TRL | Definition                                                                           | Umgebung              |
-| --- | ------------------------------------------------------------------------------------ | --------------------- |
-| 1   | Basic principles observed and reported                                               | —                     |
-| 2   | Technology concept and/or application formulated                                     | Analyse               |
-| 3   | Analytical and experimental critical function and/or characteristic proof of concept | Labor                 |
-| 4   | Component and/or breadboard validation in a laboratory environment                   | Labor                 |
-| 5   | Component and/or breadboard validation in a relevant environment                     | relevant              |
-| 6   | System/subsystem model or prototype demonstration in a relevant environment          | relevant              |
-| 7   | System prototype demonstration in an operational environment                         | Einsatz               |
-| 8   | Actual system completed and qualified through test and demonstration                 | erwartete Bedingungen |
-| 9   | Actual system proven through successful mission operations                           | Missionsbedingungen   |
+| TRL | Definition                                                                                                                                                                                              | Umgebung              |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| 1   | Basic principles observed and reported (Übersetzung: „Grundprinzipien beobachtet und berichtet“)                                                                                                        | —                     |
+| 2   | Technology concept and/or application formulated (Übersetzung: „Technologiekonzept und/oder Anwendung formuliert“)                                                                                      | Analyse               |
+| 3   | Analytical and experimental critical function and/or characteristic proof of concept (Übersetzung: „analytischer und experimenteller Machbarkeitsnachweis für kritische Funktion und/oder Eigenschaft“) | Labor                 |
+| 4   | Component and/or breadboard validation in a laboratory environment (Übersetzung: „Validierung von Komponente und/oder Versuchsaufbau (Breadboard) in einer Laborumgebung“)                              | Labor                 |
+| 5   | Component and/or breadboard validation in a relevant environment (Übersetzung: „Validierung von Komponente und/oder Versuchsaufbau (Breadboard) in einer relevanten Umgebung“)                          | relevant              |
+| 6   | System/subsystem model or prototype demonstration in a relevant environment (Übersetzung: „Demonstration eines System-/Teilsystemmodells oder Prototyps in einer relevanten Umgebung“)                  | relevant              |
+| 7   | System prototype demonstration in an operational environment (Übersetzung: „Demonstration eines Systemprototyps in einer Einsatzumgebung“)                                                              | Einsatz               |
+| 8   | Actual system completed and qualified through test and demonstration (Übersetzung: „tatsächliches System fertiggestellt und durch Test und Demonstration qualifiziert“)                                 | erwartete Bedingungen |
+| 9   | Actual system proven through successful mission operations (Übersetzung: „tatsächliches System durch erfolgreichen Missionseinsatz bewährt“)                                                            | Missionsbedingungen   |
 
 Über die Stufe entscheidet, _was_ getestet wurde und _wo_.
 

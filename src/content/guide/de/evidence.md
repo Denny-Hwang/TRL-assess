@@ -9,7 +9,7 @@ Ein verpflichtendes Kriterium, das als _Erfüllt_ markiert ist, zählt ohne verw
 
 Alles, was ein Prüfer untersuchen könnte, ohne Sie zu fragen.
 
-| Art                    | Stark                                                                                    | Schwach                                                         |
+| Typ                    | Stark                                                                                    | Schwach                                                         |
 | ---------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | Dokument               | Ein unterzeichneter Prüfbericht mit Angabe von Prüfling, Bedingungen, Datum und Bediener | Undatierte Prüfnotizen ohne Verfasser                           |
 | Testdaten              | Eine Datendatei samt Bedingungen und Abnahmekriterien                                    | Ein Screenshot eines Diagramms mit unbeschrifteten Achsen       |
@@ -31,10 +31,12 @@ Diese Unterscheidung trennt TRL 5/6 von 7/8.
 :::figure environment-fidelity:::
 
 - Eine **relevante Umgebung** ist „a set of stressing conditions, representative of the full
-  spectrum of intended operational employments“, angewendet auf das Element als Teil einer
+  spectrum of intended operational employments“ (Übersetzung: „eine Reihe belastender Bedingungen,
+  repräsentativ für das volle Spektrum der vorgesehenen Einsatzarten“), angewendet auf das Element als Teil einer
   Komponente (TRL 5) oder eines Systems/Teilsystems (TRL 6) — `dod-tra-2025`, S. 12.
 - Eine **Einsatzumgebung** ist „a set of conditions, representative of the full spectrum of
-  employments“, angewendet auf einen Prototyp (TRL 7) oder das tatsächliche System (TRL 8) —
+  employments“ (Übersetzung: „eine Reihe von Bedingungen, repräsentativ für das volle Spektrum der
+  Einsatzarten“), angewendet auf einen Prototyp (TRL 7) oder das tatsächliche System (TRL 8) —
   `dod-tra-2025`, S. 13.
 
 „Full spectrum“ (volles Spektrum) bedeutet: Ein einzelner günstiger Test reicht nicht aus.

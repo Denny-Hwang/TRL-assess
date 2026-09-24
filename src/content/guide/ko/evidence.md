@@ -12,7 +12,7 @@
 | ------------ | ----------------------------------------------------------- | ----------------------------------------- |
 | 문서         | 시험 대상품, 조건, 날짜, 수행자가 명시된 서명된 시험 보고서 | 날짜와 작성자가 없는 검토 메모            |
 | 시험 데이터  | 데이터 파일과 함께 시험 조건 및 합격 기준                   | 축 레이블이 없는 그래프의 스크린숏        |
-| 코드 저장소  | URL **과 고정된 커밋 SHA**, 경로 및 태그                    | `main`으로 연결되는 링크                  |
+| 코드 저장소  | URL **및 고정된 커밋 SHA**, 경로 및 태그                    | `main`으로 연결되는 링크                  |
 | 도면/CAD     | 시험 대상품과 일치하는 개정판의 승인된 도면                 | 슬라이드에 들어 있는 제목 없는 스케치     |
 | 사진/동영상  | 시험 중인 대상품을 크기 기준과 함께 찍은 날짜가 있는 사진   | 렌더링 이미지                             |
 | 출판물 (DOI) | 주장 내용을 실제로 다루는 DOI                               | 관련은 있지만 다른 기기에 대한 DOI        |
@@ -29,8 +29,8 @@
 :::figure environment-fidelity:::
 
 - **유사 환경**(relevant environment)은 "a set of stressing conditions, representative of the full
-  spectrum of intended operational employments"로, 구성품의 일부로서의 요소(TRL 5) 또는
-  시스템/하위 시스템(TRL 6)에 적용됩니다 — `dod-tra-2025`, p. 12. (번역: 의도된 운용 방식의 전체
+  spectrum of intended operational employments"로, 구성품(TRL 5) 또는 시스템/하위 시스템(TRL 6)의
+  일부로서의 요소에 적용됩니다 — `dod-tra-2025`, p. 12. (번역: 의도된 운용 방식의 전체
   범위를 대표하는 일련의 스트레스 조건)
 - **운용 환경**(operational environment)은 "a set of conditions, representative of the full
   spectrum of employments"로, 시제품(TRL 7) 또는 실제 시스템(TRL 8)에 적용됩니다 —
