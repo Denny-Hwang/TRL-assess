@@ -6,6 +6,7 @@ const NAV = [
   { to: '/', label: 'Home', end: true },
   { to: '/quick', label: 'Quick Estimate', end: false },
   { to: '/assess', label: 'Evidence Assessment', end: false },
+  { to: '/arl', label: 'Adoption Readiness', end: false },
   { to: '/guide/overview', label: 'Guide', end: false },
   { to: '/about', label: 'About', end: false },
 ];

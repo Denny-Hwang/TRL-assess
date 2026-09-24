@@ -155,11 +155,14 @@ export function SourceNote({
   section,
   page,
   clause,
+  compact = false,
 }: {
   sourceId: string;
   section?: string;
   page?: string;
   clause?: string;
+  /** Show only the document and page; the section stays in the tooltip. */
+  compact?: boolean;
 }) {
   const full = [
     sourceId,
@@ -171,7 +174,7 @@ export function SourceNote({
     .join(' · ');
   const short = [
     sourceId,
-    section ? shortSection(section) : undefined,
+    section && !compact ? shortSection(section) : undefined,
     page ? `p. ${page}` : undefined,
     clause ? `clause ${clause}` : undefined,
   ]

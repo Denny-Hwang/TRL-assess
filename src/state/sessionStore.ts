@@ -8,12 +8,16 @@ import { resolveFramework, type ResolvedFramework } from '@/domain/frameworks';
 import {
   addCte as addCteTo,
   addEvidence as addEvidenceTo,
+  clearArl as clearArlIn,
   createSession,
   linkEvidence as linkEvidenceIn,
   removeCte as removeCteFrom,
   removeEvidence as removeEvidenceFrom,
   reorderCtes as reorderCtesIn,
   setAnswer as setAnswerIn,
+  setArl as setArlOn,
+  setArlCall as setArlCallIn,
+  setArlDimension as setArlDimensionIn,
   setAssessment as setAssessmentIn,
   setGapActions as setGapActionsIn,
   setTier1 as setTier1On,
@@ -24,6 +28,9 @@ import {
 import { clearAllLocalData, debounce, loadSession, saveSession } from '@/storage/sessionStore';
 import { deleteBlob } from '@/storage/blobStore';
 import type {
+  ArlCall,
+  ArlData,
+  ArlDimensionAssessment,
   AssessmentSession,
   CriterionAssessment,
   Cte,
@@ -56,8 +63,19 @@ interface SessionState {
   linkEvidence: (evidenceId: string, cteId: string, criterionId: string) => void;
   unlinkEvidence: (evidenceId: string, cteId: string, criterionId: string) => void;
   setGapActions: (actions: GapAction[]) => void;
+  /** ARL side module (ADR-0005). */
+  setArl: (arl: ArlData) => void;
+  setArlDimension: (
+    patch: Pick<ArlDimensionAssessment, 'dimensionId'> & Partial<ArlDimensionAssessment>,
+  ) => void;
+  setArlCall: (call: ArlCall | undefined) => void;
+  resetArl: () => void;
   /** Write any pending autosave immediately (used on page hide). */
   flushSave: () => void;
+}
+
+function keepArl(previous: AssessmentSession, next: AssessmentSession): AssessmentSession {
+  return previous.arl ? { ...next, arl: previous.arl } : next;
 }
 
 function initialSession(): AssessmentSession {
@@ -125,10 +143,14 @@ export const useSessionStore = create<SessionState>((set, get) => {
     framework: resolveFramework(session.frameworkId),
     saveState: 'idle',
 
+    // The ARL side module does not depend on the TRL framework, so switching frameworks or
+    // resetting the TRL assessment keeps it; only resetArl and clearEverything remove it.
     setFramework: (id) => {
       const framework = resolveFramework(id);
       set({ framework });
-      apply(() => createSession(id, framework.framework.version), { immediate: true });
+      apply((s) => keepArl(s, createSession(id, framework.framework.version)), {
+        immediate: true,
+      });
     },
 
     replaceSession: (next) => {
@@ -138,7 +160,7 @@ export const useSessionStore = create<SessionState>((set, get) => {
 
     resetSession: () => {
       const { framework } = get();
-      apply(() => createSession(framework.framework.id, framework.framework.version), {
+      apply((s) => keepArl(s, createSession(framework.framework.id, framework.framework.version)), {
         immediate: true,
       });
     },
@@ -179,5 +201,10 @@ export const useSessionStore = create<SessionState>((set, get) => {
     unlinkEvidence: (evidenceId, cteId, criterionId) =>
       apply((s) => unlinkEvidenceIn(s, evidenceId, cteId, criterionId), { immediate: true }),
     setGapActions: (actions) => apply((s) => setGapActionsIn(s, actions)),
+
+    setArl: (arl) => apply((s) => setArlOn(s, arl), { immediate: true }),
+    setArlDimension: (patch) => apply((s) => setArlDimensionIn(s, patch)),
+    setArlCall: (call) => apply((s) => setArlCallIn(s, call), { immediate: true }),
+    resetArl: () => apply((s) => clearArlIn(s), { immediate: true }),
   };
 });
