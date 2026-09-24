@@ -2,26 +2,30 @@
  * Tier 1 workbook (BUILD_SPEC D-3.1).
  * Sheets, in order: README, Summary, Context, Responses, Next_Evidence_Placeholders, References.
  */
-import { BLANK_NEXT_EVIDENCE_ROWS, TIER1_LABEL } from '@/config/app.config';
+import { BLANK_NEXT_EVIDENCE_ROWS } from '@/config/app.config';
 import { sourcesFor } from '@/data/sources';
 import type { ResolvedFramework } from '@/domain/frameworks';
 import { criteriaByLevel } from '@/domain/frameworks';
-import { formatTrl, scoreTier1, type Tier1Result } from '@/domain/tier1';
+import { scoreTier1, type Tier1Result } from '@/domain/tier1';
 import type { AssessmentSession, TrlLevel } from '@/domain/schemas';
 import { downloadBlob, workbookFilename } from '@/export/download';
+import { disclaimerText, tier1FlagText, trlText } from '@/i18n/domainText';
 import {
   addTableSheet,
   applyListValidation,
   createWorkbook,
+  currentTranslator,
   fillRow,
   highlightValues,
   placeholderNote,
   safeText,
   setFormula,
   setHyperlink,
+  sourceText,
   STYLE,
   workbookToBlob,
   writeReadmeSheet,
+  type Translator,
   type Workbook,
   type WorkbookMeta,
 } from './shared';
@@ -37,28 +41,14 @@ export const TIER1_SHEETS = [
   'References',
 ] as const;
 
-function sourceText(source: {
-  sourceId: string;
-  section?: string;
-  page?: string;
-  clause?: string;
-}) {
-  return [
-    source.sourceId,
-    source.section,
-    source.page ? `p. ${source.page}` : undefined,
-    source.clause ? `clause ${source.clause}` : undefined,
-  ]
-    .filter(Boolean)
-    .join(' · ');
-}
-
 export async function buildTier1Workbook(
   framework: ResolvedFramework,
   session: AssessmentSession,
   generatedAt: Date = new Date(),
+  tr: Translator = currentTranslator(),
 ): Promise<Workbook> {
-  if (!session.tier1) throw new Error('This session has no Tier 1 answers to export.');
+  const { t } = tr;
+  if (!session.tier1) throw new Error(t('excel.tier1.error.noAnswers'));
   const result: Tier1Result = scoreTier1(framework, session.tier1);
   const { workbook } = await createWorkbook();
 
@@ -68,7 +58,7 @@ export async function buildTier1Workbook(
     frameworkVersion: session.frameworkVersion,
     schemaVersion: session.schemaVersion,
     generatedAt,
-    counts: { 'Questions answered': result.answeredLevels.length },
+    counts: { [t('excel.tier1.count.answered')]: result.answeredLevels.length },
   };
 
   writeReadmeSheet(
@@ -76,42 +66,44 @@ export async function buildTier1Workbook(
     meta,
     [
       {
-        heading: 'What this workbook contains',
+        heading: t('excel.readme.contents'),
         lines: [
-          'Summary — the estimate, the cross-check and any flags raised.',
-          'Context — what was assessed, by whom, and the highest-fidelity test performed.',
-          'Responses — every screening question, your answer, your note and the source of the question.',
-          'Next_Evidence_Placeholders — the criteria that come next, with blank rows for planning evidence.',
-          'References — the source documents behind the questions.',
+          t('excel.tier1.readme.contents.summary'),
+          t('excel.tier1.readme.contents.context'),
+          t('excel.tier1.readme.contents.responses'),
+          t('excel.tier1.readme.contents.next'),
+          t('excel.tier1.readme.contents.references'),
         ],
       },
       {
-        heading: 'How to fill the placeholders',
+        heading: t('excel.tier1.readme.fill.heading'),
         lines: [
-          'On Next_Evidence_Placeholders, describe the evidence you plan to produce in "Planned evidence".',
-          'Put a URL or a file path in "Evidence link / path"; the "Open" column then becomes a clickable link.',
-          'Owner and Target date are free text — this workbook is a planning aid, not a tracker.',
-          'Never paste controlled or sensitive content into this workbook. Record a pointer instead.',
+          t('excel.tier1.readme.fill.planned'),
+          t('excel.tier1.readme.fill.link'),
+          t('excel.tier1.readme.fill.owner'),
+          t('excel.tier1.readme.fill.sensitive'),
         ],
       },
       {
-        heading: 'How the estimate is calculated',
+        heading: t('excel.tier1.readme.calc.heading'),
         lines: [
-          'Estimated TRL is the highest level where that level and every level below it were answered "Yes".',
-          '"Unsure" never counts as "Yes".',
-          'Highest level claimed is the highest single "Yes", ignoring gaps.',
-          'The build × environment cross-check is a heuristic aid, not a standard, and never overrides your answers.',
+          t('excel.tier1.readme.calc.estimate'),
+          t('excel.tier1.readme.calc.unsure'),
+          t('excel.tier1.readme.calc.claimed'),
+          t('excel.tier1.readme.calc.matrix'),
         ],
       },
     ],
-    TIER1_LABEL,
+    t('label.tier1'),
+    {},
+    tr,
   );
 
-  buildSummarySheet(workbook, framework, session, result, meta);
-  buildContextSheet(workbook, framework, session);
-  buildResponsesSheet(workbook, framework, session);
-  buildNextEvidenceSheet(workbook, framework, result);
-  buildReferencesSheet(workbook, framework);
+  buildSummarySheet(workbook, framework, session, result, meta, tr);
+  buildContextSheet(workbook, framework, session, tr);
+  buildResponsesSheet(workbook, framework, session, tr);
+  buildNextEvidenceSheet(workbook, framework, result, tr);
+  buildReferencesSheet(workbook, framework, tr);
 
   return workbook;
 }
@@ -122,41 +114,48 @@ function buildSummarySheet(
   session: AssessmentSession,
   result: Tier1Result,
   meta: WorkbookMeta,
+  tr: Translator,
 ): void {
+  const { t } = tr;
   const { context } = session.tier1!;
   const sheet = workbook.addWorksheet('Summary', { views: [{ state: 'frozen', ySplit: 1 }] });
   sheet.columns = [
-    { header: 'Item', key: 'item', width: 34 },
-    { header: 'Value', key: 'value', width: 76 },
+    { header: t('excel.col.item'), key: 'item', width: 34 },
+    { header: t('excel.col.value'), key: 'value', width: 76 },
   ];
   sheet.getRow(1).font = { bold: true, color: { argb: STYLE.headerFont } };
   sheet.getRow(1).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: STYLE.headerFill } };
   sheet.getColumn(2).alignment = { wrapText: true, vertical: 'top' };
 
   const rows: Array<[string, string]> = [
-    ['Project', safeText(context.projectName)],
-    ['Technology', safeText(context.technologyName)],
-    ['Assessor', safeText(context.assessorName)],
-    ['Assessor role', safeText(context.assessorRole ?? '')],
-    ['Organization', safeText(context.organization ?? '')],
-    ['Assessment date (UTC)', session.updatedAt],
+    [t('excel.row.project'), safeText(context.projectName)],
+    [t('excel.row.technology'), safeText(context.technologyName)],
+    [t('excel.row.assessor'), safeText(context.assessorName)],
+    [t('excel.row.assessorRole'), safeText(context.assessorRole ?? '')],
+    [t('excel.row.organization'), safeText(context.organization ?? '')],
+    [t('excel.row.assessmentDate'), session.updatedAt],
     [
-      'Framework',
+      t('excel.row.framework'),
       `${framework.framework.name} — ${framework.framework.id} (${framework.framework.version})`,
     ],
     ['', ''],
-    ['Estimated TRL (headline)', formatTrl(result.contiguousTrl)],
-    ['Highest level claimed (first "Yes")', formatTrl(result.firstYesTrl)],
+    [t('excel.tier1.summary.estimate'), trlText(tr, result.contiguousTrl)],
+    [t('excel.tier1.summary.claimed'), trlText(tr, result.firstYesTrl)],
     [
-      'Build × environment cross-check',
-      `${formatTrl(result.matrixTrl)} (${context.build} × ${context.environment}; ${framework.matrix.status})`,
+      t('excel.tier1.summary.matrix'),
+      `${trlText(tr, result.matrixTrl)} (${context.build} × ${context.environment}; ${framework.matrix.status})`,
     ],
-    ['Consistency rating', result.consistency],
-    ['Flags', result.flags.length ? result.flags.map((f) => f.message).join('\n') : 'None raised.'],
+    [t('excel.tier1.summary.consistency'), result.consistency],
+    [
+      t('excel.tier1.summary.flags'),
+      result.flags.length
+        ? result.flags.map((f) => tier1FlagText(tr, f)).join('\n')
+        : t('flags.none'),
+    ],
     ['', ''],
-    ['Label', TIER1_LABEL],
-    ['Disclaimer', DISCLAIMER_TEXT],
-    ['Generated at (UTC)', meta.generatedAt.toISOString()],
+    [t('excel.row.label'), t('label.tier1')],
+    [t('excel.row.disclaimer'), disclaimerText(tr)],
+    [t('excel.meta.generatedAt'), meta.generatedAt.toISOString()],
   ];
   for (const [item, value] of rows) {
     const row = sheet.addRow({ item, value });
@@ -166,40 +165,37 @@ function buildSummarySheet(
   highlightValues(sheet, `B${10}:B${10}`, [{ text: 'TRL', fill: STYLE.goodFill }]);
 }
 
-const DISCLAIMER_TEXT =
-  'TRL Assess produces a self-assessment only. It is not an independent Technology Readiness ' +
-  'Assessment (TRA), not an audit, and not a certification. Results depend entirely on the ' +
-  'information entered; nothing is verified by the tool.';
-
 function buildContextSheet(
   workbook: Workbook,
   framework: ResolvedFramework,
   session: AssessmentSession,
+  tr: Translator,
 ): void {
+  const { t } = tr;
   const { context } = session.tier1!;
   const sheet = addTableSheet(workbook, 'Context', [
-    { header: 'Field', key: 'field', width: 34 },
-    { header: 'Value', key: 'value', width: 76, wrap: true },
+    { header: t('excel.col.field'), key: 'field', width: 34 },
+    { header: t('excel.col.value'), key: 'value', width: 76, wrap: true },
   ]);
   const env = framework.matrix.environments.find((e) => e.code === context.environment);
   const build = framework.matrix.builds.find((b) => b.code === context.build);
 
   const rows: Array<[string, string]> = [
-    ['Project name', safeText(context.projectName)],
-    ['Technology name', safeText(context.technologyName)],
-    ['Assessor name', safeText(context.assessorName)],
-    ['Assessor role', safeText(context.assessorRole ?? '')],
-    ['Organization', safeText(context.organization ?? '')],
-    ['One-line description', safeText(context.oneLineDescription ?? '')],
-    ['Highest-fidelity test performed', safeText(context.highestFidelityTest ?? '')],
-    ['Test location', safeText(context.testLocation ?? '')],
-    ['Test date', safeText(context.testDate ?? '')],
-    ['Environment code', `${context.environment} — ${env?.label ?? ''}`],
-    ['Environment description', env?.help ?? ''],
-    ['Build code', `${context.build} — ${build?.label ?? ''}`],
-    ['Build description', build?.help ?? ''],
-    ['Session created (UTC)', session.createdAt],
-    ['Session updated (UTC)', session.updatedAt],
+    [t('excel.row.projectName'), safeText(context.projectName)],
+    [t('excel.row.technologyName'), safeText(context.technologyName)],
+    [t('excel.row.assessorName'), safeText(context.assessorName)],
+    [t('excel.row.assessorRole'), safeText(context.assessorRole ?? '')],
+    [t('excel.row.organization'), safeText(context.organization ?? '')],
+    [t('excel.tier1.context.description'), safeText(context.oneLineDescription ?? '')],
+    [t('excel.tier1.context.test'), safeText(context.highestFidelityTest ?? '')],
+    [t('excel.tier1.context.testLocation'), safeText(context.testLocation ?? '')],
+    [t('excel.tier1.context.testDate'), safeText(context.testDate ?? '')],
+    [t('excel.tier1.context.envCode'), `${context.environment} — ${env?.label ?? ''}`],
+    [t('excel.tier1.context.envDescription'), env?.help ?? ''],
+    [t('excel.tier1.context.buildCode'), `${context.build} — ${build?.label ?? ''}`],
+    [t('excel.tier1.context.buildDescription'), build?.help ?? ''],
+    [t('excel.row.sessionCreated'), session.createdAt],
+    [t('excel.row.sessionUpdated'), session.updatedAt],
   ];
   for (const [field, value] of rows) sheet.addRow({ field, value });
 }
@@ -208,15 +204,17 @@ function buildResponsesSheet(
   workbook: Workbook,
   framework: ResolvedFramework,
   session: AssessmentSession,
+  tr: Translator,
 ): void {
+  const { t } = tr;
   const sheet = addTableSheet(workbook, 'Responses', [
-    { header: 'TRL', key: 'trl', width: 8 },
-    { header: 'Question ID', key: 'id', width: 16 },
-    { header: 'Question', key: 'question', width: 70, wrap: true },
-    { header: 'Answer', key: 'answer', width: 12 },
-    { header: 'Note', key: 'note', width: 40, wrap: true },
-    { header: 'Origin', key: 'origin', width: 12 },
-    { header: 'Source (doc, section, page)', key: 'source', width: 52, wrap: true },
+    { header: t('excel.col.trl'), key: 'trl', width: 8 },
+    { header: t('excel.tier1.col.questionId'), key: 'id', width: 16 },
+    { header: t('excel.tier1.col.question'), key: 'question', width: 70, wrap: true },
+    { header: t('excel.tier1.col.answer'), key: 'answer', width: 12 },
+    { header: t('excel.tier1.col.note'), key: 'note', width: 40, wrap: true },
+    { header: t('excel.col.origin'), key: 'origin', width: 12 },
+    { header: t('excel.col.sourceDetail'), key: 'source', width: 52, wrap: true },
   ]);
 
   const answers = session.tier1!.answers;
@@ -229,11 +227,11 @@ function buildResponsesSheet(
       answer: answers[q.id]?.value ?? '',
       note: safeText(answers[q.id]?.note ?? ''),
       origin: q.origin,
-      source: sourceText(q.source),
+      source: sourceText(q.source, tr),
     });
   }
   const last = questions.length + 1;
-  applyListValidation(sheet, 'D', ANSWERS, 2, last);
+  applyListValidation(sheet, 'D', ANSWERS, 2, last, {}, tr);
   highlightValues(sheet, `D2:D${last}`, [
     { text: 'Yes', fill: STYLE.goodFill },
     { text: 'Unsure', fill: STYLE.warnFill },
@@ -245,16 +243,18 @@ function buildNextEvidenceSheet(
   workbook: Workbook,
   framework: ResolvedFramework,
   result: Tier1Result,
+  tr: Translator,
 ): void {
+  const { t } = tr;
   const sheet = addTableSheet(workbook, 'Next_Evidence_Placeholders', [
-    { header: 'TRL', key: 'trl', width: 8 },
-    { header: 'Criterion ID', key: 'id', width: 20 },
-    { header: 'Criterion', key: 'criterion', width: 66, wrap: true },
-    { header: 'Planned evidence (placeholder)', key: 'planned', width: 36, wrap: true },
-    { header: 'Evidence link / path (placeholder)', key: 'link', width: 40 },
-    { header: 'Open', key: 'open', width: 12 },
-    { header: 'Owner', key: 'owner', width: 20 },
-    { header: 'Target date', key: 'due', width: 16 },
+    { header: t('excel.col.trl'), key: 'trl', width: 8 },
+    { header: t('excel.col.criterionId'), key: 'id', width: 20 },
+    { header: t('excel.col.criterion'), key: 'criterion', width: 66, wrap: true },
+    { header: t('excel.col.plannedEvidence'), key: 'planned', width: 36, wrap: true },
+    { header: t('excel.tier1.col.link'), key: 'link', width: 40 },
+    { header: t('excel.col.open'), key: 'open', width: 12 },
+    { header: t('excel.col.owner'), key: 'owner', width: 20 },
+    { header: t('excel.tier1.col.targetDate'), key: 'due', width: 16 },
   ]);
 
   const start = Math.min(9, result.contiguousTrl + 1);
@@ -276,20 +276,25 @@ function buildNextEvidenceSheet(
     }
   }
   for (let i = 0; i < BLANK_NEXT_EVIDENCE_ROWS; i += 1) {
-    sheet.addRow({ trl: '', id: '', criterion: placeholderNote(), planned: '', link: '' });
+    sheet.addRow({ trl: '', id: '', criterion: placeholderNote(tr), planned: '', link: '' });
     setFormula(sheet, `F${row}`, `IF(E${row}="","",HYPERLINK(E${row},"Open"))`);
     fillRow(sheet, row, STYLE.placeholderFill, 8);
     row += 1;
   }
 }
 
-function buildReferencesSheet(workbook: Workbook, framework: ResolvedFramework): void {
+function buildReferencesSheet(
+  workbook: Workbook,
+  framework: ResolvedFramework,
+  tr: Translator,
+): void {
+  const { t } = tr;
   const sheet = addTableSheet(workbook, 'References', [
-    { header: 'Source ID', key: 'id', width: 24 },
-    { header: 'Title', key: 'title', width: 60, wrap: true },
-    { header: 'Issuer', key: 'issuer', width: 42, wrap: true },
-    { header: 'Version/Date', key: 'version', width: 34, wrap: true },
-    { header: 'URL', key: 'url', width: 60 },
+    { header: t('excel.col.sourceId'), key: 'id', width: 24 },
+    { header: t('excel.col.title'), key: 'title', width: 60, wrap: true },
+    { header: t('excel.col.issuer'), key: 'issuer', width: 42, wrap: true },
+    { header: t('excel.col.versionDate'), key: 'version', width: 34, wrap: true },
+    { header: t('excel.col.url'), key: 'url', width: 60 },
   ]);
   const sources = sourcesFor(framework.framework.sources);
   sources.forEach((source, index) => {
@@ -308,8 +313,9 @@ export async function exportTier1Workbook(
   framework: ResolvedFramework,
   session: AssessmentSession,
   at: Date = new Date(),
+  tr: Translator = currentTranslator(),
 ): Promise<string> {
-  const workbook = await buildTier1Workbook(framework, session, at);
+  const workbook = await buildTier1Workbook(framework, session, at, tr);
   const filename = workbookFilename('Tier1', session, at);
   downloadBlob(await workbookToBlob(workbook), filename);
   return filename;
