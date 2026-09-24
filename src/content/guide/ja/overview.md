@@ -8,17 +8,17 @@ TRL は 1 から 9 までの数値で、1 つの問いに答えるものです�
 
 以下の定義は DoD のハードウェア定義（`dod-tra-2025`、Table 2-1、pp. 6–7）です。各フレームワークは、すべての質問のヘルプテキストにそれぞれの定義を表示します。
 
-| TRL | 定義                                                                                                                   | 環境       |
-| --- | ---------------------------------------------------------------------------------------------------------------------- | ---------- |
-| 1   | Basic principles observed and reported（訳：基本原理の観察と報告）                                                     | —          |
-| 2   | Technology concept and/or application formulated（訳：技術コンセプトおよび/または応用の定式化）                       | 解析       |
-| 3   | Analytical and experimental critical function and/or characteristic proof of concept（訳：重要機能および/または特性の解析的・実験的な概念実証） | 実験室     |
-| 4   | Component and/or breadboard validation in a laboratory environment（訳：実験室環境での構成要素および/またはブレッドボードの検証） | 実験室     |
-| 5   | Component and/or breadboard validation in a relevant environment（訳：関連環境での構成要素および/またはブレッドボードの検証） | 関連環境   |
-| 6   | System/subsystem model or prototype demonstration in a relevant environment（訳：関連環境でのシステム/サブシステムのモデルまたはプロトタイプの実証） | 関連環境   |
-| 7   | System prototype demonstration in an operational environment（訳：運用環境でのシステムプロトタイプの実証）             | 運用環境   |
-| 8   | Actual system completed and qualified through test and demonstration（訳：実システムが完成し、試験と実証により認定済み） | 想定条件   |
-| 9   | Actual system proven through successful mission operations（訳：実システムがミッション運用の成功により実証済み）     | ミッション条件 |
+| TRL | 定義                                                                                                                                                 | 環境           |
+| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
+| 1   | Basic principles observed and reported（訳：基本原理の観察と報告）                                                                                   | —              |
+| 2   | Technology concept and/or application formulated（訳：技術コンセプトおよび/または応用の定式化）                                                      | 解析           |
+| 3   | Analytical and experimental critical function and/or characteristic proof of concept（訳：重要機能および/または特性の解析的・実験的な概念実証）      | 実験室         |
+| 4   | Component and/or breadboard validation in a laboratory environment（訳：実験室環境での構成要素および/またはブレッドボードの検証）                    | 実験室         |
+| 5   | Component and/or breadboard validation in a relevant environment（訳：関連環境での構成要素および/またはブレッドボードの検証）                        | 関連環境       |
+| 6   | System/subsystem model or prototype demonstration in a relevant environment（訳：関連環境でのシステム/サブシステムのモデルまたはプロトタイプの実証） | 関連環境       |
+| 7   | System prototype demonstration in an operational environment（訳：運用環境でのシステムプロトタイプの実証）                                           | 運用環境       |
+| 8   | Actual system completed and qualified through test and demonstration（訳：実システムが完成し、試験と実証により認定済み）                             | 想定条件       |
+| 9   | Actual system proven through successful mission operations（訳：実システムがミッション運用の成功により実証済み）                                     | ミッション条件 |
 
 レベルを決めるのは、_何を_ 試験したか、そして _どこで_ 試験したかです。
 

@@ -1,6 +1,6 @@
 # 什么是技术成熟度等级
 
-TRL 是 1 到 9 之间的一个数字，它只回答一个问题：**这项技术已经得到了多大程度的演示，是在什么环境中演示的？**它不衡量质量、市场价值，也不衡量项目管理得好坏。
+TRL 是 1 到 9 之间的一个数字，它只回答一个问题：**这项技术已经得到了多大程度的演示，是在什么环境中演示的�**�它不衡量质量、市场价值，也不衡量项目管理得好坏。
 
 :::figure trl-scale:::
 
@@ -8,17 +8,17 @@ TRL 是 1 到 9 之间的一个数字，它只回答一个问题：**这项技�
 
 下列定义为 DoD 的硬件定义（`dod-tra-2025`，Table 2-1，pp. 6–7），保留英文原文，括号内为译文。每个框架都会在每个问题的帮助文本中显示其自身的定义。
 
-| TRL | 定义 | 环境 |
-| --- | --- | --- |
-| 1 | Basic principles observed and reported（译：观察到并报告了基本原理） | — |
-| 2 | Technology concept and/or application formulated（译：形成了技术概念和/或应用设想） | 分析 |
-| 3 | Analytical and experimental critical function and/or characteristic proof of concept（译：通过分析和实验对关键功能和/或特性进行了概念验证） | 实验室 |
-| 4 | Component and/or breadboard validation in a laboratory environment（译：在实验室环境中对部件和/或试验板进行了验证） | 实验室 |
-| 5 | Component and/or breadboard validation in a relevant environment（译：在相关环境中对部件和/或试验板进行了验证） | 相关环境 |
-| 6 | System/subsystem model or prototype demonstration in a relevant environment（译：在相关环境中对系统/子系统模型或原型进行了演示） | 相关环境 |
-| 7 | System prototype demonstration in an operational environment（译：在运行环境中对系统原型进行了演示） | 运行环境 |
-| 8 | Actual system completed and qualified through test and demonstration（译：实际系统已完成，并通过试验和演示获得鉴定） | 预期条件 |
-| 9 | Actual system proven through successful mission operations（译：实际系统通过成功的任务运行得到证明） | 任务条件 |
+| TRL | 定义                                                                                                                                        | 环境     |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| 1   | Basic principles observed and reported（译：观察到并报告了基本原理）                                                                        | —        |
+| 2   | Technology concept and/or application formulated（译：形成了技术概念和/或应用设想）                                                         | 分析     |
+| 3   | Analytical and experimental critical function and/or characteristic proof of concept（译：通过分析和实验对关键功能和/或特性进行了原理验证） | 实验室   |
+| 4   | Component and/or breadboard validation in a laboratory environment（译：在实验室环境中对部件和/或面包板进行了验证）                         | 实验室   |
+| 5   | Component and/or breadboard validation in a relevant environment（译：在相关环境中对部件和/或面包板进行了验证）                             | 相关环境 |
+| 6   | System/subsystem model or prototype demonstration in a relevant environment（译：在相关环境中对系统/子系统模型或原型进行了演示）            | 相关环境 |
+| 7   | System prototype demonstration in an operational environment（译：在运行环境中对系统原型进行了演示）                                        | 运行环境 |
+| 8   | Actual system completed and qualified through test and demonstration（译：实际系统已完成，并通过试验和演示获得鉴定）                        | 预期条件 |
+| 9   | Actual system proven through successful mission operations（译：实际系统通过成功的任务运行得到证明）                                        | 任务条件 |
 
 等级取决于测试了*什么*，以及在*哪里*测试。
 

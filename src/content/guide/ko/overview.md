@@ -10,17 +10,17 @@ TRL은 1부터 9까지의 숫자로, 하나의 질문에 답합니다: **이 기
 아래 정의는 DoD 하드웨어 정의입니다(`dod-tra-2025`, Table 2-1, pp. 6–7). 각 프레임워크는 모든
 질문의 도움말에 자체 정의를 표시합니다.
 
-| TRL | 정의                                                                                 | 환경        |
-| --- | ------------------------------------------------------------------------------------ | ----------- |
-| 1   | Basic principles observed and reported                                               | —           |
-| 2   | Technology concept and/or application formulated                                     | 분석        |
-| 3   | Analytical and experimental critical function and/or characteristic proof of concept | 실험실      |
-| 4   | Component and/or breadboard validation in a laboratory environment                   | 실험실      |
-| 5   | Component and/or breadboard validation in a relevant environment                     | 유사 환경   |
-| 6   | System/subsystem model or prototype demonstration in a relevant environment          | 유사 환경   |
-| 7   | System prototype demonstration in an operational environment                         | 운용 환경   |
-| 8   | Actual system completed and qualified through test and demonstration                 | 예상 조건   |
-| 9   | Actual system proven through successful mission operations                           | 임무 조건   |
+| TRL | 정의                                                                                 | 환경      |
+| --- | ------------------------------------------------------------------------------------ | --------- |
+| 1   | Basic principles observed and reported                                               | —         |
+| 2   | Technology concept and/or application formulated                                     | 분석      |
+| 3   | Analytical and experimental critical function and/or characteristic proof of concept | 실험실    |
+| 4   | Component and/or breadboard validation in a laboratory environment                   | 실험실    |
+| 5   | Component and/or breadboard validation in a relevant environment                     | 유사 환경 |
+| 6   | System/subsystem model or prototype demonstration in a relevant environment          | 유사 환경 |
+| 7   | System prototype demonstration in an operational environment                         | 운용 환경 |
+| 8   | Actual system completed and qualified through test and demonstration                 | 예상 조건 |
+| 9   | Actual system proven through successful mission operations                           | 임무 조건 |
 
 수준은 _무엇을_ _어디에서_ 시험했는지에 따라 결정됩니다.
 
