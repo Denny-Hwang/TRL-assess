@@ -21,14 +21,11 @@ Sheet order is fixed. Three of them are not self-explanatory:
 The [ARL side module](/guide/arl) exports its own workbook, `ARL_<project>_<timestamp>.xlsx`; the
 TRL workbooks are unchanged by it. Sheets, in order:
 
-- **`README`**, **`Summary`** — ARL Start, ARL End (target), the tallies behind them, the flags, and
-  with a call profile the four title-page numbers.
+- **`README`**, **`Summary`** — ARL Start, ARL End (target), the tallies behind them and the flags.
 - **`Scope`** — technology scope, value chain scope, timeline and policy environment.
 - **`Risk_Assessment`** — one row per dimension: current rating, what it counted as and why,
   rationale, evidence, target, planned action, and the rubric's Low / Medium / High text.
 - **`ARL_Lookup`** — the source look-up table with the Start and Target cells marked and noted.
-- **`Call_Checks`** — only when a call profile is selected: each check, its result, and the quoted
-  requirement with its page.
 - **`References`**, **`Metadata`**.
 
 ## How to attach evidence in Excel

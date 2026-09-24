@@ -1,17 +1,10 @@
 /**
- * ARL rubric and call-profile data (ADR-0005): the transcription is checked against the source's
+ * ARL rubric data (ADR-0005): the transcription is checked against the source's
  * structure, and the loaders reject every malformed shape the scoring rules depend on.
  */
 import { describe, it, expect } from 'vitest';
-import {
-  ArlDataError,
-  dimensionsByArea,
-  guidance,
-  listCallProfiles,
-  loadArlFramework,
-  loadCallProfile,
-} from '@/domain/arl';
-import { RAW_ARL_FRAMEWORKS, RAW_CALL_PROFILES } from '@/data/frameworks/arl';
+import { ArlDataError, dimensionsByArea, guidance, loadArlFramework } from '@/domain/arl';
+import { RAW_ARL_FRAMEWORKS } from '@/data/frameworks/arl';
 import { SOURCES_BY_ID } from '@/data/sources';
 import { DEFAULT_ARL_FRAMEWORK } from '@/config/app.config';
 
@@ -207,54 +200,5 @@ describe('ARL rubric loader', () => {
       f.lookup.table[0][0] = 10;
     });
     expect(() => loadArlFramework(DEFAULT_ARL_FRAMEWORK, registry)).toThrow();
-  });
-});
-
-describe('call profiles', () => {
-  const rawProfile = RAW_CALL_PROFILES['doe-tcf-climr-fy2627'] as Record<string, any>;
-
-  it('loads the CLIMR FY26–27 profile and resolves every quoted requirement', () => {
-    const profile = loadCallProfile('doe-tcf-climr-fy2627');
-    expect(profile.reference).toBe('DE-LC-000L130');
-    expect(profile.topics.map((t) => t.id)).toEqual(['CMEI', 'CESER', 'HGEO', 'OE', 'NE']);
-    const ids = new Set(profile.requirements.map((r) => r.id));
-    for (const check of profile.checks) {
-      for (const ref of check.requirementIds)
-        expect(ids.has(ref), `${check.id} → ${ref}`).toBe(true);
-    }
-    for (const r of profile.requirements) {
-      expect(r.source.sourceId).toBe('doe-tcf-climr-fy2627');
-      expect(r.source.page).toBeTruthy();
-    }
-  });
-
-  it('quotes the title-page instructions word for word', () => {
-    const profile = loadCallProfile('doe-tcf-climr-fy2627');
-    const texts = profile.requirements.map((r) => r.text);
-    expect(texts).toContain('ARL Start (enter number between 1–9)');
-    expect(texts).toContain('ARL End (enter number between 2–9)');
-    expect(texts).toContain('TRL Start (enter number between 4–9)');
-    expect(texts).toContain('TRL End (enter number between 4–9)');
-  });
-
-  it('lists the registered profiles', () => {
-    expect(listCallProfiles().map((p) => p.id)).toEqual(['doe-tcf-climr-fy2627']);
-  });
-
-  it('rejects an unknown profile, a mismatched id, an unknown requirement or topic', () => {
-    expect(() => loadCallProfile('nope')).toThrow(ArlDataError);
-    expect(() => loadCallProfile('x', { x: rawProfile })).toThrow(/registered as "x"/);
-
-    const badRef = structuredClone(rawProfile);
-    badRef.checks[0].requirementIds = ['CLIMR-Q99'];
-    expect(() =>
-      loadCallProfile('doe-tcf-climr-fy2627', { 'doe-tcf-climr-fy2627': badRef }),
-    ).toThrow(/unknown requirement/);
-
-    const badTopic = structuredClone(rawProfile);
-    badTopic.checks[1].topics = ['XX'];
-    expect(() =>
-      loadCallProfile('doe-tcf-climr-fy2627', { 'doe-tcf-climr-fy2627': badTopic }),
-    ).toThrow(/unknown topic/);
   });
 });

@@ -36,13 +36,12 @@ an unconfirmed level is worth nothing to whoever reads it.
 ## Adoption readiness — ARL (side module)
 
 1. **Scope.** Name the project, then the technology scope, value chain scope, timeline and policy
-   environment the ratings assume. Optionally pick a funding-call profile — CLIMR FY26–27 — its
-   topic and your TRL End target.
+   environment the ratings assume.
 2. **Rate.** For each of the 17 dimensions pick Low, Medium or High against the rubric text, or N/A
    or Unsure, and write the rationale. Set an end-of-project target where the project will reduce a
    risk, and say how.
-3. **Result.** ARL Start and ARL End, the risk profile, the look-up cell, flags, and with a profile
-   the lab-call checks. Download the ARL workbook or the session JSON.
+3. **Result.** ARL Start and ARL End, the risk profile, the look-up cell and flags. Download the ARL
+   workbook or the session JSON.
 
 Resetting the Quick Estimate, or switching TRL framework, keeps the ARL ratings; _Reset ARL_ clears
 only them. See [Adoption readiness](/guide/arl) for the scoring.

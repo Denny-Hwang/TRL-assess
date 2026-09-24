@@ -126,33 +126,6 @@ describe('ARL flow', () => {
     expect(screen.getByText(ARL_LABEL)).toBeInTheDocument();
     expect(screen.getByRole('table', { name: /Current and target risk rating/ })).toBeVisible();
     expect(screen.queryAllByText('counted as High')).toHaveLength(0);
-    expect(screen.queryByTestId('title-page-block')).toBeNull();
-  });
-
-  it('runs the CLIMR checks with the TRL Start from the evidence assessment', () => {
-    const example = parseSession(FICTIONAL_EXAMPLE);
-    const data = ratedArl({
-      call: { profileId: 'doe-tcf-climr-fy2627', topicId: 'NE', trlEnd: 7 },
-    });
-    data.dimensions = data.dimensions.map((d) =>
-      d.dimensionId === 'ARL-D4'
-        ? {
-            ...d,
-            current: 'High' as const,
-            target: 'Medium' as const,
-            plannedAction: 'safety case',
-          }
-        : d,
-    );
-    useSession(setArl(example, data));
-    renderArl('/arl/result');
-    const block = screen.getByTestId('title-page-block');
-    expect(within(block).getByText('TRL 7')).toBeInTheDocument();
-    expect(within(block).getByText(/Evidence-backed self-assessment/)).toBeInTheDocument();
-    expect(screen.getByTestId('check-CLIMR-C7')).toHaveTextContent(/Warning/);
-    expect(screen.getByTestId('check-CLIMR-C7')).toHaveTextContent(/ARL-D4/);
-    expect(screen.getByTestId('check-CLIMR-C6')).toHaveTextContent(/Pass/);
-    expect(screen.getByTestId('check-CLIMR-C1')).toHaveTextContent(/p\. 12/);
   });
 
   it('marks conservative counts in both the current and the target column', () => {

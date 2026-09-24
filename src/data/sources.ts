@@ -49,17 +49,7 @@ export const SOURCES: SourceDoc[] = [
     quotable: true,
     note: 'The rubric, the look-up table and the readiness bands are transcribed verbatim for the ARL side module.',
   },
-  {
-    id: 'doe-tcf-climr-fy2627',
-    title:
-      'National Laboratory Call for Proposals — Core Laboratory Infrastructure for Market Readiness (CLIMR): Technology Specific Topics',
-    issuer: 'U.S. DOE, Office of Technology Commercialization — Technology Commercialization Fund',
-    version: 'DE-LC-000L130, Fiscal Years 2026 & 2027 (PDF created 2026-09-24)',
-    retrieved: '2026-09-24',
-    publicDomain: true,
-    quotable: true,
-    note: 'Only the sentences that set TRL and ARL requirements are quoted, each with its page.',
-  },
+
   {
     id: 'nrel-me-risk',
     title: 'Marine Energy Technology Development Risk Management Framework',

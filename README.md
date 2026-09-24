@@ -15,7 +15,7 @@ assessment** in which every claim is tied to a report, a test record, a pinned c
 export to Excel; the evidence-based one can be packaged as a `.zip` with the evidence files and a
 SHA-256 manifest. A separate **Adoption Readiness Level (ARL)** module rates the 17 adoption-risk
 dimensions of the DOE Adoption Readiness Assessment — what stands between a working technology and
-its use — and can check the numbers against the DOE TCF CLIMR lab call. Everything runs client-side:
+its use. Everything runs client-side:
 the app makes no network requests at runtime, and nothing you enter leaves your browser except in
 files you download.
 
@@ -53,9 +53,9 @@ This tool does three things about that:
   summary.
 - **Adoption readiness (ARL) side module** — the 17 dimensions of the DOE _Adoption Readiness
   Assessment_ (Version: April 2025) with the rubric text on every card, current and end-of-project
-  ratings, ARL Start and ARL End read from the source's own look-up table, and an optional
-  self-check against the DOE TCF CLIMR FY26–27 lab call. Scored apart from TRL; never combined.
-- **Excel export** — six sheets for Tier 1, nine for Tier 2, seven or eight for ARL, with data
+  ratings, and ARL Start and ARL End read from the source's own look-up table. Scored apart from
+  TRL; never combined.
+- **Excel export** — six sheets for Tier 1, nine for Tier 2, seven for ARL, with data
   validation, conditional formatting, working `HYPERLINK()` formulas and pre-formatted placeholder
   rows.
 - **Evidence package** — a `.zip` containing the workbook, the session JSON, the evidence files and a
@@ -104,8 +104,7 @@ High. See **Guide › [Adoption readiness](https://denny-hwang.github.io/TRL-ass
 | `dod-tra-2025`                   | Generic hardware, software and process    | Adapted from the DoD hardware table   | Verbatim DoD hardware, software and environment criteria |
 
 The ARL side module scores against `doe-otc-arl-2025` — the DOE Adoption Readiness Assessment's 17
-dimensions, rating text and look-up table, transcribed verbatim — and, optionally, the CLIMR call
-profile `doe-tcf-climr-fy2627`, whose checks quote the lab call's requirement sentences with pages.
+dimensions, rating text and look-up table, transcribed verbatim.
 See [ADR-0005](docs/adr/0005-arl-side-module.md).
 
 | Source id                     | Document                                                              | Held                                             | Quotable                                  |
@@ -114,7 +113,6 @@ See [ADR-0005](docs/adr/0005-arl-side-module.md).
 | `dod-tra-2025`                | DoD _Technology Readiness Assessment Guidebook_, Feb 2025             | Yes                                              | Yes (public domain)                       |
 | `dod-mrl-matrix-2018`         | DoD _Manufacturing Readiness Level Matrix_ V2018                      | Yes                                              | Reference only                            |
 | `doe-otc-arl-2025`            | DOE OTC _Adoption Readiness Assessment_, Version: April 2025          | Yes                                              | Yes (public domain)                       |
-| `doe-tcf-climr-fy2627`        | DOE TCF lab call DE-LC-000L130, _CLIMR: Technology Specific Topics_   | Yes                                              | Requirement sentences, with pages         |
 | `nrel-me-risk`                | NREL _Marine Energy Technology Development Risk Management Framework_ | No                                               | Basis of tailoring rationales only        |
 | `nrel-tpl`, `goos-foo`        | NREL TPL; GOOS Framework for Ocean Observing                          | No                                               | Reference only                            |
 | `iso-16290`                   | ISO 16290:2013                                                        | No                                               | **Clause references only — never quoted** |
@@ -179,12 +177,11 @@ See [SECURITY.md](SECURITY.md) and [docs/security-review.md](docs/security-revie
 | Sheet             | Contents                                                                                                                      |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `README`          | ARL label and disclaimer, how the ARL is calculated, provenance                                                               |
-| `Summary`         | ARL Start, ARL End (target), tallies per core risk area, flags; with a call profile, the four title-page numbers              |
+| `Summary`         | ARL Start, ARL End (target), tallies per core risk area, flags                                                                |
 | `Scope`           | Technology scope, value chain scope, timeline, policy environment                                                             |
 | `Risk_Assessment` | One row per dimension: current rating (validated), what it counted as and why, rationale, target, planned action, rubric text |
 | `ARL_Lookup`      | The source look-up table with the Start and Target cells marked                                                               |
-| `Call_Checks`     | Only with a call profile: each check, its result and the quoted requirement with its page                                     |
-| `References`      | The rubric and, with a profile, the lab call                                                                                  |
+| `References`      | The rubric                                                                                                                    |
 | `Metadata`        | Schema, app and rubric versions, the session's TRL framework, git SHA, timestamps                                             |
 
 **How the placeholders work.** Blank rows already carry the validation lists and the `Open` formula
@@ -268,7 +265,7 @@ src/
 ├── config/app.config.ts        # every tunable value — the single source of truth
 ├── data/
 │   ├── frameworks/<id>/        # framework.json, tier1.json, tier2.json, tier1-matrix.json
-│   ├── frameworks/arl/         # ARL rubric (doe-otc-arl-2025.json) and call-profiles/
+│   ├── frameworks/arl/         # ARL rubric (doe-otc-arl-2025.json)
 │   ├── examples/               # the fictional wave-buoy session
 │   └── sources.ts              # machine-readable mirror of docs/sources/SOURCES.md
 ├── domain/                     # pure TypeScript: schemas, scoring, session, hashing (no React)
@@ -279,7 +276,7 @@ src/
 ├── components/                 # shared UI
 └── content/guide/*.md          # every word of the in-app Guide
 scripts/                        # validate-criteria.ts, check-docs-links.ts
-tests/{unit,component,e2e}/     # 461 unit/component tests, 34 Playwright tests
+tests/{unit,component,e2e}/     # 427 unit/component tests, 34 Playwright tests
 docs/                           # BUILD_SPEC, PROGRESS, ADRs, SOURCES, screenshots
 ```
 
@@ -377,8 +374,7 @@ Specific limitations to be aware of:
 - Exported workbooks are static snapshots and cannot be re-imported; session JSON can.
 - The ARL module applies DOE's rubric to **your** ratings; DOE does not review or endorse the result.
   Counting Unsure, Not assessed and N/A-without-rationale as High risk is this tool's conservative
-  convention, not a rule of the source. The CLIMR checks read the lab call's words; they do not
-  decide eligibility.
+  convention, not a rule of the source.
 
 ## Citation
 

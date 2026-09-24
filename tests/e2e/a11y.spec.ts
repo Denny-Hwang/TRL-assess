@@ -38,7 +38,7 @@ async function seed(page: import('@playwright/test').Page) {
   await page.reload();
 }
 
-/** The example session plus ARL ratings of every kind and the CLIMR profile with the NE topic. */
+/** The example session plus ARL ratings of every kind. */
 async function seedWithArl(page: import('@playwright/test').Page) {
   const example = JSON.parse(
     await readFile(path.resolve('src/data/examples/fictional-wave-buoy.session.json'), 'utf8'),
@@ -59,7 +59,6 @@ async function seedWithArl(page: import('@playwright/test').Page) {
         rationale: i % 2 ? 'Example rationale.' : '',
         ...(i % 3 === 0 ? { target: 'Low', plannedAction: 'Example action' } : {}),
       })),
-      call: { profileId: 'doe-tcf-climr-fy2627', topicId: 'NE', trlEnd: 6 },
     },
   };
   await page.goto('./');

@@ -92,15 +92,13 @@ export function AboutPage() {
             </p>
             <p className="mt-1 text-slate-600">
               Adoption readiness, scored apart from TRL: the DOE rubric&apos;s 17 adoption-risk
-              dimensions and its look-up table, transcribed verbatim, with an optional check against
-              the DOE TCF CLIMR lab call.{' '}
+              dimensions and its look-up table, transcribed verbatim.{' '}
               <Link className="underline" to="/guide/arl">
                 How it works
               </Link>
             </p>
             <p className="mt-1 text-xs text-slate-500">
-              Sources: {DEFAULT_ARL_FRAMEWORK}, doe-tcf-climr-fy2627 (
-              {SOURCES_BY_ID[DEFAULT_ARL_FRAMEWORK]?.version})
+              Source: {DEFAULT_ARL_FRAMEWORK} ({SOURCES_BY_ID[DEFAULT_ARL_FRAMEWORK]?.version})
             </p>
           </li>
         </ul>

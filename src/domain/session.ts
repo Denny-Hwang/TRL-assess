@@ -5,7 +5,6 @@ import { APP_VERSION, GIT_SHA, SCHEMA_VERSION } from '@/config/app.config';
 import { nextCteId, nextEvidenceId } from './ids';
 import {
   assessmentSessionSchema,
-  type ArlCall,
   type ArlData,
   type ArlDimensionAssessment,
   type AssessmentSession,
@@ -245,15 +244,6 @@ export function setArlDimension(
         : [...session.arl.dimensions, merged],
     },
   });
-}
-
-export function setArlCall(
-  session: AssessmentSession,
-  call: ArlCall | undefined,
-): AssessmentSession {
-  if (!session.arl) throw new Error('The ARL scope must be set before choosing a call profile');
-  const { call: _previous, ...rest } = session.arl;
-  return touch({ ...session, arl: call ? { ...rest, call } : rest });
 }
 
 export function clearArl(session: AssessmentSession): AssessmentSession {

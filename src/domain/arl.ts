@@ -1,18 +1,15 @@
 /**
- * ARL side module: rubric loading, scoring and call-profile checks (BUILD_SPEC D-2.3, D-2.4;
+ * ARL side module: rubric loading and scoring (BUILD_SPEC D-2.3;
  * ADR-0005). Pure functions — every rule has a named test.
  *
  * The number comes from the DOE Adoption Readiness Assessment's own look-up table, unmodified.
  * The only rule this tool adds is conservative: a dimension that is Unsure, not assessed, or N/A
  * without a rationale counts as High risk, the ARL analogue of "Unsure never counts as Yes".
  */
-import { ARL_LABEL, ARL_TARGET_LABEL, TIER1_LABEL, TIER2_LABEL } from '@/config/app.config';
-import { RAW_ARL_FRAMEWORKS, RAW_CALL_PROFILES } from '@/data/frameworks/arl';
-import { SOURCES_BY_ID } from '@/data/sources';
-import type { ResolvedFramework } from './frameworks';
+import { ARL_LABEL, ARL_TARGET_LABEL } from '@/config/app.config';
+import { RAW_ARL_FRAMEWORKS } from '@/data/frameworks/arl';
 import {
   arlFrameworkSchema,
-  callProfileSchema,
   type ArlArea,
   type ArlData,
   type ArlDimension,
@@ -20,14 +17,7 @@ import {
   type ArlFramework,
   type ArlRating,
   type ArlRisk,
-  type AssessmentSession,
-  type CallCheck,
-  type CallProfile,
-  type CallRequirement,
-  type TrlLevel,
 } from './schemas';
-import { scoreTier1, type TrlScore } from './tier1';
-import { scoreTier2 } from './tier2';
 
 export class ArlDataError extends Error {
   constructor(
@@ -88,44 +78,6 @@ export function loadArlFramework(
     if (!covered.has(level)) throw new ArlDataError(`ARL ${level} is in no band`, id);
   }
   return framework;
-}
-
-/** Parses a funding-call profile and checks that every reference inside it resolves. */
-export function loadCallProfile(
-  id: string,
-  registry: Record<string, unknown> = RAW_CALL_PROFILES,
-): CallProfile {
-  const raw = registry[id];
-  if (raw === undefined) throw new ArlDataError(`Unknown call profile "${id}"`, id);
-  const profile = callProfileSchema.parse(raw);
-  if (profile.id !== id) {
-    throw new ArlDataError(
-      `Call profile declares id "${profile.id}" but is registered as "${id}"`,
-      id,
-    );
-  }
-  const requirementIds = new Set(profile.requirements.map((r) => r.id));
-  const topicIds = new Set(profile.topics.map((t) => t.id));
-  for (const check of profile.checks) {
-    for (const ref of check.requirementIds) {
-      if (!requirementIds.has(ref)) {
-        throw new ArlDataError(`${check.id} quotes unknown requirement "${ref}"`, id);
-      }
-    }
-    for (const topic of check.topics ?? []) {
-      if (!topicIds.has(topic))
-        throw new ArlDataError(`${check.id} names unknown topic "${topic}"`, id);
-    }
-  }
-  return profile;
-}
-
-export function listCallProfiles(
-  registry: Record<string, unknown> = RAW_CALL_PROFILES,
-): CallProfile[] {
-  return Object.keys(registry)
-    .map((id) => loadCallProfile(id, registry))
-    .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export function dimensionsByArea(
@@ -390,200 +342,4 @@ export function scoreArl(framework: ArlFramework, data: ArlData): ArlResult {
 /** True when the target asks for less risk than the current rating counts as. */
 export function isRiskReduction(current: CountedAs, target: CountedAs): boolean {
   return RISK_RANK[target] < RISK_RANK[current];
-}
-
-/* ------------------------------------------------------------------------------------------ */
-/* Call-profile checks (D-2.4)                                                                 */
-/* ------------------------------------------------------------------------------------------ */
-
-export interface TrlStart {
-  /** null when neither tier has produced a result yet. */
-  value: TrlScore | null;
-  basis: 'tier2' | 'tier1' | 'none';
-  label: string;
-}
-
-/**
- * R4-1 — the TRL Start a call profile tests: the Tier 2 system summary when it is computed,
- * otherwise the Tier 1 estimate, each shown with its own label.
- */
-export function trlStartFor(session: AssessmentSession, framework: ResolvedFramework): TrlStart {
-  if (session.tier2 && session.tier2.ctes.length > 0) {
-    const system = scoreTier2(framework, session.tier2).system;
-    if (system.computed && system.trl !== null) {
-      return { value: system.trl, basis: 'tier2', label: TIER2_LABEL };
-    }
-  }
-  if (session.tier1) {
-    const tier1 = scoreTier1(framework, session.tier1);
-    if (tier1.answeredLevels.length > 0) {
-      return { value: tier1.contiguousTrl, basis: 'tier1', label: TIER1_LABEL };
-    }
-  }
-  return { value: null, basis: 'none', label: 'No TRL result yet' };
-}
-
-export type CheckResult = 'Pass' | 'Fail' | 'Warning' | 'Info' | 'Not evaluated';
-
-export interface CallCheckOutcome {
-  check: CallCheck;
-  result: CheckResult;
-  /** The value that was tested, as text. */
-  value: string;
-  detail: string;
-  requirements: CallRequirement[];
-}
-
-export interface CallInputs {
-  arl: ArlResult;
-  trlStart: TrlStart;
-  trlEnd?: TrlLevel;
-  topicId?: string;
-  trlFramework: { id: string; name: string; sources: string[] };
-}
-
-function failure(check: CallCheck): CheckResult {
-  return check.severity === 'fail' ? 'Fail' : 'Warning';
-}
-
-function inRange(value: number, min: number, max: number): boolean {
-  return Number.isInteger(value) && value >= min && value <= max;
-}
-
-function trlText(value: TrlScore): string {
-  return value <= 0 ? '< TRL 1' : `TRL ${value}`;
-}
-
-/** Whether a check applies to the selected topic (R4-2). */
-export function checkApplies(check: CallCheck, topicId: string | undefined): boolean {
-  return !check.topics || (topicId !== undefined && check.topics.includes(topicId));
-}
-
-function evaluateCheck(
-  check: CallCheck,
-  framework: ArlFramework,
-  inputs: CallInputs,
-): Omit<CallCheckOutcome, 'check' | 'requirements'> {
-  const { arl, trlStart, trlEnd } = inputs;
-  switch (check.kind) {
-    case 'trl-start-min': {
-      if (trlStart.value === null) {
-        return {
-          result: 'Not evaluated',
-          value: '—',
-          detail: 'No TRL result yet — complete the Quick Estimate or the Evidence Assessment.',
-        };
-      }
-      const ok = trlStart.value >= check.min;
-      return {
-        result: ok ? 'Pass' : failure(check),
-        value: trlText(trlStart.value),
-        detail: `${trlText(trlStart.value)} from the ${
-          trlStart.basis === 'tier2' ? 'Evidence Assessment system summary' : 'Quick Estimate'
-        } (${trlStart.label}); the call asks for at least TRL ${check.min}.`,
-      };
-    }
-    case 'trl-end-range': {
-      if (trlEnd === undefined) {
-        return {
-          result: 'Not evaluated',
-          value: '—',
-          detail: 'Enter the TRL End target in the scope step.',
-        };
-      }
-      const ok = inRange(trlEnd, check.min, check.max);
-      return {
-        result: ok ? 'Pass' : failure(check),
-        value: `TRL ${trlEnd}`,
-        detail: `TRL End target ${trlEnd}; the title page takes a whole number from ${check.min} to ${check.max}.`,
-      };
-    }
-    case 'arl-start-range':
-    case 'arl-end-range': {
-      const profile = check.kind === 'arl-start-range' ? arl.start : arl.end;
-      const ok = inRange(profile.arl, check.min, check.max);
-      const name = check.kind === 'arl-start-range' ? 'ARL Start' : 'ARL End (target)';
-      return {
-        result: ok ? 'Pass' : failure(check),
-        value: `ARL ${profile.arl}`,
-        detail: `${name} is ${profile.arl}; the title page takes a whole number from ${check.min} to ${check.max}.`,
-      };
-    }
-    case 'arl-increase': {
-      const ok = arl.end.arl > arl.start.arl;
-      return {
-        result: ok ? 'Pass' : failure(check),
-        value: `ARL ${arl.start.arl} → ${arl.end.arl}`,
-        detail: ok
-          ? `The targets raise the ARL by ${arl.change}.`
-          : 'The targets do not raise the ARL. Lower the target risk of the dimensions the project will work on, and record the planned action.',
-      };
-    }
-    case 'no-high-risk-in-area': {
-      const area = framework.areas.find((a) => a.id === check.areaId);
-      const high = arl.start.outcomes.filter(
-        (o) => o.dimension.areaId === check.areaId && o.countedAs === 'High',
-      );
-      const areaName = area ? `${area.id}. ${area.name}` : check.areaId;
-      if (high.length === 0) {
-        return {
-          result: 'Pass',
-          value: 'none High',
-          detail: `No dimension in ${areaName} counts as High risk in the current ratings.`,
-        };
-      }
-      const list = high
-        .map((o) =>
-          o.conservativeReason ? `${o.dimension.id} (${o.conservativeReason})` : o.dimension.id,
-        )
-        .join('; ');
-      return {
-        result: failure(check),
-        value: `${high.length} High`,
-        detail: `Counted as High risk in ${areaName}: ${list}.`,
-      };
-    }
-    case 'trl-definitions':
-    default: {
-      const titles = inputs.trlFramework.sources
-        .map((id) => SOURCES_BY_ID[id]?.title ?? id)
-        .join('; ');
-      return {
-        result: 'Info',
-        value: inputs.trlFramework.id,
-        detail: `TRL Start comes from the “${inputs.trlFramework.name}” framework, which draws on: ${titles}. The call asks for TRLs defined by the DOE — confirm the definitions match before you submit.`,
-      };
-    }
-  }
-}
-
-/** D-2.4 — evaluates every check of a profile that applies to the selected topic. */
-export function evaluateCallProfile(
-  profile: CallProfile,
-  framework: ArlFramework,
-  inputs: CallInputs,
-): CallCheckOutcome[] {
-  const requirements = new Map(profile.requirements.map((r) => [r.id, r]));
-  return profile.checks
-    .filter((check) => checkApplies(check, inputs.topicId))
-    .map((check) => ({
-      check,
-      ...evaluateCheck(check, framework, inputs),
-      requirements: check.requirementIds
-        .map((id) => requirements.get(id))
-        .filter((r): r is CallRequirement => Boolean(r)),
-    }));
-}
-
-/** Counts per result, for summaries. */
-export function summarizeChecks(outcomes: CallCheckOutcome[]): Record<CheckResult, number> {
-  const counts: Record<CheckResult, number> = {
-    Pass: 0,
-    Fail: 0,
-    Warning: 0,
-    Info: 0,
-    'Not evaluated': 0,
-  };
-  for (const o of outcomes) counts[o.result] += 1;
-  return counts;
 }

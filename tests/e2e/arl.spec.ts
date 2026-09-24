@@ -1,9 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Adoption readiness (ARL) side module', () => {
-  test('rates the dimensions, reads ARL Start and End, runs the CLIMR checks and exports', async ({
-    page,
-  }) => {
+  test('rates the dimensions, reads ARL Start and End, and exports', async ({ page }) => {
     const offenders: string[] = [];
     page.on('request', (req) => {
       const url = req.url();
@@ -16,9 +14,6 @@ test.describe('Adoption readiness (ARL) side module', () => {
     await page.getByLabel('Technology name').fill('Example technology');
     await page.getByLabel('Assessor name').fill('Example Assessor');
     await page.getByLabel('Technology scope').fill('The device and its controller');
-    await page.getByLabel('Call profile').selectOption('doe-tcf-climr-fy2627');
-    await page.getByLabel('Topic').selectOption('NE');
-    await page.getByLabel(/TRL End/).selectOption('6');
     await page.getByRole('button', { name: 'Continue to the ratings' }).click();
 
     await expect(page.getByRole('heading', { name: /step 2 of 3/ })).toBeVisible();
@@ -45,11 +40,6 @@ test.describe('Adoption readiness (ARL) side module', () => {
     await page.getByRole('button', { name: 'See the result' }).click();
     await expect(page.getByTestId('arl-start')).toContainText('ARL 8');
     await expect(page.getByTestId('arl-end')).toContainText('ARL 9');
-    await expect(page.getByTestId('title-page-block')).toBeVisible();
-    await expect(page.getByTestId('check-CLIMR-C6')).toContainText('Pass');
-    // A fresh session has no TRL result yet, so the TRL Start check cannot run.
-    await expect(page.getByTestId('check-CLIMR-C1')).toContainText('Not evaluated');
-    await expect(page.getByTestId('check-CLIMR-C7')).toContainText('Pass');
     await expect(
       page.getByText('Adoption readiness self-assessment — not reviewed or endorsed by DOE'),
     ).toBeVisible();

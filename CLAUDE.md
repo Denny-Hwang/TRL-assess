@@ -10,8 +10,8 @@ Progress and phase status live in `docs/PROGRESS.md`.
 > direction; USER VERIFY U1–U3 (opening both workbooks in Microsoft Excel and following a relative
 > evidence link) were still unconfirmed at that point — see `docs/PROGRESS.md`.
 >
-> **Post-1.0 — ARL side module (2026-09-24).** Adoption Readiness Level assessment and the CLIMR
-> FY26–27 call profile, approved by the owner: ADR-0005 and BUILD_SPEC D-1.1, D-2.3, D-2.4, D-3.3.
+> **Post-1.0 — ARL side module (2026-09-24).** Adoption Readiness Level assessment, approved by the
+> owner: ADR-0005 and BUILD_SPEC D-1.1, D-2.3, D-3.3. The tool is generic: no funding-call checks.
 > The TRL rules (D-2.1, D-2.2) and TRL workbooks (D-3.1, D-3.2) are unchanged.
 
 Update this pointer at the end of every phase.

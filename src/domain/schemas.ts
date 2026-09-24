@@ -334,52 +334,6 @@ export const arlFrameworkSchema = z.object({
 });
 export type ArlFramework = z.infer<typeof arlFrameworkSchema>;
 
-export const callRequirementSchema = z.object({
-  id: z.string().min(1),
-  text: z.string().min(1),
-  source: sourceRefSchema,
-});
-export type CallRequirement = z.infer<typeof callRequirementSchema>;
-
-const callCheckBase = {
-  id: z.string().min(1),
-  title: z.string().min(1),
-  severity: z.enum(['fail', 'warning', 'info']),
-  requirementIds: z.array(z.string().min(1)).min(1),
-  /** Applies only when one of these call topics is selected. */
-  topics: z.array(z.string().min(1)).min(1).optional(),
-};
-const rangeFields = { min: z.number().int(), max: z.number().int() };
-
-export const callCheckSchema = z.discriminatedUnion('kind', [
-  z.object({ ...callCheckBase, kind: z.literal('trl-start-min'), min: z.number().int() }),
-  z.object({ ...callCheckBase, kind: z.literal('trl-end-range'), ...rangeFields }),
-  z.object({ ...callCheckBase, kind: z.literal('arl-start-range'), ...rangeFields }),
-  z.object({ ...callCheckBase, kind: z.literal('arl-end-range'), ...rangeFields }),
-  z.object({ ...callCheckBase, kind: z.literal('arl-increase') }),
-  z.object({
-    ...callCheckBase,
-    kind: z.literal('no-high-risk-in-area'),
-    areaId: z.string().regex(/^[A-Z]$/),
-  }),
-  z.object({ ...callCheckBase, kind: z.literal('trl-definitions') }),
-]);
-export type CallCheck = z.infer<typeof callCheckSchema>;
-
-export const callProfileSchema = z.object({
-  id: z.string().min(1),
-  name: z.string().min(1),
-  shortName: z.string().min(1),
-  reference: z.string().min(1),
-  sourceId: z.string().min(1),
-  description: z.string().min(1),
-  note: z.string().min(1),
-  topics: z.array(z.object({ id: z.string().min(1), name: z.string().min(1) })),
-  requirements: z.array(callRequirementSchema).min(1),
-  checks: z.array(callCheckSchema).min(1),
-});
-export type CallProfile = z.infer<typeof callProfileSchema>;
-
 export const arlDimensionAssessmentSchema = z.object({
   dimensionId: z.string().min(1),
   current: arlRatingSchema,
@@ -403,19 +357,11 @@ export const arlContextSchema = z.object({
 });
 export type ArlContext = z.infer<typeof arlContextSchema>;
 
-export const arlCallSchema = z.object({
-  profileId: z.string().min(1),
-  topicId: z.string().optional(),
-  trlEnd: trlLevelSchema.optional(),
-});
-export type ArlCall = z.infer<typeof arlCallSchema>;
-
 export const arlDataSchema = z.object({
   frameworkId: z.string().min(1),
   frameworkVersion: z.string().min(1),
   context: arlContextSchema,
   dimensions: z.array(arlDimensionAssessmentSchema),
-  call: arlCallSchema.optional(),
 });
 export type ArlData = z.infer<typeof arlDataSchema>;
 
