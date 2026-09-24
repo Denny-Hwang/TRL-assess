@@ -21,7 +21,7 @@
 | 8   | Actual system completed and qualified through test and demonstration (ترجمة: اكتمل النظام الفعلي وأُهِّل عبر الاختبار والعرض)                        | الظروف المتوقعة |
 | 9   | Actual system proven through successful mission operations (ترجمة: أُثبت النظام الفعلي عبر عمليات مهمة ناجحة)                                        | ظروف المهمة     |
 
-يتحدد المستوى بـ_ما_ اختُبر و_أين_.
+يتحدد المستوى بـ*ما* اختُبر و*أين*.
 
 ## مستوى TRL يحتاج إلى إطاره
 
