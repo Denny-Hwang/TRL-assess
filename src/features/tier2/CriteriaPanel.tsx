@@ -1,12 +1,14 @@
 import { useMemo, useState } from 'react';
 import { useSessionStore } from '@/state/sessionStore';
 import { evaluateCte, type LevelOutcome } from '@/domain/tier2';
-import { formatTrl } from '@/domain/tier1';
 import { Callout, MandatoryBadge, OriginBadge, SourceNote } from '@/components/ui';
 import { TrlLadder } from '@/components/viz/TrlLadder';
 import { LevelBar, type LevelCounts } from '@/components/viz/LevelBar';
 import { Meter } from '@/components/viz/Meter';
 import { StatusGlyph } from '@/components/viz/StatusGlyph';
+import { criterionWarningText, statusText, trlText } from '@/i18n/domainText';
+import type { MessageKey } from '@/i18n/en';
+import { useT } from '@/i18n/store';
 import { CRITERION_STATUSES, type CriterionStatus, type Cte } from '@/domain/schemas';
 
 interface Props {
@@ -15,6 +17,8 @@ interface Props {
 }
 
 export function CriteriaPanel({ cte, onOpenEvidence }: Props) {
+  const tr = useT();
+  const { t, lang } = tr;
   const framework = useSessionStore((s) => s.framework);
   const session = useSessionStore((s) => s.session);
   const setAssessment = useSessionStore((s) => s.setAssessment);
@@ -33,21 +37,26 @@ export function CriteriaPanel({ cte, onOpenEvidence }: Props) {
     tier2?.assessments.find((a) => a.cteId === cte.id && a.criterionId === criterionId);
 
   return (
-    <section aria-label={`Criteria for ${cte.name}`} className="space-y-3">
+    <section aria-label={t('tier2.criteria.aria', { name: cte.name })} className="space-y-3">
       <header className="card">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h2 className="text-lg font-semibold">
             <span className="font-mono text-xs text-slate-500">{cte.id}</span> {cte.name}
           </h2>
           <p className="text-sm">
-            Assessed: <strong>{formatTrl(result.trl)}</strong>
+            {t('tier2.criteria.assessed')} <strong>{trlText(tr, result.trl)}</strong>
             {cte.targetTrl ? (
-              <span className="text-slate-500"> · target TRL {cte.targetTrl}</span>
+              <span className="text-slate-500">
+                {' · '}
+                {t('tier2.cte.target', { level: cte.targetTrl })}
+              </span>
             ) : null}
           </p>
         </div>
         {cte.whyCritical ? (
-          <p className="mt-1 text-sm text-slate-600">Why critical: {cte.whyCritical}</p>
+          <p className="mt-1 text-sm text-slate-600">
+            {t('tier2.criteria.why', { text: cte.whyCritical })}
+          </p>
         ) : null}
         <div className="mt-3">
           <TrlLadder
@@ -56,27 +65,33 @@ export function CriteriaPanel({ cte, onOpenEvidence }: Props) {
             onSelect={(level) =>
               setOpen((prev) => (prev.includes(level) ? prev : [...prev, level]))
             }
-            label={`${cte.name}: achieved TRL ${result.trl} of 9. Select a level to open its criteria.`}
+            label={t('tier2.criteria.ladder', { name: cte.name, trl: result.trl })}
           />
         </div>
         <dl className="mt-2 flex flex-wrap items-center gap-x-6 gap-y-1 text-xs text-slate-600">
           <div className="flex items-center gap-2">
-            <dt>TRL {result.nextLevel ?? '—'} complete</dt>
+            <dt>{t('tier2.criteria.levelComplete', { level: result.nextLevel ?? '—' })}</dt>
             <dd>
               <Meter
                 value={result.nextLevelCompletenessPct}
-                label={`TRL ${result.nextLevel ?? ''} completeness`}
+                label={t('tier2.criteria.levelCompleteness', { level: result.nextLevel ?? '' })}
               />
             </dd>
           </div>
           <div className="flex items-center gap-2">
-            <dt>Evidence coverage</dt>
+            <dt>{t('tier2.evidenceCoverage')}</dt>
             <dd>
-              <Meter value={result.evidenceCoveragePct} label="Evidence coverage" tone="good" />
+              <Meter
+                value={result.evidenceCoveragePct}
+                label={t('tier2.evidenceCoverage')}
+                tone="good"
+              />
             </dd>
           </div>
         </dl>
       </header>
+
+      {lang !== 'en' ? <p className="text-xs text-slate-500">{t('sourceText.note')}</p> : null}
 
       {result.levels.map((level) => (
         <LevelAccordion
@@ -105,18 +120,22 @@ export function CriteriaPanel({ cte, onOpenEvidence }: Props) {
                         size={14}
                       />
                       <span className="text-xs text-slate-600">
-                        {outcome.satisfied ? 'satisfied' : outcome.status.toLowerCase()}
+                        {t(
+                          `tier2.criteria.inline.${outcome.satisfied ? 'Satisfied' : outcome.status}` as MessageKey,
+                        )}
                       </span>
                     </span>
                   </div>
                   <p className="mt-1 text-sm">{outcome.criterion.text}</p>
                   {outcome.criterion.guidance ? (
                     <details className="mt-1 text-xs text-slate-600">
-                      <summary className="cursor-pointer text-brand-700">Guidance</summary>
+                      <summary className="cursor-pointer text-brand-700">
+                        {t('tier2.criteria.guidance')}
+                      </summary>
                       <p className="mt-1">{outcome.criterion.guidance}</p>
                       {outcome.criterion.rationale ? (
                         <p className="mt-1">
-                          <strong>Rationale for this tailored item:</strong>{' '}
+                          <strong>{t('tier2.criteria.rationale')}</strong>{' '}
                           {outcome.criterion.rationale}
                         </p>
                       ) : null}
@@ -128,10 +147,12 @@ export function CriteriaPanel({ cte, onOpenEvidence }: Props) {
 
                   <div className="mt-2 grid gap-2 sm:grid-cols-[12rem_1fr]">
                     <label className="text-xs">
-                      <span className="mb-1 block font-medium text-slate-600">Status</span>
+                      <span className="mb-1 block font-medium text-slate-600">
+                        {t('tier2.criteria.status')}
+                      </span>
                       <select
                         className="input"
-                        aria-label={`Status for ${outcome.criterion.id}`}
+                        aria-label={t('tier2.criteria.statusAria', { id: outcome.criterion.id })}
                         value={status}
                         onChange={(e) =>
                           setAssessment({
@@ -147,7 +168,7 @@ export function CriteriaPanel({ cte, onOpenEvidence }: Props) {
                       >
                         {CRITERION_STATUSES.map((s) => (
                           <option key={s} value={s}>
-                            {s}
+                            {statusText(tr, s)}
                           </option>
                         ))}
                       </select>
@@ -157,11 +178,13 @@ export function CriteriaPanel({ cte, onOpenEvidence }: Props) {
                       {status === 'N/A' ? (
                         <label className="block text-xs">
                           <span className="mb-1 block font-medium text-slate-600">
-                            Justification (required for N/A)
+                            {t('tier2.criteria.justification')}
                           </span>
                           <input
                             className="input"
-                            aria-label={`Justification for ${outcome.criterion.id}`}
+                            aria-label={t('tier2.criteria.justificationAria', {
+                              id: outcome.criterion.id,
+                            })}
                             value={assessment?.justification ?? ''}
                             onChange={(e) =>
                               setAssessment({
@@ -177,10 +200,12 @@ export function CriteriaPanel({ cte, onOpenEvidence }: Props) {
                       ) : null}
 
                       <label className="block text-xs">
-                        <span className="mb-1 block font-medium text-slate-600">Assessor note</span>
+                        <span className="mb-1 block font-medium text-slate-600">
+                          {t('tier2.criteria.note')}
+                        </span>
                         <input
                           className="input"
-                          aria-label={`Note for ${outcome.criterion.id}`}
+                          aria-label={t('tier2.criteria.noteAria', { id: outcome.criterion.id })}
                           value={assessment?.note ?? ''}
                           onChange={(e) =>
                             setAssessment({
@@ -197,7 +222,9 @@ export function CriteriaPanel({ cte, onOpenEvidence }: Props) {
                       </label>
 
                       <div className="flex flex-wrap items-center gap-1 text-xs">
-                        <span className="font-medium text-slate-600">Evidence:</span>
+                        <span className="font-medium text-slate-600">
+                          {t('tier2.criteria.evidence')}
+                        </span>
                         {outcome.evidenceIds.length ? (
                           outcome.evidenceIds.map((id) => (
                             <span
@@ -208,14 +235,14 @@ export function CriteriaPanel({ cte, onOpenEvidence }: Props) {
                             </span>
                           ))
                         ) : (
-                          <span className="text-slate-500">none linked</span>
+                          <span className="text-slate-500">{t('tier2.criteria.noEvidence')}</span>
                         )}
                         <button
                           type="button"
                           className="underline"
                           onClick={() => onOpenEvidence(outcome.criterion.id)}
                         >
-                          Manage
+                          {t('tier2.criteria.manage')}
                         </button>
                       </div>
                     </div>
@@ -223,15 +250,13 @@ export function CriteriaPanel({ cte, onOpenEvidence }: Props) {
 
                   {needsJustification ? (
                     <p className="mt-2">
-                      <Callout tone="warning">
-                        “N/A” needs a justification before it counts as satisfied.
-                      </Callout>
+                      <Callout tone="warning">{t('tier2.criteria.naWarning')}</Callout>
                     </p>
                   ) : null}
                   {outcome.warning && !needsJustification ? (
                     <p className="mt-2">
                       <Callout tone={outcome.missingEvidence ? 'danger' : 'warning'}>
-                        {outcome.warning}
+                        {criterionWarningText(tr, outcome)}
                       </Callout>
                     </p>
                   ) : null}
@@ -240,8 +265,9 @@ export function CriteriaPanel({ cte, onOpenEvidence }: Props) {
             })}
             {level.applicable.length === 0 ? (
               <li className="py-3 text-sm text-slate-500">
-                No criteria in this framework apply to a CTE of kind “{cte.kind ?? 'unspecified'}”
-                at this level.
+                {t('tier2.criteria.noneApply', {
+                  kind: cte.kind ? t(`kind.${cte.kind}` as MessageKey) : t('tier2.cte.unspecified'),
+                })}
               </li>
             ) : null}
           </ul>
@@ -274,16 +300,18 @@ function LevelAccordion({
   onToggle: () => void;
   children: React.ReactNode;
 }) {
+  const tr = useT();
+  const { t } = tr;
   return (
     <div className="card p-0">
       <h3>
         <button
           type="button"
-          className="flex w-full flex-wrap items-center gap-2 p-3 text-left"
+          className="flex w-full flex-wrap items-center gap-2 p-3 text-start"
           aria-expanded={expanded}
           onClick={onToggle}
         >
-          <span className="text-sm font-semibold">TRL {level.level}</span>
+          <span className="text-sm font-semibold">{trlText(tr, level.level)}</span>
           <span
             className={`badge ${
               level.achieved
@@ -291,22 +319,24 @@ function LevelAccordion({
                 : 'border-slate-300 bg-slate-50 text-slate-600'
             }`}
           >
-            {level.achieved ? 'achieved' : 'not achieved'}
+            {level.achieved
+              ? t('tier2.criteria.level.achieved')
+              : t('tier2.criteria.level.notAchieved')}
           </span>
           {level.locked ? (
             <span
               className="badge border-amber-300 bg-amber-50 text-amber-800"
-              title="A lower level is not achieved, so this level cannot count yet."
+              title={t('tier2.criteria.level.lockedTitle')}
             >
-              locked — lower level not achieved
+              {t('tier2.criteria.level.locked')}
             </span>
           ) : null}
           {level.flag ? (
             <span className="badge border-violet-300 bg-violet-50 text-violet-800">
-              {level.flag}
+              {t('tier2.noMandatory')}
             </span>
           ) : null}
-          <span className="ml-auto">
+          <span className="ms-auto">
             <LevelBar counts={countOutcomes(level)} />
           </span>
           <span aria-hidden="true" className="text-slate-400">

@@ -11,24 +11,23 @@ export interface LevelCounts {
   notAssessed: number;
 }
 
-const ORDER: Array<{ key: keyof LevelCounts; fill: string; kind: GlyphKind; label: MessageKey }> =
-  [
-    { key: 'satisfied', fill: VIZ.status.good, kind: 'Satisfied', label: 'tier2.levelBar.satisfied' },
-    {
-      key: 'partial',
-      fill: VIZ.status.warning,
-      kind: 'Partially met',
-      label: 'tier2.levelBar.partial',
-    },
-    { key: 'notMet', fill: VIZ.status.critical, kind: 'Not met', label: 'tier2.levelBar.notMet' },
-    { key: 'na', fill: VIZ.neutral.na, kind: 'N/A', label: 'tier2.levelBar.na' },
-    {
-      key: 'notAssessed',
-      fill: VIZ.neutral.empty,
-      kind: 'Not assessed',
-      label: 'tier2.levelBar.notAssessed',
-    },
-  ];
+const ORDER: Array<{ key: keyof LevelCounts; fill: string; kind: GlyphKind; label: MessageKey }> = [
+  { key: 'satisfied', fill: VIZ.status.good, kind: 'Satisfied', label: 'tier2.levelBar.satisfied' },
+  {
+    key: 'partial',
+    fill: VIZ.status.warning,
+    kind: 'Partially met',
+    label: 'tier2.levelBar.partial',
+  },
+  { key: 'notMet', fill: VIZ.status.critical, kind: 'Not met', label: 'tier2.levelBar.notMet' },
+  { key: 'na', fill: VIZ.neutral.na, kind: 'N/A', label: 'tier2.levelBar.na' },
+  {
+    key: 'notAssessed',
+    fill: VIZ.neutral.empty,
+    kind: 'Not assessed',
+    label: 'tier2.levelBar.notAssessed',
+  },
+];
 
 /**
  * One bar per TRL level: how its criteria stand. Segments carry a 2px surface gap so adjacent

@@ -191,9 +191,7 @@ export function AssessResult() {
       <section className="card">
         <h2 className="text-lg font-semibold">{t('tier2.result.gapsHeading')}</h2>
         {result.ctes.every((c) => c.gaps.length === 0) ? (
-          <p className="mt-2 text-sm text-emerald-800">
-            {t('tier2.result.noGaps')}
-          </p>
+          <p className="mt-2 text-sm text-emerald-800">{t('tier2.result.noGaps')}</p>
         ) : (
           result.ctes
             .filter((c) => c.gaps.length)

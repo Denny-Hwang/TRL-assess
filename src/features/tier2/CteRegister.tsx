@@ -199,7 +199,11 @@ export function CteRegister({ selectedId, onSelect }: Props) {
       </ul>
 
       <form onSubmit={submit} noValidate className="card space-y-3">
-        <h3 className="text-sm font-semibold">{editingId ? t('tier2.cte.form.editTitle', { id: editingId }) : t('tier2.cte.form.addTitle')}</h3>
+        <h3 className="text-sm font-semibold">
+          {editingId
+            ? t('tier2.cte.form.editTitle', { id: editingId })
+            : t('tier2.cte.form.addTitle')}
+        </h3>
         <Field label={t('tier2.cte.form.name')} htmlFor="cte-name" required>
           <input
             id="cte-name"
@@ -217,11 +221,7 @@ export function CteRegister({ selectedId, onSelect }: Props) {
             onChange={(e) => setDraft({ ...draft, description: e.target.value })}
           />
         </Field>
-        <Field
-          label={t('tier2.cte.form.why')}
-          htmlFor="cte-why"
-          hint={t('tier2.cte.form.whyHint')}
-        >
+        <Field label={t('tier2.cte.form.why')} htmlFor="cte-why" hint={t('tier2.cte.form.whyHint')}>
           <textarea
             id="cte-why"
             className="input"
