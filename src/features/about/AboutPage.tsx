@@ -153,7 +153,6 @@ export function AboutPage() {
           </li>
           <li>{t('about.disclaimer.matrix')}</li>
           <li>{t('about.disclaimer.system')}</li>
-          <li>{t('about.disclaimer.unverified')}</li>
         </ul>
       </section>
     </div>

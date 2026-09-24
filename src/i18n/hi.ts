@@ -142,11 +142,8 @@ export const hi: Messages = {
   'home.flow.export.detail':
     'Excel वर्कबुक, या साक्ष्य फ़ाइलों और SHA-256 मैनिफ़ेस्ट के साथ एक zip।',
   'home.tier1.heading': 'टियर 1 — त्वरित अनुमान',
-  'home.tier1.body': 'नौ प्रश्नों के उत्तर दें; तर्क सहित एक TRL प्राप्त करें।',
   'home.tier1.start': 'त्वरित अनुमान शुरू करें',
   'home.tier2.heading': 'टियर 2 — साक्ष्य-आधारित आकलन',
-  'home.tier2.body':
-    'प्रति-तत्व मानदंड, प्रत्येक किसी दस्तावेज़, परीक्षण रिकॉर्ड या पिन किए गए कमिट से समर्थित।',
   'home.tier2.start': 'साक्ष्य आकलन शुरू करें',
   'home.arl.heading': 'सहायक मॉड्यूल — अंगीकरण तत्परता स्तर (ARL)',
   'home.arl.body':
@@ -187,15 +184,11 @@ export const hi: Messages = {
     'बिल्ड × वातावरण मैट्रिक्स इस टूल के लिए बनाई गई एक अनुमानमूलक सहायता है, कोई मानक नहीं।',
   'about.disclaimer.system':
     'प्रणाली सारांश महत्वपूर्ण CTE में न्यूनतम है — रिपोर्टिंग की एक रूढ़िवादी परिपाटी, कोई अनिवार्य सूत्र नहीं।',
-  'about.disclaimer.unverified':
-    'आपके द्वारा दर्ज की गई किसी भी बात का टूल द्वारा सत्यापन नहीं किया जाता।',
   'tier1.reset.button': 'रीसेट करें',
   'tier1.reset.confirm': 'यह आकलन हटा दें?',
   'tier1.reset.yes': 'हाँ, रीसेट करें',
   'tier1.reset.cancel': 'रद्द करें',
   'tier1.context.title': 'त्वरित अनुमान — चरण 2 में से 1: संदर्भ',
-  'tier1.context.lead':
-    'जिसका आकलन किया जा रहा है, उसके बारे में कुछ पंक्तियाँ। यहाँ से कुछ भी आपके ब्राउज़र से बाहर नहीं जाता।',
   'tier1.context.framework': 'फ़्रेमवर्क',
   'tier1.context.projectName': 'परियोजना का नाम',
   'tier1.context.technologyName': 'प्रौद्योगिकी का नाम',
@@ -207,7 +200,6 @@ export const hi: Messages = {
   'tier1.context.testWhat': 'क्या परीक्षण किया गया',
   'tier1.context.testWhere': 'कहाँ',
   'tier1.context.testWhen': 'कब (माह/वर्ष)',
-  'tier1.context.testWhenHint': 'उदाहरण के लिए 2026-04।',
   'tier1.context.testWhenPlaceholder': 'YYYY-MM',
   'tier1.context.crossCheckHeading': 'प्रति-जाँच इनपुट',
   'tier1.context.environment': 'प्राप्त वातावरण',
@@ -222,8 +214,7 @@ export const hi: Messages = {
   'tier1.q.title': 'त्वरित अनुमान — चरण 2 में से 2: स्क्रीनिंग प्रश्न',
   'tier1.q.lead':
     'TRL 9 से नीचे की ओर बढ़ें। वास्तव में जो किया गया है, उसके आधार पर पूरी प्रौद्योगिकी के लिए उत्तर दें।',
-  'tier1.q.progress.before': '{total} में से {answered} उत्तरित · TRL 1 से लगातार ',
-  'tier1.q.progress.after': ' उत्तरों का अटूट क्रम आपका अनुमान है',
+  'tier1.q.progress': '{total} में से {answered} उत्तरित',
   'tier1.q.counter': 'प्रश्न {n} / {total}',
   'tier1.q.helpSummary': 'इस स्तर का क्या अर्थ है',
   'tier1.q.answerGroup': 'उत्तर',
@@ -233,9 +224,6 @@ export const hi: Messages = {
   'tier1.q.next': 'अगला →',
   'tier1.q.keyboard': 'कीबोर्ड: उत्तर देने के लिए Y / N / U, आगे-पीछे जाने के लिए तीर कुंजियाँ।',
   'tier1.q.seeEstimate': 'अनुमान देखें',
-  'tier1.q.guide.before': 'किसी स्तर का अर्थ स्पष्ट नहीं? ',
-  'tier1.q.guide.link': 'मार्गदर्शिका',
-  'tier1.q.guide.after': ' देखें।',
   'tier1.result.title': 'त्वरित अनुमान — परिणाम',
   'tier1.result.marker.estimate': 'अनुमान',
   'tier1.result.marker.claimed': 'दावा किया गया',
@@ -301,8 +289,6 @@ export const hi: Messages = {
   'tier2.common.cancel': 'रद्द करें',
   'tier2.evidenceCoverage': 'साक्ष्य कवरेज',
   'tier2.page.title': 'साक्ष्य-आधारित आकलन',
-  'tier2.page.lead':
-    'प्रणाली को महत्वपूर्ण प्रौद्योगिकी तत्वों में विभाजित करें, प्रत्येक TRL पर मानदंडों का आकलन करें, और हर दावे के पीछे का साक्ष्य लिंक करें।',
   'tier2.page.evidenceLink': 'साक्ष्य पुस्तकालय',
   'tier2.page.resultsLink': 'परिणाम',
   'tier2.page.empty.title': 'अभी तक कुछ भी आकलित नहीं',
@@ -313,8 +299,6 @@ export const hi: Messages = {
   'tier2.page.empty.after': 'ताकि एक पूर्ण आकलन देख सकें।',
   'tier2.page.selectCte': 'मानदंडों का आकलन करने के लिए कोई CTE चुनें या जोड़ें।',
   'tier2.evidencePage.title': 'साक्ष्य पुस्तकालय',
-  'tier2.evidencePage.lead':
-    'वह सब कुछ जो आपने प्रमाण के रूप में दर्ज किया है, और प्रत्येक मद का उपयोग किसके लिए होता है।',
   'tier2.evidencePage.back': 'आकलन पर वापस जाएँ',
   'tier2.export.heading': 'निर्यात',
   'tier2.export.buildingWorkbook': 'वर्कबुक बनाई जा रही है…',
@@ -332,7 +316,6 @@ export const hi: Messages = {
   'tier2.result.untitled': 'शीर्षकहीन आकलन',
   'tier2.result.stat.system': 'प्रणाली सारांश',
   'tier2.result.stat.limiting': 'सीमित करने वाले CTE',
-  'tier2.result.stat.limitingHint': 'वे महत्वपूर्ण CTE जो प्रणाली सारांश को नीचे रख रहे हैं।',
   'tier2.result.stat.tier1': 'टियर 1 से तुलना',
   'tier2.result.stat.noTier1': 'कोई त्वरित अनुमान नहीं',
   'tier2.result.stat.tier1Hint': 'त्वरित अनुमान और इस आकलन के बीच का अंतर।',
@@ -515,8 +498,6 @@ export const hi: Messages = {
   'arl.unavailable.body':
     'इस सत्र की रेटिंग ARL रूब्रिक “{id}” के आधार पर की गई थी, जो ऐप के इस संस्करण में शामिल नहीं है ({detail})। वर्तमान रूब्रिक के साथ फिर से शुरू करने के लिए ARL रेटिंग रीसेट करें।',
   'arl.scope.title': 'अंगीकरण तत्परता — चरण 3 में से 1: दायरा',
-  'arl.scope.lead':
-    'किसका आकलन किया जा रहा है, और किस बाज़ार के संदर्भ में। यहाँ से कुछ भी आपके ब्राउज़र से बाहर नहीं जाता।',
   'arl.scope.versionSource': 'संस्करण: {version} · स्रोत: {source}',
   'arl.scope.projectName': 'परियोजना का नाम',
   'arl.scope.technologyName': 'प्रौद्योगिकी का नाम',
@@ -562,7 +543,6 @@ export const hi: Messages = {
   'arl.result.startHint': '{band} — {medium} मध्यम, {high} उच्च गिने गए।',
   'arl.result.endHint': '{band} — {target}।',
   'arl.result.change': 'परियोजना के दौरान परिवर्तन',
-  'arl.result.changeHint': 'ARL अंत घटा ARL प्रारंभ।',
   'arl.result.scopeMissing.before':
     'प्रौद्योगिकी का दायरा या मूल्यांकन की समय-सीमा रिक्त है। स्रोत रेटिंग से पहले दोनों को परिभाषित करने को कहता है — एक ही प्रौद्योगिकी किसी अन्य दायरे में भिन्न रेटिंग पा सकती है।',
   'arl.result.scopeMissing.link': 'दायरा पूरा करें',
@@ -585,8 +565,6 @@ export const hi: Messages = {
     'स्रोत मध्यम- और उच्च-जोखिम वाले आयामों की गिनती करता है और अपनी लुक-अप तालिका से ARL पढ़ता है। यह टूल तालिका का ठीक वैसे ही उपयोग करता है जैसी वह मुद्रित है।',
   'arl.result.mark.start': 'प्रारंभ',
   'arl.result.mark.target': 'लक्ष्य',
-  'arl.result.modify':
-    'यह टूल ऐसा नहीं करता: हर परिणाम मुद्रित तालिका का उपयोग करता है, ताकि परिणाम तुलनीय बने रहें।',
   'arl.result.takeAway': 'साथ ले जाएँ',
   'arl.result.building': 'वर्कबुक बनाई जा रही है…',
   'arl.result.downloadExcel': 'Excel डाउनलोड करें',

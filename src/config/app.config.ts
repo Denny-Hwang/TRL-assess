@@ -1,7 +1,6 @@
 /**
  * Central configuration — the single source of truth for every tunable value.
- * Mirrors PROJECT CONFIG in docs/spec/BUILD_SPEC.md. Do not hard-code these
- * values anywhere else in the codebase.
+ * Do not hard-code these values anywhere else in the codebase.
  */
 
 export const APP_NAME = 'TRL Assess' as const;
@@ -14,10 +13,10 @@ export const PAGES_BASE_PATH = `/${REPO_NAME}/` as const;
 export const LICENSE = 'MIT' as const;
 export const MAINTAINER_CONTACT = ISSUES_URL;
 
-export const DEFAULT_FRAMEWORK = 'marine-energy-eere' as const;
+export const DEFAULT_FRAMEWORK = 'dod-tra-2025' as const;
 export const UI_LANGUAGE = 'en' as const;
 
-/** Limits for evidence handling (see BUILD_SPEC D-4). */
+/** Limits for evidence handling. */
 export const MAX_EVIDENCE_FILE_MB = 50;
 export const MAX_PACKAGE_TOTAL_MB = 250;
 export const MAX_EVIDENCE_FILE_BYTES = MAX_EVIDENCE_FILE_MB * 1024 * 1024;
@@ -43,7 +42,7 @@ export const GIT_SHA: string = typeof __GIT_SHA__ === 'string' ? __GIT_SHA__ : '
 export const BUILD_TIME: string =
   typeof __BUILD_TIME__ === 'string' ? __BUILD_TIME__ : new Date(0).toISOString();
 
-/** Honest-labelling strings (BUILD_SPEC Part A, principle 4). */
+/** Honest-labelling strings. */
 export const TIER1_LABEL = 'Estimate — self-reported, no evidence' as const;
 export const TIER2_LABEL =
   'Evidence-backed self-assessment — not an independent Technology Readiness Assessment' as const;
@@ -55,7 +54,7 @@ export const DISCLAIMER = [
   'Assessment criteria differ between agencies and programmes — check the criteria and sources before using a result in any formal submission.',
 ].join(' ');
 
-/** ARL side module (ADR-0005): the rubric used, and its own honest labels. */
+/** ARL side module: the rubric used, and its own honest labels. */
 export const DEFAULT_ARL_FRAMEWORK = 'doe-otc-arl-2025' as const;
 export const ARL_LABEL =
   'Adoption readiness self-assessment — not reviewed or endorsed by DOE' as const;

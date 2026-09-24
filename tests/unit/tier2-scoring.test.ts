@@ -1,5 +1,5 @@
 /**
- * BUILD_SPEC D-2.2 — every rule has a named test.
+ * Tier 2 scoring — every rule has a named test.
  */
 import { describe, it, expect } from 'vitest';
 import type { ResolvedFramework } from '@/domain/frameworks';

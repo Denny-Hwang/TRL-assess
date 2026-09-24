@@ -1,5 +1,5 @@
 /**
- * Runtime schemas and types for TRL Assess (BUILD_SPEC D-1).
+ * Runtime schemas and types for TRL Assess.
  * Pure TypeScript — no React, no browser APIs.
  */
 import { z } from 'zod';
@@ -255,7 +255,7 @@ export const tier2DataSchema = z.object({
 export type Tier2Data = z.infer<typeof tier2DataSchema>;
 
 /*
- * ARL side module (BUILD_SPEC D-1.1, ADR-0005). The rubric is data transcribed from the DOE
+ * ARL side module. The rubric is data transcribed from the DOE
  * Adoption Readiness Assessment; the session only records the assessor's ratings.
  */
 
@@ -379,7 +379,7 @@ export const assessmentSessionSchema = z.object({
 });
 export type AssessmentSession = z.infer<typeof assessmentSessionSchema>;
 
-/** Tier 1 heuristic matrix (BUILD_SPEC D-2.1) — a tailored aid, not a standard. */
+/** Tier 1 heuristic matrix — a tailored aid, not a standard. */
 export const tier1MatrixSchema = z.object({
   id: z.string().min(1),
   status: z.string().min(1),

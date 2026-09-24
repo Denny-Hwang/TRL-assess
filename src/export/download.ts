@@ -14,7 +14,7 @@ export function downloadBlob(blob: Blob, filename: string): void {
   setTimeout(() => URL.revokeObjectURL(url), 10_000);
 }
 
-/** A filesystem-safe slug from the project name (BUILD_SPEC D-3.0). */
+/** A filesystem-safe slug from the project name. */
 export function slugify(value: string, max = 40): string {
   const slug = value
     .normalize('NFKD')
@@ -32,7 +32,7 @@ export function sessionSlug(session: AssessmentSession): string {
   return slugify(session.tier1?.context.projectName ?? 'assessment');
 }
 
-/** Local-time stamp, YYYYMMDD-HHmm (BUILD_SPEC D-3.0). */
+/** Local-time stamp, YYYYMMDD-HHmm. */
 export function timestampForFilename(date: Date = new Date()): string {
   const pad = (n: number) => String(n).padStart(2, '0');
   return (
@@ -41,7 +41,7 @@ export function timestampForFilename(date: Date = new Date()): string {
   );
 }
 
-/** `ARL_<project-slug>_<YYYYMMDD-HHmm>.xlsx` (BUILD_SPEC D-3.3). */
+/** `ARL_<project-slug>_<YYYYMMDD-HHmm>.xlsx`. */
 export function arlWorkbookFilename(session: AssessmentSession, date?: Date): string {
   const name = session.arl?.context.projectName || session.tier1?.context.projectName;
   return `ARL_${slugify(name ?? 'assessment')}_${timestampForFilename(date)}.xlsx`;

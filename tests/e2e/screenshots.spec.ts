@@ -18,7 +18,7 @@ test.describe('screenshots', () => {
   test('capture the three README screenshots', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 900 });
     const example = JSON.parse(
-      await readFile(path.resolve('src/data/examples/fictional-wave-buoy.session.json'), 'utf8'),
+      await readFile(path.resolve('src/data/examples/fictional-sensor-node.session.json'), 'utf8'),
     );
 
     // Seed the browser with the fictional example so the screenshots show a complete assessment.

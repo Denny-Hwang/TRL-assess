@@ -139,11 +139,8 @@ export const ja: Messages = {
   'home.flow.export.detail':
     'Excel ワークブック、またはエビデンスファイルと SHA-256 マニフェストを含む ZIP。',
   'home.tier1.heading': 'Tier 1 — クイック推定',
-  'home.tier1.body': '9 つの質問に答えると、推論過程とともに TRL が得られます。',
   'home.tier1.start': 'クイック推定を開始',
   'home.tier2.heading': 'Tier 2 — エビデンスに基づく評価',
-  'home.tier2.body':
-    '要素ごとの基準を、それぞれ文書、試験記録、または固定したコミットで裏付けます。',
   'home.tier2.start': 'エビデンス評価を開始',
   'home.arl.heading': 'サイドモジュール — 導入準備度レベル（ARL）',
   'home.arl.body':
@@ -184,14 +181,11 @@ export const ja: Messages = {
     'ビルド × 環境のマトリクスは、このツールのために作成したヒューリスティックな補助であり、標準ではありません。',
   'about.disclaimer.system':
     'システムサマリーは重要な CTE 全体の最小値です。これは保守的な報告上の慣例であり、義務付けられた計算式ではありません。',
-  'about.disclaimer.unverified': '入力内容はツールによって一切検証されません。',
   'tier1.reset.button': 'リセット',
   'tier1.reset.confirm': 'この評価を破棄しますか。',
   'tier1.reset.yes': 'はい、リセットします',
   'tier1.reset.cancel': 'キャンセル',
   'tier1.context.title': 'クイック推定 — ステップ 1/2：前提情報',
-  'tier1.context.lead':
-    '評価対象について数行で記入してください。ここに入力した内容がブラウザーの外に送信されることはありません。',
   'tier1.context.framework': 'フレームワーク',
   'tier1.context.projectName': 'プロジェクト名',
   'tier1.context.technologyName': '技術名',
@@ -203,7 +197,6 @@ export const ja: Messages = {
   'tier1.context.testWhat': '試験対象',
   'tier1.context.testWhere': '場所',
   'tier1.context.testWhen': '時期（年/月）',
-  'tier1.context.testWhenHint': '例：2026-04',
   'tier1.context.testWhenPlaceholder': 'YYYY-MM',
   'tier1.context.crossCheckHeading': 'クロスチェック用の入力',
   'tier1.context.environment': '到達した環境',
@@ -218,8 +211,7 @@ export const ja: Messages = {
   'tier1.q.title': 'クイック推定 — ステップ 2/2：スクリーニング質問',
   'tier1.q.lead':
     'TRL 9 から順に下へ進めてください。実際に行ったことに基づき、技術全体について回答してください。',
-  'tier1.q.progress.before': '{answered} / {total} 回答済み · TRL 1 から途切れずに続く ',
-  'tier1.q.progress.after': ' の連続が推定値です',
+  'tier1.q.progress': '{answered} / {total} 回答済み',
   'tier1.q.counter': '質問 {n} / {total}',
   'tier1.q.helpSummary': 'このレベルの意味',
   'tier1.q.answerGroup': '回答',
@@ -229,9 +221,6 @@ export const ja: Messages = {
   'tier1.q.next': '次へ →',
   'tier1.q.keyboard': 'キーボード：Y / N / U で回答、矢印キーで移動。',
   'tier1.q.seeEstimate': '推定値を見る',
-  'tier1.q.guide.before': 'レベルの意味がわからない場合は、',
-  'tier1.q.guide.link': 'ガイド',
-  'tier1.q.guide.after': 'を参照してください。',
   'tier1.result.title': 'クイック推定 — 結果',
   'tier1.result.marker.estimate': '推定値',
   'tier1.result.marker.claimed': '申告値',
@@ -298,8 +287,6 @@ export const ja: Messages = {
   'tier2.common.cancel': 'キャンセル',
   'tier2.evidenceCoverage': 'エビデンスカバレッジ',
   'tier2.page.title': 'エビデンスに基づく評価',
-  'tier2.page.lead':
-    'システムを重要技術要素に分解し、各 TRL の基準を評価して、すべての主張の裏付けとなるエビデンスをリンクします。',
   'tier2.page.evidenceLink': 'エビデンスライブラリ',
   'tier2.page.resultsLink': '結果',
   'tier2.page.empty.title': 'まだ何も評価していません',
@@ -310,7 +297,6 @@ export const ja: Messages = {
   'tier2.page.empty.after': '完成した評価を確認してください。',
   'tier2.page.selectCte': 'CTE を選択または追加して、その基準を評価してください。',
   'tier2.evidencePage.title': 'エビデンスライブラリ',
-  'tier2.evidencePage.lead': '証拠として記録したすべての項目と、それぞれの用途です。',
   'tier2.evidencePage.back': '評価に戻る',
   'tier2.export.heading': 'エクスポート',
   'tier2.export.buildingWorkbook': 'ワークブックを作成中…',
@@ -328,7 +314,6 @@ export const ja: Messages = {
   'tier2.result.untitled': '無題の評価',
   'tier2.result.stat.system': 'システムサマリー',
   'tier2.result.stat.limiting': '制約となる CTE',
-  'tier2.result.stat.limitingHint': 'システムサマリーを押し下げている重要な CTE。',
   'tier2.result.stat.tier1': 'Tier 1 との比較',
   'tier2.result.stat.noTier1': 'クイック推定なし',
   'tier2.result.stat.tier1Hint': 'クイック推定とこの評価との差。',
@@ -510,8 +495,6 @@ export const ja: Messages = {
   'arl.unavailable.body':
     'このセッションは ARL ルーブリック「{id}」に基づいて評定されていますが、このバージョンのアプリには含まれていません（{detail}）。ARL の評定をリセットして、現在のルーブリックで最初からやり直してください。',
   'arl.scope.title': '導入準備度 — ステップ 1/3：範囲',
-  'arl.scope.lead':
-    '何を、どの市場に対して評価するか。ここに入力した内容がブラウザーの外に送信されることはありません。',
   'arl.scope.versionSource': 'バージョン：{version} · 出典：{source}',
   'arl.scope.projectName': 'プロジェクト名',
   'arl.scope.technologyName': '技術名',
@@ -556,7 +539,6 @@ export const ja: Messages = {
   'arl.result.startHint': '{band} — 中 {medium} 件、高 {high} 件として集計。',
   'arl.result.endHint': '{band} — {target}。',
   'arl.result.change': 'プロジェクト期間中の変化',
-  'arl.result.changeHint': 'ARL 終了から ARL 開始を引いた値。',
   'arl.result.scopeMissing.before':
     '技術の範囲または評価の対象期間が空欄です。出典は、評定の前に両方を定義するよう求めています。同じ技術でも、範囲が異なれば評定も変わりえます。',
   'arl.result.scopeMissing.link': '範囲を入力する',
@@ -578,8 +560,6 @@ export const ja: Messages = {
     '出典は中リスクと高リスクの観点を数え、その参照表から ARL を読み取ります。このツールは、印刷されたとおりに表を使用します。',
   'arl.result.mark.start': '開始',
   'arl.result.mark.target': '目標',
-  'arl.result.modify':
-    'このツールでは変更しません。すべての結果に印刷された表を使用するため、結果の比較可能性が保たれます。',
   'arl.result.takeAway': '持ち出す',
   'arl.result.building': 'ワークブックを作成中…',
   'arl.result.downloadExcel': 'Excel をダウンロード',

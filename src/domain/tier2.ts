@@ -1,5 +1,5 @@
 /**
- * Tier 2 scoring, rollup and gap analysis (BUILD_SPEC D-2.2).
+ * Tier 2 scoring, rollup and gap analysis.
  * Pure functions — every rule has a named test.
  */
 import { TIER2_LABEL } from '@/config/app.config';

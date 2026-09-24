@@ -1,5 +1,5 @@
 /**
- * BUILD_SPEC D-4 — the evidence package is built, unzipped in memory and verified.
+ * The evidence package is built, unzipped in memory and verified.
  */
 import { describe, it, expect, beforeAll, vi } from 'vitest';
 import JSZip from 'jszip';

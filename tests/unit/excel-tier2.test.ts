@@ -1,5 +1,5 @@
 /**
- * BUILD_SPEC D-3.2 — the Tier 2 workbook is generated, read back and asserted sheet by sheet.
+ * The Tier 2 workbook is generated, read back and asserted sheet by sheet.
  */
 import { describe, it, expect, beforeAll } from 'vitest';
 import ExcelJS from 'exceljs';

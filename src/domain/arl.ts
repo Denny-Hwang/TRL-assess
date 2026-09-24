@@ -1,6 +1,5 @@
 /**
- * ARL side module: rubric loading and scoring (BUILD_SPEC D-2.3;
- * ADR-0005). Pure functions — every rule has a named test.
+ * ARL side module: rubric loading and scoring. Pure functions — every rule has a named test.
  *
  * The number comes from the DOE Adoption Readiness Assessment's own look-up table, unmodified.
  * The only rule this tool adds is conservative: a dimension that is Unsure, not assessed, or N/A

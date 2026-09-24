@@ -1,5 +1,5 @@
 /**
- * Stable, collision-free id generators (BUILD_SPEC Phase 2, task 8).
+ * Stable, collision-free id generators.
  */
 const EVIDENCE_PREFIX = 'EV-';
 const CTE_PREFIX = 'CTE-';

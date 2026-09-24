@@ -1,5 +1,5 @@
 /**
- * Accessibility checks (BUILD_SPEC Phase 8, task 1). Every route must be free of
+ * Accessibility checks. Every route must be free of
  * serious and critical axe violations.
  */
 import { test, expect } from '@playwright/test';
@@ -29,7 +29,7 @@ const ARL_ROUTES = ['#/arl/rate', '#/arl/result'];
 
 async function seed(page: import('@playwright/test').Page) {
   const example = JSON.parse(
-    await readFile(path.resolve('src/data/examples/fictional-wave-buoy.session.json'), 'utf8'),
+    await readFile(path.resolve('src/data/examples/fictional-sensor-node.session.json'), 'utf8'),
   );
   await page.goto('./');
   await page.evaluate((e) => {
@@ -41,7 +41,7 @@ async function seed(page: import('@playwright/test').Page) {
 /** The example session plus ARL ratings of every kind. */
 async function seedWithArl(page: import('@playwright/test').Page) {
   const example = JSON.parse(
-    await readFile(path.resolve('src/data/examples/fictional-wave-buoy.session.json'), 'utf8'),
+    await readFile(path.resolve('src/data/examples/fictional-sensor-node.session.json'), 'utf8'),
   );
   const rubric = JSON.parse(
     await readFile(path.resolve('src/data/frameworks/arl/doe-otc-arl-2025.json'), 'utf8'),

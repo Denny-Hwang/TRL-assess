@@ -111,7 +111,6 @@ export function AssessResult() {
         <Stat
           label={t('tier2.result.stat.limiting')}
           value={result.system.limitingCteIds.join(', ') || '—'}
-          hint={t('tier2.result.stat.limitingHint')}
           testId="limiting-ctes"
         />
         <Stat

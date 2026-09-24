@@ -1,5 +1,5 @@
 /**
- * BUILD_SPEC D-3.0 / D-3.3 — the ARL workbook is generated, read back with ExcelJS and asserted
+ * The ARL workbook is generated, read back with ExcelJS and asserted
  * sheet by sheet.
  */
 import { describe, it, expect, beforeAll } from 'vitest';
@@ -29,10 +29,10 @@ const arl: ArlData = {
   frameworkId: arlFramework.id,
   frameworkVersion: arlFramework.version,
   context: {
-    projectName: 'Fictional buoy project',
-    technologyName: 'Fictional wave buoy',
+    projectName: 'Fictional sensor project',
+    technologyName: 'Fictional sensor node',
     assessorName: 'A. Assessor',
-    technologyScope: 'The buoy and its data link',
+    technologyScope: 'The sensor node and its data link',
     valueChainScope: 'Manufacture to deployment',
     evaluationTimeline: 'As of today; 5-year window',
     policyEnvironment: 'Current policy, no changes assumed',
@@ -146,7 +146,7 @@ describe('ARL workbook — structure', () => {
 
   it('names the file ARL_<project-slug>_<timestamp>.xlsx', () => {
     expect(arlWorkbookFilename(session, generatedAt)).toBe(
-      `ARL_fictional-buoy-project_${timestampForFilename(generatedAt)}.xlsx`,
+      `ARL_fictional-sensor-project_${timestampForFilename(generatedAt)}.xlsx`,
     );
   });
 });

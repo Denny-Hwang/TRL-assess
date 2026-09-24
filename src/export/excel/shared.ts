@@ -1,5 +1,5 @@
 /**
- * Shared workbook infrastructure (BUILD_SPEC D-3.0).
+ * Shared workbook infrastructure.
  * ExcelJS is imported dynamically by the callers so it never lands in the initial bundle.
  */
 import type ExcelJS from 'exceljs';
@@ -102,7 +102,7 @@ export function styleHeaderRow(sheet: Worksheet, rowNumber = 1): void {
   row.commit();
 }
 
-/** A list data validation on a whole column range (BUILD_SPEC D-3.0). */
+/** A list data validation on a whole column range. */
 export function applyListValidation(
   sheet: Worksheet,
   column: string,

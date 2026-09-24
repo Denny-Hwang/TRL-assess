@@ -59,7 +59,7 @@ export function QuickContext() {
 
   return (
     <form onSubmit={submit} noValidate className="max-w-3xl space-y-6">
-      <PageHeader title={t('tier1.context.title')} lead={t('tier1.context.lead')}>
+      <PageHeader title={t('tier1.context.title')}>
         <SaveIndicator />
       </PageHeader>
 
@@ -157,11 +157,7 @@ export function QuickContext() {
             onChange={(e) => set('testLocation', e.target.value)}
           />
         </Field>
-        <Field
-          label={t('tier1.context.testWhen')}
-          htmlFor="testDate"
-          hint={t('tier1.context.testWhenHint')}
-        >
+        <Field label={t('tier1.context.testWhen')} htmlFor="testDate">
           <input
             id="testDate"
             className="input"

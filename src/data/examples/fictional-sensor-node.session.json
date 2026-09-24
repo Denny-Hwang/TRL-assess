@@ -2,55 +2,55 @@
   "schemaVersion": 1,
   "appVersion": "0.0.0-example",
   "gitSha": "example",
-  "frameworkId": "marine-energy-eere",
+  "frameworkId": "dod-tra-2025",
   "frameworkVersion": "1.0.0",
   "createdAt": "2026-01-15T09:00:00.000Z",
   "updatedAt": "2026-01-15T09:45:00.000Z",
   "tier1": {
     "context": {
-      "projectName": "Fictional Nearshore Wave Buoy (example data)",
-      "technologyName": "Wave-powered sensor buoy",
+      "projectName": "Fictional Remote Sensor Node (example data)",
+      "technologyName": "Self-powered remote sensor node",
       "assessorName": "Example Assessor",
       "assessorRole": "Principal investigator",
       "organization": "Example Laboratory",
-      "oneLineDescription": "A small drifting buoy that harvests wave energy to run an ocean sensor payload and a telemetry link.",
-      "highestFidelityTest": "Harvester alpha prototype run in a laboratory wave tank",
-      "testLocation": "Example Laboratory wave tank",
+      "oneLineDescription": "A small self-powered sensor node that harvests ambient energy to run a sensor payload and a low-power telemetry link.",
+      "highestFidelityTest": "Harvester alpha prototype run in an environmental test chamber",
+      "testLocation": "Example Laboratory environmental chamber",
       "testDate": "2024-06",
       "environment": "E2",
       "build": "B2"
     },
     "answers": {
-      "MEE-T1-L1": {
+      "DOD-T1-L1": {
         "value": "Yes",
-        "note": "Published review of wave energy harvesting for small sensors."
+        "note": "Published review of ambient energy harvesting for low-power sensors."
       },
-      "MEE-T1-L2": {
+      "DOD-T1-L2": {
         "value": "Yes",
         "note": "Concept note and sizing model exist."
       },
-      "MEE-T1-L3": {
+      "DOD-T1-L3": {
         "value": "Yes",
         "note": "Bench proof of concept with representative inputs."
       },
-      "MEE-T1-L4": {
+      "DOD-T1-L4": {
         "value": "Yes",
         "note": "Alpha prototype validated in the laboratory."
       },
-      "MEE-T1-L5": {
+      "DOD-T1-L5": {
         "value": "Unsure",
-        "note": "Tank testing was in fresh water; seawater effects were not exercised."
+        "note": "Chamber testing covered temperature cycling only; vibration and humidity were not exercised."
       },
-      "MEE-T1-L6": {
+      "DOD-T1-L6": {
         "value": "No"
       },
-      "MEE-T1-L7": {
+      "DOD-T1-L7": {
         "value": "No"
       },
-      "MEE-T1-L8": {
+      "DOD-T1-L8": {
         "value": "No"
       },
-      "MEE-T1-L9": {
+      "DOD-T1-L9": {
         "value": "No"
       }
     }
@@ -59,23 +59,23 @@
     "ctes": [
       {
         "id": "CTE-01",
-        "name": "Wave energy harvester",
+        "name": "Energy harvester",
         "kind": "hardware",
         "critical": true,
         "targetTrl": 6,
         "owner": "Example Laboratory",
-        "description": "The mechanical-to-electrical conversion element, including the take-off and its mounting.",
-        "whyCritical": "The buoy's entire power budget depends on it, and no off-the-shelf equivalent meets the size limit."
+        "description": "The ambient-to-electrical conversion element, including the transducer and its mounting.",
+        "whyCritical": "The node's entire power budget depends on it, and no off-the-shelf equivalent meets the size limit."
       },
       {
         "id": "CTE-02",
-        "name": "Power conversion and storage",
+        "name": "Power management module",
         "kind": "hardware",
         "critical": true,
         "targetTrl": 6,
         "owner": "Example Laboratory",
         "description": "Rectification, maximum-power-point tracking, storage and the load switch.",
-        "whyCritical": "It must survive the harvester's irregular output and the marine environment; a failure here stops the payload."
+        "whyCritical": "It must cope with the harvester's irregular output across the operating temperature range; a failure here stops the payload."
       },
       {
         "id": "CTE-03",
@@ -84,134 +84,135 @@
         "critical": true,
         "targetTrl": 5,
         "owner": "Example Laboratory",
-        "description": "Scheduling, buffering and transmission of sensor records over a satellite link.",
+        "description": "Scheduling, buffering and transmission of sensor records over a low-power radio link.",
         "whyCritical": "Data that is not transmitted is lost; the scheduling logic is new work, not a reused library."
       }
     ],
     "assessments": [
       {
         "cteId": "CTE-01",
-        "criterionId": "MEE-T2-L1-01",
+        "criterionId": "DOD-T2-L1-01",
         "status": "Met"
       },
       {
         "cteId": "CTE-01",
-        "criterionId": "MEE-T2-L2-01",
+        "criterionId": "DOD-T2-L2-01",
         "status": "Met"
       },
       {
         "cteId": "CTE-01",
-        "criterionId": "MEE-T2-L3-01",
+        "criterionId": "DOD-T2-L3-01",
         "status": "Met"
       },
       {
         "cteId": "CTE-01",
-        "criterionId": "MEE-T2-L4-01",
+        "criterionId": "DOD-T2-L4-01",
         "status": "Met"
       },
       {
         "cteId": "CTE-01",
-        "criterionId": "MEE-T2-L4-T01",
+        "criterionId": "DOD-T2-L4-02",
         "status": "Met"
       },
       {
         "cteId": "CTE-01",
-        "criterionId": "MEE-T2-L5-01",
-        "status": "Partially met"
+        "criterionId": "DOD-T2-L5-01",
+        "status": "Partially met",
+        "note": "Temperature cycling passed; the vibration profile has not been applied yet."
       },
       {
         "cteId": "CTE-01",
-        "criterionId": "MEE-T2-L5-T01",
+        "criterionId": "DOD-T2-L5-02",
         "status": "Not met"
       },
       {
         "cteId": "CTE-01",
-        "criterionId": "MEE-T2-L5-T02",
+        "criterionId": "DOD-T2-L5-90",
         "status": "Not assessed",
         "note": "Environmental chamber time is booked for next quarter."
       },
       {
         "cteId": "CTE-02",
-        "criterionId": "MEE-T2-L1-01",
+        "criterionId": "DOD-T2-L1-01",
         "status": "Met"
       },
       {
         "cteId": "CTE-02",
-        "criterionId": "MEE-T2-L2-01",
+        "criterionId": "DOD-T2-L2-01",
         "status": "Met"
       },
       {
         "cteId": "CTE-02",
-        "criterionId": "MEE-T2-L3-01",
+        "criterionId": "DOD-T2-L3-01",
         "status": "Met"
       },
       {
         "cteId": "CTE-02",
-        "criterionId": "MEE-T2-L3-02",
+        "criterionId": "DOD-T2-L3-02",
         "status": "Met"
       },
       {
         "cteId": "CTE-02",
-        "criterionId": "MEE-T2-L4-01",
+        "criterionId": "DOD-T2-L4-01",
         "status": "Met",
-        "note": "Laboratory validation is in progress; the linked facility page is not test data."
+        "note": "Laboratory validation is in progress; the only linked item is a facility description, which was rejected as test evidence."
       },
       {
         "cteId": "CTE-02",
-        "criterionId": "MEE-T2-L4-T01",
+        "criterionId": "DOD-T2-L4-02",
         "status": "Not met",
-        "note": "The FMECA does not yet cover the converter."
+        "note": "The converter and storage are not yet integrated with the load switch."
       },
       {
         "cteId": "CTE-03",
-        "criterionId": "MEE-T2-SW-L1-01",
+        "criterionId": "DOD-T2-SW-L1-01",
         "status": "Met"
       },
       {
         "cteId": "CTE-03",
-        "criterionId": "MEE-T2-SW-L2-01",
+        "criterionId": "DOD-T2-SW-L2-01",
         "status": "Met"
       },
       {
         "cteId": "CTE-03",
-        "criterionId": "MEE-T2-SW-L3-01",
+        "criterionId": "DOD-T2-SW-L2-03",
+        "status": "N/A",
+        "justification": "The scheduling concept was sized directly from logged sensor records, so no analytic study on synthetic data was carried out or needed at this level."
+      },
+      {
+        "cteId": "CTE-03",
+        "criterionId": "DOD-T2-SW-L3-01",
         "status": "Met"
       },
       {
         "cteId": "CTE-03",
-        "criterionId": "MEE-T2-SW-L4-01",
+        "criterionId": "DOD-T2-SW-L4-01",
         "status": "Partially met",
         "note": "Modules run stand-alone but are not integrated."
-      },
-      {
-        "cteId": "CTE-03",
-        "criterionId": "MEE-T2-L4-T01",
-        "status": "N/A",
-        "justification": "The firmware is covered by the system-level FMECA entry for the telemetry chain; a separate element-level FMECA is not maintained for it."
       }
     ],
     "evidence": [
       {
         "id": "EV-0001",
         "type": "Publication (DOI)",
-        "title": "Wave energy harvesting for small ocean sensors (fictional review paper)",
+        "title": "Ambient energy harvesting for low-power sensor nodes (fictional review paper)",
         "marking": "Internal (unrestricted)",
         "verification": "Verified",
         "linkedCriteria": [
           {
             "cteId": "CTE-01",
-            "criterionId": "MEE-T2-L1-01"
+            "criterionId": "DOD-T2-L1-01"
           },
           {
             "cteId": "CTE-02",
-            "criterionId": "MEE-T2-L1-01"
+            "criterionId": "DOD-T2-L1-01"
           }
         ],
         "description": "Fictional peer-reviewed review used as the basic-principles reference for this example.",
         "date": "2023-04-01",
         "owner": "Example Laboratory",
         "doi": "10.5555/fictional.2023.0001",
-        "citation": "A. Example and B. Sample, “Wave energy harvesting for small ocean sensors”, Journal of Fictional Ocean Engineering, 2023."
+        "citation": "A. Example and B. Sample, “Ambient energy harvesting for low-power sensor nodes”, Journal of Fictional Energy Systems, 2023."
       },
       {
         "id": "EV-0002",
@@ -222,11 +223,11 @@
         "linkedCriteria": [
           {
             "cteId": "CTE-01",
-            "criterionId": "MEE-T2-L2-01"
+            "criterionId": "DOD-T2-L2-01"
           },
           {
             "cteId": "CTE-02",
-            "criterionId": "MEE-T2-L2-01"
+            "criterionId": "DOD-T2-L2-01"
           }
         ],
         "description": "Defines the intended application and the analytical model used for sizing.",
@@ -242,11 +243,11 @@
         "linkedCriteria": [
           {
             "cteId": "CTE-01",
-            "criterionId": "MEE-T2-L3-01"
+            "criterionId": "DOD-T2-L3-01"
           },
           {
             "cteId": "CTE-02",
-            "criterionId": "MEE-T2-L3-01"
+            "criterionId": "DOD-T2-L3-01"
           }
         ],
         "description": "Representative inputs applied to an immature prototype; measured output compared with predictions.",
@@ -262,26 +263,26 @@
         "linkedCriteria": [
           {
             "cteId": "CTE-01",
-            "criterionId": "MEE-T2-L4-01"
+            "criterionId": "DOD-T2-L4-01"
           }
         ],
-        "description": "Stand-alone prototype tested in the laboratory; integration of component elements validated.",
+        "description": "Stand-alone prototype tested in the laboratory against the predicted output curve.",
         "date": "2024-06-05",
         "owner": "Example Laboratory"
       },
       {
         "id": "EV-0005",
         "type": "Document",
-        "title": "Risk register and FMECA, revision C (fictional)",
+        "title": "Breadboard integration report: harvester and rectifier, revision C (fictional)",
         "marking": "Internal (unrestricted)",
         "verification": "Verified",
         "linkedCriteria": [
           {
             "cteId": "CTE-01",
-            "criterionId": "MEE-T2-L4-T01"
+            "criterionId": "DOD-T2-L4-02"
           }
         ],
-        "description": "Element-level risk register and FMECA covering the harvester and the power chain.",
+        "description": "The harvester and rectifier breadboards integrated on the bench to show that they work together.",
         "date": "2024-07-01",
         "owner": "Example Laboratory"
       },
@@ -294,13 +295,13 @@
         "linkedCriteria": [
           {
             "cteId": "CTE-03",
-            "criterionId": "MEE-T2-SW-L3-01"
+            "criterionId": "DOD-T2-SW-L3-01"
           }
         ],
         "description": "Firmware used for the laboratory proof of concept. Pin the commit, never a branch name.",
         "date": "2024-05-18",
         "owner": "Example Laboratory",
-        "repoUrl": "https://example.org/fictional-org/fictional-buoy-firmware",
+        "repoUrl": "https://example.org/fictional-org/fictional-sensor-firmware",
         "commitSha": "0f1e2d3c4b5a69788796a5b4c3d2e1f00a1b2c3d",
         "repoPath": "src/telemetry",
         "tag": "v0.3.0-poc"
@@ -314,7 +315,7 @@
         "linkedCriteria": [
           {
             "cteId": "CTE-03",
-            "criterionId": "MEE-T2-SW-L2-01"
+            "criterionId": "DOD-T2-SW-L2-01"
           }
         ],
         "date": "2024-01-15",
@@ -323,13 +324,13 @@
       {
         "id": "EV-0008",
         "type": "Publication (DOI)",
-        "title": "Low-power telemetry scheduling for drifting sensors (fictional)",
+        "title": "Low-power telemetry scheduling for intermittently powered sensors (fictional)",
         "marking": "Internal (unrestricted)",
         "verification": "Verified",
         "linkedCriteria": [
           {
             "cteId": "CTE-03",
-            "criterionId": "MEE-T2-SW-L1-01"
+            "criterionId": "DOD-T2-SW-L1-01"
           }
         ],
         "doi": "10.5555/fictional.2022.0042",
@@ -338,28 +339,31 @@
       {
         "id": "EV-0009",
         "type": "Web link",
-        "title": "Fictional wave tank facility description",
+        "title": "Fictional environmental test facility description",
         "marking": "Internal (unrestricted)",
-        "verification": "Unverified",
+        "verification": "Rejected",
+        "verifiedBy": "Example Reviewer",
+        "verifiedDate": "2024-08-15",
         "linkedCriteria": [
           {
             "cteId": "CTE-02",
-            "criterionId": "MEE-T2-L4-01"
+            "criterionId": "DOD-T2-L4-01"
           }
         ],
-        "url": "https://example.org/fictional-wave-tank",
+        "description": "Describes the facility, not a test result, so it cannot support a validation criterion.",
+        "url": "https://example.org/fictional-test-facility",
         "date": "2024-08-01"
       },
       {
         "id": "EV-0010",
         "type": "Document",
-        "title": "Enclosure pressure-test report (fictional) — held in the controlled document system",
+        "title": "Enclosure ingress-protection test report (fictional) — held in the controlled document system",
         "marking": "Sensitive — reference only",
         "verification": "Unverified",
         "linkedCriteria": [
           {
             "cteId": "CTE-02",
-            "criterionId": "MEE-T2-L3-02"
+            "criterionId": "DOD-T2-L3-02"
           }
         ],
         "description": "Reference-only entry: the report itself is not attached. Custodian: Example Laboratory records office, ref FICT-2024-114.",
@@ -371,16 +375,16 @@
       {
         "cteId": "CTE-01",
         "nextLevel": 5,
-        "criterionId": "MEE-T2-L5-T01",
-        "action": "Repeat the relevant-environment test in conductive seawater, or justify an equivalent.",
+        "criterionId": "DOD-T2-L5-01",
+        "action": "Apply the vibration and humidity profile in the environmental chamber and repeat the relevant-environment validation.",
         "owner": "Example Laboratory",
         "dueDate": "2026-06-30"
       },
       {
         "cteId": "CTE-02",
         "nextLevel": 4,
-        "criterionId": "MEE-T2-L4-T01",
-        "action": "Extend the FMECA to cover the power converter and storage.",
+        "criterionId": "DOD-T2-L4-02",
+        "action": "Integrate the converter and storage with the load switch and record a laboratory validation run.",
         "owner": "Example Laboratory",
         "dueDate": "2026-03-31"
       }

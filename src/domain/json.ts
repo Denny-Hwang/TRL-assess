@@ -1,5 +1,5 @@
 /**
- * JSON import/export for a session (BUILD_SPEC Phase 2, task 6).
+ * JSON import/export for a session.
  */
 import { APP_NAME, APP_VERSION, GIT_SHA, SCHEMA_VERSION } from '@/config/app.config';
 import { parseSession, SessionVersionError } from './session';

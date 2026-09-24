@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useSessionStore } from '@/state/sessionStore';
 import { tier1QuestionsTopDown } from '@/domain/frameworks';
 import { PageHeader, SourceNote } from '@/components/ui';
@@ -94,9 +94,7 @@ export function QuickQuestions() {
           onSelect={(level) => setIndex(questions.findIndex((q) => q.level === level))}
         />
         <p className="mt-1 text-center text-xs text-slate-500">
-          {t('tier1.q.progress.before', { answered: answeredCount, total: questions.length })}
-          <strong>Y</strong>
-          {t('tier1.q.progress.after')}
+          {t('tier1.q.progress', { answered: answeredCount, total: questions.length })}
         </p>
       </div>
 
@@ -202,14 +200,6 @@ export function QuickQuestions() {
           {t('tier1.q.seeEstimate')}
         </button>
       </div>
-
-      <p className="text-xs text-slate-500">
-        {t('tier1.q.guide.before')}
-        <Link className="underline" to="/guide/overview">
-          {t('tier1.q.guide.link')}
-        </Link>
-        {t('tier1.q.guide.after')}
-      </p>
     </div>
   );
 }

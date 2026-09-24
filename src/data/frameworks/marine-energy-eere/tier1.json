@@ -10,7 +10,7 @@
       "page": "7"
     },
     "origin": "adapted",
-    "rationale": "The EERE source stops at TRL 8; the TRL 9 question is adapted from the DoD TRA Guidebook hardware table, another U.S. Government public-domain source, and the substitution is recorded in docs/sources/SOURCES.md and docs/PROGRESS.md."
+    "rationale": "The EERE source stops at TRL 8; the TRL 9 question is adapted from the DoD TRA Guidebook hardware table, another U.S. Government public-domain source, and the substitution is recorded in docs/sources/SOURCES.md."
   },
   {
     "id": "MEE-T1-L8",

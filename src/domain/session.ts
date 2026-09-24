@@ -1,5 +1,5 @@
 /**
- * Session model, immutable update helpers and schema migration (BUILD_SPEC D-1, Phase 2 task 4).
+ * Session model, immutable update helpers and schema migration.
  */
 import { APP_VERSION, GIT_SHA, SCHEMA_VERSION } from '@/config/app.config';
 import { nextCteId, nextEvidenceId } from './ids';
@@ -216,7 +216,7 @@ export function evidenceFor(
   );
 }
 
-/* ARL side module (ADR-0005) — kept apart from the TRL tiers so neither can change the other. */
+/* ARL side module — kept apart from the TRL tiers so neither can change the other. */
 
 export function setArl(session: AssessmentSession, arl: ArlData): AssessmentSession {
   return touch({ ...session, arl });
@@ -264,7 +264,7 @@ export class SessionVersionError extends Error {
 
 /**
  * Migration hooks. Each entry upgrades a session from version N to N+1.
- * v1 → v2: v2 adds the optional `arl` block (ADR-0005); a v1 session is valid v2 as it stands.
+ * v1 → v2: v2 adds the optional `arl` block; a v1 session is valid v2 as it stands.
  */
 export const MIGRATIONS: Record<number, (input: unknown) => unknown> = {
   1: (input) => ({ ...(input as object), schemaVersion: 2 }),

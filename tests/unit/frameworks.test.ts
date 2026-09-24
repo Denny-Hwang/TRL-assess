@@ -185,7 +185,7 @@ describe('extends resolution', () => {
 });
 
 describe('tier 1 heuristic matrix', () => {
-  it('matches BUILD_SPEC D-2.1 exactly', () => {
+  it('matches the defined heuristic matrix exactly', () => {
     const { matrix } = resolveFramework('marine-energy-eere');
     expect(matrix.status).toBe('heuristic, not a standard');
     expect(matrix.matrix['B0']).toEqual({ E0: 2, E1: 2, E2: 2, E3: 2, E4: 2 });

@@ -1,5 +1,5 @@
 /**
- * Cross-browser smoke (BUILD_SPEC Phase 8, task 5). Runs in Chromium always, and in Firefox and
+ * Cross-browser smoke. Runs in Chromium always, and in Firefox and
  * WebKit when CROSS_BROWSER=1 and those browsers are installed.
  */
 import { test, expect } from '@playwright/test';

@@ -145,11 +145,8 @@ export const es: Messages = {
   'home.flow.export.detail':
     'Libro de Excel, o un ZIP con los archivos de evidencia y un manifiesto SHA-256.',
   'home.tier1.heading': 'Fase 1 — Estimación rápida',
-  'home.tier1.body': 'Responder nueve preguntas y obtener un TRL con el razonamiento a la vista.',
   'home.tier1.start': 'Iniciar estimación rápida',
   'home.tier2.heading': 'Fase 2 — Evaluación basada en evidencias',
-  'home.tier2.body':
-    'Criterios por elemento, cada uno respaldado por un documento, un registro de ensayo o un commit fijado.',
   'home.tier2.start': 'Iniciar evaluación con evidencias',
   'home.arl.heading': 'Módulo complementario — Nivel de preparación para la adopción (ARL)',
   'home.arl.body':
@@ -190,14 +187,11 @@ export const es: Messages = {
     'La matriz construcción × entorno es una ayuda heurística creada para esta herramienta, no una norma.',
   'about.disclaimer.system':
     'El resumen del sistema es el mínimo de los CTE críticos: una convención conservadora de presentación de informes, no una fórmula obligatoria.',
-  'about.disclaimer.unverified': 'La herramienta no verifica nada de lo que se introduce.',
   'tier1.reset.button': 'Restablecer',
   'tier1.reset.confirm': '¿Descartar esta evaluación?',
   'tier1.reset.yes': 'Sí, restablecer',
   'tier1.reset.cancel': 'Cancelar',
   'tier1.context.title': 'Estimación rápida — paso 1 de 2: contexto',
-  'tier1.context.lead':
-    'Unas líneas sobre lo que se evalúa. Nada de lo que se introduce aquí sale del navegador.',
   'tier1.context.framework': 'Marco',
   'tier1.context.projectName': 'Nombre del proyecto',
   'tier1.context.technologyName': 'Nombre de la tecnología',
@@ -209,7 +203,6 @@ export const es: Messages = {
   'tier1.context.testWhat': 'Qué se ensayó',
   'tier1.context.testWhere': 'Dónde',
   'tier1.context.testWhen': 'Cuándo (mes/año)',
-  'tier1.context.testWhenHint': 'Por ejemplo, 2026-04.',
   'tier1.context.testWhenPlaceholder': 'AAAA-MM',
   'tier1.context.crossCheckHeading': 'Datos para la comprobación cruzada',
   'tier1.context.environment': 'Entorno alcanzado',
@@ -224,8 +217,7 @@ export const es: Messages = {
   'tier1.q.title': 'Estimación rápida — paso 2 de 2: preguntas de cribado',
   'tier1.q.lead':
     'Avanzar desde TRL 9 hacia abajo. Responder para la tecnología en su conjunto, según lo que realmente se ha hecho.',
-  'tier1.q.progress.before': '{answered} / {total} respondidas · la serie ininterrumpida de ',
-  'tier1.q.progress.after': ' (sí) desde TRL 1 constituye la estimación',
+  'tier1.q.progress': '{answered} / {total} respondidas',
   'tier1.q.counter': 'Pregunta {n} de {total}',
   'tier1.q.helpSummary': 'Qué significa este nivel',
   'tier1.q.answerGroup': 'Respuesta',
@@ -236,9 +228,6 @@ export const es: Messages = {
   'tier1.q.keyboard':
     'Teclado: Y / N / U para responder (sí / no / sin certeza), flechas para desplazarse.',
   'tier1.q.seeEstimate': 'Ver la estimación',
-  'tier1.q.guide.before': '¿Dudas sobre el significado de un nivel? Consultar la ',
-  'tier1.q.guide.link': 'Guía',
-  'tier1.q.guide.after': '.',
   'tier1.result.title': 'Estimación rápida — resultado',
   'tier1.result.marker.estimate': 'estimación',
   'tier1.result.marker.claimed': 'declarado',
@@ -307,8 +296,6 @@ export const es: Messages = {
   'tier2.common.cancel': 'Cancelar',
   'tier2.evidenceCoverage': 'Cobertura de evidencias',
   'tier2.page.title': 'Evaluación basada en evidencias',
-  'tier2.page.lead':
-    'Descomponer el sistema en elementos tecnológicos críticos, evaluar los criterios de cada TRL y vincular las evidencias que respaldan cada afirmación.',
   'tier2.page.evidenceLink': 'Biblioteca de evidencias',
   'tier2.page.resultsLink': 'Resultados',
   'tier2.page.empty.title': 'Aún no se ha evaluado nada',
@@ -319,7 +306,6 @@ export const es: Messages = {
   'tier2.page.empty.after': 'para ver una evaluación completa.',
   'tier2.page.selectCte': 'Seleccionar o añadir un CTE para evaluar sus criterios.',
   'tier2.evidencePage.title': 'Biblioteca de evidencias',
-  'tier2.evidencePage.lead': 'Todo lo registrado como prueba y el uso de cada elemento.',
   'tier2.evidencePage.back': 'Volver a la evaluación',
   'tier2.export.heading': 'Exportación',
   'tier2.export.buildingWorkbook': 'Generando el libro…',
@@ -337,7 +323,6 @@ export const es: Messages = {
   'tier2.result.untitled': 'Evaluación sin título',
   'tier2.result.stat.system': 'Resumen del sistema',
   'tier2.result.stat.limiting': 'CTE limitante(s)',
-  'tier2.result.stat.limitingHint': 'El CTE o los CTE críticos que limitan el resumen del sistema.',
   'tier2.result.stat.tier1': 'Comparación con la Fase 1',
   'tier2.result.stat.noTier1': 'Sin estimación rápida',
   'tier2.result.stat.tier1Hint': 'Diferencia entre la estimación rápida y esta evaluación.',
@@ -519,8 +504,6 @@ export const es: Messages = {
   'arl.unavailable.body':
     'Esta sesión se calificó con la rúbrica ARL «{id}», que esta versión de la aplicación no incluye ({detail}). Restablecer las calificaciones ARL para empezar de nuevo con la rúbrica actual.',
   'arl.scope.title': 'Preparación para la adopción — paso 1 de 3: alcance',
-  'arl.scope.lead':
-    'Qué se evalúa y respecto a qué mercado. Nada de lo que se introduce aquí sale del navegador.',
   'arl.scope.versionSource': 'Versión: {version} · Fuente: {source}',
   'arl.scope.projectName': 'Nombre del proyecto',
   'arl.scope.technologyName': 'Nombre de la tecnología',
@@ -567,7 +550,6 @@ export const es: Messages = {
     '{band} — {medium} de riesgo medio y {high} de riesgo alto contabilizadas.',
   'arl.result.endHint': '{band} — {target}.',
   'arl.result.change': 'Variación a lo largo del proyecto',
-  'arl.result.changeHint': 'ARL final menos ARL inicial.',
   'arl.result.scopeMissing.before':
     'El alcance tecnológico o el horizonte temporal de la evaluación está en blanco. La fuente pide definir ambos antes de calificar: la misma tecnología puede obtener una calificación distinta con otro alcance.',
   'arl.result.scopeMissing.link': 'Completar el alcance',
@@ -590,8 +572,6 @@ export const es: Messages = {
     'La fuente cuenta las dimensiones de riesgo medio y alto y obtiene el ARL de su tabla de consulta. Esta herramienta utiliza la tabla exactamente tal como está publicada.',
   'arl.result.mark.start': 'Inicial',
   'arl.result.mark.target': 'Objetivo',
-  'arl.result.modify':
-    'Esta herramienta no lo hace: todos los resultados utilizan la tabla publicada, de modo que siguen siendo comparables.',
   'arl.result.takeAway': 'Exportar',
   'arl.result.building': 'Generando el libro…',
   'arl.result.downloadExcel': 'Descargar Excel',

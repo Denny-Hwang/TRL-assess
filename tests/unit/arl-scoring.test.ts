@@ -1,5 +1,5 @@
 /**
- * BUILD_SPEC D-2.3 — ARL scoring. Every rule has a named test.
+ * ARL scoring. Every rule has a named test.
  */
 import { describe, it, expect } from 'vitest';
 import {

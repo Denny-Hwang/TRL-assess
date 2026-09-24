@@ -10,11 +10,9 @@ export const arl = {
   'arl.reset.cancel': 'Cancel',
   'arl.unavailable.title': 'The ARL rubric for this session is not available',
   'arl.unavailable.body':
-    'This session was rated against the ARL rubric "{id}", which this version of the app does not include ({detail}). Reset the ARL ratings to start again with the current rubric.',
+    'This version does not include the ARL rubric "{id}" ({detail}). Reset the ARL ratings to start again.',
 
   'arl.scope.title': 'Adoption readiness — step 1 of 3: scope',
-  'arl.scope.lead':
-    'What is being assessed, and against which market. Nothing here leaves your browser.',
   'arl.scope.versionSource': 'Version: {version} · Source: {source}',
   'arl.scope.projectName': 'Project name',
   'arl.scope.technologyName': 'Technology name',
@@ -37,8 +35,7 @@ export const arl = {
   'arl.rate.progress': 'Progress',
   'arl.rate.meter': 'Dimensions rated',
   'arl.rate.rated': '{rated} of {total} rated',
-  'arl.rate.conservative':
-    'Anything left unrated, Unsure, or N/A without a rationale counts as High risk until it is resolved. Targets describe the end of the project: target — planned, not achieved.',
+  'arl.rate.conservative': 'Unrated, Unsure, or N/A without a rationale count as High risk.',
   'arl.rate.areasNav': 'Core risk areas',
   'arl.rate.currentRisk': 'Current risk',
   'arl.rate.naOption': 'N/A — does not apply to this scope',
@@ -61,9 +58,7 @@ export const arl = {
   'arl.result.startHint': '{band} — {medium} Medium, {high} High counted.',
   'arl.result.endHint': '{band} — {target}.',
   'arl.result.change': 'Change over the project',
-  'arl.result.changeHint': 'ARL End minus ARL Start.',
-  'arl.result.scopeMissing.before':
-    'The technology scope or the timeline for evaluation is blank. The source asks you to define both before rating — the same technology can rate differently at another scope.',
+  'arl.result.scopeMissing.before': 'The technology scope or the timeline for evaluation is blank.',
   'arl.result.scopeMissing.link': 'Complete the scope',
   'arl.result.scopeMissing.after': '.',
   'arl.result.profile': 'Risk profile',
@@ -81,11 +76,9 @@ export const arl = {
   'arl.result.flags.targets': 'Targets',
   'arl.result.howRead': 'How the number is read',
   'arl.result.howRead.body':
-    'The source tallies the Medium- and High-risk dimensions and reads the ARL from its look-up table. This tool uses the table exactly as printed.',
+    'The source tallies the Medium- and High-risk dimensions and reads the ARL from its look-up table.',
   'arl.result.mark.start': 'Start',
   'arl.result.mark.target': 'Target',
-  'arl.result.modify':
-    'This tool does not: every result uses the printed table, so results stay comparable.',
   'arl.result.takeAway': 'Take it away',
   'arl.result.building': 'Building the workbook…',
   'arl.result.downloadExcel': 'Download Excel',

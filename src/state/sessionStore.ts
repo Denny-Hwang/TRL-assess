@@ -61,7 +61,7 @@ interface SessionState {
   linkEvidence: (evidenceId: string, cteId: string, criterionId: string) => void;
   unlinkEvidence: (evidenceId: string, cteId: string, criterionId: string) => void;
   setGapActions: (actions: GapAction[]) => void;
-  /** ARL side module (ADR-0005). */
+  /** ARL side module. */
   setArl: (arl: ArlData) => void;
   setArlDimension: (
     patch: Pick<ArlDimensionAssessment, 'dimensionId'> & Partial<ArlDimensionAssessment>,
