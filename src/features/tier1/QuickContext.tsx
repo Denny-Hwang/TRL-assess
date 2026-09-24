@@ -4,6 +4,7 @@ import { listFrameworks } from '@/domain/frameworks';
 import { useSessionStore } from '@/state/sessionStore';
 import { Field, PageHeader } from '@/components/ui';
 import { SaveIndicator } from '@/components/SaveIndicator';
+import { useT } from '@/i18n/store';
 import type { BuildCode, EnvironmentCode, Tier1Context } from '@/domain/schemas';
 
 const EMPTY: Tier1Context = {
@@ -22,6 +23,7 @@ const EMPTY: Tier1Context = {
 
 export function QuickContext() {
   const navigate = useNavigate();
+  const { t, lang } = useT();
   const framework = useSessionStore((s) => s.framework);
   const session = useSessionStore((s) => s.session);
   const setTier1 = useSessionStore((s) => s.setTier1);
@@ -37,9 +39,9 @@ export function QuickContext() {
   const buildHelp = builds.find((b) => b.code === context.build)?.help ?? '';
 
   const missing = [
-    !context.projectName.trim() && 'project name',
-    !context.technologyName.trim() && 'technology name',
-    !context.assessorName.trim() && 'assessor name',
+    !context.projectName.trim() && t('tier1.context.missing.projectName'),
+    !context.technologyName.trim() && t('tier1.context.missing.technologyName'),
+    !context.assessorName.trim() && t('tier1.context.missing.assessorName'),
   ].filter(Boolean) as string[];
 
   const set = <K extends keyof Tier1Context>(key: K, value: Tier1Context[K]) =>
@@ -57,15 +59,12 @@ export function QuickContext() {
 
   return (
     <form onSubmit={submit} noValidate className="max-w-3xl space-y-6">
-      <PageHeader
-        title="Quick Estimate — step 1 of 2: context"
-        lead="A few lines about what is being assessed. Nothing here leaves your browser."
-      >
+      <PageHeader title={t('tier1.context.title')} lead={t('tier1.context.lead')}>
         <SaveIndicator />
       </PageHeader>
 
       <section className="card space-y-4">
-        <Field label="Framework" htmlFor="framework">
+        <Field label={t('tier1.context.framework')} htmlFor="framework">
           <select
             id="framework"
             className="input"
@@ -85,7 +84,7 @@ export function QuickContext() {
       </section>
 
       <section className="card grid gap-4 md:grid-cols-2">
-        <Field label="Project name" htmlFor="projectName" required>
+        <Field label={t('tier1.context.projectName')} htmlFor="projectName" required>
           <input
             id="projectName"
             className="input"
@@ -94,7 +93,7 @@ export function QuickContext() {
             required
           />
         </Field>
-        <Field label="Technology name" htmlFor="technologyName" required>
+        <Field label={t('tier1.context.technologyName')} htmlFor="technologyName" required>
           <input
             id="technologyName"
             className="input"
@@ -103,7 +102,7 @@ export function QuickContext() {
             required
           />
         </Field>
-        <Field label="Assessor name" htmlFor="assessorName" required>
+        <Field label={t('tier1.context.assessorName')} htmlFor="assessorName" required>
           <input
             id="assessorName"
             className="input"
@@ -112,7 +111,7 @@ export function QuickContext() {
             required
           />
         </Field>
-        <Field label="Assessor role" htmlFor="assessorRole">
+        <Field label={t('tier1.context.assessorRole')} htmlFor="assessorRole">
           <input
             id="assessorRole"
             className="input"
@@ -120,7 +119,7 @@ export function QuickContext() {
             onChange={(e) => set('assessorRole', e.target.value)}
           />
         </Field>
-        <Field label="Organization" htmlFor="organization">
+        <Field label={t('tier1.context.organization')} htmlFor="organization">
           <input
             id="organization"
             className="input"
@@ -128,7 +127,7 @@ export function QuickContext() {
             onChange={(e) => set('organization', e.target.value)}
           />
         </Field>
-        <Field label="One-line description" htmlFor="oneLineDescription">
+        <Field label={t('tier1.context.oneLineDescription')} htmlFor="oneLineDescription">
           <input
             id="oneLineDescription"
             className="input"
@@ -140,9 +139,9 @@ export function QuickContext() {
 
       <section className="card grid gap-4 md:grid-cols-2">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500 md:col-span-2">
-          Highest-fidelity test performed so far
+          {t('tier1.context.testHeading')}
         </h2>
-        <Field label="What was tested" htmlFor="highestFidelityTest">
+        <Field label={t('tier1.context.testWhat')} htmlFor="highestFidelityTest">
           <input
             id="highestFidelityTest"
             className="input"
@@ -150,7 +149,7 @@ export function QuickContext() {
             onChange={(e) => set('highestFidelityTest', e.target.value)}
           />
         </Field>
-        <Field label="Where" htmlFor="testLocation">
+        <Field label={t('tier1.context.testWhere')} htmlFor="testLocation">
           <input
             id="testLocation"
             className="input"
@@ -158,11 +157,15 @@ export function QuickContext() {
             onChange={(e) => set('testLocation', e.target.value)}
           />
         </Field>
-        <Field label="When (month/year)" htmlFor="testDate" hint="For example 2026-04.">
+        <Field
+          label={t('tier1.context.testWhen')}
+          htmlFor="testDate"
+          hint={t('tier1.context.testWhenHint')}
+        >
           <input
             id="testDate"
             className="input"
-            placeholder="YYYY-MM"
+            placeholder={t('tier1.context.testWhenPlaceholder')}
             value={context.testDate ?? ''}
             onChange={(e) => set('testDate', e.target.value)}
           />
@@ -171,9 +174,9 @@ export function QuickContext() {
 
       <section className="card grid gap-4 md:grid-cols-2">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500 md:col-span-2">
-          Cross-check inputs
+          {t('tier1.context.crossCheckHeading')}
         </h2>
-        <Field label="Environment reached" htmlFor="environment" hint={envHelp}>
+        <Field label={t('tier1.context.environment')} htmlFor="environment" hint={envHelp}>
           <select
             id="environment"
             className="input"
@@ -187,7 +190,7 @@ export function QuickContext() {
             ))}
           </select>
         </Field>
-        <Field label="Build maturity" htmlFor="build" hint={buildHelp}>
+        <Field label={t('tier1.context.build')} htmlFor="build" hint={buildHelp}>
           <select
             id="build"
             className="input"
@@ -202,20 +205,22 @@ export function QuickContext() {
           </select>
         </Field>
         <p className="text-xs text-slate-500 md:col-span-2">
-          These two answers drive a heuristic cross-check ({framework.matrix.status}). It never
-          overrides your answers — it only flags an inconsistency.
+          {t('tier1.context.crossCheckNote', { status: framework.matrix.status })}
         </p>
+        {lang !== 'en' ? (
+          <p className="text-xs italic text-slate-500 md:col-span-2">{t('sourceText.note')}</p>
+        ) : null}
       </section>
 
       {showErrors && missing.length ? (
         <p role="alert" className="text-sm text-red-700">
-          Please fill in: {missing.join(', ')}.
+          {t('tier1.context.missing', { fields: missing.join(', ') })}
         </p>
       ) : null}
 
       <div className="flex gap-3">
         <button type="submit" className="btn-primary">
-          Continue to the questions
+          {t('tier1.context.continue')}
         </button>
       </div>
     </form>

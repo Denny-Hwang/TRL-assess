@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Interface languages.** English (default), 한국어, 中文, 日本語, Español, Deutsch, हिन्दी and
+  العربية, chosen from the language selector in the header and remembered in this browser. Arabic
+  switches the layout to right-to-left. Screens, guide chrome and Excel exports follow the selected
+  language; criteria, questions, rubric text, sheet names and dropdown values stay in the source
+  language (English). Non-English catalogs load on demand.
+
 - **Adoption Readiness Level (ARL) side module** at `/arl` (ADR-0005, approved by the owner
   2026-09-24): scope → rate → result. The 17 dimensions of the DOE Office of Technology
   Commercialization _Adoption Readiness Assessment_ (Version: April 2025), with their Low / Medium /

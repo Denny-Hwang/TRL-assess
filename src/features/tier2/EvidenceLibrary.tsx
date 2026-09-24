@@ -5,6 +5,7 @@ import { Callout } from '@/components/ui';
 import { getBlob } from '@/storage/blobStore';
 import { downloadBlob } from '@/export/download';
 import { SENSITIVE_MARKING, type EvidenceItem } from '@/domain/schemas';
+import { useT } from '@/i18n/store';
 
 interface Props {
   /** When set, the library opens focused on linking evidence to this criterion. */
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export function EvidenceLibrary({ focusCriterion, onClose }: Props) {
+  const { t } = useT();
   const session = useSessionStore((s) => s.session);
   const removeEvidence = useSessionStore((s) => s.removeEvidence);
   const linkEvidence = useSessionStore((s) => s.linkEvidence);
@@ -31,13 +33,13 @@ export function EvidenceLibrary({ focusCriterion, onClose }: Props) {
     const q = filter.trim().toLowerCase();
     if (!q) return evidence;
     return evidence.filter((e) =>
-      [e.id, e.title, e.description, e.type, e.owner]
+      [e.id, e.title, e.description, e.type, t(`evidenceType.${e.type}`), e.owner]
         .filter(Boolean)
         .join(' ')
         .toLowerCase()
         .includes(q),
     );
-  }, [evidence, filter]);
+  }, [evidence, filter, t]);
 
   const isLinked = (item: EvidenceItem) =>
     Boolean(
@@ -54,29 +56,29 @@ export function EvidenceLibrary({ focusCriterion, onClose }: Props) {
   };
 
   return (
-    <section aria-label="Evidence library" className="space-y-3">
+    <section aria-label={t('evidence.library.label')} className="space-y-3">
       <header className="flex flex-wrap items-center justify-between gap-2">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-          Evidence library
+          {t('evidence.library.heading')}
         </h2>
         {onClose ? (
           <button type="button" className="text-xs underline" onClick={onClose}>
-            Close
+            {t('evidence.library.close')}
           </button>
         ) : null}
       </header>
 
       {focusCriterion && criterion ? (
-        <Callout tone="info" title={`Linking to ${criterion.id}`}>
+        <Callout tone="info" title={t('evidence.library.linkingTo', { id: criterion.id })}>
           {criterion.text}
         </Callout>
       ) : null}
 
       <label className="block text-xs">
-        <span className="sr-only">Filter evidence</span>
+        <span className="sr-only">{t('evidence.library.filterLabel')}</span>
         <input
           className="input"
-          placeholder="Filter by id, title, type or owner"
+          placeholder={t('evidence.library.filterPlaceholder')}
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
         />
@@ -88,7 +90,9 @@ export function EvidenceLibrary({ focusCriterion, onClose }: Props) {
             <div className="flex flex-wrap items-baseline gap-2">
               <span className="font-mono text-xs text-slate-500">{item.id}</span>
               <span className="font-medium">{item.title}</span>
-              <span className="badge border-slate-300 bg-slate-50 text-slate-600">{item.type}</span>
+              <span className="badge border-slate-300 bg-slate-50 text-slate-600">
+                {t(`evidenceType.${item.type}`)}
+              </span>
               <span
                 className={`badge ${
                   item.marking === SENSITIVE_MARKING
@@ -96,7 +100,7 @@ export function EvidenceLibrary({ focusCriterion, onClose }: Props) {
                     : 'border-slate-200 bg-white text-slate-500'
                 }`}
               >
-                {item.marking}
+                {t(`marking.${item.marking}`)}
               </span>
               <span
                 className={`badge ${
@@ -107,7 +111,7 @@ export function EvidenceLibrary({ focusCriterion, onClose }: Props) {
                       : 'border-slate-200 bg-white text-slate-500'
                 }`}
               >
-                {item.verification}
+                {t(`verification.${item.verification}`)}
               </span>
             </div>
 
@@ -124,7 +128,7 @@ export function EvidenceLibrary({ focusCriterion, onClose }: Props) {
                     rel="noreferrer noopener"
                     target="_blank"
                   >
-                    Open link
+                    {t('evidence.library.openLink')}
                   </a>
                 </span>
               ) : null}
@@ -136,24 +140,25 @@ export function EvidenceLibrary({ focusCriterion, onClose }: Props) {
               {item.doi ? <span className="font-mono">doi:{item.doi}</span> : null}
               {item.file ? (
                 <span>
-                  {item.file.name} · {(item.file.sizeBytes / 1024).toFixed(0)} kB · sha256{' '}
+                  {item.file.name} · {(item.file.sizeBytes / 1024).toFixed(0)} kB ·{' '}
+                  {t('evidence.library.sha256')}{' '}
                   <span className="font-mono">{item.file.sha256.slice(0, 12)}…</span>{' '}
                   <button
                     type="button"
                     className="underline"
                     onClick={() => void downloadFile(item)}
                   >
-                    Download
+                    {t('evidence.library.download')}
                   </button>
                 </span>
               ) : null}
             </div>
 
             <p className="mt-1 text-xs text-slate-500">
-              Used by:{' '}
+              {t('evidence.library.usedBy')}{' '}
               {item.linkedCriteria.length
                 ? item.linkedCriteria.map((l) => `${l.cteId}/${l.criterionId}`).join(', ')
-                : 'not linked yet'}
+                : t('evidence.library.notLinked')}
             </p>
 
             <div className="mt-2 flex flex-wrap gap-2 text-xs">
@@ -166,7 +171,7 @@ export function EvidenceLibrary({ focusCriterion, onClose }: Props) {
                       unlinkEvidence(item.id, focusCriterion.cteId, focusCriterion.criterionId)
                     }
                   >
-                    Unlink from {focusCriterion.criterionId}
+                    {t('evidence.library.unlinkFrom', { id: focusCriterion.criterionId })}
                   </button>
                 ) : (
                   <button
@@ -176,7 +181,7 @@ export function EvidenceLibrary({ focusCriterion, onClose }: Props) {
                       linkEvidence(item.id, focusCriterion.cteId, focusCriterion.criterionId)
                     }
                   >
-                    Link to {focusCriterion.criterionId}
+                    {t('evidence.library.linkTo', { id: focusCriterion.criterionId })}
                   </button>
                 )
               ) : null}
@@ -185,14 +190,16 @@ export function EvidenceLibrary({ focusCriterion, onClose }: Props) {
                 className="underline"
                 onClick={() => setEditingId(editingId === item.id ? null : item.id)}
               >
-                {editingId === item.id ? 'Close editor' : 'Edit'}
+                {editingId === item.id
+                  ? t('evidence.library.closeEditor')
+                  : t('evidence.library.edit')}
               </button>
               <button
                 type="button"
                 className="underline text-red-700"
                 onClick={() => removeEvidence(item.id)}
               >
-                Delete
+                {t('evidence.library.delete')}
               </button>
             </div>
 
@@ -209,16 +216,11 @@ export function EvidenceLibrary({ focusCriterion, onClose }: Props) {
         ))}
       </ul>
 
-      {evidence.length === 0 ? (
-        <Callout tone="info">
-          No evidence yet. Evidence is what turns a claim into an assessment: a report, a test
-          record, a pinned commit, a DOI, or a pointer to a controlled document.
-        </Callout>
-      ) : null}
+      {evidence.length === 0 ? <Callout tone="info">{t('evidence.library.empty')}</Callout> : null}
 
       {adding ? (
         <div className="card">
-          <h3 className="mb-2 text-sm font-semibold">New evidence</h3>
+          <h3 className="mb-2 text-sm font-semibold">{t('evidence.library.newHeading')}</h3>
           <EvidenceForm
             onDone={(id) => {
               setAdding(false);
@@ -230,7 +232,7 @@ export function EvidenceLibrary({ focusCriterion, onClose }: Props) {
         </div>
       ) : (
         <button type="button" className="btn-secondary" onClick={() => setAdding(true)}>
-          Add evidence
+          {t('evidence.library.add')}
         </button>
       )}
     </section>

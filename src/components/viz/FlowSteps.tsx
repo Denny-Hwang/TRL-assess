@@ -34,7 +34,7 @@ export function FlowSteps({
           {index < steps.length - 1 ? (
             <span
               aria-hidden="true"
-              className="absolute right-[-14px] top-1/2 hidden -translate-y-1/2 text-slate-300 md:block"
+              className="absolute end-[-14px] top-1/2 hidden -translate-y-1/2 text-slate-300 md:block rtl:rotate-180"
             >
               ▶
             </span>

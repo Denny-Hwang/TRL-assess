@@ -21,7 +21,10 @@ import { PageHeader, SourceNote } from '@/components/ui';
 import { SaveIndicator } from '@/components/SaveIndicator';
 import { Meter } from '@/components/viz/Meter';
 import { RiskGlyph, RiskLegend } from '@/components/viz/RiskGlyph';
-import { ARL_TARGET_LABEL } from '@/config/app.config';
+import { useT } from '@/i18n/store';
+import { arlReasonText, ratingText } from '@/i18n/domainText';
+import type { MessageKey } from '@/i18n/en';
+import type { Translator } from '@/i18n/translate';
 
 type Patch = Pick<ArlDimensionAssessment, 'dimensionId'> & Partial<ArlDimensionAssessment>;
 
@@ -31,8 +34,15 @@ const RISK_TONE: Record<ArlRisk, string> = {
   High: 'peer-checked:border-red-600 peer-checked:bg-red-50',
 };
 
-function countedText(counted: CountedAs): string {
-  return counted === 'N/A' ? 'not counted (N/A)' : `counted as ${counted} risk`;
+function riskText(tr: Translator, risk: ArlRisk): string {
+  return tr.t(`risk.${risk}` as MessageKey);
+}
+
+/** How the rating is counted, when no conservative reason applies. */
+function countedText(tr: Translator, counted: CountedAs): string {
+  return counted === 'N/A'
+    ? tr.t('arl.rate.notCountedNa')
+    : tr.t('arl.rate.countedAs', { risk: riskText(tr, counted) });
 }
 
 const DimensionCard = memo(function DimensionCard({
@@ -44,6 +54,8 @@ const DimensionCard = memo(function DimensionCard({
   assessment: ArlDimensionAssessment | undefined;
   onChange: (patch: Patch) => void;
 }) {
+  const tr = useT();
+  const { t } = tr;
   const id = dimension.id;
   const current: ArlRating = assessment?.current ?? 'Not assessed';
   const rationale = assessment?.rationale ?? '';
@@ -60,7 +72,7 @@ const DimensionCard = memo(function DimensionCard({
     >
       <header>
         <h3 id={`${id}-title`} className="text-base font-semibold">
-          <span className="mr-2 font-mono text-xs text-slate-600">{id}</span>
+          <span className="me-2 font-mono text-xs text-slate-600">{id}</span>
           {dimension.title}
         </h3>
         <p className="mt-1 text-sm text-slate-600">{dimension.description}</p>
@@ -68,7 +80,7 @@ const DimensionCard = memo(function DimensionCard({
       </header>
 
       <fieldset>
-        <legend className="text-sm font-medium text-slate-800">Current risk</legend>
+        <legend className="text-sm font-medium text-slate-800">{t('arl.rate.currentRisk')}</legend>
         <div className="mt-2 grid gap-2 md:grid-cols-3">
           {ARL_RISKS.map((risk) => (
             <label key={risk} className="relative block cursor-pointer">
@@ -85,7 +97,7 @@ const DimensionCard = memo(function DimensionCard({
               >
                 <span className="flex items-center gap-2 font-semibold">
                   <RiskGlyph rating={risk} decorative />
-                  {risk} risk
+                  {riskText(tr, risk)}
                 </span>
                 <span className="mt-1 block whitespace-pre-line text-slate-700">
                   {dimension.levels[risk]}
@@ -107,7 +119,7 @@ const DimensionCard = memo(function DimensionCard({
               />
               <span className="inline-flex items-center gap-2 rounded-md border border-slate-200 px-3 py-1.5 text-sm peer-checked:border-slate-600 peer-checked:bg-slate-100 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-600">
                 <RiskGlyph rating={rating} decorative />
-                {rating === 'N/A' ? 'N/A — does not apply to this scope' : 'Unsure'}
+                {rating === 'N/A' ? t('arl.rate.naOption') : ratingText(tr, 'Unsure')}
               </span>
             </label>
           ))}
@@ -117,23 +129,20 @@ const DimensionCard = memo(function DimensionCard({
               className="rounded-md px-3 py-1.5 text-sm text-slate-600 underline hover:text-slate-900"
               onClick={() => update({ current: 'Not assessed' })}
             >
-              Clear rating
+              {t('arl.rate.clear')}
             </button>
           ) : null}
         </div>
         <p className="mt-2 flex items-center gap-2 text-xs text-slate-600" aria-live="polite">
           <RiskGlyph rating={current} withLabel />
-          <span>
-            — {reason ?? countedText(counted)}
-            {current === 'N/A' && !reason ? ' — the rationale explains why it does not apply' : ''}
-          </span>
+          <span>— {arlReasonText(tr, current, reason) ?? countedText(tr, counted)}</span>
         </p>
       </fieldset>
 
       <div className="grid gap-3 md:grid-cols-2">
         <div className="md:col-span-2">
           <label className="label" htmlFor={`${id}-rationale`}>
-            Comments / rationale{current === 'N/A' ? ' (required for N/A)' : ''}
+            {t(current === 'N/A' ? 'arl.rate.rationaleRequired' : 'arl.rate.rationale')}
           </label>
           <textarea
             id={`${id}-rationale`}
@@ -144,19 +153,19 @@ const DimensionCard = memo(function DimensionCard({
         </div>
         <div className="md:col-span-2">
           <label className="label" htmlFor={`${id}-evidence`}>
-            Evidence or reference
+            {t('arl.rate.evidence')}
           </label>
           <input
             id={`${id}-evidence`}
             className="input"
-            placeholder="e.g. EV-0004, a letter of interest, a market study"
+            placeholder={t('arl.rate.evidence.placeholder')}
             value={assessment?.evidence ?? ''}
             onChange={(e) => update({ evidence: e.target.value })}
           />
         </div>
         <div>
           <label className="label" htmlFor={`${id}-target`}>
-            Target at the end of the project
+            {t('arl.rate.target')}
           </label>
           <select
             id={`${id}-target`}
@@ -167,10 +176,10 @@ const DimensionCard = memo(function DimensionCard({
               update({ target: e.target.value ? (e.target.value as ArlRisk) : undefined })
             }
           >
-            <option value="">Same as current</option>
+            <option value="">{t('arl.rate.sameAsCurrent')}</option>
             {ARL_RISKS.map((risk) => (
               <option key={risk} value={risk}>
-                {risk} risk
+                {riskText(tr, risk)}
               </option>
             ))}
           </select>
@@ -178,12 +187,12 @@ const DimensionCard = memo(function DimensionCard({
         {assessment?.target ? (
           <div>
             <label className="label" htmlFor={`${id}-plan`}>
-              Planned action
+              {t('arl.rate.plannedAction')}
             </label>
             <input
               id={`${id}-plan`}
               className="input"
-              placeholder="What the project will do to reach the target"
+              placeholder={t('arl.rate.plannedAction.placeholder')}
               value={assessment?.plannedAction ?? ''}
               onChange={(e) => update({ plannedAction: e.target.value })}
             />
@@ -196,6 +205,7 @@ const DimensionCard = memo(function DimensionCard({
 
 export function ArlRate({ framework }: { framework: ArlFramework }) {
   const navigate = useNavigate();
+  const { t, lang } = useT();
   const arl = useSessionStore((s) => s.session.arl);
   const setArlDimension = useSessionStore((s) => s.setArlDimension);
   const groups = useMemo(() => dimensionsByArea(framework), [framework]);
@@ -214,34 +224,31 @@ export function ArlRate({ framework }: { framework: ArlFramework }) {
   return (
     <div className="max-w-4xl space-y-6">
       <PageHeader
-        title="Adoption readiness — step 2 of 3: rate the dimensions"
+        title={t('arl.rate.title')}
         lead={`${arl.context.technologyName} · ${arl.context.projectName}`}
       >
         <SaveIndicator />
       </PageHeader>
 
-      <section className="card space-y-3" aria-label="Progress">
+      <section className="card space-y-3" aria-label={t('arl.rate.progress')}>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-          <Meter value={Math.round((rated / total) * 100)} label="Dimensions rated" />
-          <span>
-            {rated} of {total} rated
-          </span>
+          <Meter value={Math.round((rated / total) * 100)} label={t('arl.rate.meter')} />
+          <span>{t('arl.rate.rated', { rated, total })}</span>
           <span data-testid="live-arl-start">
-            ARL Start <strong>{result.start.arl}</strong>
+            {t('arl.common.start')} <strong>{result.start.arl}</strong>
           </span>
           <span data-testid="live-arl-end">
-            ARL End (target) <strong>{result.end.arl}</strong>
+            {t('arl.common.endTarget')} <strong>{result.end.arl}</strong>
           </span>
         </div>
         {rate ? (
           <p className="text-xs text-slate-500">
-            “{rate.text}” <SourceNote {...rate.source} compact /> Anything left unrated, Unsure, or
-            N/A without a rationale counts as High risk until it is resolved. Targets describe the
-            end of the project: {ARL_TARGET_LABEL.toLowerCase()}.
+            “{rate.text}” <SourceNote {...rate.source} compact /> {t('arl.rate.conservative')}
           </p>
         ) : null}
+        {lang !== 'en' ? <p className="text-xs text-slate-500">{t('sourceText.note')}</p> : null}
         <RiskLegend />
-        <nav aria-label="Core risk areas" className="flex flex-wrap gap-2 text-sm">
+        <nav aria-label={t('arl.rate.areasNav')} className="flex flex-wrap gap-2 text-sm">
           {groups.map(({ area }) => (
             <a key={area.id} href={`#area-${area.id}`} className="underline">
               {area.id}. {area.name}
@@ -273,10 +280,10 @@ export function ArlRate({ framework }: { framework: ArlFramework }) {
 
       <div className="flex flex-wrap gap-3">
         <button type="button" className="btn-primary" onClick={() => navigate('/arl/result')}>
-          See the result
+          {t('arl.rate.seeResult')}
         </button>
         <Link to="/arl" className="btn-secondary">
-          Back to the scope
+          {t('arl.rate.backToScope')}
         </Link>
       </div>
     </div>

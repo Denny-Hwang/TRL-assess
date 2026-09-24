@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useSessionStore } from '@/state/sessionStore';
 import { Callout, Field } from '@/components/ui';
+import { useT } from '@/i18n/store';
+import type { MessageKey } from '@/i18n/en';
 import { CTE_KINDS, TRL_LEVELS, type Cte, type CteKind, type TrlLevel } from '@/domain/schemas';
 
 interface Props {
@@ -19,6 +21,7 @@ const BLANK = {
 };
 
 export function CteRegister({ selectedId, onSelect }: Props) {
+  const { t } = useT();
   const session = useSessionStore((s) => s.session);
   const addCte = useSessionStore((s) => s.addCte);
   const updateCte = useSessionStore((s) => s.updateCte);
@@ -68,17 +71,17 @@ export function CteRegister({ selectedId, onSelect }: Props) {
   };
 
   return (
-    <section aria-label="Critical Technology Elements" className="space-y-3">
+    <section aria-label={t('tier2.cte.heading')} className="space-y-3">
       <div className="flex items-center justify-between">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-          Critical Technology Elements
+          {t('tier2.cte.heading')}
         </h2>
         <span className="text-xs text-slate-500">{ctes.length}</span>
       </div>
 
       {ctes.length === 0 ? (
         <Callout tone="info">
-          Start by naming the parts of the system whose maturity actually decides whether it works.
+          {t('tier2.cte.empty')}
           {technologyName ? (
             <>
               {' '}
@@ -93,7 +96,7 @@ export function CteRegister({ selectedId, onSelect }: Props) {
                   })
                 }
               >
-                Import “{technologyName}” from the quick estimate
+                {t('tier2.cte.importFromTier1', { name: technologyName })}
               </button>
               .
             </>
@@ -111,15 +114,15 @@ export function CteRegister({ selectedId, onSelect }: Props) {
             >
               <button
                 type="button"
-                className="w-full text-left"
+                className="w-full text-start"
                 aria-current={selectedId === cte.id}
                 onClick={() => onSelect(cte.id)}
               >
                 <span className="font-mono text-xs text-slate-600">{cte.id}</span>
-                <span className="ml-2 font-medium">{cte.name}</span>
+                <span className="ms-2 font-medium">{cte.name}</span>
                 <span className="mt-1 flex flex-wrap gap-1 text-xs">
                   <span className="badge border-slate-400 bg-white text-slate-700">
-                    {cte.kind ?? 'unspecified'}
+                    {cte.kind ? t(`kind.${cte.kind}` as MessageKey) : t('tier2.cte.unspecified')}
                   </span>
                   <span
                     className={`badge ${
@@ -128,18 +131,18 @@ export function CteRegister({ selectedId, onSelect }: Props) {
                         : 'border-slate-300 bg-white text-slate-700'
                     }`}
                   >
-                    {cte.critical ? 'critical' : 'not critical'}
+                    {cte.critical ? t('tier2.cte.critical') : t('tier2.cte.notCritical')}
                   </span>
                   {cte.targetTrl ? (
                     <span className="badge border-slate-400 bg-white text-slate-700">
-                      target TRL {cte.targetTrl}
+                      {t('tier2.cte.target', { level: cte.targetTrl })}
                     </span>
                   ) : null}
                 </span>
               </button>
               <div className="mt-2 flex flex-wrap gap-1 text-xs">
                 <button type="button" className="underline" onClick={() => startEdit(cte)}>
-                  Edit
+                  {t('tier2.cte.edit')}
                 </button>
                 <button
                   type="button"
@@ -147,7 +150,7 @@ export function CteRegister({ selectedId, onSelect }: Props) {
                   onClick={() => move(cte.id, -1)}
                   disabled={index === 0}
                 >
-                  Move up
+                  {t('tier2.cte.moveUp')}
                 </button>
                 <button
                   type="button"
@@ -155,11 +158,13 @@ export function CteRegister({ selectedId, onSelect }: Props) {
                   onClick={() => move(cte.id, 1)}
                   disabled={index === ctes.length - 1}
                 >
-                  Move down
+                  {t('tier2.cte.moveDown')}
                 </button>
                 {confirmDelete === cte.id ? (
                   <>
-                    <span className="text-red-700">Delete {cte.id} and its assessments?</span>
+                    <span className="text-red-700">
+                      {t('tier2.cte.deleteConfirm', { id: cte.id })}
+                    </span>
                     <button
                       type="button"
                       className="underline text-red-700"
@@ -168,14 +173,14 @@ export function CteRegister({ selectedId, onSelect }: Props) {
                         setConfirmDelete(null);
                       }}
                     >
-                      Yes
+                      {t('tier2.cte.deleteYes')}
                     </button>
                     <button
                       type="button"
                       className="underline"
                       onClick={() => setConfirmDelete(null)}
                     >
-                      Cancel
+                      {t('tier2.common.cancel')}
                     </button>
                   </>
                 ) : (
@@ -184,7 +189,7 @@ export function CteRegister({ selectedId, onSelect }: Props) {
                     className="underline text-red-700"
                     onClick={() => setConfirmDelete(cte.id)}
                   >
-                    Delete
+                    {t('tier2.cte.delete')}
                   </button>
                 )}
               </div>
@@ -194,8 +199,12 @@ export function CteRegister({ selectedId, onSelect }: Props) {
       </ul>
 
       <form onSubmit={submit} noValidate className="card space-y-3">
-        <h3 className="text-sm font-semibold">{editingId ? `Edit ${editingId}` : 'Add a CTE'}</h3>
-        <Field label="Name" htmlFor="cte-name" required>
+        <h3 className="text-sm font-semibold">
+          {editingId
+            ? t('tier2.cte.form.editTitle', { id: editingId })
+            : t('tier2.cte.form.addTitle')}
+        </h3>
+        <Field label={t('tier2.cte.form.name')} htmlFor="cte-name" required>
           <input
             id="cte-name"
             className="input"
@@ -203,7 +212,7 @@ export function CteRegister({ selectedId, onSelect }: Props) {
             onChange={(e) => setDraft({ ...draft, name: e.target.value })}
           />
         </Field>
-        <Field label="Description" htmlFor="cte-description">
+        <Field label={t('tier2.cte.form.description')} htmlFor="cte-description">
           <textarea
             id="cte-description"
             className="input"
@@ -212,11 +221,7 @@ export function CteRegister({ selectedId, onSelect }: Props) {
             onChange={(e) => setDraft({ ...draft, description: e.target.value })}
           />
         </Field>
-        <Field
-          label="Why is it critical?"
-          htmlFor="cte-why"
-          hint="What breaks, or what is unproven, if this element does not mature?"
-        >
+        <Field label={t('tier2.cte.form.why')} htmlFor="cte-why" hint={t('tier2.cte.form.whyHint')}>
           <textarea
             id="cte-why"
             className="input"
@@ -226,7 +231,7 @@ export function CteRegister({ selectedId, onSelect }: Props) {
           />
         </Field>
         <div className="grid grid-cols-2 gap-3">
-          <Field label="Kind" htmlFor="cte-kind">
+          <Field label={t('tier2.cte.form.kind')} htmlFor="cte-kind">
             <select
               id="cte-kind"
               className="input"
@@ -235,12 +240,12 @@ export function CteRegister({ selectedId, onSelect }: Props) {
             >
               {CTE_KINDS.map((k) => (
                 <option key={k} value={k}>
-                  {k}
+                  {t(`kind.${k}` as MessageKey)}
                 </option>
               ))}
             </select>
           </Field>
-          <Field label="Target TRL" htmlFor="cte-target">
+          <Field label={t('tier2.cte.form.target')} htmlFor="cte-target">
             <select
               id="cte-target"
               className="input"
@@ -261,7 +266,7 @@ export function CteRegister({ selectedId, onSelect }: Props) {
             </select>
           </Field>
         </div>
-        <Field label="Owner" htmlFor="cte-owner">
+        <Field label={t('tier2.cte.form.owner')} htmlFor="cte-owner">
           <input
             id="cte-owner"
             className="input"
@@ -275,11 +280,11 @@ export function CteRegister({ selectedId, onSelect }: Props) {
             checked={draft.critical}
             onChange={(e) => setDraft({ ...draft, critical: e.target.checked })}
           />
-          Critical — include in the system summary
+          {t('tier2.cte.form.critical')}
         </label>
         <div className="flex gap-2">
           <button type="submit" className="btn-primary">
-            {editingId ? 'Save changes' : 'Add CTE'}
+            {editingId ? t('tier2.cte.form.save') : t('tier2.cte.form.add')}
           </button>
           {editingId ? (
             <button
@@ -290,7 +295,7 @@ export function CteRegister({ selectedId, onSelect }: Props) {
                 setDraft(BLANK);
               }}
             >
-              Cancel
+              {t('tier2.common.cancel')}
             </button>
           ) : null}
         </div>

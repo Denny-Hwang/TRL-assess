@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { useSessionStore } from '@/state/sessionStore';
 import { criteriaByLevel } from '@/domain/frameworks';
-import { formatTrl, scoreTier1 } from '@/domain/tier1';
+import { scoreTier1 } from '@/domain/tier1';
 import { serializeSession } from '@/domain/json';
 import { downloadBlob, sessionSlug, timestampForFilename } from '@/export/download';
 import { Callout, Disclaimer, PageHeader, Stat } from '@/components/ui';
@@ -10,17 +10,15 @@ import { TrlLadder } from '@/components/viz/TrlLadder';
 import { StatusGlyph } from '@/components/viz/StatusGlyph';
 import { MatrixHeatmap } from '@/components/viz/MatrixHeatmap';
 import type { TrlLevel } from '@/domain/schemas';
-
-const CONSISTENCY_HELP: Record<string, string> = {
-  High: 'Your answers are internally consistent and agree with the build/environment cross-check. That says nothing about whether the answers are correct.',
-  Medium:
-    'There is some tension between your answers and the cross-check, or an "Unsure" at or below the level you claimed.',
-  Low: 'Your answers disagree strongly with the build/environment cross-check, or several levels below your claim are unconfirmed. Re-check before using this figure.',
-};
+import type { MessageKey } from '@/i18n/en';
+import { useT } from '@/i18n/store';
+import { tier1FlagText, trlText } from '@/i18n/domainText';
 
 export function QuickResult() {
   const framework = useSessionStore((s) => s.framework);
   const session = useSessionStore((s) => s.session);
+  const tr = useT();
+  const { t } = tr;
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -59,7 +57,7 @@ export function QuickResult() {
   return (
     <div className="max-w-4xl space-y-6">
       <PageHeader
-        title="Quick Estimate — result"
+        title={t('tier1.result.title')}
         lead={`${session.tier1.context.technologyName} · ${session.tier1.context.projectName}`}
       />
 
@@ -69,47 +67,66 @@ export function QuickResult() {
           gaps={result.flags.find((f) => f.code === 'gap')?.levels ?? []}
           current={nextLevel}
           markers={[
-            { level: Math.max(1, result.contiguousTrl), label: 'estimate' },
+            { level: Math.max(1, result.contiguousTrl), label: t('tier1.result.marker.estimate') },
             ...(result.firstYesTrl > result.contiguousTrl
-              ? [{ level: result.firstYesTrl, label: 'claimed', tone: 'critical' as const }]
+              ? [
+                  {
+                    level: result.firstYesTrl,
+                    label: t('tier1.result.marker.claimed'),
+                    tone: 'critical' as const,
+                  },
+                ]
               : []),
             ...(result.matrixTrl > 0 && result.matrixTrl !== result.contiguousTrl
-              ? [{ level: result.matrixTrl, label: 'cross-check', tone: 'muted' as const }]
+              ? [
+                  {
+                    level: result.matrixTrl,
+                    label: t('tier1.result.marker.crossCheck'),
+                    tone: 'muted' as const,
+                  },
+                ]
               : []),
           ]}
-          label={`Estimated TRL ${result.contiguousTrl} of 9. Highest level claimed: ${result.firstYesTrl}. Build and environment cross-check: ${result.matrixTrl}.`}
+          label={t('tier1.result.ladderLabel', {
+            estimate: result.contiguousTrl,
+            claimed: result.firstYesTrl,
+            matrix: result.matrixTrl,
+          })}
         />
-        <p className="mt-2 text-xs text-slate-500">
-          Filled rungs are confirmed. A hatched rung is a level you claimed while a level below it
-          is unconfirmed — the chain stops there.
-        </p>
+        <p className="mt-2 text-xs text-slate-500">{t('tier1.result.ladderNote')}</p>
       </section>
 
       <div className="grid gap-4 sm:grid-cols-3">
         <Stat
-          label="Estimated TRL"
-          value={formatTrl(result.contiguousTrl)}
-          hint="Highest level with every level below it also confirmed."
+          label={t('tier1.result.estimated')}
+          value={trlText(tr, result.contiguousTrl)}
+          hint={t('tier1.result.estimatedHint')}
           emphasis
           testId="estimated-trl"
         />
         <Stat
-          label="Highest level claimed"
-          value={formatTrl(result.firstYesTrl)}
-          hint='Highest single "Yes", ignoring gaps.'
+          label={t('tier1.result.claimed')}
+          value={trlText(tr, result.firstYesTrl)}
+          hint={t('tier1.result.claimedHint')}
           testId="first-yes-trl"
         />
         <Stat
-          label="Build × environment cross-check"
-          value={formatTrl(result.matrixTrl)}
-          hint={`${session.tier1.context.build} × ${session.tier1.context.environment} — ${framework.matrix.status}.`}
+          label={t('tier1.result.matrix')}
+          value={trlText(tr, result.matrixTrl)}
+          hint={t('tier1.result.matrixHint', {
+            build: session.tier1.context.build,
+            environment: session.tier1.context.environment,
+            status: framework.matrix.status,
+          })}
           testId="matrix-trl"
         />
       </div>
 
       <section className="card">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-          Consistency: {result.consistency}
+          {t('tier1.result.consistency', {
+            rating: t(`consistency.${result.consistency}` as MessageKey),
+          })}
         </h2>
         <div className="mt-3">
           <MatrixHeatmap
@@ -118,59 +135,63 @@ export function QuickResult() {
             environment={session.tier1.context.environment}
           />
         </div>
-        <p className="mt-2 text-sm text-slate-700">{CONSISTENCY_HELP[result.consistency]}</p>
+        <p className="mt-2 text-sm text-slate-700">
+          {t(`tier1.result.consistencyHelp.${result.consistency}` as MessageKey)}
+        </p>
         {result.flags.length ? (
           <ul className="mt-3 space-y-2">
             {result.flags.map((flag) => (
               <li key={flag.code}>
-                <Callout tone={flag.code === 'gap' ? 'warning' : 'info'}>{flag.message}</Callout>
+                <Callout tone={flag.code === 'gap' ? 'warning' : 'info'}>
+                  {tier1FlagText(tr, flag)}
+                </Callout>
               </li>
             ))}
           </ul>
         ) : (
-          <p className="mt-3 text-sm text-emerald-800">No flags raised.</p>
+          <p className="mt-3 text-sm text-emerald-800">{t('flags.none')}</p>
         )}
       </section>
 
-      <Disclaimer label={result.label} />
+      <Disclaimer label={t('label.tier1')} />
 
       <section className="card">
-        <h2 className="text-lg font-semibold">What typically comes next</h2>
+        <h2 className="text-lg font-semibold">{t('tier1.result.nextHeading')}</h2>
         <p className="mt-1 text-sm text-slate-600">
           {nextCriteria.length > 0
-            ? `What TRL ${nextLevel} requires — each of these needs evidence in a Tier 2 assessment.`
-            : `Criteria at TRL ${nextLevel}. This framework marks none of them mandatory, so an assessor decides.`}
+            ? t('tier1.result.nextMandatory', { trl: trlText(tr, nextLevel) })
+            : t('tier1.result.nextNoMandatory', { trl: trlText(tr, nextLevel) })}
         </p>
         <ul className="mt-3 space-y-2 text-sm text-slate-700">
           {(nextCriteria.length > 0 ? nextCriteria : allNext.slice(0, 5)).map((c) => (
             <li key={c.id} className="flex gap-2">
               <StatusGlyph kind="Not assessed" size={14} className="mt-0.5 shrink-0" />
               <span>
-                {c.text}{' '}
-                <span className="font-mono text-xs text-slate-500">{c.id}</span>
+                {c.text} <span className="font-mono text-xs text-slate-500">{c.id}</span>
               </span>
             </li>
           ))}
         </ul>
         {optionalCount > 0 ? (
           <p className="mt-2 text-xs text-slate-500">
-            …plus {optionalCount} optional {optionalCount === 1 ? 'criterion' : 'criteria'} at this
-            level, shown in the evidence assessment.
+            {t(optionalCount === 1 ? 'tier1.result.optional.one' : 'tier1.result.optional.other', {
+              count: optionalCount,
+            })}
           </p>
         ) : null}
       </section>
 
       <section className="card">
-        <h2 className="text-lg font-semibold">Take it away</h2>
+        <h2 className="text-lg font-semibold">{t('tier1.result.takeAway')}</h2>
         <div className="mt-3 flex flex-wrap gap-2">
           <button type="button" className="btn-primary" onClick={downloadExcel} disabled={busy}>
-            {busy ? 'Building the workbook…' : 'Download Excel'}
+            {busy ? t('tier1.result.building') : t('tier1.result.downloadExcel')}
           </button>
           <button type="button" className="btn-secondary" onClick={downloadJson}>
-            Download JSON
+            {t('tier1.result.downloadJson')}
           </button>
           <Link className="btn-secondary" to="/assess">
-            Continue to Evidence Assessment
+            {t('tier1.result.continue')}
           </Link>
         </div>
         {error ? (
@@ -178,10 +199,7 @@ export function QuickResult() {
             {error}
           </p>
         ) : null}
-        <p className="mt-3 text-xs text-slate-500">
-          The JSON file restores this session in the app. The workbook is a static snapshot —
-          editing it does not recompute the TRL.
-        </p>
+        <p className="mt-3 text-xs text-slate-500">{t('tier1.result.filesNote')}</p>
       </section>
     </div>
   );

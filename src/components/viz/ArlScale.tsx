@@ -1,4 +1,5 @@
 import type { ArlFramework } from '@/domain/schemas';
+import { useT } from '@/i18n/store';
 import { MARK_GAP, MARK_RADIUS, VIZ } from './tokens';
 
 const CELL = 34;
@@ -23,6 +24,7 @@ export function ArlScale({
   label: string;
   className?: string;
 }) {
+  const { t } = useT();
   const width = 9 * CELL;
   const markerRow = 16;
   const barTop = markerRow + 4;
@@ -98,11 +100,10 @@ export function ArlScale({
         ) : null}
       </svg>
       <p className="mt-1 flex flex-wrap gap-x-4 text-xs text-slate-600" aria-hidden="true">
-        <span>▼ Start: ARL {start}</span>
+        <span>▼ {t('arl.scale.start', { level: start })}</span>
         {end !== undefined ? (
           <span>
-            ▽ Target: ARL {end}
-            {end === start ? ' (no change)' : ''}
+            ▽ {t(end === start ? 'arl.scale.targetNoChange' : 'arl.scale.target', { level: end })}
           </span>
         ) : null}
       </p>

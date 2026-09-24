@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { SENSITIVE_DATA_NOTICE } from '@/config/app.config';
+import { useT } from '@/i18n/store';
 
 const DISMISS_KEY = 'trl-assess:notice-dismissed';
 
 export function SensitiveDataNotice() {
   const [dismissed, setDismissed] = useState(true);
+  const { t } = useT();
 
   useEffect(() => {
     try {
@@ -24,7 +25,7 @@ export function SensitiveDataNotice() {
     >
       <div className="mx-auto flex max-w-6xl items-start gap-3">
         <span aria-hidden="true">⚠️</span>
-        <p className="flex-1">{SENSITIVE_DATA_NOTICE}</p>
+        <p className="flex-1">{t('notice.sensitive')}</p>
         <button
           type="button"
           className="shrink-0 rounded border border-amber-400 px-2 py-1 text-xs font-medium hover:bg-amber-100"
@@ -37,7 +38,7 @@ export function SensitiveDataNotice() {
             setDismissed(true);
           }}
         >
-          Dismiss
+          {t('notice.dismiss')}
         </button>
       </div>
     </div>

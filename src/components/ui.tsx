@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
-import { DISCLAIMER } from '@/config/app.config';
+import { useT } from '@/i18n/store';
+import { disclaimerText } from '@/i18n/domainText';
 import type { Origin } from '@/domain/schemas';
 
 export function PageHeader({
@@ -59,21 +60,17 @@ const ORIGIN_STYLE: Record<Origin, string> = {
   tailored: 'border-violet-300 bg-violet-50 text-violet-800',
 };
 
-const ORIGIN_TITLE: Record<Origin, string> = {
-  verbatim: 'Text copied exactly from a U.S. Government public-domain source.',
-  adapted: 'Source wording restructured; the meaning is preserved.',
-  tailored: 'Added by this framework; it is not in any source. See the rationale.',
-};
-
 export function OriginBadge({ origin }: { origin: Origin }) {
+  const { t } = useT();
   return (
-    <span className={`badge ${ORIGIN_STYLE[origin]}`} title={ORIGIN_TITLE[origin]}>
-      {origin}
+    <span className={`badge ${ORIGIN_STYLE[origin]}`} title={t(`ui.origin.${origin}.title`)}>
+      {t(`ui.origin.${origin}`)}
     </span>
   );
 }
 
 export function MandatoryBadge({ mandatory, basis }: { mandatory: boolean; basis?: string }) {
+  const { t } = useT();
   return (
     <span
       className={`badge ${
@@ -81,18 +78,29 @@ export function MandatoryBadge({ mandatory, basis }: { mandatory: boolean; basis
           ? 'border-slate-400 bg-slate-100 text-slate-800'
           : 'border-slate-200 bg-white text-slate-500'
       }`}
-      title={basis ?? (mandatory ? 'Required for the level' : 'Not required for the level')}
+      title={basis ?? t(mandatory ? 'ui.mandatory.title' : 'ui.optional.title')}
     >
-      {mandatory ? 'mandatory' : 'optional'}
+      {t(mandatory ? 'ui.mandatory' : 'ui.optional')}
     </span>
   );
 }
 
-export function Disclaimer({ label }: { label: string }) {
+/** The honest label and the disclaimer every result page carries. */
+export function Disclaimer({
+  label,
+  which = 'trl',
+  children,
+}: {
+  label: string;
+  which?: 'trl' | 'arl';
+  children?: ReactNode;
+}) {
+  const tr = useT();
   return (
-    <section className="card border-amber-200 bg-amber-50" aria-label="Result label and disclaimer">
+    <section className="card border-amber-200 bg-amber-50" aria-label={tr.t('ui.disclaimer.aria')}>
       <p className="text-sm font-semibold text-amber-900">{label}</p>
-      <p className="mt-2 text-xs text-amber-900/90">{DISCLAIMER}</p>
+      <p className="mt-2 text-xs text-amber-900/90">{disclaimerText(tr, which)}</p>
+      {children}
     </section>
   );
 }
@@ -164,6 +172,7 @@ export function SourceNote({
   /** Show only the document and page; the section stays in the tooltip. */
   compact?: boolean;
 }) {
+  const { t } = useT();
   const full = [
     sourceId,
     section,
@@ -181,8 +190,8 @@ export function SourceNote({
     .filter(Boolean)
     .join(' · ');
   return (
-    <span className="text-xs text-slate-500" title={`Source: ${full}`}>
-      Source: {short}
+    <span className="text-xs text-slate-500" title={t('ui.source', { ref: full })}>
+      {t('ui.source', { ref: short })}
     </span>
   );
 }

@@ -1,4 +1,6 @@
 import { TRL_LEVELS, type TrlLevel } from '@/domain/schemas';
+import { useT } from '@/i18n/store';
+import { trlText } from '@/i18n/domainText';
 import { MARK_GAP, MARK_RADIUS, VIZ } from './tokens';
 
 export interface LadderMarker {
@@ -69,6 +71,8 @@ export function TrlLadder({
   label,
   className,
 }: TrlLadderProps) {
+  const tr = useT();
+  const { t } = tr;
   const s = SIZES[size];
   const { placed, rowCount } = layoutMarkers(markers, s.rung, s.font);
   const markerBlock = rowCount === 0 ? 0 : rowCount * (s.font + 6) + 2;
@@ -85,18 +89,21 @@ export function TrlLadder({
             const isAchieved = level <= achieved;
             const isGap = gaps.includes(level);
             const isCurrent = current === level;
-            const state = isAchieved
-              ? 'achieved'
-              : isGap
-                ? 'claimed but not confirmed'
-                : 'not achieved';
+            const state = t(
+              isAchieved
+                ? 'tier1.ladder.achieved'
+                : isGap
+                  ? 'tier1.ladder.gap'
+                  : 'tier1.ladder.notAchieved',
+            );
+            const item = t('tier1.ladder.item', { trl: trlText(tr, level), state });
             return (
               <li key={level} className="flex-1">
                 <button
                   type="button"
                   onClick={() => onSelect?.(level)}
                   aria-current={isCurrent ? 'true' : undefined}
-                  title={`TRL ${level} — ${state}`}
+                  title={item}
                   className={[
                     'flex w-full flex-col items-center gap-1 rounded py-1',
                     'hover:bg-slate-100 focus-visible:bg-slate-100',
@@ -121,7 +128,7 @@ export function TrlLadder({
                   >
                     {level}
                   </span>
-                  <span className="sr-only">{`TRL ${level} — ${state}. Show its criteria.`}</span>
+                  <span className="sr-only">{t('tier1.ladder.show', { item })}</span>
                 </button>
               </li>
             );

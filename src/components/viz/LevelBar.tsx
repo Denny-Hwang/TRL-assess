@@ -1,3 +1,5 @@
+import type { MessageKey } from '@/i18n/en';
+import { useT } from '@/i18n/store';
 import { MARK_GAP, MARK_RADIUS, VIZ } from './tokens';
 import { StatusGlyph, type GlyphKind } from './StatusGlyph';
 
@@ -9,12 +11,22 @@ export interface LevelCounts {
   notAssessed: number;
 }
 
-const ORDER: Array<{ key: keyof LevelCounts; fill: string; kind: GlyphKind; label: string }> = [
-  { key: 'satisfied', fill: VIZ.status.good, kind: 'Satisfied', label: 'satisfied' },
-  { key: 'partial', fill: VIZ.status.warning, kind: 'Partially met', label: 'partially met' },
-  { key: 'notMet', fill: VIZ.status.critical, kind: 'Not met', label: 'not met' },
-  { key: 'na', fill: VIZ.neutral.na, kind: 'N/A', label: 'N/A' },
-  { key: 'notAssessed', fill: VIZ.neutral.empty, kind: 'Not assessed', label: 'not assessed' },
+const ORDER: Array<{ key: keyof LevelCounts; fill: string; kind: GlyphKind; label: MessageKey }> = [
+  { key: 'satisfied', fill: VIZ.status.good, kind: 'Satisfied', label: 'tier2.levelBar.satisfied' },
+  {
+    key: 'partial',
+    fill: VIZ.status.warning,
+    kind: 'Partially met',
+    label: 'tier2.levelBar.partial',
+  },
+  { key: 'notMet', fill: VIZ.status.critical, kind: 'Not met', label: 'tier2.levelBar.notMet' },
+  { key: 'na', fill: VIZ.neutral.na, kind: 'N/A', label: 'tier2.levelBar.na' },
+  {
+    key: 'notAssessed',
+    fill: VIZ.neutral.empty,
+    kind: 'Not assessed',
+    label: 'tier2.levelBar.notAssessed',
+  },
 ];
 
 /**
@@ -35,12 +47,13 @@ export function LevelBar({
   showCounts?: boolean;
   className?: string;
 }) {
+  const { t } = useT();
   const total = ORDER.reduce((sum, seg) => sum + counts[seg.key], 0);
   const summary =
     total === 0
-      ? 'No criteria apply at this level'
+      ? t('tier2.levelBar.none')
       : ORDER.filter((seg) => counts[seg.key] > 0)
-          .map((seg) => `${counts[seg.key]} ${seg.label}`)
+          .map((seg) => t(seg.label, { count: counts[seg.key] }))
           .join(', ');
 
   let x = 0;

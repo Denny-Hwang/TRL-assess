@@ -1,3 +1,4 @@
+import { useT } from '@/i18n/store';
 import { MARK_RADIUS, VIZ } from './tokens';
 import type { CteResult } from '@/domain/tier2';
 
@@ -16,6 +17,7 @@ export function CteBars({
   limitingIds?: readonly string[];
   className?: string;
 }) {
+  const { t } = useT();
   if (ctes.length === 0) return null;
 
   const rowH = 26;
@@ -25,11 +27,18 @@ export function CteBars({
   const height = ctes.length * rowH + 26;
   const x = (level: number) => labelW + (level / 9) * scaleW;
 
+  const list = ctes
+    .map((c) =>
+      t(c.cte.critical && systemTrl !== null ? 'tier2.bars.itemCritical' : 'tier2.bars.item', {
+        name: c.cte.name,
+        trl: c.trl,
+      }),
+    )
+    .join(', ');
   const summary =
     systemTrl === null
-      ? `Per-CTE TRLs: ${ctes.map((c) => `${c.cte.name} ${c.trl}`).join(', ')}. No critical CTE, so no system summary.`
-      : `System summary TRL ${systemTrl}, the minimum across critical CTEs (${limitingIds.join(', ')}). ` +
-        `Per-CTE: ${ctes.map((c) => `${c.cte.name} ${c.trl}${c.cte.critical ? ' (critical)' : ''}`).join(', ')}.`;
+      ? t('tier2.bars.noSystem', { list })
+      : t('tier2.bars.summary', { trl: systemTrl, ids: limitingIds.join(', '), list });
 
   return (
     <figure className={className}>
@@ -97,7 +106,7 @@ export function CteBars({
                   fontWeight={600}
                   fill={VIZ.status.critical}
                 >
-                  ◀ limits the system
+                  {`◀ ${t('tier2.bars.limits')}`}
                 </text>
               ) : null}
             </g>
@@ -121,12 +130,12 @@ export function CteBars({
           className="inline-block h-2 w-2 translate-y-[1px] rounded-[2px] bg-slate-900"
           aria-hidden="true"
         />{' '}
-        critical (counts towards the summary) ·{' '}
+        {t('tier2.bars.legend.critical')} ·{' '}
         <span
           className="inline-block h-2 w-2 translate-y-[1px] rounded-[2px] border border-slate-900"
           aria-hidden="true"
         />{' '}
-        not critical · the dashed line is the system summary, the lowest TRL among critical CTEs.
+        {t('tier2.bars.legend.notCritical')} · {t('tier2.bars.legend.line')}
       </figcaption>
     </figure>
   );

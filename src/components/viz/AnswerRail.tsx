@@ -1,10 +1,13 @@
 import { TRL_LEVELS, type AnswerValue, type TrlLevel } from '@/domain/schemas';
+import type { MessageKey } from '@/i18n/en';
+import { useT } from '@/i18n/store';
+import { trlText } from '@/i18n/domainText';
 import { VIZ } from './tokens';
 
-const MARK: Record<AnswerValue, { fill: string; letter: string; word: string }> = {
-  Yes: { fill: VIZ.brand, letter: 'Y', word: 'yes' },
-  No: { fill: VIZ.neutral.empty, letter: 'N', word: 'no' },
-  Unsure: { fill: VIZ.status.warning, letter: 'U', word: 'unsure' },
+const MARK: Record<AnswerValue, { fill: string; letter: string; word: MessageKey }> = {
+  Yes: { fill: VIZ.brand, letter: 'Y', word: 'tier1.rail.yes' },
+  No: { fill: VIZ.neutral.empty, letter: 'N', word: 'tier1.rail.no' },
+  Unsure: { fill: VIZ.status.warning, letter: 'U', word: 'tier1.rail.unsure' },
 };
 
 /**
@@ -16,13 +19,15 @@ export function AnswerRail({
   answers,
   current,
   onSelect,
-  label = 'Answers so far, TRL 1 to 9',
+  label,
 }: {
   answers: Partial<Record<TrlLevel, AnswerValue>>;
   current?: TrlLevel;
   onSelect: (level: TrlLevel) => void;
   label?: string;
 }) {
+  const tr = useT();
+  const { t } = tr;
   let contiguous = 0;
   for (const level of TRL_LEVELS) {
     if (answers[level] === 'Yes') contiguous = level;
@@ -30,19 +35,23 @@ export function AnswerRail({
   }
 
   return (
-    <ul className="flex gap-1" aria-label={label}>
+    <ul className="flex gap-1" aria-label={label ?? t('tier1.rail.label')}>
       {TRL_LEVELS.map((level) => {
         const answer = answers[level];
         const mark = answer ? MARK[answer] : undefined;
         const inChain = level <= contiguous;
         const isCurrent = current === level;
+        const item = t('tier1.rail.item', {
+          trl: trlText(tr, level),
+          state: t(mark ? mark.word : 'tier1.rail.notAnswered'),
+        });
         return (
           <li key={level} className="flex-1">
             <button
               type="button"
               onClick={() => onSelect(level)}
               aria-current={isCurrent ? 'step' : undefined}
-              title={`TRL ${level} — ${answer ? mark!.word : 'not answered'}`}
+              title={item}
               className="flex w-full flex-col items-center gap-1 rounded py-1 hover:bg-slate-100 focus-visible:bg-slate-100"
             >
               <span
@@ -72,8 +81,7 @@ export function AnswerRail({
                 {level}
               </span>
               <span className="sr-only">
-                {`TRL ${level} — ${answer ? mark!.word : 'not answered'}`}
-                {inChain ? ', part of the confirmed chain' : ''}. Go to this question.
+                {t(inChain ? 'tier1.rail.goInChain' : 'tier1.rail.go', { item })}
               </span>
             </button>
           </li>
