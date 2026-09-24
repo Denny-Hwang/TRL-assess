@@ -818,7 +818,8 @@ export const ja: Messages = {
   'excel.tier1.readme.calc.heading': '推定値の算出方法',
   'excel.tier1.readme.calc.estimate':
     '推定 TRL は、そのレベルと、その下のすべてのレベルに「Yes」（はい）と回答した最も高いレベルです。',
-  'excel.tier1.readme.calc.unsure': '「Unsure」（不明）が「Yes」（はい）として数えられることはありません。',
+  'excel.tier1.readme.calc.unsure':
+    '「Unsure」（不明）が「Yes」（はい）として数えられることはありません。',
   'excel.tier1.readme.calc.claimed':
     '申告された最高レベルは、途切れを無視した、単独の「Yes」（はい）の最高レベルです。',
   'excel.tier1.readme.calc.matrix':
@@ -868,7 +869,7 @@ export const ja: Messages = {
   'excel.tier2.readme.attach.open':
     '(c) 「開く」列により、上記のいずれもクリック可能なリンクになります。',
   'excel.tier2.readme.attach.sensitive':
-    '(d) 機微な内容をこのワークブックに貼り付けないでください。代わりに、Marking（区分表示）を「Sensitive — reference only」（機微 — 参照のみ）とした行で資料の所在を示してください。',
+    '(d) 機微な内容をこのワークブックに貼り付けないでください。代わりに、「区分表示」を「Sensitive — reference only」（機微 — 参照のみ）とした行で資料の所在を示してください。',
   'excel.tier2.readme.attach.zip':
     'このワークブックはエビデンスパッケージの一部としてエクスポートされました。相対パスは、同梱の evidence/ フォルダーをすでに指しています。',
   'excel.tier2.readme.attach.standalone':
