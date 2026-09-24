@@ -27,6 +27,7 @@ describe('catalogs', () => {
     expect(Object.keys(messages).sort()).toEqual(Object.keys(en).sort());
     for (const [key, text] of Object.entries(messages)) {
       expect(text.trim(), `${lang} ${key}`).not.toBe('');
+      expect(text.includes('\uFFFD'), `${lang} ${key} has damaged characters`).toBe(false);
     }
   });
 
@@ -116,6 +117,7 @@ describe('guide translations', () => {
         const body = await loadGuideBody(page.slug, lang);
         expect(body, `${lang}/${page.slug}`).toBeTruthy();
         expect(figures(body!), `${lang}/${page.slug}`).toEqual(figures(page.body));
+        expect(body!.includes('\uFFFD'), `${lang}/${page.slug} has damaged characters`).toBe(false);
       }
     },
   );
@@ -136,6 +138,7 @@ describe('source-content translations', () => {
     expect(Object.keys(source).sort()).toEqual(english);
     for (const [en, translated] of Object.entries(source)) {
       expect(translated.trim(), `${lang}: ${en}`).not.toBe('');
+      expect(translated.includes('\uFFFD'), `${lang} damaged: ${en}`).toBe(false);
       expect(translated.split('\n').length, `${lang} line breaks: ${en}`).toBe(
         en.split('\n').length,
       );
