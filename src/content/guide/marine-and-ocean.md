@@ -33,13 +33,13 @@ Three traps worth naming:
 
 ## Related readiness scales
 
-| Scale                                | Asks                                                                                    | Relationship to TRL                                                                                                           |
-| ------------------------------------ | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| **TPL** (NREL, `nrel-tpl`)           | How well would it perform if mature — cost of energy, survivability, compliance         | Orthogonal. A device can be TRL 7 and TPL-poor: thoroughly demonstrated and not worth building.                               |
-| **MRL** (DoD, `dod-mrl-matrix-2018`) | Can it be produced — process, supply chain, workforce, quality                          | TRL 8 with MRL 4 means demonstrable but not producible. Not scored here; the matrix is reference only.                        |
-| **IRL / SRL**                        | How mature is the _interface_ between two elements; the system view                     | Useful when the risk lives in integration. On the backlog.                                                                    |
-| **ARL** (DOE OTT)                    | What stands between a working technology and its use — market, regulation, supply chain | Complementary, not a substitute.                                                                                              |
-| **GOOS FOO** (`goos-foo`)            | Is an observing element _concept_, _pilot_ or _mature_                                  | Roughly concept ≈ TRL 1–4, pilot ≈ 5–7, mature ≈ 8–9 — but it deliberately covers the data pipeline, not just the instrument. |
+| Scale                                 | Asks                                                                                    | Relationship to TRL                                                                                                           |
+| ------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **TPL** (NREL, `nrel-tpl`)            | How well would it perform if mature — cost of energy, survivability, compliance         | Orthogonal. A device can be TRL 7 and TPL-poor: thoroughly demonstrated and not worth building.                               |
+| **MRL** (DoD, `dod-mrl-matrix-2018`)  | Can it be produced — process, supply chain, workforce, quality                          | TRL 8 with MRL 4 means demonstrable but not producible. Not scored here; the matrix is reference only.                        |
+| **IRL / SRL**                         | How mature is the _interface_ between two elements; the system view                     | Useful when the risk lives in integration. On the backlog.                                                                    |
+| **ARL** (DOE OTC, `doe-otc-arl-2025`) | What stands between a working technology and its use — market, regulation, supply chain | Complementary, not a substitute. Scored in the [ARL side module](/guide/arl); never combined with TRL.                        |
+| **GOOS FOO** (`goos-foo`)             | Is an observing element _concept_, _pilot_ or _mature_                                  | Roughly concept ≈ TRL 1–4, pilot ≈ 5–7, mature ≈ 8–9 — but it deliberately covers the data pipeline, not just the instrument. |
 
 That last point drives two tailored criteria: an ocean-observing instrument that cannot get its
 calibrated values into the observing system has not demonstrated the end-user specification, however

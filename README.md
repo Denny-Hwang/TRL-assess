@@ -13,8 +13,11 @@ TRL Assess helps a project team work out how mature a technology actually is, an
 run a **quick estimate** in about five minutes with no documents, or build an **evidence-based
 assessment** in which every claim is tied to a report, a test record, a pinned commit or a DOI. Both
 export to Excel; the evidence-based one can be packaged as a `.zip` with the evidence files and a
-SHA-256 manifest. Everything runs client-side: the app makes no network requests at runtime, and
-nothing you enter leaves your browser except in files you download.
+SHA-256 manifest. A separate **Adoption Readiness Level (ARL)** module rates the 17 adoption-risk
+dimensions of the DOE Adoption Readiness Assessment — what stands between a working technology and
+its use — and can check the numbers against the DOE TCF CLIMR lab call. Everything runs client-side:
+the app makes no network requests at runtime, and nothing you enter leaves your browser except in
+files you download.
 
 **What it is not.** It is not an independent Technology Readiness Assessment (TRA). It is not an
 audit and not a certification. It cannot verify anything you tell it. A real TRA is run by a team
@@ -48,8 +51,13 @@ This tool does three things about that:
 - **Tier 2 Evidence-Based Assessment** — Critical Technology Elements, per-TRL criteria with
   mandatory/optional and origin badges, evidence linking, gap analysis and a conservative system
   summary.
-- **Excel export** — six sheets for Tier 1, nine for Tier 2, with data validation, conditional
-  formatting, working `HYPERLINK()` formulas and pre-formatted placeholder rows.
+- **Adoption readiness (ARL) side module** — the 17 dimensions of the DOE _Adoption Readiness
+  Assessment_ (Version: April 2025) with the rubric text on every card, current and end-of-project
+  ratings, ARL Start and ARL End read from the source's own look-up table, and an optional
+  self-check against the DOE TCF CLIMR FY26–27 lab call. Scored apart from TRL; never combined.
+- **Excel export** — six sheets for Tier 1, nine for Tier 2, seven or eight for ARL, with data
+  validation, conditional formatting, working `HYPERLINK()` formulas and pre-formatted placeholder
+  rows.
 - **Evidence package** — a `.zip` containing the workbook, the session JSON, the evidence files and a
   `MANIFEST.sha256.txt` a reviewer can verify.
 - **JSON save/restore** — a lossless round-trip of the whole assessment.
@@ -83,6 +91,11 @@ criterion at that level is satisfied; a CTE's TRL is its highest achieved level;
 summary is the minimum across the CTEs marked critical. Full detail, with three worked examples, is
 in **Guide › [Methodology](https://denny-hwang.github.io/TRL-assess/#/guide/methodology)**.
 
+The ARL side module stands apart: each of the 17 adoption-risk dimensions is rated Low, Medium or
+High (or N/A), now and at the end of the project; the Medium and High counts are read against the
+source's look-up table to give ARL Start and ARL End; Unsure, unrated and unexplained N/A count as
+High. See **Guide › [Adoption readiness](https://denny-hwang.github.io/TRL-assess/#/guide/arl)**.
+
 ## Frameworks & sources
 
 | Framework                        | Scope                                     | Tier 1                                | Tier 2                                                   |
@@ -90,11 +103,18 @@ in **Guide › [Methodology](https://denny-hwang.github.io/TRL-assess/#/guide/me
 | `marine-energy-eere` _(default)_ | Marine energy and ocean-observing devices | Adapted from DOE EERE TRL definitions | DoD criteria + 8 marine/ocean tailoring items            |
 | `dod-tra-2025`                   | Generic hardware, software and process    | Adapted from the DoD hardware table   | Verbatim DoD hardware, software and environment criteria |
 
+The ARL side module scores against `doe-otc-arl-2025` — the DOE Adoption Readiness Assessment's 17
+dimensions, rating text and look-up table, transcribed verbatim — and, optionally, the CLIMR call
+profile `doe-tcf-climr-fy2627`, whose checks quote the lab call's requirement sentences with pages.
+See [ADR-0005](docs/adr/0005-arl-side-module.md).
+
 | Source id                     | Document                                                              | Held                                             | Quotable                                  |
 | ----------------------------- | --------------------------------------------------------------------- | ------------------------------------------------ | ----------------------------------------- |
 | `eere-r540-112-02`            | DOE EERE R 540.112-02, _Technology Readiness Levels (TRLs)_           | Yes                                              | Yes (public domain)                       |
 | `dod-tra-2025`                | DoD _Technology Readiness Assessment Guidebook_, Feb 2025             | Yes                                              | Yes (public domain)                       |
 | `dod-mrl-matrix-2018`         | DoD _Manufacturing Readiness Level Matrix_ V2018                      | Yes                                              | Reference only                            |
+| `doe-otc-arl-2025`            | DOE OTC _Adoption Readiness Assessment_, Version: April 2025          | Yes                                              | Yes (public domain)                       |
+| `doe-tcf-climr-fy2627`        | DOE TCF lab call DE-LC-000L130, _CLIMR: Technology Specific Topics_   | Yes                                              | Requirement sentences, with pages         |
 | `nrel-me-risk`                | NREL _Marine Energy Technology Development Risk Management Framework_ | No                                               | Basis of tailoring rationales only        |
 | `nrel-tpl`, `goos-foo`        | NREL TPL; GOOS Framework for Ocean Observing                          | No                                               | Reference only                            |
 | `iso-16290`                   | ISO 16290:2013                                                        | No                                               | **Clause references only — never quoted** |
@@ -153,6 +173,19 @@ See [SECURITY.md](SECURITY.md) and [docs/security-review.md](docs/security-revie
 | `Review_Signoff`      | Assessor and independent-reviewer blocks with a validated conclusion list                                       |
 | `References`          | Every source cited by the framework                                                                             |
 | `Metadata`            | Schema, app and framework versions, git SHA, timestamps, package type, counts                                   |
+
+**ARL workbook** — `ARL_<project>_<YYYYMMDD-HHmm>.xlsx`
+
+| Sheet             | Contents                                                                                                                      |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `README`          | ARL label and disclaimer, how the ARL is calculated, provenance                                                               |
+| `Summary`         | ARL Start, ARL End (target), tallies per core risk area, flags; with a call profile, the four title-page numbers              |
+| `Scope`           | Technology scope, value chain scope, timeline, policy environment                                                             |
+| `Risk_Assessment` | One row per dimension: current rating (validated), what it counted as and why, rationale, target, planned action, rubric text |
+| `ARL_Lookup`      | The source look-up table with the Start and Target cells marked                                                               |
+| `Call_Checks`     | Only with a call profile: each check, its result and the quoted requirement with its page                                     |
+| `References`      | The rubric and, with a profile, the lab call                                                                                  |
+| `Metadata`        | Schema, app and rubric versions, the session's TRL framework, git SHA, timestamps                                             |
 
 **How the placeholders work.** Blank rows already carry the validation lists and the `Open` formula
 `=IF(G{r}<>"",HYPERLINK(G{r},"Open file"),IF(F{r}<>"",HYPERLINK(F{r},"Open link"),""))`. Fill in a URL
@@ -235,17 +268,18 @@ src/
 ├── config/app.config.ts        # every tunable value — the single source of truth
 ├── data/
 │   ├── frameworks/<id>/        # framework.json, tier1.json, tier2.json, tier1-matrix.json
+│   ├── frameworks/arl/         # ARL rubric (doe-otc-arl-2025.json) and call-profiles/
 │   ├── examples/               # the fictional wave-buoy session
 │   └── sources.ts              # machine-readable mirror of docs/sources/SOURCES.md
 ├── domain/                     # pure TypeScript: schemas, scoring, session, hashing (no React)
-├── export/                     # excel/ (shared, tier1, tier2), zip/ (package), download helpers
+├── export/                     # excel/ (shared, tier1, tier2, arl), zip/ (package), download helpers
 ├── storage/                    # localStorage session store, IndexedDB blob store
 ├── state/                      # zustand store with autosave
-├── features/                   # home, tier1, tier2, guide, about
+├── features/                   # home, tier1, tier2, arl, guide, about
 ├── components/                 # shared UI
 └── content/guide/*.md          # every word of the in-app Guide
 scripts/                        # validate-criteria.ts, check-docs-links.ts
-tests/{unit,component,e2e}/     # 311 unit/component tests, 27 Playwright tests
+tests/{unit,component,e2e}/     # 460 unit/component tests, 34 Playwright tests
 docs/                           # BUILD_SPEC, PROGRESS, ADRs, SOURCES, screenshots
 ```
 
@@ -253,19 +287,21 @@ docs/                           # BUILD_SPEC, PROGRESS, ADRs, SOURCES, screensho
 
 Everything tunable lives in `src/config/app.config.ts`:
 
-| Key                                          | Default                      | Effect                                                        |
-| -------------------------------------------- | ---------------------------- | ------------------------------------------------------------- |
-| `APP_NAME`                                   | `TRL Assess`                 | Title, footer, export metadata                                |
-| `GITHUB_OWNER` / `REPO_NAME`                 | `Denny-Hwang` / `TRL-assess` | Source and issue links, Pages URL                             |
-| `PAGES_BASE_PATH`                            | `/TRL-assess/`               | Vite `base`; must equal `/<REPO_NAME>/`                       |
-| `DEFAULT_FRAMEWORK`                          | `marine-energy-eere`         | Framework selected for a new session                          |
-| `MAX_EVIDENCE_FILE_MB`                       | `50`                         | Largest single evidence file accepted                         |
-| `MAX_PACKAGE_TOTAL_MB`                       | `250`                        | Pre-flight limit for the evidence package                     |
-| `BLANK_EVIDENCE_PLACEHOLDER_ROWS`            | `50`                         | Blank rows appended to `Evidence_Register`                    |
-| `BLANK_GAP_ACTION_ROWS`                      | `20`                         | Blank rows appended to `Gap_Actions`                          |
-| `SCHEMA_VERSION`                             | `1`                          | Session schema; bump with a migration hook                    |
-| `AUTOSAVE_DEBOUNCE_MS`                       | `600`                        | Debounce for text edits (structural changes save immediately) |
-| `TIER1_LABEL` / `TIER2_LABEL` / `DISCLAIMER` | —                            | Honest-labelling strings used in the UI and every export      |
+| Key                                                 | Default                      | Effect                                                        |
+| --------------------------------------------------- | ---------------------------- | ------------------------------------------------------------- |
+| `APP_NAME`                                          | `TRL Assess`                 | Title, footer, export metadata                                |
+| `GITHUB_OWNER` / `REPO_NAME`                        | `Denny-Hwang` / `TRL-assess` | Source and issue links, Pages URL                             |
+| `PAGES_BASE_PATH`                                   | `/TRL-assess/`               | Vite `base`; must equal `/<REPO_NAME>/`                       |
+| `DEFAULT_FRAMEWORK`                                 | `marine-energy-eere`         | Framework selected for a new session                          |
+| `MAX_EVIDENCE_FILE_MB`                              | `50`                         | Largest single evidence file accepted                         |
+| `MAX_PACKAGE_TOTAL_MB`                              | `250`                        | Pre-flight limit for the evidence package                     |
+| `BLANK_EVIDENCE_PLACEHOLDER_ROWS`                   | `50`                         | Blank rows appended to `Evidence_Register`                    |
+| `BLANK_GAP_ACTION_ROWS`                             | `20`                         | Blank rows appended to `Gap_Actions`                          |
+| `SCHEMA_VERSION`                                    | `2`                          | Session schema; bump with a migration hook (v2 adds `arl`)    |
+| `DEFAULT_ARL_FRAMEWORK`                             | `doe-otc-arl-2025`           | ARL rubric used for a new ARL assessment                      |
+| `AUTOSAVE_DEBOUNCE_MS`                              | `600`                        | Debounce for text edits (structural changes save immediately) |
+| `TIER1_LABEL` / `TIER2_LABEL` / `DISCLAIMER`        | —                            | Honest-labelling strings used in the UI and every export      |
+| `ARL_LABEL` / `ARL_TARGET_LABEL` / `ARL_DISCLAIMER` | —                            | The ARL module's own labels, on its result page and workbook  |
 
 `VITE_BASE_PATH` overrides the base path at build time; `VITE_GIT_SHA` overrides the build SHA.
 
@@ -339,6 +375,10 @@ Specific limitations to be aware of:
 - The TRL 9 question in the marine framework comes from the DoD guidebook, because the EERE source
   defines TRL 1–8 only.
 - Exported workbooks are static snapshots and cannot be re-imported; session JSON can.
+- The ARL module applies DOE's rubric to **your** ratings; DOE does not review or endorse the result.
+  Counting Unsure, Not assessed and N/A-without-rationale as High risk is this tool's conservative
+  convention, not a rule of the source. The CLIMR checks read the lab call's words; they do not
+  decide eligibility.
 
 ## Citation
 

@@ -6,6 +6,12 @@ No. A TRA is run by a team independent of the programme, under an agency's proce
 reject your evidence. This tool records what you enter, applies the published rules conservatively,
 and shows its working. Every result and export says so.
 
+## What is the ARL module, and does it change my TRL?
+
+It rates the 17 adoption-risk dimensions of the DOE Adoption Readiness Assessment and reads ARL Start
+and ARL End from the source's look-up table. It never changes a TRL result and is never combined
+with one. See [Adoption readiness](/guide/arl).
+
 ## Can I use the result in a proposal?
 
 As your own statement of maturity, with the evidence attached — name the framework and version.

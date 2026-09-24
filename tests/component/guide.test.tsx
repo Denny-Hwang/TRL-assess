@@ -19,7 +19,7 @@ function renderGuide(slug: string) {
 }
 
 describe('guide', () => {
-  it('registers the 11 pages the specification requires', () => {
+  it('registers the 12 pages the specification requires (D-6, incl. /guide/arl)', () => {
     expect(GUIDE_PAGES.map((p) => p.slug)).toEqual([
       'overview',
       'how-to-use',
@@ -28,6 +28,7 @@ describe('guide', () => {
       'evidence',
       'excel',
       'frameworks',
+      'arl',
       'marine-and-ocean',
       'stage-crosswalk',
       'faq',

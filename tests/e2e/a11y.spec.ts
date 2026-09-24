@@ -19,8 +19,13 @@ const ROUTES = [
   '#/guide/overview',
   '#/guide/methodology',
   '#/guide/faq',
+  '#/guide/arl',
+  '#/arl',
   '#/about',
 ];
+
+/** Routes that need ARL ratings in the session to render rather than redirect. */
+const ARL_ROUTES = ['#/arl/rate', '#/arl/result'];
 
 async function seed(page: import('@playwright/test').Page) {
   const example = JSON.parse(
@@ -33,25 +38,71 @@ async function seed(page: import('@playwright/test').Page) {
   await page.reload();
 }
 
+/** The example session plus ARL ratings of every kind and the CLIMR profile with the NE topic. */
+async function seedWithArl(page: import('@playwright/test').Page) {
+  const example = JSON.parse(
+    await readFile(path.resolve('src/data/examples/fictional-wave-buoy.session.json'), 'utf8'),
+  );
+  const rubric = JSON.parse(
+    await readFile(path.resolve('src/data/frameworks/arl/doe-otc-arl-2025.json'), 'utf8'),
+  ) as { id: string; version: string; dimensions: Array<{ id: string }> };
+  const cycle = ['Low', 'Medium', 'High', 'N/A', 'Unsure'];
+  const session = {
+    ...example,
+    arl: {
+      frameworkId: rubric.id,
+      frameworkVersion: rubric.version,
+      context: { projectName: 'Example', technologyName: 'Example', assessorName: 'Example' },
+      dimensions: rubric.dimensions.map((d, i) => ({
+        dimensionId: d.id,
+        current: cycle[i % cycle.length],
+        rationale: i % 2 ? 'Example rationale.' : '',
+        ...(i % 3 === 0 ? { target: 'Low', plannedAction: 'Example action' } : {}),
+      })),
+      call: { profileId: 'doe-tcf-climr-fy2627', topicId: 'NE', trlEnd: 6 },
+    },
+  };
+  await page.goto('./');
+  await page.evaluate((s) => {
+    localStorage.setItem('trl-assess:session:v1', JSON.stringify(s));
+  }, session);
+  await page.reload();
+}
+
+async function expectNoBlockingViolations(page: import('@playwright/test').Page) {
+  const results = await new AxeBuilder({ page })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+    .analyze();
+
+  const blocking = results.violations.filter(
+    (v) => v.impact === 'serious' || v.impact === 'critical',
+  );
+  expect(
+    blocking,
+    blocking
+      .map((v) => `${v.id} (${v.impact}): ${v.nodes.map((n) => n.target.join(' ')).join('; ')}`)
+      .join('\n'),
+  ).toEqual([]);
+}
+
 for (const route of ROUTES) {
   test(`axe: ${route} has no serious or critical violations`, async ({ page }) => {
     await seed(page);
     await page.goto(`./${route}`);
     await page.waitForLoadState('networkidle');
+    await expectNoBlockingViolations(page);
+  });
+}
 
-    const results = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
-      .analyze();
-
-    const blocking = results.violations.filter(
-      (v) => v.impact === 'serious' || v.impact === 'critical',
-    );
-    expect(
-      blocking,
-      blocking
-        .map((v) => `${v.id} (${v.impact}): ${v.nodes.map((n) => n.target.join(' ')).join('; ')}`)
-        .join('\n'),
-    ).toEqual([]);
+for (const route of ARL_ROUTES) {
+  test(`axe: ${route} (with ARL ratings) has no serious or critical violations`, async ({
+    page,
+  }) => {
+    await seedWithArl(page);
+    await page.goto(`./${route}`);
+    await page.waitForLoadState('networkidle');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Adoption readiness');
+    await expectNoBlockingViolations(page);
   });
 }
 
