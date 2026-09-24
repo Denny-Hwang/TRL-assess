@@ -9,8 +9,10 @@ import { SaveIndicator } from '@/components/SaveIndicator';
 import { Callout, PageHeader } from '@/components/ui';
 import { FICTIONAL_EXAMPLE, FICTIONAL_EXAMPLE_NAME } from '@/data/examples';
 import { parseSession } from '@/domain/session';
+import { useT } from '@/i18n/store';
 
 function Workbench() {
+  const { t } = useT();
   const session = useSessionStore((s) => s.session);
   const replaceSession = useSessionStore((s) => s.replaceSession);
   const ctes = session.tier2?.ctes ?? [];
@@ -23,27 +25,27 @@ function Workbench() {
   return (
     <div className="space-y-4">
       <PageHeader
-        title="Evidence-Based Assessment"
-        lead="Break the system into Critical Technology Elements, assess the criteria at each TRL, and link the evidence behind every claim."
+        title={t('tier2.page.title')}
+        lead={t('tier2.page.lead')}
       >
         <div className="flex flex-col items-end gap-1">
           <SaveIndicator />
           <div className="flex gap-2 text-xs">
             <Link className="underline" to="/assess/evidence">
-              Evidence library
+              {t('tier2.page.evidenceLink')}
             </Link>
             <Link className="underline" to="/assess/result">
-              Results
+              {t('tier2.page.resultsLink')}
             </Link>
           </div>
         </div>
       </PageHeader>
 
       {ctes.length === 0 ? (
-        <Callout tone="info" title="Nothing assessed yet">
+        <Callout tone="info" title={t('tier2.page.empty.title')}>
           {confirmExample ? (
             <span className="flex flex-wrap items-center gap-2">
-              Load “{FICTIONAL_EXAMPLE_NAME}”? This replaces the current session.
+              {t('tier2.page.empty.confirm', { name: FICTIONAL_EXAMPLE_NAME })}
               <button
                 type="button"
                 className="btn-primary"
@@ -52,23 +54,23 @@ function Workbench() {
                   setConfirmExample(false);
                 }}
               >
-                Yes, load it
+                {t('tier2.page.empty.confirmYes')}
               </button>
               <button
                 type="button"
                 className="btn-secondary"
                 onClick={() => setConfirmExample(false)}
               >
-                Cancel
+                {t('tier2.common.cancel')}
               </button>
             </span>
           ) : (
             <>
-              Add a CTE below, or{' '}
+              {t('tier2.page.empty.before')}{' '}
               <button type="button" className="underline" onClick={() => setConfirmExample(true)}>
-                open the fictional example
+                {t('tier2.page.empty.link')}
               </button>{' '}
-              to see a completed assessment.
+              {t('tier2.page.empty.after')}
             </>
           )}
         </Callout>
@@ -86,7 +88,7 @@ function Workbench() {
               onOpenEvidence={(criterionId) => setDrawer({ cteId: selected.id, criterionId })}
             />
           ) : (
-            <p className="text-sm text-slate-500">Select or add a CTE to assess its criteria.</p>
+            <p className="text-sm text-slate-500">{t('tier2.page.selectCte')}</p>
           )}
         </div>
 
@@ -103,14 +105,15 @@ function Workbench() {
 }
 
 function EvidencePage() {
+  const { t } = useT();
   return (
     <div className="max-w-4xl space-y-4">
       <PageHeader
-        title="Evidence library"
-        lead="Everything you have recorded as proof, and what each item is used for."
+        title={t('tier2.evidencePage.title')}
+        lead={t('tier2.evidencePage.lead')}
       >
         <Link className="text-xs underline" to="/assess">
-          Back to the assessment
+          {t('tier2.evidencePage.back')}
         </Link>
       </PageHeader>
       <div className="card">
@@ -124,32 +127,42 @@ function EvidencePage() {
 function EvidenceExports() {
   const framework = useSessionStore((s) => s.framework);
   const session = useSessionStore((s) => s.session);
+  const { t } = useT();
+  const [busyKind, setBusyKind] = useState<'excel' | 'zip' | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const run = async (kind: 'excel' | 'zip') => {
-    setBusy(kind === 'excel' ? 'Building the workbook…' : 'Preparing the package…');
+    setBusyKind(kind);
+    setBusy(
+      kind === 'excel' ? t('tier2.export.buildingWorkbook') : t('tier2.export.preparingPackage'),
+    );
     setError(null);
     setMessage(null);
     try {
       if (kind === 'excel') {
         const { exportTier2Workbook } = await import('@/export/excel/tier2');
-        setMessage(`Workbook created: ${await exportTier2Workbook(framework, session)}`);
+        const name = await exportTier2Workbook(framework, session);
+        setMessage(t('tier2.export.workbookCreated', { name }));
       } else {
         const { exportEvidencePackage } = await import('@/export/zip/package');
-        setMessage(`Package created: ${await exportEvidencePackage(framework, session, setBusy)}`);
+        const name = await exportEvidencePackage(framework, session, setBusy);
+        setMessage(t('tier2.export.packageCreated', { name }));
       }
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
     } finally {
+      setBusyKind(null);
       setBusy(null);
     }
   };
 
   return (
     <section className="card">
-      <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">Export</h2>
+      <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+        {t('tier2.export.heading')}
+      </h2>
       <div className="mt-2 flex flex-wrap gap-2">
         <button
           type="button"
@@ -157,7 +170,7 @@ function EvidenceExports() {
           onClick={() => void run('excel')}
           disabled={Boolean(busy)}
         >
-          {busy?.includes('workbook') ? busy : 'Download Excel'}
+          {busyKind === 'excel' && busy ? busy : t('tier2.export.excel')}
         </button>
         <button
           type="button"
@@ -165,7 +178,7 @@ function EvidenceExports() {
           onClick={() => void run('zip')}
           disabled={Boolean(busy)}
         >
-          {busy && !busy.includes('workbook') ? busy : 'Download evidence package (.zip)'}
+          {busyKind === 'zip' && busy ? busy : t('tier2.export.zip')}
         </button>
       </div>
       {message ? (
@@ -179,7 +192,7 @@ function EvidenceExports() {
         </p>
       ) : null}
       <p className="mt-2 text-xs text-slate-500">
-        Evidence marked “Sensitive — reference only” is listed in the workbook but never bundled.
+        {t('tier2.export.sensitiveNote', { marking: t('marking.Sensitive — reference only') })}
       </p>
     </section>
   );

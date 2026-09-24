@@ -3,9 +3,14 @@
  * ExcelJS is imported dynamically by the callers so it never lands in the initial bundle.
  */
 import type ExcelJS from 'exceljs';
-import { APP_NAME, APP_VERSION, BUILD_TIME, DISCLAIMER, GIT_SHA } from '@/config/app.config';
+import { APP_NAME, APP_VERSION, BUILD_TIME, GIT_SHA } from '@/config/app.config';
+import { excel } from '@/i18n/en/excel';
+import { disclaimerText } from '@/i18n/domainText';
+import { useLangStore } from '@/i18n/store';
+import type { Translator } from '@/i18n/translate';
 
 export type Workbook = ExcelJS.Workbook;
+export type { Translator };
 export type Worksheet = ExcelJS.Worksheet;
 
 export const STYLE = {
@@ -18,6 +23,29 @@ export const STYLE = {
   warnFill: 'FFFFF4CE',
   border: 'FFD9D9D9',
 } as const;
+
+/**
+ * The interface language at the moment of export. Workbooks are written in it; sheet names,
+ * validated cell values and source content stay in English.
+ */
+export function currentTranslator(): Translator {
+  return useLangStore.getState().translator;
+}
+
+/** "eere-r540-112-02 · 3.1 · p. 12 · clause 4" — the citation of a criterion, question or table. */
+export function sourceText(
+  source: { sourceId: string; section?: string; page?: string; clause?: string },
+  tr: Translator = currentTranslator(),
+): string {
+  return [
+    source.sourceId,
+    source.section,
+    source.page ? tr.t('excel.source.page', { page: source.page }) : undefined,
+    source.clause ? tr.t('excel.source.clause', { clause: source.clause }) : undefined,
+  ]
+    .filter(Boolean)
+    .join(' · ');
+}
 
 /**
  * Excel treats a leading =, +, - or @ as a formula. Anything a user typed is written with a
@@ -82,6 +110,7 @@ export function applyListValidation(
   fromRow: number,
   toRow: number,
   options: { allowBlank?: boolean } = {},
+  tr: Translator = currentTranslator(),
 ): void {
   for (let row = fromRow; row <= toRow; row += 1) {
     sheet.getCell(`${column}${row}`).dataValidation = {
@@ -90,8 +119,8 @@ export function applyListValidation(
       formulae: [`"${values.join(',')}"`],
       showErrorMessage: true,
       errorStyle: 'warning',
-      errorTitle: 'Value not in the list',
-      error: `Choose one of: ${values.join(', ')}`,
+      errorTitle: tr.t('excel.validation.list.title'),
+      error: tr.t('excel.validation.list.error', { values: values.join(', ') }),
     };
   }
 }
@@ -103,6 +132,7 @@ export function applyWholeNumberValidation(
   max: number,
   fromRow: number,
   toRow: number,
+  tr: Translator = currentTranslator(),
 ): void {
   for (let row = fromRow; row <= toRow; row += 1) {
     sheet.getCell(`${column}${row}`).dataValidation = {
@@ -112,8 +142,8 @@ export function applyWholeNumberValidation(
       formulae: [min, max],
       showErrorMessage: true,
       errorStyle: 'warning',
-      errorTitle: 'Out of range',
-      error: `Enter a whole number between ${min} and ${max}.`,
+      errorTitle: tr.t('excel.validation.range.title'),
+      error: tr.t('excel.validation.range.error', { min, max }),
     };
   }
 }
@@ -171,25 +201,34 @@ export interface WorkbookMeta {
   counts?: Record<string, number>;
 }
 
-export function metaRows(meta: WorkbookMeta): Array<[string, string]> {
+export function metaRows(
+  meta: WorkbookMeta,
+  tr: Translator = currentTranslator(),
+): Array<[string, string]> {
+  const { t } = tr;
   return [
-    ['Tool', APP_NAME],
-    ['Tool version', APP_VERSION],
-    ['Git SHA', GIT_SHA],
-    ['Tool build time (UTC)', BUILD_TIME],
-    ['Framework', meta.frameworkId],
-    ['Framework version', meta.frameworkVersion],
-    ['Session schema version', String(meta.schemaVersion)],
-    ['Generated at (UTC)', meta.generatedAt.toISOString()],
-    ['Package type', meta.packageType ?? 'standalone'],
+    [t('excel.meta.tool'), APP_NAME],
+    [t('excel.meta.toolVersion'), APP_VERSION],
+    [t('excel.meta.gitSha'), GIT_SHA],
+    [t('excel.meta.buildTime'), BUILD_TIME],
+    [t('excel.meta.framework'), meta.frameworkId],
+    [t('excel.meta.frameworkVersion'), meta.frameworkVersion],
+    [t('excel.meta.schemaVersion'), String(meta.schemaVersion)],
+    [t('excel.meta.generatedAt'), meta.generatedAt.toISOString()],
+    [t('excel.meta.packageType'), meta.packageType ?? 'standalone'],
     ...Object.entries(meta.counts ?? {}).map(([k, v]) => [k, String(v)] as [string, string]),
   ];
 }
 
 /** Writes the metadata block onto a key/value sheet, starting at `startRow`. */
-export function writeMetaBlock(sheet: Worksheet, meta: WorkbookMeta, startRow: number): number {
+export function writeMetaBlock(
+  sheet: Worksheet,
+  meta: WorkbookMeta,
+  startRow: number,
+  tr: Translator = currentTranslator(),
+): number {
   let row = startRow;
-  for (const [key, value] of metaRows(meta)) {
+  for (const [key, value] of metaRows(meta, tr)) {
     sheet.getCell(`A${row}`).value = key;
     sheet.getCell(`A${row}`).font = { bold: true };
     sheet.getCell(`B${row}`).value = value;
@@ -198,11 +237,10 @@ export function writeMetaBlock(sheet: Worksheet, meta: WorkbookMeta, startRow: n
   return row;
 }
 
-export const STATIC_VALUES_NOTE =
-  'Edits in this workbook do not recompute the TRL; re-import JSON into the app to recompute.';
+/** English text of the static-values notes (the README writes them in the export language). */
+export const STATIC_VALUES_NOTE = excel['excel.staticNote.trl'];
 
-export const ARL_STATIC_VALUES_NOTE =
-  'Edits in this workbook do not recompute the ARL; re-import JSON into the app to recompute.';
+export const ARL_STATIC_VALUES_NOTE = excel['excel.staticNote.arl'];
 
 export function writeReadmeSheet(
   workbook: Workbook,
@@ -210,12 +248,14 @@ export function writeReadmeSheet(
   sections: Array<{ heading: string; lines: string[] }>,
   label: string,
   options: { disclaimer?: string; staticNote?: string } = {},
+  tr: Translator = currentTranslator(),
 ): Worksheet {
+  const { t } = tr;
   const sheet = workbook.addWorksheet('README', {
     views: [{ state: 'frozen', ySplit: 1 }],
   });
   sheet.columns = [
-    { header: 'TRL Assess — how to read this workbook', key: 'a', width: 40 },
+    { header: t('excel.readme.title', { app: APP_NAME }), key: 'a', width: 40 },
     { header: '', key: 'b', width: 90 },
   ];
   styleHeaderRow(sheet);
@@ -244,13 +284,13 @@ export function writeReadmeSheet(
     row += 1;
   };
 
-  writeSection('Label', [label]);
-  writeSection('Disclaimer', [options.disclaimer ?? DISCLAIMER]);
-  writeSection('Important', [options.staticNote ?? STATIC_VALUES_NOTE]);
+  writeSection(t('excel.readme.label'), [label]);
+  writeSection(t('excel.readme.disclaimer'), [options.disclaimer ?? disclaimerText(tr)]);
+  writeSection(t('excel.readme.important'), [options.staticNote ?? t('excel.staticNote.trl')]);
   for (const section of sections) writeSection(section.heading, section.lines);
   writeSection(
-    'Provenance',
-    metaRows(meta).map(([k, v]) => `${k}: ${v}`),
+    t('excel.readme.provenance'),
+    metaRows(meta, tr).map(([k, v]) => `${k}: ${v}`),
   );
   return sheet;
 }
@@ -276,6 +316,6 @@ export async function workbookToBlob(workbook: Workbook): Promise<Blob> {
   });
 }
 
-export function placeholderNote(): string {
-  return 'placeholder';
+export function placeholderNote(tr: Translator = currentTranslator()): string {
+  return tr.t('excel.placeholder');
 }

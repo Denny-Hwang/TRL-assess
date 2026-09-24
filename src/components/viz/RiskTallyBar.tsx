@@ -1,11 +1,13 @@
 import type { ArlTally } from '@/domain/arl';
+import { useT } from '@/i18n/store';
+import { ratingText } from '@/i18n/domainText';
 import { MARK_GAP, MARK_RADIUS, VIZ } from './tokens';
 
-const ORDER: Array<{ key: keyof ArlTally; fill: string; label: string }> = [
-  { key: 'Low', fill: VIZ.status.good, label: 'Low' },
-  { key: 'Medium', fill: VIZ.status.warning, label: 'Medium' },
-  { key: 'High', fill: VIZ.status.critical, label: 'High' },
-  { key: 'N/A', fill: VIZ.neutral.na, label: 'N/A' },
+const ORDER: Array<{ key: keyof ArlTally; fill: string }> = [
+  { key: 'Low', fill: VIZ.status.good },
+  { key: 'Medium', fill: VIZ.status.warning },
+  { key: 'High', fill: VIZ.status.critical },
+  { key: 'N/A', fill: VIZ.neutral.na },
 ];
 
 /**
@@ -23,9 +25,10 @@ export function RiskTallyBar({
   height?: number;
   className?: string;
 }) {
+  const tr = useT();
   const total = ORDER.reduce((sum, seg) => sum + tally[seg.key], 0);
   const text = ORDER.filter((seg) => tally[seg.key] > 0)
-    .map((seg) => `${tally[seg.key]} ${seg.label}`)
+    .map((seg) => tr.t('arl.tally.item', { count: tally[seg.key], rating: ratingText(tr, seg.key) }))
     .join(', ');
   let x = 0;
   return (
@@ -53,7 +56,7 @@ export function RiskTallyBar({
             })
           : null}
       </svg>
-      <span className="text-xs text-slate-600">{text || 'none'}</span>
+      <span className="text-xs text-slate-600">{text || tr.t('arl.tally.none')}</span>
     </span>
   );
 }

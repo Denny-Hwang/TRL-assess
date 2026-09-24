@@ -15,6 +15,9 @@ import { ArlLookupGrid } from '@/components/viz/ArlLookupGrid';
 import { resolveFramework } from '@/domain/frameworks';
 import { loadArlFramework } from '@/domain/arl';
 import { DEFAULT_ARL_FRAMEWORK, DEFAULT_FRAMEWORK } from '@/config/app.config';
+import { trlText } from '@/i18n/domainText';
+import { useT } from '@/i18n/store';
+import type { Translator } from '@/i18n/translate';
 
 /**
  * Figures a Guide page can embed with a line of its own:
@@ -24,95 +27,99 @@ import { DEFAULT_ARL_FRAMEWORK, DEFAULT_FRAMEWORK } from '@/config/app.config';
  * Keeping the prose in Markdown and the drawing in code means a diagram can be corrected without
  * touching the text, and the text stays reviewable by someone who does not read TSX.
  */
-export const GUIDE_FIGURES: Record<string, () => ReactNode> = {
-  'trl-scale': () => (
+export const GUIDE_FIGURES: Record<string, (tr: Translator) => ReactNode> = {
+  'trl-scale': ({ t }) => (
     <figure>
       <TrlLadder
         achieved={4}
         current={5}
-        markers={[{ level: 4, label: 'highest confirmed' }]}
-        label="The nine levels. A level counts only when every level below it is confirmed."
+        markers={[{ level: 4, label: t('guide.fig.trlScale.marker') }]}
+        label={t('guide.fig.trlScale.label')}
       />
       <figcaption className="mt-1 text-xs text-slate-500">
-        The chain, not the highest claim: TRL 4 here even if TRL 6 was answered “yes”.
+        {t('guide.fig.trlScale.caption')}
       </figcaption>
     </figure>
   ),
 
-  'tier1-clean': () => (
+  'tier1-clean': (tr) => (
     <figure>
       <TrlLadder
         achieved={4}
         current={5}
         markers={[
-          { level: 4, label: 'estimate' },
-          { level: 5, label: 'cross-check', tone: 'muted' },
+          { level: 4, label: tr.t('guide.fig.tier1.estimate') },
+          { level: 5, label: tr.t('guide.fig.tier1.crossCheck'), tone: 'muted' },
         ]}
-        label="Worked example 1: yes at TRL 1 to 4, unsure at 5. Estimate TRL 4; cross-check TRL 5; consistency high."
+        label={tr.t('guide.fig.tier1Clean.label')}
       />
       <figcaption className="mt-1 text-xs text-slate-500">
-        Example 1 — yes up to 4, unsure at 5. Estimate <strong>TRL 4</strong>, cross-check 5,
-        consistency <strong>High</strong>.
+        {tr.t('guide.fig.tier1Clean.caption.before')}
+        <strong>{trlText(tr, 4)}</strong>
+        {tr.t('guide.fig.tier1Clean.caption.middle')}
+        <strong>{tr.t('consistency.High')}</strong>
+        {tr.t('guide.fig.tier1Clean.caption.after')}
       </figcaption>
     </figure>
   ),
 
-  'tier1-gap': () => (
+  'tier1-gap': (tr) => (
     <figure>
       <TrlLadder
         achieved={1}
         gaps={[2]}
         markers={[
-          { level: 1, label: 'estimate' },
-          { level: 4, label: 'claimed', tone: 'critical' },
+          { level: 1, label: tr.t('guide.fig.tier1.estimate') },
+          { level: 4, label: tr.t('guide.fig.tier1Gap.claimed'), tone: 'critical' },
         ]}
-        label="Worked example 2: yes at TRL 1, no at 2, yes at 3 and 4. The chain breaks at TRL 2, so the estimate is TRL 1 while TRL 4 was claimed."
+        label={tr.t('guide.fig.tier1Gap.label')}
       />
       <figcaption className="mt-1 text-xs text-slate-500">
-        Example 2 — the hatched rung is TRL 2, answered “no”. Estimate <strong>TRL 1</strong>,
-        highest claim 4, gap flag raised.
+        {tr.t('guide.fig.tier1Gap.caption.before')}
+        <strong>{trlText(tr, 1)}</strong>
+        {tr.t('guide.fig.tier1Gap.caption.after')}
       </figcaption>
     </figure>
   ),
 
-  'tier2-system': () => (
+  'tier2-system': (tr) => (
     <figure>
       <div className="space-y-2">
         {[
-          { name: 'Harvester', trl: 4, critical: true },
-          { name: 'Power converter', trl: 3, critical: true, limiting: true },
-          { name: 'Telemetry firmware', trl: 3, critical: true, limiting: true },
+          { name: tr.t('guide.fig.tier2.harvester'), trl: 4, critical: true },
+          { name: tr.t('guide.fig.tier2.converter'), trl: 3, critical: true, limiting: true },
+          { name: tr.t('guide.fig.tier2.firmware'), trl: 3, critical: true, limiting: true },
         ].map((cte) => (
           <div key={cte.name} className="flex items-center gap-3 text-xs">
             <span className="w-36 text-slate-700">{cte.name}</span>
             <TrlLadder
               achieved={cte.trl}
               size="sm"
-              label={`${cte.name}: TRL ${cte.trl}`}
+              label={tr.t('guide.fig.tier2.cteLabel', { name: cte.name, trl: trlText(tr, cte.trl) })}
               className="w-48"
             />
             <span className="text-slate-600">
-              TRL {cte.trl}
+              {trlText(tr, cte.trl)}
               {cte.limiting ? (
-                <strong className="ml-2 text-red-700">◀ limits the system</strong>
+                <strong className="ms-2 text-red-700">{tr.t('guide.fig.tier2.limiting')}</strong>
               ) : null}
             </span>
           </div>
         ))}
       </div>
       <figcaption className="mt-2 text-xs text-slate-500">
-        Example 3 — the system summary is <strong>min(4, 3, 3) = TRL 3</strong>. The harvester’s 4
-        does not pull it up, and nothing is averaged.
+        {tr.t('guide.fig.tier2.caption.before')}
+        <strong>{tr.t('guide.fig.tier2.caption.formula')}</strong>
+        {tr.t('guide.fig.tier2.caption.after')}
       </figcaption>
     </figure>
   ),
 
-  'status-legend': () => (
+  'status-legend': ({ t }) => (
     <figure className="rounded-md border border-slate-200 p-3">
       <StatusLegend />
       <figcaption className="mt-2 text-xs text-slate-500">
-        Only the first two count towards a level: “Met” with usable evidence, and “N/A” with a
-        justification.
+        {t('guide.fig.statusLegend.caption')}
       </figcaption>
     </figure>
   ),
@@ -128,15 +135,16 @@ export const GUIDE_FIGURES: Record<string, () => ReactNode> = {
 
   'arl-dimensions': () => <ArlDimensionMap framework={loadArlFramework(DEFAULT_ARL_FRAMEWORK)} />,
 
-  'arl-lookup': () => (
+  'arl-lookup': ({ t }) => (
     <figure>
       <ArlLookupGrid
         framework={loadArlFramework(DEFAULT_ARL_FRAMEWORK)}
-        marks={[{ medium: 3, high: 1, label: 'Example', style: 'solid' }]}
+        marks={[{ medium: 3, high: 1, label: t('guide.fig.arlLookup.mark'), style: 'solid' }]}
       />
       <figcaption className="mt-1 text-xs text-slate-500">
-        Example — three Medium-risk and one High-risk dimension read as <strong>ARL 6</strong>. Two
-        more High ratings and the same profile reads ARL 3: High risks weigh heaviest.
+        {t('guide.fig.arlLookup.caption.before')}
+        <strong>{t('guide.fig.arlLookup.caption.value')}</strong>
+        {t('guide.fig.arlLookup.caption.after')}
       </figcaption>
     </figure>
   ),
@@ -174,6 +182,7 @@ export function splitFigures(markdown: string): GuideChunk[] {
 }
 
 export function GuideFigure({ id }: { id: string }) {
+  const tr = useT();
   const render = GUIDE_FIGURES[id];
   if (!render) {
     return (
@@ -181,9 +190,9 @@ export function GuideFigure({ id }: { id: string }) {
         role="alert"
         className="my-4 rounded border border-red-200 bg-red-50 p-2 text-sm text-red-800"
       >
-        Unknown figure “{id}”.
+        {tr.t('guide.fig.unknown', { id })}
       </p>
     );
   }
-  return <div className="my-5">{render()}</div>;
+  return <div className="my-5">{render(tr)}</div>;
 }

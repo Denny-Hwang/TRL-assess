@@ -1,4 +1,7 @@
 import type { ArlRating } from '@/domain/schemas';
+import { useT } from '@/i18n/store';
+import { ratingText } from '@/i18n/domainText';
+import type { MessageKey } from '@/i18n/en';
 import { VIZ } from './tokens';
 
 /**
@@ -6,16 +9,16 @@ import { VIZ } from './tokens';
  * triangle for Medium, diamond for High — so the meaning survives greyscale and colour-vision
  * deficiency; the reserved status colour is the second cue and the printed word the third.
  */
-const SPEC: Record<ArlRating, { fill: string; ring: string; title: string }> = {
-  Low: { fill: VIZ.status.good, ring: VIZ.status.good, title: 'Low risk' },
-  Medium: { fill: VIZ.status.warning, ring: '#b98200', title: 'Medium risk' },
-  High: { fill: VIZ.status.critical, ring: VIZ.status.critical, title: 'High risk' },
-  'N/A': { fill: VIZ.neutral.na, ring: VIZ.neutral.na, title: 'Not applicable' },
-  Unsure: { fill: VIZ.surface, ring: '#b98200', title: 'Unsure — counted as High risk' },
+const SPEC: Record<ArlRating, { fill: string; ring: string; title: MessageKey }> = {
+  Low: { fill: VIZ.status.good, ring: VIZ.status.good, title: 'risk.Low' },
+  Medium: { fill: VIZ.status.warning, ring: '#b98200', title: 'risk.Medium' },
+  High: { fill: VIZ.status.critical, ring: VIZ.status.critical, title: 'risk.High' },
+  'N/A': { fill: VIZ.neutral.na, ring: VIZ.neutral.na, title: 'arl.glyph.na' },
+  Unsure: { fill: VIZ.surface, ring: '#b98200', title: 'arl.reason.Unsure' },
   'Not assessed': {
     fill: VIZ.surface,
     ring: VIZ.neutral.emptyStroke,
-    title: 'Not assessed — counted as High risk',
+    title: 'arl.reason.Not assessed',
   },
 };
 
@@ -112,7 +115,8 @@ export function RiskGlyph({
   decorative?: boolean;
   className?: string;
 }) {
-  const spec = SPEC[rating];
+  const tr = useT();
+  const title = tr.t(SPEC[rating].title);
   const hidden = withLabel || decorative;
   return (
     <span className={`inline-flex items-center gap-1.5 ${className ?? ''}`}>
@@ -122,21 +126,22 @@ export function RiskGlyph({
         viewBox={`0 0 ${size} ${size}`}
         {...(hidden
           ? { 'aria-hidden': true as const }
-          : { role: 'img' as const, 'aria-label': spec.title })}
+          : { role: 'img' as const, 'aria-label': title })}
         className="shrink-0"
       >
-        {hidden ? null : <title>{spec.title}</title>}
+        {hidden ? null : <title>{title}</title>}
         <Shape rating={rating} size={size} />
       </svg>
-      {withLabel ? <span className="text-xs text-slate-700">{rating}</span> : null}
+      {withLabel ? <span className="text-xs text-slate-700">{ratingText(tr, rating)}</span> : null}
     </span>
   );
 }
 
 export function RiskLegend({ ratings }: { ratings?: ArlRating[] }) {
+  const { t } = useT();
   const list = ratings ?? (['Low', 'Medium', 'High', 'N/A', 'Unsure', 'Not assessed'] as const);
   return (
-    <ul className="flex flex-wrap gap-x-4 gap-y-1" aria-label="Risk rating legend">
+    <ul className="flex flex-wrap gap-x-4 gap-y-1" aria-label={t('arl.glyph.legend')}>
       {list.map((rating) => (
         <li key={rating}>
           <RiskGlyph rating={rating} withLabel />
