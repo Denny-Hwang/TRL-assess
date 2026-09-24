@@ -288,21 +288,21 @@ docs/                           # SOURCES, screenshots
 
 Everything tunable lives in `src/config/app.config.ts`:
 
-| Key                                                 | Default                      | Effect                                                        |
-| --------------------------------------------------- | ---------------------------- | ------------------------------------------------------------- |
-| `APP_NAME`                                          | `TRL Assess`                 | Title, footer, export metadata                                |
-| `GITHUB_OWNER` / `REPO_NAME`                        | `Denny-Hwang` / `TRL-assess` | Source and issue links, Pages URL                             |
-| `PAGES_BASE_PATH`                                   | `/TRL-assess/`               | Vite `base`; must equal `/<REPO_NAME>/`                       |
-| `DEFAULT_FRAMEWORK`                                 | `dod-tra-2025`               | Framework selected for a new session                          |
-| `MAX_EVIDENCE_FILE_MB`                              | `50`                         | Largest single evidence file accepted                         |
-| `MAX_PACKAGE_TOTAL_MB`                              | `250`                        | Pre-flight limit for the evidence package                     |
-| `BLANK_EVIDENCE_PLACEHOLDER_ROWS`                   | `50`                         | Blank rows appended to `Evidence_Register`                    |
-| `BLANK_GAP_ACTION_ROWS`                             | `20`                         | Blank rows appended to `Gap_Actions`                          |
-| `SCHEMA_VERSION`                                    | `2`                          | Session schema; bump with a migration hook (v2 adds `arl`)    |
-| `DEFAULT_ARL_FRAMEWORK`                             | `doe-otc-arl-2025`           | ARL rubric used for a new ARL assessment                      |
-| `AUTOSAVE_DEBOUNCE_MS`                              | `600`                        | Debounce for text edits (structural changes save immediately) |
-| `TIER1_LABEL` / `TIER2_LABEL` / `DISCLAIMER`        | —                            | Honest-labelling strings used in the UI and every export      |
-| `ARL_LABEL` / `ARL_TARGET_LABEL` / `ARL_DISCLAIMER` | —                            | The ARL module's own labels, on its result page and workbook  |
+| Key                               | Default                      | Effect                                                        |
+| --------------------------------- | ---------------------------- | ------------------------------------------------------------- |
+| `APP_NAME`                        | `TRL Assess`                 | Title, footer, export metadata                                |
+| `GITHUB_OWNER` / `REPO_NAME`      | `Denny-Hwang` / `TRL-assess` | Source and issue links, Pages URL                             |
+| `PAGES_BASE_PATH`                 | `/TRL-assess/`               | Vite `base`; must equal `/<REPO_NAME>/`                       |
+| `DEFAULT_FRAMEWORK`               | `dod-tra-2025`               | Framework selected for a new session                          |
+| `MAX_EVIDENCE_FILE_MB`            | `50`                         | Largest single evidence file accepted                         |
+| `MAX_PACKAGE_TOTAL_MB`            | `250`                        | Pre-flight limit for the evidence package                     |
+| `BLANK_EVIDENCE_PLACEHOLDER_ROWS` | `50`                         | Blank rows appended to `Evidence_Register`                    |
+| `BLANK_GAP_ACTION_ROWS`           | `20`                         | Blank rows appended to `Gap_Actions`                          |
+| `SCHEMA_VERSION`                  | `2`                          | Session schema; bump with a migration hook (v2 adds `arl`)    |
+| `DEFAULT_ARL_FRAMEWORK`           | `doe-otc-arl-2025`           | ARL rubric used for a new ARL assessment                      |
+| `AUTOSAVE_DEBOUNCE_MS`            | `600`                        | Debounce for text edits (structural changes save immediately) |
+| `TIER1_LABEL` / `TIER2_LABEL`     | —                            | Honest-labelling strings used in the UI and every export      |
+| `ARL_LABEL` / `ARL_TARGET_LABEL`  | —                            | The ARL module's own labels, on its result page and workbook  |
 
 `VITE_BASE_PATH` overrides the base path at build time; `VITE_GIT_SHA` overrides the build SHA.
 
