@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import {
   addCte,
   addEvidence,
+  clearArl,
   createSession,
   evidenceFor,
   linkEvidence,
@@ -11,6 +12,9 @@ import {
   removeEvidence,
   reorderCtes,
   setAnswer,
+  setArl,
+  setArlCall,
+  setArlDimension,
   setAssessment,
   setGapActions,
   setTier1,
@@ -25,7 +29,7 @@ import { deserializeSession, serializeSession, SessionImportError, toExport } fr
 import { blobKeyFor, nextCteId, nextEvidenceId, placeholderEvidenceId } from '@/domain/ids';
 import { sha256Hex, sha256OfBlob } from '@/domain/hash';
 import { SCHEMA_VERSION } from '@/config/app.config';
-import type { EvidenceItem, Tier1Answers } from '@/domain/schemas';
+import type { ArlData, EvidenceItem, Tier1Answers } from '@/domain/schemas';
 
 const tier1: Tier1Answers = {
   context: {
@@ -271,6 +275,89 @@ describe('migrations', () => {
       expect((e as SessionVersionError).found).toBe(99);
       expect((e as SessionVersionError).expected).toBe(SCHEMA_VERSION);
     }
+  });
+});
+
+describe('ARL side module in the session', () => {
+  const arl: ArlData = {
+    frameworkId: 'doe-otc-arl-2025',
+    frameworkVersion: 'April 2025',
+    context: { projectName: 'P', technologyName: 'T', assessorName: 'A' },
+    dimensions: [],
+  };
+
+  it('stores the ARL block without touching the TRL tiers', () => {
+    const base = setTier1(createSession('marine-energy-eere', '1.0.0'), tier1);
+    const s = setArl(base, arl);
+    expect(s.arl).toEqual(arl);
+    expect(s.tier1).toBe(base.tier1);
+    expect(base.arl).toBeUndefined();
+  });
+
+  it('refuses a rating before the ARL scope exists', () => {
+    const s = createSession('marine-energy-eere', '1.0.0');
+    expect(() => setArlDimension(s, { dimensionId: 'ARL-A1', current: 'Low' })).toThrow(/scope/);
+    expect(() => setArlCall(s, { profileId: 'doe-tcf-climr-fy2627' })).toThrow(/scope/);
+  });
+
+  it('adds a rating, then merges later edits into it', () => {
+    let s = setArl(createSession('marine-energy-eere', '1.0.0'), arl);
+    s = setArlDimension(s, { dimensionId: 'ARL-A1', rationale: 'no data yet' });
+    expect(s.arl!.dimensions).toEqual([
+      { dimensionId: 'ARL-A1', current: 'Not assessed', rationale: 'no data yet' },
+    ]);
+    s = setArlDimension(s, { dimensionId: 'ARL-A1', current: 'Medium', target: 'Low' });
+    expect(s.arl!.dimensions[0]).toEqual({
+      dimensionId: 'ARL-A1',
+      current: 'Medium',
+      target: 'Low',
+      rationale: 'no data yet',
+    });
+    s = setArlDimension(s, { dimensionId: 'ARL-A2', current: 'High' });
+    expect(s.arl!.dimensions.map((d) => d.dimensionId)).toEqual(['ARL-A1', 'ARL-A2']);
+  });
+
+  it('drops the target when it is set back to "same as current"', () => {
+    let s = setArl(createSession('marine-energy-eere', '1.0.0'), arl);
+    s = setArlDimension(s, { dimensionId: 'ARL-A1', current: 'High', target: 'Low' });
+    s = setArlDimension(s, { dimensionId: 'ARL-A1', target: undefined });
+    expect(s.arl!.dimensions[0]).toEqual({ dimensionId: 'ARL-A1', current: 'High' });
+    expect('target' in s.arl!.dimensions[0]!).toBe(false);
+  });
+
+  it('sets and clears the call profile', () => {
+    let s = setArl(createSession('marine-energy-eere', '1.0.0'), arl);
+    s = setArlCall(s, { profileId: 'doe-tcf-climr-fy2627', topicId: 'NE', trlEnd: 6 });
+    expect(s.arl!.call).toEqual({ profileId: 'doe-tcf-climr-fy2627', topicId: 'NE', trlEnd: 6 });
+    s = setArlCall(s, undefined);
+    expect(s.arl!.call).toBeUndefined();
+    expect('call' in s.arl!).toBe(false);
+  });
+
+  it('clears the ARL block only', () => {
+    const withTier1 = setTier1(createSession('marine-energy-eere', '1.0.0'), tier1);
+    const s = clearArl(setArl(withTier1, arl));
+    expect(s.arl).toBeUndefined();
+    expect(s.tier1).toEqual(withTier1.tier1);
+  });
+
+  it('round-trips through JSON', () => {
+    let s = setArl(createSession('marine-energy-eere', '1.0.0'), arl);
+    s = setArlDimension(s, {
+      dimensionId: 'ARL-D5',
+      current: 'N/A',
+      rationale: 'not public-facing',
+    });
+    const back = deserializeSession(serializeSession(s)).session;
+    expect(back.arl).toEqual(s.arl);
+  });
+
+  it('upgrades a v1 session to v2 unchanged apart from the version', () => {
+    const v1 = { ...createSession('marine-energy-eere', '1.0.0'), schemaVersion: 1 };
+    const upgraded = parseSession(v1);
+    expect(upgraded.schemaVersion).toBe(2);
+    expect(upgraded.arl).toBeUndefined();
+    expect(MIGRATIONS[1]!({ schemaVersion: 1, x: 1 })).toEqual({ schemaVersion: 2, x: 1 });
   });
 });
 

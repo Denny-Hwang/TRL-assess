@@ -1,0 +1,207 @@
+{
+  "id": "doe-tcf-climr-fy2627",
+  "name": "DOE TCF lab call — CLIMR: Technology Specific Topics (FY2026 & FY2027)",
+  "shortName": "CLIMR FY26–27 (DE-LC-000L130)",
+  "reference": "DE-LC-000L130",
+  "sourceId": "doe-tcf-climr-fy2627",
+  "description": "Checks the numbers a CLIMR Technology Specific Topics proposal puts on its title page (Appendix C) against the requirements the lab call states in words. Every check quotes the requirement it tests, with its page.",
+  "note": "A self-check against the lab-call text only. DOE determines eligibility and merit; passing these checks does not make a proposal responsive.",
+  "topics": [
+    { "id": "CMEI", "name": "Office of Critical Minerals and Energy Innovation (CMEI)" },
+    {
+      "id": "CESER",
+      "name": "Office of Cybersecurity, Energy Security, and Emergency Response (CESER)"
+    },
+    { "id": "HGEO", "name": "Hydrocarbons and Geothermal Energy Office (HGEO)" },
+    { "id": "OE", "name": "Office of Electricity (OE)" },
+    { "id": "NE", "name": "Office of Nuclear Energy (NE)" }
+  ],
+  "requirements": [
+    {
+      "id": "CLIMR-Q1",
+      "text": "Unless otherwise stated in a topic or AOI, technologies must be at a minimum Technology Readiness Level (TRL) of 4 at the time of writing a concept paper, using TRLs defined by the DOE.",
+      "source": {
+        "sourceId": "doe-tcf-climr-fy2627",
+        "section": "IV. Technology Specific Topics",
+        "page": "12"
+      }
+    },
+    {
+      "id": "CLIMR-Q2",
+      "text": "Proposals must use the Adoption Readiness Level (ARL) framework to evaluate technology risks, ecosystem economics, and private sector uptake potential, and must show an increase in ARL during the project period of performance.",
+      "source": {
+        "sourceId": "doe-tcf-climr-fy2627",
+        "section": "IV. Technology Specific Topics",
+        "page": "12–13"
+      }
+    },
+    {
+      "id": "CLIMR-Q3",
+      "text": "Address what the project intends to accomplish to advance the technology’s readiness for commercialization, including current and end project targeted ARL and TRL",
+      "source": {
+        "sourceId": "doe-tcf-climr-fy2627",
+        "section": "IV. Technology Specific Topics — proposed projects must do all of the following",
+        "page": "13"
+      }
+    },
+    {
+      "id": "CLIMR-Q4",
+      "text": "Minimum Technology Readiness Level (TRL) of 5",
+      "source": {
+        "sourceId": "doe-tcf-climr-fy2627",
+        "section": "IV.v. Office of Nuclear Energy (NE) — recommended parameters for all submissions under this topic area",
+        "page": "37"
+      }
+    },
+    {
+      "id": "CLIMR-Q5",
+      "text": "Within the Adoption Readiness Level (ARL) tool, the ‘License to Operate' core risk area (section D) should not contain any 'high risks' for deployment/ commercialization",
+      "source": {
+        "sourceId": "doe-tcf-climr-fy2627",
+        "section": "IV.v. Office of Nuclear Energy (NE) — recommended parameters for all submissions under this topic area",
+        "page": "37"
+      }
+    },
+    {
+      "id": "CLIMR-Q6",
+      "text": "Provide an explanation of the starting and ending TRL and ARL. Please note there is a minimum starting TRL requirement of 4 for all proposals; however, there may be additional requirements in each of the program office topic or AOI descriptions, when listed.",
+      "source": {
+        "sourceId": "doe-tcf-climr-fy2627",
+        "section": "V.ii. Concept Papers — Project Description",
+        "page": "46"
+      }
+    },
+    {
+      "id": "CLIMR-Q7",
+      "text": "Provide justification on the starting and ending TRL and ARL.",
+      "source": {
+        "sourceId": "doe-tcf-climr-fy2627",
+        "section": "V.iii. Full Applications — Technical Volume, Potential Commercialization Advances",
+        "page": "49"
+      }
+    },
+    {
+      "id": "CLIMR-Q8",
+      "text": "Note: TRL and ARL values should be provided quantitatively as a number, not qualitatively nor as a range.",
+      "source": {
+        "sourceId": "doe-tcf-climr-fy2627",
+        "section": "V.iii. Full Applications — Technical Volume, Potential Commercialization Advances",
+        "page": "49"
+      }
+    },
+    {
+      "id": "CLIMR-Q9",
+      "text": "Project starting and ending ARL will be considered.",
+      "source": {
+        "sourceId": "doe-tcf-climr-fy2627",
+        "section": "VI.ii. Full Application Merit Review — Criterion 1, Evidence of Commercial Potential",
+        "page": "54"
+      }
+    },
+    {
+      "id": "CLIMR-Q10",
+      "text": "ARL Start (enter number between 1–9)",
+      "source": {
+        "sourceId": "doe-tcf-climr-fy2627",
+        "section": "Appendix C: Title Page Template",
+        "page": "65"
+      }
+    },
+    {
+      "id": "CLIMR-Q11",
+      "text": "ARL End (enter number between 2–9)",
+      "source": {
+        "sourceId": "doe-tcf-climr-fy2627",
+        "section": "Appendix C: Title Page Template",
+        "page": "65"
+      }
+    },
+    {
+      "id": "CLIMR-Q12",
+      "text": "TRL Start (enter number between 4–9)",
+      "source": {
+        "sourceId": "doe-tcf-climr-fy2627",
+        "section": "Appendix C: Title Page Template",
+        "page": "65"
+      }
+    },
+    {
+      "id": "CLIMR-Q13",
+      "text": "TRL End (enter number between 4–9)",
+      "source": {
+        "sourceId": "doe-tcf-climr-fy2627",
+        "section": "Appendix C: Title Page Template",
+        "page": "65"
+      }
+    }
+  ],
+  "checks": [
+    {
+      "id": "CLIMR-C1",
+      "kind": "trl-start-min",
+      "title": "TRL Start is at least 4",
+      "min": 4,
+      "severity": "fail",
+      "requirementIds": ["CLIMR-Q1", "CLIMR-Q6", "CLIMR-Q12"]
+    },
+    {
+      "id": "CLIMR-C2",
+      "kind": "trl-start-min",
+      "title": "NE topic: TRL Start is at least 5 (recommended parameter)",
+      "min": 5,
+      "topics": ["NE"],
+      "severity": "warning",
+      "requirementIds": ["CLIMR-Q4"]
+    },
+    {
+      "id": "CLIMR-C3",
+      "kind": "trl-end-range",
+      "title": "TRL End is a whole number from 4 to 9",
+      "min": 4,
+      "max": 9,
+      "severity": "fail",
+      "requirementIds": ["CLIMR-Q13", "CLIMR-Q8"]
+    },
+    {
+      "id": "CLIMR-C4",
+      "kind": "arl-start-range",
+      "title": "ARL Start is a whole number from 1 to 9",
+      "min": 1,
+      "max": 9,
+      "severity": "fail",
+      "requirementIds": ["CLIMR-Q10", "CLIMR-Q8"]
+    },
+    {
+      "id": "CLIMR-C5",
+      "kind": "arl-end-range",
+      "title": "ARL End is a whole number from 2 to 9",
+      "min": 2,
+      "max": 9,
+      "severity": "fail",
+      "requirementIds": ["CLIMR-Q11", "CLIMR-Q8"]
+    },
+    {
+      "id": "CLIMR-C6",
+      "kind": "arl-increase",
+      "title": "ARL End is higher than ARL Start",
+      "severity": "fail",
+      "requirementIds": ["CLIMR-Q2", "CLIMR-Q3"]
+    },
+    {
+      "id": "CLIMR-C7",
+      "kind": "no-high-risk-in-area",
+      "title": "NE topic: no High risk in D. License to Operate (recommended parameter)",
+      "areaId": "D",
+      "topics": ["NE"],
+      "severity": "warning",
+      "requirementIds": ["CLIMR-Q5"]
+    },
+    {
+      "id": "CLIMR-C8",
+      "kind": "trl-definitions",
+      "title": "TRL Start uses DOE-defined TRLs",
+      "severity": "info",
+      "requirementIds": ["CLIMR-Q1"]
+    }
+  ]
+}

@@ -1,0 +1,554 @@
+{
+  "id": "doe-otc-arl-2025",
+  "name": "DOE Adoption Readiness Assessment",
+  "shortDescription": "The DOE Office of Technology Commercialization rubric: 17 adoption-risk dimensions in four core risk areas, combined into an ARL of 1–9 with the source’s own look-up table.",
+  "version": "April 2025",
+  "description": "Transcribed verbatim from the Adoption Readiness Assessment published by the U.S. Department of Energy Office of Technology Commercialization (Version: April 2025; file ARL_Assessment_9-23-25_0.pdf). Each of the 17 dimensions is rated Low, Medium or High risk, or N/A, and the ARL number comes from the look-up table on p. 13, used unmodified. The source calls the number optional; this tool shows the risk profile first. This tool counts Unsure, Not assessed and N/A without a rationale as High risk — a conservative convention of this tool (ADR-0005), not a rule of the source.",
+  "sources": ["doe-otc-arl-2025"],
+  "disclaimer": "Using this rubric does not make a result a DOE assessment. The ratings, and therefore the ARL, are the assessor’s own; DOE does not review or endorse them.",
+  "areas": [
+    {
+      "id": "A",
+      "name": "Value Proposition",
+      "description": "Assesses the ability for a new technology to meet the functionality required by the market at a price point that customers are willing to pay, to meet the market demand (a broadened definition of “product-market fit”).",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Introduction to Adoption Readiness Levels (ARLs)",
+        "page": "1"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "B",
+      "name": "Market Acceptance",
+      "description": "Captures the target market(s) demand characteristics and risks posed by existing players -- including competitors, customers, and other value chain players.",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Introduction to Adoption Readiness Levels (ARLs)",
+        "page": "1"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "C",
+      "name": "Resource Maturity",
+      "description": "Determines risks standing in the way of inputs that are needed to produce the technology solution.",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Introduction to Adoption Readiness Levels (ARLs)",
+        "page": "1"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "D",
+      "name": "License to Operate",
+      "description": "Identifies the societal (national, state, and local), non-economic risks that can hinder the deployment of a technology.",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Introduction to Adoption Readiness Levels (ARLs)",
+        "page": "1"
+      },
+      "origin": "verbatim"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "ARL-A1",
+      "areaId": "A",
+      "number": 1,
+      "title": "Delivered Cost",
+      "description": "Risks associated with achieving delivered cost competitiveness when produced at full scale, including amortization of incurred development and capital costs, and accounting for switching costs (if any).",
+      "levels": {
+        "Low": "Technology solution is either:\na. currently more cost effective than the incumbent or competing technology, or\nb. close to cost-parity and on a clear cost curve to achieve cost-parity within 3 years;\nand fundamental cost components (e.g., cost of critical inputs) are not at risk of significant market swings.",
+        "Medium": "Technology solution is more than 3 years away from achieving cost-parity with incumbent or competing technology but is on a clear path to be more cost effective; and / or there are some fundamental cost components that are at risk of market swings.",
+        "High": "Technology solution is more expensive than the incumbent or competing technology and there is no clear pathway to cost competitiveness without substantial additional R&D advances."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "A. Value Proposition — 1. Delivered Cost",
+        "page": "3"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "ARL-A2",
+      "areaId": "A",
+      "number": 2,
+      "title": "Functional Performance",
+      "description": "Risks associated with the ability of the technology solution to meet or exceed the performance and feature-set of incumbent solutions or create new end-use markets.",
+      "levels": {
+        "Low": "Technology solution provides sustained improved performance and / or benefits that justify a premium (if any) in an existing end-use case or value in a new end-use case.",
+        "Medium": "Technology solution provides equivalent functionality to existing products (i.e., same performance on all key parameters), or improved performance does not justify current premium, or performance differential will not be sufficiently sustained (e.g., lack of fundamental competitive advantage or weak IP protection allows incumbent or competitors to reduce differential quickly).",
+        "High": "Technology solution provides poorer functionality than existing solutions currently in place."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "A. Value Proposition — 2. Functional Performance",
+        "page": "3"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "ARL-A3",
+      "areaId": "A",
+      "number": 3,
+      "title": "Ease of Use / Complexity",
+      "description": "Risks associated with operational switching costs; the ability of a new user (individual, company, system integrator) to adopt and operationalize the technology with limited training, few new requirements, or special resources (e.g., tools, workforce, contract structures).",
+      "levels": {
+        "Low": "Technology solution is easy to use / operate & maintain by the typical user / operator (e.g., highly intuitive with little need for additional training or similar to existing systems) and is plug-and-play with current infrastructure / equipment.",
+        "Medium": "Technology solution can be operated & maintained by a typical user / operator after some training and allows for interoperability with existing infrastructure / equipment with minor adjustments.",
+        "High": "Technology solution deployment requires extensive operations and maintenance training of personnel and / or there are meaningful integration costs to successfully use / integrate the product."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "A. Value Proposition — 3. Ease of Use / Complexity",
+        "page": "4"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "ARL-B1",
+      "areaId": "B",
+      "number": 1,
+      "title": "Demand Maturity / Market Openness",
+      "description": "Risks associated with demand certainty and access to standardized sales & contracting mechanisms (if required), as well with natural (e.g., network effects, first-mover-advantages) and / or structural (e.g., existing monopolies / oligopolies) barriers to entry in the market(s) to which the technology solution can be applied.",
+      "levels": {
+        "Low": "There is a clear pathway for the technology solution to be introduced in a target market and gain initial traction; and there is standardized off-take (e.g., long-term agreements, hedge-able commodity market, accessible consumer market).",
+        "Medium": "Technology solution would need to overcome substantial barriers to entry from competing technologies to enter the market but has clear pathway to do so; and there is a developing standardization of off-take.",
+        "High": "Technology solution’s ability to enter the market is limited due to incumbent advantages and market barriers to entry; or off-take is not easy / standardized and does not meet the needs of technology solution deployment."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "B. Market Acceptance — 1. Demand Maturity / Market Openness",
+        "page": "5"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "ARL-B2",
+      "areaId": "B",
+      "number": 2,
+      "title": "Market Size",
+      "description": "Risks associated with the overall size of the market that can be served by the technology, and the level of uncertainty with which it will materialize.",
+      "levels": {
+        "Low": "Technology solution is well positioned to compete strongly in a large and existing market or dominate market share in a small and existing market; technology solution can be broadly adopted across geographies.",
+        "Medium": "Technology solution addresses only a moderately sized existing market opportunity, and / or there is moderate uncertainty to whether the market will materialize; technology solution may be limited to select markets because of geographic or other constraints.",
+        "High": "Technology solution is limited to small markets, and / or relies on a market that has yet to materialize."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "B. Market Acceptance — 2. Market Size",
+        "page": "5"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "ARL-B3",
+      "areaId": "B",
+      "number": 3,
+      "title": "Downstream Value Chain",
+      "description": "Risks associated with the projected path to get the product from a producer to a customer along the value chain (e.g., considering split incentives, technology acceptance, business model changes).",
+      "levels": {
+        "Low": "Path to market is clear; business proposition and technology solution features work within existing incentives / business models, or newly aligns incentives for stakeholders along the value chain.",
+        "Medium": "Path to market requires realigning of value chain; business model and technology acceptance level are not clear for one or more participants in current value chain.",
+        "High": "Value chain is non-existent, highly fragmented, and / or technology solution benefits do not accrue to critical decision makers / gate keepers across value chain."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "B. Market Acceptance — 3. Downstream Value Chain",
+        "page": "6"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "ARL-C1",
+      "areaId": "C",
+      "number": 1,
+      "title": "Capital Flow",
+      "description": "Risks associated with the availability of capital needed to move the technology solution from its current state to production at scale, including total investment required, availability of willing investors, availability of associated financial & insurance products, and the speed of capital flow.",
+      "levels": {
+        "Low": "Institutional investors confirm return profile in this technology solution is commercially competitive with their broader portfolio. Deal flow / risk profile is sufficient to develop regular equity & debt approval processes at relevant investment institutions & ratings agencies. Major risks are insurable.",
+        "Medium": "There exist one or more “valleys of death” along the required capital stack to full deployment, but hurdles can be overcome, and capital flow & financial and insurance availability is beginning to increase.",
+        "High": "Significant additional investment from sources of concessionary / patient / high risk pools of capital (e.g., public sector, philanthropic, and catalytic venture capital) required to achieve deployment."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "C. Resource Maturity — 1. Capital Flow",
+        "page": "7"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "ARL-C2",
+      "areaId": "C",
+      "number": 2,
+      "title": "Project Development, Integration, and Management",
+      "description": "Risks associated with the existence of processes and capabilities to successfully and repeatably execute projects using the technology solution.",
+      "levels": {
+        "Low": "Mature processes and capabilities exist (e.g., within EPC contractors) to develop, integrate, and manage full projects using the technology solution; demonstrated by a track record of on-budget, on-time projects using the technology solution or comparable projects.",
+        "Medium": "Some processes and capabilities exist to develop, integrate, and manage full projects using the technology solution; but these are as-yet unproven.",
+        "High": "Deployment of the technology solution requires building new or significantly improved project development, integration, and management processes and capabilities as compared with the industry status quo; demonstrations and deployments at scale face substantial budget and timeline risks as a result."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "C. Resource Maturity — 2. Project Development, Integration, and Management",
+        "page": "7"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "ARL-C3",
+      "areaId": "C",
+      "number": 3,
+      "title": "Infrastructure",
+      "description": "Risks associated with the physical and digital large-scale systems that need to be in place to support, enable, or facilitate deployment at full scale (e.g., pipelines, transmission lines, roads and bridges, etc.).",
+      "levels": {
+        "Low": "Technology solution can be broadly deployed within existing large-scale physical and digital infrastructure.",
+        "Medium": "Technology solution can be broadly deployed with minimal investment in large-scale infrastructure (i.e., existing infrastructure can be adapted to use with new technology solution) or there exists a clear and economic pathway for investors & developers to build required infrastructure.",
+        "High": "Technology solution can be broadly deployed only with additional significant investments in new large-scale infrastructure and pathway to required infrastructure remains unclear."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "C. Resource Maturity — 3. Infrastructure",
+        "page": "8"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "ARL-C4",
+      "areaId": "C",
+      "number": 4,
+      "title": "Manufacturing & Supply Chain",
+      "description": "Risks associated with all the entities & processes that will produce the end-product, including integrators, component, and sub-component manufacturers & providers.",
+      "levels": {
+        "Low": "Technology solution deployment relies on off-the-shelf or simple adaptation of existing supply base products & existing manufacturing capabilities.",
+        "Medium": "Technology solution deployment requires new components or products that are aligned with existing supply base capabilities but that may require minor upgrades or retooling of manufacturing and other processes.",
+        "High": "Technology solution deployment requires creation of new manufacturing processes or supply chain components that are not currently in place, or deployment will overwhelm existing supply chain capacities."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "C. Resource Maturity — 4. Manufacturing & Supply Chain",
+        "page": "8"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "ARL-C5",
+      "areaId": "C",
+      "number": 5,
+      "title": "Materials Sourcing",
+      "description": "Risks associated with the availability of critical materials required by the technology (e.g., rare earth and other limited availability materials).",
+      "levels": {
+        "Low": "Technology solution relies on materials that are readily available in a competitive and distributed market and can be procured off the shelf with little to no geopolitical risk.",
+        "Medium": "Technology solution relies on materials that are abundantly available but may face some risks (e.g., rely on new processing methods to make suitable for the application, geographic concentration).",
+        "High": "Technology solution relies on materials that are limited in supply relative to the needed demand, may be difficult to obtain, may face geopolitical risks, or are very costly to produce in the needed quantities."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "C. Resource Maturity — 5. Materials Sourcing",
+        "page": "9"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "ARL-C6",
+      "areaId": "C",
+      "number": 6,
+      "title": "Workforce",
+      "description": "Risks associated with the human capital and capabilities required to design, produce, install, maintain, and operate the technology solution at scale.",
+      "levels": {
+        "Low": "Existing workforce has the necessary skills to manufacture and deploy technology solution with little additional training or significant scale-up.",
+        "Medium": "Existing workforce requires additional training to either manufacture or deploy/install technology solution and pipelines exist to provide workforce training, but may need to be scaled.",
+        "High": "Workforce is nearly non-existent, significant training is required for initial technology solution introduction and scale-up."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "C. Resource Maturity — 6. Workforce",
+        "page": "9"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "ARL-D1",
+      "areaId": "D",
+      "number": 1,
+      "title": "Regulatory Environment",
+      "description": "Risks associated with local, state, and federal regulations or other requirements / standards that must be met to deploy the technology at scale.",
+      "levels": {
+        "Low": "Technology solution can be broadly deployed within existing regulatory framework and standards, and those frameworks and standards are applied in a well-understood and fast-moving process with minimal risk of delays.",
+        "Medium": "Technology solution can be broadly deployed with minor changes to regulations and standards, and / or regulatory hurdles are well-understood but time-consuming and at risk of delays.",
+        "High": "Technology solution can be broadly deployed only with major changes to regulations and standards or entirely new regulations and standards; or significant challenges exist to navigate existing regulations and standards."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "D. License to Operate — 1. Regulatory Environment",
+        "page": "10"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "ARL-D2",
+      "areaId": "D",
+      "number": 2,
+      "title": "Policy Environment",
+      "description": "Risks associated with local, state, and federal government policy actions that support or hinder the adoption of the technology at scale.",
+      "levels": {
+        "Low": "Technology solution requires little in the way of additional policy intervention to encourage adoption as a preferred solution; policymakers well aligned with any changes needed to encourage adoption.",
+        "Medium": "Technology solution requires moderate policy intervention to achieve broad deployment and is well aligned with current governmental policy positions.",
+        "High": "Technology solution requires significant policy intervention to achieve and / or sustain broad deployment; and / or policy makers are not aligned with implementing required intervention to encourage adoption."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "D. License to Operate — 2. Policy Environment",
+        "page": "10"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "ARL-D3",
+      "areaId": "D",
+      "number": 3,
+      "title": "Permitting & Siting",
+      "description": "Risks associated with the process to secure approvals to site and build equipment & infrastructure associated with deploying the technology at scale.",
+      "levels": {
+        "Low": "Permitting and siting process is easy, well-understood, timely, and repeatable.",
+        "Medium": "Permitting and siting can be time-consuming, but jurisdiction is clear, and complexity is low. Speed can be achieved with repetition.",
+        "High": "Permitting and siting is highly complex and time-consuming, with multiple overlapping jurisdictions in play."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "D. License to Operate — 3. Permitting & Siting",
+        "page": "11"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "ARL-D4",
+      "areaId": "D",
+      "number": 4,
+      "title": "Environmental & Safety",
+      "description": "Risks associated with the potential for hazardous side effects or adverse events inherent to the production, transport, or use of the technology solution or end product in the absence of sufficient controls.",
+      "levels": {
+        "Low": "Technology solution has minimal inherent environmental or safety risk; results in net zero carbon or negative carbon solution.",
+        "Medium": "Technology solution has potential for environmental degradation and /or safety concerns, but the risks can be managed through current processes and / or anticipated future processes or solutions.",
+        "High": "Technology solution has potential to create significant environmental degradation or increases carbon emissions over currently fielded solutions, and / or poses significant safety concerns that are challenging to mitigate."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "D. License to Operate — 4. Environmental & Safety",
+        "page": "11"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "ARL-D5",
+      "areaId": "D",
+      "number": 5,
+      "title": "Community Perception",
+      "description": "Risks associated with the general perception by global and local communities of the technology solution and its risks or impact, whether founded or unfounded.",
+      "levels": {
+        "Low": "Technology solution is likely to be positively received by the public with a strong level of support.",
+        "Medium": "Technology solution may create pockets of public resistance but no systemic challenges are anticipated, and local communities are aligned with deployment in key deployment locations.",
+        "High": "Technology solution is likely to generate negative public or community reactions that could derail or significantly delay deployment."
+      },
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "D. License to Operate — 5. Community Perception",
+        "page": "12"
+      },
+      "origin": "verbatim"
+    }
+  ],
+  "lookup": {
+    "rowAxis": "Medium",
+    "columnAxis": "High",
+    "cap": 8,
+    "table": [
+      [9, 8, 7, 5, 3, 1, 1, 1, 1],
+      [8, 7, 6, 4, 2, 1, 1, 1, 1],
+      [8, 7, 6, 4, 2, 1, 1, 1, 1],
+      [7, 6, 5, 3, 1, 1, 1, 1, 1],
+      [7, 6, 5, 3, 1, 1, 1, 1, 1],
+      [6, 5, 4, 2, 1, 1, 1, 1, 1],
+      [5, 4, 3, 1, 1, 1, 1, 1, 1],
+      [3, 2, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ],
+    "source": {
+      "sourceId": "doe-otc-arl-2025",
+      "section": "Combining the risk dimensions into an ARL score",
+      "page": "13"
+    },
+    "origin": "verbatim"
+  },
+  "bands": [
+    {
+      "min": 1,
+      "max": 3,
+      "label": "Low Readiness"
+    },
+    {
+      "min": 4,
+      "max": 6,
+      "label": "Medium Readiness"
+    },
+    {
+      "min": 7,
+      "max": 9,
+      "label": "High Readiness"
+    }
+  ],
+  "bandsSource": {
+    "sourceId": "doe-otc-arl-2025",
+    "section": "Combining the risk dimensions into an ARL score",
+    "page": "13"
+  },
+  "guidance": [
+    {
+      "id": "intro",
+      "text": "ARL represents important factors for private sector uptake beyond technology readiness, and can be determined by performing a qualitative, but fact-based, risk assessment across 17 dimensions of adoption risk spanning four core risk areas",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Introduction to Adoption Readiness Levels (ARLs)",
+        "page": "1"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "scope",
+      "label": "Define the scope of the assessment.",
+      "text": "This assessment (similarly to Technology Readiness Level or TRL) can be completed at different levels of aggregation.",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Instructions for using this assessment — step 1",
+        "page": "2"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "scope-technology",
+      "label": "The technology scope",
+      "text": "(E.g., is the assessment being performed for a specific electrolyzer technology, or is it being performed for an integrated hydrogen production facility?)",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Instructions for using this assessment — step 1",
+        "page": "2"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "scope-value-chain",
+      "label": "The value chain scope",
+      "text": "(E.g., does the assessment encompass only production, or does it also encompass transport and distribution infrastructure?)",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Instructions for using this assessment — step 1",
+        "page": "2"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "scope-timeline",
+      "label": "The timeline for evaluation",
+      "text": "(E.g., is the assessment being performed as of today, looking at potential pathways for commercialization within the next 3 years? Best practice is to consider a 3-5 year commercialization window.)",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Instructions for using this assessment — step 1",
+        "page": "2"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "scope-note",
+      "text": "Note that for different scopes, specific risk factors may be categorized differently in this rubric. For example, when considering electrolyzer technology, risks associated with transport and distribution of hydrogen molecules may be considered as part of “Downstream Value Chain” risks; these risks may be categorized as “Infrastructure” risks when considering a broader value chain scope that encompasses the midstream transport of hydrogen molecules. In either case, the assessment should surface the risk factor.",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Instructions for using this assessment — step 1",
+        "page": "2"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "policy-environment",
+      "label": "Record the policy environment the assessment is being performed under.",
+      "text": "Best practice is to assume the current policy environment and no further changes (e.g., as of December 2022 the 45V 10-year Production Tax Credit (PTC) for clean H2 from the Inflation Reduction Act is in effect but is scheduled to expire after January 1, 2033).",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Instructions for using this assessment — step 2",
+        "page": "2"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "rate",
+      "text": "Assess the technology solution based on each dimension of the rubric (Low, Medium, or High Risk, or N/A) and record rationale and details.",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Instructions for using this assessment — step 3",
+        "page": "2"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "optional-score",
+      "text": "(Optional) To arrive at a numerical “Adoption Readiness Level” score, tally the number of Medium and High risk dimensions, and use the look-up table at the end of the assessment to arrive at a score that can be used to compare across technology solutions in a portfolio.",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Instructions for using this assessment — step 4",
+        "page": "2"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "overlap",
+      "text": "This framework is designed to be as comprehensive of non-technical technology adoption risks as possible, but the categories of risks are not always mutually exclusive – some risks may fall into more than one dimension.",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Additional considerations for users",
+        "page": "2"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "full-scale",
+      "text": "The implied goal of this assessment is to achieve “full scale commercial deployment” of a technology; however, what this means may differ depending on the use case.",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Additional considerations for users",
+        "page": "2"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "modify-lookup",
+      "text": "Note that users can modify the look-up table according to their own needs.",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Combining the risk dimensions into an ARL score",
+        "page": "13"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "power-law",
+      "text": "Because even a few high-risk dimensions that remain unsolved can derail a technology solution from progressing towards commercialization, as a best practice, we recommend an approach that mimics a power law. If there is a critical mass of “High risk” ratings, the technology solution should be binned as “Low ARL.”",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Combining the risk dimensions into an ARL score",
+        "page": "13"
+      },
+      "origin": "verbatim"
+    },
+    {
+      "id": "false-precision",
+      "text": "In choosing to perform this aggregation, the user should balance the value of having a single number that provides an overview of the technology solution’s status regarding commercial adoption and the lack of nuance that comes with false precision. The value of the ARL framework lies in its ability to surface an understanding of exactly which dimensions present the key barriers to commercial adoption.",
+      "source": {
+        "sourceId": "doe-otc-arl-2025",
+        "section": "Combining the risk dimensions into an ARL score",
+        "page": "13"
+      },
+      "origin": "verbatim"
+    }
+  ]
+}

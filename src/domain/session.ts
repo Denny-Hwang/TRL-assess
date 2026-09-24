@@ -5,6 +5,9 @@ import { APP_VERSION, GIT_SHA, SCHEMA_VERSION } from '@/config/app.config';
 import { nextCteId, nextEvidenceId } from './ids';
 import {
   assessmentSessionSchema,
+  type ArlCall,
+  type ArlData,
+  type ArlDimensionAssessment,
   type AssessmentSession,
   type CriterionAssessment,
   type Cte,
@@ -214,6 +217,50 @@ export function evidenceFor(
   );
 }
 
+/* ARL side module (ADR-0005) — kept apart from the TRL tiers so neither can change the other. */
+
+export function setArl(session: AssessmentSession, arl: ArlData): AssessmentSession {
+  return touch({ ...session, arl });
+}
+
+/** Records one dimension's rating; fields left out of the patch keep their current value. */
+export function setArlDimension(
+  session: AssessmentSession,
+  patch: Pick<ArlDimensionAssessment, 'dimensionId'> & Partial<ArlDimensionAssessment>,
+): AssessmentSession {
+  if (!session.arl) throw new Error('The ARL scope must be set before rating dimensions');
+  const existing = session.arl.dimensions.find((d) => d.dimensionId === patch.dimensionId);
+  const merged: ArlDimensionAssessment = {
+    ...(existing ?? { dimensionId: patch.dimensionId, current: 'Not assessed' as const }),
+    ...patch,
+  };
+  // An explicit `target: undefined` means "same as current" and is dropped, not stored.
+  if (merged.target === undefined) delete merged.target;
+  return touch({
+    ...session,
+    arl: {
+      ...session.arl,
+      dimensions: existing
+        ? session.arl.dimensions.map((d) => (d.dimensionId === patch.dimensionId ? merged : d))
+        : [...session.arl.dimensions, merged],
+    },
+  });
+}
+
+export function setArlCall(
+  session: AssessmentSession,
+  call: ArlCall | undefined,
+): AssessmentSession {
+  if (!session.arl) throw new Error('The ARL scope must be set before choosing a call profile');
+  const { call: _previous, ...rest } = session.arl;
+  return touch({ ...session, arl: call ? { ...rest, call } : rest });
+}
+
+export function clearArl(session: AssessmentSession): AssessmentSession {
+  const { arl: _removed, ...rest } = session;
+  return touch(rest);
+}
+
 export class SessionVersionError extends Error {
   constructor(
     message: string,
@@ -227,9 +274,11 @@ export class SessionVersionError extends Error {
 
 /**
  * Migration hooks. Each entry upgrades a session from version N to N+1.
- * v1 is the first released schema, so the table is empty until v2 exists.
+ * v1 → v2: v2 adds the optional `arl` block (ADR-0005); a v1 session is valid v2 as it stands.
  */
-export const MIGRATIONS: Record<number, (input: unknown) => unknown> = {};
+export const MIGRATIONS: Record<number, (input: unknown) => unknown> = {
+  1: (input) => ({ ...(input as object), schemaVersion: 2 }),
+};
 
 export function migrate(input: unknown): unknown {
   let current = input as { schemaVersion?: number };
