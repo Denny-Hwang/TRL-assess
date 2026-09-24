@@ -74,3 +74,10 @@ DOE G 413.3-4A and GAO-20-48G. **No content is attributed to them** and no frame
 If a criterion misquotes its source, open a **Criteria correction** issue with the framework id, the
 item id, what the source actually says and the page reference. Corrections are data changes — no
 code has to move for a criterion to be fixed.
+
+## `doe-otc-arl-2025` — the ARL side module
+
+Not a TRL framework. The DOE _Adoption Readiness Assessment_ (Version: April 2025) — 17 adoption-risk
+dimensions in four core risk areas and the look-up table that turns them into an ARL — transcribed
+**verbatim**, page by page. It is scored separately and never mixed into a TRL; see
+[Adoption readiness](/guide/arl).

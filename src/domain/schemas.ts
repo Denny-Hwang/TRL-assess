@@ -254,6 +254,171 @@ export const tier2DataSchema = z.object({
 });
 export type Tier2Data = z.infer<typeof tier2DataSchema>;
 
+/*
+ * ARL side module (BUILD_SPEC D-1.1, ADR-0005). The rubric is data transcribed from the DOE
+ * Adoption Readiness Assessment; the session only records the assessor's ratings.
+ */
+
+/** The ratings the DOE rubric defines for a dimension. */
+export const arlRiskSchema = z.enum(['Low', 'Medium', 'High']);
+export type ArlRisk = z.infer<typeof arlRiskSchema>;
+export const ARL_RISKS = arlRiskSchema.options;
+
+/** What an assessor can record: the rubric's three ratings and N/A, plus this tool's two non-answers. */
+export const arlRatingSchema = z.enum(['Low', 'Medium', 'High', 'N/A', 'Unsure', 'Not assessed']);
+export type ArlRating = z.infer<typeof arlRatingSchema>;
+export const ARL_RATINGS = arlRatingSchema.options;
+
+export const arlLevelSchema = z.number().int().min(1).max(9);
+
+export const arlAreaSchema = z.object({
+  id: z.string().regex(/^[A-Z]$/),
+  name: z.string().min(1),
+  description: z.string().min(1),
+  source: sourceRefSchema,
+  origin: originSchema,
+  rationale: z.string().optional(),
+});
+export type ArlArea = z.infer<typeof arlAreaSchema>;
+
+export const arlDimensionSchema = z.object({
+  id: z.string().regex(/^ARL-[A-Z]\d+$/),
+  areaId: z.string().regex(/^[A-Z]$/),
+  number: z.number().int().positive(),
+  title: z.string().min(1),
+  description: z.string().min(1),
+  levels: z.object({
+    Low: z.string().min(1),
+    Medium: z.string().min(1),
+    High: z.string().min(1),
+  }),
+  source: sourceRefSchema,
+  origin: originSchema,
+  rationale: z.string().optional(),
+});
+export type ArlDimension = z.infer<typeof arlDimensionSchema>;
+
+export const arlGuidanceSchema = z.object({
+  id: z.string().min(1),
+  label: z.string().optional(),
+  text: z.string().min(1),
+  source: sourceRefSchema,
+  origin: originSchema,
+});
+export type ArlGuidance = z.infer<typeof arlGuidanceSchema>;
+
+export const arlFrameworkSchema = z.object({
+  id: z.string().min(1),
+  name: z.string().min(1),
+  shortDescription: z.string().optional(),
+  version: z.string().min(1),
+  description: z.string().min(1),
+  sources: z.array(z.string().min(1)).min(1),
+  disclaimer: z.string().min(1),
+  areas: z.array(arlAreaSchema).min(1),
+  dimensions: z.array(arlDimensionSchema).min(1),
+  lookup: z.object({
+    rowAxis: z.literal('Medium'),
+    columnAxis: z.literal('High'),
+    /** The last row and column hold every count at or above `cap` (the source's "8+"). */
+    cap: z.number().int().positive(),
+    table: z.array(z.array(arlLevelSchema)),
+    source: sourceRefSchema,
+    origin: originSchema,
+  }),
+  bands: z
+    .array(z.object({ min: arlLevelSchema, max: arlLevelSchema, label: z.string().min(1) }))
+    .min(1),
+  bandsSource: sourceRefSchema,
+  guidance: z.array(arlGuidanceSchema),
+});
+export type ArlFramework = z.infer<typeof arlFrameworkSchema>;
+
+export const callRequirementSchema = z.object({
+  id: z.string().min(1),
+  text: z.string().min(1),
+  source: sourceRefSchema,
+});
+export type CallRequirement = z.infer<typeof callRequirementSchema>;
+
+const callCheckBase = {
+  id: z.string().min(1),
+  title: z.string().min(1),
+  severity: z.enum(['fail', 'warning', 'info']),
+  requirementIds: z.array(z.string().min(1)).min(1),
+  /** Applies only when one of these call topics is selected. */
+  topics: z.array(z.string().min(1)).min(1).optional(),
+};
+const rangeFields = { min: z.number().int(), max: z.number().int() };
+
+export const callCheckSchema = z.discriminatedUnion('kind', [
+  z.object({ ...callCheckBase, kind: z.literal('trl-start-min'), min: z.number().int() }),
+  z.object({ ...callCheckBase, kind: z.literal('trl-end-range'), ...rangeFields }),
+  z.object({ ...callCheckBase, kind: z.literal('arl-start-range'), ...rangeFields }),
+  z.object({ ...callCheckBase, kind: z.literal('arl-end-range'), ...rangeFields }),
+  z.object({ ...callCheckBase, kind: z.literal('arl-increase') }),
+  z.object({
+    ...callCheckBase,
+    kind: z.literal('no-high-risk-in-area'),
+    areaId: z.string().regex(/^[A-Z]$/),
+  }),
+  z.object({ ...callCheckBase, kind: z.literal('trl-definitions') }),
+]);
+export type CallCheck = z.infer<typeof callCheckSchema>;
+
+export const callProfileSchema = z.object({
+  id: z.string().min(1),
+  name: z.string().min(1),
+  shortName: z.string().min(1),
+  reference: z.string().min(1),
+  sourceId: z.string().min(1),
+  description: z.string().min(1),
+  note: z.string().min(1),
+  topics: z.array(z.object({ id: z.string().min(1), name: z.string().min(1) })),
+  requirements: z.array(callRequirementSchema).min(1),
+  checks: z.array(callCheckSchema).min(1),
+});
+export type CallProfile = z.infer<typeof callProfileSchema>;
+
+export const arlDimensionAssessmentSchema = z.object({
+  dimensionId: z.string().min(1),
+  current: arlRatingSchema,
+  /** End-of-project target. Absent means "same as the current rating". */
+  target: arlRiskSchema.optional(),
+  rationale: z.string().optional(),
+  evidence: z.string().optional(),
+  plannedAction: z.string().optional(),
+});
+export type ArlDimensionAssessment = z.infer<typeof arlDimensionAssessmentSchema>;
+
+export const arlContextSchema = z.object({
+  projectName: z.string(),
+  technologyName: z.string(),
+  assessorName: z.string(),
+  organization: z.string().optional(),
+  technologyScope: z.string().optional(),
+  valueChainScope: z.string().optional(),
+  evaluationTimeline: z.string().optional(),
+  policyEnvironment: z.string().optional(),
+});
+export type ArlContext = z.infer<typeof arlContextSchema>;
+
+export const arlCallSchema = z.object({
+  profileId: z.string().min(1),
+  topicId: z.string().optional(),
+  trlEnd: trlLevelSchema.optional(),
+});
+export type ArlCall = z.infer<typeof arlCallSchema>;
+
+export const arlDataSchema = z.object({
+  frameworkId: z.string().min(1),
+  frameworkVersion: z.string().min(1),
+  context: arlContextSchema,
+  dimensions: z.array(arlDimensionAssessmentSchema),
+  call: arlCallSchema.optional(),
+});
+export type ArlData = z.infer<typeof arlDataSchema>;
+
 export const assessmentSessionSchema = z.object({
   schemaVersion: z.number().int().positive(),
   appVersion: z.string(),
@@ -264,6 +429,7 @@ export const assessmentSessionSchema = z.object({
   updatedAt: z.string(),
   tier1: tier1AnswersSchema.optional(),
   tier2: tier2DataSchema.optional(),
+  arl: arlDataSchema.optional(),
 });
 export type AssessmentSession = z.infer<typeof assessmentSessionSchema>;
 

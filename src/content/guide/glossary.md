@@ -31,6 +31,8 @@ Terms marked with a source are quoted from it; the rest are this tool's plain-la
 
 **TPL**, **MRL**, **IRL**, **SRL**, **ARL** and the **GOOS Framework for Ocean Observing** are
 compared against TRL in [Marine & ocean tailoring](/guide/marine-and-ocean#related-readiness-scales).
+**ARL** — Adoption Readiness Level — is scored by this tool's side module; see
+[Adoption readiness](/guide/arl).
 
 ## Other
 

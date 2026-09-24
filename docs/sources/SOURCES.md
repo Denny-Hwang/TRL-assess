@@ -6,17 +6,19 @@ Provenance for every framework source. Each Tier 1 question and Tier 2 criterion
 `verbatim` text is permitted **only** from documents marked "Public domain: yes" and
 "Quotable: yes". ISO standards are cited by clause number only and are never transcribed.
 
-| id                    | Title                                                                                                                 | Issuer                                                                           | Version / date                                                       | Public domain              | Quotable                                                         | Status                                   |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------- | ---------------------------------------------------------------- | ---------------------------------------- |
-| `eere-r540-112-02`    | Technology Readiness Levels (TRLs)                                                                                    | U.S. DOE, Office of Energy Efficiency and Renewable Energy (Golden Field Office) | EERE R 540.112-02, template version 11/17/15; PDF created 2022-08-26 | Yes (U.S. Government work) | Yes                                                              | Held locally                             |
-| `dod-tra-2025`        | Technology Readiness Assessment Guidebook                                                                             | U.S. Department of Defense, OUSD(R&E)                                            | February 2025, v2 (cleared for public release)                       | Yes (U.S. Government work) | Yes                                                              | Held locally                             |
-| `dod-mrl-matrix-2018` | Manufacturing Readiness Level (MRL) Matrix                                                                            | U.S. Department of Defense (DoD MRL working group)                               | V2018                                                                | Yes (U.S. Government work) | Reference only                                                   | Held locally                             |
-| `doe-g413-3-4a`       | DOE G 413.3-4A, Technology Readiness Assessment Guide (Appendix F TRL Calculator)                                     | U.S. DOE                                                                         | 2011, chg 1 2015                                                     | Yes (U.S. Government work) | Yes                                                              | **Not obtained — see "Blocked sources"** |
-| `gao-20-48g`          | GAO-20-48G, Technology Readiness Assessment Guide                                                                     | U.S. GAO                                                                         | January 2020                                                         | Yes (U.S. Government work) | Yes                                                              | **Not obtained — see "Blocked sources"** |
-| `nrel-me-risk`        | Marine Energy Technology Development Risk Management Framework                                                        | NREL (for DOE WPTO)                                                              | report number to be confirmed                                        | Yes (U.S. Government work) | **No — not obtained; cited as the basis of tailored items only** | **Not obtained**                         |
-| `nrel-tpl`            | Technology Performance Level (TPL) Assessment                                                                         | NREL                                                                             | web resource                                                         | Yes                        | Reference only                                                   | Not obtained                             |
-| `iso-16290`           | ISO 16290:2013, Space systems — Definition of the Technology Readiness Levels (TRLs) and their criteria of assessment | ISO                                                                              | 2013                                                                 | No                         | **Never quote — clause references only**                         | Not obtained (by design)                 |
-| `goos-foo`            | Framework for Ocean Observing                                                                                         | GOOS / UNESCO-IOC                                                                | current web edition                                                  | No (intergovernmental)     | Reference only                                                   | Not obtained                             |
+| id                     | Title                                                                                                                 | Issuer                                                                               | Version / date                                                                  | Public domain              | Quotable                                                         | Status                                   |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- | -------------------------- | ---------------------------------------------------------------- | ---------------------------------------- |
+| `eere-r540-112-02`     | Technology Readiness Levels (TRLs)                                                                                    | U.S. DOE, Office of Energy Efficiency and Renewable Energy (Golden Field Office)     | EERE R 540.112-02, template version 11/17/15; PDF created 2022-08-26            | Yes (U.S. Government work) | Yes                                                              | Held locally                             |
+| `dod-tra-2025`         | Technology Readiness Assessment Guidebook                                                                             | U.S. Department of Defense, OUSD(R&E)                                                | February 2025, v2 (cleared for public release)                                  | Yes (U.S. Government work) | Yes                                                              | Held locally                             |
+| `dod-mrl-matrix-2018`  | Manufacturing Readiness Level (MRL) Matrix                                                                            | U.S. Department of Defense (DoD MRL working group)                                   | V2018                                                                           | Yes (U.S. Government work) | Reference only                                                   | Held locally                             |
+| `doe-otc-arl-2025`     | Adoption Readiness Assessment (ARL rubric and look-up table)                                                          | U.S. DOE, Office of Technology Commercialization                                     | Version: April 2025; file ARL_Assessment_9-23-25_0.pdf, PDF modified 2025-09-23 | Yes (U.S. Government work) | Yes                                                              | Held locally                             |
+| `doe-tcf-climr-fy2627` | National Laboratory Call for Proposals — CLIMR: Technology Specific Topics                                            | U.S. DOE, Office of Technology Commercialization — Technology Commercialization Fund | DE-LC-000L130, FY2026 & FY2027; PDF created 2026-09-24                          | Yes (U.S. Government work) | Yes — requirement sentences only, with pages                     | Held locally                             |
+| `doe-g413-3-4a`        | DOE G 413.3-4A, Technology Readiness Assessment Guide (Appendix F TRL Calculator)                                     | U.S. DOE                                                                             | 2011, chg 1 2015                                                                | Yes (U.S. Government work) | Yes                                                              | **Not obtained — see "Blocked sources"** |
+| `gao-20-48g`           | GAO-20-48G, Technology Readiness Assessment Guide                                                                     | U.S. GAO                                                                             | January 2020                                                                    | Yes (U.S. Government work) | Yes                                                              | **Not obtained — see "Blocked sources"** |
+| `nrel-me-risk`         | Marine Energy Technology Development Risk Management Framework                                                        | NREL (for DOE WPTO)                                                                  | report number to be confirmed                                                   | Yes (U.S. Government work) | **No — not obtained; cited as the basis of tailored items only** | **Not obtained**                         |
+| `nrel-tpl`             | Technology Performance Level (TPL) Assessment                                                                         | NREL                                                                                 | web resource                                                                    | Yes                        | Reference only                                                   | Not obtained                             |
+| `iso-16290`            | ISO 16290:2013, Space systems — Definition of the Technology Readiness Levels (TRLs) and their criteria of assessment | ISO                                                                                  | 2013                                                                            | No                         | **Never quote — clause references only**                         | Not obtained (by design)                 |
+| `goos-foo`             | Framework for Ocean Observing                                                                                         | GOOS / UNESCO-IOC                                                                    | current web edition                                                             | No (intergovernmental)     | Reference only                                                   | Not obtained                             |
 
 ## File hashes (local copies, `references/` — git-ignored)
 
@@ -25,21 +27,26 @@ Provenance for every framework source. Each Tier 1 question and Tier 2 criterion
 | `references/eere-r540-112-02.pdf`     | `c11cca82fef5c3b27783f9cc7d7f5859a68c59674962b5478b9323c8b7f8e0b6` |
 | `references/dod-tra-2025.pdf`         | `1b3f9c4c8504fc3a8ac80b7ccb6d5606e03a121f7df1a814e073a351813b6cbb` |
 | `references/dod-mrl-matrix-2018.xlsx` | `759b2287966f96db679e85f85a011d5ce11d7ea63ab86c4e602021d5a3f57768` |
+| `references/doe-otc-arl-2025.pdf`     | `6c2fbc929a681ad80829e38ce88b9f0818d2d78d98ec9d4332cffbe60e58cce9` |
+| `references/doe-tcf-climr-fy2627.pdf` | `ecf566691aee44bb85e075b4b6d9d367ca8648a4685efa6887cdab8fb50ac81b` |
 
-Retrieved 2026-09-16; supplied by the project owner because the build environment's egress policy
-blocks the issuing sites.
+The first three were retrieved 2026-09-16 and the last two 2026-09-24, all supplied by the project
+owner because the build environment's egress policy blocks the issuing sites (`energy.gov` included,
+for the WebFetch tool as well).
 
 ## URLs
 
-| id                    | URL                                                                                                             |
-| --------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `eere-r540-112-02`    | https://www.energy.gov/sites/default/files/2022-08/EERE_R_540.112-02_Technology_Readiness_Levels_%28TRLs%29.pdf |
-| `dod-tra-2025`        | https://www.cto.mil/wp-content/uploads/2025/03/TRA-Guide-Feb2025.v2-Cleared.pdf                                 |
-| `dod-mrl-matrix-2018` | https://www.dodmrl.com/                                                                                         |
-| `doe-g413-3-4a`       | https://www.directives.doe.gov/directives-documents/400-series/0413.3-EGuide-04a/@@images/file                  |
-| `gao-20-48g`          | https://www.gao.gov/assets/gao-20-48g.pdf                                                                       |
-| `nrel-tpl`            | https://tpl.nrel.gov/                                                                                           |
-| `goos-foo`            | https://goosocean.org/what-we-do/framework/                                                                     |
+| id                     | URL                                                                                                                      |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `eere-r540-112-02`     | https://www.energy.gov/sites/default/files/2022-08/EERE_R_540.112-02_Technology_Readiness_Levels_%28TRLs%29.pdf          |
+| `dod-tra-2025`         | https://www.cto.mil/wp-content/uploads/2025/03/TRA-Guide-Feb2025.v2-Cleared.pdf                                          |
+| `dod-mrl-matrix-2018`  | https://www.dodmrl.com/                                                                                                  |
+| `doe-otc-arl-2025`     | https://www.energy.gov/technologycommercialization/adoption-readiness-levels-arl-framework (the page the lab call cites) |
+| `doe-tcf-climr-fy2627` | Distributed to DOE national laboratories through EERE Exchange; no public URL recorded                                   |
+| `doe-g413-3-4a`        | https://www.directives.doe.gov/directives-documents/400-series/0413.3-EGuide-04a/@@images/file                           |
+| `gao-20-48g`           | https://www.gao.gov/assets/gao-20-48g.pdf                                                                                |
+| `nrel-tpl`             | https://tpl.nrel.gov/                                                                                                    |
+| `goos-foo`             | https://goosocean.org/what-we-do/framework/                                                                              |
 
 ## What was transcribed, and how
 
@@ -71,6 +78,33 @@ substitution is stated in the question's help text inside the app.
 Wording check against BUILD_SPEC D-6.1: the eight questions supplied in the spec match the EERE
 definitions on every substantive element (scale, environment, integration, end-user
 specifications). No adjustment was needed, apart from the TRL 9 substitution above.
+
+### `doe-otc-arl-2025` → ARL side module (`src/data/frameworks/arl/doe-otc-arl-2025.json`)
+
+| Content                                                                                                                              | Source location                                          | Origin     |
+| ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------- | ---------- |
+| Core risk areas A–D, names and descriptions                                                                                          | Introduction to Adoption Readiness Levels (ARLs), p. 1   | `verbatim` |
+| Dimensions `ARL-A1`…`ARL-D5`: title, description, Low / Medium / High text                                                           | Sections A–D, pp. 3–12, one dimension per page reference | `verbatim` |
+| Look-up table (rows: Medium count, columns: High count, "8+") and readiness bands                                                    | Combining the risk dimensions into an ARL score, p. 13   | `verbatim` |
+| Instructions quoted in the app (scope, policy environment, rating, optional score, power law, false precision, look-up modification) | Instructions for using this assessment, p. 2; p. 13      | `verbatim` |
+
+**Transcription method.** Each rubric table has three columns; the text was extracted column by
+column from the PDF's word positions, so that lines from neighbouring columns cannot interleave, then
+checked against a rendering of every page. Line-end hyphens are all compound words in the source
+(`cost-parity`, `off-take`, `large-scale`, `well-understood`, `time-consuming`) and are kept; the
+Delivered Cost "Low" text keeps its `a.` / `b.` list structure as line breaks. The cover reads
+"Version: April 2025"; the file name and PDF metadata date the file 2025-09-23.
+
+**What the tool adds.** Counting Unsure, Not assessed and N/A-without-rationale as High is this
+tool's conservative convention (ADR-0005), not a rule of the source, and is labelled as such in the
+app, the Guide and the workbook.
+
+### `doe-tcf-climr-fy2627` → call profile (`src/data/frameworks/arl/call-profiles/`)
+
+Thirteen requirement sentences are quoted verbatim, each with its section and page (pp. 12, 12–13,
+13, 37, 46, 49, 54, 65); footnote markers are omitted. The eight checks are this tool's
+restatement of those sentences as rules; each check lists the quotes it tests. Nothing else from
+the call — topics' technical content, budgets, contacts — is reproduced.
 
 ### Tailored items (`origin: "tailored"`)
 

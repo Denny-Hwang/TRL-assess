@@ -16,6 +16,7 @@ import { scoreTier2 } from '@/domain/tier2';
 import {
   BLANK_EVIDENCE_PLACEHOLDER_ROWS,
   BLANK_GAP_ACTION_ROWS,
+  SCHEMA_VERSION,
   TIER2_LABEL,
 } from '@/config/app.config';
 import { CRITERION_STATUSES, EVIDENCE_TYPES, MARKINGS, VERIFICATIONS } from '@/domain/schemas';
@@ -344,7 +345,8 @@ describe('Tier 2 workbook — Gap_Actions, Review_Signoff, References, Metadata'
     const get = (k: string) => values[keys.indexOf(k)];
     expect(get('Framework')).toBe('marine-energy-eere');
     expect(get('Framework version')).toBe('1.0.0');
-    expect(get('Session schema version')).toBe('1');
+    // The example file is schema v1; parseSession migrates it to the current version.
+    expect(get('Session schema version')).toBe(String(SCHEMA_VERSION));
     expect(get('Generated at (UTC)')).toBe(generatedAt.toISOString());
     expect(get('Package type')).toBe('standalone');
     expect(get('CTEs')).toBe('3');

@@ -9,6 +9,7 @@ import cte from './cte.md?raw';
 import evidence from './evidence.md?raw';
 import excel from './excel.md?raw';
 import frameworks from './frameworks.md?raw';
+import arl from './arl.md?raw';
 import marineAndOcean from './marine-and-ocean.md?raw';
 import stageCrosswalk from './stage-crosswalk.md?raw';
 import faq from './faq.md?raw';
@@ -65,6 +66,13 @@ export const GUIDE_PAGES: GuidePage[] = [
     body: frameworks,
   },
   {
+    slug: 'arl',
+    title: 'Adoption readiness (ARL)',
+    summary:
+      'The ARL side module: 17 adoption-risk dimensions, the look-up table, the CLIMR checks.',
+    body: arl,
+  },
+  {
     slug: 'marine-and-ocean',
     title: 'Marine & ocean tailoring',
     summary: 'What "relevant environment" means at sea, and related readiness scales.',
@@ -76,7 +84,7 @@ export const GUIDE_PAGES: GuidePage[] = [
     summary: 'A sensor development-stage model mapped to TRL — informational only.',
     body: stageCrosswalk,
   },
-  { slug: 'faq', title: 'FAQ', summary: 'Twelve questions people actually ask.', body: faq },
+  { slug: 'faq', title: 'FAQ', summary: 'Fifteen questions people actually ask.', body: faq },
   {
     slug: 'glossary',
     title: 'Glossary',

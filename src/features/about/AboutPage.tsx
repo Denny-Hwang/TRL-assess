@@ -2,7 +2,10 @@ import { Link } from 'react-router-dom';
 import {
   APP_NAME,
   APP_VERSION,
+  ARL_DISCLAIMER,
+  ARL_LABEL,
   BUILD_TIME,
+  DEFAULT_ARL_FRAMEWORK,
   DISCLAIMER,
   GIT_SHA,
   ISSUES_URL,
@@ -12,7 +15,7 @@ import {
   TIER2_LABEL,
 } from '@/config/app.config';
 import { listFrameworks } from '@/domain/frameworks';
-import { SOURCES } from '@/data/sources';
+import { SOURCES, SOURCES_BY_ID } from '@/data/sources';
 
 export function AboutPage() {
   const frameworks = listFrameworks();
@@ -82,6 +85,24 @@ export function AboutPage() {
               <p className="mt-1 text-xs text-slate-500">Sources: {f.sources.join(', ')}</p>
             </li>
           ))}
+          <li>
+            <p className="font-medium">
+              ARL side module — {SOURCES_BY_ID[DEFAULT_ARL_FRAMEWORK]?.title}{' '}
+              <span className="font-mono text-xs text-slate-500">{DEFAULT_ARL_FRAMEWORK}</span>
+            </p>
+            <p className="mt-1 text-slate-600">
+              Adoption readiness, scored apart from TRL: the DOE rubric&apos;s 17 adoption-risk
+              dimensions and its look-up table, transcribed verbatim, with an optional check against
+              the DOE TCF CLIMR lab call.{' '}
+              <Link className="underline" to="/guide/arl">
+                How it works
+              </Link>
+            </p>
+            <p className="mt-1 text-xs text-slate-500">
+              Sources: {DEFAULT_ARL_FRAMEWORK}, doe-tcf-climr-fy2627 (
+              {SOURCES_BY_ID[DEFAULT_ARL_FRAMEWORK]?.version})
+            </p>
+          </li>
         </ul>
         <p className="mt-3 text-sm">
           <Link className="underline" to="/guide/frameworks">
@@ -128,6 +149,9 @@ export function AboutPage() {
         <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-amber-900">
           <li>Tier 1 results are labelled “{TIER1_LABEL}”.</li>
           <li>Tier 2 results are labelled “{TIER2_LABEL}”.</li>
+          <li>
+            ARL results are labelled “{ARL_LABEL}”. {ARL_DISCLAIMER}
+          </li>
           <li>
             The build × environment matrix is a heuristic aid created for this tool, not a standard.
           </li>

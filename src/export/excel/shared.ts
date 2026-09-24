@@ -162,7 +162,7 @@ export function fillRow(sheet: Worksheet, rowNumber: number, argb: string, colum
 }
 
 export interface WorkbookMeta {
-  tier: 'Tier 1' | 'Tier 2';
+  tier: 'Tier 1' | 'Tier 2' | 'ARL';
   frameworkId: string;
   frameworkVersion: string;
   schemaVersion: number;
@@ -201,11 +201,15 @@ export function writeMetaBlock(sheet: Worksheet, meta: WorkbookMeta, startRow: n
 export const STATIC_VALUES_NOTE =
   'Edits in this workbook do not recompute the TRL; re-import JSON into the app to recompute.';
 
+export const ARL_STATIC_VALUES_NOTE =
+  'Edits in this workbook do not recompute the ARL; re-import JSON into the app to recompute.';
+
 export function writeReadmeSheet(
   workbook: Workbook,
   meta: WorkbookMeta,
   sections: Array<{ heading: string; lines: string[] }>,
   label: string,
+  options: { disclaimer?: string; staticNote?: string } = {},
 ): Worksheet {
   const sheet = workbook.addWorksheet('README', {
     views: [{ state: 'frozen', ySplit: 1 }],
@@ -241,8 +245,8 @@ export function writeReadmeSheet(
   };
 
   writeSection('Label', [label]);
-  writeSection('Disclaimer', [DISCLAIMER]);
-  writeSection('Important', [STATIC_VALUES_NOTE]);
+  writeSection('Disclaimer', [options.disclaimer ?? DISCLAIMER]);
+  writeSection('Important', [options.staticNote ?? STATIC_VALUES_NOTE]);
   for (const section of sections) writeSection(section.heading, section.lines);
   writeSection(
     'Provenance',

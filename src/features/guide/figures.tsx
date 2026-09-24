@@ -10,8 +10,11 @@ import {
   SheetMap,
   StageCrosswalk,
 } from '@/components/viz/Diagrams';
+import { ArlDimensionMap } from '@/components/viz/ArlDimensionMap';
+import { ArlLookupGrid } from '@/components/viz/ArlLookupGrid';
 import { resolveFramework } from '@/domain/frameworks';
-import { DEFAULT_FRAMEWORK } from '@/config/app.config';
+import { loadArlFramework } from '@/domain/arl';
+import { DEFAULT_ARL_FRAMEWORK, DEFAULT_FRAMEWORK } from '@/config/app.config';
 
 /**
  * Figures a Guide page can embed with a line of its own:
@@ -122,6 +125,21 @@ export const GUIDE_FIGURES: Record<string, () => ReactNode> = {
   'sheet-map': () => <SheetMap />,
   'framework-relation': () => <FrameworkRelation />,
   'stage-crosswalk': () => <StageCrosswalk />,
+
+  'arl-dimensions': () => <ArlDimensionMap framework={loadArlFramework(DEFAULT_ARL_FRAMEWORK)} />,
+
+  'arl-lookup': () => (
+    <figure>
+      <ArlLookupGrid
+        framework={loadArlFramework(DEFAULT_ARL_FRAMEWORK)}
+        marks={[{ medium: 3, high: 1, label: 'Example', style: 'solid' }]}
+      />
+      <figcaption className="mt-1 text-xs text-slate-500">
+        Example — three Medium-risk and one High-risk dimension read as <strong>ARL 6</strong>. Two
+        more High ratings and the same profile reads ARL 3: High risks weigh heaviest.
+      </figcaption>
+    </figure>
+  ),
 };
 
 export const FIGURE_TOKEN = /^:::figure\s+([a-z0-9-]+):::$/;

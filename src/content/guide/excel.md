@@ -1,6 +1,6 @@
 # Excel output
 
-Both workbooks are static snapshots. They open in Microsoft Excel and LibreOffice, carry data
+All three workbooks are static snapshots. They open in Microsoft Excel and LibreOffice, carry data
 validation and conditional formatting, and never phone home.
 
 ## The two workbooks
@@ -15,6 +15,21 @@ Sheet order is fixed. Three of them are not self-explanatory:
   already carry the validation lists and the Open formula.
 - **`Gap_Actions`** — pre-filled with the unmet mandatory criteria at each CTE's next level, plus 20
   blank rows to plan against.
+
+## Adoption readiness workbook
+
+The [ARL side module](/guide/arl) exports its own workbook, `ARL_<project>_<timestamp>.xlsx`; the
+TRL workbooks are unchanged by it. Sheets, in order:
+
+- **`README`**, **`Summary`** — ARL Start, ARL End (target), the tallies behind them, the flags, and
+  with a call profile the four title-page numbers.
+- **`Scope`** — technology scope, value chain scope, timeline and policy environment.
+- **`Risk_Assessment`** — one row per dimension: current rating, what it counted as and why,
+  rationale, evidence, target, planned action, and the rubric's Low / Medium / High text.
+- **`ARL_Lookup`** — the source look-up table with the Start and Target cells marked and noted.
+- **`Call_Checks`** — only when a call profile is selected: each check, its result, and the quoted
+  requirement with its page.
+- **`References`**, **`Metadata`**.
 
 ## How to attach evidence in Excel
 
@@ -42,8 +57,9 @@ package_ column says "No (not bundled)".
 
 ## Why values do not recompute
 
-Every computed figure — Satisfied, the CTE TRLs, the summary, completeness, coverage — is a
-**static value** written at export time. Changing a status in Excel changes nothing else.
+Every computed figure — Satisfied, the CTE TRLs, the summary, completeness, coverage, the ARL — is
+a **static value** written at export time. Changing a status or a rating in Excel changes nothing
+else.
 
 This is deliberate: a spreadsheet re-implementing the scoring rules would drift from the app, and
 there would be no way to tell which was right. The workbook is the record; the app is the

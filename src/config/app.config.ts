@@ -29,8 +29,8 @@ export const BLANK_EVIDENCE_PLACEHOLDER_ROWS = 50;
 export const BLANK_NEXT_EVIDENCE_ROWS = 10;
 export const BLANK_GAP_ACTION_ROWS = 20;
 
-/** Session schema version — bump when AssessmentSession shape changes. */
-export const SCHEMA_VERSION = 1;
+/** Session schema version — bump when AssessmentSession shape changes. v2 adds `arl`. */
+export const SCHEMA_VERSION = 2;
 
 /** Storage keys. */
 export const STORAGE_KEY_SESSION = 'trl-assess:session:v1';
@@ -53,6 +53,19 @@ export const DISCLAIMER = [
   'It is not an independent Technology Readiness Assessment (TRA), not an audit, and not a certification.',
   'Results depend entirely on the information the user enters; nothing is verified by the tool.',
   'Assessment criteria differ between agencies and programmes — check the criteria and sources before using a result in any formal submission.',
+].join(' ');
+
+/** ARL side module (ADR-0005): the rubric used, and its own honest labels. */
+export const DEFAULT_ARL_FRAMEWORK = 'doe-otc-arl-2025' as const;
+export const ARL_LABEL =
+  'Adoption readiness self-assessment — not reviewed or endorsed by DOE' as const;
+export const ARL_TARGET_LABEL = 'Target — planned, not achieved' as const;
+
+export const ARL_DISCLAIMER = [
+  `${APP_NAME} produces a self-assessment only.`,
+  'The ARL figures apply the DOE Adoption Readiness Assessment rubric to the ratings you enter: nothing is verified by the tool, and DOE does not review or endorse the result.',
+  'The source calls the numerical score optional and warns against false precision — the risk profile, not the number, shows where the barriers are.',
+  'ARL complements TRL; this tool never combines the two into one figure.',
 ].join(' ');
 
 export const SENSITIVE_DATA_NOTICE =

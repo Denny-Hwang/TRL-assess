@@ -18,6 +18,9 @@ const APP_ROUTES = new Set([
   '/assess',
   '/assess/evidence',
   '/assess/result',
+  '/arl',
+  '/arl/rate',
+  '/arl/result',
   '/about',
   '/guide',
 ]);

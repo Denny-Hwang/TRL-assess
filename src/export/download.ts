@@ -41,6 +41,12 @@ export function timestampForFilename(date: Date = new Date()): string {
   );
 }
 
+/** `ARL_<project-slug>_<YYYYMMDD-HHmm>.xlsx` (BUILD_SPEC D-3.3). */
+export function arlWorkbookFilename(session: AssessmentSession, date?: Date): string {
+  const name = session.arl?.context.projectName || session.tier1?.context.projectName;
+  return `ARL_${slugify(name ?? 'assessment')}_${timestampForFilename(date)}.xlsx`;
+}
+
 export function workbookFilename(
   tier: 'Tier1' | 'Tier2',
   session: AssessmentSession,
