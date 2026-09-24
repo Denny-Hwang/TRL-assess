@@ -1,45 +1,44 @@
 import { Link } from 'react-router-dom';
-import { APP_NAME, ARL_LABEL, DISCLAIMER, TIER1_LABEL, TIER2_LABEL } from '@/config/app.config';
+import { APP_NAME } from '@/config/app.config';
 import { FlowSteps } from '@/components/viz/FlowSteps';
 import { TrlLadder } from '@/components/viz/TrlLadder';
+import { disclaimerText } from '@/i18n/domainText';
+import { useT } from '@/i18n/store';
 
 export function HomePage() {
+  const tr = useT();
+  const { t } = tr;
   return (
     <div className="space-y-8">
       <section>
         <h1 className="text-3xl font-semibold tracking-tight">{APP_NAME}</h1>
-        <p className="mt-2 max-w-3xl text-slate-600">
-          How far has this technology been demonstrated, and can you prove it?
-        </p>
+        <p className="mt-2 max-w-3xl text-slate-600">{t('home.lead')}</p>
         <div className="card mt-4">
           <TrlLadder
             achieved={4}
             current={5}
-            markers={[{ level: 4, label: 'where you are' }]}
-            label="The TRL scale runs from 1 to 9; an assessment finds the highest level whose evidence holds."
+            markers={[{ level: 4, label: t('home.ladder.marker') }]}
+            label={t('home.ladder.label')}
           />
-          <p className="mt-2 text-xs text-slate-500">
-            A level counts only when every level below it does. This tool finds where the chain
-            stops — and what it would take to move one rung.
-          </p>
+          <p className="mt-2 text-xs text-slate-500">{t('home.ladder.caption')}</p>
         </div>
       </section>
 
       <section>
-        <h2 className="sr-only">How it works</h2>
+        <h2 className="sr-only">{t('home.flow.heading')}</h2>
         <FlowSteps
           steps={[
             {
-              title: '1. Quick estimate',
-              detail: 'Nine questions, about five minutes, no documents needed.',
+              title: t('home.flow.quick.title'),
+              detail: t('home.flow.quick.detail'),
             },
             {
-              title: '2. Evidence assessment',
-              detail: 'Break the system into critical elements and link proof to every claim.',
+              title: t('home.flow.assess.title'),
+              detail: t('home.flow.assess.detail'),
             },
             {
-              title: '3. Export',
-              detail: 'Excel workbook, or a zip with the evidence files and a SHA-256 manifest.',
+              title: t('home.flow.export.title'),
+              detail: t('home.flow.export.detail'),
             },
           ]}
         />
@@ -47,45 +46,38 @@ export function HomePage() {
 
       <section className="grid gap-4 md:grid-cols-2">
         <article className="card">
-          <h2 className="text-xl font-semibold">Tier 1 — Quick Estimate</h2>
-          <p className="mt-2 text-sm text-slate-600">
-            Answer nine questions; get a TRL with the reasoning shown.
-          </p>
-          <p className="mt-2 text-xs font-medium text-amber-700">{TIER1_LABEL}</p>
+          <h2 className="text-xl font-semibold">{t('home.tier1.heading')}</h2>
+          <p className="mt-2 text-sm text-slate-600">{t('home.tier1.body')}</p>
+          <p className="mt-2 text-xs font-medium text-amber-700">{t('label.tier1')}</p>
           <Link to="/quick" className="btn-primary mt-4">
-            Start quick estimate
+            {t('home.tier1.start')}
           </Link>
         </article>
 
         <article className="card">
-          <h2 className="text-xl font-semibold">Tier 2 — Evidence-Based Assessment</h2>
-          <p className="mt-2 text-sm text-slate-600">
-            Per-element criteria, each backed by a document, a test record or a pinned commit.
-          </p>
-          <p className="mt-2 text-xs font-medium text-amber-700">{TIER2_LABEL}</p>
+          <h2 className="text-xl font-semibold">{t('home.tier2.heading')}</h2>
+          <p className="mt-2 text-sm text-slate-600">{t('home.tier2.body')}</p>
+          <p className="mt-2 text-xs font-medium text-amber-700">{t('label.tier2')}</p>
           <Link to="/assess" className="btn-secondary mt-4">
-            Start evidence assessment
+            {t('home.tier2.start')}
           </Link>
         </article>
       </section>
 
       <section className="card">
-        <h2 className="text-xl font-semibold">Side module — Adoption Readiness Level (ARL)</h2>
-        <p className="mt-2 max-w-3xl text-sm text-slate-600">
-          What stands between a working technology and its use: rate the 17 adoption-risk dimensions
-          of the DOE Adoption Readiness Assessment, now and at the end of the project, and read ARL
-          Start and ARL End from the source&apos;s own look-up table. Kept apart from the TRL result
-          — never combined into one number.
-        </p>
-        <p className="mt-2 text-xs font-medium text-amber-700">{ARL_LABEL}</p>
+        <h2 className="text-xl font-semibold">{t('home.arl.heading')}</h2>
+        <p className="mt-2 max-w-3xl text-sm text-slate-600">{t('home.arl.body')}</p>
+        <p className="mt-2 text-xs font-medium text-amber-700">{t('label.arl')}</p>
         <Link to="/arl" className="btn-secondary mt-4">
-          Start adoption readiness
+          {t('home.arl.start')}
         </Link>
       </section>
 
       <section className="card bg-slate-50">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">Disclaimer</h2>
-        <p className="mt-2 text-sm text-slate-700">{DISCLAIMER}</p>
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+          {t('home.disclaimer.heading')}
+        </h2>
+        <p className="mt-2 text-sm text-slate-700">{disclaimerText(tr)}</p>
       </section>
     </div>
   );

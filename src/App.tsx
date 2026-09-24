@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from '@/components/Layout';
 import { HomePage } from '@/features/home/HomePage';
 import { AboutPage } from '@/features/about/AboutPage';
+import { useT } from '@/i18n/store';
 import { QuickPage } from '@/features/tier1/QuickPage';
 import { AssessPage } from '@/features/tier2/AssessPage';
 const GuidePages = lazy(() =>
@@ -15,7 +16,8 @@ const GuideIndexPage = lazy(() =>
 const ArlPage = lazy(() => import('@/features/arl/ArlPage'));
 
 function Loading() {
-  return <p className="text-sm text-slate-500">Loading…</p>;
+  const { t } = useT();
+  return <p className="text-sm text-slate-500">{t('ui.loading')}</p>;
 }
 
 export default function App() {

@@ -1,14 +1,12 @@
 import { useState } from 'react';
-import {
-  MAX_EVIDENCE_FILE_BYTES,
-  MAX_EVIDENCE_FILE_MB,
-  SENSITIVE_DATA_NOTICE,
-} from '@/config/app.config';
+import { MAX_EVIDENCE_FILE_BYTES, MAX_EVIDENCE_FILE_MB } from '@/config/app.config';
 import { blobKeyFor } from '@/domain/ids';
 import { sha256OfBlob } from '@/domain/hash';
 import { putBlob } from '@/storage/blobStore';
 import { useSessionStore } from '@/state/sessionStore';
 import { Callout, Field } from '@/components/ui';
+import { useT } from '@/i18n/store';
+import type { Translator } from '@/i18n/translate';
 import {
   commitShaSchema,
   doiSchema,
@@ -85,24 +83,24 @@ export function fromEvidence(item: EvidenceItem): EvidenceDraft {
   };
 }
 
-export function validateDraft(draft: EvidenceDraft): string[] {
+export function validateDraft(tr: Translator, draft: EvidenceDraft): string[] {
+  const { t } = tr;
   const errors: string[] = [];
-  if (!draft.title.trim()) errors.push('A title is required.');
+  if (!draft.title.trim()) errors.push(t('evidence.error.titleRequired'));
   if (draft.url && !httpUrlSchema.safeParse(draft.url).success)
-    errors.push('The URL must be an http or https address.');
+    errors.push(t('evidence.error.urlScheme'));
   if (draft.repoUrl && !httpUrlSchema.safeParse(draft.repoUrl).success)
-    errors.push('The repository URL must be an http or https address.');
+    errors.push(t('evidence.error.repoUrlScheme'));
   if (draft.commitSha && !commitShaSchema.safeParse(draft.commitSha).success)
-    errors.push('The commit SHA must be 7–40 hexadecimal characters.');
-  if (draft.doi && !doiSchema.safeParse(draft.doi).success)
-    errors.push('The DOI must look like 10.1234/suffix.');
+    errors.push(t('evidence.error.commitSha'));
+  if (draft.doi && !doiSchema.safeParse(draft.doi).success) errors.push(t('evidence.error.doi'));
   if (draft.type === 'Code repository' && !draft.repoUrl)
-    errors.push('Code evidence needs a repository URL.');
+    errors.push(t('evidence.error.codeNeedsRepo'));
   if (draft.type === 'Code repository' && !draft.commitSha)
-    errors.push('Code evidence must pin a commit SHA — a branch name is not evidence.');
+    errors.push(t('evidence.error.codeNeedsSha'));
   if (draft.type === 'Publication (DOI)' && !draft.doi && !draft.url)
-    errors.push('Publication evidence needs a DOI or a URL.');
-  if (draft.type === 'Web link' && !draft.url) errors.push('Web-link evidence needs a URL.');
+    errors.push(t('evidence.error.publicationNeedsDoi'));
+  if (draft.type === 'Web link' && !draft.url) errors.push(t('evidence.error.webLinkNeedsUrl'));
   return errors;
 }
 
@@ -136,6 +134,8 @@ interface Props {
 }
 
 export function EvidenceForm({ editing, onDone, onCancel }: Props) {
+  const tr = useT();
+  const { t } = tr;
   const addEvidence = useSessionStore((s) => s.addEvidence);
   const updateEvidence = useSessionStore((s) => s.updateEvidence);
   const session = useSessionStore((s) => s.session);
@@ -159,7 +159,11 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
     }
     if (picked.size > MAX_EVIDENCE_FILE_BYTES) {
       setErrors([
-        `“${picked.name}” is ${(picked.size / 1024 / 1024).toFixed(1)} MB. The limit is ${MAX_EVIDENCE_FILE_MB} MB — link to it instead of attaching it.`,
+        t('evidence.error.fileTooLarge', {
+          name: picked.name,
+          size: (picked.size / 1024 / 1024).toFixed(1),
+          limit: MAX_EVIDENCE_FILE_MB,
+        }),
       ]);
       setFile(null);
       return;
@@ -170,7 +174,7 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const found = validateDraft(draft);
+    const found = validateDraft(tr, draft);
     if (found.length) {
       setErrors(found);
       return;
@@ -217,21 +221,21 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
   return (
     <form onSubmit={submit} noValidate className="space-y-3">
       <div className="grid gap-3 sm:grid-cols-2">
-        <Field label="Type" htmlFor="ev-type">
+        <Field label={t('evidence.form.type')} htmlFor="ev-type">
           <select
             id="ev-type"
             className="input"
             value={draft.type}
             onChange={(e) => set('type', e.target.value as EvidenceType)}
           >
-            {EVIDENCE_TYPES.map((t) => (
-              <option key={t} value={t}>
-                {t}
+            {EVIDENCE_TYPES.map((type) => (
+              <option key={type} value={type}>
+                {t(`evidenceType.${type}`)}
               </option>
             ))}
           </select>
         </Field>
-        <Field label="Title" htmlFor="ev-title" required>
+        <Field label={t('evidence.form.title')} htmlFor="ev-title" required>
           <input
             id="ev-title"
             className="input"
@@ -241,7 +245,7 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
         </Field>
       </div>
 
-      <Field label="Description" htmlFor="ev-description">
+      <Field label={t('evidence.form.description')} htmlFor="ev-description">
         <textarea
           id="ev-description"
           className="input"
@@ -252,16 +256,16 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
       </Field>
 
       <div className="grid gap-3 sm:grid-cols-2">
-        <Field label="Date" htmlFor="ev-date" hint="When the evidence was produced.">
+        <Field label={t('evidence.form.date')} htmlFor="ev-date" hint={t('evidence.form.dateHint')}>
           <input
             id="ev-date"
             className="input"
-            placeholder="YYYY-MM-DD"
+            placeholder={t('evidence.form.datePlaceholder')}
             value={draft.date}
             onChange={(e) => set('date', e.target.value)}
           />
         </Field>
-        <Field label="Owner / custodian" htmlFor="ev-owner">
+        <Field label={t('evidence.form.owner')} htmlFor="ev-owner">
           <input
             id="ev-owner"
             className="input"
@@ -273,7 +277,7 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
 
       {draft.type === 'Code repository' ? (
         <div className="grid gap-3 sm:grid-cols-2">
-          <Field label="Repository URL" htmlFor="ev-repo" required>
+          <Field label={t('evidence.form.repoUrl')} htmlFor="ev-repo" required>
             <input
               id="ev-repo"
               className="input"
@@ -282,10 +286,10 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
             />
           </Field>
           <Field
-            label="Commit SHA"
+            label={t('evidence.form.commitSha')}
             htmlFor="ev-sha"
             required
-            hint="Always pin a commit; a branch name moves."
+            hint={t('evidence.form.commitShaHint')}
           >
             <input
               id="ev-sha"
@@ -294,7 +298,7 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
               onChange={(e) => set('commitSha', e.target.value)}
             />
           </Field>
-          <Field label="Path in the repository" htmlFor="ev-path">
+          <Field label={t('evidence.form.repoPath')} htmlFor="ev-path">
             <input
               id="ev-path"
               className="input"
@@ -302,7 +306,7 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
               onChange={(e) => set('repoPath', e.target.value)}
             />
           </Field>
-          <Field label="Tag / release" htmlFor="ev-tag">
+          <Field label={t('evidence.form.tag')} htmlFor="ev-tag">
             <input
               id="ev-tag"
               className="input"
@@ -315,7 +319,7 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
 
       {draft.type === 'Publication (DOI)' ? (
         <div className="grid gap-3 sm:grid-cols-2">
-          <Field label="DOI" htmlFor="ev-doi" hint="For example 10.1234/abcd.2026.5678">
+          <Field label={t('evidence.form.doi')} htmlFor="ev-doi" hint={t('evidence.form.doiHint')}>
             <input
               id="ev-doi"
               className="input font-mono"
@@ -323,7 +327,7 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
               onChange={(e) => set('doi', e.target.value)}
             />
           </Field>
-          <Field label="Citation" htmlFor="ev-citation">
+          <Field label={t('evidence.form.citation')} htmlFor="ev-citation">
             <input
               id="ev-citation"
               className="input"
@@ -334,11 +338,7 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
         </div>
       ) : null}
 
-      <Field
-        label="Location / URL"
-        htmlFor="ev-url"
-        hint="http or https only. Use this for anything that already lives somewhere reachable."
-      >
+      <Field label={t('evidence.form.url')} htmlFor="ev-url" hint={t('evidence.form.urlHint')}>
         <input
           id="ev-url"
           className="input"
@@ -348,7 +348,7 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
       </Field>
 
       <div className="grid gap-3 sm:grid-cols-2">
-        <Field label="Marking" htmlFor="ev-marking">
+        <Field label={t('evidence.form.marking')} htmlFor="ev-marking">
           <select
             id="ev-marking"
             className="input"
@@ -357,12 +357,12 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
           >
             {MARKINGS.map((m) => (
               <option key={m} value={m}>
-                {m}
+                {t(`marking.${m}`)}
               </option>
             ))}
           </select>
         </Field>
-        <Field label="Verification" htmlFor="ev-verification">
+        <Field label={t('evidence.form.verification')} htmlFor="ev-verification">
           <select
             id="ev-verification"
             className="input"
@@ -371,14 +371,14 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
           >
             {VERIFICATIONS.map((v) => (
               <option key={v} value={v}>
-                {v}
+                {t(`verification.${v}`)}
               </option>
             ))}
           </select>
         </Field>
         {draft.verification !== 'Unverified' ? (
           <>
-            <Field label="Verified by" htmlFor="ev-verified-by">
+            <Field label={t('evidence.form.verifiedBy')} htmlFor="ev-verified-by">
               <input
                 id="ev-verified-by"
                 className="input"
@@ -386,11 +386,11 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
                 onChange={(e) => set('verifiedBy', e.target.value)}
               />
             </Field>
-            <Field label="Verified date" htmlFor="ev-verified-date">
+            <Field label={t('evidence.form.verifiedDate')} htmlFor="ev-verified-date">
               <input
                 id="ev-verified-date"
                 className="input"
-                placeholder="YYYY-MM-DD"
+                placeholder={t('evidence.form.datePlaceholder')}
                 value={draft.verifiedDate}
                 onChange={(e) => set('verifiedDate', e.target.value)}
               />
@@ -400,17 +400,16 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
       </div>
 
       {sensitive ? (
-        <Callout tone="warning" title="Reference only — no file can be attached">
-          {SENSITIVE_DATA_NOTICE} Record the title, the custodian and a reference number so a
-          reviewer can find the material through the proper channel.
+        <Callout tone="warning" title={t('evidence.form.sensitiveTitle')}>
+          {t('notice.sensitive')} {t('evidence.form.sensitiveBody')}
         </Callout>
       ) : null}
 
       {acceptsFile ? (
         <Field
-          label="File"
+          label={t('evidence.form.file')}
           htmlFor="ev-file"
-          hint={`Stored in this browser only (IndexedDB). Maximum ${MAX_EVIDENCE_FILE_MB} MB. A SHA-256 hash is computed when you add it.`}
+          hint={t('evidence.form.fileHint', { limit: MAX_EVIDENCE_FILE_MB })}
         >
           <input
             id="ev-file"
@@ -420,12 +419,19 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
           />
           {file ? (
             <p className="mt-1 text-xs text-slate-600">
-              {file.name} — {(file.size / 1024).toFixed(0)} kB
+              {t('evidence.form.pickedFile', {
+                name: file.name,
+                size: (file.size / 1024).toFixed(0),
+              })}
             </p>
           ) : existingFile ? (
             <p className="mt-1 text-xs text-slate-600">
-              Attached: {existingFile.name} — {(existingFile.sizeBytes / 1024).toFixed(0)} kB ·
-              SHA-256 <span className="font-mono">{existingFile.sha256.slice(0, 16)}…</span>
+              {t('evidence.form.attachedFile', {
+                name: existingFile.name,
+                size: (existingFile.sizeBytes / 1024).toFixed(0),
+              })}{' '}
+              {t('evidence.form.sha256')}{' '}
+              <span className="font-mono">{existingFile.sha256.slice(0, 16)}…</span>
             </p>
           ) : null}
         </Field>
@@ -434,7 +440,7 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
       {errors.length ? (
         <div role="alert">
           <Callout tone="danger">
-            <ul className="list-disc pl-4">
+            <ul className="list-disc ps-4">
               {errors.map((e) => (
                 <li key={e}>{e}</li>
               ))}
@@ -445,11 +451,15 @@ export function EvidenceForm({ editing, onDone, onCancel }: Props) {
 
       <div className="flex gap-2">
         <button type="submit" className="btn-primary" disabled={busy}>
-          {busy ? 'Saving…' : editing ? 'Save evidence' : 'Add evidence'}
+          {busy
+            ? t('evidence.form.saving')
+            : editing
+              ? t('evidence.form.save')
+              : t('evidence.form.add')}
         </button>
         {onCancel ? (
           <button type="button" className="btn-secondary" onClick={onCancel}>
-            Cancel
+            {t('evidence.form.cancel')}
           </button>
         ) : null}
       </div>

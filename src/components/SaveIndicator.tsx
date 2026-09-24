@@ -1,17 +1,19 @@
 import { useSessionStore } from '@/state/sessionStore';
+import { useT } from '@/i18n/store';
 
 export function SaveIndicator() {
   const saveState = useSessionStore((s) => s.saveState);
   const saveError = useSessionStore((s) => s.saveError);
+  const { t } = useT();
 
   const text =
     saveState === 'error'
-      ? 'Not saved'
+      ? t('save.error')
       : saveState === 'saving'
-        ? 'Saving…'
+        ? t('save.saving')
         : saveState === 'saved'
-          ? 'Saved locally'
-          : 'No changes yet';
+          ? t('save.saved')
+          : t('save.idle');
 
   return (
     <p

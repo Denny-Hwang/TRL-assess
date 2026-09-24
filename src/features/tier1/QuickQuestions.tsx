@@ -6,6 +6,8 @@ import { PageHeader, SourceNote } from '@/components/ui';
 import { AnswerRail } from '@/components/viz/AnswerRail';
 import { SaveIndicator } from '@/components/SaveIndicator';
 import type { AnswerValue, TrlLevel } from '@/domain/schemas';
+import { useT } from '@/i18n/store';
+import { trlText } from '@/i18n/domainText';
 
 const VALUES: AnswerValue[] = ['Yes', 'No', 'Unsure'];
 const SHORTCUT: Record<string, AnswerValue> = { y: 'Yes', n: 'No', u: 'Unsure' };
@@ -15,6 +17,8 @@ export function QuickQuestions() {
   const session = useSessionStore((s) => s.session);
   const setAnswer = useSessionStore((s) => s.setAnswer);
   const navigate = useNavigate();
+  const tr = useT();
+  const { t, lang } = tr;
   const questions = tier1QuestionsTopDown(framework);
   const [index, setIndex] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -80,8 +84,8 @@ export function QuickQuestions() {
   return (
     <div className="max-w-3xl space-y-5">
       <PageHeader
-        title="Quick Estimate — step 2 of 2: screening questions"
-        lead="Work from TRL 9 downwards. Answer for the technology as a whole, based on what has actually been done."
+        title={t('tier1.q.title')}
+        lead={t('tier1.q.lead')}
       >
         <SaveIndicator />
       </PageHeader>
@@ -93,8 +97,9 @@ export function QuickQuestions() {
           onSelect={(level) => setIndex(questions.findIndex((q) => q.level === level))}
         />
         <p className="mt-1 text-center text-xs text-slate-500">
-          {answeredCount} / {questions.length} answered · the unbroken run of <strong>Y</strong>{' '}
-          from TRL 1 is your estimate
+          {t('tier1.q.progress.before', { answered: answeredCount, total: questions.length })}
+          <strong>Y</strong>
+          {t('tier1.q.progress.after')}
         </p>
       </div>
 
@@ -109,16 +114,21 @@ export function QuickQuestions() {
             id="question-heading"
             className="text-sm font-semibold uppercase tracking-wide text-brand-700"
           >
-            TRL {current.level}
+            {trlText(tr, current.level)}
           </h2>
           <span className="text-xs text-slate-500">
-            Question {index + 1} of {questions.length}
+            {t('tier1.q.counter', { n: index + 1, total: questions.length })}
           </span>
         </div>
         <p className="mt-2 text-lg">{current.text}</p>
+        {lang !== 'en' ? (
+          <p className="mt-1 text-xs italic text-slate-500">{t('sourceText.note')}</p>
+        ) : null}
         {current.helpText ? (
           <details className="mt-3 text-sm text-slate-600">
-            <summary className="cursor-pointer text-brand-700">What this level means</summary>
+            <summary className="cursor-pointer text-brand-700">
+              {t('tier1.q.helpSummary')}
+            </summary>
             <p className="mt-2">{current.helpText}</p>
           </details>
         ) : null}
@@ -126,7 +136,7 @@ export function QuickQuestions() {
           <SourceNote {...current.source} />
         </p>
 
-        <div className="mt-4 flex flex-wrap gap-2" role="group" aria-label="Answer">
+        <div className="mt-4 flex flex-wrap gap-2" role="group" aria-label={t('tier1.q.answerGroup')}>
           {VALUES.map((value) => {
             const selected = currentAnswer?.value === value;
             return (
@@ -139,8 +149,8 @@ export function QuickQuestions() {
                   selected ? 'btn border-brand-600 bg-brand-600 text-white' : 'btn-secondary'
                 }
               >
-                {value}
-                <kbd className="ml-1 rounded border border-current/30 px-1 text-[10px] uppercase">
+                {t(`answer.${value}`)}
+                <kbd className="ms-1 rounded border border-current/30 px-1 text-[10px] uppercase">
                   {value[0]}
                 </kbd>
               </button>
@@ -150,13 +160,13 @@ export function QuickQuestions() {
 
         <div className="mt-4">
           <label className="label" htmlFor="note">
-            Note (optional)
+            {t('tier1.q.note')}
           </label>
           <input
             id="note"
             className="input"
             value={currentAnswer?.note ?? ''}
-            placeholder="One line — what makes you answer that way?"
+            placeholder={t('tier1.q.notePlaceholder')}
             onChange={(e) =>
               setAnswer(current.id, {
                 value: currentAnswer?.value ?? 'Unsure',
@@ -174,7 +184,7 @@ export function QuickQuestions() {
           onClick={() => move(-1)}
           disabled={index === 0}
         >
-          ← Previous
+          {t('tier1.q.previous')}
         </button>
         <button
           type="button"
@@ -182,26 +192,26 @@ export function QuickQuestions() {
           onClick={() => move(1)}
           disabled={index === questions.length - 1}
         >
-          Next →
+          {t('tier1.q.next')}
         </button>
         <span className="text-xs text-slate-500">
-          Keyboard: Y / N / U to answer, arrow keys to move.
+          {t('tier1.q.keyboard')}
         </span>
         <button
           type="button"
-          className="btn-primary ml-auto"
+          className="btn-primary ms-auto"
           onClick={() => navigate('/quick/result')}
         >
-          See the estimate
+          {t('tier1.q.seeEstimate')}
         </button>
       </div>
 
       <p className="text-xs text-slate-500">
-        Not sure what a level means? See the{' '}
+        {t('tier1.q.guide.before')}
         <Link className="underline" to="/guide/overview">
-          Guide
+          {t('tier1.q.guide.link')}
         </Link>
-        .
+        {t('tier1.q.guide.after')}
       </p>
     </div>
   );

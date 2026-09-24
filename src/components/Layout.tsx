@@ -1,24 +1,28 @@
 import { NavLink, Link, Outlet } from 'react-router-dom';
 import { APP_NAME, APP_VERSION, GIT_SHA, REPO_URL } from '@/config/app.config';
+import { useT } from '@/i18n/store';
+import type { MessageKey } from '@/i18n/en';
 import { SensitiveDataNotice } from './SensitiveDataNotice';
+import { LanguageSelect } from './LanguageSelect';
 
-const NAV = [
-  { to: '/', label: 'Home', end: true },
-  { to: '/quick', label: 'Quick Estimate', end: false },
-  { to: '/assess', label: 'Evidence Assessment', end: false },
-  { to: '/arl', label: 'Adoption Readiness', end: false },
-  { to: '/guide/overview', label: 'Guide', end: false },
-  { to: '/about', label: 'About', end: false },
+const NAV: Array<{ to: string; label: MessageKey; end: boolean }> = [
+  { to: '/', label: 'nav.home', end: true },
+  { to: '/quick', label: 'nav.quick', end: false },
+  { to: '/assess', label: 'nav.assess', end: false },
+  { to: '/arl', label: 'nav.arl', end: false },
+  { to: '/guide/overview', label: 'nav.guide', end: false },
+  { to: '/about', label: 'nav.about', end: false },
 ];
 
 export function Layout() {
+  const { t } = useT();
   return (
     <div className="flex min-h-screen flex-col">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-white focus:px-3 focus:py-2"
+        className="sr-only focus:not-sr-only focus:absolute focus:start-2 focus:top-2 focus:z-50 focus:rounded focus:bg-white focus:px-3 focus:py-2"
       >
-        Skip to content
+        {t('layout.skip')}
       </a>
       <SensitiveDataNotice />
       <header className="border-b border-slate-200 bg-white">
@@ -26,7 +30,7 @@ export function Layout() {
           <Link to="/" className="text-lg font-semibold tracking-tight">
             {APP_NAME}
           </Link>
-          <nav aria-label="Main" className="flex flex-wrap gap-1">
+          <nav aria-label={t('nav.main')} className="flex flex-wrap gap-1">
             {NAV.map((item) => (
               <NavLink
                 key={item.to}
@@ -39,10 +43,11 @@ export function Layout() {
                   ].join(' ')
                 }
               >
-                {item.label}
+                {t(item.label)}
               </NavLink>
             ))}
           </nav>
+          <LanguageSelect />
         </div>
       </header>
 
@@ -55,16 +60,14 @@ export function Layout() {
           <span>
             {APP_NAME} v{APP_VERSION}
           </span>
-          <span className="font-mono">build {GIT_SHA}</span>
+          <span className="font-mono">{t('layout.build', { sha: GIT_SHA })}</span>
           <Link to="/about#disclaimer" className="underline hover:text-slate-700">
-            Disclaimer
+            {t('layout.disclaimer')}
           </Link>
           <a href={REPO_URL} className="underline hover:text-slate-700" rel="noreferrer">
-            Source
+            {t('layout.source')}
           </a>
-          <span className="ml-auto">
-            Runs entirely in your browser — no data leaves this device.
-          </span>
+          <span className="ms-auto">{t('layout.local')}</span>
         </div>
       </footer>
     </div>
