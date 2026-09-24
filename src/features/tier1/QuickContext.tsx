@@ -59,10 +59,7 @@ export function QuickContext() {
 
   return (
     <form onSubmit={submit} noValidate className="max-w-3xl space-y-6">
-      <PageHeader
-        title={t('tier1.context.title')}
-        lead={t('tier1.context.lead')}
-      >
+      <PageHeader title={t('tier1.context.title')} lead={t('tier1.context.lead')}>
         <SaveIndicator />
       </PageHeader>
 

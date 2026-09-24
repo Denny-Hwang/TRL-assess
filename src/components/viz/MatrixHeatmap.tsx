@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { BuildCode, EnvironmentCode, Tier1Matrix } from '@/domain/schemas';
+import { useT } from '@/i18n/store';
 import { inkOn, sequentialFill, VIZ } from './tokens';
 
 /**
@@ -18,6 +19,7 @@ export function MatrixHeatmap({
   environment?: EnvironmentCode;
   className?: string;
 }) {
+  const { t } = useT();
   const [hover, setHover] = useState<{ b: string; e: string } | null>(null);
   const builds = matrix.builds;
   const environments = matrix.environments;
@@ -30,21 +32,21 @@ export function MatrixHeatmap({
   return (
     <figure className={className}>
       <figcaption className="mb-2 text-xs text-slate-600">
-        Build maturity × environment reached → suggested TRL. This is a{' '}
-        <span className="font-medium">{matrix.status}</span> and never overrides your answers.
+        {t('tier1.matrix.caption.before')}
+        <span className="font-medium">{matrix.status}</span>
+        {t('tier1.matrix.caption.after')}
       </figcaption>
 
       <div className="overflow-x-auto">
         <table className="border-separate border-spacing-0.5 text-center text-xs">
           <caption className="sr-only">
-            Cross-check matrix: each cell gives the TRL suggested by a build maturity and an
-            environment.{' '}
-            {build && environment ? `Your combination is ${build} × ${environment}.` : ''}
+            {t('tier1.matrix.srCaption')}{' '}
+            {build && environment ? t('tier1.matrix.srCombination', { build, environment }) : ''}
           </caption>
           <thead>
             <tr>
-              <th scope="col" className="px-1 py-1 text-left font-medium text-slate-500">
-                build \ env
+              <th scope="col" className="px-1 py-1 text-start font-medium text-slate-500">
+                {t('tier1.matrix.corner')}
               </th>
               {environments.map((e) => (
                 <th key={e.code} scope="col" className="px-1 py-1 font-medium text-slate-600">
@@ -56,7 +58,7 @@ export function MatrixHeatmap({
           <tbody>
             {builds.map((b) => (
               <tr key={b.code}>
-                <th scope="row" className="px-1 py-1 text-left font-medium text-slate-600">
+                <th scope="row" className="px-1 py-1 text-start font-medium text-slate-600">
                   {b.code}
                 </th>
                 {environments.map((e) => {
@@ -72,9 +74,11 @@ export function MatrixHeatmap({
                         onMouseLeave={() => setHover(null)}
                         onFocus={() => setHover({ b: b.code, e: e.code })}
                         onBlur={() => setHover(null)}
-                        aria-label={`${b.code} ${b.label} with ${e.code} ${e.label}: TRL ${value}${
-                          isActive ? ' — your combination' : ''
-                        }`}
+                        aria-label={t(isActive ? 'tier1.matrix.cellActive' : 'tier1.matrix.cell', {
+                          build: `${b.code} ${b.label}`,
+                          environment: `${e.code} ${e.label}`,
+                          trl: t('trl.level', { level: value }),
+                        })}
                         className="h-7 w-9 rounded-sm"
                         style={{
                           background: fill,
@@ -85,7 +89,9 @@ export function MatrixHeatmap({
                         }}
                       >
                         {value}
-                        {isActive ? <span className="sr-only"> (your combination)</span> : null}
+                        {isActive ? (
+                          <span className="sr-only"> {t('tier1.matrix.yours')}</span>
+                        ) : null}
                       </button>
                     </td>
                   );
@@ -100,12 +106,19 @@ export function MatrixHeatmap({
         {activeBuild && activeEnv ? (
           <>
             <strong>
-              {activeBuild.code} × {activeEnv.code} → TRL {activeValue}
+              {t('tier1.matrix.activeHead', {
+                build: activeBuild.code,
+                environment: activeEnv.code,
+                trl: t('trl.level', { level: String(activeValue) }),
+              })}
             </strong>{' '}
-            — {activeBuild.label.toLowerCase()} tested in {activeEnv.label.toLowerCase()}.
+            {t('tier1.matrix.activeText', {
+              build: activeBuild.label.toLowerCase(),
+              environment: activeEnv.label.toLowerCase(),
+            })}
           </>
         ) : (
-          'Hover or focus a cell to see what that combination means.'
+          t('tier1.matrix.hint')
         )}
       </p>
     </figure>

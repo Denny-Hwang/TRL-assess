@@ -5,6 +5,7 @@ import type { ArlContext, ArlFramework } from '@/domain/schemas';
 import { useSessionStore } from '@/state/sessionStore';
 import { Callout, Field, PageHeader, SourceNote } from '@/components/ui';
 import { SaveIndicator } from '@/components/SaveIndicator';
+import { useT } from '@/i18n/store';
 
 const EMPTY: ArlContext = {
   projectName: '',
@@ -41,6 +42,7 @@ function QuotedHint({
 
 export function ArlScope({ framework }: { framework: ArlFramework }) {
   const navigate = useNavigate();
+  const { t, lang } = useT();
   const session = useSessionStore((s) => s.session);
   const setArl = useSessionStore((s) => s.setArl);
 
@@ -57,9 +59,9 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
   const [showErrors, setShowErrors] = useState(false);
 
   const missing = [
-    !context.projectName.trim() && 'project name',
-    !context.technologyName.trim() && 'technology name',
-    !context.assessorName.trim() && 'assessor name',
+    !context.projectName.trim() && t('arl.scope.missing.projectName'),
+    !context.technologyName.trim() && t('arl.scope.missing.technologyName'),
+    !context.assessorName.trim() && t('arl.scope.missing.assessorName'),
   ].filter(Boolean) as string[];
 
   const set = <K extends keyof ArlContext>(key: K, value: ArlContext[K]) =>
@@ -85,8 +87,8 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
   return (
     <form onSubmit={submit} noValidate className="max-w-3xl space-y-6">
       <PageHeader
-        title="Adoption readiness — step 1 of 3: scope"
-        lead="What is being assessed, and against which market. Nothing here leaves your browser."
+        title={t('arl.scope.title')}
+        lead={t('arl.scope.lead')}
       >
         <SaveIndicator />
       </PageHeader>
@@ -95,13 +97,16 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
         <p>
           {framework.shortDescription}{' '}
           <span className="text-xs">
-            Version: {framework.version} · Source: {framework.sources[0]}
+            {t('arl.scope.versionSource', {
+              version: framework.version,
+              source: framework.sources[0] ?? '',
+            })}
           </span>
         </p>
       </Callout>
 
       <section className="card grid gap-4 md:grid-cols-2">
-        <Field label="Project name" htmlFor="arlProjectName" required>
+        <Field label={t('arl.scope.projectName')} htmlFor="arlProjectName" required>
           <input
             id="arlProjectName"
             className="input"
@@ -110,7 +115,7 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
             required
           />
         </Field>
-        <Field label="Technology name" htmlFor="arlTechnologyName" required>
+        <Field label={t('arl.scope.technologyName')} htmlFor="arlTechnologyName" required>
           <input
             id="arlTechnologyName"
             className="input"
@@ -119,7 +124,7 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
             required
           />
         </Field>
-        <Field label="Assessor name" htmlFor="arlAssessorName" required>
+        <Field label={t('arl.scope.assessorName')} htmlFor="arlAssessorName" required>
           <input
             id="arlAssessorName"
             className="input"
@@ -128,7 +133,7 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
             required
           />
         </Field>
-        <Field label="Organization" htmlFor="arlOrganization">
+        <Field label={t('arl.scope.organization')} htmlFor="arlOrganization">
           <input
             id="arlOrganization"
             className="input"
@@ -141,7 +146,7 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
       <section className="card space-y-4">
         <div>
           <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-            Scope of the assessment
+            {t('arl.scope.heading')}
           </h2>
           {scopeHeading ? (
             <p className="mt-1 text-xs text-slate-500">
@@ -149,10 +154,13 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
               <SourceNote {...scopeHeading.source} compact />
             </p>
           ) : null}
+          {lang !== 'en' ? (
+            <p className="mt-1 text-xs text-slate-500">{t('sourceText.note')}</p>
+          ) : null}
         </div>
         <div>
           <label className="label" htmlFor="technologyScope">
-            Technology scope
+            {t('arl.scope.technologyScope')}
           </label>
           <textarea
             id="technologyScope"
@@ -165,7 +173,7 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
         </div>
         <div>
           <label className="label" htmlFor="valueChainScope">
-            Value chain scope
+            {t('arl.scope.valueChainScope')}
           </label>
           <textarea
             id="valueChainScope"
@@ -178,13 +186,13 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
         </div>
         <div>
           <label className="label" htmlFor="evaluationTimeline">
-            Timeline for evaluation
+            {t('arl.scope.evaluationTimeline')}
           </label>
           <input
             id="evaluationTimeline"
             className="input"
             aria-describedby="evaluationTimeline-hint"
-            placeholder="e.g. as of today, commercialization window of 5 years"
+            placeholder={t('arl.scope.evaluationTimeline.placeholder')}
             value={context.evaluationTimeline ?? ''}
             onChange={(e) => set('evaluationTimeline', e.target.value)}
           />
@@ -192,7 +200,7 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
         </div>
         <div>
           <label className="label" htmlFor="policyEnvironment">
-            Policy environment assumed
+            {t('arl.scope.policyEnvironment')}
           </label>
           <textarea
             id="policyEnvironment"
@@ -212,13 +220,13 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
 
       {showErrors && missing.length ? (
         <p role="alert" className="text-sm text-red-700">
-          Please fill in: {missing.join(', ')}.
+          {t('arl.scope.missing', { fields: missing.join(', ') })}
         </p>
       ) : null}
 
       <div className="flex gap-3">
         <button type="submit" className="btn-primary">
-          Continue to the ratings
+          {t('arl.scope.continue')}
         </button>
       </div>
     </form>

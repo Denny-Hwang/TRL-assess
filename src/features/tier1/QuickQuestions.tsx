@@ -83,10 +83,7 @@ export function QuickQuestions() {
 
   return (
     <div className="max-w-3xl space-y-5">
-      <PageHeader
-        title={t('tier1.q.title')}
-        lead={t('tier1.q.lead')}
-      >
+      <PageHeader title={t('tier1.q.title')} lead={t('tier1.q.lead')}>
         <SaveIndicator />
       </PageHeader>
 
@@ -126,9 +123,7 @@ export function QuickQuestions() {
         ) : null}
         {current.helpText ? (
           <details className="mt-3 text-sm text-slate-600">
-            <summary className="cursor-pointer text-brand-700">
-              {t('tier1.q.helpSummary')}
-            </summary>
+            <summary className="cursor-pointer text-brand-700">{t('tier1.q.helpSummary')}</summary>
             <p className="mt-2">{current.helpText}</p>
           </details>
         ) : null}
@@ -136,7 +131,11 @@ export function QuickQuestions() {
           <SourceNote {...current.source} />
         </p>
 
-        <div className="mt-4 flex flex-wrap gap-2" role="group" aria-label={t('tier1.q.answerGroup')}>
+        <div
+          className="mt-4 flex flex-wrap gap-2"
+          role="group"
+          aria-label={t('tier1.q.answerGroup')}
+        >
           {VALUES.map((value) => {
             const selected = currentAnswer?.value === value;
             return (
@@ -194,9 +193,7 @@ export function QuickQuestions() {
         >
           {t('tier1.q.next')}
         </button>
-        <span className="text-xs text-slate-500">
-          {t('tier1.q.keyboard')}
-        </span>
+        <span className="text-xs text-slate-500">{t('tier1.q.keyboard')}</span>
         <button
           type="button"
           className="btn-primary ms-auto"
