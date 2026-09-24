@@ -47,8 +47,7 @@ export function ArlLookupGrid({
       <div className="overflow-x-auto">
         <table className="border-separate border-spacing-0.5 text-center text-xs">
           <caption className="mb-2 text-start text-xs text-slate-600">
-            {t('arl.grid.caption')}{' '}
-            <span className="sr-only">{summary}</span>
+            {t('arl.grid.caption')} <span className="sr-only">{summary}</span>
           </caption>
           <thead>
             <tr>

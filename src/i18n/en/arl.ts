@@ -57,8 +57,7 @@ export const arl = {
   'arl.rate.backToScope': 'Back to the scope',
 
   'arl.result.title': 'Adoption readiness — result',
-  'arl.result.scaleLabel':
-    'ARL Start {start} ({startBand}). ARL End, target: {end} ({endBand}).',
+  'arl.result.scaleLabel': 'ARL Start {start} ({startBand}). ARL End, target: {end} ({endBand}).',
   'arl.result.startHint': '{band} — {medium} Medium, {high} High counted.',
   'arl.result.endHint': '{band} — {target}.',
   'arl.result.change': 'Change over the project',

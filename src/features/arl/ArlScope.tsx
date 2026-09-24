@@ -86,10 +86,7 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
 
   return (
     <form onSubmit={submit} noValidate className="max-w-3xl space-y-6">
-      <PageHeader
-        title={t('arl.scope.title')}
-        lead={t('arl.scope.lead')}
-      >
+      <PageHeader title={t('arl.scope.title')} lead={t('arl.scope.lead')}>
         <SaveIndicator />
       </PageHeader>
 

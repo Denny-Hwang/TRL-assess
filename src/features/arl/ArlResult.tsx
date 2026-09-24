@@ -137,9 +137,7 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
         <RiskLegend />
         <div className="overflow-x-auto">
           <table className="w-full text-start text-sm">
-            <caption className="sr-only">
-              {t('arl.result.caption')}
-            </caption>
+            <caption className="sr-only">{t('arl.result.caption')}</caption>
             <thead>
               <tr className="border-b border-slate-200 text-xs uppercase tracking-wide text-slate-500">
                 <th scope="col" className="py-2 pe-3">
@@ -221,9 +219,7 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
 
       <section className="card space-y-3">
         <h2 className="text-lg font-semibold">{t('arl.result.howRead')}</h2>
-        <p className="text-sm text-slate-700">
-          {t('arl.result.howRead.body')}
-        </p>
+        <p className="text-sm text-slate-700">{t('arl.result.howRead.body')}</p>
         <ArlLookupGrid
           framework={framework}
           marks={[
@@ -233,7 +229,12 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
               label: t('arl.result.mark.start'),
               style: 'solid',
             },
-            { medium: end.tally.Medium, high: end.tally.High, label: t('arl.result.mark.target'), style: 'dashed' },
+            {
+              medium: end.tally.Medium,
+              high: end.tally.High,
+              label: t('arl.result.mark.target'),
+              style: 'dashed',
+            },
           ]}
         />
         {powerLaw ? (
@@ -248,10 +249,7 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
         ) : null}
       </section>
 
-      <section
-        className="card border-amber-200 bg-amber-50"
-        aria-label={t('ui.disclaimer.aria')}
-      >
+      <section className="card border-amber-200 bg-amber-50" aria-label={t('ui.disclaimer.aria')}>
         <p className="text-sm font-semibold text-amber-900">{t('label.arl')}</p>
         <p className="mt-2 text-xs text-amber-900/90">{disclaimerText(tr, 'arl')}</p>
         <p className="mt-2 text-xs text-amber-900/90">{framework.disclaimer}</p>
@@ -278,9 +276,7 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
             {error}
           </p>
         ) : null}
-        <p className="mt-3 text-xs text-slate-500">
-          {t('arl.result.jsonNote')}
-        </p>
+        <p className="mt-3 text-xs text-slate-500">{t('arl.result.jsonNote')}</p>
       </section>
     </div>
   );

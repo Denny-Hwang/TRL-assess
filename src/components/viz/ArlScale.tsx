@@ -103,8 +103,7 @@ export function ArlScale({
         <span>▼ {t('arl.scale.start', { level: start })}</span>
         {end !== undefined ? (
           <span>
-            ▽{' '}
-            {t(end === start ? 'arl.scale.targetNoChange' : 'arl.scale.target', { level: end })}
+            ▽ {t(end === start ? 'arl.scale.targetNoChange' : 'arl.scale.target', { level: end })}
           </span>
         ) : null}
       </p>

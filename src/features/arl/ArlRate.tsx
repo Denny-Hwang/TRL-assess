@@ -135,9 +135,7 @@ const DimensionCard = memo(function DimensionCard({
         </div>
         <p className="mt-2 flex items-center gap-2 text-xs text-slate-600" aria-live="polite">
           <RiskGlyph rating={current} withLabel />
-          <span>
-            — {arlReasonText(tr, current, reason) ?? countedText(tr, counted)}
-          </span>
+          <span>— {arlReasonText(tr, current, reason) ?? countedText(tr, counted)}</span>
         </p>
       </fieldset>
 

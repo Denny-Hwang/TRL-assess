@@ -28,7 +28,9 @@ export function RiskTallyBar({
   const tr = useT();
   const total = ORDER.reduce((sum, seg) => sum + tally[seg.key], 0);
   const text = ORDER.filter((seg) => tally[seg.key] > 0)
-    .map((seg) => tr.t('arl.tally.item', { count: tally[seg.key], rating: ratingText(tr, seg.key) }))
+    .map((seg) =>
+      tr.t('arl.tally.item', { count: tally[seg.key], rating: ratingText(tr, seg.key) }),
+    )
     .join(', ');
   let x = 0;
   return (
