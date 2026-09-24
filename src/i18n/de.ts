@@ -1053,4 +1053,13 @@ export const de: Messages = {
   'excel.package.readme.not.heading': 'Was dieses Paket nicht ist',
   'excel.package.readme.not.body':
     'Eine Selbstbewertung, keine unabhängige Technologiereifebewertung (TRA). Mit\n„Sensibel — nur Verweis“ gekennzeichnete Nachweise werden nie beigefügt: Diese Zeilen\nverweisen auf Material, das an anderer Stelle aufbewahrt wird.',
+  'about.data.heading': 'Lokale Daten',
+  'about.data.body':
+    'Bewertungen und Nachweisdateien werden nur in diesem Browser gespeichert. Exportieren Sie vor dem Löschen alles, was Sie behalten möchten.',
+  'about.data.clear': 'Alle lokalen Daten löschen',
+  'about.data.confirm':
+    'Die Bewertung und alle gespeicherten Nachweisdateien aus diesem Browser löschen? Dies kann nicht rückgängig gemacht werden.',
+  'about.data.yes': 'Ja, alles löschen',
+  'about.data.cancel': 'Abbrechen',
+  'about.data.done': 'Alle lokalen Daten wurden gelöscht.',
 };

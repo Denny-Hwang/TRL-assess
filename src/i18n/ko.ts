@@ -1006,4 +1006,13 @@ export const ko: Messages = {
   'excel.package.readme.not.heading': '이 패키지가 아닌 것',
   'excel.package.readme.not.body':
     '자체 평가이며, 독립적인 기술성숙도 평가(TRA)가 아닙니다. “민감 — 참조 전용”으로\n표시된 증거는 결코 패키지에 포함되지 않습니다. 해당 행은 다른 곳에 보관된\n자료를 가리킵니다.',
+  'about.data.heading': '로컬 데이터',
+  'about.data.body':
+    '평가와 증거 파일은 이 브라우저에만 저장됩니다. 삭제하기 전에 보관할 내용을 내보내세요.',
+  'about.data.clear': '모든 로컬 데이터 삭제',
+  'about.data.confirm':
+    '이 브라우저에서 평가와 저장된 모든 증거 파일을 삭제할까요? 되돌릴 수 없습니다.',
+  'about.data.yes': '예, 모두 삭제',
+  'about.data.cancel': '취소',
+  'about.data.done': '모든 로컬 데이터가 삭제되었습니다.',
 };

@@ -1053,4 +1053,13 @@ export const es: Messages = {
   'excel.package.readme.not.heading': 'Lo que este paquete no es',
   'excel.package.readme.not.body':
     'Una autoevaluación, no una Evaluación de madurez tecnológica independiente. Las evidencias marcadas como\n«Sensible — solo referencia» nunca se incluyen en el paquete: esas filas apuntan a material conservado\nen otro lugar.',
+  'about.data.heading': 'Datos locales',
+  'about.data.body':
+    'Las evaluaciones y los archivos de evidencia se guardan solo en este navegador. Exporte lo que quiera conservar antes de borrar.',
+  'about.data.clear': 'Borrar todos los datos locales',
+  'about.data.confirm':
+    '¿Eliminar la evaluación y todos los archivos de evidencia almacenados en este navegador? No se puede deshacer.',
+  'about.data.yes': 'Sí, eliminar todo',
+  'about.data.cancel': 'Cancelar',
+  'about.data.done': 'Se han borrado todos los datos locales.',
 };

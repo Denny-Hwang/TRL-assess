@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { GuideIndex, GuideRoute } from '@/features/guide/GuidePage';
 import { GUIDE_PAGES } from '@/content/guide';
@@ -114,6 +115,24 @@ describe('about page', () => {
       screen.getAllByText(/not an independent Technology Readiness Assessment/).length,
     ).toBeGreaterThan(0);
     expect(screen.getByRole('link', { name: 'CHANGELOG.md' })).toBeInTheDocument();
+  });
+
+  it('clears all local data after a confirmation', async () => {
+    const user = userEvent.setup();
+    localStorage.setItem('trl-assess:session:v1', '{"placeholder":true}');
+    render(
+      <MemoryRouter>
+        <AboutPage />
+      </MemoryRouter>,
+    );
+    await user.click(screen.getByRole('button', { name: 'Clear all local data' }));
+    await user.click(screen.getByRole('button', { name: 'Cancel' }));
+    expect(localStorage.getItem('trl-assess:session:v1')).not.toBeNull();
+
+    await user.click(screen.getByRole('button', { name: 'Clear all local data' }));
+    await user.click(screen.getByRole('button', { name: 'Yes, delete everything' }));
+    expect(await screen.findByText('All local data has been cleared.')).toBeInTheDocument();
+    expect(localStorage.getItem('trl-assess:session:v1')).toBeNull();
   });
 });
 

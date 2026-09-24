@@ -1031,4 +1031,13 @@ export const ja: Messages = {
   'excel.package.readme.not.heading': 'このパッケージが該当しないもの',
   'excel.package.readme.not.body':
     'これは自己評価であり、独立した技術成熟度評価ではありません。「機微 — 参照のみ」と\nマークされたエビデンスは同梱されません。これらの行は、別の場所に保管されている\n資料を指しています。',
+  'about.data.heading': 'ローカルデータ',
+  'about.data.body':
+    '評価とエビデンスファイルはこのブラウザにのみ保存されます。消去する前に、残したい内容をエクスポートしてください。',
+  'about.data.clear': 'ローカルデータをすべて消去',
+  'about.data.confirm':
+    'このブラウザから評価と保存済みのすべてのエビデンスファイルを削除しますか？元に戻せません。',
+  'about.data.yes': 'はい、すべて削除します',
+  'about.data.cancel': 'キャンセル',
+  'about.data.done': 'すべてのローカルデータを消去しました。',
 };

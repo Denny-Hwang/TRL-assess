@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Technology Commercialization _Adoption Readiness Assessment_ (April 2025), transcribed verbatim,
   rated now and at the end of the project; ARL Start and ARL End come from the source's look-up
   table. Exported as `ARL_<project>_<timestamp>.xlsx`.
+- **Clear all local data** on the About page removes the assessment and every stored evidence file
+  from this browser, after a confirmation.
+- The Guide is translated into all eight languages; quoted source text stays in English.
 - Diagrams in the app and the Guide: the TRL ladder, status glyphs, per-level bars, coverage meters,
   the build × environment grid and per-CTE bars.
 

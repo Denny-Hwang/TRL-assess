@@ -975,4 +975,11 @@ export const zh: Messages = {
   'excel.package.readme.not.heading': '本证据包不是什么',
   'excel.package.readme.not.body':
     '这是一份自评估，而不是独立的技术成熟度评价。标识为\n“敏感——仅作引用”的证据绝不会打包：这些行指向存放在\n别处的材料。',
+  'about.data.heading': '本地数据',
+  'about.data.body': '评估和证据文件仅保存在此浏览器中。清除前请先导出需要保留的内容。',
+  'about.data.clear': '清除所有本地数据',
+  'about.data.confirm': '要从此浏览器中删除评估以及所有已存储的证据文件吗？此操作无法撤销。',
+  'about.data.yes': '是，全部删除',
+  'about.data.cancel': '取消',
+  'about.data.done': '所有本地数据已清除。',
 };

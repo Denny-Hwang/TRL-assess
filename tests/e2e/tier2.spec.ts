@@ -98,5 +98,13 @@ test.describe('Tier 2 evidence-based assessment', () => {
     await expect
       .poll(async () => page.evaluate(() => localStorage.getItem('trl-assess:session:v1') ?? ''))
       .toContain('Energy harvester');
+
+    await page.goto('./#/about');
+    await page.getByRole('button', { name: 'Clear all local data' }).click();
+    await page.getByRole('button', { name: 'Yes, delete everything' }).click();
+    await expect(page.getByText('All local data has been cleared.')).toBeVisible();
+    await expect
+      .poll(async () => page.evaluate(() => localStorage.getItem('trl-assess:session:v1')))
+      .toBeNull();
   });
 });

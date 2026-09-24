@@ -16,7 +16,7 @@
     {
       "code": "E2",
       "label": "Relevant / simulated operational environment",
-      "help": "A testing environment that simulates both the most important and most stressing aspects of the operational environment (DoD TRA Guidebook, Table 2-3, p. 11). Examples: high-fidelity laboratory integration, wave tank, environmental chamber, seawater immersion rig."
+      "help": "A testing environment that simulates both the most important and most stressing aspects of the operational environment (DoD TRA Guidebook, Table 2-3, p. 11). Examples: high-fidelity laboratory integration, environmental chamber, hardware-in-the-loop rig, representative test facility."
     },
     {
       "code": "E3",

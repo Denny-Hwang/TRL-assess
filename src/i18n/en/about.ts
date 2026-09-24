@@ -34,4 +34,13 @@ export const about = {
     'The build × environment matrix is a heuristic aid created for this tool, not a standard.',
   'about.disclaimer.system':
     'The system summary is the minimum across critical CTEs — a conservative reporting convention, not a mandated formula.',
+  'about.data.heading': 'Local data',
+  'about.data.body':
+    'Assessments and evidence files are stored only in this browser. Export anything you want to keep before clearing.',
+  'about.data.clear': 'Clear all local data',
+  'about.data.confirm':
+    'Delete the assessment and every stored evidence file from this browser? This cannot be undone.',
+  'about.data.yes': 'Yes, delete everything',
+  'about.data.cancel': 'Cancel',
+  'about.data.done': 'All local data has been cleared.',
 } as const;
