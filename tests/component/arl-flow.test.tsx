@@ -125,6 +125,7 @@ describe('ARL flow', () => {
     expect(screen.getByTestId('arl-end')).toHaveTextContent(`ARL ${result.end.arl}`);
     expect(screen.getByText(ARL_LABEL)).toBeInTheDocument();
     expect(screen.getByRole('table', { name: /Current and target risk rating/ })).toBeVisible();
+    expect(screen.queryAllByText('counted as High')).toHaveLength(0);
     expect(screen.queryByTestId('title-page-block')).toBeNull();
   });
 
@@ -152,6 +153,17 @@ describe('ARL flow', () => {
     expect(screen.getByTestId('check-CLIMR-C7')).toHaveTextContent(/ARL-D4/);
     expect(screen.getByTestId('check-CLIMR-C6')).toHaveTextContent(/Pass/);
     expect(screen.getByTestId('check-CLIMR-C1')).toHaveTextContent(/p\. 12/);
+  });
+
+  it('marks conservative counts in both the current and the target column', () => {
+    const data = ratedArl();
+    data.dimensions = data.dimensions.map((d) =>
+      d.dimensionId === 'ARL-C5' ? { ...d, current: 'N/A' as const, rationale: '' } : d,
+    );
+    useSession(setArl(createSession('marine-energy-eere', '1.0.0'), data));
+    renderArl('/arl/result');
+    const row = screen.getByRole('row', { name: /ARL-C5/ });
+    expect(within(row).getAllByText('counted as High')).toHaveLength(2);
   });
 
   it('redirects to the scope when there are no ratings yet', () => {

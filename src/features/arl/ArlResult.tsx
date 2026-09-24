@@ -257,6 +257,9 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
                         ) : target.reducesRisk ? (
                           <span className="block text-xs text-emerald-800">planned reduction</span>
                         ) : null}
+                        {target.conservativeReason ? (
+                          <span className="block text-xs text-amber-800">counted as High</span>
+                        ) : null}
                       </td>
                       <td className="py-2 text-xs text-slate-700">{o.plannedAction ?? ''}</td>
                     </tr>
