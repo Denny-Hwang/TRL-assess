@@ -59,45 +59,12 @@ Only conservative conventions, the same spirit as "Unsure never counts as Yes" f
 is labelled _Target — planned, not achieved_. A target that lowers a risk without a planned action
 raises a warning.
 
-## DOE TCF lab call — CLIMR, FY2026 & FY2027
-
-The _Core Laboratory Infrastructure for Market Readiness (CLIMR): Technology Specific Topics_ call
-(DE-LC-000L130) makes ARL a requirement:
-
-> "Proposals must use the Adoption Readiness Level (ARL) framework to evaluate technology risks,
-> ecosystem economics, and private sector uptake potential, and must show an increase in ARL during
-> the project period of performance." — `doe-tcf-climr-fy2627`, pp. 12–13
-
-Selecting the CLIMR call profile in the scope step adds a title-page block — ARL Start, ARL End,
-TRL Start, TRL End, the four numbers Appendix C asks for (p. 65) — and these checks, each quoting its
-requirement with the page:
-
-| Check    | Rule                                                      | Result if not met | Pages      |
-| -------- | --------------------------------------------------------- | ----------------- | ---------- |
-| CLIMR-C1 | TRL Start is at least 4                                   | Fail              | 12, 46, 65 |
-| CLIMR-C2 | NE topic: TRL Start is at least 5 (recommended parameter) | Warning           | 37         |
-| CLIMR-C3 | TRL End is a whole number from 4 to 9                     | Fail              | 49, 65     |
-| CLIMR-C4 | ARL Start is a whole number from 1 to 9                   | Fail              | 49, 65     |
-| CLIMR-C5 | ARL End is a whole number from 2 to 9                     | Fail              | 49, 65     |
-| CLIMR-C6 | ARL End is higher than ARL Start                          | Fail              | 12–13      |
-| CLIMR-C7 | NE topic: no High risk in D. License to Operate           | Warning           | 37         |
-| CLIMR-C8 | Which TRL definitions the TRL Start used                  | Info              | 12         |
-
-**TRL Start** is the Evidence Assessment's system summary when one is computed, otherwise the Quick
-Estimate — each shown with its own label. **TRL End** is the target you state. The call asks for
-"TRLs defined by the DOE" (p. 12); CLIMR-C8 names the framework and sources your TRL came from so
-you can confirm they match.
-
-These checks read the call's words; they do not decide eligibility or merit — DOE does.
-
 ## Limitations
 
 - **The rubric is DOE's; the ratings are yours.** Nothing is verified by the tool, and DOE does not
   review or endorse the result.
 - **Dimensions overlap.** The source says so: "some risks may fall into more than one dimension"
   (p. 2). Record a risk once, where it bites hardest, and say so in the rationale.
-- **One call profile.** CLIMR FY26–27 is the only one shipped; another call needs its own profile,
-  quoting its own text.
 - **Evidence is a reference, not an attachment.** Name the document, or an evidence id from the
   [Evidence Assessment](/assess), in the evidence field; ARL ratings are not linked into the
   evidence package.

@@ -68,8 +68,7 @@ export const GUIDE_PAGES: GuidePage[] = [
   {
     slug: 'arl',
     title: 'Adoption readiness (ARL)',
-    summary:
-      'The ARL side module: 17 adoption-risk dimensions, the look-up table, the CLIMR checks.',
+    summary: 'The ARL side module: 17 adoption-risk dimensions and the look-up table.',
     body: arl,
   },
   {

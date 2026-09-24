@@ -16,7 +16,6 @@ import {
   reorderCtes as reorderCtesIn,
   setAnswer as setAnswerIn,
   setArl as setArlOn,
-  setArlCall as setArlCallIn,
   setArlDimension as setArlDimensionIn,
   setAssessment as setAssessmentIn,
   setGapActions as setGapActionsIn,
@@ -28,7 +27,6 @@ import {
 import { clearAllLocalData, debounce, loadSession, saveSession } from '@/storage/sessionStore';
 import { deleteBlob } from '@/storage/blobStore';
 import type {
-  ArlCall,
   ArlData,
   ArlDimensionAssessment,
   AssessmentSession,
@@ -68,7 +66,6 @@ interface SessionState {
   setArlDimension: (
     patch: Pick<ArlDimensionAssessment, 'dimensionId'> & Partial<ArlDimensionAssessment>,
   ) => void;
-  setArlCall: (call: ArlCall | undefined) => void;
   resetArl: () => void;
   /** Write any pending autosave immediately (used on page hide). */
   flushSave: () => void;
@@ -204,7 +201,6 @@ export const useSessionStore = create<SessionState>((set, get) => {
 
     setArl: (arl) => apply((s) => setArlOn(s, arl), { immediate: true }),
     setArlDimension: (patch) => apply((s) => setArlDimensionIn(s, patch)),
-    setArlCall: (call) => apply((s) => setArlCallIn(s, call), { immediate: true }),
     resetArl: () => apply((s) => clearArlIn(s), { immediate: true }),
   };
 });

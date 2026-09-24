@@ -1,6 +1,7 @@
 # ADR-0005: An Adoption Readiness Level (ARL) side module, with a CLIMR lab-call profile
 
-- Status: Accepted — decisions confirmed by the project owner, 2026-09-24
+- Status: Accepted — decisions confirmed by the project owner, 2026-09-24; decision 4 (the CLIMR
+  call profile) withdrawn the same day at the owner's request — the tool stays generic
 - Date: 2026-09-24
 - Phase: post-1.0
 

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { DEFAULT_ARL_FRAMEWORK } from '@/config/app.config';
-import { listCallProfiles, loadArlFramework } from '@/domain/arl';
+import { loadArlFramework } from '@/domain/arl';
 import type { ArlFramework } from '@/domain/schemas';
 import { useSessionStore } from '@/state/sessionStore';
 
@@ -19,8 +19,4 @@ export function useArlFramework(): { framework: ArlFramework | null; error: stri
       };
     }
   }, [id]);
-}
-
-export function useCallProfiles() {
-  return useMemo(() => listCallProfiles(), []);
 }

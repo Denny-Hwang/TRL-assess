@@ -15,17 +15,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   dimension takes a current rating and an optional end-of-project target; ARL Start and ARL End are
   read from the source's p. 13 look-up table, unmodified. Unsure, Not assessed and N/A without a
   rationale count as High risk and are flagged (BUILD_SPEC D-2.3).
-- **CLIMR FY26–27 call profile** (DE-LC-000L130): an optional self-check of the four title-page
-  numbers — TRL Start ≥ 4, NE's recommended TRL ≥ 5 and no High risk in License to Operate, TRL End
-  4–9, ARL Start 1–9, ARL End 2–9, and an ARL increase — each quoting the lab-call requirement with
-  its page (BUILD_SPEC D-2.4).
 - **ARL workbook** `ARL_<project>_<timestamp>.xlsx` — README, Summary, Scope, Risk_Assessment,
-  ARL_Lookup, Call_Checks (with a profile), References, Metadata (BUILD_SPEC D-3.3).
+  ARL_Lookup, References, Metadata (BUILD_SPEC D-3.3).
 - Guide page `/guide/arl` with two figures (the dimension map and the look-up table); ARL entries in
   How to use, Excel output, FAQ, Frameworks, Glossary and Marine & ocean.
-- `npm run validate:criteria` now checks the ARL rubric and call profiles with the same provenance
+- `npm run validate:criteria` now checks the ARL rubric with the same provenance
   rules as criteria.
-- Sources `doe-otc-arl-2025` and `doe-tcf-climr-fy2627`, with SHA-256 hashes and transcription notes.
+- Source `doe-otc-arl-2025`, with its SHA-256 hash and transcription notes.
 
 - A diagram layer (`src/components/viz/`) so the app shows its reasoning instead of describing it:
   the TRL ladder (filled where confirmed, hatched where a level was claimed over an unconfirmed

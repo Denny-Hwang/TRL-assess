@@ -1,17 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import {
-  evaluateCallProfile,
-  guidance,
-  loadCallProfile,
-  scoreArl,
-  summarizeChecks,
-  trlStartFor,
-  type ArlFlag,
-  type CallCheckOutcome,
-  type CheckResult,
-} from '@/domain/arl';
-import { formatTrl } from '@/domain/tier1';
+import { guidance, scoreArl, type ArlFlag } from '@/domain/arl';
 import type { ArlFramework } from '@/domain/schemas';
 import { serializeSession } from '@/domain/json';
 import { downloadBlob, slugify, timestampForFilename } from '@/export/download';
@@ -22,22 +11,6 @@ import { ArlScale } from '@/components/viz/ArlScale';
 import { ArlLookupGrid } from '@/components/viz/ArlLookupGrid';
 import { RiskGlyph, RiskLegend } from '@/components/viz/RiskGlyph';
 import { RiskTallyBar } from '@/components/viz/RiskTallyBar';
-
-const RESULT_STYLE: Record<CheckResult, string> = {
-  Pass: 'border-emerald-300 bg-emerald-50 text-emerald-900',
-  Fail: 'border-red-300 bg-red-50 text-red-900',
-  Warning: 'border-amber-300 bg-amber-50 text-amber-900',
-  Info: 'border-sky-300 bg-sky-50 text-sky-900',
-  'Not evaluated': 'border-slate-300 bg-slate-50 text-slate-800',
-};
-
-const RESULT_MARK: Record<CheckResult, string> = {
-  Pass: '✓',
-  Fail: '✗',
-  Warning: '!',
-  Info: 'i',
-  'Not evaluated': '–',
-};
 
 function FlagList({ flags }: { flags: ArlFlag[] }) {
   if (!flags.length) return <p className="text-sm text-emerald-800">No flags raised.</p>;
@@ -52,38 +25,6 @@ function FlagList({ flags }: { flags: ArlFlag[] }) {
   );
 }
 
-function CheckRow({ outcome }: { outcome: CallCheckOutcome }) {
-  return (
-    <li
-      className="rounded-md border border-slate-200 p-3"
-      data-testid={`check-${outcome.check.id}`}
-    >
-      <div className="flex flex-wrap items-start gap-3">
-        <span
-          className={`badge shrink-0 ${RESULT_STYLE[outcome.result]}`}
-          title={`Result: ${outcome.result}`}
-        >
-          <span aria-hidden="true">{RESULT_MARK[outcome.result]}</span> {outcome.result}
-        </span>
-        <div className="min-w-0 flex-1">
-          <p className="text-sm font-semibold">
-            {outcome.check.title}{' '}
-            <span className="font-mono text-xs font-normal text-slate-600">{outcome.check.id}</span>
-          </p>
-          <p className="mt-1 text-sm text-slate-700">{outcome.detail}</p>
-          <ul className="mt-2 space-y-1">
-            {outcome.requirements.map((r) => (
-              <li key={r.id} className="text-xs text-slate-600">
-                <q>{r.text}</q> <SourceNote {...r.source} compact />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </li>
-  );
-}
-
 export function ArlResultPage({ framework }: { framework: ArlFramework }) {
   const session = useSessionStore((s) => s.session);
   const trlFramework = useSessionStore((s) => s.framework);
@@ -92,29 +33,6 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
   const arl = session.arl;
 
   const result = useMemo(() => (arl ? scoreArl(framework, arl) : null), [framework, arl]);
-  const call = useMemo(() => {
-    if (!arl?.call || !result) return null;
-    let profile;
-    try {
-      profile = loadCallProfile(arl.call.profileId);
-    } catch {
-      return { missing: arl.call.profileId } as const;
-    }
-    const trlStart = trlStartFor(session, trlFramework);
-    const outcomes = evaluateCallProfile(profile, framework, {
-      arl: result,
-      trlStart,
-      ...(arl.call.trlEnd !== undefined ? { trlEnd: arl.call.trlEnd } : {}),
-      ...(arl.call.topicId ? { topicId: arl.call.topicId } : {}),
-      trlFramework: {
-        id: trlFramework.framework.id,
-        name: trlFramework.framework.name,
-        sources: trlFramework.framework.sources,
-      },
-    });
-    return { profile, trlStart, outcomes, counts: summarizeChecks(outcomes) } as const;
-  }, [arl, result, session, trlFramework, framework]);
-
   if (!arl || !result) return <Navigate to="/arl" replace />;
 
   const { start, end } = result;
@@ -309,79 +227,6 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
           </p>
         ) : null}
       </section>
-
-      {call && 'missing' in call ? (
-        <Callout tone="warning">
-          This session names the call profile “{call.missing}”, which this version of the app does
-          not include.
-        </Callout>
-      ) : null}
-
-      {call && !('missing' in call) ? (
-        <section className="card space-y-4" aria-labelledby="call-heading">
-          <div>
-            <h2 id="call-heading" className="text-lg font-semibold">
-              {call.profile.name}
-            </h2>
-            <p className="mt-1 text-sm text-slate-600">{call.profile.description}</p>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="text-left text-sm" data-testid="title-page-block">
-              <caption className="mb-2 text-left text-xs text-slate-600">
-                The four numbers the title page asks for (Appendix C).
-              </caption>
-              <tbody>
-                <tr>
-                  <th scope="row" className="py-1 pr-4 font-medium">
-                    ARL Start
-                  </th>
-                  <td className="py-1 pr-4 text-lg font-semibold">{start.arl}</td>
-                  <td className="py-1 text-xs text-slate-600">From the current ratings.</td>
-                </tr>
-                <tr>
-                  <th scope="row" className="py-1 pr-4 font-medium">
-                    ARL End
-                  </th>
-                  <td className="py-1 pr-4 text-lg font-semibold">{end.arl}</td>
-                  <td className="py-1 text-xs text-slate-600">{ARL_TARGET_LABEL}.</td>
-                </tr>
-                <tr>
-                  <th scope="row" className="py-1 pr-4 font-medium">
-                    TRL Start
-                  </th>
-                  <td className="py-1 pr-4 text-lg font-semibold">
-                    {call.trlStart.value === null ? '—' : formatTrl(call.trlStart.value)}
-                  </td>
-                  <td className="py-1 text-xs text-slate-600">{call.trlStart.label}.</td>
-                </tr>
-                <tr>
-                  <th scope="row" className="py-1 pr-4 font-medium">
-                    TRL End
-                  </th>
-                  <td className="py-1 pr-4 text-lg font-semibold">
-                    {arl.call?.trlEnd ? `TRL ${arl.call.trlEnd}` : '—'}
-                  </td>
-                  <td className="py-1 text-xs text-slate-600">
-                    {arl.call?.trlEnd
-                      ? 'Your stated target.'
-                      : 'Not set — add it in the scope step.'}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p className="text-sm text-slate-700" data-testid="check-summary">
-            {call.counts.Pass} pass · {call.counts.Fail} fail · {call.counts.Warning} warning ·{' '}
-            {call.counts['Not evaluated']} not evaluated
-          </p>
-          <ul className="space-y-2">
-            {call.outcomes.map((o) => (
-              <CheckRow key={o.check.id} outcome={o} />
-            ))}
-          </ul>
-          <p className="text-xs text-slate-500">{call.profile.note}</p>
-        </section>
-      ) : null}
 
       <section
         className="card border-amber-200 bg-amber-50"

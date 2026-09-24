@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { guidance } from '@/domain/arl';
-import { TRL_LEVELS, type ArlContext, type ArlFramework, type TrlLevel } from '@/domain/schemas';
+import type { ArlContext, ArlFramework } from '@/domain/schemas';
 import { useSessionStore } from '@/state/sessionStore';
 import { Callout, Field, PageHeader, SourceNote } from '@/components/ui';
 import { SaveIndicator } from '@/components/SaveIndicator';
-import { useCallProfiles } from './useArl';
 
 const EMPTY: ArlContext = {
   projectName: '',
@@ -44,7 +43,6 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
   const navigate = useNavigate();
   const session = useSessionStore((s) => s.session);
   const setArl = useSessionStore((s) => s.setArl);
-  const profiles = useCallProfiles();
 
   const fromTier1 = session.tier1?.context;
   const [context, setContext] = useState<ArlContext>(
@@ -56,14 +54,8 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
       organization: fromTier1?.organization ?? '',
     },
   );
-  const [profileId, setProfileId] = useState(session.arl?.call?.profileId ?? '');
-  const [topicId, setTopicId] = useState(session.arl?.call?.topicId ?? '');
-  const [trlEnd, setTrlEnd] = useState<string>(
-    session.arl?.call?.trlEnd ? String(session.arl.call.trlEnd) : '',
-  );
   const [showErrors, setShowErrors] = useState(false);
 
-  const profile = profiles.find((p) => p.id === profileId);
   const missing = [
     !context.projectName.trim() && 'project name',
     !context.technologyName.trim() && 'technology name',
@@ -84,15 +76,6 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
       frameworkVersion: framework.version,
       context,
       dimensions: session.arl?.dimensions ?? [],
-      ...(profile
-        ? {
-            call: {
-              profileId: profile.id,
-              ...(topicId ? { topicId } : {}),
-              ...(trlEnd ? { trlEnd: Number(trlEnd) as TrlLevel } : {}),
-            },
-          }
-        : {}),
     });
     navigate('/arl/rate');
   };
@@ -225,79 +208,6 @@ export function ArlScope({ framework }: { framework: ArlFramework }) {
             withLabel
           />
         </div>
-      </section>
-
-      <section className="card space-y-4">
-        <div>
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-            Funding call (optional)
-          </h2>
-          <p className="mt-1 text-xs text-slate-500">
-            A call profile checks the numbers a proposal states against the call&apos;s own words.
-            It never changes the ratings or the ARL.
-          </p>
-        </div>
-        <Field label="Call profile" htmlFor="callProfile">
-          <select
-            id="callProfile"
-            className="input"
-            value={profileId}
-            onChange={(e) => setProfileId(e.target.value)}
-          >
-            <option value="">None</option>
-            {profiles.map((p) => (
-              <option key={p.id} value={p.id}>
-                {p.shortName}
-              </option>
-            ))}
-          </select>
-        </Field>
-        {profile ? (
-          <>
-            <p className="text-sm text-slate-700">{profile.description}</p>
-            <div className="grid gap-4 md:grid-cols-2">
-              <Field
-                label="Topic"
-                htmlFor="callTopic"
-                hint="Some topics add their own parameters — NE, for example."
-              >
-                <select
-                  id="callTopic"
-                  className="input"
-                  value={topicId}
-                  onChange={(e) => setTopicId(e.target.value)}
-                >
-                  <option value="">Not specified</option>
-                  {profile.topics.map((t) => (
-                    <option key={t.id} value={t.id}>
-                      {t.name}
-                    </option>
-                  ))}
-                </select>
-              </Field>
-              <Field
-                label="TRL End (target at the end of the project)"
-                htmlFor="trlEnd"
-                hint="TRL Start comes from your Quick Estimate or Evidence Assessment; the target is yours to state."
-              >
-                <select
-                  id="trlEnd"
-                  className="input"
-                  value={trlEnd}
-                  onChange={(e) => setTrlEnd(e.target.value)}
-                >
-                  <option value="">Not set</option>
-                  {TRL_LEVELS.map((l) => (
-                    <option key={l} value={l}>
-                      TRL {l}
-                    </option>
-                  ))}
-                </select>
-              </Field>
-            </div>
-            <p className="text-xs text-slate-500">{profile.note}</p>
-          </>
-        ) : null}
       </section>
 
       {showErrors && missing.length ? (

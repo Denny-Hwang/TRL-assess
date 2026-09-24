@@ -13,7 +13,6 @@ import {
   reorderCtes,
   setAnswer,
   setArl,
-  setArlCall,
   setArlDimension,
   setAssessment,
   setGapActions,
@@ -297,7 +296,6 @@ describe('ARL side module in the session', () => {
   it('refuses a rating before the ARL scope exists', () => {
     const s = createSession('marine-energy-eere', '1.0.0');
     expect(() => setArlDimension(s, { dimensionId: 'ARL-A1', current: 'Low' })).toThrow(/scope/);
-    expect(() => setArlCall(s, { profileId: 'doe-tcf-climr-fy2627' })).toThrow(/scope/);
   });
 
   it('adds a rating, then merges later edits into it', () => {
@@ -323,15 +321,6 @@ describe('ARL side module in the session', () => {
     s = setArlDimension(s, { dimensionId: 'ARL-A1', target: undefined });
     expect(s.arl!.dimensions[0]).toEqual({ dimensionId: 'ARL-A1', current: 'High' });
     expect('target' in s.arl!.dimensions[0]!).toBe(false);
-  });
-
-  it('sets and clears the call profile', () => {
-    let s = setArl(createSession('marine-energy-eere', '1.0.0'), arl);
-    s = setArlCall(s, { profileId: 'doe-tcf-climr-fy2627', topicId: 'NE', trlEnd: 6 });
-    expect(s.arl!.call).toEqual({ profileId: 'doe-tcf-climr-fy2627', topicId: 'NE', trlEnd: 6 });
-    s = setArlCall(s, undefined);
-    expect(s.arl!.call).toBeUndefined();
-    expect('call' in s.arl!).toBe(false);
   });
 
   it('clears the ARL block only', () => {

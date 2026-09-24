@@ -74,8 +74,8 @@ export function HomePage() {
         <p className="mt-2 max-w-3xl text-sm text-slate-600">
           What stands between a working technology and its use: rate the 17 adoption-risk dimensions
           of the DOE Adoption Readiness Assessment, now and at the end of the project, and read ARL
-          Start and ARL End from the source&apos;s own look-up table. Optional checks against the
-          DOE TCF CLIMR lab call. Kept apart from the TRL result — never combined into one number.
+          Start and ARL End from the source&apos;s own look-up table. Kept apart from the TRL result
+          — never combined into one number.
         </p>
         <p className="mt-2 text-xs font-medium text-amber-700">{ARL_LABEL}</p>
         <Link to="/arl" className="btn-secondary mt-4">

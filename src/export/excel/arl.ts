@@ -1,30 +1,17 @@
 /**
  * ARL workbook (BUILD_SPEC D-3.3, ADR-0005).
- * Sheets, in order: README, Summary, Scope, Risk_Assessment, ARL_Lookup, Call_Checks (only when
- * a call profile is selected), References, Metadata. The TRL workbooks are not touched.
+ * Sheets, in order: README, Summary, Scope, Risk_Assessment, ARL_Lookup, References, Metadata.
+ * The TRL workbooks are not touched.
  */
 import { ARL_DISCLAIMER, ARL_LABEL, ARL_TARGET_LABEL } from '@/config/app.config';
 import { sourcesFor } from '@/data/sources';
-import {
-  evaluateCallProfile,
-  loadCallProfile,
-  scoreArl,
-  summarizeChecks,
-  trlStartFor,
-  type ArlProfileResult,
-  type ArlResult,
-  type ArlTally,
-  type CallCheckOutcome,
-  type TrlStart,
-} from '@/domain/arl';
+import { scoreArl, type ArlProfileResult, type ArlResult, type ArlTally } from '@/domain/arl';
 import type { ResolvedFramework } from '@/domain/frameworks';
-import { formatTrl } from '@/domain/tier1';
 import {
   ARL_RATINGS,
   ARL_RISKS,
   type ArlFramework,
   type AssessmentSession,
-  type CallProfile,
 } from '@/domain/schemas';
 import { arlWorkbookFilename, downloadBlob } from '@/export/download';
 import {
@@ -50,21 +37,12 @@ export const ARL_SHEETS = [
   'Scope',
   'Risk_Assessment',
   'ARL_Lookup',
-  'Call_Checks',
   'References',
   'Metadata',
 ] as const;
 
 /** Written in the "Target rating" column when no end-of-project target differs from today. */
 export const SAME_AS_CURRENT = 'Same as current';
-
-interface CallSection {
-  profile: CallProfile;
-  topicId?: string;
-  trlStart: TrlStart;
-  trlEnd?: number;
-  outcomes: CallCheckOutcome[];
-}
 
 function sourceText(source: { sourceId: string; section?: string; page?: string }) {
   return [source.sourceId, source.section, source.page ? `p. ${source.page}` : undefined]
@@ -84,36 +62,6 @@ function flagsText(profile: ArlProfileResult): string {
   return profile.flags.length ? profile.flags.map((f) => f.message).join('\n') : 'None raised.';
 }
 
-function callSectionFor(
-  arlFramework: ArlFramework,
-  session: AssessmentSession,
-  trlFramework: ResolvedFramework,
-  result: ArlResult,
-): CallSection | null {
-  const call = session.arl?.call;
-  if (!call) return null;
-  const profile = loadCallProfile(call.profileId);
-  const trlStart = trlStartFor(session, trlFramework);
-  const outcomes = evaluateCallProfile(profile, arlFramework, {
-    arl: result,
-    trlStart,
-    ...(call.trlEnd !== undefined ? { trlEnd: call.trlEnd } : {}),
-    ...(call.topicId ? { topicId: call.topicId } : {}),
-    trlFramework: {
-      id: trlFramework.framework.id,
-      name: trlFramework.framework.name,
-      sources: trlFramework.framework.sources,
-    },
-  });
-  return {
-    profile,
-    ...(call.topicId ? { topicId: call.topicId } : {}),
-    trlStart,
-    ...(call.trlEnd !== undefined ? { trlEnd: call.trlEnd } : {}),
-    outcomes,
-  };
-}
-
 export async function buildArlWorkbook(
   arlFramework: ArlFramework,
   session: AssessmentSession,
@@ -123,7 +71,6 @@ export async function buildArlWorkbook(
   const arl = session.arl;
   if (!arl) throw new Error('This session has no ARL ratings to export.');
   const result = scoreArl(arlFramework, arl);
-  const call = callSectionFor(arlFramework, session, trlFramework, result);
   const { workbook } = await createWorkbook();
 
   const rated = result.start.outcomes.filter((o) => o.rating !== 'Not assessed').length;
@@ -150,9 +97,6 @@ export async function buildArlWorkbook(
           'Scope — the technology scope, value chain scope, timeline and policy environment the ratings assume.',
           'Risk_Assessment — every dimension: current rating, rationale, evidence, target and planned action, with the rubric text.',
           'ARL_Lookup — the source look-up table, with this assessment’s cells marked.',
-          call
-            ? 'Call_Checks — the lab-call requirements, quoted with pages, and how this proposal fares against them.'
-            : 'Call_Checks — present only when a funding-call profile is selected in the app.',
           'References — the source documents.',
           'Metadata — provenance of this export.',
         ],
@@ -180,12 +124,11 @@ export async function buildArlWorkbook(
     { disclaimer: ARL_DISCLAIMER, staticNote: ARL_STATIC_VALUES_NOTE },
   );
 
-  buildSummarySheet(workbook, arlFramework, session, result, call, generatedAt);
+  buildSummarySheet(workbook, arlFramework, session, result, generatedAt);
   buildScopeSheet(workbook, session, trlFramework);
   buildRiskSheet(workbook, result);
   buildLookupSheet(workbook, arlFramework, result);
-  if (call) buildCallSheet(workbook, call);
-  buildReferencesSheet(workbook, arlFramework, call);
+  buildReferencesSheet(workbook, arlFramework);
   buildMetadataSheet(workbook, meta, session, trlFramework);
   return workbook;
 }
@@ -202,7 +145,6 @@ function buildSummarySheet(
   framework: ArlFramework,
   session: AssessmentSession,
   result: ArlResult,
-  call: CallSection | null,
   generatedAt: Date,
 ): void {
   const { context } = session.arl!;
@@ -227,29 +169,6 @@ function buildSummarySheet(
     ['Flags — current ratings', flagsText(result.start)],
     ['Flags — targets', flagsText(result.end)],
   ];
-  if (call) {
-    const counts = summarizeChecks(call.outcomes);
-    const topic = call.profile.topics.find((t) => t.id === call.topicId);
-    rows.push(
-      ['', ''],
-      ['Call profile', `${call.profile.name} (${call.profile.reference})`],
-      ['Topic', topic ? topic.name : 'Not specified'],
-      ['Title page — ARL Start', String(result.start.arl)],
-      ['Title page — ARL End', String(result.end.arl)],
-      [
-        'Title page — TRL Start',
-        call.trlStart.value === null
-          ? 'No TRL result yet'
-          : `${formatTrl(call.trlStart.value)} (${call.trlStart.label})`,
-      ],
-      ['Title page — TRL End', call.trlEnd ? `TRL ${call.trlEnd} (stated target)` : 'Not set'],
-      [
-        'Call checks',
-        `${counts.Pass} pass · ${counts.Fail} fail · ${counts.Warning} warning · ${counts['Not evaluated']} not evaluated — see Call_Checks`,
-      ],
-      ['Call note', call.profile.note],
-    );
-  }
   rows.push(
     ['', ''],
     ['Label', ARL_LABEL],
@@ -403,40 +322,7 @@ function buildLookupSheet(workbook: Workbook, framework: ArlFramework, result: A
   }
 }
 
-function buildCallSheet(workbook: Workbook, call: CallSection): void {
-  const sheet = addTableSheet(workbook, 'Call_Checks', [
-    { header: 'Check ID', key: 'id', width: 12 },
-    { header: 'Check', key: 'title', width: 40, wrap: true },
-    { header: 'Result', key: 'result', width: 14 },
-    { header: 'Value tested', key: 'value', width: 18 },
-    { header: 'Detail', key: 'detail', width: 60, wrap: true },
-    { header: 'Requirement (quoted)', key: 'quote', width: 70, wrap: true },
-    { header: 'Source (doc, section, page)', key: 'source', width: 50, wrap: true },
-  ]);
-  for (const o of call.outcomes) {
-    sheet.addRow({
-      id: o.check.id,
-      title: o.check.title,
-      result: o.result,
-      value: o.value,
-      detail: safeText(o.detail),
-      quote: o.requirements.map((r) => `“${r.text}”`).join('\n'),
-      source: o.requirements.map((r) => sourceText(r.source)).join('\n'),
-    });
-  }
-  const last = call.outcomes.length + 1;
-  highlightValues(sheet, `C2:C${last}`, [
-    { text: 'Pass', fill: STYLE.goodFill },
-    { text: 'Fail', fill: STYLE.badFill },
-    { text: 'Warning', fill: STYLE.warnFill },
-  ]);
-}
-
-function buildReferencesSheet(
-  workbook: Workbook,
-  framework: ArlFramework,
-  call: CallSection | null,
-): void {
+function buildReferencesSheet(workbook: Workbook, framework: ArlFramework): void {
   const sheet = addTableSheet(workbook, 'References', [
     { header: 'Source ID', key: 'id', width: 24 },
     { header: 'Title', key: 'title', width: 60, wrap: true },
@@ -444,8 +330,7 @@ function buildReferencesSheet(
     { header: 'Version/Date', key: 'version', width: 40, wrap: true },
     { header: 'URL', key: 'url', width: 60 },
   ]);
-  const ids = [...framework.sources, ...(call ? [call.profile.sourceId] : [])];
-  sourcesFor(ids).forEach((source, index) => {
+  sourcesFor(framework.sources).forEach((source, index) => {
     sheet.addRow({
       id: source.id,
       title: source.title,

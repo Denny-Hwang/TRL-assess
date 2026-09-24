@@ -1,17 +1,16 @@
 /**
  * BUILD_SPEC D-3.0 / D-3.3 — the ARL workbook is generated, read back with ExcelJS and asserted
- * sheet by sheet, with and without a call profile.
+ * sheet by sheet.
  */
 import { describe, it, expect, beforeAll } from 'vitest';
 import ExcelJS from 'exceljs';
 import { ARL_SHEETS, buildArlWorkbook, SAME_AS_CURRENT } from '@/export/excel/arl';
 import { ARL_STATIC_VALUES_NOTE } from '@/export/excel/shared';
 import { arlWorkbookFilename, timestampForFilename } from '@/export/download';
-import { loadArlFramework, scoreArl, trlStartFor } from '@/domain/arl';
+import { loadArlFramework, scoreArl } from '@/domain/arl';
 import { resolveFramework } from '@/domain/frameworks';
 import { parseSession, setArl } from '@/domain/session';
 import { FICTIONAL_EXAMPLE } from '@/data/examples';
-import { formatTrl } from '@/domain/tier1';
 import type { ArlData, AssessmentSession } from '@/domain/schemas';
 import {
   ARL_DISCLAIMER,
@@ -56,14 +55,9 @@ const arl: ArlData = {
   }),
 };
 
-const withCall: AssessmentSession = setArl(base, {
-  ...arl,
-  call: { profileId: 'doe-tcf-climr-fy2627', topicId: 'NE', trlEnd: 6 },
-});
-const withoutCall: AssessmentSession = setArl(base, arl);
+const session: AssessmentSession = setArl(base, arl);
 
 let back: ExcelJS.Workbook;
-let plain: ExcelJS.Workbook;
 
 async function readBack(session: AssessmentSession) {
   const workbook = await buildArlWorkbook(arlFramework, session, trlFramework, generatedAt);
@@ -74,8 +68,7 @@ async function readBack(session: AssessmentSession) {
 }
 
 beforeAll(async () => {
-  back = await readBack(withCall);
-  plain = await readBack(withoutCall);
+  back = await readBack(session);
 });
 
 function sheet(name: string, wb: ExcelJS.Workbook = back): ExcelJS.Worksheet {
@@ -103,11 +96,8 @@ function keyValues(name: string, wb: ExcelJS.Workbook = back): Record<string, st
 }
 
 describe('ARL workbook — structure', () => {
-  it('has the specified sheets, in order, with Call_Checks only when a profile is selected', () => {
+  it('has exactly the specified sheets, in order', () => {
     expect(back.worksheets.map((w) => w.name)).toEqual([...ARL_SHEETS]);
-    expect(plain.worksheets.map((w) => w.name)).toEqual(
-      ARL_SHEETS.filter((s) => s !== 'Call_Checks'),
-    );
   });
 
   it('snapshots the column structure of the table sheets', () => {
@@ -127,15 +117,6 @@ describe('ARL workbook — structure', () => {
       'Medium risk (rubric)',
       'High risk (rubric)',
       'Origin',
-      'Source (doc, section, page)',
-    ]);
-    expect(headers('Call_Checks')).toEqual([
-      'Check ID',
-      'Check',
-      'Result',
-      'Value tested',
-      'Detail',
-      'Requirement (quoted)',
       'Source (doc, section, page)',
     ]);
     expect(headers('ARL_Lookup')).toEqual([
@@ -164,7 +145,7 @@ describe('ARL workbook — structure', () => {
   });
 
   it('names the file ARL_<project-slug>_<timestamp>.xlsx', () => {
-    expect(arlWorkbookFilename(withCall, generatedAt)).toBe(
+    expect(arlWorkbookFilename(session, generatedAt)).toBe(
       `ARL_fictional-buoy-project_${timestampForFilename(generatedAt)}.xlsx`,
     );
   });
@@ -193,7 +174,7 @@ describe('ARL workbook — README', () => {
 
 describe('ARL workbook — Summary', () => {
   it('reports ARL Start and ARL End from the engine', () => {
-    const result = scoreArl(arlFramework, withCall.arl!);
+    const result = scoreArl(arlFramework, session.arl!);
     const v = keyValues('Summary');
     expect(v['ARL Start']).toBe(`ARL ${result.start.arl} — ${result.start.band}`);
     expect(v['ARL End (target)']).toContain(`ARL ${result.end.arl} — ${result.end.band}`);
@@ -206,16 +187,6 @@ describe('ARL workbook — Summary', () => {
     const v = keyValues('Summary');
     expect(v['Flags — current ratings']).toMatch(/ARL-D3/);
     expect(v['Flags — current ratings']).toMatch(/N\/A without a rationale at ARL-C5/);
-  });
-
-  it('fills the title-page block when a call profile is selected', () => {
-    const v = keyValues('Summary');
-    const start = trlStartFor(withCall, trlFramework);
-    expect(v['Call profile']).toContain('DE-LC-000L130');
-    expect(v['Topic']).toBe('Office of Nuclear Energy (NE)');
-    expect(v['Title page — TRL Start']).toContain(formatTrl(start.value!));
-    expect(v['Title page — TRL End']).toBe('TRL 6 (stated target)');
-    expect(keyValues('Summary', plain)['Call profile']).toBeUndefined();
   });
 });
 
@@ -263,7 +234,7 @@ describe('ARL workbook — Risk_Assessment', () => {
 describe('ARL workbook — ARL_Lookup', () => {
   it('reproduces the table and marks the start and target cells', () => {
     const ws = sheet('ARL_Lookup');
-    const result = scoreArl(arlFramework, withCall.arl!);
+    const result = scoreArl(arlFramework, session.arl!);
     expect(ws.getCell('B2').value).toBe(9);
     expect(ws.getCell('J10').value).toBe(1);
     const startCell = ws.getCell(result.start.tally.Medium + 2, result.start.tally.High + 2);
@@ -275,22 +246,9 @@ describe('ARL workbook — ARL_Lookup', () => {
   });
 });
 
-describe('ARL workbook — Call_Checks, References, Metadata', () => {
-  it('quotes every requirement with its page and states each result', () => {
-    const ws = sheet('Call_Checks');
-    const ids = ws.getColumn('A').values.slice(2);
-    expect(ids).toContain('CLIMR-C7');
-    const row = ws.getColumn('A').values.findIndex((v) => v === 'CLIMR-C1');
-    expect(['Pass', 'Fail', 'Not evaluated']).toContain(ws.getCell(`C${row}`).value);
-    expect(String(ws.getCell(`F${row}`).value)).toContain('minimum Technology Readiness Level');
-    expect(String(ws.getCell(`G${row}`).value)).toContain('p. 12');
-  });
-
-  it('references the rubric and, with a profile, the lab call', () => {
-    expect(sheet('References').getColumn('A').values).toEqual(
-      expect.arrayContaining(['doe-otc-arl-2025', 'doe-tcf-climr-fy2627']),
-    );
-    expect(sheet('References', plain).getColumn('A').values).not.toContain('doe-tcf-climr-fy2627');
+describe('ARL workbook — References, Metadata', () => {
+  it('references the rubric', () => {
+    expect(sheet('References').getColumn('A').values).toContain('doe-otc-arl-2025');
   });
 
   it('records the provenance of the export', () => {
