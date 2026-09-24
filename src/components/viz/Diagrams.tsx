@@ -94,9 +94,7 @@ export function DecompositionTree({ className }: { className?: string }) {
           );
         })}
       </svg>
-      <figcaption className="mt-1 text-xs text-slate-500">
-        {t('guide.fig.cte.caption')}
-      </figcaption>
+      <figcaption className="mt-1 text-xs text-slate-500">{t('guide.fig.cte.caption')}</figcaption>
     </figure>
   );
 }
@@ -118,7 +116,12 @@ export function EvidenceDecision({ className }: { className?: string }) {
 
         {[
           { id: 'met', y: 8, status: statusText(tr, 'Met'), note: t('guide.fig.evidence.linked') },
-          { id: 'na', y: 80, status: statusText(tr, 'N/A'), note: t('guide.fig.evidence.justified') },
+          {
+            id: 'na',
+            y: 80,
+            status: statusText(tr, 'N/A'),
+            note: t('guide.fig.evidence.justified'),
+          },
           {
             id: 'other',
             y: 152,
@@ -275,9 +278,7 @@ export function EnvironmentFidelity({ className }: { className?: string }) {
           {t('guide.fig.env.operationalNeed')}
         </text>
       </svg>
-      <figcaption className="mt-1 text-xs text-slate-500">
-        {t('guide.fig.env.caption')}
-      </figcaption>
+      <figcaption className="mt-1 text-xs text-slate-500">{t('guide.fig.env.caption')}</figcaption>
     </figure>
   );
 }

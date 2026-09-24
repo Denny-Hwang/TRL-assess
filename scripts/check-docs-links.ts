@@ -50,7 +50,9 @@ function headingAnchors(markdown: string): Set<string> {
     anchors.add(
       match[1]!
         .toLowerCase()
-        .replace(/[^\w\s-]/g, '')
+        // Same rule as the Guide's heading ids: letters and digits of any script survive, so a
+        // translated page (src/content/guide/<lang>/<slug>.md) can link to its own headings.
+        .replace(/[^\p{L}\p{M}\p{N}_\s-]/gu, '')
         .trim()
         .replace(/\s+/g, '-'),
     );

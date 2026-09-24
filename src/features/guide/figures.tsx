@@ -95,7 +95,10 @@ export const GUIDE_FIGURES: Record<string, (tr: Translator) => ReactNode> = {
             <TrlLadder
               achieved={cte.trl}
               size="sm"
-              label={tr.t('guide.fig.tier2.cteLabel', { name: cte.name, trl: trlText(tr, cte.trl) })}
+              label={tr.t('guide.fig.tier2.cteLabel', {
+                name: cte.name,
+                trl: trlText(tr, cte.trl),
+              })}
               className="w-48"
             />
             <span className="text-slate-600">

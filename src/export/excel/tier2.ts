@@ -3,15 +3,10 @@
  * Sheets, in order: README, Summary, CTE_Register, Criteria_Assessment, Evidence_Register,
  * Gap_Actions, Review_Signoff, References, Metadata.
  */
-import {
-  BLANK_EVIDENCE_PLACEHOLDER_ROWS,
-  BLANK_GAP_ACTION_ROWS,
-  DISCLAIMER,
-  TIER2_LABEL,
-} from '@/config/app.config';
+import { BLANK_EVIDENCE_PLACEHOLDER_ROWS, BLANK_GAP_ACTION_ROWS } from '@/config/app.config';
 import { sourcesFor } from '@/data/sources';
 import type { ResolvedFramework } from '@/domain/frameworks';
-import { formatTrl, scoreTier1 } from '@/domain/tier1';
+import { scoreTier1 } from '@/domain/tier1';
 import { placeholderEvidenceId } from '@/domain/ids';
 import { scoreTier2, tierDelta, type Tier2Result } from '@/domain/tier2';
 import {
@@ -22,23 +17,28 @@ import {
   TRL_LEVELS,
   VERIFICATIONS,
   type AssessmentSession,
-  type SourceRef,
 } from '@/domain/schemas';
 import { downloadBlob, workbookFilename } from '@/export/download';
+import { deltaText, disclaimerText, gapReasonText, trlText } from '@/i18n/domainText';
 import {
   addTableSheet,
   applyListValidation,
   applyWholeNumberValidation,
   createWorkbook,
+  currentTranslator,
   fillRow,
   highlightValues,
+  placeholderNote,
   safeText,
   setFormula,
   setHyperlink,
+  sourceText,
   STYLE,
   workbookToBlob,
   writeMetaBlock,
   writeReadmeSheet,
+  type ColumnSpec,
+  type Translator,
   type Workbook,
   type WorkbookMeta,
 } from './shared';
@@ -58,17 +58,6 @@ export const TIER2_SHEETS = [
 export const GAP_STATUSES = ['Open', 'In progress', 'Done'] as const;
 export const REVIEW_CONCLUSIONS = ['Concur', 'Concur with comments', 'Do not concur'] as const;
 
-function sourceText(source: SourceRef): string {
-  return [
-    source.sourceId,
-    source.section,
-    source.page ? `p. ${source.page}` : undefined,
-    source.clause ? `clause ${source.clause}` : undefined,
-  ]
-    .filter(Boolean)
-    .join(' · ');
-}
-
 export interface Tier2ExportOptions {
   /** "zip" makes the Local file column point at the bundled evidence/ folder. */
   packageType?: 'standalone' | 'zip';
@@ -81,10 +70,12 @@ export async function buildTier2Workbook(
   framework: ResolvedFramework,
   session: AssessmentSession,
   options: Tier2ExportOptions = {},
+  tr: Translator = currentTranslator(),
 ): Promise<Workbook> {
+  const { t } = tr;
   const tier2Data = session.tier2;
   if (!tier2Data || tier2Data.ctes.length === 0) {
-    throw new Error('This session has no Critical Technology Elements to export.');
+    throw new Error(t('excel.tier2.error.noCtes'));
   }
   const generatedAt = options.generatedAt ?? new Date();
   const packageType = options.packageType ?? 'standalone';
@@ -101,10 +92,10 @@ export async function buildTier2Workbook(
     generatedAt,
     packageType,
     counts: {
-      CTEs: tier2Data.ctes.length,
-      'Criteria assessed': tier2Data.assessments.length,
-      'Evidence items': tier2Data.evidence.length,
-      'Gap actions': tier2Data.gapActions.length,
+      [t('excel.tier2.count.ctes')]: tier2Data.ctes.length,
+      [t('excel.tier2.count.criteria')]: tier2Data.assessments.length,
+      [t('excel.tier2.count.evidence')]: tier2Data.evidence.length,
+      [t('excel.tier2.count.gaps')]: tier2Data.gapActions.length,
     },
   };
 
@@ -113,51 +104,53 @@ export async function buildTier2Workbook(
     meta,
     [
       {
-        heading: 'What this workbook contains',
+        heading: t('excel.readme.contents'),
         lines: [
-          'Summary — the conservative system summary, the limiting CTE(s) and a per-CTE table.',
-          'CTE_Register — the Critical Technology Elements and why each is critical.',
-          'Criteria_Assessment — one row per CTE × applicable criterion, with status, evidence and whether it is satisfied.',
-          'Evidence_Register — every evidence item, plus blank placeholder rows you can fill in.',
-          'Gap_Actions — the unmet mandatory criteria at each CTE next level, ready to plan against.',
-          'Review_Signoff — space for the assessor and an independent reviewer.',
-          'References — the source documents behind the criteria.',
-          'Metadata — provenance of this export.',
+          t('excel.tier2.readme.contents.summary'),
+          t('excel.tier2.readme.contents.cteRegister'),
+          t('excel.tier2.readme.contents.criteria'),
+          t('excel.tier2.readme.contents.evidence'),
+          t('excel.tier2.readme.contents.gaps'),
+          t('excel.tier2.readme.contents.review'),
+          t('excel.tier2.readme.contents.references'),
+          t('excel.tier2.readme.contents.metadata'),
         ],
       },
       {
-        heading: 'How to attach evidence in Excel',
+        heading: t('excel.tier2.readme.attach.heading'),
         lines: [
-          '(a) Put a URL in "Location / URL" for anything that already lives somewhere reachable.',
-          '(b) Put a relative path in "Local file (relative path)" and keep the file in the evidence/ folder next to this workbook.',
-          '(c) The "Open" column turns either of those into a clickable link.',
-          '(d) Never paste sensitive content into this workbook. Use a row marked "Sensitive — reference only" that points at the material instead.',
+          t('excel.tier2.readme.attach.url'),
+          t('excel.tier2.readme.attach.local'),
+          t('excel.tier2.readme.attach.open'),
+          t('excel.tier2.readme.attach.sensitive'),
           packageType === 'zip'
-            ? 'This workbook was exported inside an evidence package: the relative paths already point at the bundled evidence/ folder.'
-            : 'This workbook was exported on its own. Relative paths are shown for reference but the files are not bundled — export the evidence package to get them.',
+            ? t('excel.tier2.readme.attach.zip')
+            : t('excel.tier2.readme.attach.standalone'),
         ],
       },
       {
-        heading: 'How the assessment is calculated',
+        heading: t('excel.tier2.readme.calc.heading'),
         lines: [
-          'A criterion is satisfied when it is "Met" with at least one linked, non-rejected evidence item, or "N/A" with a justification.',
-          'A level is achieved when every applicable mandatory criterion at that level is satisfied and the level below is achieved.',
-          "A CTE's TRL is the highest achieved level.",
-          'The system summary is the minimum TRL across the CTEs marked critical — a conservative reporting convention, not a mandated formula.',
+          t('excel.tier2.readme.calc.satisfied'),
+          t('excel.tier2.readme.calc.level'),
+          t('excel.tier2.readme.calc.cte'),
+          t('excel.tier2.readme.calc.system'),
         ],
       },
     ],
-    TIER2_LABEL,
+    t('label.tier2'),
+    {},
+    tr,
   );
 
-  buildSummarySheet(workbook, framework, session, result, tier1?.contiguousTrl);
-  buildCteRegisterSheet(workbook, result);
-  buildCriteriaSheet(workbook, result);
-  buildEvidenceSheet(workbook, session, packageType, bundledPaths);
-  buildGapActionsSheet(workbook, session, result);
-  buildReviewSheet(workbook, session);
-  buildReferencesSheet(workbook, framework);
-  buildMetadataSheet(workbook, meta);
+  buildSummarySheet(workbook, framework, session, result, tier1?.contiguousTrl, tr);
+  buildCteRegisterSheet(workbook, result, tr);
+  buildCriteriaSheet(workbook, result, tr);
+  buildEvidenceSheet(workbook, session, packageType, bundledPaths, tr);
+  buildGapActionsSheet(workbook, session, result, tr);
+  buildReviewSheet(workbook, session, tr);
+  buildReferencesSheet(workbook, framework, tr);
+  buildMetadataSheet(workbook, meta, tr);
 
   return workbook;
 }
@@ -168,12 +161,14 @@ function buildSummarySheet(
   session: AssessmentSession,
   result: Tier2Result,
   tier1Contiguous: number | undefined,
+  tr: Translator,
 ): void {
+  const { t } = tr;
   const sheet = workbook.addWorksheet('Summary', { views: [{ state: 'frozen', ySplit: 1 }] });
   sheet.columns = [
-    { header: 'Item', key: 'a', width: 34 },
-    { header: 'Value', key: 'b', width: 26 },
-    { header: 'Notes', key: 'c', width: 70 },
+    { header: t('excel.col.item'), key: 'a', width: 34 },
+    { header: t('excel.col.value'), key: 'b', width: 26 },
+    { header: t('excel.col.notes'), key: 'c', width: 70 },
     { header: 'd', key: 'd', width: 20 },
     { header: 'e', key: 'e', width: 20 },
     { header: 'f', key: 'f', width: 20 },
@@ -185,32 +180,36 @@ function buildSummarySheet(
 
   const delta = tierDelta(result.system, tier1Contiguous as never);
   const rows: Array<[string, string, string]> = [
-    ['Project', safeText(session.tier1?.context.projectName ?? ''), ''],
-    ['Technology', safeText(session.tier1?.context.technologyName ?? ''), ''],
-    ['Assessor', safeText(session.tier1?.context.assessorName ?? ''), ''],
+    [t('excel.row.project'), safeText(session.tier1?.context.projectName ?? ''), ''],
+    [t('excel.row.technology'), safeText(session.tier1?.context.technologyName ?? ''), ''],
+    [t('excel.row.assessor'), safeText(session.tier1?.context.assessorName ?? ''), ''],
     [
-      'Framework',
+      t('excel.row.framework'),
       `${framework.framework.id} (${framework.framework.version})`,
       framework.framework.name,
     ],
     [
-      'System summary (TRL)',
-      result.system.computed ? formatTrl(result.system.trl ?? 0) : 'Not computed',
-      result.system.computed ? result.system.note : (result.system.message ?? ''),
+      t('excel.tier2.summary.system'),
+      result.system.computed
+        ? trlText(tr, result.system.trl ?? 0)
+        : t('excel.tier2.summary.notComputed'),
+      result.system.computed ? t('tier2.systemNote') : t('tier2.noCritical'),
     ],
-    ['Limiting CTE(s)', result.system.limitingCteIds.join(', ') || '—', ''],
+    [t('excel.tier2.summary.limiting'), result.system.limitingCteIds.join(', ') || '—', ''],
     [
-      'Tier 1 contiguous TRL',
-      tier1Contiguous === undefined ? 'No quick estimate' : formatTrl(tier1Contiguous),
+      t('excel.tier2.summary.tier1'),
+      tier1Contiguous === undefined
+        ? t('excel.tier2.summary.noTier1')
+        : trlText(tr, tier1Contiguous),
       '',
     ],
     [
-      'Tier 2 − Tier 1 delta',
+      t('excel.tier2.summary.delta'),
       delta.delta === null ? '—' : String(delta.delta),
-      delta.explanation ?? '',
+      deltaText(tr, delta) ?? '',
     ],
-    ['Label', TIER2_LABEL, ''],
-    ['Disclaimer', '', DISCLAIMER],
+    [t('excel.row.label'), t('label.tier2'), ''],
+    [t('excel.row.disclaimer'), '', disclaimerText(tr)],
   ];
   for (const [a, b, c] of rows) {
     const row = sheet.addRow({ a, b, c });
@@ -219,13 +218,13 @@ function buildSummarySheet(
 
   sheet.addRow({});
   const headerRow = sheet.addRow({
-    a: 'CTE ID',
-    b: 'CTE',
-    c: 'Critical',
-    d: 'CTE TRL',
-    e: 'Target TRL',
-    f: 'Next-level completeness %',
-    g: 'Evidence coverage %',
+    a: t('excel.col.cteId'),
+    b: t('excel.col.cte'),
+    c: t('excel.col.critical'),
+    d: t('excel.tier2.summary.cteTrl'),
+    e: t('excel.col.targetTrl'),
+    f: t('excel.tier2.summary.completeness'),
+    g: t('excel.tier2.summary.coverage'),
   });
   headerRow.font = { bold: true };
   headerRow.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: STYLE.sectionFill } };
@@ -234,7 +233,7 @@ function buildSummarySheet(
       a: cte.cte.id,
       b: safeText(cte.cte.name),
       c: cte.cte.critical ? 'Yes' : 'No',
-      d: formatTrl(cte.trl),
+      d: trlText(tr, cte.trl),
       e: cte.cte.targetTrl ?? '',
       f: cte.nextLevelCompletenessPct,
       g: cte.evidenceCoveragePct,
@@ -242,17 +241,18 @@ function buildSummarySheet(
   }
 }
 
-function buildCteRegisterSheet(workbook: Workbook, result: Tier2Result): void {
+function buildCteRegisterSheet(workbook: Workbook, result: Tier2Result, tr: Translator): void {
+  const { t } = tr;
   const sheet = addTableSheet(workbook, 'CTE_Register', [
-    { header: 'CTE ID', key: 'id', width: 12 },
-    { header: 'Name', key: 'name', width: 32 },
-    { header: 'Kind', key: 'kind', width: 14 },
-    { header: 'Critical', key: 'critical', width: 12 },
-    { header: 'Description', key: 'description', width: 50, wrap: true },
-    { header: 'Why critical', key: 'why', width: 50, wrap: true },
-    { header: 'Owner', key: 'owner', width: 22 },
-    { header: 'Target TRL', key: 'target', width: 12 },
-    { header: 'Assessed TRL', key: 'assessed', width: 14 },
+    { header: t('excel.col.cteId'), key: 'id', width: 12 },
+    { header: t('excel.tier2.col.name'), key: 'name', width: 32 },
+    { header: t('excel.tier2.col.kind'), key: 'kind', width: 14 },
+    { header: t('excel.col.critical'), key: 'critical', width: 12 },
+    { header: t('excel.col.description'), key: 'description', width: 50, wrap: true },
+    { header: t('excel.tier2.col.whyCritical'), key: 'why', width: 50, wrap: true },
+    { header: t('excel.col.owner'), key: 'owner', width: 22 },
+    { header: t('excel.col.targetTrl'), key: 'target', width: 12 },
+    { header: t('excel.tier2.col.assessedTrl'), key: 'assessed', width: 14 },
   ]);
   for (const cte of result.ctes) {
     sheet.addRow({
@@ -268,31 +268,32 @@ function buildCteRegisterSheet(workbook: Workbook, result: Tier2Result): void {
     });
   }
   const last = result.ctes.length + 1;
-  applyListValidation(sheet, 'D', ['Yes', 'No'], 2, last, { allowBlank: false });
-  applyWholeNumberValidation(sheet, 'H', 1, 9, 2, last);
+  applyListValidation(sheet, 'D', ['Yes', 'No'], 2, last, { allowBlank: false }, tr);
+  applyWholeNumberValidation(sheet, 'H', 1, 9, 2, last, tr);
   highlightValues(sheet, `D2:D${last}`, [{ text: 'Yes', fill: STYLE.warnFill }]);
 }
 
-function buildCriteriaSheet(workbook: Workbook, result: Tier2Result): void {
+function buildCriteriaSheet(workbook: Workbook, result: Tier2Result, tr: Translator): void {
+  const { t } = tr;
   const sheet = addTableSheet(
     workbook,
     'Criteria_Assessment',
     [
-      { header: 'CTE ID', key: 'cteId', width: 12 },
-      { header: 'CTE', key: 'cte', width: 26 },
-      { header: 'TRL', key: 'trl', width: 8 },
-      { header: 'Criterion ID', key: 'id', width: 22 },
-      { header: 'Criterion', key: 'criterion', width: 64, wrap: true },
-      { header: 'Category', key: 'category', width: 18 },
-      { header: 'Mandatory', key: 'mandatory', width: 12 },
-      { header: 'Origin', key: 'origin', width: 12 },
-      { header: 'Source', key: 'source', width: 44, wrap: true },
-      { header: 'Status', key: 'status', width: 16 },
-      { header: 'Justification (N/A)', key: 'justification', width: 36, wrap: true },
-      { header: 'Satisfied', key: 'satisfied', width: 12 },
-      { header: 'Evidence IDs', key: 'evidence', width: 24 },
-      { header: 'Additional evidence (placeholder)', key: 'additional', width: 34, wrap: true },
-      { header: 'Assessor note', key: 'note', width: 36, wrap: true },
+      { header: t('excel.col.cteId'), key: 'cteId', width: 12 },
+      { header: t('excel.col.cte'), key: 'cte', width: 26 },
+      { header: t('excel.col.trl'), key: 'trl', width: 8 },
+      { header: t('excel.col.criterionId'), key: 'id', width: 22 },
+      { header: t('excel.col.criterion'), key: 'criterion', width: 64, wrap: true },
+      { header: t('excel.tier2.col.category'), key: 'category', width: 18 },
+      { header: t('excel.tier2.col.mandatory'), key: 'mandatory', width: 12 },
+      { header: t('excel.col.origin'), key: 'origin', width: 12 },
+      { header: t('excel.col.source'), key: 'source', width: 44, wrap: true },
+      { header: t('excel.col.status'), key: 'status', width: 16 },
+      { header: t('excel.tier2.col.justification'), key: 'justification', width: 36, wrap: true },
+      { header: t('excel.tier2.col.satisfied'), key: 'satisfied', width: 12 },
+      { header: t('excel.tier2.col.evidenceIds'), key: 'evidence', width: 24 },
+      { header: t('excel.tier2.col.additional'), key: 'additional', width: 34, wrap: true },
+      { header: t('excel.tier2.col.assessorNote'), key: 'note', width: 36, wrap: true },
     ],
     { freezeColumns: 1 },
   );
@@ -310,7 +311,7 @@ function buildCriteriaSheet(workbook: Workbook, result: Tier2Result): void {
           category: outcome.criterion.category ?? '',
           mandatory: outcome.criterion.mandatory ? 'Yes' : 'No',
           origin: outcome.criterion.origin,
-          source: sourceText(outcome.criterion.source),
+          source: sourceText(outcome.criterion.source, tr),
           status: outcome.status,
           justification: safeText(outcome.justification ?? ''),
           satisfied: outcome.satisfied ? 'Yes' : 'No',
@@ -325,8 +326,8 @@ function buildCriteriaSheet(workbook: Workbook, result: Tier2Result): void {
   }
   const last = row - 1;
   if (last >= 2) {
-    applyListValidation(sheet, 'J', CRITERION_STATUSES, 2, last, { allowBlank: false });
-    applyListValidation(sheet, 'L', ['Yes', 'No'], 2, last, { allowBlank: false });
+    applyListValidation(sheet, 'J', CRITERION_STATUSES, 2, last, { allowBlank: false }, tr);
+    applyListValidation(sheet, 'L', ['Yes', 'No'], 2, last, { allowBlank: false }, tr);
     highlightValues(sheet, `J2:J${last}`, [
       { text: 'Not met', fill: STYLE.badFill },
       { text: 'Partially met', fill: STYLE.warnFill },
@@ -340,37 +341,42 @@ function buildCriteriaSheet(workbook: Workbook, result: Tier2Result): void {
   }
 }
 
-const EVIDENCE_COLUMNS = [
-  { header: 'Evidence ID', key: 'id', width: 14 },
-  { header: 'Type', key: 'type', width: 20 },
-  { header: 'Title', key: 'title', width: 38, wrap: true },
-  { header: 'Description', key: 'description', width: 44, wrap: true },
-  { header: 'Linked CTE/Criteria', key: 'linked', width: 32, wrap: true },
-  { header: 'Location / URL', key: 'url', width: 40 },
-  { header: 'Local file (relative path)', key: 'local', width: 36 },
-  { header: 'Open', key: 'open', width: 14 },
-  { header: 'Repo URL', key: 'repoUrl', width: 34 },
-  { header: 'Commit SHA', key: 'commit', width: 24 },
-  { header: 'Repo path / tag', key: 'repoPath', width: 24 },
-  { header: 'DOI', key: 'doi', width: 24 },
-  { header: 'File size (bytes)', key: 'size', width: 16 },
-  { header: 'SHA-256', key: 'sha', width: 34 },
-  { header: 'Date', key: 'date', width: 14 },
-  { header: 'Owner / custodian', key: 'owner', width: 24 },
-  { header: 'Marking', key: 'marking', width: 26 },
-  { header: 'Verification', key: 'verification', width: 16 },
-  { header: 'Verified by', key: 'verifiedBy', width: 20 },
-  { header: 'Verified date', key: 'verifiedDate', width: 16 },
-  { header: 'Bundled in package', key: 'bundled', width: 22 },
-];
+function evidenceColumns({ t }: Translator): ColumnSpec[] {
+  return [
+    { header: t('excel.tier2.col.evidenceId'), key: 'id', width: 14 },
+    { header: t('excel.tier2.col.type'), key: 'type', width: 20 },
+    { header: t('excel.col.title'), key: 'title', width: 38, wrap: true },
+    { header: t('excel.col.description'), key: 'description', width: 44, wrap: true },
+    { header: t('excel.tier2.col.linked'), key: 'linked', width: 32, wrap: true },
+    { header: t('excel.tier2.col.location'), key: 'url', width: 40 },
+    { header: t('excel.tier2.col.local'), key: 'local', width: 36 },
+    { header: t('excel.col.open'), key: 'open', width: 14 },
+    { header: t('excel.tier2.col.repoUrl'), key: 'repoUrl', width: 34 },
+    { header: t('excel.tier2.col.commit'), key: 'commit', width: 24 },
+    { header: t('excel.tier2.col.repoPath'), key: 'repoPath', width: 24 },
+    { header: t('excel.tier2.col.doi'), key: 'doi', width: 24 },
+    { header: t('excel.tier2.col.size'), key: 'size', width: 16 },
+    { header: t('excel.tier2.col.sha'), key: 'sha', width: 34 },
+    { header: t('excel.tier2.col.date'), key: 'date', width: 14 },
+    { header: t('excel.tier2.col.custodian'), key: 'owner', width: 24 },
+    { header: t('excel.tier2.col.marking'), key: 'marking', width: 26 },
+    { header: t('excel.tier2.col.verification'), key: 'verification', width: 16 },
+    { header: t('excel.tier2.col.verifiedBy'), key: 'verifiedBy', width: 20 },
+    { header: t('excel.tier2.col.verifiedDate'), key: 'verifiedDate', width: 16 },
+    { header: t('excel.tier2.col.bundled'), key: 'bundled', width: 22 },
+  ];
+}
 
 function buildEvidenceSheet(
   workbook: Workbook,
   session: AssessmentSession,
   packageType: 'standalone' | 'zip',
   bundledPaths: Record<string, string>,
+  tr: Translator,
 ): void {
-  const sheet = addTableSheet(workbook, 'Evidence_Register', EVIDENCE_COLUMNS, {
+  const { t } = tr;
+  const columns = evidenceColumns(tr);
+  const sheet = addTableSheet(workbook, 'Evidence_Register', columns, {
     freezeColumns: 1,
   });
   const evidence = session.tier2?.evidence ?? [];
@@ -427,43 +433,44 @@ function buildEvidenceSheet(
       id: placeholderEvidenceId(i),
       type: '',
       title: '',
-      description: 'placeholder',
+      description: placeholderNote(tr),
       bundled: '',
     });
     setFormula(sheet, `H${row}`, openFormula(row));
-    fillRow(sheet, row, STYLE.placeholderFill, EVIDENCE_COLUMNS.length);
+    fillRow(sheet, row, STYLE.placeholderFill, columns.length);
     row += 1;
   }
   const last = row - 1;
 
-  applyListValidation(sheet, 'B', EVIDENCE_TYPES, 2, last);
-  applyListValidation(sheet, 'Q', MARKINGS, 2, last);
-  applyListValidation(sheet, 'R', VERIFICATIONS, 2, last);
-  applyListValidation(sheet, 'U', ['Yes', 'No (reference only)', 'No (no file)'], 2, last);
+  applyListValidation(sheet, 'B', EVIDENCE_TYPES, 2, last, {}, tr);
+  applyListValidation(sheet, 'Q', MARKINGS, 2, last, {}, tr);
+  applyListValidation(sheet, 'R', VERIFICATIONS, 2, last, {}, tr);
+  applyListValidation(sheet, 'U', ['Yes', 'No (reference only)', 'No (no file)'], 2, last, {}, tr);
   highlightValues(sheet, `R2:R${last}`, [
     { text: 'Rejected', fill: STYLE.badFill },
     { text: 'Verified', fill: STYLE.goodFill },
   ]);
   highlightValues(sheet, `Q2:Q${last}`, [{ text: 'Sensitive', fill: STYLE.warnFill }]);
-  sheet.getCell(`A${firstPlaceholder}`).note =
-    'Placeholder rows: fill them in by hand, or add the evidence in the app and export again.';
+  sheet.getCell(`A${firstPlaceholder}`).note = t('excel.tier2.evidence.placeholderNote');
 }
 
 function buildGapActionsSheet(
   workbook: Workbook,
   session: AssessmentSession,
   result: Tier2Result,
+  tr: Translator,
 ): void {
+  const { t } = tr;
   const sheet = addTableSheet(workbook, 'Gap_Actions', [
-    { header: 'CTE ID', key: 'cteId', width: 12 },
-    { header: 'Next TRL', key: 'level', width: 12 },
-    { header: 'Criterion ID', key: 'criterionId', width: 22 },
-    { header: 'Gap description', key: 'gap', width: 60, wrap: true },
-    { header: 'Planned action', key: 'action', width: 40, wrap: true },
-    { header: 'Planned evidence (placeholder)', key: 'evidence', width: 34, wrap: true },
-    { header: 'Owner', key: 'owner', width: 22 },
-    { header: 'Due date', key: 'due', width: 16 },
-    { header: 'Status', key: 'status', width: 16 },
+    { header: t('excel.col.cteId'), key: 'cteId', width: 12 },
+    { header: t('excel.tier2.col.nextTrl'), key: 'level', width: 12 },
+    { header: t('excel.col.criterionId'), key: 'criterionId', width: 22 },
+    { header: t('excel.tier2.col.gap'), key: 'gap', width: 60, wrap: true },
+    { header: t('excel.col.plannedAction'), key: 'action', width: 40, wrap: true },
+    { header: t('excel.col.plannedEvidence'), key: 'evidence', width: 34, wrap: true },
+    { header: t('excel.col.owner'), key: 'owner', width: 22 },
+    { header: t('excel.tier2.col.dueDate'), key: 'due', width: 16 },
+    { header: t('excel.col.status'), key: 'status', width: 16 },
   ]);
 
   const planned = session.tier2?.gapActions ?? [];
@@ -477,7 +484,7 @@ function buildGapActionsSheet(
         cteId: gap.cteId,
         level: gap.level,
         criterionId: gap.criterionId,
-        gap: `${safeText(gap.criterionText)} — ${gap.reason}`,
+        gap: `${safeText(gap.criterionText)} — ${gapReasonText(tr, gap)}`,
         action: safeText(action?.action ?? ''),
         evidence: '',
         owner: safeText(action?.owner ?? ''),
@@ -492,53 +499,58 @@ function buildGapActionsSheet(
     fillRow(sheet, row, STYLE.placeholderFill, 9);
     row += 1;
   }
-  applyListValidation(sheet, 'I', GAP_STATUSES, 2, row - 1);
-  applyWholeNumberValidation(sheet, 'B', 1, 9, 2, row - 1);
+  applyListValidation(sheet, 'I', GAP_STATUSES, 2, row - 1, {}, tr);
+  applyWholeNumberValidation(sheet, 'B', 1, 9, 2, row - 1, tr);
   highlightValues(sheet, `I2:I${row - 1}`, [
     { text: 'Open', fill: STYLE.badFill },
     { text: 'Done', fill: STYLE.goodFill },
   ]);
 }
 
-function buildReviewSheet(workbook: Workbook, session: AssessmentSession): void {
+function buildReviewSheet(workbook: Workbook, session: AssessmentSession, tr: Translator): void {
+  const { t } = tr;
   const sheet = addTableSheet(workbook, 'Review_Signoff', [
-    { header: 'Field', key: 'field', width: 34 },
-    { header: 'Value', key: 'value', width: 60, wrap: true },
+    { header: t('excel.col.field'), key: 'field', width: 34 },
+    { header: t('excel.col.value'), key: 'value', width: 60, wrap: true },
   ]);
   const rows: Array<[string, string]> = [
-    ['Assessor — name', safeText(session.tier1?.context.assessorName ?? '')],
-    ['Assessor — role', safeText(session.tier1?.context.assessorRole ?? '')],
-    ['Assessor — organization', safeText(session.tier1?.context.organization ?? '')],
-    ['Assessor — date', ''],
-    ['Assessor — signature', ''],
-    ['', ''],
-    ['Independent reviewer — name', ''],
-    ['Independent reviewer — affiliation', ''],
-    ['Independent reviewer — date', ''],
-    ['Independent reviewer — conclusion', ''],
-    ['Independent reviewer — comments', ''],
-    ['Independent reviewer — signature', ''],
-    ['', ''],
+    [t('excel.tier2.review.assessorName'), safeText(session.tier1?.context.assessorName ?? '')],
+    [t('excel.tier2.review.assessorRole'), safeText(session.tier1?.context.assessorRole ?? '')],
     [
-      'Note',
-      "Reviewer sign-off is recorded here for convenience only. It is outside the tool's scoring: " +
-        'nothing in this workbook changes because a reviewer concurs or does not concur.',
+      t('excel.tier2.review.assessorOrganization'),
+      safeText(session.tier1?.context.organization ?? ''),
     ],
+    [t('excel.tier2.review.assessorDate'), ''],
+    [t('excel.tier2.review.assessorSignature'), ''],
+    ['', ''],
+    [t('excel.tier2.review.reviewerName'), ''],
+    [t('excel.tier2.review.reviewerAffiliation'), ''],
+    [t('excel.tier2.review.reviewerDate'), ''],
+    [t('excel.tier2.review.reviewerConclusion'), ''],
+    [t('excel.tier2.review.reviewerComments'), ''],
+    [t('excel.tier2.review.reviewerSignature'), ''],
+    ['', ''],
+    [t('excel.row.note'), t('excel.tier2.review.note')],
   ];
   for (const [field, value] of rows) {
     const row = sheet.addRow({ field, value });
     if (field) row.getCell(1).font = { bold: true };
   }
-  applyListValidation(sheet, 'B', REVIEW_CONCLUSIONS, 11, 11);
+  applyListValidation(sheet, 'B', REVIEW_CONCLUSIONS, 11, 11, {}, tr);
 }
 
-function buildReferencesSheet(workbook: Workbook, framework: ResolvedFramework): void {
+function buildReferencesSheet(
+  workbook: Workbook,
+  framework: ResolvedFramework,
+  tr: Translator,
+): void {
+  const { t } = tr;
   const sheet = addTableSheet(workbook, 'References', [
-    { header: 'Source ID', key: 'id', width: 24 },
-    { header: 'Title', key: 'title', width: 60, wrap: true },
-    { header: 'Issuer', key: 'issuer', width: 42, wrap: true },
-    { header: 'Version/Date', key: 'version', width: 34, wrap: true },
-    { header: 'URL', key: 'url', width: 60 },
+    { header: t('excel.col.sourceId'), key: 'id', width: 24 },
+    { header: t('excel.col.title'), key: 'title', width: 60, wrap: true },
+    { header: t('excel.col.issuer'), key: 'issuer', width: 42, wrap: true },
+    { header: t('excel.col.versionDate'), key: 'version', width: 34, wrap: true },
+    { header: t('excel.col.url'), key: 'url', width: 60 },
   ]);
   const ids = new Set(framework.framework.sources);
   for (const criterion of framework.tier2) ids.add(criterion.source.sourceId);
@@ -554,12 +566,13 @@ function buildReferencesSheet(workbook: Workbook, framework: ResolvedFramework):
   });
 }
 
-function buildMetadataSheet(workbook: Workbook, meta: WorkbookMeta): void {
+function buildMetadataSheet(workbook: Workbook, meta: WorkbookMeta, tr: Translator): void {
+  const { t } = tr;
   const sheet = addTableSheet(workbook, 'Metadata', [
-    { header: 'Key', key: 'key', width: 30 },
-    { header: 'Value', key: 'value', width: 60, wrap: true },
+    { header: t('excel.col.key'), key: 'key', width: 30 },
+    { header: t('excel.col.value'), key: 'value', width: 60, wrap: true },
   ]);
-  writeMetaBlock(sheet, meta, 2);
+  writeMetaBlock(sheet, meta, 2, tr);
 }
 
 /** Levels that exist in the framework — used by the tests to assert full coverage. */
@@ -569,9 +582,15 @@ export async function exportTier2Workbook(
   framework: ResolvedFramework,
   session: AssessmentSession,
   options: Tier2ExportOptions = {},
+  tr: Translator = currentTranslator(),
 ): Promise<string> {
   const at = options.generatedAt ?? new Date();
-  const workbook = await buildTier2Workbook(framework, session, { ...options, generatedAt: at });
+  const workbook = await buildTier2Workbook(
+    framework,
+    session,
+    { ...options, generatedAt: at },
+    tr,
+  );
   const filename = workbookFilename('Tier2', session, at);
   downloadBlob(await workbookToBlob(workbook), filename);
   return filename;

@@ -2,12 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link, NavLink, Navigate, useParams } from 'react-router-dom';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import {
-  GUIDE_PAGES,
-  findGuidePage,
-  hasGuideTranslation,
-  loadGuideBody,
-} from '@/content/guide';
+import { GUIDE_PAGES, findGuidePage, hasGuideTranslation, loadGuideBody } from '@/content/guide';
 import type { Lang } from '@/i18n/languages';
 import { useT } from '@/i18n/store';
 import { GuideFigure, splitFigures } from './figures';
