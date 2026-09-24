@@ -697,7 +697,8 @@ export const ar: Messages = {
   'guide.page.overview.title': 'نظرة عامة',
   'guide.page.overview.summary': 'ما هي مستويات TRL، والمستويات التسعة، وأين تندرج هذه الأداة.',
   'guide.page.how-to-use.title': 'كيفية استخدام هذه الأداة',
-  'guide.page.how-to-use.summary': 'خطوة بخطوة عبر المستويين (Tier 1 وTier 2) وARL، إضافةً إلى حفظ البيانات ومسحها.',
+  'guide.page.how-to-use.summary':
+    'خطوة بخطوة عبر المستويين (Tier 1 وTier 2) وARL، إضافةً إلى حفظ البيانات ومسحها.',
   'guide.page.methodology.title': 'المنهجية',
   'guide.page.methodology.summary': 'كل قاعدة تقدير بلغة واضحة، مع ثلاثة أمثلة تطبيقية.',
   'guide.page.cte.title': 'العناصر التكنولوجية الحرجة',
