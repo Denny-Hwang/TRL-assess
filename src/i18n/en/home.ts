@@ -1,6 +1,6 @@
 /** Home page. */
 export const home = {
-  'home.lead': 'A Technology Readiness Level (TRL) self-assessment tool.',
+  'home.lead': 'Self-assessment of Technology Readiness (TRL) and Adoption Readiness (ARL).',
   'home.ladder.marker': 'where you are',
   'home.ladder.label':
     'The TRL scale runs from 1 to 9; an assessment finds the highest level whose evidence holds.',
