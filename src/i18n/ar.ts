@@ -37,9 +37,9 @@ export const ar: Messages = {
   'label.arl': 'تقييم ذاتي لجاهزية التبنّي — لم تراجعه وزارة الطاقة الأمريكية (DOE) ولم تعتمده',
   'label.arlTarget': 'الهدف — مُخطَّط له، لم يتحقق',
   'disclaimer.trl':
-    'يُنتج {app} تقييمًا ذاتيًا فقط. وهو ليس تقييمًا مستقلًا للجاهزية التكنولوجية (TRA)، وليس تدقيقًا، وليس شهادة. تعتمد النتائج كليًا على المعلومات التي يُدخلها المستخدم؛ ولا تتحقق الأداة من أي شيء. تختلف معايير التقييم بين الجهات والبرامج — راجع المعايير والمصادر قبل استخدام أي نتيجة في أي تقديم رسمي.',
+    'يُنتج {app} تقييمًا ذاتيًا فقط — وليس تقييمًا مستقلًا للجاهزية التكنولوجية (TRA)، ولا تدقيقًا، ولا شهادة. تعتمد النتائج كليًا على ما تُدخله؛ ولا تتحقق الأداة من أي شيء. تختلف المعايير بين الجهات — راجعها قبل استخدام أي نتيجة في تقديم رسمي.',
   'disclaimer.arl':
-    'يُنتج {app} تقييمًا ذاتيًا فقط. تطبّق أرقام ARL سلّم التقدير الخاص بتقييم جاهزية التبنّي لدى وزارة الطاقة الأمريكية (DOE) على التقديرات التي تُدخلها: لا تتحقق الأداة من أي شيء، ولا تراجع DOE النتيجة ولا تعتمدها. يصف المصدر الدرجة الرقمية بأنها اختيارية ويحذّر من الدقة الزائفة — فملف المخاطر، لا الرقم، هو ما يبيّن مواضع العوائق. يُكمّل ARL مستوى TRL؛ ولا تدمج هذه الأداة الاثنين أبدًا في رقم واحد.',
+    'يُنتج {app} تقييمًا ذاتيًا فقط. تطبّق أرقام ARL سلّم تقدير تقييم جاهزية التبنّي لدى وزارة الطاقة الأمريكية (DOE) على التقديرات التي تُدخلها؛ لا تتحقق الأداة من أي شيء، ولا تراجع DOE النتيجة ولا تعتمدها.',
   'notice.sensitive':
     'لا تُدخل معلومات خاضعة للرقابة أو مصنّفة أو خاضعة لضوابط التصدير أو حساسة بأي شكل آخر. تعمل هذه الأداة في متصفحك على موقع ثابت عام؛ استخدم إدخالات الأدلة «حساس — للإشارة فقط» للإشارة إلى مثل هذه المواد بدلًا من إرفاقها.',
   'notice.dismiss': 'إغلاق',
@@ -104,7 +104,7 @@ export const ar: Messages = {
   'tier2.reason.N/A': 'حُدِّد بأنه «لا ينطبق» دون تبرير.',
   'tier2.reason.Not assessed': 'لم يُقيَّم بعد.',
   'tier2.delta.lower':
-    'التقييم المستند إلى الأدلة أدنى بشكل ملحوظ من التقدير السريع. وهذا هو الاتجاه المعتاد: يتطلب المستوى 2 (Tier 2) أدلة لكل ادعاء، ولا يحتسب مستوى إلا إذا تحققت جميع المستويات الأدنى، ويأخذ الحد الأدنى عبر العناصر التكنولوجية الحرجة (CTE). تحقّق من العنصر CTE الذي يحدّ من النتيجة ومن المعايير التي لا تزال تفتقر إلى أدلة.',
+    'التقييم المستند إلى الأدلة أدنى بشكل ملحوظ من التقدير السريع. تحقّق من العنصر CTE المُقيِّد ومن المعايير التي لا تزال تفتقر إلى أدلة.',
   'tier2.delta.higher':
     'التقييم المستند إلى الأدلة أعلى بشكل ملحوظ من التقدير السريع. تحقّق مما إذا كان التقدير السريع قد أجاب بـ«غير متأكد» أو «لا» عند مستوى منخفض، ومما إذا كان كل عنصر CTE حُدِّد بأنه حرج هو حرج فعلًا.',
   'arl.flag.unsure':
@@ -120,12 +120,10 @@ export const ar: Messages = {
   'arl.reason.Not assessed': 'لم يُقيَّم — يُحتسب «مخاطر مرتفعة»',
   'arl.reason.N/A': 'لا ينطبق دون مبرر — يُحتسب «مخاطر مرتفعة» إلى أن يُسجَّل مبرر',
   'flags.none': 'لم تُرفع أي تنبيهات.',
-  'home.lead': 'إلى أي مدى أُثبتت هذه التكنولوجيا عمليًا، وهل يمكنك إثبات ذلك؟',
+  'home.lead': 'تقييم ذاتي للجاهزية التكنولوجية (TRL) وجاهزية التبنّي (ARL).',
   'home.ladder.marker': 'موقعك الحالي',
-  'home.ladder.label':
-    'يمتد مقياس TRL من 1 إلى 9؛ ويحدّد التقييم أعلى مستوى تصمد أدلته.',
-  'home.ladder.caption':
-    'لا يُحتسب المستوى إلا إذا احتُسبت جميع المستويات الأدنى منه. تحدّد هذه الأداة أين تنقطع السلسلة — وما يلزم للارتقاء درجة واحدة.',
+  'home.ladder.label': 'يمتد مقياس TRL من 1 إلى 9؛ ويحدّد التقييم أعلى مستوى تصمد أدلته.',
+  'home.ladder.caption': 'لا يُحتسب المستوى إلا إذا احتُسبت جميع المستويات الأدنى منه.',
   'home.flow.heading': 'آلية العمل',
   'home.flow.quick.title': '1. التقدير السريع',
   'home.flow.quick.detail': 'تسعة أسئلة، في نحو خمس دقائق، دون الحاجة إلى مستندات.',
@@ -137,14 +135,14 @@ export const ar: Messages = {
   'home.tier1.start': 'ابدأ التقدير السريع',
   'home.tier2.heading': 'المستوى 2 (Tier 2) — التقييم المستند إلى الأدلة',
   'home.tier2.start': 'ابدأ التقييم المستند إلى الأدلة',
-  'home.arl.heading': 'وحدة جانبية — مستوى جاهزية التبنّي (ARL)',
+  'home.arl.heading': 'مستوى جاهزية التبنّي (ARL)',
   'home.arl.body':
-    'ما يفصل بين تكنولوجيا عاملة واستخدامها الفعلي: قدِّر أبعاد مخاطر التبنّي السبعة عشر في تقييم جاهزية التبنّي لدى وزارة الطاقة الأمريكية (DOE)، في الوقت الحالي وعند نهاية المشروع، واقرأ قيمتَي ARL البداية وARL النهاية من جدول المطابقة الخاص بالمصدر نفسه. يُبقى منفصلًا عن نتيجة TRL — ولا يُدمجان أبدًا في رقم واحد.',
+    'قدِّر أبعاد مخاطر التبنّي السبعة عشر في تقييم جاهزية التبنّي لدى وزارة الطاقة الأمريكية (DOE)، في الوقت الحالي وعند نهاية المشروع. تُعرض النتيجة بمعزل عن TRL.',
   'home.arl.start': 'ابدأ تقييم جاهزية التبنّي',
   'home.disclaimer.heading': 'إخلاء المسؤولية',
   'about.title': 'حول {app}',
   'about.lead':
-    'أداة تقييم ذاتي لمستوى الجاهزية التكنولوجية من مستويين. يقدّم المستوى 1 (Tier 1) تقديرًا سريعًا مُبلَّغًا ذاتيًا؛ ويُنتج المستوى 2 (Tier 2) تقييمًا مدعومًا بالأدلة للعناصر التكنولوجية الحرجة، قابلًا للتصدير إلى Excel والتجميع مع ملفات الأدلة وبيان بقيم SHA-256. يعمل كل شيء في متصفحك — لا يوجد خادم خلفي ولا حساب ولا قياس عن بُعد.',
+    'أداة تقييم ذاتي لمستوى الجاهزية التكنولوجية من مستويين، مع وحدة لمستوى جاهزية التبنّي. يعمل كل شيء في متصفحك — لا يوجد خادم خلفي ولا حساب ولا قياس عن بُعد.',
   'about.build.heading': 'الإصدار',
   'about.build.version': 'رقم الإصدار',
   'about.build.sha': 'Git SHA',
@@ -197,15 +195,14 @@ export const ar: Messages = {
   'tier1.context.environment': 'البيئة التي بُلغت',
   'tier1.context.build': 'نضج البناء',
   'tier1.context.crossCheckNote':
-    'تُوجّه هاتان الإجابتان تحققًا متقاطعًا استدلاليًا ({status}). لا يتجاوز هذا التحقق إجاباتك أبدًا — بل ينبّه فقط إلى عدم الاتساق.',
+    'تُستخدم فقط لتحقق متقاطع استدلالي ({status})؛ ولا تتجاوز إجاباتك أبدًا.',
   'tier1.context.missing.projectName': 'اسم المشروع',
   'tier1.context.missing.technologyName': 'اسم التكنولوجيا',
   'tier1.context.missing.assessorName': 'اسم المقيِّم',
   'tier1.context.missing': 'يُرجى ملء: {fields}.',
   'tier1.context.continue': 'تابع إلى الأسئلة',
   'tier1.q.title': 'التقدير السريع — الخطوة 2 من 2: أسئلة الفرز',
-  'tier1.q.lead':
-    'ابدأ من TRL 9 نزولًا. أجب عن التكنولوجيا ككل، استنادًا إلى ما أُنجز فعلًا.',
+  'tier1.q.lead': 'ابدأ من TRL 9 نزولًا. أجب عن التكنولوجيا ككل، استنادًا إلى ما أُنجز فعلًا.',
   'tier1.q.progress': 'أُجيب عن {answered} / {total}',
   'tier1.q.counter': 'السؤال {n} من {total}',
   'tier1.q.helpSummary': 'ما يعنيه هذا المستوى',
@@ -267,8 +264,7 @@ export const ar: Messages = {
   'tier1.ladder.notAchieved': 'غير متحقق',
   'tier1.ladder.item': '{trl} — {state}',
   'tier1.ladder.show': '{item}. اعرض معاييره.',
-  'tier1.matrix.caption.before':
-    'نضج البناء × البيئة التي بُلغت ← مستوى TRL المقترح. هذه ',
+  'tier1.matrix.caption.before': 'نضج البناء × البيئة التي بُلغت ← مستوى TRL المقترح. هذه ',
   'tier1.matrix.caption.after': ' ولا تتجاوز إجاباتك أبدًا.',
   'tier1.matrix.srCaption':
     'مصفوفة التحقق المتقاطع: تعطي كل خلية مستوى TRL الذي يقترحه نضج بناء معيّن وبيئة معيّنة.',
@@ -333,7 +329,8 @@ export const ar: Messages = {
   'tier2.result.importedWarnings': 'استُورد مع تحذيرات: {warnings}',
   'tier2.result.imported': 'استُوردت الجلسة.',
   'tier2.cte.heading': 'العناصر التكنولوجية الحرجة',
-  'tier2.cte.empty': 'ابدأ بتسمية أجزاء النظام التي يحدّد نضجها فعلًا ما إذا كان يعمل.',
+  'tier2.cte.empty':
+    'لا توجد عناصر CTE بعد. أضف أجزاء النظام التي يتوقف على نضجها ما إذا كان يعمل.',
   'tier2.cte.importFromTier1': 'استورد «{name}» من التقدير السريع',
   'tier2.cte.unspecified': 'غير محدَّد',
   'tier2.cte.critical': 'حرج',
@@ -386,7 +383,8 @@ export const ar: Messages = {
   'tier2.criteria.level.achieved': 'متحقق',
   'tier2.criteria.level.notAchieved': 'غير متحقق',
   'tier2.criteria.level.locked': 'مقفل — مستوى أدنى غير متحقق',
-  'tier2.criteria.level.lockedTitle': 'يوجد مستوى أدنى غير متحقق، لذا لا يمكن احتساب هذا المستوى بعد.',
+  'tier2.criteria.level.lockedTitle':
+    'يوجد مستوى أدنى غير متحقق، لذا لا يمكن احتساب هذا المستوى بعد.',
   'tier2.levelBar.none': 'لا تنطبق أي معايير عند هذا المستوى',
   'tier2.levelBar.satisfied': '{count} متحقق',
   'tier2.levelBar.partial': '{count} مستوفى جزئيًا',
@@ -401,13 +399,15 @@ export const ar: Messages = {
   'tier2.meter.value': '{label}: {pct}%',
   'tier2.bars.item': '{name} {trl}',
   'tier2.bars.itemCritical': '{name} {trl} (حرج)',
-  'tier2.bars.noSystem': 'مستويات TRL لكل عنصر CTE: {list}. لا يوجد عنصر CTE حرج، لذا لا يوجد ملخص للنظام.',
+  'tier2.bars.noSystem':
+    'مستويات TRL لكل عنصر CTE: {list}. لا يوجد عنصر CTE حرج، لذا لا يوجد ملخص للنظام.',
   'tier2.bars.summary':
     'ملخص النظام TRL {trl}، وهو الحد الأدنى عبر العناصر CTE الحرجة ({ids}). لكل عنصر CTE: {list}.',
   'tier2.bars.limits': 'يُقيِّد النظام',
   'tier2.bars.legend.critical': 'حرج (يُحتسب ضمن الملخص)',
   'tier2.bars.legend.notCritical': 'غير حرج',
-  'tier2.bars.legend.line': 'الخط المتقطع هو ملخص النظام، أي أدنى مستوى TRL بين العناصر CTE الحرجة.',
+  'tier2.bars.legend.line':
+    'الخط المتقطع هو ملخص النظام، أي أدنى مستوى TRL بين العناصر CTE الحرجة.',
   'evidence.error.titleRequired': 'العنوان مطلوب.',
   'evidence.error.urlScheme': 'يجب أن يكون URL عنوان http أو https.',
   'evidence.error.repoUrlScheme': 'يجب أن يكون URL المستودع عنوان http أو https.',
@@ -435,8 +435,7 @@ export const ar: Messages = {
   'evidence.form.doiHint': 'مثلًا 10.1234/abcd.2026.5678',
   'evidence.form.citation': 'الاستشهاد المرجعي',
   'evidence.form.url': 'الموقع / URL',
-  'evidence.form.urlHint':
-    'http أو https فقط. استخدمه لأي شيء موجود أصلًا في مكان يمكن الوصول إليه.',
+  'evidence.form.urlHint': 'http أو https فقط.',
   'evidence.form.marking': 'التصنيف',
   'evidence.form.verification': 'التحقق',
   'evidence.form.verifiedBy': 'تحقّق منه',
@@ -445,8 +444,7 @@ export const ar: Messages = {
   'evidence.form.sensitiveBody':
     'سجّل العنوان والجهة الحافظة ورقمًا مرجعيًا كي يتمكن المراجع من الوصول إلى المادة عبر القناة المناسبة.',
   'evidence.form.file': 'الملف',
-  'evidence.form.fileHint':
-    'يُخزَّن في هذا المتصفح فقط (IndexedDB). الحد الأقصى {limit} MB. تُحسب قيمة تجزئة SHA-256 عند إضافته.',
+  'evidence.form.fileHint': 'يُخزَّن في هذا المتصفح فقط. الحد الأقصى {limit} MB.',
   'evidence.form.pickedFile': '{name} — {size} kB',
   'evidence.form.attachedFile': 'مُرفق: {name} — {size} kB ·',
   'evidence.form.sha256': 'SHA-256',
@@ -470,8 +468,7 @@ export const ar: Messages = {
   'evidence.library.closeEditor': 'أغلق المحرّر',
   'evidence.library.edit': 'تعديل',
   'evidence.library.delete': 'حذف',
-  'evidence.library.empty':
-    'لا توجد أدلة بعد. الأدلة هي ما يحوّل الادعاء إلى تقييم: تقرير، أو سجل اختبار، أو إيداع (commit) مثبَّت، أو DOI، أو إشارة إلى مستند خاضع للرقابة.',
+  'evidence.library.empty': 'لا توجد أدلة بعد.',
   'evidence.library.newHeading': 'دليل جديد',
   'evidence.library.add': 'أضف دليلًا',
   'arl.common.start': 'ARL البداية',
@@ -483,7 +480,7 @@ export const ar: Messages = {
   'arl.reset.cancel': 'إلغاء',
   'arl.unavailable.title': 'سلّم تقدير ARL لهذه الجلسة غير متاح',
   'arl.unavailable.body':
-    'قُدِّرت هذه الجلسة وفق سلّم تقدير ARL «{id}»، الذي لا يتضمنه هذا الإصدار من التطبيق ({detail}). أعد تعيين تقديرات ARL للبدء من جديد بسلّم التقدير الحالي.',
+    'لا يتضمن هذا الإصدار سلّم تقدير ARL «{id}» ({detail}). أعد تعيين تقديرات ARL للبدء من جديد.',
   'arl.scope.title': 'جاهزية التبنّي — الخطوة 1 من 3: النطاق',
   'arl.scope.versionSource': 'الإصدار: {version} · المصدر: {source}',
   'arl.scope.projectName': 'اسم المشروع',
@@ -498,7 +495,8 @@ export const ar: Messages = {
   'arl.scope.technologyScope': 'نطاق التكنولوجيا',
   'arl.scope.valueChainScope': 'نطاق سلسلة القيمة',
   'arl.scope.evaluationTimeline': 'الإطار الزمني للتقييم',
-  'arl.scope.evaluationTimeline.placeholder': 'مثلًا: اعتبارًا من اليوم، مع نافذة تسويق مدتها 5 سنوات',
+  'arl.scope.evaluationTimeline.placeholder':
+    'مثلًا: اعتبارًا من اليوم، مع نافذة تسويق مدتها 5 سنوات',
   'arl.scope.policyEnvironment': 'البيئة السياساتية المفترضة',
   'arl.scope.continue': 'تابع إلى التقديرات',
   'arl.rate.title': 'جاهزية التبنّي — الخطوة 2 من 3: قدِّر الأبعاد',
@@ -506,7 +504,7 @@ export const ar: Messages = {
   'arl.rate.meter': 'الأبعاد المقدَّرة',
   'arl.rate.rated': 'قُدِّر {rated} من {total}',
   'arl.rate.conservative':
-    'كل ما يُترك دون تقدير، أو «غير متأكد»، أو «لا ينطبق» دون مبرر، يُحتسب «مخاطر مرتفعة» إلى أن يُعالَج. تصف الأهداف نهاية المشروع: الهدف — مُخطَّط له، لم يتحقق.',
+    'كل ما يُترك دون تقدير، أو «غير متأكد»، أو «لا ينطبق» دون مبرر، يُحتسب «مخاطر مرتفعة».',
   'arl.rate.areasNav': 'مجالات المخاطر الأساسية',
   'arl.rate.currentRisk': 'المخاطر الحالية',
   'arl.rate.naOption': 'لا ينطبق — لا يسري على هذا النطاق',
@@ -529,12 +527,12 @@ export const ar: Messages = {
   'arl.result.startHint': '{band} — احتُسب {medium} «متوسط» و{high} «مرتفع».',
   'arl.result.endHint': '{band} — {target}.',
   'arl.result.change': 'التغيّر على مدى المشروع',
-  'arl.result.scopeMissing.before':
-    'نطاق التكنولوجيا أو الإطار الزمني للتقييم فارغ. يطلب المصدر تحديد كليهما قبل التقدير — فقد تحصل التكنولوجيا نفسها على تقدير مختلف في نطاق آخر.',
+  'arl.result.scopeMissing.before': 'نطاق التكنولوجيا أو الإطار الزمني للتقييم فارغ.',
   'arl.result.scopeMissing.link': 'أكمل النطاق',
   'arl.result.scopeMissing.after': '.',
   'arl.result.profile': 'ملف المخاطر',
-  'arl.result.caption': 'تقدير المخاطر الحالي والمستهدف لكل بُعد، مجمَّعًا حسب مجال المخاطر الأساسي.',
+  'arl.result.caption':
+    'تقدير المخاطر الحالي والمستهدف لكل بُعد، مجمَّعًا حسب مجال المخاطر الأساسي.',
   'arl.result.col.dimension': 'البُعد',
   'arl.result.col.current': 'الحالي',
   'arl.result.col.target': 'الهدف',
@@ -547,7 +545,7 @@ export const ar: Messages = {
   'arl.result.flags.targets': 'الأهداف',
   'arl.result.howRead': 'كيف يُقرأ الرقم',
   'arl.result.howRead.body':
-    'يُحصي المصدر الأبعاد ذات المخاطر المتوسطة والمرتفعة ويقرأ قيمة ARL من جدول المطابقة الخاص به. تستخدم هذه الأداة الجدول تمامًا كما هو مطبوع.',
+    'يُحصي المصدر الأبعاد ذات المخاطر المتوسطة والمرتفعة ويقرأ قيمة ARL من جدول المطابقة الخاص به.',
   'arl.result.mark.start': 'البداية',
   'arl.result.mark.target': 'الهدف',
   'arl.result.takeAway': 'خذ النتيجة معك',
@@ -592,8 +590,7 @@ export const ar: Messages = {
   'guide.fig.tier1.crossCheck': 'التحقق المتقاطع',
   'guide.fig.tier1Clean.label':
     'المثال التطبيقي 1: «نعم» عند TRL 1 إلى 4، و«غير متأكد» عند 5. التقدير TRL 4؛ والتحقق المتقاطع TRL 5؛ والاتساق مرتفع.',
-  'guide.fig.tier1Clean.caption.before':
-    'المثال 1 — «نعم» حتى 4، و«غير متأكد» عند 5. التقدير ',
+  'guide.fig.tier1Clean.caption.before': 'المثال 1 — «نعم» حتى 4، و«غير متأكد» عند 5. التقدير ',
   'guide.fig.tier1Clean.caption.middle': '، والتحقق المتقاطع 5، والاتساق ',
   'guide.fig.tier1Clean.caption.after': '.',
   'guide.fig.tier1Gap.claimed': 'المُدَّعى',
@@ -602,35 +599,33 @@ export const ar: Messages = {
   'guide.fig.tier1Gap.caption.before':
     'المثال 2 — الدرجة المظلَّلة بخطوط مائلة هي TRL 2، وكانت الإجابة عنها «لا». التقدير ',
   'guide.fig.tier1Gap.caption.after': '، وأعلى ادعاء 4، ورُفع تنبيه الفجوة.',
-  'guide.fig.tier2.harvester': 'المُجمِّع',
-  'guide.fig.tier2.converter': 'محوّل الطاقة',
+  'guide.fig.tier2.harvester': 'مُجمِّع الطاقة',
+  'guide.fig.tier2.converter': 'وحدة إدارة الطاقة',
   'guide.fig.tier2.firmware': 'البرمجيات الثابتة للقياس عن بُعد',
   'guide.fig.tier2.cteLabel': '{name}: {trl}',
   'guide.fig.tier2.limiting': '▶ يُقيِّد النظام',
   'guide.fig.tier2.caption.before': 'المثال 3 — ملخص النظام هو ',
   'guide.fig.tier2.caption.formula': 'min(4, 3, 3) = TRL 3',
-  'guide.fig.tier2.caption.after':
-    '. لا ترفعه قيمة 4 الخاصة بالمُجمِّع، ولا يُحسب أي متوسط.',
+  'guide.fig.tier2.caption.after': '. لا يُحسب أي متوسط.',
   'guide.fig.statusLegend.caption':
     'لا يُحتسب ضمن المستوى إلا الحالتان الأوليان: «مستوفى» مع أدلة صالحة للاستخدام، و«لا ينطبق» مع تبرير.',
   'guide.fig.arlLookup.mark': 'مثال',
   'guide.fig.arlLookup.caption.before':
     'مثال — ثلاثة أبعاد ذات مخاطر متوسطة وبُعد واحد ذو مخاطر مرتفعة تُقرأ بوصفها ',
   'guide.fig.arlLookup.caption.value': 'ARL 6',
-  'guide.fig.arlLookup.caption.after':
-    '. بإضافة تقديرين آخرين «مرتفع» يُقرأ الملف نفسه ARL 3: فالمخاطر المرتفعة هي الأثقل وزنًا.',
+  'guide.fig.arlLookup.caption.after': '. المخاطر المرتفعة هي الأثقل وزنًا.',
   'guide.fig.cte.label':
-    'عوّامة أمواج مقسَّمة إلى خمسة عناصر: مُجمِّع الطاقة، وتحويل الطاقة، والبرمجيات الثابتة للقياس عن بُعد، والغلاف والإحكام — وجميعها حرجة — وإجراء الإرساء والاسترداد، وهو عملية وليس حرجًا هنا.',
-  'guide.fig.cte.system': 'عوّامة الأمواج (النظام)',
+    'عقدة استشعار عن بُعد مقسَّمة إلى خمسة عناصر: مُجمِّع الطاقة، وإدارة الطاقة، والبرمجيات الثابتة للقياس عن بُعد، والغلاف والإحكام — وجميعها حرجة — وإجراء التركيب، وهو عملية وليس حرجًا هنا.',
+  'guide.fig.cte.system': 'عقدة الاستشعار عن بُعد (النظام)',
   'guide.fig.cte.harvester': 'مُجمِّع\nالطاقة',
-  'guide.fig.cte.power': 'تحويل\nالطاقة',
+  'guide.fig.cte.power': 'إدارة\nالطاقة',
   'guide.fig.cte.firmware': 'برمجيات ثابتة\nللقياس عن بُعد',
   'guide.fig.cte.enclosure': 'الغلاف\nوالإحكام',
-  'guide.fig.cte.install': 'Installation\nprocedure',
+  'guide.fig.cte.install': 'إجراء\nالتركيب',
   'guide.fig.cte.critical': 'حرج',
   'guide.fig.cte.notCritical': 'غير حرج',
   'guide.fig.cte.caption':
-    'يُقيَّم كل عنصر على حدة. يمكن أن تكون العملية عنصرًا CTE؛ وصفة «حرج» هي ما يحدّد ما يُحتسب ضمن ملخص النظام.',
+    'يُقيَّم كل عنصر على حدة؛ ولا يُحتسب ضمن ملخص النظام إلا العناصر الحرجة.',
   'guide.fig.evidence.label':
     'كيف يصبح المعيار متحققًا: الحالة «مستوفى» مع دليل واحد على الأقل غير مرفوض، أو الحالة «لا ينطبق» مع تبرير. الحالات «مستوفى جزئيًا» و«غير مستوفى» و«لم يُقيَّم» لا تكون متحققة أبدًا.',
   'guide.fig.evidence.criterion': 'المعيار',
@@ -645,32 +640,32 @@ export const ar: Messages = {
   'guide.fig.evidence.caption':
     '«مستوفى» دون أدلة صالحة للاستخدام، و«لا ينطبق» دون تبرير، كلاهما ينتقل إلى المسار الأدنى.',
   'guide.fig.env.label':
-    'ترتفع واقعية البيئة من التحليل فقط، مرورًا بالمختبر، ثم بيئة ذات صلة مثل خزان مياه بحر، إلى نشر تشغيلي محدود، وأخيرًا نطاق المهمة الكامل. يحتاج TRL 5 و6 إلى بيئة ذات صلة؛ ويحتاج TRL 7 و8 إلى البيئة التشغيلية.',
+    'ترتفع واقعية البيئة من التحليل فقط، مرورًا بالمختبر وبيئة ذات صلة تعيد إنتاج الإجهادات الرئيسية، إلى تجربة تشغيلية محدودة وأخيرًا نطاق المهمة الكامل. يحتاج TRL 5 و6 إلى بيئة ذات صلة؛ ويحتاج TRL 7 و8 إلى البيئة التشغيلية.',
   'guide.fig.env.e0.name': 'تحليل فقط',
   'guide.fig.env.e0.note': 'نماذج، دون عتاد',
   'guide.fig.env.e1.name': 'المختبر',
-  'guide.fig.env.e1.note': 'منضدة اختبار، هواء، درجة حرارة الغرفة',
+  'guide.fig.env.e1.note': 'منضدة اختبار، ظروف محيطة',
   'guide.fig.env.e2.name': 'ذات صلة',
-  'guide.fig.env.e2.note': 'خزان مياه بحر، حركة، برودة',
+  'guide.fig.env.e2.note': 'إعادة إنتاج الإجهادات الرئيسية',
   'guide.fig.env.e3.name': 'تشغيلية (محدودة)',
-  'guide.fig.env.e3.note': 'نشر قصير، موسم هادئ',
+  'guide.fig.env.e3.note': 'تجربة ميدانية قصيرة',
   'guide.fig.env.e4.name': 'تشغيلية (كاملة)',
   'guide.fig.env.e4.note': 'نطاق المهمة الكامل',
   'guide.fig.env.relevantNeed': 'يحتاج TRL 5–6 إلى هذا',
   'guide.fig.env.operationalNeed': 'يحتاج TRL 7–8 إلى هذا',
   'guide.fig.env.caption':
-    'اختبار في خزان مياه عذبة ليس بيئة ذات صلة لنمط إخفاق يتطلب مياه بحر موصِلة.',
+    'لا يُعدّ الاختبار بيئة ذات صلة إلا إذا أعاد إنتاج الإجهادات المهمة لهذا العنصر.',
   'guide.fig.sheets.label':
     'يضم مصنّف المستوى 1 (Tier 1) {tier1Count} أوراق: {tier1}. ويضم مصنّف المستوى 2 (Tier 2) {tier2Count}: {tier2}.',
   'guide.fig.sheets.tier1': 'مصنّف المستوى 1 (Tier 1)',
   'guide.fig.sheets.tier2': 'مصنّف المستوى 2 (Tier 2)',
   'guide.fig.sheets.caption': 'ترتيب الأوراق ثابت، ويُفتح كل مصنّف على ورقة README الخاصة به.',
   'guide.fig.frameworks.label':
-    'يوسّع marine-energy-eere الإطار dod-tra-2025: فهو يعيد استخدام معايير DoD، ويضيف ثمانية بنود مُخصَّصة للطاقة البحرية، ويأخذ أسئلة المستوى 1 (Tier 1) من تعريفات EERE، مع TRL 9 من جدول DoD.',
+    'يضم dod-tra-2025، وهو الإطار الافتراضي، معايير DoD. ويوسّعه marine-energy-eere: فهو يعيد استخدام معايير DoD، ويضيف ثمانية بنود مُخصَّصة للطاقة البحرية، ويأخذ أسئلة المستوى 1 (Tier 1) من تعريفات EERE، مع TRL 9 من جدول DoD.',
   'guide.fig.frameworks.dodCriteria': '58 معيارًا، حرفية',
   'guide.fig.frameworks.dodTables': 'جداول العتاد + البرمجيات',
   'guide.fig.frameworks.extends': 'يوسّع',
-  'guide.fig.frameworks.default': '{id} (default)',
+  'guide.fig.frameworks.default': '{id} (الافتراضي)',
   'guide.fig.frameworks.marineCriteria': 'يشير إلى معايير DoD + 8 بنود مُخصَّصة',
   'guide.fig.frameworks.marineMandatory': 'يرفع المعيار المحدِّد للمستوى إلى إلزامي',
   'guide.fig.frameworks.marineQuestions': 'أسئلة المستوى 1 (Tier 1) مُكيَّفة من EERE R 540.112-02',
@@ -698,37 +693,29 @@ export const ar: Messages = {
   'guide.fig.stage.caption.built': 'بنيته',
   'guide.fig.stage.caption.middle': '؛ بينما يبيّن TRL ما ',
   'guide.fig.stage.caption.demonstrated': 'أثبتّه عمليًا، وأين',
-  'guide.fig.stage.caption.after':
-    '. نماذج المراحل خاصة بكل جهة — وليست أساسًا للتقدير.',
+  'guide.fig.stage.caption.after': '. نماذج المراحل خاصة بكل جهة — وليست أساسًا للتقدير.',
   'guide.page.overview.title': 'نظرة عامة',
-  'guide.page.overview.summary':
-    'ما هي مستويات TRL، ومن أين جاء مقياس 1–9، وأين تندرج هذه الأداة.',
+  'guide.page.overview.summary': 'ما هي مستويات TRL، والمستويات التسعة، وأين تندرج هذه الأداة.',
   'guide.page.how-to-use.title': 'كيفية استخدام هذه الأداة',
-  'guide.page.how-to-use.summary':
-    'خطوة بخطوة عبر المستويين، إضافةً إلى حفظ البيانات واستئنافها ومسحها.',
+  'guide.page.how-to-use.summary': 'خطوة بخطوة عبر المستويين وARL، إضافةً إلى حفظ البيانات ومسحها.',
   'guide.page.methodology.title': 'المنهجية',
   'guide.page.methodology.summary': 'كل قاعدة تقدير بلغة واضحة، مع ثلاثة أمثلة تطبيقية.',
   'guide.page.cte.title': 'العناصر التكنولوجية الحرجة',
-  'guide.page.cte.summary':
-    'كيفية تفكيك النظام إلى عناصر CTE، مع أمثلة وأخطاء شائعة.',
+  'guide.page.cte.summary': 'كيفية تفكيك النظام إلى عناصر CTE، والأخطاء الشائعة.',
   'guide.page.evidence.title': 'الأدلة',
-  'guide.page.evidence.summary':
-    'ما الذي يُعدّ دليلًا، وأمثلة جيدة وضعيفة، والتصنيفات والتحقق.',
+  'guide.page.evidence.summary': 'ما الذي يُعدّ دليلًا، وأمثلة جيدة وضعيفة، والتصنيفات والتحقق.',
   'guide.page.excel.title': 'مخرجات Excel',
-  'guide.page.excel.summary': 'المصنّفان ورقةً ورقة، وكيف تعمل العناصر النائبة.',
+  'guide.page.excel.summary': 'المصنّفات، وكيفية إضافة الأدلة في Excel.',
   'guide.page.frameworks.title': 'الأطر والمصادر',
-  'guide.page.frameworks.summary': 'ما يتضمنه كل إطار، ومن أين يأتي، وحدوده.',
+  'guide.page.frameworks.summary': 'ما يتضمنه كل إطار، ومن أين يأتي.',
   'guide.page.arl.title': 'جاهزية التبنّي (ARL)',
-  'guide.page.arl.summary':
-    'الوحدة الجانبية ARL: أبعاد مخاطر التبنّي السبعة عشر وجدول المطابقة.',
+  'guide.page.arl.summary': 'الوحدة الجانبية ARL: أبعاد مخاطر التبنّي السبعة عشر وجدول المطابقة.',
   'guide.page.stage-crosswalk.title': 'مقابلة المراحل',
-  'guide.page.stage-crosswalk.summary':
-    'نموذج لمراحل تطوير أجهزة الاستشعار مقابل TRL — لأغراض إعلامية فقط.',
+  'guide.page.stage-crosswalk.summary': 'نموذج لمراحل تطوير العتاد مقابل TRL — لأغراض إعلامية فقط.',
   'guide.page.faq.title': 'الأسئلة الشائعة',
-  'guide.page.faq.summary': 'خمسة عشر سؤالًا يطرحها الناس فعلًا.',
+  'guide.page.faq.summary': 'أسئلة شائعة وإجابات موجزة.',
   'guide.page.glossary.title': 'مسرد المصطلحات',
-  'guide.page.glossary.summary':
-    'TRL وTRA وCTE والبيئة ذات الصلة وTPL وMRL وIRL وSRL وARL وغيرها.',
+  'guide.page.glossary.summary': 'TRL وTRA وCTE والبيئة ذات الصلة وARL وMRL وTPL وغيرها.',
   'excel.readme.title': '{app} — كيفية قراءة هذا المصنّف',
   'excel.readme.label': 'التسمية',
   'excel.readme.disclaimer': 'إخلاء المسؤولية',
@@ -799,15 +786,15 @@ export const ar: Messages = {
   'excel.row.source': 'المصدر',
   'excel.tier1.error.noAnswers': 'لا تحتوي هذه الجلسة على إجابات للمستوى 1 (Tier 1) لتصديرها.',
   'excel.tier1.count.answered': 'الأسئلة المُجاب عنها',
-  'excel.tier1.readme.contents.summary':
-    'Summary — التقدير، والتحقق المتقاطع، وأي تنبيهات مرفوعة.',
+  'excel.tier1.readme.contents.summary': 'Summary — التقدير، والتحقق المتقاطع، وأي تنبيهات مرفوعة.',
   'excel.tier1.readme.contents.context':
     'Context — ما الذي قُيِّم، ومن قيّمه، وأعلى اختبار من حيث المحاكاة الواقعية أُجري.',
   'excel.tier1.readme.contents.responses':
     'Responses — كل سؤال من أسئلة الفرز، وإجابتك، وملاحظتك، ومصدر السؤال.',
   'excel.tier1.readme.contents.next':
     'Next_Evidence_Placeholders — المعايير التالية، مع صفوف فارغة لتخطيط الأدلة.',
-  'excel.tier1.readme.contents.references': 'References — المستندات المصدرية التي تستند إليها الأسئلة.',
+  'excel.tier1.readme.contents.references':
+    'References — المستندات المصدرية التي تستند إليها الأسئلة.',
   'excel.tier1.readme.fill.heading': 'كيفية ملء العناصر النائبة',
   'excel.tier1.readme.fill.planned':
     'في الورقة Next_Evidence_Placeholders، صِف الأدلة التي تخطط لإنتاجها في «الأدلة المُخطَّطة».',
@@ -860,7 +847,8 @@ export const ar: Messages = {
   'excel.tier2.readme.contents.gaps':
     'Gap_Actions — المعايير الإلزامية غير المستوفاة عند المستوى التالي لكل عنصر CTE، جاهزة للتخطيط على أساسها.',
   'excel.tier2.readme.contents.review': 'Review_Signoff — مساحة للمقيِّم ولمراجع مستقل.',
-  'excel.tier2.readme.contents.references': 'References — المستندات المصدرية التي تستند إليها المعايير.',
+  'excel.tier2.readme.contents.references':
+    'References — المستندات المصدرية التي تستند إليها المعايير.',
   'excel.tier2.readme.contents.metadata': 'Metadata — المصدر والنشأة لهذا التصدير.',
   'excel.tier2.readme.attach.heading': 'كيفية إرفاق الأدلة في Excel',
   'excel.tier2.readme.attach.url':
@@ -1002,7 +990,8 @@ export const ar: Messages = {
   'excel.arl.lookup.start': 'البداية',
   'excel.arl.lookup.target': 'الهدف',
   'excel.arl.lookup.counts': '{medium} «متوسط»، {high} «مرتفع» ← ARL {arl}',
-  'excel.arl.lookup.note': 'تحمل الخلايا المميَّزة ملاحظة تسمّيها؛ ويُستخدم الجدول المطبوع دون تعديل.',
+  'excel.arl.lookup.note':
+    'تحمل الخلايا المميَّزة ملاحظة تسمّيها؛ ويُستخدم الجدول المطبوع دون تعديل.',
   'excel.arl.meta.workbook': 'المصنّف',
   'excel.arl.meta.workbookValue': 'ARL (وحدة جانبية)',
   'excel.arl.meta.trlFramework': 'إطار TRL للجلسة',

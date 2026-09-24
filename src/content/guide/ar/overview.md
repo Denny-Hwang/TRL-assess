@@ -7,20 +7,19 @@
 
 ## المستويات التسعة
 
-التعريفات أدناه هي تعريفات DoD الخاصة بالعتاد (`dod-tra-2025`، الجدول 2-1، ص. 6–7)، وتبقى
-بالإنجليزية كما نُشرت، مع ترجمة بين قوسين. ويعرض كل إطار تعريفه الخاص في نص المساعدة لكل سؤال.
+التعريفات أدناه هي تعريفات DoD الخاصة بالعتاد (`dod-tra-2025`، الجدول 2-1، ص. 6–7). ويعرض كل إطار تعريفه الخاص في نص المساعدة لكل سؤال.
 
-| TRL | التعريف                                                                                                                                             | البيئة           |
-| --- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| 1   | Basic principles observed and reported (ترجمة: رُصدت المبادئ الأساسية وأُبلغ عنها)                                                                  | —                |
-| 2   | Technology concept and/or application formulated (ترجمة: صيغ مفهوم التكنولوجيا و/أو تطبيقها)                                                        | تحليل            |
-| 3   | Analytical and experimental critical function and/or characteristic proof of concept (ترجمة: إثبات مفهوم تحليلي وتجريبي للوظيفة و/أو الخاصية الحرجة) | مختبر            |
-| 4   | Component and/or breadboard validation in a laboratory environment (ترجمة: التحقق من المكوّن و/أو النموذج التجريبي في بيئة مختبرية)                  | مختبر            |
-| 5   | Component and/or breadboard validation in a relevant environment (ترجمة: التحقق من المكوّن و/أو النموذج التجريبي في بيئة ذات صلة)                    | ذات صلة          |
-| 6   | System/subsystem model or prototype demonstration in a relevant environment (ترجمة: عرض نموذج أو نموذج أولي للنظام/النظام الفرعي في بيئة ذات صلة)     | ذات صلة          |
-| 7   | System prototype demonstration in an operational environment (ترجمة: عرض نموذج أولي للنظام في بيئة تشغيلية)                                          | تشغيلية          |
-| 8   | Actual system completed and qualified through test and demonstration (ترجمة: اكتمل النظام الفعلي وأُهِّل عبر الاختبار والعرض)                          | الظروف المتوقعة  |
-| 9   | Actual system proven through successful mission operations (ترجمة: أُثبت النظام الفعلي عبر عمليات مهمة ناجحة)                                         | ظروف المهمة      |
+| TRL | التعريف                                                                                                                                              | البيئة          |
+| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| 1   | Basic principles observed and reported (ترجمة: رُصدت المبادئ الأساسية وأُبلغ عنها)                                                                   | —               |
+| 2   | Technology concept and/or application formulated (ترجمة: صيغ مفهوم التكنولوجيا و/أو تطبيقها)                                                         | تحليل           |
+| 3   | Analytical and experimental critical function and/or characteristic proof of concept (ترجمة: إثبات مفهوم تحليلي وتجريبي للوظيفة و/أو الخاصية الحرجة) | مختبر           |
+| 4   | Component and/or breadboard validation in a laboratory environment (ترجمة: التحقق من المكوّن و/أو النموذج التجريبي في بيئة مختبرية)                  | مختبر           |
+| 5   | Component and/or breadboard validation in a relevant environment (ترجمة: التحقق من المكوّن و/أو النموذج التجريبي في بيئة ذات صلة)                    | ذات صلة         |
+| 6   | System/subsystem model or prototype demonstration in a relevant environment (ترجمة: عرض نموذج أو نموذج أولي للنظام/النظام الفرعي في بيئة ذات صلة)    | ذات صلة         |
+| 7   | System prototype demonstration in an operational environment (ترجمة: عرض نموذج أولي للنظام في بيئة تشغيلية)                                          | تشغيلية         |
+| 8   | Actual system completed and qualified through test and demonstration (ترجمة: اكتمل النظام الفعلي وأُهِّل عبر الاختبار والعرض)                        | الظروف المتوقعة |
+| 9   | Actual system proven through successful mission operations (ترجمة: أُثبت النظام الفعلي عبر عمليات مهمة ناجحة)                                        | ظروف المهمة     |
 
 يتحدد المستوى بـ_ما_ اختُبر و_أين_.
 

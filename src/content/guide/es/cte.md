@@ -1,7 +1,7 @@
 # Elementos tecnológicos críticos
 
 Un CTE es una parte del sistema cuya madurez determina si el sistema funciona. Se evalúan CTE, no
-productos: «el nodo está en TRL 6» es un resumen; «el recolector de energía está en TRL 4» es una
+productos: «el nodo está en TRL 6» es un resumen; «el captador de energía está en TRL 4» es una
 evaluación.
 
 :::figure cte-tree:::
@@ -21,7 +21,7 @@ bibliotecas usadas según lo previsto y todo lo que ya se ha probado en el mismo
 
 ## El ejemplo
 
-La sesión de ejemplo tiene tres CTE: recolector de energía, módulo de gestión de energía y firmware
+La sesión de ejemplo tiene tres CTE: captador de energía, módulo de gestión de energía y firmware
 de telemetría. Un procedimiento, como la instalación, también puede ser un CTE (tipo _proceso_).
 
 ## Errores comunes

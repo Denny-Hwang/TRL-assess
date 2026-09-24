@@ -40,9 +40,9 @@ export const ja: Messages = {
   'label.arl': '導入準備度の自己評価 — DOE によるレビューや承認は受けていません',
   'label.arlTarget': '目標 — 計画値であり、達成済みではありません',
   'disclaimer.trl':
-    '{app} が生成するのは自己評価のみです。独立した技術成熟度評価（TRA）ではなく、監査でも認証でもありません。結果は利用者が入力した情報に完全に依存し、ツールは何も検証しません。評価基準は機関やプログラムによって異なります。正式な提出物に結果を使用する前に、基準と出典を確認してください。',
+    '{app} が生成するのは自己評価のみです。独立した技術成熟度評価（TRA）ではなく、監査でも認証でもありません。結果は入力された内容に完全に依存し、ツールは何も検証しません。基準は機関によって異なります。正式な提出物に結果を使用する前に、基準を確認してください。',
   'disclaimer.arl':
-    '{app} が生成するのは自己評価のみです。ARL の数値は、入力された評定に DOE Adoption Readiness Assessment のルーブリックを適用したものです。ツールは何も検証せず、DOE が結果をレビューまたは承認することもありません。出典は数値スコアを任意のものとし、見かけ上の精度に注意するよう警告しています。障壁の所在を示すのは数値ではなくリスクプロファイルです。ARL は TRL を補完するものであり、このツールが両者を 1 つの数値に統合することはありません。',
+    '{app} が生成するのは自己評価のみです。ARL の数値は、入力された評定に DOE Adoption Readiness Assessment のルーブリックを適用したものです。ツールは何も検証せず、DOE が結果をレビューまたは承認することもありません。',
   'notice.sensitive':
     '管理対象情報、秘密指定情報、輸出管理対象情報、その他の機微な情報を入力しないでください。このツールは公開された静的サイト上でブラウザー内で動作します。そのような資料は添付せず、「機微 — 参照のみ」のエビデンス項目でその所在を示してください。',
   'notice.dismiss': '閉じる',
@@ -108,7 +108,7 @@ export const ja: Messages = {
   'tier2.reason.N/A': '理由の記載なしで「該当なし」とされています。',
   'tier2.reason.Not assessed': 'まだ評価されていません。',
   'tier2.delta.lower':
-    'エビデンスに基づく評価が、クイック推定を大きく下回っています。これは通常の傾向です。Tier 2 ではすべての主張にエビデンスが必要であり、下位のレベルがすべて達成されている場合にのみそのレベルを数え、重要な CTE 全体の最小値を採用します。どの CTE が制約となっているか、どの基準にまだエビデンスが不足しているかを確認してください。',
+    'エビデンスに基づく評価が、クイック推定を大きく下回っています。どの CTE が制約となっているか、どの基準にまだエビデンスが不足しているかを確認してください。',
   'tier2.delta.higher':
     'エビデンスに基づく評価が、クイック推定を大きく上回っています。クイック推定で低いレベルに「不明」または「いいえ」と回答していないか、また重要に指定したすべての CTE が本当に重要かを確認してください。',
   'arl.flag.unsure':
@@ -124,12 +124,12 @@ export const ja: Messages = {
   'arl.reason.Not assessed': '未評価 — 高リスクとして集計',
   'arl.reason.N/A': '根拠なしの「該当なし」 — 根拠が記録されるまで高リスクとして集計',
   'flags.none': 'フラグはありません。',
-  'home.lead': 'この技術はどこまで実証されていて、それを証明できますか。',
+  'home.lead': '技術成熟度（TRL）と導入準備度（ARL）の自己評価。',
   'home.ladder.marker': '現在地',
   'home.ladder.label':
     'TRL の尺度は 1 から 9 まであります。評価では、エビデンスが裏付ける最も高いレベルを求めます。',
   'home.ladder.caption':
-    'あるレベルが数えられるのは、その下のすべてのレベルが数えられる場合だけです。このツールは、連鎖がどこで途切れるか、そして 1 段上がるには何が必要かを明らかにします。',
+    'あるレベルが数えられるのは、その下のすべてのレベルが数えられる場合だけです。',
   'home.flow.heading': '使い方',
   'home.flow.quick.title': '1. クイック推定',
   'home.flow.quick.detail': '9 つの質問、約 5 分。文書は不要です。',
@@ -142,14 +142,14 @@ export const ja: Messages = {
   'home.tier1.start': 'クイック推定を開始',
   'home.tier2.heading': 'Tier 2 — エビデンスに基づく評価',
   'home.tier2.start': 'エビデンス評価を開始',
-  'home.arl.heading': 'サイドモジュール — 導入準備度レベル（ARL）',
+  'home.arl.heading': '導入準備度レベル（ARL）',
   'home.arl.body':
-    '動作する技術と、その実際の利用との間にあるものを明らかにします。DOE Adoption Readiness Assessment の 17 の導入リスク観点を現時点とプロジェクト終了時について評定し、出典自身の参照表から ARL 開始と ARL 終了を読み取ります。TRL の結果とは切り離して扱い、1 つの数値に統合することはありません。',
+    'DOE Adoption Readiness Assessment の 17 の導入リスク観点を、現時点とプロジェクト終了時について評定します。TRL とは別に報告します。',
   'home.arl.start': '導入準備度の評価を開始',
   'home.disclaimer.heading': '免責事項',
   'about.title': '{app} について',
   'about.lead':
-    '2 段階構成の技術成熟度レベル自己評価ツールです。Tier 1 は自己申告によるクイック推定を、Tier 2 は重要技術要素についてエビデンスに基づく評価を提供します。評価は Excel にエクスポートでき、エビデンスファイルと SHA-256 マニフェストとともにパッケージ化できます。すべてブラウザー内で動作し、バックエンド、アカウント、テレメトリーはありません。',
+    '導入準備度レベルのモジュールを備えた、2 段階構成の技術成熟度レベル自己評価ツールです。すべてブラウザー内で動作し、バックエンド、アカウント、テレメトリーはありません。',
   'about.build.heading': 'ビルド',
   'about.build.version': 'バージョン',
   'about.build.sha': 'Git SHA',
@@ -202,7 +202,7 @@ export const ja: Messages = {
   'tier1.context.environment': '到達した環境',
   'tier1.context.build': 'ビルド成熟度',
   'tier1.context.crossCheckNote':
-    'この 2 つの回答は、ヒューリスティックなクロスチェック（{status}）に使われます。回答を上書きすることはなく、不整合を指摘するだけです。',
+    'ヒューリスティックなクロスチェック（{status}）にのみ使われ、回答を上書きすることはありません。',
   'tier1.context.missing.projectName': 'プロジェクト名',
   'tier1.context.missing.technologyName': '技術名',
   'tier1.context.missing.assessorName': '評価者名',
@@ -337,7 +337,8 @@ export const ja: Messages = {
   'tier2.result.importedWarnings': '警告付きでインポートしました：{warnings}',
   'tier2.result.imported': 'セッションをインポートしました。',
   'tier2.cte.heading': '重要技術要素',
-  'tier2.cte.empty': 'まず、成熟度がシステムの成否を実際に左右する構成要素に名前を付けてください。',
+  'tier2.cte.empty':
+    'CTE はまだありません。成熟度によってシステムが機能するかどうかが決まる構成要素を追加してください。',
   'tier2.cte.importFromTier1': 'クイック推定から「{name}」をインポート',
   'tier2.cte.unspecified': '未指定',
   'tier2.cte.critical': '重要',
@@ -445,8 +446,7 @@ export const ja: Messages = {
   'evidence.form.doiHint': '例：10.1234/abcd.2026.5678',
   'evidence.form.citation': '引用情報',
   'evidence.form.url': '場所 / URL',
-  'evidence.form.urlHint':
-    'http または https のみ。すでにアクセス可能な場所にあるものにはこちらを使用してください。',
+  'evidence.form.urlHint': 'http または https のみ。',
   'evidence.form.marking': '区分表示',
   'evidence.form.verification': '検証',
   'evidence.form.verifiedBy': '検証者',
@@ -455,8 +455,7 @@ export const ja: Messages = {
   'evidence.form.sensitiveBody':
     'レビュアーが正規の経路で資料を見つけられるよう、タイトル、管理者、参照番号を記録してください。',
   'evidence.form.file': 'ファイル',
-  'evidence.form.fileHint':
-    'このブラウザー内（IndexedDB）にのみ保存されます。最大 {limit} MB。追加時に SHA-256 ハッシュが計算されます。',
+  'evidence.form.fileHint': 'このブラウザー内にのみ保存されます。最大 {limit} MB。',
   'evidence.form.pickedFile': '{name} — {size} kB',
   'evidence.form.attachedFile': '添付済み：{name} — {size} kB ·',
   'evidence.form.sha256': 'SHA-256',
@@ -480,8 +479,7 @@ export const ja: Messages = {
   'evidence.library.closeEditor': 'エディターを閉じる',
   'evidence.library.edit': '編集',
   'evidence.library.delete': '削除',
-  'evidence.library.empty':
-    'エビデンスはまだありません。エビデンスは、主張を評価に変えるものです。報告書、試験記録、固定したコミット、DOI、または管理文書への参照などが該当します。',
+  'evidence.library.empty': 'エビデンスはまだありません。',
   'evidence.library.newHeading': '新しいエビデンス',
   'evidence.library.add': 'エビデンスを追加',
   'arl.common.start': 'ARL 開始',
@@ -493,7 +491,7 @@ export const ja: Messages = {
   'arl.reset.cancel': 'キャンセル',
   'arl.unavailable.title': 'このセッションの ARL ルーブリックは利用できません',
   'arl.unavailable.body':
-    'このセッションは ARL ルーブリック「{id}」に基づいて評定されていますが、このバージョンのアプリには含まれていません（{detail}）。ARL の評定をリセットして、現在のルーブリックで最初からやり直してください。',
+    'このバージョンには ARL ルーブリック「{id}」が含まれていません（{detail}）。最初からやり直すには、ARL の評定をリセットしてください。',
   'arl.scope.title': '導入準備度 — ステップ 1/3：範囲',
   'arl.scope.versionSource': 'バージョン：{version} · 出典：{source}',
   'arl.scope.projectName': 'プロジェクト名',
@@ -516,7 +514,7 @@ export const ja: Messages = {
   'arl.rate.meter': '評定済みの観点',
   'arl.rate.rated': '{total} 件中 {rated} 件を評定済み',
   'arl.rate.conservative':
-    '未評定のもの、「不明」、および根拠なしの「該当なし」は、解消されるまで高リスクとして集計されます。目標はプロジェクト終了時の状態を表します。目標 — 計画値であり、達成済みではありません。',
+    '未評定のもの、「不明」、および根拠なしの「該当なし」は、高リスクとして集計されます。',
   'arl.rate.areasNav': '主要リスク領域',
   'arl.rate.currentRisk': '現在のリスク',
   'arl.rate.naOption': '該当なし — この範囲には当てはまらない',
@@ -539,8 +537,7 @@ export const ja: Messages = {
   'arl.result.startHint': '{band} — 中 {medium} 件、高 {high} 件として集計。',
   'arl.result.endHint': '{band} — {target}。',
   'arl.result.change': 'プロジェクト期間中の変化',
-  'arl.result.scopeMissing.before':
-    '技術の範囲または評価の対象期間が空欄です。出典は、評定の前に両方を定義するよう求めています。同じ技術でも、範囲が異なれば評定も変わりえます。',
+  'arl.result.scopeMissing.before': '技術の範囲または評価の対象期間が空欄です。',
   'arl.result.scopeMissing.link': '範囲を入力する',
   'arl.result.scopeMissing.after': '。',
   'arl.result.profile': 'リスクプロファイル',
@@ -557,7 +554,7 @@ export const ja: Messages = {
   'arl.result.flags.targets': '目標',
   'arl.result.howRead': '数値の読み取り方',
   'arl.result.howRead.body':
-    '出典は中リスクと高リスクの観点を数え、その参照表から ARL を読み取ります。このツールは、印刷されたとおりに表を使用します。',
+    '出典は中リスクと高リスクの観点を数え、その参照表から ARL を読み取ります。',
   'arl.result.mark.start': '開始',
   'arl.result.mark.target': '目標',
   'arl.result.takeAway': '持ち出す',
@@ -609,35 +606,33 @@ export const ja: Messages = {
     '例 2：TRL 1 は「はい」、2 は「いいえ」、3 と 4 は「はい」。連鎖が TRL 2 で途切れるため、TRL 4 が申告されていても推定値は TRL 1 です。',
   'guide.fig.tier1Gap.caption.before': '例 2 — 斜線の段は「いいえ」と回答した TRL 2 です。推定値 ',
   'guide.fig.tier1Gap.caption.after': '、最高申告値 4、ギャップのフラグが立ちます。',
-  'guide.fig.tier2.harvester': 'ハーベスター',
-  'guide.fig.tier2.converter': '電力変換器',
+  'guide.fig.tier2.harvester': 'エネルギーハーベスター',
+  'guide.fig.tier2.converter': '電力管理モジュール',
   'guide.fig.tier2.firmware': 'テレメトリーファームウェア',
   'guide.fig.tier2.cteLabel': '{name}：{trl}',
   'guide.fig.tier2.limiting': '◀ システムを制約',
   'guide.fig.tier2.caption.before': '例 3 — システムサマリーは ',
   'guide.fig.tier2.caption.formula': 'min(4, 3, 3) = TRL 3',
-  'guide.fig.tier2.caption.after':
-    ' です。ハーベスターの 4 が値を引き上げることはなく、平均も取りません。',
+  'guide.fig.tier2.caption.after': ' です。平均は取りません。',
   'guide.fig.statusLegend.caption':
     'レベルに算入されるのは最初の 2 つだけです。有効なエビデンスのある「達成」と、理由の記載がある「該当なし」です。',
   'guide.fig.arlLookup.mark': '例',
   'guide.fig.arlLookup.caption.before':
     '例 — 中リスクの観点が 3 つ、高リスクの観点が 1 つの場合は ',
   'guide.fig.arlLookup.caption.value': 'ARL 6',
-  'guide.fig.arlLookup.caption.after':
-    ' と読み取ります。高の評定がさらに 2 つ増えると、同じプロファイルでも ARL 3 になります。高リスクが最も重く影響します。',
+  'guide.fig.arlLookup.caption.after': ' と読み取ります。高リスクが最も重く影響します。',
   'guide.fig.cte.label':
-    '波浪ブイを 5 つの要素に分解した図：エネルギーハーベスター、電力変換、テレメトリーファームウェア、筐体とシーリング（いずれも重要）、および係留と回収の手順（プロセスであり、ここでは重要でない）。',
-  'guide.fig.cte.system': '波浪ブイ（システム）',
+    'リモートセンサーノードを 5 つの要素に分解した図：エネルギーハーベスター、電力管理、テレメトリーファームウェア、筐体とシーリング（いずれも重要）、および設置手順（プロセスであり、ここでは重要でない）。',
+  'guide.fig.cte.system': 'リモートセンサーノード（システム）',
   'guide.fig.cte.harvester': 'エネルギー\nハーベスター',
-  'guide.fig.cte.power': '電力\n変換',
+  'guide.fig.cte.power': '電力\n管理',
   'guide.fig.cte.firmware': 'テレメトリー\nファームウェア',
   'guide.fig.cte.enclosure': '筐体と\nシーリング',
-  'guide.fig.cte.install': 'Installation\nprocedure',
+  'guide.fig.cte.install': '設置\n手順',
   'guide.fig.cte.critical': '重要',
   'guide.fig.cte.notCritical': '重要でない',
   'guide.fig.cte.caption':
-    '各要素はそれぞれ個別に評価されます。プロセスも CTE になりえます。「重要」かどうかで、システムサマリーに算入されるものが決まります。',
+    '各要素はそれぞれ個別に評価されます。システムサマリーに算入されるのは、重要な要素だけです。',
   'guide.fig.evidence.label':
     '基準が充足される仕組み：ステータスが「達成」で、却下されていないエビデンスが少なくとも 1 件あるか、ステータスが「該当なし」で理由の記載がある場合です。「一部達成」「未達成」「未評価」は充足されることがありません。',
   'guide.fig.evidence.criterion': '基準',
@@ -652,21 +647,21 @@ export const ja: Messages = {
   'guide.fig.evidence.caption':
     '有効なエビデンスのない「達成」と、理由の記載のない「該当なし」は、どちらも下の経路に進みます。',
   'guide.fig.env.label':
-    '環境の忠実度は、解析のみから始まり、実験室、海水タンクなどの関連環境、限定的な運用展開を経て、最終的にミッションの全範囲へと高まります。TRL 5 と 6 には関連環境が、TRL 7 と 8 には運用環境が必要です。',
+    '環境の忠実度は、解析のみから始まり、実験室、主要な負荷を再現する関連環境、限定的な運用試験を経て、ミッションの全範囲へと高まります。TRL 5 と 6 には関連環境が、TRL 7 と 8 には運用環境が必要です。',
   'guide.fig.env.e0.name': '解析のみ',
   'guide.fig.env.e0.note': 'モデルのみ、ハードウェアなし',
   'guide.fig.env.e1.name': '実験室',
-  'guide.fig.env.e1.note': 'ベンチ、大気中、室温',
+  'guide.fig.env.e1.note': 'ベンチ、周囲条件',
   'guide.fig.env.e2.name': '関連環境',
-  'guide.fig.env.e2.note': '海水タンク、動揺、低温',
+  'guide.fig.env.e2.note': '主要な負荷を再現',
   'guide.fig.env.e3.name': '運用環境（限定）',
-  'guide.fig.env.e3.note': '短期展開、穏やかな季節',
+  'guide.fig.env.e3.note': '短期の現地試験',
   'guide.fig.env.e4.name': '運用環境（全範囲）',
   'guide.fig.env.e4.note': 'ミッションの全範囲',
   'guide.fig.env.relevantNeed': 'TRL 5–6 に必要',
   'guide.fig.env.operationalNeed': 'TRL 7–8 に必要',
   'guide.fig.env.caption':
-    '導電性のある海水を必要とする故障モードについては、淡水タンクでの試験は関連環境になりません。',
+    '試験が関連環境となるのは、その要素にとって重要な負荷を再現している場合だけです。',
   'guide.fig.sheets.label':
     'Tier 1 のワークブックには {tier1Count} 枚のシートがあります：{tier1}。Tier 2 のワークブックには {tier2Count} 枚あります：{tier2}。',
   'guide.fig.sheets.tier1': 'Tier 1 ワークブック',
@@ -674,11 +669,11 @@ export const ja: Messages = {
   'guide.fig.sheets.caption':
     'シートの順序は固定されており、どのワークブックも README シートが開いた状態で表示されます。',
   'guide.fig.frameworks.label':
-    'marine-energy-eere は dod-tra-2025 を拡張したものです。DoD の基準を再利用し、海洋向けのテーラリング項目を 8 つ追加し、Tier 1 の質問は EERE の定義から採用しています（TRL 9 は DoD の表から）。',
+    'デフォルトの dod-tra-2025 は、DoD の基準を収録しています。marine-energy-eere はこれを拡張したもので、DoD の基準を再利用し、海洋向けのテーラリング項目を 8 つ追加し、Tier 1 の質問は EERE の定義から採用しています（TRL 9 は DoD の表から）。',
   'guide.fig.frameworks.dodCriteria': '58 の基準、原文どおり',
   'guide.fig.frameworks.dodTables': 'ハードウェア + ソフトウェアの表',
   'guide.fig.frameworks.extends': '拡張',
-  'guide.fig.frameworks.default': '{id} (default)',
+  'guide.fig.frameworks.default': '{id}（デフォルト）',
   'guide.fig.frameworks.marineCriteria': 'DoD の基準を参照 + テーラリング項目 8 つ',
   'guide.fig.frameworks.marineMandatory': 'レベルを定義する基準を必須に格上げ',
   'guide.fig.frameworks.marineQuestions': 'Tier 1 の質問は EERE R 540.112-02 から再構成',
@@ -709,30 +704,29 @@ export const ja: Messages = {
   'guide.fig.stage.caption.after':
     'だからです。ステージモデルは組織固有のものであり、採点の根拠にはなりません。',
   'guide.page.overview.title': '概要',
-  'guide.page.overview.summary': 'TRL とは何か、1〜9 の尺度の由来、そしてこのツールの位置付け。',
+  'guide.page.overview.summary': 'TRL とは何か、9 つのレベル、そしてこのツールの位置付け。',
   'guide.page.how-to-use.title': 'このツールの使い方',
-  'guide.page.how-to-use.summary': '両方の Tier の手順と、データの保存、再開、消去。',
+  'guide.page.how-to-use.summary': '両方の Tier と ARL の手順、およびデータの保存と消去。',
   'guide.page.methodology.title': '方法論',
   'guide.page.methodology.summary':
     'すべての採点ルールを平易な言葉で、3 つの具体例とともに説明します。',
   'guide.page.cte.title': '重要技術要素',
-  'guide.page.cte.summary': 'システムを CTE に分解する方法。例とよくある誤りも紹介します。',
+  'guide.page.cte.summary': 'システムを CTE に分解する方法と、よくある誤り。',
   'guide.page.evidence.title': 'エビデンス',
   'guide.page.evidence.summary': 'エビデンスとして認められるもの、良い例と弱い例、区分表示と検証。',
   'guide.page.excel.title': 'Excel 出力',
-  'guide.page.excel.summary':
-    '両方のワークブックをシートごとに説明し、プレースホルダーの仕組みを解説します。',
+  'guide.page.excel.summary': 'ワークブックの内容と、Excel でエビデンスを追加する方法。',
   'guide.page.frameworks.title': 'フレームワークと出典',
-  'guide.page.frameworks.summary': '各フレームワークの内容、その出所、制限事項。',
+  'guide.page.frameworks.summary': '各フレームワークの内容とその出所。',
   'guide.page.arl.title': '導入準備度（ARL）',
   'guide.page.arl.summary': 'ARL サイドモジュール：17 の導入リスク観点と参照表。',
   'guide.page.stage-crosswalk.title': 'ステージ対応表',
   'guide.page.stage-crosswalk.summary':
-    'センサー開発のステージモデルと TRL の対応 — 参考情報のみ。',
+    'ハードウェア開発のステージモデルと TRL の対応 — 参考情報のみ。',
   'guide.page.faq.title': 'よくある質問',
-  'guide.page.faq.summary': '実際によく寄せられる 15 の質問。',
+  'guide.page.faq.summary': 'よくある質問への簡潔な回答。',
   'guide.page.glossary.title': '用語集',
-  'guide.page.glossary.summary': 'TRL、TRA、CTE、関連環境、TPL、MRL、IRL、SRL、ARL など。',
+  'guide.page.glossary.summary': 'TRL、TRA、CTE、関連環境、ARL、MRL、TPL など。',
   'excel.readme.title': '{app} — このワークブックの読み方',
   'excel.readme.label': 'ラベル',
   'excel.readme.disclaimer': '免責事項',

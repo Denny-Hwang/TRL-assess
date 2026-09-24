@@ -11,17 +11,17 @@ TRL 1 से 9 तक की एक संख्या है जो एक ह�
 नीचे दी गई परिभाषाएँ DoD की हार्डवेयर परिभाषाएँ हैं (`dod-tra-2025`, Table 2-1, pp. 6–7), जो स्रोत के
 अनुसार अंग्रेज़ी में दी गई हैं। प्रत्येक फ़्रेमवर्क हर प्रश्न के सहायता पाठ में अपनी परिभाषा दिखाता है।
 
-| TRL | परिभाषा                                                                              | वातावरण           |
-| --- | ------------------------------------------------------------------------------------ | ----------------- |
-| 1   | Basic principles observed and reported                                               | —                 |
-| 2   | Technology concept and/or application formulated                                     | विश्लेषण          |
-| 3   | Analytical and experimental critical function and/or characteristic proof of concept | प्रयोगशाला        |
-| 4   | Component and/or breadboard validation in a laboratory environment                   | प्रयोगशाला        |
-| 5   | Component and/or breadboard validation in a relevant environment                     | प्रासंगिक         |
-| 6   | System/subsystem model or prototype demonstration in a relevant environment          | प्रासंगिक         |
-| 7   | System prototype demonstration in an operational environment                         | परिचालन           |
+| TRL | परिभाषा                                                                              | वातावरण               |
+| --- | ------------------------------------------------------------------------------------ | --------------------- |
+| 1   | Basic principles observed and reported                                               | —                     |
+| 2   | Technology concept and/or application formulated                                     | विश्लेषण              |
+| 3   | Analytical and experimental critical function and/or characteristic proof of concept | प्रयोगशाला            |
+| 4   | Component and/or breadboard validation in a laboratory environment                   | प्रयोगशाला            |
+| 5   | Component and/or breadboard validation in a relevant environment                     | प्रासंगिक             |
+| 6   | System/subsystem model or prototype demonstration in a relevant environment          | प्रासंगिक             |
+| 7   | System prototype demonstration in an operational environment                         | परिचालन               |
 | 8   | Actual system completed and qualified through test and demonstration                 | अपेक्षित परिस्थितियाँ |
-| 9   | Actual system proven through successful mission operations                           | मिशन परिस्थितियाँ   |
+| 9   | Actual system proven through successful mission operations                           | मिशन परिस्थितियाँ     |
 
 स्तर इस बात से तय होता है कि _क्या_ परखा गया और _कहाँ_।
 
