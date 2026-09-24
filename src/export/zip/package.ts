@@ -24,7 +24,7 @@ import type { ResolvedFramework } from '@/domain/frameworks';
 import { getBlob } from '@/storage/blobStore';
 import { downloadBlob, sessionSlug, timestampForFilename } from '@/export/download';
 import { buildTier2Workbook } from '@/export/excel/tier2';
-import { workbookToBlob } from '@/export/excel/shared';
+import { currentTranslator, workbookToBlob, type Translator } from '@/export/excel/shared';
 
 /**
  * Sanitize a file name for the archive: `[A-Za-z0-9._-]` only, at most 80 characters, never
@@ -57,7 +57,10 @@ export interface PackagePreflight {
   message?: string;
 }
 
-export function preflight(session: AssessmentSession): PackagePreflight {
+export function preflight(
+  session: AssessmentSession,
+  tr: Translator = currentTranslator(),
+): PackagePreflight {
   const items = bundleableEvidence(session).map((e) => ({
     id: e.id,
     name: evidenceEntryName(e),
@@ -72,38 +75,51 @@ export function preflight(session: AssessmentSession): PackagePreflight {
     ...(withinLimit
       ? {}
       : {
-          message:
-            `The evidence files total ${(totalBytes / 1024 / 1024).toFixed(1)} MB, over the ` +
-            `${MAX_PACKAGE_TOTAL_MB} MB package limit. Remove or unlink a large file, or record it ` +
-            `as a reference instead of attaching it. Largest files: ` +
-            items
+          message: tr.t('excel.package.tooLarge', {
+            total: (totalBytes / 1024 / 1024).toFixed(1),
+            limit: MAX_PACKAGE_TOTAL_MB,
+            files: items
               .slice()
               .sort((a, b) => b.sizeBytes - a.sizeBytes)
               .slice(0, 5)
-              .map((i) => `${i.name} (${(i.sizeBytes / 1024 / 1024).toFixed(1)} MB)`)
+              .map((i) =>
+                tr.t('excel.package.fileSize', {
+                  name: i.name,
+                  size: (i.sizeBytes / 1024 / 1024).toFixed(1),
+                }),
+              )
               .join(', '),
+          }),
         }),
   };
 }
 
-function readmeText(rootName: string, workbookName: string, fileCount: number): string {
+/** Indents every line of a (possibly multi-line) paragraph by two spaces. */
+function indented(text: string): string[] {
+  return text.split('\n').map((line) => `  ${line}`);
+}
+
+function readmeText(
+  rootName: string,
+  workbookName: string,
+  fileCount: number,
+  { t }: Translator,
+): string {
   return [
-    `${APP_NAME} evidence package`,
+    t('excel.package.readme.title', { app: APP_NAME }),
     '',
-    `Created by ${APP_NAME} ${APP_VERSION} (build ${GIT_SHA}).`,
+    t('excel.package.readme.createdBy', { app: APP_NAME, version: APP_VERSION, sha: GIT_SHA }),
     '',
-    'Contents',
-    `  ${workbookName}      the Tier 2 workbook`,
-    '  session.json          the full assessment, re-importable into the app',
-    `  evidence/             ${fileCount} evidence file(s), named <EV-ID>_<original name>`,
-    '  MANIFEST.sha256.txt   SHA-256 of every file in this package',
+    t('excel.package.readme.contents'),
+    `  ${workbookName}      ${t('excel.package.readme.workbook')}`,
+    `  session.json          ${t('excel.package.readme.session')}`,
+    `  evidence/             ${t('excel.package.readme.evidence', { count: fileCount })}`,
+    `  MANIFEST.sha256.txt   ${t('excel.package.readme.manifest')}`,
     '',
-    'Opening the links',
-    '  Unzip the whole folder first, keeping the structure intact. The "Local file (relative',
-    '  path)" cells in Evidence_Register point at evidence/… relative to the workbook, so the',
-    '  "Open" column works once the folder is unzipped.',
+    t('excel.package.readme.links.heading'),
+    ...indented(t('excel.package.readme.links.body')),
     '',
-    'Verifying the hashes',
+    t('excel.package.readme.hashes.heading'),
     `  Linux / macOS:   cd ${rootName} && sha256sum -c MANIFEST.sha256.txt`,
     '  Windows (PowerShell):',
     '    Get-Content MANIFEST.sha256.txt | ForEach-Object {',
@@ -112,10 +128,8 @@ function readmeText(rootName: string, workbookName: string, fileCount: number): 
     '      if ($hash -eq $parts[0]) { "OK   $($parts[1])" } else { "FAIL $($parts[1])" }',
     '    }',
     '',
-    'What this package is not',
-    '  A self-assessment, not an independent Technology Readiness Assessment. Evidence marked',
-    '  "Sensitive — reference only" is never bundled: those rows point at material held',
-    '  elsewhere.',
+    t('excel.package.readme.not.heading'),
+    ...indented(t('excel.package.readme.not.body')),
   ].join('\n');
 }
 
@@ -136,11 +150,13 @@ export async function buildEvidencePackage(
   at: Date = new Date(),
   /** Seam for tests and for the release-artifact script, which run outside a browser. */
   readBlob: BlobReader = getBlob,
+  tr: Translator = currentTranslator(),
 ): Promise<BuiltPackage> {
-  const check = preflight(session);
+  const { t } = tr;
+  const check = preflight(session, tr);
   if (!check.withinLimit) throw new Error(check.message);
 
-  onProgress('Loading the packaging library…');
+  onProgress(t('excel.package.progress.library'));
   const { default: JSZip } = await import('jszip');
   const zip = new JSZip();
 
@@ -149,23 +165,24 @@ export async function buildEvidencePackage(
   const rootName = `TRL_Tier2_${slug}_${stamp}`;
   const workbookName = `${rootName}.xlsx`;
   const root = zip.folder(rootName);
-  if (!root) throw new Error('Could not create the package folder.');
+  if (!root) throw new Error(t('excel.package.error.folder'));
 
   const bundled = bundleableEvidence(session);
   const bundledPaths: Record<string, string> = {};
   for (const item of bundled) bundledPaths[item.id] = `evidence/${evidenceEntryName(item)}`;
 
-  onProgress('Building the workbook…');
-  const workbook = await buildTier2Workbook(framework, session, {
-    packageType: 'zip',
-    bundledPaths,
-    generatedAt: at,
-  });
+  onProgress(t('excel.package.progress.workbook'));
+  const workbook = await buildTier2Workbook(
+    framework,
+    session,
+    { packageType: 'zip', bundledPaths, generatedAt: at },
+    tr,
+  );
   const workbookBlob = await workbookToBlob(workbook);
   const workbookBytes = new Uint8Array(await blobToArrayBuffer(workbookBlob));
   root.file(workbookName, workbookBytes);
 
-  onProgress('Writing the session…');
+  onProgress(t('excel.package.progress.session'));
   const sessionJson = serializeSession(session, at);
   root.file('session.json', sessionJson);
 
@@ -178,7 +195,7 @@ export async function buildEvidencePackage(
   let index = 0;
   for (const item of bundled) {
     index += 1;
-    onProgress(`Adding evidence ${index} of ${bundled.length}…`);
+    onProgress(t('excel.package.progress.evidence', { n: index, total: bundled.length }));
     const blob = await readBlob(item.file!.blobKey);
     if (!blob) continue;
     const bytes = new Uint8Array(await blobToArrayBuffer(blob));
@@ -188,7 +205,7 @@ export async function buildEvidencePackage(
     entries.push(path);
   }
 
-  const readme = readmeText(rootName, workbookName, bundled.length);
+  const readme = readmeText(rootName, workbookName, bundled.length, tr);
   root.file('README.txt', readme);
   manifestEntries.push([await sha256Hex(readme), 'README.txt']);
 
@@ -197,7 +214,7 @@ export async function buildEvidencePackage(
   root.file('MANIFEST.sha256.txt', manifest);
   entries.push('README.txt', 'MANIFEST.sha256.txt');
 
-  onProgress('Compressing…');
+  onProgress(t('excel.package.progress.compress'));
   const blob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE' });
   return { blob, filename: `${rootName}.zip`, rootName, manifest, entries };
 }
@@ -207,8 +224,9 @@ export async function exportEvidencePackage(
   session: AssessmentSession,
   onProgress?: (message: string) => void,
   at: Date = new Date(),
+  tr: Translator = currentTranslator(),
 ): Promise<string> {
-  const built = await buildEvidencePackage(framework, session, onProgress, at, getBlob);
+  const built = await buildEvidencePackage(framework, session, onProgress, at, getBlob, tr);
   downloadBlob(built.blob, built.filename);
   return built.filename;
 }

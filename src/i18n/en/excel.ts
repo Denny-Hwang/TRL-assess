@@ -315,8 +315,7 @@ export const excel = {
   'excel.package.readme.contents': 'Contents',
   'excel.package.readme.workbook': 'the Tier 2 workbook',
   'excel.package.readme.session': 'the full assessment, re-importable into the app',
-  'excel.package.readme.evidence':
-    '{count} evidence file(s), named <EV-ID>_<original name>',
+  'excel.package.readme.evidence': '{count} evidence file(s), named <EV-ID>_<original name>',
   'excel.package.readme.manifest': 'SHA-256 of every file in this package',
   'excel.package.readme.links.heading': 'Opening the links',
   'excel.package.readme.links.body':

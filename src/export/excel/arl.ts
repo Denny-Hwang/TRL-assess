@@ -390,10 +390,7 @@ function buildMetadataSheet(
   const next = writeMetaBlock(sheet, meta, 2, tr);
   const extra: Array<[string, string]> = [
     [t('excel.arl.meta.workbook'), t('excel.arl.meta.workbookValue')],
-    [
-      t('excel.arl.meta.trlFramework'),
-      `${session.frameworkId} (${session.frameworkVersion})`,
-    ],
+    [t('excel.arl.meta.trlFramework'), `${session.frameworkId} (${session.frameworkVersion})`],
     [t('excel.arl.meta.trlFrameworkName'), trlFramework.framework.name],
     [t('excel.row.sessionCreated'), session.createdAt],
     [t('excel.row.sessionUpdated'), session.updatedAt],
