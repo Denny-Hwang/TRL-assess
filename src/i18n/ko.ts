@@ -430,7 +430,8 @@ export const ko: Messages = {
   'evidence.form.owner': '소유자 / 관리자',
   'evidence.form.repoUrl': '저장소 URL',
   'evidence.form.commitSha': '커밋 SHA',
-  'evidence.form.commitShaHint': '항상 커밋을 고정하십시오. 브랜치 이름이 가리키는 커밋은 계속 바뀝니다.',
+  'evidence.form.commitShaHint':
+    '항상 커밋을 고정하십시오. 브랜치 이름이 가리키는 커밋은 계속 바뀝니다.',
   'evidence.form.repoPath': '저장소 내 경로',
   'evidence.form.tag': '태그 / 릴리스',
   'evidence.form.doi': 'DOI',
@@ -801,7 +802,8 @@ export const ko: Messages = {
   'excel.tier1.readme.calc.estimate':
     '추정 TRL은 해당 수준과 그 아래의 모든 수준이 “Yes”(예)로 답변된 가장 높은 수준입니다.',
   'excel.tier1.readme.calc.unsure': '“Unsure”(불확실)는 결코 “Yes”(예)로 간주되지 않습니다.',
-  'excel.tier1.readme.calc.claimed': '주장된 최고 수준은 공백을 무시한 가장 높은 단일 “Yes”(예)입니다.',
+  'excel.tier1.readme.calc.claimed':
+    '주장된 최고 수준은 공백을 무시한 가장 높은 단일 “Yes”(예)입니다.',
   'excel.tier1.readme.calc.matrix':
     '제작 × 환경 교차 점검은 경험적 보조 수단이며 표준이 아니고, 결코 답변을 대체하지 않습니다.',
   'excel.tier1.summary.estimate': '추정 TRL (대표값)',

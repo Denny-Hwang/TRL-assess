@@ -9,19 +9,19 @@ TRL 1 से 9 तक की एक संख्या है जो एक ह�
 ## नौ स्तर
 
 नीचे दी गई परिभाषाएँ DoD की हार्डवेयर परिभाषाएँ हैं (`dod-tra-2025`, Table 2-1, pp. 6–7), जो स्रोत के
-अनुसार अंग्रेज़ी में दी गई हैं। प्रत्येक फ़्रेमवर्क हर प्रश्न के सहायता पाठ में अपनी परिभाषा दिखाता है।
+अनुसार अंग्रेज़ी में दी गई हैं; कोष्ठक में केवल संदर्भ के लिए एक अनौपचारिक अनुवाद दिया गया है। प्रत्येक फ़्रेमवर्क हर प्रश्न के सहायता पाठ में अपनी परिभाषा दिखाता है।
 
-| TRL | परिभाषा                                                                              | वातावरण               |
-| --- | ------------------------------------------------------------------------------------ | --------------------- |
-| 1   | Basic principles observed and reported                                               | —                     |
-| 2   | Technology concept and/or application formulated                                     | विश्लेषण              |
-| 3   | Analytical and experimental critical function and/or characteristic proof of concept | प्रयोगशाला            |
-| 4   | Component and/or breadboard validation in a laboratory environment                   | प्रयोगशाला            |
-| 5   | Component and/or breadboard validation in a relevant environment                     | प्रासंगिक             |
-| 6   | System/subsystem model or prototype demonstration in a relevant environment          | प्रासंगिक             |
-| 7   | System prototype demonstration in an operational environment                         | परिचालन               |
-| 8   | Actual system completed and qualified through test and demonstration                 | अपेक्षित परिस्थितियाँ |
-| 9   | Actual system proven through successful mission operations                           | मिशन परिस्थितियाँ     |
+| TRL | परिभाषा                                                                                                                                                                    | वातावरण               |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| 1   | Basic principles observed and reported (अनुवाद: मूल सिद्धांत प्रेक्षित और रिपोर्ट किए गए)                                                                                  | —                     |
+| 2   | Technology concept and/or application formulated (अनुवाद: प्रौद्योगिकी अवधारणा और/या अनुप्रयोग सूत्रबद्ध)                                                                  | विश्लेषण              |
+| 3   | Analytical and experimental critical function and/or characteristic proof of concept (अनुवाद: महत्वपूर्ण कार्य और/या विशेषता का विश्लेषणात्मक और प्रायोगिक अवधारणा-प्रमाण) | प्रयोगशाला            |
+| 4   | Component and/or breadboard validation in a laboratory environment (अनुवाद: प्रयोगशाला वातावरण में घटक और/या ब्रेडबोर्ड का सत्यापन)                                        | प्रयोगशाला            |
+| 5   | Component and/or breadboard validation in a relevant environment (अनुवाद: प्रासंगिक वातावरण में घटक और/या ब्रेडबोर्ड का सत्यापन)                                           | प्रासंगिक             |
+| 6   | System/subsystem model or prototype demonstration in a relevant environment (अनुवाद: प्रासंगिक वातावरण में प्रणाली/उपप्रणाली मॉडल या प्रोटोटाइप का प्रदर्शन)               | प्रासंगिक             |
+| 7   | System prototype demonstration in an operational environment (अनुवाद: परिचालन वातावरण में प्रणाली प्रोटोटाइप का प्रदर्शन)                                                  | परिचालन               |
+| 8   | Actual system completed and qualified through test and demonstration (अनुवाद: वास्तविक प्रणाली पूर्ण की गई और परीक्षण तथा प्रदर्शन के माध्यम से योग्य प्रमाणित की गई)      | अपेक्षित परिस्थितियाँ |
+| 9   | Actual system proven through successful mission operations (अनुवाद: सफल मिशन संचालनों के माध्यम से वास्तविक प्रणाली सिद्ध हुई)                                             | मिशन परिस्थितियाँ     |
 
 स्तर इस बात से तय होता है कि _क्या_ परखा गया और _कहाँ_।
 
