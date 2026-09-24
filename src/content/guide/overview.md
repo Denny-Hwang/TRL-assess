@@ -11,17 +11,17 @@ project is run.
 The definitions below are the DoD hardware definitions (`dod-tra-2025`, Table 2-1, pp. 6–7). Each
 framework shows its own definition in the help text of every question.
 
-| TRL | Definition                                                                         | Environment            |
-| --- | ---------------------------------------------------------------------------------- | ---------------------- |
-| 1   | Basic principles observed and reported                                             | —                      |
-| 2   | Technology concept and/or application formulated                                   | analysis               |
-| 3   | Analytical and experimental critical function and/or characteristic proof of concept | laboratory             |
-| 4   | Component and/or breadboard validation in a laboratory environment                 | laboratory             |
-| 5   | Component and/or breadboard validation in a relevant environment                   | relevant               |
-| 6   | System/subsystem model or prototype demonstration in a relevant environment        | relevant               |
-| 7   | System prototype demonstration in an operational environment                       | operational            |
-| 8   | Actual system completed and qualified through test and demonstration               | expected conditions    |
-| 9   | Actual system proven through successful mission operations                         | mission conditions     |
+| TRL | Definition                                                                           | Environment         |
+| --- | ------------------------------------------------------------------------------------ | ------------------- |
+| 1   | Basic principles observed and reported                                               | —                   |
+| 2   | Technology concept and/or application formulated                                     | analysis            |
+| 3   | Analytical and experimental critical function and/or characteristic proof of concept | laboratory          |
+| 4   | Component and/or breadboard validation in a laboratory environment                   | laboratory          |
+| 5   | Component and/or breadboard validation in a relevant environment                     | relevant            |
+| 6   | System/subsystem model or prototype demonstration in a relevant environment          | relevant            |
+| 7   | System prototype demonstration in an operational environment                         | operational         |
+| 8   | Actual system completed and qualified through test and demonstration                 | expected conditions |
+| 9   | Actual system proven through successful mission operations                           | mission conditions  |
 
 The level is decided by _what_ was tested and _where_.
 

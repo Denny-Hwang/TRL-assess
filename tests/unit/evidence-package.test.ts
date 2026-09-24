@@ -29,7 +29,7 @@ vi.mock('@/storage/blobStore', () => ({
 const { buildEvidencePackage, evidenceEntryName, preflight, sanitizeFileName } =
   await import('@/export/zip/package');
 
-const framework = resolveFramework('marine-energy-eere');
+const framework = resolveFramework('dod-tra-2025');
 const generatedAt = new Date('2026-02-03T04:05:06.000Z');
 
 const FILE_CONTENT = 'fictional bench test record';
@@ -51,7 +51,7 @@ function sessionWithFiles(): AssessmentSession {
       mime: 'text/plain',
     },
   });
-  session = linkEvidence(bench.session, bench.id, 'CTE-01', 'MEE-T2-L3-01');
+  session = linkEvidence(bench.session, bench.id, 'CTE-01', 'DOD-T2-L3-01');
   blobs.set('blob:bench', new Blob([FILE_CONTENT]));
   blobs.set('blob:sensitive', new Blob([SENSITIVE_CONTENT]));
   return session;

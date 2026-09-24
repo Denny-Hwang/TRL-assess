@@ -55,7 +55,7 @@ describe('Tier 2 — CTE register', () => {
   it('adds a CTE and selects it', async () => {
     const user = userEvent.setup();
     renderAssess();
-    await user.type(screen.getByLabelText(/^Name/), 'Wave energy harvester');
+    await user.type(screen.getByLabelText(/^Name/), 'Energy harvester');
     await user.click(screen.getByRole('button', { name: 'Add CTE' }));
     expect(useSessionStore.getState().session.tier2?.ctes).toHaveLength(1);
     expect((await screen.findAllByText('CTE-01')).length).toBeGreaterThan(0);
@@ -227,13 +227,13 @@ describe('Tier 2 — results', () => {
     const rows = await screen.findAllByRole('row');
     expect(rows.length).toBe(4); // header + 3 CTEs
     // The name appears in the table and in the "where the system stands" chart.
-    expect(screen.getAllByText('Wave energy harvester').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Energy harvester').length).toBeGreaterThan(0);
   });
 
   it('lists the gaps at each CTE next level', async () => {
     renderAssess('/assess/result');
     expect(await screen.findByText(/to reach TRL 5/)).toBeInTheDocument();
-    expect(screen.getAllByText(/MEE-T2-L4-T01/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/DOD-T2-L4-02/).length).toBeGreaterThan(0);
   });
 
   it('shows the Tier 2 honest label', async () => {

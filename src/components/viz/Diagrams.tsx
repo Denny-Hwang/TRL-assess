@@ -1,6 +1,7 @@
 import type { MessageKey } from '@/i18n/en';
 import { statusText, trlText } from '@/i18n/domainText';
 import { useT } from '@/i18n/store';
+import { DEFAULT_FRAMEWORK } from '@/config/app.config';
 import { VIZ } from './tokens';
 
 const BOX = { rx: 6, stroke: VIZ.neutral.emptyStroke, fill: VIZ.surface } as const;
@@ -22,7 +23,7 @@ export function DecompositionTree({ className }: { className?: string }) {
     { id: 'power', name: 'guide.fig.cte.power', kind: 'kind.hardware', critical: true },
     { id: 'firmware', name: 'guide.fig.cte.firmware', kind: 'kind.software', critical: true },
     { id: 'enclosure', name: 'guide.fig.cte.enclosure', kind: 'kind.hardware', critical: true },
-    { id: 'mooring', name: 'guide.fig.cte.mooring', kind: 'kind.process', critical: false },
+    { id: 'install', name: 'guide.fig.cte.install', kind: 'kind.process', critical: false },
   ];
   const w = 640;
   const colW = w / parts.length;
@@ -33,9 +34,9 @@ export function DecompositionTree({ className }: { className?: string }) {
       <svg viewBox={`0 0 ${w} 170`} width="100%" role="img" aria-label={label}>
         <title>{label}</title>
         <rect
-          x={w / 2 - 90}
+          x={w / 2 - 110}
           y={4}
-          width={180}
+          width={220}
           height={34}
           {...BOX}
           fill={VIZ.brandSoft}
@@ -348,14 +349,18 @@ export function FrameworkRelation({ className }: { className?: string }) {
   const { t } = useT();
   const label = t('guide.fig.frameworks.label');
   const w = 620;
+  const isDefault = (id: string) => (DEFAULT_FRAMEWORK as string) === id;
+  const title = (id: string) => (isDefault(id) ? t('guide.fig.frameworks.default', { id }) : id);
+  const box = (id: string) =>
+    isDefault(id) ? { ...BOX, fill: VIZ.brandSoft, stroke: VIZ.brand } : BOX;
   return (
     <figure className={className}>
       <svg viewBox={`0 0 ${w} 190`} width="100%" role="img" aria-label={label}>
         <title>{label}</title>
 
-        <rect x={0} y={20} width={230} height={70} {...BOX} />
+        <rect x={0} y={20} width={230} height={70} {...box('dod-tra-2025')} />
         <text x={115} y={42} textAnchor="middle" fontSize={12} fontWeight={600}>
-          dod-tra-2025
+          {title('dod-tra-2025')}
         </text>
         <text x={115} y={58} textAnchor="middle" fontSize={10} fill={VIZ.ink.secondary}>
           {t('guide.fig.frameworks.dodCriteria')}
@@ -370,17 +375,9 @@ export function FrameworkRelation({ className }: { className?: string }) {
           {t('guide.fig.frameworks.extends')}
         </text>
 
-        <rect
-          x={304}
-          y={10}
-          width={316}
-          height={90}
-          {...BOX}
-          fill={VIZ.brandSoft}
-          stroke={VIZ.brand}
-        />
+        <rect x={304} y={10} width={316} height={90} {...box('marine-energy-eere')} />
         <text x={462} y={32} textAnchor="middle" fontSize={12} fontWeight={600}>
-          {t('guide.fig.frameworks.marine')}
+          {title('marine-energy-eere')}
         </text>
         <text x={462} y={50} textAnchor="middle" fontSize={10} fill={VIZ.ink.secondary}>
           {t('guide.fig.frameworks.marineCriteria')}

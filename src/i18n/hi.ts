@@ -641,7 +641,7 @@ export const hi: Messages = {
   'guide.fig.cte.power': 'पावर\nरूपांतरण',
   'guide.fig.cte.firmware': 'टेलीमेट्री\nफ़र्मवेयर',
   'guide.fig.cte.enclosure': 'आवरण\nऔर सीलिंग',
-  'guide.fig.cte.mooring': 'मूरिंग और\nपुनर्प्राप्ति',
+  'guide.fig.cte.install': 'Installation\nprocedure',
   'guide.fig.cte.critical': 'महत्वपूर्ण',
   'guide.fig.cte.notCritical': 'महत्वपूर्ण नहीं',
   'guide.fig.cte.caption':
@@ -686,7 +686,7 @@ export const hi: Messages = {
   'guide.fig.frameworks.dodCriteria': '58 मानदंड, शब्दशः',
   'guide.fig.frameworks.dodTables': 'हार्डवेयर + सॉफ़्टवेयर तालिकाएँ',
   'guide.fig.frameworks.extends': 'विस्तार करता है',
-  'guide.fig.frameworks.marine': 'marine-energy-eere (डिफ़ॉल्ट)',
+  'guide.fig.frameworks.default': '{id} (default)',
   'guide.fig.frameworks.marineCriteria': 'DoD मानदंडों का संदर्भ + 8 अनुकूलित मद',
   'guide.fig.frameworks.marineMandatory': 'स्तर-निर्धारक मानदंड को अनिवार्य बनाता है',
   'guide.fig.frameworks.marineQuestions': 'टियर 1 प्रश्न EERE R 540.112-02 से रूपांतरित',
@@ -737,9 +737,6 @@ export const hi: Messages = {
     'प्रत्येक फ़्रेमवर्क में क्या है, वह कहाँ से आता है, और उसकी सीमाएँ।',
   'guide.page.arl.title': 'अंगीकरण तत्परता (ARL)',
   'guide.page.arl.summary': 'ARL सहायक मॉड्यूल: 17 अंगीकरण-जोखिम आयाम और लुक-अप तालिका।',
-  'guide.page.marine-and-ocean.title': 'समुद्री और महासागरीय अनुकूलन',
-  'guide.page.marine-and-ocean.summary':
-    'समुद्र में “प्रासंगिक वातावरण” का क्या अर्थ है, और संबंधित तत्परता पैमाने।',
   'guide.page.stage-crosswalk.title': 'चरण क्रॉसवॉक',
   'guide.page.stage-crosswalk.summary':
     'TRL से मैप किया गया एक सेंसर विकास-चरण मॉडल — केवल सूचनार्थ।',

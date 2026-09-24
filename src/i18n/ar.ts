@@ -626,7 +626,7 @@ export const ar: Messages = {
   'guide.fig.cte.power': 'تحويل\nالطاقة',
   'guide.fig.cte.firmware': 'برمجيات ثابتة\nللقياس عن بُعد',
   'guide.fig.cte.enclosure': 'الغلاف\nوالإحكام',
-  'guide.fig.cte.mooring': 'الإرساء\nوالاسترداد',
+  'guide.fig.cte.install': 'Installation\nprocedure',
   'guide.fig.cte.critical': 'حرج',
   'guide.fig.cte.notCritical': 'غير حرج',
   'guide.fig.cte.caption':
@@ -670,7 +670,7 @@ export const ar: Messages = {
   'guide.fig.frameworks.dodCriteria': '58 معيارًا، حرفية',
   'guide.fig.frameworks.dodTables': 'جداول العتاد + البرمجيات',
   'guide.fig.frameworks.extends': 'يوسّع',
-  'guide.fig.frameworks.marine': 'marine-energy-eere (الافتراضي)',
+  'guide.fig.frameworks.default': '{id} (default)',
   'guide.fig.frameworks.marineCriteria': 'يشير إلى معايير DoD + 8 بنود مُخصَّصة',
   'guide.fig.frameworks.marineMandatory': 'يرفع المعيار المحدِّد للمستوى إلى إلزامي',
   'guide.fig.frameworks.marineQuestions': 'أسئلة المستوى 1 (Tier 1) مُكيَّفة من EERE R 540.112-02',
@@ -721,9 +721,6 @@ export const ar: Messages = {
   'guide.page.arl.title': 'جاهزية التبنّي (ARL)',
   'guide.page.arl.summary':
     'الوحدة الجانبية ARL: أبعاد مخاطر التبنّي السبعة عشر وجدول المطابقة.',
-  'guide.page.marine-and-ocean.title': 'التخصيص للبيئة البحرية والمحيطات',
-  'guide.page.marine-and-ocean.summary':
-    'ما تعنيه «البيئة ذات الصلة» في البحر، ومقاييس الجاهزية المرتبطة.',
   'guide.page.stage-crosswalk.title': 'مقابلة المراحل',
   'guide.page.stage-crosswalk.summary':
     'نموذج لمراحل تطوير أجهزة الاستشعار مقابل TRL — لأغراض إعلامية فقط.',

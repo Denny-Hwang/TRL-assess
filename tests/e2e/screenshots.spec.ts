@@ -37,7 +37,7 @@ test.describe('screenshots', () => {
     await page.screenshot({ path: path.join(OUT, 'tier1-result.png'), fullPage: true });
 
     await page.goto('./#/assess');
-    await expect(page.getByText('Wave energy harvester').first()).toBeVisible();
+    await expect(page.getByText('Energy harvester').first()).toBeVisible();
     await page.screenshot({ path: path.join(OUT, 'tier2-criteria.png'), fullPage: true });
 
     await page.goto('./#/assess/result');

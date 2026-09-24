@@ -1,10 +1,9 @@
 # Stage crosswalk
 
-> **A user-provided reference model, not an official standard.** Stage models are
-> organization-specific. Use them for communication, not as a basis for TRL scoring.
+> **A reference model, not an official standard.** Stage models are organization-specific. Use them
+> for communication, not as a basis for TRL scoring.
 
-Many hardware teams run a sensor development-stage model that is finer than TRL near the prototype
-end and says nothing about environments. This maps one such model onto TRL for translation.
+This maps one common hardware development-stage model onto TRL.
 
 :::figure stage-crosswalk:::
 
@@ -24,19 +23,6 @@ end and says nothing about environments. This maps one such model onto TRL for t
 ## Why the ranges are wide
 
 A stage says what you **built**; a TRL says what you **demonstrated, and where**. A miniaturized
-prototype tested only on a bench is TRL 4, however polished. The same prototype in a relevant
-environment is 5, and integrated into the system and demonstrated there, 6. That is exactly what the
-Tier 1 cross-check encodes: a build code alone cannot produce a high TRL without an environment code
-to match.
-
-## Where the two disagree
-
-- **Stages 8–9 are mostly manufacturing and commercial questions.** TRL does not measure them — MRL
-  and ARL do.
-- **Stage models rarely mention the operational environment.** Two teams at "Stage 7" can be TRL 6
-  and TRL 7 depending on whether anything went to sea.
-- **Stage models are linear; readiness is not.** Elements of one system routinely sit at different
-  TRLs, which is why assessment is per CTE.
-
-Use the crosswalk to answer "what does our Stage 6 mean in TRL terms?" — then run the assessment to
-find out.
+prototype tested only on a bench is TRL 4; in a relevant environment, 5; integrated into the system
+and demonstrated there, 6. Stages 8–9 are mostly manufacturing and commercial questions, which TRL
+does not measure.

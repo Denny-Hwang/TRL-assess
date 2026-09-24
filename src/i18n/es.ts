@@ -647,7 +647,7 @@ export const es: Messages = {
   'guide.fig.cte.power': 'Conversión\nde potencia',
   'guide.fig.cte.firmware': 'Firmware de\ntelemetría',
   'guide.fig.cte.enclosure': 'Envolvente\ny estanqueidad',
-  'guide.fig.cte.mooring': 'Fondeo y\nrecuperación',
+  'guide.fig.cte.install': 'Installation\nprocedure',
   'guide.fig.cte.critical': 'crítico',
   'guide.fig.cte.notCritical': 'no crítico',
   'guide.fig.cte.caption':
@@ -692,7 +692,7 @@ export const es: Messages = {
   'guide.fig.frameworks.dodCriteria': '58 criterios, literales',
   'guide.fig.frameworks.dodTables': 'tablas de hardware + software',
   'guide.fig.frameworks.extends': 'amplía',
-  'guide.fig.frameworks.marine': 'marine-energy-eere (predeterminado)',
+  'guide.fig.frameworks.default': '{id} (default)',
   'guide.fig.frameworks.marineCriteria': 'remite a los criterios del DoD + 8 elementos a medida',
   'guide.fig.frameworks.marineMandatory':
     'convierte en obligatorio el criterio que define el nivel',
@@ -746,9 +746,6 @@ export const es: Messages = {
   'guide.page.arl.title': 'Preparación para la adopción (ARL)',
   'guide.page.arl.summary':
     'El módulo complementario ARL: 17 dimensiones de riesgo de adopción y la tabla de consulta.',
-  'guide.page.marine-and-ocean.title': 'Adaptación al medio marino y oceánico',
-  'guide.page.marine-and-ocean.summary':
-    'Qué significa «entorno relevante» en el mar y escalas de madurez relacionadas.',
   'guide.page.stage-crosswalk.title': 'Correspondencia de etapas',
   'guide.page.stage-crosswalk.summary':
     'Un modelo de etapas de desarrollo de sensores asignado a TRL; solo a título informativo.',

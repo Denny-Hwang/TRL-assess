@@ -633,7 +633,7 @@ export const ja: Messages = {
   'guide.fig.cte.power': '電力\n変換',
   'guide.fig.cte.firmware': 'テレメトリー\nファームウェア',
   'guide.fig.cte.enclosure': '筐体と\nシーリング',
-  'guide.fig.cte.mooring': '係留と\n回収',
+  'guide.fig.cte.install': 'Installation\nprocedure',
   'guide.fig.cte.critical': '重要',
   'guide.fig.cte.notCritical': '重要でない',
   'guide.fig.cte.caption':
@@ -678,7 +678,7 @@ export const ja: Messages = {
   'guide.fig.frameworks.dodCriteria': '58 の基準、原文どおり',
   'guide.fig.frameworks.dodTables': 'ハードウェア + ソフトウェアの表',
   'guide.fig.frameworks.extends': '拡張',
-  'guide.fig.frameworks.marine': 'marine-energy-eere（既定）',
+  'guide.fig.frameworks.default': '{id} (default)',
   'guide.fig.frameworks.marineCriteria': 'DoD の基準を参照 + テーラリング項目 8 つ',
   'guide.fig.frameworks.marineMandatory': 'レベルを定義する基準を必須に格上げ',
   'guide.fig.frameworks.marineQuestions': 'Tier 1 の質問は EERE R 540.112-02 から再構成',
@@ -726,8 +726,6 @@ export const ja: Messages = {
   'guide.page.frameworks.summary': '各フレームワークの内容、その出所、制限事項。',
   'guide.page.arl.title': '導入準備度（ARL）',
   'guide.page.arl.summary': 'ARL サイドモジュール：17 の導入リスク観点と参照表。',
-  'guide.page.marine-and-ocean.title': '海洋向けのテーラリング',
-  'guide.page.marine-and-ocean.summary': '海上における「関連環境」の意味と、関連する成熟度尺度。',
   'guide.page.stage-crosswalk.title': 'ステージ対応表',
   'guide.page.stage-crosswalk.summary':
     'センサー開発のステージモデルと TRL の対応 — 参考情報のみ。',

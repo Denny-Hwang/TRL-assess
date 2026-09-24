@@ -235,9 +235,13 @@ describe('Tier 2 workbook — Criteria_Assessment', () => {
         .filter(Boolean)
         .every((s) => s.length > 0),
     ).toBe(true);
-    expect(new Set(column('Criteria_Assessment', 'G').filter(Boolean))).toEqual(
-      new Set(['Yes', 'No']),
-    );
+    const mandatory = new Map(framework.tier2.map((c) => [c.id, c.mandatory ? 'Yes' : 'No']));
+    const ids = column('Criteria_Assessment', 'D');
+    const flags = column('Criteria_Assessment', 'G');
+    for (const [index, criterionId] of ids.entries()) {
+      if (!criterionId) continue;
+      expect(flags[index], criterionId).toBe(mandatory.get(criterionId));
+    }
   });
 
   it('applies conditional formatting to Status and Satisfied', () => {
@@ -334,6 +338,30 @@ describe('Tier 2 workbook — Gap_Actions, Review_Signoff, References, Metadata'
 
   it('lists every source cited by the framework', () => {
     const ids = column('References', 'A').filter(Boolean);
+    expect(ids).toEqual([...framework.framework.sources]);
+    expect(ids).toContain('dod-tra-2025');
+  });
+
+  it('carries mandatory flags and every source for a framework that defines them', async () => {
+    const marine = resolveFramework('marine-energy-eere');
+    const marineSession = {
+      ...session,
+      frameworkId: 'marine-energy-eere',
+      tier2: { ...session.tier2!, assessments: [], evidence: [], gapActions: [] },
+    };
+    const workbook = await buildTier2Workbook(marine, marineSession, { generatedAt });
+    const buffer = await workbook.xlsx.writeBuffer();
+    const reloaded = new ExcelJS.Workbook();
+    await reloaded.xlsx.load(buffer as ArrayBuffer);
+    const values = (name: string, col: string) => {
+      const ws = reloaded.getWorksheet(name)!;
+      const out: string[] = [];
+      for (let r = 2; r <= ws.rowCount; r += 1)
+        out.push(String(ws.getCell(`${col}${r}`).value ?? ''));
+      return out.filter(Boolean);
+    };
+    expect(new Set(values('Criteria_Assessment', 'G'))).toEqual(new Set(['Yes', 'No']));
+    const ids = values('References', 'A');
     expect(ids).toContain('dod-tra-2025');
     expect(ids).toContain('eere-r540-112-02');
     expect(ids).toContain('nrel-me-risk');
@@ -343,7 +371,7 @@ describe('Tier 2 workbook — Gap_Actions, Review_Signoff, References, Metadata'
     const keys = column('Metadata', 'A');
     const values = column('Metadata', 'B');
     const get = (k: string) => values[keys.indexOf(k)];
-    expect(get('Framework')).toBe('marine-energy-eere');
+    expect(get('Framework')).toBe('dod-tra-2025');
     expect(get('Framework version')).toBe('1.0.0');
     // The example file is schema v1; parseSession migrates it to the current version.
     expect(get('Session schema version')).toBe(String(SCHEMA_VERSION));

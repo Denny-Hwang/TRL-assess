@@ -19,10 +19,8 @@ Anything a reviewer could examine without asking you.
 | Web link          | A stable public page — facility, standard, dataset                     | A search-results URL, or a page behind login |
 | Other             | A calibration certificate, an audit record                             | "See the shared drive"                       |
 
-- **Tie it to the criterion.** Say why the test environment is relevant for this element.
-- **Pin the commit.** The tool requires a 7–40 character SHA and a path in the repository.
-- **Record the conditions:** article and revision, date, place, operator, test conditions,
-  acceptance criteria and results — including failures.
+Record the article and revision, date, operator, conditions, acceptance criteria and results —
+including failures. A repository link needs a 7–40 character commit SHA and a path.
 
 ## Relevant versus operational environment
 
@@ -36,9 +34,7 @@ This distinction separates TRL 5/6 from 7/8.
 - An **operational environment** is "a set of conditions, representative of the full spectrum of
   employments" applied to a prototype (TRL 7) or the actual system (TRL 8) — `dod-tra-2025`, p. 13.
 
-"Full spectrum" means one favourable test is not enough; if you extend confidence by analysis, say
-so. The step from 6 to 7 also needs a prototype of the planned operational system, not a laboratory
-stand-in.
+"Full spectrum" means one favourable test is not enough.
 
 ## Markings
 
@@ -50,4 +46,4 @@ classified, export-controlled or CUI content.
 
 Each item is **Unverified**, **Verified** or **Rejected**, with a verifier and date. Only _Rejected_
 affects scoring: rejected evidence is excluded, so a criterion resting only on it stops being
-satisfied. The evidence coverage figure shows how much of your "Met" is backed.
+satisfied.
