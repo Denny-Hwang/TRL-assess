@@ -218,7 +218,7 @@ export function SourceTranslation({
   const translated = st(text);
   if (!translated) return null;
   return (
-    <span lang={lang} className={`${inline ? 'ms-1' : 'mt-0.5 block'} font-normal text-slate-500`}>
+    <span lang={lang} className={`${inline ? 'ms-1' : 'mt-0.5 block'} font-normal text-slate-600`}>
       {inParentheses(translated)}
     </span>
   );

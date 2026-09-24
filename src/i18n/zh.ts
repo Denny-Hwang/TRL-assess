@@ -587,13 +587,13 @@ export const zh: Messages = {
   'guide.fig.arlLookup.caption.value': 'ARL 6',
   'guide.fig.arlLookup.caption.after': '。高风险的权重最大。',
   'guide.fig.cte.label':
-    '一个远程传感器节点被分解为五个要素：能量收集器、电源管理、遥测固件、外壳与密封——均为关键要素——以及安装程序，它是一项流程，在此处不属于关键要素。',
+    '一个远程传感器节点被分解为五个要素：能量收集器、电源管理、遥测固件、外壳与密封——均为关键要素——以及安装规程，它是一项流程，在此处不属于关键要素。',
   'guide.fig.cte.system': '远程传感器节点（系统）',
   'guide.fig.cte.harvester': '能量\n收集器',
   'guide.fig.cte.power': '电源\n管理',
   'guide.fig.cte.firmware': '遥测\n固件',
   'guide.fig.cte.enclosure': '外壳\n与密封',
-  'guide.fig.cte.install': '安装\n程序',
+  'guide.fig.cte.install': '安装\n规程',
   'guide.fig.cte.critical': '关键',
   'guide.fig.cte.notCritical': '非关键',
   'guide.fig.cte.caption': '每个要素单独评估；只有关键要素计入系统汇总。',
@@ -614,7 +614,7 @@ export const zh: Messages = {
   'guide.fig.env.e0.name': '仅分析',
   'guide.fig.env.e0.note': '模型，无硬件',
   'guide.fig.env.e1.name': '实验室',
-  'guide.fig.env.e1.note': '试验台，环境条件',
+  'guide.fig.env.e1.note': '试验台，室内常规条件',
   'guide.fig.env.e2.name': '相关环境',
   'guide.fig.env.e2.note': '再现关键应力',
   'guide.fig.env.e3.name': '运行环境（有限）',
@@ -771,13 +771,14 @@ export const zh: Messages = {
   'excel.tier1.readme.fill.sensitive':
     '切勿将受控或敏感内容粘贴到本工作簿中，请改为记录一个引用指向。',
   'excel.tier1.readme.calc.heading': '估算的计算方式',
-  'excel.tier1.readme.calc.estimate': '估算 TRL 是指该等级及其下每一级都回答为“是”的最高等级。',
-  'excel.tier1.readme.calc.unsure': '“不确定”绝不计为“是”。',
-  'excel.tier1.readme.calc.claimed': '申报的最高等级是单个“是”的最高等级，不考虑中断。',
+  'excel.tier1.readme.calc.estimate':
+    '估算 TRL 是指该等级及其下每一级都回答为“Yes”（是）的最高等级。',
+  'excel.tier1.readme.calc.unsure': '“Unsure”（不确定）绝不计为“Yes”（是）。',
+  'excel.tier1.readme.calc.claimed': '申报的最高等级是单个“Yes”（是）的最高等级，不考虑中断。',
   'excel.tier1.readme.calc.matrix':
     '构建 × 环境交叉核对是一种启发式辅助手段，并非标准，且绝不会覆盖您的回答。',
   'excel.tier1.summary.estimate': '估算 TRL（主要结果）',
-  'excel.tier1.summary.claimed': '申报的最高等级（首个“是”）',
+  'excel.tier1.summary.claimed': '申报的最高等级（首个“Yes”）',
   'excel.tier1.summary.matrix': '构建 × 环境交叉核对',
   'excel.tier1.summary.consistency': '一致性评级',
   'excel.tier1.summary.flags': '警示',
@@ -818,14 +819,14 @@ export const zh: Messages = {
     '(b) 在“本地文件（相对路径）”列中填入相对路径，并将文件保存在本工作簿旁边的 evidence/ 文件夹中。',
   'excel.tier2.readme.attach.open': '(c) “打开”列会将上述任一项转为可点击的链接。',
   'excel.tier2.readme.attach.sensitive':
-    '(d) 切勿将敏感内容粘贴到本工作簿中。请改用一行标识为“敏感——仅作引用”的记录来指向该材料。',
+    '(d) 切勿将敏感内容粘贴到本工作簿中。请改用一行“标识”为“Sensitive — reference only”（敏感——仅作引用）的记录来指向该材料。',
   'excel.tier2.readme.attach.zip':
     '本工作簿是在证据包中导出的：相对路径已指向随附的 evidence/ 文件夹。',
   'excel.tier2.readme.attach.standalone':
     '本工作簿是单独导出的。相对路径仅供参考，文件并未随附——请导出证据包以获取这些文件。',
   'excel.tier2.readme.calc.heading': '评估的计算方式',
   'excel.tier2.readme.calc.satisfied':
-    '当一项准则为“符合”且至少关联了一项未被驳回的证据，或为“不适用”且附有说明时，该准则即为已满足。',
+    '当一项准则为“Met”（符合）且至少关联了一项未被驳回的证据，或为“N/A”（不适用）且附有说明时，该准则即为已满足。',
   'excel.tier2.readme.calc.level':
     '当某一等级的每条适用的必需准则均已满足，且其下一级已达到时，该等级即为已达到。',
   'excel.tier2.readme.calc.cte': 'CTE 的 TRL 是其已达到的最高等级。',
@@ -900,11 +901,11 @@ export const zh: Messages = {
   'excel.arl.readme.contents.metadata': 'Metadata——本次导出的出处信息。',
   'excel.arl.readme.calc.heading': 'ARL 的计算方式',
   'excel.arl.readme.calc.rated':
-    '依据 DOE 采用就绪度评估（Adoption Readiness Assessment）评分细则，将每个维度评为低风险、中风险或高风险，或不适用。',
+    '依据 DOE 采用就绪度评估（Adoption Readiness Assessment）评分细则，将每个维度评为 Low（低风险）、Medium（中风险）或 High（高风险），或 N/A（不适用）。',
   'excel.arl.readme.calc.tally':
     '统计中风险和高风险维度的数量，并从第 13 页的来源查询表中读出 ARL，不作任何修改。',
   'excel.arl.readme.calc.conservative':
-    '本工具将“不确定”“未评估”以及无理由的“不适用”计为高风险——这是本工具的保守惯例，并非来源的规定。',
+    '本工具将“Unsure”（不确定）、“Not assessed”（未评估）以及无理由的“N/A”（不适用）计为 High（高风险）——这是本工具的保守惯例，并非来源的规定。',
   'excel.arl.readme.calc.end':
     'ARL 终点使用项目结束时的目标；未设定目标的，沿用当前评级。{target}。',
   'excel.arl.readme.calc.trl':
@@ -971,11 +972,11 @@ export const zh: Messages = {
   'excel.package.readme.manifest': '本证据包中每个文件的 SHA-256',
   'excel.package.readme.links.heading': '打开链接',
   'excel.package.readme.links.body':
-    '请先解压整个文件夹，并保持目录结构不变。Evidence_Register 中的“本地文件（相对\n路径）”单元格指向相对于工作簿的 evidence/…，因此解压文件夹后，\n“打开”列即可正常使用。',
+    '请先解压整个文件夹，并保持目录结构不变。\nEvidence_Register 中的“本地文件（相对路径）”单元格指向相对于工作簿的 evidence/…，\n因此解压文件夹后，“打开”列即可正常使用。',
   'excel.package.readme.hashes.heading': '校验哈希值',
   'excel.package.readme.not.heading': '本证据包不是什么',
   'excel.package.readme.not.body':
-    '这是一份自评估，而不是独立的技术成熟度评价。标识为\n“敏感——仅作引用”的证据绝不会打包：这些行指向存放在\n别处的材料。',
+    '这是一份自评估，而不是独立的技术成熟度评价。标识为\n“Sensitive — reference only”（敏感——仅作引用）的证据绝不会打包：\n这些行指向存放在别处的材料。',
   'about.data.heading': '本地数据',
   'about.data.body': '评估和证据文件仅保存在此浏览器中。清除前请先导出需要保留的内容。',
   'about.data.clear': '清除所有本地数据',
