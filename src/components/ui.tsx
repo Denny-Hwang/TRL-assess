@@ -219,9 +219,14 @@ export function SourceTranslation({
   if (!translated) return null;
   return (
     <span lang={lang} className={`${inline ? 'ms-1' : 'mt-0.5 block'} font-normal text-slate-500`}>
-      ({translated})
+      {inParentheses(translated)}
     </span>
   );
+}
+
+/** Wraps a translation in parentheses unless it already is (some source text is parenthetical). */
+function inParentheses(text: string): string {
+  return /^[(（].*[)）]$/su.test(text.trim()) ? text : `(${text})`;
 }
 
 /** English source content (criterion, question, rubric text…) exactly as published + translation. */
@@ -244,5 +249,5 @@ export function SourceText({
 /** For places that take plain text (an `<option>`, a tooltip): "English (translation)". */
 export function withTranslation(tr: Translator, text: string): string {
   const translated = tr.st(text);
-  return translated ? `${text} (${translated})` : text;
+  return translated ? `${text} ${inParentheses(translated)}` : text;
 }

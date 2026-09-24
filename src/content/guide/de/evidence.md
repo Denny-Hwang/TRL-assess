@@ -32,8 +32,8 @@ Diese Unterscheidung trennt TRL 5/6 von 7/8.
 
 - Eine **relevante Umgebung** ist „a set of stressing conditions, representative of the full
   spectrum of intended operational employments“ (Übersetzung: „eine Reihe belastender Bedingungen,
-  repräsentativ für das volle Spektrum der vorgesehenen Einsatzarten“), angewendet auf das Element als Teil einer
-  Komponente (TRL 5) oder eines Systems/Teilsystems (TRL 6) — `dod-tra-2025`, S. 12.
+  repräsentativ für das volle Spektrum der vorgesehenen Einsatzarten“), angewendet auf das Element
+  als Teil einer Komponente (TRL 5) oder eines Systems/Teilsystems (TRL 6) — `dod-tra-2025`, S. 12.
 - Eine **Einsatzumgebung** ist „a set of conditions, representative of the full spectrum of
   employments“ (Übersetzung: „eine Reihe von Bedingungen, repräsentativ für das volle Spektrum der
   Einsatzarten“), angewendet auf einen Prototyp (TRL 7) oder das tatsächliche System (TRL 8) —

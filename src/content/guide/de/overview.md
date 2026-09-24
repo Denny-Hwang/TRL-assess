@@ -9,8 +9,8 @@ die Güte der Projektführung.
 ## Die neun Stufen
 
 Die folgenden Definitionen sind die DoD-Hardwaredefinitionen im englischen Originalwortlaut, jeweils
-mit einer inoffiziellen Übersetzung in Klammern (`dod-tra-2025`, Table 2-1, S. 6–7). Jedes Framework zeigt im Hilfetext jeder Frage seine eigene
-Definition.
+mit einer inoffiziellen Übersetzung in Klammern (`dod-tra-2025`, Table 2-1, S. 6–7). Jedes Framework
+zeigt im Hilfetext jeder Frage seine eigene Definition.
 
 | TRL | Definition                                                                                                                                                                                              | Umgebung              |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |

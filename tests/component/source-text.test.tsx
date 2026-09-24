@@ -5,7 +5,10 @@ import { useLangStore } from '@/i18n/store';
 import { createTranslator, EN } from '@/i18n/translate';
 import { en } from '@/i18n/en';
 
-const ko = createTranslator('ko', en, { 'Laboratory environment': '실험실 환경' });
+const ko = createTranslator('ko', en, {
+  'Laboratory environment': '실험실 환경',
+  '(E.g., a note.)': '(예: 메모.)',
+});
 
 afterEach(() => act(() => useLangStore.setState({ translator: EN })));
 
@@ -30,5 +33,6 @@ describe('source text with a reference translation', () => {
     );
     expect(withTranslation(EN, 'Laboratory environment')).toBe('Laboratory environment');
     expect(withTranslation(ko, 'Untranslated')).toBe('Untranslated');
+    expect(withTranslation(ko, '(E.g., a note.)')).toBe('(E.g., a note.) (예: 메모.)');
   });
 });
