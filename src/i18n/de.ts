@@ -21,9 +21,11 @@ export const de: Messages = {
   'ui.origin.verbatim': 'wörtlich',
   'ui.origin.adapted': 'angepasst',
   'ui.origin.tailored': 'zugeschnitten',
-  'ui.origin.verbatim.title': 'Text wörtlich aus einer gemeinfreien Quelle der US-Regierung übernommen.',
+  'ui.origin.verbatim.title':
+    'Text wörtlich aus einer gemeinfreien Quelle der US-Regierung übernommen.',
   'ui.origin.adapted.title': 'Wortlaut der Quelle umstrukturiert; die Bedeutung bleibt erhalten.',
-  'ui.origin.tailored.title': 'Von diesem Framework ergänzt; in keiner Quelle enthalten. Siehe Begründung.',
+  'ui.origin.tailored.title':
+    'Von diesem Framework ergänzt; in keiner Quelle enthalten. Siehe Begründung.',
   'ui.mandatory': 'verpflichtend',
   'ui.optional': 'optional',
   'ui.mandatory.title': 'Für die Stufe erforderlich',
@@ -33,14 +35,19 @@ export const de: Messages = {
   'ui.required': 'erforderlich',
   'ui.loading': 'Wird geladen…',
   'label.tier1': 'Schätzung — Selbstauskunft, ohne Nachweise',
-  'label.tier2': 'Nachweisgestützte Selbstbewertung — keine unabhängige Technologiereifebewertung (TRA)',
+  'label.tier2':
+    'Nachweisgestützte Selbstbewertung — keine unabhängige Technologiereifebewertung (TRA)',
   'label.arl': 'Selbstbewertung der Einführungsreife — nicht vom DOE geprüft oder bestätigt',
   'label.arlTarget': 'Ziel — geplant, nicht erreicht',
-  'disclaimer.trl': '{app} erstellt ausschließlich eine Selbstbewertung — kein unabhängiges Technology Readiness Assessment (TRA), kein Audit und keine Zertifizierung. Die Ergebnisse hängen vollständig von Ihren Eingaben ab; das Tool überprüft nichts. Die Kriterien unterscheiden sich zwischen Behörden — prüfen Sie sie, bevor Sie ein Ergebnis in einer formellen Einreichung verwenden.',
-  'disclaimer.arl': '{app} erstellt ausschließlich eine Selbstbewertung. Die ARL-Werte wenden das Bewertungsraster des DOE Adoption Readiness Assessment auf die von Ihnen eingegebenen Einstufungen an; das Tool überprüft nichts, und das DOE prüft oder bestätigt das Ergebnis nicht.',
-  'notice.sensitive': 'Geben Sie keine kontrollierten, eingestuften, exportkontrollierten oder anderweitig sensiblen Informationen ein. Dieses Tool läuft in Ihrem Browser auf einer öffentlichen statischen Website; verwenden Sie Nachweiseinträge mit der Kennzeichnung „Sensibel — nur Verweis“, um auf solches Material zu verweisen, statt es anzuhängen.',
+  'disclaimer.trl':
+    '{app} erstellt ausschließlich eine Selbstbewertung — kein unabhängiges Technology Readiness Assessment (TRA), kein Audit und keine Zertifizierung. Die Ergebnisse hängen vollständig von Ihren Eingaben ab; das Tool überprüft nichts. Die Kriterien unterscheiden sich zwischen Behörden — prüfen Sie sie, bevor Sie ein Ergebnis in einer formellen Einreichung verwenden.',
+  'disclaimer.arl':
+    '{app} erstellt ausschließlich eine Selbstbewertung. Die ARL-Werte wenden das Bewertungsraster des DOE Adoption Readiness Assessment auf die von Ihnen eingegebenen Einstufungen an; das Tool überprüft nichts, und das DOE prüft oder bestätigt das Ergebnis nicht.',
+  'notice.sensitive':
+    'Geben Sie keine kontrollierten, eingestuften, exportkontrollierten oder anderweitig sensiblen Informationen ein. Dieses Tool läuft in Ihrem Browser auf einer öffentlichen statischen Website; verwenden Sie Nachweiseinträge mit der Kennzeichnung „Sensibel — nur Verweis“, um auf solches Material zu verweisen, statt es anzuhängen.',
   'notice.dismiss': 'Ausblenden',
-  'sourceText.note': 'Kriterien, Prüffragen und Texte des Bewertungsrasters werden auf Englisch angezeigt, genau so, wie ihre Quellen sie veröffentlichen.',
+  'sourceText.note':
+    'Kriterien, Prüffragen und Texte des Bewertungsrasters werden auf Englisch angezeigt, genau so, wie ihre Quellen sie veröffentlichen.',
   'trl.belowOne': '< TRL 1',
   'trl.level': 'TRL {level}',
   'answer.Yes': 'Ja',
@@ -81,52 +88,71 @@ export const de: Messages = {
   'risk.Low': 'Geringes Risiko',
   'risk.Medium': 'Mittleres Risiko',
   'risk.High': 'Hohes Risiko',
-  'tier1.flag.gap': 'Höhere Stufe beansprucht, obwohl eine niedrigere Stufe nicht bestätigt ist: {levels} nicht bestätigt.',
-  'tier1.flag.unsure': 'Bei {levels} wurde „Unsicher“ gewählt. Eine Antwort „Unsicher“ zählt nie als „Ja“, daher bleibt die Schätzung auf oder unter dieser Stufe.',
+  'tier1.flag.gap':
+    'Höhere Stufe beansprucht, obwohl eine niedrigere Stufe nicht bestätigt ist: {levels} nicht bestätigt.',
+  'tier1.flag.unsure':
+    'Bei {levels} wurde „Unsicher“ gewählt. Eine Antwort „Unsicher“ zählt nie als „Ja“, daher bleibt die Schätzung auf oder unter dieser Stufe.',
   'tier1.flag.noAnswers': 'Es wurden noch keine Prüffragen beantwortet.',
-  'tier2.systemNote': 'Konservative Zusammenfassung (Minimum der kritischen CTEs). Dies ist eine Berichtskonvention, keine vorgeschriebene Formel.',
+  'tier2.systemNote':
+    'Konservative Zusammenfassung (Minimum der kritischen CTEs). Dies ist eine Berichtskonvention, keine vorgeschriebene Formel.',
   'tier2.noCritical': 'Nicht berechnet — kennzeichnen Sie mindestens ein CTE als kritisch',
-  'tier2.noMandatory': 'Keine verpflichtenden Kriterien — Bestätigung durch den Bewerter erforderlich',
-  'tier2.warn.metNoEvidenceMandatory': 'Als „Erfüllt“ markiert, aber kein Nachweis verknüpft (oder alle verknüpften Nachweise sind „Abgelehnt“). Ein verpflichtendes Kriterium ist ohne Nachweis nicht anerkannt.',
-  'tier2.warn.metNoEvidenceOptional': 'Als „Erfüllt“ markiert, aber kein Nachweis verknüpft (oder alle verknüpften Nachweise sind „Abgelehnt“). Es zählt nicht zur Vollständigkeit.',
-  'tier2.warn.naNoJustification': '„N/A“ benötigt eine Begründung, bevor es als anerkannt zählen kann.',
+  'tier2.noMandatory':
+    'Keine verpflichtenden Kriterien — Bestätigung durch den Bewerter erforderlich',
+  'tier2.warn.metNoEvidenceMandatory':
+    'Als „Erfüllt“ markiert, aber kein Nachweis verknüpft (oder alle verknüpften Nachweise sind „Abgelehnt“). Ein verpflichtendes Kriterium ist ohne Nachweis nicht anerkannt.',
+  'tier2.warn.metNoEvidenceOptional':
+    'Als „Erfüllt“ markiert, aber kein Nachweis verknüpft (oder alle verknüpften Nachweise sind „Abgelehnt“). Es zählt nicht zur Vollständigkeit.',
+  'tier2.warn.naNoJustification':
+    '„N/A“ benötigt eine Begründung, bevor es als anerkannt zählen kann.',
   'tier2.reason.Met': 'Als „Erfüllt“ markiert, aber kein verwendbarer Nachweis verknüpft.',
   'tier2.reason.Partially met': 'Teilweise erfüllt — ein Teilergebnis erfüllt ein Kriterium nie.',
   'tier2.reason.Not met': 'Nicht erfüllt.',
   'tier2.reason.N/A': 'Als „N/A“ markiert, ohne Begründung.',
   'tier2.reason.Not assessed': 'Noch nicht bewertet.',
-  'tier2.delta.lower': 'Die nachweisbasierte Bewertung liegt deutlich unter der Schnelleinschätzung. Prüfen Sie, welches CTE begrenzend ist und welchen Kriterien noch Nachweise fehlen.',
-  'tier2.delta.higher': 'Die nachweisbasierte Bewertung liegt deutlich über der Schnelleinschätzung. Prüfen Sie, ob in der Schnelleinschätzung auf einer niedrigen Stufe „Unsicher“ oder „Nein“ angegeben wurde und ob jedes als kritisch gekennzeichnete CTE tatsächlich kritisch ist.',
-  'arl.flag.unsure': '„Unsicher“ bei {ids} — als hohes Risiko gewertet. Eine unsichere Einstufung zählt nie als geringeres Risiko.',
-  'arl.flag.notAssessed': 'Nicht bewertet: {count} von {total} ({ids}) — als hohes Risiko gewertet.',
-  'arl.flag.naWithoutRationale': 'N/A ohne Begründung bei {ids} — als hohes Risiko gewertet, bis die Begründung erklärt, warum die Dimension nicht zutrifft.',
-  'arl.flag.noRationale': 'Ohne Begründung eingestuft: {ids}. Die Quelle verlangt zu jeder Einstufung die Begründung und die Einzelheiten.',
-  'arl.flag.noPlan': 'Risikominderung angestrebt, aber keine Maßnahme geplant: {ids}. Geben Sie an, was das Projekt tun wird, um dorthin zu gelangen.',
+  'tier2.delta.lower':
+    'Die nachweisbasierte Bewertung liegt deutlich unter der Schnelleinschätzung. Prüfen Sie, welches CTE begrenzend ist und welchen Kriterien noch Nachweise fehlen.',
+  'tier2.delta.higher':
+    'Die nachweisbasierte Bewertung liegt deutlich über der Schnelleinschätzung. Prüfen Sie, ob in der Schnelleinschätzung auf einer niedrigen Stufe „Unsicher“ oder „Nein“ angegeben wurde und ob jedes als kritisch gekennzeichnete CTE tatsächlich kritisch ist.',
+  'arl.flag.unsure':
+    '„Unsicher“ bei {ids} — als hohes Risiko gewertet. Eine unsichere Einstufung zählt nie als geringeres Risiko.',
+  'arl.flag.notAssessed':
+    'Nicht bewertet: {count} von {total} ({ids}) — als hohes Risiko gewertet.',
+  'arl.flag.naWithoutRationale':
+    'N/A ohne Begründung bei {ids} — als hohes Risiko gewertet, bis die Begründung erklärt, warum die Dimension nicht zutrifft.',
+  'arl.flag.noRationale':
+    'Ohne Begründung eingestuft: {ids}. Die Quelle verlangt zu jeder Einstufung die Begründung und die Einzelheiten.',
+  'arl.flag.noPlan':
+    'Risikominderung angestrebt, aber keine Maßnahme geplant: {ids}. Geben Sie an, was das Projekt tun wird, um dorthin zu gelangen.',
   'arl.reason.Unsure': 'Unsicher — als hohes Risiko gewertet',
   'arl.reason.Not assessed': 'Nicht bewertet — als hohes Risiko gewertet',
   'arl.reason.N/A': 'N/A ohne Begründung — als hohes Risiko gewertet, bis eine erfasst ist',
   'flags.none': 'Keine Warnhinweise.',
   'home.lead': 'Selbstbewertung von Technologiereife (TRL) und Einführungsreife (ARL).',
   'home.ladder.marker': 'Ihr Stand',
-  'home.ladder.label': 'Die TRL-Skala reicht von 1 bis 9; eine Bewertung ermittelt die höchste Stufe, deren Nachweise tragen.',
+  'home.ladder.label':
+    'Die TRL-Skala reicht von 1 bis 9; eine Bewertung ermittelt die höchste Stufe, deren Nachweise tragen.',
   'home.ladder.caption': 'Eine Stufe zählt nur, wenn jede Stufe darunter zählt.',
   'home.flow.heading': 'So funktioniert es',
   'home.flow.quick.title': '1. Schnelleinschätzung',
   'home.flow.quick.detail': 'Neun Fragen, etwa fünf Minuten, keine Dokumente erforderlich.',
   'home.flow.assess.title': '2. Nachweisbewertung',
-  'home.flow.assess.detail': 'Zerlegen Sie das System in kritische Elemente und verknüpfen Sie jede Aussage mit einem Beleg.',
+  'home.flow.assess.detail':
+    'Zerlegen Sie das System in kritische Elemente und verknüpfen Sie jede Aussage mit einem Beleg.',
   'home.flow.export.title': '3. Export',
-  'home.flow.export.detail': 'Excel-Arbeitsmappe oder ein ZIP mit den Nachweisdateien und einem SHA-256-Manifest.',
+  'home.flow.export.detail':
+    'Excel-Arbeitsmappe oder ein ZIP mit den Nachweisdateien und einem SHA-256-Manifest.',
   'home.tier1.heading': 'Tier 1 — Schnelleinschätzung',
   'home.tier1.start': 'Schnelleinschätzung starten',
   'home.tier2.heading': 'Tier 2 — Nachweisbasierte Bewertung',
   'home.tier2.start': 'Nachweisbewertung starten',
   'home.arl.heading': 'Einführungsreifegrad (ARL)',
-  'home.arl.body': 'Bewerten Sie die 17 Einführungsrisiko-Dimensionen des DOE Adoption Readiness Assessment, für heute und für das Projektende. Getrennt vom TRL ausgewiesen.',
+  'home.arl.body':
+    'Bewerten Sie die 17 Einführungsrisiko-Dimensionen des DOE Adoption Readiness Assessment, für heute und für das Projektende. Getrennt vom TRL ausgewiesen.',
   'home.arl.start': 'Einführungsreife bewerten',
   'home.disclaimer.heading': 'Haftungsausschluss',
   'about.title': 'Über {app}',
-  'about.lead': 'Ein zweistufiges Tool zur Selbstbewertung des Technologiereifegrads (TRL) mit einem Modul für den Einführungsreifegrad (ARL). Alles läuft in Ihrem Browser — kein Backend, kein Konto, keine Telemetrie.',
+  'about.lead':
+    'Ein zweistufiges Tool zur Selbstbewertung des Technologiereifegrads (TRL) mit einem Modul für den Einführungsreifegrad (ARL). Alles läuft in Ihrem Browser — kein Backend, kein Konto, keine Telemetrie.',
   'about.build.heading': 'Build',
   'about.build.version': 'Version',
   'about.build.sha': 'Git-SHA',
@@ -139,7 +165,8 @@ export const de: Messages = {
   'about.frameworks.heading': 'Frameworks in diesem Build',
   'about.frameworks.sources': 'Quellen: {list}',
   'about.frameworks.arl.name': 'ARL-Zusatzmodul — {title}',
-  'about.frameworks.arl.body': 'Einführungsreife, getrennt vom TRL bewertet: die 17 Einführungsrisiko-Dimensionen des DOE-Bewertungsrasters und dessen Nachschlagetabelle, wörtlich übernommen.',
+  'about.frameworks.arl.body':
+    'Einführungsreife, getrennt vom TRL bewertet: die 17 Einführungsrisiko-Dimensionen des DOE-Bewertungsrasters und dessen Nachschlagetabelle, wörtlich übernommen.',
   'about.frameworks.arl.link': 'So funktioniert es',
   'about.frameworks.arl.source': 'Quelle: {id} ({version})',
   'about.frameworks.more': 'Was jedes Framework enthält und wo seine Grenzen liegen →',
@@ -153,8 +180,10 @@ export const de: Messages = {
   'about.disclaimer.tier1': 'Ergebnisse aus Tier 1 sind gekennzeichnet mit „{label}“.',
   'about.disclaimer.tier2': 'Ergebnisse aus Tier 2 sind gekennzeichnet mit „{label}“.',
   'about.disclaimer.arl': 'ARL-Ergebnisse sind gekennzeichnet mit „{label}“.',
-  'about.disclaimer.matrix': 'Die Matrix Aufbau × Umgebung ist eine für dieses Tool erstellte heuristische Hilfe, kein Standard.',
-  'about.disclaimer.system': 'Die Systemzusammenfassung ist das Minimum über die kritischen CTEs — eine konservative Berichtskonvention, keine vorgeschriebene Formel.',
+  'about.disclaimer.matrix':
+    'Die Matrix Aufbau × Umgebung ist eine für dieses Tool erstellte heuristische Hilfe, kein Standard.',
+  'about.disclaimer.system':
+    'Die Systemzusammenfassung ist das Minimum über die kritischen CTEs — eine konservative Berichtskonvention, keine vorgeschriebene Formel.',
   'tier1.reset.button': 'Zurücksetzen',
   'tier1.reset.confirm': 'Diese Bewertung verwerfen?',
   'tier1.reset.yes': 'Ja, zurücksetzen',
@@ -175,14 +204,16 @@ export const de: Messages = {
   'tier1.context.crossCheckHeading': 'Angaben für die Gegenprüfung',
   'tier1.context.environment': 'Erreichte Umgebung',
   'tier1.context.build': 'Aufbaureife',
-  'tier1.context.crossCheckNote': 'Wird nur für eine heuristische Gegenprüfung verwendet ({status}); sie setzt Ihre Antworten nie außer Kraft.',
+  'tier1.context.crossCheckNote':
+    'Wird nur für eine heuristische Gegenprüfung verwendet ({status}); sie setzt Ihre Antworten nie außer Kraft.',
   'tier1.context.missing.projectName': 'Projektname',
   'tier1.context.missing.technologyName': 'Name der Technologie',
   'tier1.context.missing.assessorName': 'Name des Bewerters',
   'tier1.context.missing': 'Bitte ausfüllen: {fields}.',
   'tier1.context.continue': 'Weiter zu den Fragen',
   'tier1.q.title': 'Schnelleinschätzung — Schritt 2 von 2: Prüffragen',
-  'tier1.q.lead': 'Arbeiten Sie von TRL 9 abwärts. Antworten Sie für die Technologie als Ganzes, auf Grundlage dessen, was tatsächlich durchgeführt wurde.',
+  'tier1.q.lead':
+    'Arbeiten Sie von TRL 9 abwärts. Antworten Sie für die Technologie als Ganzes, auf Grundlage dessen, was tatsächlich durchgeführt wurde.',
   'tier1.q.progress': '{answered} / {total} beantwortet',
   'tier1.q.counter': 'Frage {n} von {total}',
   'tier1.q.helpSummary': 'Was diese Stufe bedeutet',
@@ -191,14 +222,17 @@ export const de: Messages = {
   'tier1.q.notePlaceholder': 'Eine Zeile — was führt Sie zu dieser Antwort?',
   'tier1.q.previous': '← Zurück',
   'tier1.q.next': 'Weiter →',
-  'tier1.q.keyboard': 'Tastatur: Y / N / U zum Antworten (Ja / Nein / Unsicher), Pfeiltasten zum Navigieren.',
+  'tier1.q.keyboard':
+    'Tastatur: Y / N / U zum Antworten (Ja / Nein / Unsicher), Pfeiltasten zum Navigieren.',
   'tier1.q.seeEstimate': 'Schätzung anzeigen',
   'tier1.result.title': 'Schnelleinschätzung — Ergebnis',
   'tier1.result.marker.estimate': 'Schätzung',
   'tier1.result.marker.claimed': 'beansprucht',
   'tier1.result.marker.crossCheck': 'Gegenprüfung',
-  'tier1.result.ladderLabel': 'Geschätzter TRL {estimate} von 9. Höchste beanspruchte Stufe: {claimed}. Gegenprüfung Aufbau und Umgebung: {matrix}.',
-  'tier1.result.ladderNote': 'Gefüllte Sprossen sind bestätigt. Eine schraffierte Sprosse ist eine Stufe, die Sie beansprucht haben, während eine Stufe darunter unbestätigt ist — dort bricht die Kette ab.',
+  'tier1.result.ladderLabel':
+    'Geschätzter TRL {estimate} von 9. Höchste beanspruchte Stufe: {claimed}. Gegenprüfung Aufbau und Umgebung: {matrix}.',
+  'tier1.result.ladderNote':
+    'Gefüllte Sprossen sind bestätigt. Eine schraffierte Sprosse ist eine Stufe, die Sie beansprucht haben, während eine Stufe darunter unbestätigt ist — dort bricht die Kette ab.',
   'tier1.result.estimated': 'Geschätzter TRL',
   'tier1.result.estimatedHint': 'Höchste Stufe, bei der auch jede Stufe darunter bestätigt ist.',
   'tier1.result.claimed': 'Höchste beanspruchte Stufe',
@@ -206,20 +240,28 @@ export const de: Messages = {
   'tier1.result.matrix': 'Gegenprüfung Aufbau × Umgebung',
   'tier1.result.matrixHint': '{build} × {environment} — {status}.',
   'tier1.result.consistency': 'Konsistenz: {rating}',
-  'tier1.result.consistencyHelp.High': 'Ihre Antworten sind in sich stimmig und stimmen mit der Gegenprüfung Aufbau/Umgebung überein. Das sagt nichts darüber aus, ob die Antworten richtig sind.',
-  'tier1.result.consistencyHelp.Medium': 'Es gibt gewisse Spannungen zwischen Ihren Antworten und der Gegenprüfung oder ein „Unsicher“ auf oder unter der beanspruchten Stufe.',
-  'tier1.result.consistencyHelp.Low': 'Ihre Antworten weichen stark von der Gegenprüfung Aufbau/Umgebung ab, oder mehrere Stufen unter Ihrer Angabe sind unbestätigt. Prüfen Sie dies erneut, bevor Sie diesen Wert verwenden.',
+  'tier1.result.consistencyHelp.High':
+    'Ihre Antworten sind in sich stimmig und stimmen mit der Gegenprüfung Aufbau/Umgebung überein. Das sagt nichts darüber aus, ob die Antworten richtig sind.',
+  'tier1.result.consistencyHelp.Medium':
+    'Es gibt gewisse Spannungen zwischen Ihren Antworten und der Gegenprüfung oder ein „Unsicher“ auf oder unter der beanspruchten Stufe.',
+  'tier1.result.consistencyHelp.Low':
+    'Ihre Antworten weichen stark von der Gegenprüfung Aufbau/Umgebung ab, oder mehrere Stufen unter Ihrer Angabe sind unbestätigt. Prüfen Sie dies erneut, bevor Sie diesen Wert verwenden.',
   'tier1.result.nextHeading': 'Was typischerweise als Nächstes kommt',
-  'tier1.result.nextMandatory': 'Was {trl} erfordert — jeder dieser Punkte benötigt in einer Tier-2-Bewertung einen Nachweis.',
-  'tier1.result.nextNoMandatory': 'Kriterien auf {trl}. Dieses Framework kennzeichnet keines davon als verpflichtend; daher entscheidet ein Bewerter.',
-  'tier1.result.optional.one': '…plus {count} optionales Kriterium auf dieser Stufe, angezeigt in der Nachweisbewertung.',
-  'tier1.result.optional.other': '…plus {count} optionale Kriterien auf dieser Stufe, angezeigt in der Nachweisbewertung.',
+  'tier1.result.nextMandatory':
+    'Was {trl} erfordert — jeder dieser Punkte benötigt in einer Tier-2-Bewertung einen Nachweis.',
+  'tier1.result.nextNoMandatory':
+    'Kriterien auf {trl}. Dieses Framework kennzeichnet keines davon als verpflichtend; daher entscheidet ein Bewerter.',
+  'tier1.result.optional.one':
+    '…plus {count} optionales Kriterium auf dieser Stufe, angezeigt in der Nachweisbewertung.',
+  'tier1.result.optional.other':
+    '…plus {count} optionale Kriterien auf dieser Stufe, angezeigt in der Nachweisbewertung.',
   'tier1.result.takeAway': 'Ergebnis mitnehmen',
   'tier1.result.building': 'Arbeitsmappe wird erstellt…',
   'tier1.result.downloadExcel': 'Excel herunterladen',
   'tier1.result.downloadJson': 'JSON herunterladen',
   'tier1.result.continue': 'Weiter zur Nachweisbewertung',
-  'tier1.result.filesNote': 'Die JSON-Datei stellt diese Sitzung in der App wieder her. Die Arbeitsmappe ist eine statische Momentaufnahme — Änderungen darin berechnen den TRL nicht neu.',
+  'tier1.result.filesNote':
+    'Die JSON-Datei stellt diese Sitzung in der App wieder her. Die Arbeitsmappe ist eine statische Momentaufnahme — Änderungen darin berechnen den TRL nicht neu.',
   'tier1.rail.label': 'Bisherige Antworten, TRL 1 bis 9',
   'tier1.rail.yes': 'ja',
   'tier1.rail.no': 'nein',
@@ -233,9 +275,11 @@ export const de: Messages = {
   'tier1.ladder.notAchieved': 'nicht erreicht',
   'tier1.ladder.item': '{trl} — {state}',
   'tier1.ladder.show': '{item}. Kriterien anzeigen.',
-  'tier1.matrix.caption.before': 'Aufbaureife × erreichte Umgebung → vorgeschlagener TRL. Einordnung: ',
+  'tier1.matrix.caption.before':
+    'Aufbaureife × erreichte Umgebung → vorgeschlagener TRL. Einordnung: ',
   'tier1.matrix.caption.after': '; setzt Ihre Antworten nie außer Kraft.',
-  'tier1.matrix.srCaption': 'Matrix zur Gegenprüfung: Jede Zelle nennt den TRL, der sich aus einer Aufbaureife und einer Umgebung ergibt.',
+  'tier1.matrix.srCaption':
+    'Matrix zur Gegenprüfung: Jede Zelle nennt den TRL, der sich aus einer Aufbaureife und einer Umgebung ergibt.',
   'tier1.matrix.srCombination': 'Ihre Kombination ist {build} × {environment}.',
   'tier1.matrix.corner': 'Aufbau \\ Umg.',
   'tier1.matrix.cell': '{build} mit {environment}: {trl}',
@@ -243,7 +287,8 @@ export const de: Messages = {
   'tier1.matrix.yours': '(Ihre Kombination)',
   'tier1.matrix.activeHead': '{build} × {environment} → {trl}',
   'tier1.matrix.activeText': '— {build}, getestet in {environment}.',
-  'tier1.matrix.hint': 'Bewegen Sie den Mauszeiger auf eine Zelle oder fokussieren Sie sie, um zu sehen, was diese Kombination bedeutet.',
+  'tier1.matrix.hint':
+    'Bewegen Sie den Mauszeiger auf eine Zelle oder fokussieren Sie sie, um zu sehen, was diese Kombination bedeutet.',
   'tier2.common.cancel': 'Abbrechen',
   'tier2.evidenceCoverage': 'Nachweisabdeckung',
   'tier2.page.title': 'Nachweisbasierte Bewertung',
@@ -255,7 +300,8 @@ export const de: Messages = {
   'tier2.page.empty.before': 'Fügen Sie unten ein CTE hinzu oder',
   'tier2.page.empty.link': 'öffnen Sie das fiktive Beispiel,',
   'tier2.page.empty.after': 'um eine abgeschlossene Bewertung zu sehen.',
-  'tier2.page.selectCte': 'Wählen Sie ein CTE aus oder fügen Sie eines hinzu, um seine Kriterien zu bewerten.',
+  'tier2.page.selectCte':
+    'Wählen Sie ein CTE aus oder fügen Sie eines hinzu, um seine Kriterien zu bewerten.',
   'tier2.evidencePage.title': 'Nachweisbibliothek',
   'tier2.evidencePage.back': 'Zurück zur Bewertung',
   'tier2.export.heading': 'Export',
@@ -265,11 +311,13 @@ export const de: Messages = {
   'tier2.export.packageCreated': 'Paket erstellt: {name}',
   'tier2.export.excel': 'Excel herunterladen',
   'tier2.export.zip': 'Nachweispaket herunterladen (.zip)',
-  'tier2.export.sensitiveNote': 'Mit „{marking}“ gekennzeichnete Nachweise werden in der Arbeitsmappe aufgeführt, aber nie ins Paket aufgenommen.',
+  'tier2.export.sensitiveNote':
+    'Mit „{marking}“ gekennzeichnete Nachweise werden in der Arbeitsmappe aufgeführt, aber nie ins Paket aufgenommen.',
   'tier2.result.title': 'Nachweisbasierte Bewertung — Ergebnis',
   'tier2.result.empty.before': 'Fügen Sie auf der',
   'tier2.result.empty.link': 'Bewertungsseite',
-  'tier2.result.empty.after': 'mindestens ein kritisches Technologieelement hinzu, bevor Sie Ergebnisse ansehen.',
+  'tier2.result.empty.after':
+    'mindestens ein kritisches Technologieelement hinzu, bevor Sie Ergebnisse ansehen.',
   'tier2.result.untitled': 'Unbenannte Bewertung',
   'tier2.result.stat.system': 'Systemzusammenfassung',
   'tier2.result.stat.limiting': 'Begrenzende(s) CTE(s)',
@@ -296,7 +344,8 @@ export const de: Messages = {
   'tier2.result.importedWarnings': 'Mit Warnungen importiert: {warnings}',
   'tier2.result.imported': 'Sitzung importiert.',
   'tier2.cte.heading': 'Kritische Technologieelemente',
-  'tier2.cte.empty': 'Noch keine CTEs. Fügen Sie die Teile des Systems hinzu, deren Reife darüber entscheidet, ob es funktioniert.',
+  'tier2.cte.empty':
+    'Noch keine CTEs. Fügen Sie die Teile des Systems hinzu, deren Reife darüber entscheidet, ob es funktioniert.',
   'tier2.cte.importFromTier1': '„{name}“ aus der Schnelleinschätzung importieren',
   'tier2.cte.unspecified': 'nicht angegeben',
   'tier2.cte.critical': 'kritisch',
@@ -313,7 +362,8 @@ export const de: Messages = {
   'tier2.cte.form.name': 'Name',
   'tier2.cte.form.description': 'Beschreibung',
   'tier2.cte.form.why': 'Warum ist es kritisch?',
-  'tier2.cte.form.whyHint': 'Was versagt oder bleibt unbewiesen, wenn dieses Element nicht ausreift?',
+  'tier2.cte.form.whyHint':
+    'Was versagt oder bleibt unbewiesen, wenn dieses Element nicht ausreift?',
   'tier2.cte.form.kind': 'Art',
   'tier2.cte.form.target': 'Ziel-TRL',
   'tier2.cte.form.owner': 'Verantwortlich',
@@ -323,7 +373,8 @@ export const de: Messages = {
   'tier2.criteria.aria': 'Kriterien für {name}',
   'tier2.criteria.assessed': 'Bewertet:',
   'tier2.criteria.why': 'Warum kritisch: {text}',
-  'tier2.criteria.ladder': '{name}: TRL {trl} von 9 erreicht. Wählen Sie eine Stufe, um ihre Kriterien zu öffnen.',
+  'tier2.criteria.ladder':
+    '{name}: TRL {trl} von 9 erreicht. Wählen Sie eine Stufe, um ihre Kriterien zu öffnen.',
   'tier2.criteria.levelComplete': 'TRL {level} vollständig',
   'tier2.criteria.levelCompleteness': 'Vollständigkeit TRL {level}',
   'tier2.criteria.inline.Satisfied': 'anerkannt',
@@ -344,11 +395,13 @@ export const de: Messages = {
   'tier2.criteria.noEvidence': 'keine verknüpft',
   'tier2.criteria.manage': 'Verwalten',
   'tier2.criteria.naWarning': '„N/A“ benötigt eine Begründung, bevor es als anerkannt zählt.',
-  'tier2.criteria.noneApply': 'Auf dieser Stufe gelten in diesem Framework keine Kriterien für ein CTE der Art „{kind}“.',
+  'tier2.criteria.noneApply':
+    'Auf dieser Stufe gelten in diesem Framework keine Kriterien für ein CTE der Art „{kind}“.',
   'tier2.criteria.level.achieved': 'erreicht',
   'tier2.criteria.level.notAchieved': 'nicht erreicht',
   'tier2.criteria.level.locked': 'gesperrt — niedrigere Stufe nicht erreicht',
-  'tier2.criteria.level.lockedTitle': 'Eine niedrigere Stufe ist nicht erreicht, daher kann diese Stufe noch nicht zählen.',
+  'tier2.criteria.level.lockedTitle':
+    'Eine niedrigere Stufe ist nicht erreicht, daher kann diese Stufe noch nicht zählen.',
   'tier2.levelBar.none': 'Auf dieser Stufe gelten keine Kriterien',
   'tier2.levelBar.satisfied': '{count} anerkannt',
   'tier2.levelBar.partial': '{count} teilweise erfüllt',
@@ -363,22 +416,28 @@ export const de: Messages = {
   'tier2.meter.value': '{label}: {pct} %',
   'tier2.bars.item': '{name} {trl}',
   'tier2.bars.itemCritical': '{name} {trl} (kritisch)',
-  'tier2.bars.noSystem': 'TRL je CTE: {list}. Kein kritisches CTE, daher keine Systemzusammenfassung.',
-  'tier2.bars.summary': 'Systemzusammenfassung TRL {trl}, das Minimum über die kritischen CTEs ({ids}). Je CTE: {list}.',
+  'tier2.bars.noSystem':
+    'TRL je CTE: {list}. Kein kritisches CTE, daher keine Systemzusammenfassung.',
+  'tier2.bars.summary':
+    'Systemzusammenfassung TRL {trl}, das Minimum über die kritischen CTEs ({ids}). Je CTE: {list}.',
   'tier2.bars.limits': 'begrenzt das System',
   'tier2.bars.legend.critical': 'kritisch (zählt für die Zusammenfassung)',
   'tier2.bars.legend.notCritical': 'nicht kritisch',
-  'tier2.bars.legend.line': 'Die gestrichelte Linie ist die Systemzusammenfassung, der niedrigste TRL unter den kritischen CTEs.',
+  'tier2.bars.legend.line':
+    'Die gestrichelte Linie ist die Systemzusammenfassung, der niedrigste TRL unter den kritischen CTEs.',
   'evidence.error.titleRequired': 'Ein Titel ist erforderlich.',
   'evidence.error.urlScheme': 'Die URL muss eine http- oder https-Adresse sein.',
   'evidence.error.repoUrlScheme': 'Die Repository-URL muss eine http- oder https-Adresse sein.',
   'evidence.error.commitSha': 'Der Commit-SHA muss aus 7–40 Hexadezimalzeichen bestehen.',
   'evidence.error.doi': 'Die DOI muss die Form 10.1234/suffix haben.',
   'evidence.error.codeNeedsRepo': 'Code-Nachweise benötigen eine Repository-URL.',
-  'evidence.error.codeNeedsSha': 'Code-Nachweise müssen einen Commit-SHA festlegen — ein Branch-Name ist kein Nachweis.',
-  'evidence.error.publicationNeedsDoi': 'Veröffentlichungsnachweise benötigen eine DOI oder eine URL.',
+  'evidence.error.codeNeedsSha':
+    'Code-Nachweise müssen einen Commit-SHA festlegen — ein Branch-Name ist kein Nachweis.',
+  'evidence.error.publicationNeedsDoi':
+    'Veröffentlichungsnachweise benötigen eine DOI oder eine URL.',
   'evidence.error.webLinkNeedsUrl': 'Weblink-Nachweise benötigen eine URL.',
-  'evidence.error.fileTooLarge': '„{name}“ ist {size} MB groß. Die Grenze liegt bei {limit} MB — verlinken Sie die Datei, statt sie anzuhängen.',
+  'evidence.error.fileTooLarge':
+    '„{name}“ ist {size} MB groß. Die Grenze liegt bei {limit} MB — verlinken Sie die Datei, statt sie anzuhängen.',
   'evidence.form.type': 'Typ',
   'evidence.form.title': 'Titel',
   'evidence.form.description': 'Beschreibung',
@@ -388,7 +447,8 @@ export const de: Messages = {
   'evidence.form.owner': 'Verantwortlich / Verwahrer',
   'evidence.form.repoUrl': 'Repository-URL',
   'evidence.form.commitSha': 'Commit-SHA',
-  'evidence.form.commitShaHint': 'Legen Sie immer einen Commit fest; ein Branch-Name verändert sich.',
+  'evidence.form.commitShaHint':
+    'Legen Sie immer einen Commit fest; ein Branch-Name verändert sich.',
   'evidence.form.repoPath': 'Pfad im Repository',
   'evidence.form.tag': 'Tag / Release',
   'evidence.form.doi': 'DOI',
@@ -401,7 +461,8 @@ export const de: Messages = {
   'evidence.form.verifiedBy': 'Verifiziert von',
   'evidence.form.verifiedDate': 'Verifiziert am',
   'evidence.form.sensitiveTitle': 'Nur Verweis — es kann keine Datei angehängt werden',
-  'evidence.form.sensitiveBody': 'Erfassen Sie Titel, Verwahrer und eine Referenznummer, damit ein Prüfer das Material über den vorgesehenen Weg finden kann.',
+  'evidence.form.sensitiveBody':
+    'Erfassen Sie Titel, Verwahrer und eine Referenznummer, damit ein Prüfer das Material über den vorgesehenen Weg finden kann.',
   'evidence.form.file': 'Datei',
   'evidence.form.fileHint': 'Nur in diesem Browser gespeichert. Maximal {limit} MB.',
   'evidence.form.pickedFile': '{name} — {size} kB',
@@ -438,7 +499,8 @@ export const de: Messages = {
   'arl.reset.yes': 'Ja, ARL zurücksetzen',
   'arl.reset.cancel': 'Abbrechen',
   'arl.unavailable.title': 'Das ARL-Bewertungsraster dieser Sitzung ist nicht verfügbar',
-  'arl.unavailable.body': 'Diese Version enthält das ARL-Bewertungsraster „{id}“ nicht ({detail}). Setzen Sie die ARL-Einstufungen zurück, um neu zu beginnen.',
+  'arl.unavailable.body':
+    'Diese Version enthält das ARL-Bewertungsraster „{id}“ nicht ({detail}). Setzen Sie die ARL-Einstufungen zurück, um neu zu beginnen.',
   'arl.scope.title': 'Einführungsreife — Schritt 1 von 3: Umfang',
   'arl.scope.versionSource': 'Version: {version} · Quelle: {source}',
   'arl.scope.projectName': 'Projektname',
@@ -453,20 +515,23 @@ export const de: Messages = {
   'arl.scope.technologyScope': 'Technologieumfang',
   'arl.scope.valueChainScope': 'Umfang der Wertschöpfungskette',
   'arl.scope.evaluationTimeline': 'Zeithorizont der Bewertung',
-  'arl.scope.evaluationTimeline.placeholder': 'z. B. Stand heute, Kommerzialisierungsfenster von 5 Jahren',
+  'arl.scope.evaluationTimeline.placeholder':
+    'z. B. Stand heute, Kommerzialisierungsfenster von 5 Jahren',
   'arl.scope.policyEnvironment': 'Angenommenes politisches Umfeld',
   'arl.scope.continue': 'Weiter zu den Einstufungen',
   'arl.rate.title': 'Einführungsreife — Schritt 2 von 3: Dimensionen einstufen',
   'arl.rate.progress': 'Fortschritt',
   'arl.rate.meter': 'Eingestufte Dimensionen',
   'arl.rate.rated': '{rated} von {total} eingestuft',
-  'arl.rate.conservative': 'Nicht eingestuft, „Unsicher“ oder „N/A“ ohne Begründung zählen als hohes Risiko.',
+  'arl.rate.conservative':
+    'Nicht eingestuft, „Unsicher“ oder „N/A“ ohne Begründung zählen als hohes Risiko.',
   'arl.rate.areasNav': 'Kernrisikobereiche',
   'arl.rate.currentRisk': 'Aktuelles Risiko',
   'arl.rate.naOption': 'N/A — trifft auf diesen Umfang nicht zu',
   'arl.rate.clear': 'Einstufung löschen',
   'arl.rate.countedAs': 'gewertet als {risk}',
-  'arl.rate.notCountedNa': 'nicht gewertet (N/A) — die Begründung erklärt, warum sie nicht zutrifft',
+  'arl.rate.notCountedNa':
+    'nicht gewertet (N/A) — die Begründung erklärt, warum sie nicht zutrifft',
   'arl.rate.rationale': 'Kommentare / Begründung',
   'arl.rate.rationaleRequired': 'Kommentare / Begründung (bei N/A erforderlich)',
   'arl.rate.evidence': 'Nachweis oder Referenz',
@@ -482,11 +547,13 @@ export const de: Messages = {
   'arl.result.startHint': '{band} — {medium} × Mittel, {high} × Hoch gewertet.',
   'arl.result.endHint': '{band} — {target}.',
   'arl.result.change': 'Veränderung über das Projekt',
-  'arl.result.scopeMissing.before': 'Der Technologieumfang oder der Zeithorizont der Bewertung ist leer.',
+  'arl.result.scopeMissing.before':
+    'Der Technologieumfang oder der Zeithorizont der Bewertung ist leer.',
   'arl.result.scopeMissing.link': 'Umfang vervollständigen',
   'arl.result.scopeMissing.after': '.',
   'arl.result.profile': 'Risikoprofil',
-  'arl.result.caption': 'Aktuelle und angestrebte Risikoeinstufung jeder Dimension, gruppiert nach Kernrisikobereich.',
+  'arl.result.caption':
+    'Aktuelle und angestrebte Risikoeinstufung jeder Dimension, gruppiert nach Kernrisikobereich.',
   'arl.result.col.dimension': 'Dimension',
   'arl.result.col.current': 'Aktuell',
   'arl.result.col.target': 'Ziel',
@@ -498,7 +565,8 @@ export const de: Messages = {
   'arl.result.flags.current': 'Aktuelle Einstufungen',
   'arl.result.flags.targets': 'Ziele',
   'arl.result.howRead': 'Wie die Zahl abgelesen wird',
-  'arl.result.howRead.body': 'Die Quelle zählt die Dimensionen mit mittlerem und hohem Risiko und liest den ARL aus ihrer Nachschlagetabelle ab.',
+  'arl.result.howRead.body':
+    'Die Quelle zählt die Dimensionen mit mittlerem und hohem Risiko und liest den ARL aus ihrer Nachschlagetabelle ab.',
   'arl.result.mark.start': 'Beginn',
   'arl.result.mark.target': 'Ziel',
   'arl.result.takeAway': 'Ergebnis mitnehmen',
@@ -507,11 +575,13 @@ export const de: Messages = {
   'arl.result.downloadJson': 'JSON herunterladen',
   'arl.result.backToRatings': 'Zurück zu den Einstufungen',
   'arl.result.howScored': 'Wie der ARL bewertet wird',
-  'arl.result.jsonNote': 'Die JSON-Datei stellt die gesamte Sitzung wieder her, TRL und ARL. Die Arbeitsmappe ist eine statische Momentaufnahme — Änderungen darin berechnen den ARL nicht neu.',
+  'arl.result.jsonNote':
+    'Die JSON-Datei stellt die gesamte Sitzung wieder her, TRL und ARL. Die Arbeitsmappe ist eine statische Momentaufnahme — Änderungen darin berechnen den ARL nicht neu.',
   'arl.scale.start': 'Beginn: ARL {level}',
   'arl.scale.target': 'Ziel: ARL {level}',
   'arl.scale.targetNoChange': 'Ziel: ARL {level} (keine Veränderung)',
-  'arl.grid.caption': 'Zeilen: Anzahl der Dimensionen mit mittlerem Risiko. Spalten: Anzahl der Dimensionen mit hohem Risiko.',
+  'arl.grid.caption':
+    'Zeilen: Anzahl der Dimensionen mit mittlerem Risiko. Spalten: Anzahl der Dimensionen mit hohem Risiko.',
   'arl.grid.corner': 'M \\ H',
   'arl.grid.summary': '{label}: {medium} × Mittel und {high} × Hoch → ARL {arl}',
   'arl.grid.mark': '{label}: {medium} × Mittel, {high} × Hoch',
@@ -522,27 +592,34 @@ export const de: Messages = {
   'arl.map.aria': 'Kernrisikobereiche und ihre Dimensionen',
   'arl.map.count.one': '{count} Dimension',
   'arl.map.count.other': '{count} Dimensionen',
-  'arl.map.caption': '{dimensions} Dimensionen in {areas} Kernrisikobereichen, nummeriert wie in {name} ({version}).',
+  'arl.map.caption':
+    '{dimensions} Dimensionen in {areas} Kernrisikobereichen, nummeriert wie in {name} ({version}).',
   'guide.nav.label': 'Leitfaden',
   'guide.nav.heading': 'Leitfaden',
   'guide.index.title': 'Leitfaden',
   'guide.toc': 'Auf dieser Seite',
   'guide.previous': '← {title}',
   'guide.next': '{title} →',
-  'guide.untranslated': 'Diese Seite ist in Ihrer Sprache noch nicht verfügbar; es wird die englische Fassung angezeigt.',
+  'guide.untranslated':
+    'Diese Seite ist in Ihrer Sprache noch nicht verfügbar; es wird die englische Fassung angezeigt.',
   'guide.fig.unknown': 'Unbekannte Abbildung „{id}“.',
   'guide.fig.trlScale.marker': 'höchste bestätigte Stufe',
-  'guide.fig.trlScale.label': 'Die neun Stufen. Eine Stufe zählt nur, wenn jede Stufe darunter bestätigt ist.',
-  'guide.fig.trlScale.caption': 'Maßgeblich ist die Kette, nicht die höchste Angabe: hier TRL 4, auch wenn TRL 6 mit „Ja“ beantwortet wurde.',
+  'guide.fig.trlScale.label':
+    'Die neun Stufen. Eine Stufe zählt nur, wenn jede Stufe darunter bestätigt ist.',
+  'guide.fig.trlScale.caption':
+    'Maßgeblich ist die Kette, nicht die höchste Angabe: hier TRL 4, auch wenn TRL 6 mit „Ja“ beantwortet wurde.',
   'guide.fig.tier1.estimate': 'Schätzung',
   'guide.fig.tier1.crossCheck': 'Gegenprüfung',
-  'guide.fig.tier1Clean.label': 'Rechenbeispiel 1: Ja bei TRL 1 bis 4, Unsicher bei 5. Schätzung TRL 4; Gegenprüfung TRL 5; Konsistenz hoch.',
+  'guide.fig.tier1Clean.label':
+    'Rechenbeispiel 1: Ja bei TRL 1 bis 4, Unsicher bei 5. Schätzung TRL 4; Gegenprüfung TRL 5; Konsistenz hoch.',
   'guide.fig.tier1Clean.caption.before': 'Beispiel 1 — Ja bis 4, Unsicher bei 5. Schätzung ',
   'guide.fig.tier1Clean.caption.middle': ', Gegenprüfung 5, Konsistenz ',
   'guide.fig.tier1Clean.caption.after': '.',
   'guide.fig.tier1Gap.claimed': 'beansprucht',
-  'guide.fig.tier1Gap.label': 'Rechenbeispiel 2: Ja bei TRL 1, Nein bei 2, Ja bei 3 und 4. Die Kette bricht bei TRL 2 ab, daher lautet die Schätzung TRL 1, obwohl TRL 4 beansprucht wurde.',
-  'guide.fig.tier1Gap.caption.before': 'Beispiel 2 — die schraffierte Sprosse ist TRL 2, beantwortet mit „Nein“. Schätzung ',
+  'guide.fig.tier1Gap.label':
+    'Rechenbeispiel 2: Ja bei TRL 1, Nein bei 2, Ja bei 3 und 4. Die Kette bricht bei TRL 2 ab, daher lautet die Schätzung TRL 1, obwohl TRL 4 beansprucht wurde.',
+  'guide.fig.tier1Gap.caption.before':
+    'Beispiel 2 — die schraffierte Sprosse ist TRL 2, beantwortet mit „Nein“. Schätzung ',
   'guide.fig.tier1Gap.caption.after': ', höchste Angabe 4, Lücken-Warnhinweis ausgelöst.',
   'guide.fig.tier2.harvester': 'Energy-Harvester',
   'guide.fig.tier2.converter': 'Energiemanagementmodul',
@@ -552,12 +629,15 @@ export const de: Messages = {
   'guide.fig.tier2.caption.before': 'Beispiel 3 — die Systemzusammenfassung ist ',
   'guide.fig.tier2.caption.formula': 'min(4, 3, 3) = TRL 3',
   'guide.fig.tier2.caption.after': '. Es wird nichts gemittelt.',
-  'guide.fig.statusLegend.caption': 'Nur die ersten beiden zählen für eine Stufe: „Erfüllt“ mit verwendbarem Nachweis und „N/A“ mit Begründung.',
+  'guide.fig.statusLegend.caption':
+    'Nur die ersten beiden zählen für eine Stufe: „Erfüllt“ mit verwendbarem Nachweis und „N/A“ mit Begründung.',
   'guide.fig.arlLookup.mark': 'Beispiel',
-  'guide.fig.arlLookup.caption.before': 'Beispiel — drei Dimensionen mit mittlerem und eine mit hohem Risiko ergeben ',
+  'guide.fig.arlLookup.caption.before':
+    'Beispiel — drei Dimensionen mit mittlerem und eine mit hohem Risiko ergeben ',
   'guide.fig.arlLookup.caption.value': 'ARL 6',
   'guide.fig.arlLookup.caption.after': '. Hohe Risiken wiegen am schwersten.',
-  'guide.fig.cte.label': 'Ein Fernsensorknoten, aufgeteilt in fünf Elemente: Energy-Harvester, Energiemanagement, Telemetrie-Firmware, Gehäuse und Abdichtung — alle kritisch — sowie das Installationsverfahren, das ein Prozess ist und hier nicht kritisch.',
+  'guide.fig.cte.label':
+    'Ein Fernsensorknoten, aufgeteilt in fünf Elemente: Energy-Harvester, Energiemanagement, Telemetrie-Firmware, Gehäuse und Abdichtung — alle kritisch — sowie das Installationsverfahren, das ein Prozess ist und hier nicht kritisch.',
   'guide.fig.cte.system': 'Fernsensorknoten (System)',
   'guide.fig.cte.harvester': 'Energy-\nHarvester',
   'guide.fig.cte.power': 'Energie-\nmanagement',
@@ -566,8 +646,10 @@ export const de: Messages = {
   'guide.fig.cte.install': 'Installations-\nverfahren',
   'guide.fig.cte.critical': 'kritisch',
   'guide.fig.cte.notCritical': 'nicht kritisch',
-  'guide.fig.cte.caption': 'Jedes Element wird für sich bewertet; nur kritische Elemente zählen für die Systemzusammenfassung.',
-  'guide.fig.evidence.label': 'Wie ein Kriterium als anerkannt gilt: Status „Erfüllt“ plus mindestens ein nicht abgelehnter Nachweis oder Status „N/A“ mit Begründung. „Teilweise erfüllt“, „Nicht erfüllt“ und „Nicht bewertet“ gelten nie als anerkannt.',
+  'guide.fig.cte.caption':
+    'Jedes Element wird für sich bewertet; nur kritische Elemente zählen für die Systemzusammenfassung.',
+  'guide.fig.evidence.label':
+    'Wie ein Kriterium als anerkannt gilt: Status „Erfüllt“ plus mindestens ein nicht abgelehnter Nachweis oder Status „N/A“ mit Begründung. „Teilweise erfüllt“, „Nicht erfüllt“ und „Nicht bewertet“ gelten nie als anerkannt.',
   'guide.fig.evidence.criterion': 'Kriterium',
   'guide.fig.evidence.linked': 'Nachweis verknüpft?',
   'guide.fig.evidence.justified': 'Begründung?',
@@ -577,8 +659,10 @@ export const de: Messages = {
   'guide.fig.evidence.counts': 'zählt für die Stufe',
   'guide.fig.evidence.notSatisfied': '✕ Nicht anerkannt',
   'guide.fig.evidence.gapList': 'erscheint in der Lückenliste',
-  'guide.fig.evidence.caption': '„Erfüllt“ ohne verwendbaren Nachweis und „N/A“ ohne Begründung landen beide auf dem unteren Pfad.',
-  'guide.fig.env.label': 'Die Realitätsnähe der Umgebung steigt von reiner Analyse über das Labor und eine relevante Umgebung, die die wesentlichen Belastungen nachbildet, bis zu einem begrenzten Versuch in der Einsatzumgebung und dem vollen Missionsbereich. TRL 5 und 6 erfordern eine relevante Umgebung; TRL 7 und 8 die Einsatzumgebung.',
+  'guide.fig.evidence.caption':
+    '„Erfüllt“ ohne verwendbaren Nachweis und „N/A“ ohne Begründung landen beide auf dem unteren Pfad.',
+  'guide.fig.env.label':
+    'Die Realitätsnähe der Umgebung steigt von reiner Analyse über das Labor und eine relevante Umgebung, die die wesentlichen Belastungen nachbildet, bis zu einem begrenzten Versuch in der Einsatzumgebung und dem vollen Missionsbereich. TRL 5 und 6 erfordern eine relevante Umgebung; TRL 7 und 8 die Einsatzumgebung.',
   'guide.fig.env.e0.name': 'Nur Analyse',
   'guide.fig.env.e0.note': 'Modelle, keine Hardware',
   'guide.fig.env.e1.name': 'Labor',
@@ -591,23 +675,30 @@ export const de: Messages = {
   'guide.fig.env.e4.note': 'voller Missionsbereich',
   'guide.fig.env.relevantNeed': 'TRL 5–6 erfordern dies',
   'guide.fig.env.operationalNeed': 'TRL 7–8 erfordern dies',
-  'guide.fig.env.caption': 'Ein Test ist nur dann eine relevante Umgebung, wenn er die Belastungen nachbildet, die für dieses Element entscheidend sind.',
-  'guide.fig.sheets.label': 'Die Tier-1-Arbeitsmappe hat {tier1Count} Tabellenblätter: {tier1}. Die Tier-2-Arbeitsmappe hat {tier2Count}: {tier2}.',
+  'guide.fig.env.caption':
+    'Ein Test ist nur dann eine relevante Umgebung, wenn er die Belastungen nachbildet, die für dieses Element entscheidend sind.',
+  'guide.fig.sheets.label':
+    'Die Tier-1-Arbeitsmappe hat {tier1Count} Tabellenblätter: {tier1}. Die Tier-2-Arbeitsmappe hat {tier2Count}: {tier2}.',
   'guide.fig.sheets.tier1': 'Tier-1-Arbeitsmappe',
   'guide.fig.sheets.tier2': 'Tier-2-Arbeitsmappe',
-  'guide.fig.sheets.caption': 'Die Reihenfolge der Tabellenblätter ist fest, und jede Arbeitsmappe öffnet sich mit ihrem README.',
-  'guide.fig.frameworks.label': 'dod-tra-2025, die Voreinstellung, enthält die DoD-Kriterien. marine-energy-eere erweitert es: Es übernimmt die DoD-Kriterien, ergänzt acht maritime zugeschnittene Einträge und bezieht seine Tier-1-Fragen aus den EERE-Definitionen, TRL 9 aus der DoD-Tabelle.',
+  'guide.fig.sheets.caption':
+    'Die Reihenfolge der Tabellenblätter ist fest, und jede Arbeitsmappe öffnet sich mit ihrem README.',
+  'guide.fig.frameworks.label':
+    'dod-tra-2025, die Voreinstellung, enthält die DoD-Kriterien. marine-energy-eere erweitert es: Es übernimmt die DoD-Kriterien, ergänzt acht maritime zugeschnittene Einträge und bezieht seine Tier-1-Fragen aus den EERE-Definitionen, TRL 9 aus der DoD-Tabelle.',
   'guide.fig.frameworks.dodCriteria': '58 Kriterien, wörtlich',
   'guide.fig.frameworks.dodTables': 'Hardware- und Software-Tabellen',
   'guide.fig.frameworks.extends': 'erweitert',
   'guide.fig.frameworks.default': '{id} (Voreinstellung)',
-  'guide.fig.frameworks.marineCriteria': 'verweist auf die DoD-Kriterien + 8 zugeschnittene Einträge',
-  'guide.fig.frameworks.marineMandatory': 'stuft das stufendefinierende Kriterium als verpflichtend ein',
+  'guide.fig.frameworks.marineCriteria':
+    'verweist auf die DoD-Kriterien + 8 zugeschnittene Einträge',
+  'guide.fig.frameworks.marineMandatory':
+    'stuft das stufendefinierende Kriterium als verpflichtend ein',
   'guide.fig.frameworks.marineQuestions': 'Tier-1-Fragen angepasst aus EERE R 540.112-02',
   'guide.fig.frameworks.dodPages': 'Tabellen 2-1 / 2-2, S. 6–10',
   'guide.fig.frameworks.eere': 'EERE R 540.112-02 (TRL 1–8) + Begründungen von NREL / GOOS',
   'guide.fig.frameworks.eereTrl9': 'TRL 9 stammt aus der DoD-Tabelle — EERE definiert keinen TRL 9',
-  'guide.fig.frameworks.caption': 'Ein erweiterndes Framework kann ändern, wie ein Kriterium verwendet wird, aber nie, was seine Quelle sagt.',
+  'guide.fig.frameworks.caption':
+    'Ein erweiterndes Framework kann ändern, wie ein Kriterium verwendet wird, aber nie, was seine Quelle sagt.',
   'guide.fig.stage.s0': 'Konzept',
   'guide.fig.stage.s1': 'Komponentenbewertung',
   'guide.fig.stage.s2': 'Machbarkeitsnachweis',
@@ -627,25 +718,32 @@ export const de: Messages = {
   'guide.fig.stage.caption.built': 'gebaut haben',
   'guide.fig.stage.caption.middle': '; ein TRL gibt an, was Sie ',
   'guide.fig.stage.caption.demonstrated': 'demonstriert haben, und wo',
-  'guide.fig.stage.caption.after': '. Phasenmodelle sind organisationsspezifisch — keine Grundlage für eine Bewertung.',
+  'guide.fig.stage.caption.after':
+    '. Phasenmodelle sind organisationsspezifisch — keine Grundlage für eine Bewertung.',
   'guide.page.overview.title': 'Überblick',
-  'guide.page.overview.summary': 'Was TRLs sind, die neun Stufen und wo dieses Tool einzuordnen ist.',
+  'guide.page.overview.summary':
+    'Was TRLs sind, die neun Stufen und wo dieses Tool einzuordnen ist.',
   'guide.page.how-to-use.title': 'So verwenden Sie dieses Tool',
-  'guide.page.how-to-use.summary': 'Schritt für Schritt durch beide Tiers und den ARL, dazu Speichern und Löschen von Daten.',
+  'guide.page.how-to-use.summary':
+    'Schritt für Schritt durch beide Tiers und den ARL, dazu Speichern und Löschen von Daten.',
   'guide.page.methodology.title': 'Methodik',
-  'guide.page.methodology.summary': 'Jede Bewertungsregel in einfacher Sprache, mit drei Rechenbeispielen.',
+  'guide.page.methodology.summary':
+    'Jede Bewertungsregel in einfacher Sprache, mit drei Rechenbeispielen.',
   'guide.page.cte.title': 'Kritische Technologieelemente',
   'guide.page.cte.summary': 'Wie Sie ein System in CTEs zerlegen, und häufige Fehler.',
   'guide.page.evidence.title': 'Nachweise',
-  'guide.page.evidence.summary': 'Was als Nachweis zählt, gute und schwache Beispiele, Kennzeichnung und Verifizierung.',
+  'guide.page.evidence.summary':
+    'Was als Nachweis zählt, gute und schwache Beispiele, Kennzeichnung und Verifizierung.',
   'guide.page.excel.title': 'Excel-Ausgabe',
   'guide.page.excel.summary': 'Die Arbeitsmappen und wie Sie Nachweise in Excel hinzufügen.',
   'guide.page.frameworks.title': 'Frameworks & Quellen',
   'guide.page.frameworks.summary': 'Was jedes Framework enthält und woher es stammt.',
   'guide.page.arl.title': 'Einführungsreife (ARL)',
-  'guide.page.arl.summary': 'Das ARL-Zusatzmodul: 17 Einführungsrisiko-Dimensionen und die Nachschlagetabelle.',
+  'guide.page.arl.summary':
+    'Das ARL-Zusatzmodul: 17 Einführungsrisiko-Dimensionen und die Nachschlagetabelle.',
   'guide.page.stage-crosswalk.title': 'Phasen-Zuordnung',
-  'guide.page.stage-crosswalk.summary': 'Ein Phasenmodell der Hardwareentwicklung, dem TRL zugeordnet — nur zur Information.',
+  'guide.page.stage-crosswalk.summary':
+    'Ein Phasenmodell der Hardwareentwicklung, dem TRL zugeordnet — nur zur Information.',
   'guide.page.faq.title': 'FAQ',
   'guide.page.faq.summary': 'Häufige Fragen, kurz beantwortet.',
   'guide.page.glossary.title': 'Glossar',
@@ -656,8 +754,10 @@ export const de: Messages = {
   'excel.readme.important': 'Wichtig',
   'excel.readme.provenance': 'Herkunft',
   'excel.readme.contents': 'Inhalt dieser Arbeitsmappe',
-  'excel.staticNote.trl': 'Änderungen in dieser Arbeitsmappe berechnen den TRL nicht neu; importieren Sie die JSON-Datei erneut in die App, um neu zu berechnen.',
-  'excel.staticNote.arl': 'Änderungen in dieser Arbeitsmappe berechnen den ARL nicht neu; importieren Sie die JSON-Datei erneut in die App, um neu zu berechnen.',
+  'excel.staticNote.trl':
+    'Änderungen in dieser Arbeitsmappe berechnen den TRL nicht neu; importieren Sie die JSON-Datei erneut in die App, um neu zu berechnen.',
+  'excel.staticNote.arl':
+    'Änderungen in dieser Arbeitsmappe berechnen den ARL nicht neu; importieren Sie die JSON-Datei erneut in die App, um neu zu berechnen.',
   'excel.validation.list.title': 'Wert nicht in der Liste',
   'excel.validation.list.error': 'Wählen Sie einen der folgenden Werte: {values}',
   'excel.validation.range.title': 'Außerhalb des Bereichs',
@@ -718,21 +818,32 @@ export const de: Messages = {
   'excel.row.source': 'Quelle',
   'excel.tier1.error.noAnswers': 'Diese Sitzung enthält keine Tier-1-Antworten zum Exportieren.',
   'excel.tier1.count.answered': 'Beantwortete Fragen',
-  'excel.tier1.readme.contents.summary': 'Summary — die Schätzung, die Gegenprüfung und alle ausgelösten Warnhinweise.',
-  'excel.tier1.readme.contents.context': 'Context — was von wem bewertet wurde und der Test mit der höchsten Realitätsnähe.',
-  'excel.tier1.readme.contents.responses': 'Responses — jede Prüffrage, Ihre Antwort, Ihre Notiz und die Quelle der Frage.',
-  'excel.tier1.readme.contents.next': 'Next_Evidence_Placeholders — die als Nächstes anstehenden Kriterien, mit leeren Zeilen zur Planung von Nachweisen.',
+  'excel.tier1.readme.contents.summary':
+    'Summary — die Schätzung, die Gegenprüfung und alle ausgelösten Warnhinweise.',
+  'excel.tier1.readme.contents.context':
+    'Context — was von wem bewertet wurde und der Test mit der höchsten Realitätsnähe.',
+  'excel.tier1.readme.contents.responses':
+    'Responses — jede Prüffrage, Ihre Antwort, Ihre Notiz und die Quelle der Frage.',
+  'excel.tier1.readme.contents.next':
+    'Next_Evidence_Placeholders — die als Nächstes anstehenden Kriterien, mit leeren Zeilen zur Planung von Nachweisen.',
   'excel.tier1.readme.contents.references': 'References — die Quelldokumente hinter den Fragen.',
   'excel.tier1.readme.fill.heading': 'So füllen Sie die Platzhalter aus',
-  'excel.tier1.readme.fill.planned': 'Beschreiben Sie auf Next_Evidence_Placeholders unter „Geplanter Nachweis“ den Nachweis, den Sie erbringen wollen.',
-  'excel.tier1.readme.fill.link': 'Tragen Sie unter „Nachweis-Link / Pfad“ eine URL oder einen Dateipfad ein; die Spalte „Öffnen“ wird dann zu einem anklickbaren Link.',
-  'excel.tier1.readme.fill.owner': '„Verantwortlich“ und „Zieltermin“ sind Freitext — diese Arbeitsmappe ist eine Planungshilfe, kein Tracking-Werkzeug.',
-  'excel.tier1.readme.fill.sensitive': 'Fügen Sie niemals kontrollierte oder sensible Inhalte in diese Arbeitsmappe ein. Erfassen Sie stattdessen einen Verweis.',
+  'excel.tier1.readme.fill.planned':
+    'Beschreiben Sie auf Next_Evidence_Placeholders unter „Geplanter Nachweis“ den Nachweis, den Sie erbringen wollen.',
+  'excel.tier1.readme.fill.link':
+    'Tragen Sie unter „Nachweis-Link / Pfad“ eine URL oder einen Dateipfad ein; die Spalte „Öffnen“ wird dann zu einem anklickbaren Link.',
+  'excel.tier1.readme.fill.owner':
+    '„Verantwortlich“ und „Zieltermin“ sind Freitext — diese Arbeitsmappe ist eine Planungshilfe, kein Tracking-Werkzeug.',
+  'excel.tier1.readme.fill.sensitive':
+    'Fügen Sie niemals kontrollierte oder sensible Inhalte in diese Arbeitsmappe ein. Erfassen Sie stattdessen einen Verweis.',
   'excel.tier1.readme.calc.heading': 'So wird die Schätzung berechnet',
-  'excel.tier1.readme.calc.estimate': 'Der geschätzte TRL ist die höchste Stufe, bei der diese Stufe und jede Stufe darunter mit „Ja“ beantwortet wurden.',
+  'excel.tier1.readme.calc.estimate':
+    'Der geschätzte TRL ist die höchste Stufe, bei der diese Stufe und jede Stufe darunter mit „Ja“ beantwortet wurden.',
   'excel.tier1.readme.calc.unsure': '„Unsicher“ zählt nie als „Ja“.',
-  'excel.tier1.readme.calc.claimed': 'Die höchste beanspruchte Stufe ist das höchste einzelne „Ja“, Lücken unberücksichtigt.',
-  'excel.tier1.readme.calc.matrix': 'Die Gegenprüfung Aufbau × Umgebung ist eine heuristische Hilfe, kein Standard, und setzt Ihre Antworten nie außer Kraft.',
+  'excel.tier1.readme.calc.claimed':
+    'Die höchste beanspruchte Stufe ist das höchste einzelne „Ja“, Lücken unberücksichtigt.',
+  'excel.tier1.readme.calc.matrix':
+    'Die Gegenprüfung Aufbau × Umgebung ist eine heuristische Hilfe, kein Standard, und setzt Ihre Antworten nie außer Kraft.',
   'excel.tier1.summary.estimate': 'Geschätzter TRL (Hauptergebnis)',
   'excel.tier1.summary.claimed': 'Höchste beanspruchte Stufe (erstes „Ja“)',
   'excel.tier1.summary.matrix': 'Gegenprüfung Aufbau × Umgebung',
@@ -752,31 +863,47 @@ export const de: Messages = {
   'excel.tier1.col.note': 'Notiz',
   'excel.tier1.col.link': 'Nachweis-Link / Pfad (Platzhalter)',
   'excel.tier1.col.targetDate': 'Zieltermin',
-  'excel.tier2.error.noCtes': 'Diese Sitzung enthält keine kritischen Technologieelemente zum Exportieren.',
+  'excel.tier2.error.noCtes':
+    'Diese Sitzung enthält keine kritischen Technologieelemente zum Exportieren.',
   'excel.tier2.count.ctes': 'CTEs',
   'excel.tier2.count.criteria': 'Bewertete Kriterien',
   'excel.tier2.count.evidence': 'Nachweise',
   'excel.tier2.count.gaps': 'Maßnahmen zu Lücken',
-  'excel.tier2.readme.contents.summary': 'Summary — die konservative Systemzusammenfassung, die begrenzenden CTEs und eine Tabelle je CTE.',
-  'excel.tier2.readme.contents.cteRegister': 'CTE_Register — die kritischen Technologieelemente und warum jedes davon kritisch ist.',
-  'excel.tier2.readme.contents.criteria': 'Criteria_Assessment — eine Zeile je CTE × anwendbarem Kriterium, mit Status, Nachweisen und der Angabe, ob es anerkannt ist.',
-  'excel.tier2.readme.contents.evidence': 'Evidence_Register — jeder Nachweis, dazu leere Platzhalterzeilen zum Ausfüllen.',
-  'excel.tier2.readme.contents.gaps': 'Gap_Actions — die nicht erfüllten verpflichtenden Kriterien auf der nächsten Stufe jedes CTE, bereit für die Planung.',
-  'excel.tier2.readme.contents.review': 'Review_Signoff — Platz für den Bewerter und einen unabhängigen Gutachter.',
+  'excel.tier2.readme.contents.summary':
+    'Summary — die konservative Systemzusammenfassung, die begrenzenden CTEs und eine Tabelle je CTE.',
+  'excel.tier2.readme.contents.cteRegister':
+    'CTE_Register — die kritischen Technologieelemente und warum jedes davon kritisch ist.',
+  'excel.tier2.readme.contents.criteria':
+    'Criteria_Assessment — eine Zeile je CTE × anwendbarem Kriterium, mit Status, Nachweisen und der Angabe, ob es anerkannt ist.',
+  'excel.tier2.readme.contents.evidence':
+    'Evidence_Register — jeder Nachweis, dazu leere Platzhalterzeilen zum Ausfüllen.',
+  'excel.tier2.readme.contents.gaps':
+    'Gap_Actions — die nicht erfüllten verpflichtenden Kriterien auf der nächsten Stufe jedes CTE, bereit für die Planung.',
+  'excel.tier2.readme.contents.review':
+    'Review_Signoff — Platz für den Bewerter und einen unabhängigen Gutachter.',
   'excel.tier2.readme.contents.references': 'References — die Quelldokumente hinter den Kriterien.',
   'excel.tier2.readme.contents.metadata': 'Metadata — Herkunftsangaben zu diesem Export.',
   'excel.tier2.readme.attach.heading': 'So hängen Sie Nachweise in Excel an',
-  'excel.tier2.readme.attach.url': '(a) Tragen Sie unter „Speicherort / URL“ eine URL ein für alles, was bereits an einem erreichbaren Ort liegt.',
-  'excel.tier2.readme.attach.local': '(b) Tragen Sie unter „Lokale Datei (relativer Pfad)“ einen relativen Pfad ein und legen Sie die Datei im Ordner evidence/ neben dieser Arbeitsmappe ab.',
-  'excel.tier2.readme.attach.open': '(c) Die Spalte „Öffnen“ macht aus beidem einen anklickbaren Link.',
-  'excel.tier2.readme.attach.sensitive': '(d) Fügen Sie niemals sensible Inhalte in diese Arbeitsmappe ein. Verwenden Sie stattdessen eine Zeile mit der Kennzeichnung „Sensibel — nur Verweis“, die auf das Material verweist.',
-  'excel.tier2.readme.attach.zip': 'Diese Arbeitsmappe wurde innerhalb eines Nachweispakets exportiert: Die relativen Pfade verweisen bereits auf den beigefügten Ordner evidence/.',
-  'excel.tier2.readme.attach.standalone': 'Diese Arbeitsmappe wurde einzeln exportiert. Relative Pfade werden zur Information angezeigt, die Dateien sind jedoch nicht beigefügt — exportieren Sie das Nachweispaket, um sie zu erhalten.',
+  'excel.tier2.readme.attach.url':
+    '(a) Tragen Sie unter „Speicherort / URL“ eine URL ein für alles, was bereits an einem erreichbaren Ort liegt.',
+  'excel.tier2.readme.attach.local':
+    '(b) Tragen Sie unter „Lokale Datei (relativer Pfad)“ einen relativen Pfad ein und legen Sie die Datei im Ordner evidence/ neben dieser Arbeitsmappe ab.',
+  'excel.tier2.readme.attach.open':
+    '(c) Die Spalte „Öffnen“ macht aus beidem einen anklickbaren Link.',
+  'excel.tier2.readme.attach.sensitive':
+    '(d) Fügen Sie niemals sensible Inhalte in diese Arbeitsmappe ein. Verwenden Sie stattdessen eine Zeile mit der Kennzeichnung „Sensibel — nur Verweis“, die auf das Material verweist.',
+  'excel.tier2.readme.attach.zip':
+    'Diese Arbeitsmappe wurde innerhalb eines Nachweispakets exportiert: Die relativen Pfade verweisen bereits auf den beigefügten Ordner evidence/.',
+  'excel.tier2.readme.attach.standalone':
+    'Diese Arbeitsmappe wurde einzeln exportiert. Relative Pfade werden zur Information angezeigt, die Dateien sind jedoch nicht beigefügt — exportieren Sie das Nachweispaket, um sie zu erhalten.',
   'excel.tier2.readme.calc.heading': 'So wird die Bewertung berechnet',
-  'excel.tier2.readme.calc.satisfied': 'Ein Kriterium ist anerkannt, wenn es „Erfüllt“ ist und mindestens ein verknüpfter, nicht abgelehnter Nachweis vorliegt, oder wenn es „N/A“ mit Begründung ist.',
-  'excel.tier2.readme.calc.level': 'Eine Stufe ist erreicht, wenn jedes anwendbare verpflichtende Kriterium auf dieser Stufe anerkannt ist und die Stufe darunter erreicht ist.',
+  'excel.tier2.readme.calc.satisfied':
+    'Ein Kriterium ist anerkannt, wenn es „Erfüllt“ ist und mindestens ein verknüpfter, nicht abgelehnter Nachweis vorliegt, oder wenn es „N/A“ mit Begründung ist.',
+  'excel.tier2.readme.calc.level':
+    'Eine Stufe ist erreicht, wenn jedes anwendbare verpflichtende Kriterium auf dieser Stufe anerkannt ist und die Stufe darunter erreicht ist.',
   'excel.tier2.readme.calc.cte': 'Der TRL eines CTE ist die höchste erreichte Stufe.',
-  'excel.tier2.readme.calc.system': 'Die Systemzusammenfassung ist der niedrigste TRL unter den als kritisch gekennzeichneten CTEs — eine konservative Berichtskonvention, keine vorgeschriebene Formel.',
+  'excel.tier2.readme.calc.system':
+    'Die Systemzusammenfassung ist der niedrigste TRL unter den als kritisch gekennzeichneten CTEs — eine konservative Berichtskonvention, keine vorgeschriebene Formel.',
   'excel.tier2.summary.system': 'Systemzusammenfassung (TRL)',
   'excel.tier2.summary.notComputed': 'Nicht berechnet',
   'excel.tier2.summary.limiting': 'Begrenzende(s) CTE(s)',
@@ -818,7 +945,8 @@ export const de: Messages = {
   'excel.tier2.col.nextTrl': 'Nächster TRL',
   'excel.tier2.col.gap': 'Beschreibung der Lücke',
   'excel.tier2.col.dueDate': 'Fälligkeitsdatum',
-  'excel.tier2.evidence.placeholderNote': 'Platzhalterzeilen: Füllen Sie sie von Hand aus oder erfassen Sie die Nachweise in der App und exportieren Sie erneut.',
+  'excel.tier2.evidence.placeholderNote':
+    'Platzhalterzeilen: Füllen Sie sie von Hand aus oder erfassen Sie die Nachweise in der App und exportieren Sie erneut.',
   'excel.tier2.review.assessorName': 'Bewerter — Name',
   'excel.tier2.review.assessorRole': 'Bewerter — Rolle',
   'excel.tier2.review.assessorOrganization': 'Bewerter — Organisation',
@@ -830,26 +958,39 @@ export const de: Messages = {
   'excel.tier2.review.reviewerConclusion': 'Unabhängiger Gutachter — Ergebnis',
   'excel.tier2.review.reviewerComments': 'Unabhängiger Gutachter — Kommentare',
   'excel.tier2.review.reviewerSignature': 'Unabhängiger Gutachter — Unterschrift',
-  'excel.tier2.review.note': 'Die Freigabe durch den Gutachter wird hier nur der Einfachheit halber festgehalten. Sie liegt außerhalb der Bewertung durch das Tool: Nichts in dieser Arbeitsmappe ändert sich, weil ein Gutachter zustimmt oder nicht zustimmt.',
+  'excel.tier2.review.note':
+    'Die Freigabe durch den Gutachter wird hier nur der Einfachheit halber festgehalten. Sie liegt außerhalb der Bewertung durch das Tool: Nichts in dieser Arbeitsmappe ändert sich, weil ein Gutachter zustimmt oder nicht zustimmt.',
   'excel.arl.error.noRatings': 'Diese Sitzung enthält keine ARL-Einstufungen zum Exportieren.',
   'excel.arl.count.rated': 'Eingestufte Dimensionen',
   'excel.arl.count.total': 'Dimensionen im Bewertungsraster',
-  'excel.arl.readme.contents.summary': 'Summary — ARL Beginn, ARL Ende (Ziel), die zugrunde liegenden Zählungen und alle ausgelösten Warnhinweise.',
-  'excel.arl.readme.contents.scope': 'Scope — der Technologieumfang, der Umfang der Wertschöpfungskette, der Zeithorizont und das politische Umfeld, die den Einstufungen zugrunde liegen.',
-  'excel.arl.readme.contents.risk': 'Risk_Assessment — jede Dimension: aktuelle Einstufung, Begründung, Nachweis, Ziel und geplante Maßnahme, mit dem Text des Bewertungsrasters.',
-  'excel.arl.readme.contents.lookup': 'ARL_Lookup — die Nachschlagetabelle der Quelle, mit den Zellen dieser Bewertung markiert.',
+  'excel.arl.readme.contents.summary':
+    'Summary — ARL Beginn, ARL Ende (Ziel), die zugrunde liegenden Zählungen und alle ausgelösten Warnhinweise.',
+  'excel.arl.readme.contents.scope':
+    'Scope — der Technologieumfang, der Umfang der Wertschöpfungskette, der Zeithorizont und das politische Umfeld, die den Einstufungen zugrunde liegen.',
+  'excel.arl.readme.contents.risk':
+    'Risk_Assessment — jede Dimension: aktuelle Einstufung, Begründung, Nachweis, Ziel und geplante Maßnahme, mit dem Text des Bewertungsrasters.',
+  'excel.arl.readme.contents.lookup':
+    'ARL_Lookup — die Nachschlagetabelle der Quelle, mit den Zellen dieser Bewertung markiert.',
   'excel.arl.readme.contents.references': 'References — die Quelldokumente.',
   'excel.arl.readme.contents.metadata': 'Metadata — Herkunftsangaben zu diesem Export.',
   'excel.arl.readme.calc.heading': 'So wird der ARL berechnet',
-  'excel.arl.readme.calc.rated': 'Jede Dimension wird anhand des Bewertungsrasters des DOE Adoption Readiness Assessment als geringes, mittleres oder hohes Risiko oder als N/A eingestuft.',
-  'excel.arl.readme.calc.tally': 'Die Dimensionen mit mittlerem und hohem Risiko werden gezählt, und der ARL wird unverändert aus der Nachschlagetabelle der Quelle auf S. 13 abgelesen.',
-  'excel.arl.readme.calc.conservative': 'Dieses Tool wertet „Unsicher“, „Nicht bewertet“ und „N/A“ ohne Begründung als hohes Risiko — eine konservative Konvention des Tools, keine Regel der Quelle.',
-  'excel.arl.readme.calc.end': 'ARL Ende verwendet die Ziele zum Projektende; wo keines gesetzt ist, wird die aktuelle Einstufung übernommen. {target}.',
-  'excel.arl.readme.calc.trl': 'ARL ergänzt TRL. Die TRL-Ergebnisse stehen in den separaten TRL-Arbeitsmappen und werden nie mit dem ARL kombiniert.',
+  'excel.arl.readme.calc.rated':
+    'Jede Dimension wird anhand des Bewertungsrasters des DOE Adoption Readiness Assessment als geringes, mittleres oder hohes Risiko oder als N/A eingestuft.',
+  'excel.arl.readme.calc.tally':
+    'Die Dimensionen mit mittlerem und hohem Risiko werden gezählt, und der ARL wird unverändert aus der Nachschlagetabelle der Quelle auf S. 13 abgelesen.',
+  'excel.arl.readme.calc.conservative':
+    'Dieses Tool wertet „Unsicher“, „Nicht bewertet“ und „N/A“ ohne Begründung als hohes Risiko — eine konservative Konvention des Tools, keine Regel der Quelle.',
+  'excel.arl.readme.calc.end':
+    'ARL Ende verwendet die Ziele zum Projektende; wo keines gesetzt ist, wird die aktuelle Einstufung übernommen. {target}.',
+  'excel.arl.readme.calc.trl':
+    'ARL ergänzt TRL. Die TRL-Ergebnisse stehen in den separaten TRL-Arbeitsmappen und werden nie mit dem ARL kombiniert.',
   'excel.arl.readme.use.heading': 'So verwenden Sie die Platzhalter',
-  'excel.arl.readme.use.freeText': '„Begründung“, „Nachweis / Referenz“ und „Geplante Maßnahme“ sind Freitext, den das Team ausfüllt.',
-  'excel.arl.readme.use.dropdowns': 'Die Spalten „Aktuelle Einstufung“ und „Zieleinstufung“ behalten ihre Auswahllisten, eine Änderung berechnet den ARL jedoch nicht neu.',
-  'excel.arl.readme.use.sensitive': 'Fügen Sie niemals kontrollierte oder sensible Inhalte in diese Arbeitsmappe ein. Erfassen Sie stattdessen einen Verweis.',
+  'excel.arl.readme.use.freeText':
+    '„Begründung“, „Nachweis / Referenz“ und „Geplante Maßnahme“ sind Freitext, den das Team ausfüllt.',
+  'excel.arl.readme.use.dropdowns':
+    'Die Spalten „Aktuelle Einstufung“ und „Zieleinstufung“ behalten ihre Auswahllisten, eine Änderung berechnet den ARL jedoch nicht neu.',
+  'excel.arl.readme.use.sensitive':
+    'Fügen Sie niemals kontrollierte oder sensible Inhalte in diese Arbeitsmappe ein. Erfassen Sie stattdessen einen Verweis.',
   'excel.arl.tally': 'Niedrig {low} · Mittel {medium} · Hoch {high} · N/A {na}',
   'excel.arl.summary.rubric': 'ARL-Bewertungsraster',
   'excel.arl.summary.start': 'ARL Beginn',
@@ -883,12 +1024,14 @@ export const de: Messages = {
   'excel.arl.lookup.start': 'Beginn',
   'excel.arl.lookup.target': 'Ziel',
   'excel.arl.lookup.counts': '{medium} × Mittel, {high} × Hoch → ARL {arl}',
-  'excel.arl.lookup.note': 'Die markierten Zellen tragen einen Kommentar, der sie benennt; die abgedruckte Tabelle wird unverändert verwendet.',
+  'excel.arl.lookup.note':
+    'Die markierten Zellen tragen einen Kommentar, der sie benennt; die abgedruckte Tabelle wird unverändert verwendet.',
   'excel.arl.meta.workbook': 'Arbeitsmappe',
   'excel.arl.meta.workbookValue': 'ARL (Zusatzmodul)',
   'excel.arl.meta.trlFramework': 'TRL-Framework der Sitzung',
   'excel.arl.meta.trlFrameworkName': 'Name des TRL-Frameworks',
-  'excel.package.tooLarge': 'Die Nachweisdateien umfassen insgesamt {total} MB und überschreiten damit die Paketgrenze von {limit} MB. Entfernen Sie eine große Datei oder lösen Sie ihre Verknüpfung, oder erfassen Sie sie als Verweis, statt sie anzuhängen. Größte Dateien: {files}',
+  'excel.package.tooLarge':
+    'Die Nachweisdateien umfassen insgesamt {total} MB und überschreiten damit die Paketgrenze von {limit} MB. Entfernen Sie eine große Datei oder lösen Sie ihre Verknüpfung, oder erfassen Sie sie als Verweis, statt sie anzuhängen. Größte Dateien: {files}',
   'excel.package.fileSize': '{name} ({size} MB)',
   'excel.package.error.folder': 'Der Paketordner konnte nicht erstellt werden.',
   'excel.package.progress.library': 'Paketierungsbibliothek wird geladen…',
@@ -904,8 +1047,10 @@ export const de: Messages = {
   'excel.package.readme.evidence': '{count} Nachweisdatei(en), benannt als <EV-ID>_<Originalname>',
   'excel.package.readme.manifest': 'SHA-256 jeder Datei in diesem Paket',
   'excel.package.readme.links.heading': 'Links öffnen',
-  'excel.package.readme.links.body': 'Entpacken Sie zuerst den gesamten Ordner und behalten Sie die Struktur bei. Die Zellen\n„Lokale Datei (relativer Pfad)“ in Evidence_Register verweisen auf evidence/… relativ zur\nArbeitsmappe, sodass die Spalte „Öffnen“ funktioniert, sobald der Ordner entpackt ist.',
+  'excel.package.readme.links.body':
+    'Entpacken Sie zuerst den gesamten Ordner und behalten Sie die Struktur bei. Die Zellen\n„Lokale Datei (relativer Pfad)“ in Evidence_Register verweisen auf evidence/… relativ zur\nArbeitsmappe, sodass die Spalte „Öffnen“ funktioniert, sobald der Ordner entpackt ist.',
   'excel.package.readme.hashes.heading': 'Hashwerte überprüfen',
   'excel.package.readme.not.heading': 'Was dieses Paket nicht ist',
-  'excel.package.readme.not.body': 'Eine Selbstbewertung, keine unabhängige Technologiereifebewertung (TRA). Mit\n„Sensibel — nur Verweis“ gekennzeichnete Nachweise werden nie beigefügt: Diese Zeilen\nverweisen auf Material, das an anderer Stelle aufbewahrt wird.',
+  'excel.package.readme.not.body':
+    'Eine Selbstbewertung, keine unabhängige Technologiereifebewertung (TRA). Mit\n„Sensibel — nur Verweis“ gekennzeichnete Nachweise werden nie beigefügt: Diese Zeilen\nverweisen auf Material, das an anderer Stelle aufbewahrt wird.',
 };
