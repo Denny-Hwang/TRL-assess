@@ -29,13 +29,14 @@ puede afirmar.
 ## ¿Y si un criterio no aplica?
 
 Marcarlo como **N/A** con una justificación: eso cuenta como satisfecho. Un N/A sin justificación no
-cuenta.
+cuenta. Un nivel nunca se alcanza solo con N/A: al menos un criterio del nivel debe estar
+**Cumplido** con evidencias utilizables.
 
 ## ¿Por qué el nivel indica «Sin criterios obligatorios — requiere confirmación del evaluador»?
 
 La fuente del marco no clasifica los criterios como obligatorios, por lo que el nivel se alcanza en
-cuanto se satisface un criterio aplicable, y el evaluador debe confirmarlo. Véase
-[Marcos y fuentes](/guide/frameworks).
+cuanto un criterio aplicable está **Cumplido** con evidencias utilizables, y el evaluador debe
+confirmarlo. Véase [Marcos y fuentes](/guide/frameworks).
 
 ## ¿Dónde están los datos?
 

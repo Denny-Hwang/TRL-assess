@@ -33,13 +33,20 @@ incluido _Cumplido_ sin evidencias utilizables.
 
 :::figure evidence-decision:::
 
-**Nivel alcanzado.** Todos los criterios _obligatorios_ aplicables en L están satisfechos **y** el
-nivel L−1 está alcanzado (el nivel 0 siempre cuenta). Un nivel por encima de uno no alcanzado se
-muestra como _bloqueado_.
+**Nivel alcanzado.** Todos los criterios _obligatorios_ aplicables en L están satisfechos,
+**al menos un** criterio aplicable en L está _Cumplido_ con evidencias utilizables **y** el nivel
+L−1 está alcanzado (el nivel 0 siempre cuenta). Un nivel por encima de uno no alcanzado se muestra
+como _bloqueado_.
+
+**N/A nunca sustenta un nivel por sí solo.** Un _N/A_ justificado satisface un criterio —deja
+constancia de que el criterio no aplica—, pero no demuestra nada. Un nivel cuyos requisitos solo se
+satisfacen mediante _N/A_ no se alcanza y muestra «requiere un criterio cumplido con evidencias»;
+la lista de brechas indica entonces sus criterios marcados como N/A.
 
 Un nivel **sin** criterios obligatorios aplicables se alcanza cuando al menos un criterio aplicable
-está satisfecho, y se marca con «Sin criterios obligatorios — requiere confirmación del evaluador»:
-es el caso de todos los niveles de `dod-tra-2025`, que no marca nada como obligatorio.
+está _Cumplido_ con evidencias utilizables, y se marca con
+«Sin criterios obligatorios — requiere confirmación del evaluador»: es el caso de todos los niveles
+de `dod-tra-2025`, que no marca nada como obligatorio.
 
 **TRL del CTE.** El nivel alcanzado más alto; 0 se muestra como «< TRL 1».
 
