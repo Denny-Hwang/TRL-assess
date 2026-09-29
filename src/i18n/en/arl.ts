@@ -38,6 +38,8 @@ export const arl = {
   'arl.rate.conservative': 'Unrated, Unsure, or N/A without a rationale count as High risk.',
   'arl.rate.areasNav': 'Core risk areas',
   'arl.rate.currentRisk': 'Current risk',
+  'arl.rate.chooseOne': 'choose the one that fits best',
+  'arl.rate.selected': 'Selected',
   'arl.rate.naOption': 'N/A — does not apply to this scope',
   'arl.rate.clear': 'Clear rating',
   'arl.rate.countedAs': 'counted as {risk}',
@@ -75,8 +77,13 @@ export const arl = {
   'arl.result.flags.current': 'Current ratings',
   'arl.result.flags.targets': 'Targets',
   'arl.result.howRead': 'How the number is read',
-  'arl.result.howRead.body':
-    'The source tallies the Medium- and High-risk dimensions and reads the ARL from its look-up table.',
+  'arl.result.howRead.step1':
+    'Count the dimensions rated Medium risk and those rated High risk (Unsure, unrated and N/A without a rationale count as High).',
+  'arl.result.howRead.step2':
+    'In the table below, take the row for the Medium count and the column for the High count (8 or more: “8+”).',
+  'arl.result.howRead.step3': 'The number in that cell is the ARL.',
+  'arl.result.read.cell': 'Row {medium}, column {high}',
+  'arl.result.read.noChange': 'same as Start',
   'arl.result.mark.start': 'Start',
   'arl.result.mark.target': 'Target',
   'arl.result.takeAway': 'Take it away',
@@ -86,7 +93,7 @@ export const arl = {
   'arl.result.backToRatings': 'Back to the ratings',
   'arl.result.howScored': 'How ARL is scored',
   'arl.result.jsonNote':
-    'The JSON file restores the whole session, TRL and ARL. The workbook is a static snapshot — editing it does not recompute the ARL.',
+    'JSON restores the whole session. The workbook is a snapshot — edits in it are not recalculated.',
 
   'arl.scale.start': 'Start: ARL {level}',
   'arl.scale.target': 'Target: ARL {level}',
@@ -94,9 +101,10 @@ export const arl = {
 
   'arl.grid.caption':
     'Rows: number of Medium-risk dimensions. Columns: number of High-risk dimensions.',
-  'arl.grid.corner': 'M \\ H',
+  'arl.grid.rows': 'Number of Medium-risk dimensions',
+  'arl.grid.columns': 'Number of High-risk dimensions',
   'arl.grid.summary': '{label}: {medium} Medium and {high} High → ARL {arl}',
-  'arl.grid.mark': '{label}: {medium} Medium, {high} High',
+  'arl.grid.markCounts': '{medium} Medium · {high} High',
 
   'arl.glyph.na': 'Not applicable',
   'arl.glyph.legend': 'Risk rating legend',

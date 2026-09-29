@@ -50,7 +50,7 @@ export const tier1 = {
   'tier1.result.ladderLabel':
     'Estimated TRL {estimate} of 9. Highest level claimed: {claimed}. Build and environment cross-check: {matrix}.',
   'tier1.result.ladderNote':
-    'Filled rungs are confirmed. A hatched rung is a level you claimed while a level below it is unconfirmed — the chain stops there.',
+    'Filled rungs are confirmed; a hatched rung was claimed above an unconfirmed level.',
   'tier1.result.estimated': 'Estimated TRL',
   'tier1.result.estimatedHint': 'Highest level with every level below it also confirmed.',
   'tier1.result.claimed': 'Highest level claimed',
@@ -59,11 +59,11 @@ export const tier1 = {
   'tier1.result.matrixHint': '{build} × {environment} — {status}.',
   'tier1.result.consistency': 'Consistency: {rating}',
   'tier1.result.consistencyHelp.High':
-    'Your answers are internally consistent and agree with the build/environment cross-check. That says nothing about whether the answers are correct.',
+    'Consistent with the cross-check — which says nothing about whether the answers are correct.',
   'tier1.result.consistencyHelp.Medium':
-    'There is some tension between your answers and the cross-check, or an "Unsure" at or below the level you claimed.',
+    'Some tension with the cross-check, or an "Unsure" at or below the level you claimed.',
   'tier1.result.consistencyHelp.Low':
-    'Your answers disagree strongly with the build/environment cross-check, or several levels below your claim are unconfirmed. Re-check before using this figure.',
+    'Your answers conflict with the cross-check, or several lower levels are unconfirmed. Re-check before using this figure.',
   'tier1.result.nextHeading': 'What typically comes next',
   'tier1.result.nextMandatory':
     'What {trl} requires — each of these needs evidence in a Tier 2 assessment.',
@@ -79,7 +79,7 @@ export const tier1 = {
   'tier1.result.downloadJson': 'Download JSON',
   'tier1.result.continue': 'Continue to Evidence Assessment',
   'tier1.result.filesNote':
-    'The JSON file restores this session in the app. The workbook is a static snapshot — editing it does not recompute the TRL.',
+    'JSON restores this session. The workbook is a snapshot — edits in it are not recalculated.',
 
   'tier1.rail.label': 'Answers so far, TRL 1 to 9',
   'tier1.rail.yes': 'yes',

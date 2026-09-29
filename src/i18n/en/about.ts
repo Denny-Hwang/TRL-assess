@@ -2,7 +2,7 @@
 export const about = {
   'about.title': 'About {app}',
   'about.lead':
-    'A two-tier Technology Readiness Level self-assessment tool with an Adoption Readiness Level module. Everything runs in your browser — no backend, no account, no telemetry.',
+    'A TRL self-assessment tool with an ARL module. It runs entirely in your browser — no backend, account or telemetry.',
   'about.build.heading': 'Build',
   'about.build.version': 'Version',
   'about.build.sha': 'Git SHA',
@@ -16,7 +16,7 @@ export const about = {
   'about.frameworks.sources': 'Sources: {list}',
   'about.frameworks.arl.name': 'ARL side module — {title}',
   'about.frameworks.arl.body':
-    "Adoption readiness, scored apart from TRL: the DOE rubric's 17 adoption-risk dimensions and its look-up table, transcribed verbatim.",
+    "Adoption readiness, scored separately from TRL: the DOE rubric's 17 dimensions and look-up table, verbatim.",
   'about.frameworks.arl.link': 'How it works',
   'about.frameworks.arl.source': 'Source: {id} ({version})',
   'about.frameworks.more': 'What each framework contains, and its limitations →',
@@ -36,7 +36,7 @@ export const about = {
     'The system summary is the minimum across critical CTEs — a conservative reporting convention, not a mandated formula.',
   'about.data.heading': 'Local data',
   'about.data.body':
-    'Assessments and evidence files are stored only in this browser. Export anything you want to keep before clearing.',
+    'Stored only in this browser. Export anything you want to keep before clearing.',
   'about.data.clear': 'Clear all local data',
   'about.data.confirm':
     'Delete the assessment and every stored evidence file from this browser? This cannot be undone.',

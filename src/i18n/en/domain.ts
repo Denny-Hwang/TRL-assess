@@ -6,14 +6,14 @@ export const domain = {
   'label.arl': 'Adoption readiness self-assessment — not reviewed or endorsed by DOE',
   'label.arlTarget': 'Target — planned, not achieved',
   'disclaimer.trl':
-    '{app} produces a self-assessment only — not an independent Technology Readiness Assessment (TRA), an audit or a certification. Results depend entirely on what you enter; nothing is verified by the tool. Criteria differ between agencies — check them before using a result in a formal submission.',
+    '{app} produces a self-assessment only — not an independent Technology Readiness Assessment (TRA), an audit or a certification. Nothing you enter is verified; criteria differ between agencies, so check them before formal use.',
   'disclaimer.arl':
-    '{app} produces a self-assessment only. The ARL figures apply the DOE Adoption Readiness Assessment rubric to the ratings you enter; nothing is verified by the tool, and DOE does not review or endorse the result.',
+    '{app} produces a self-assessment only. The ARL applies the DOE rubric to your ratings; nothing is verified by the tool, and DOE does not review or endorse the result.',
   'notice.sensitive':
-    'Do not enter controlled, classified, export-controlled or otherwise sensitive information. This tool runs in your browser on a public static site; use "Sensitive — reference only" evidence entries to point at such material instead of attaching it.',
+    'This is a public site: do not enter controlled, classified, export-controlled or otherwise sensitive information. Point to such material with a "Sensitive — reference only" evidence entry instead.',
   'notice.dismiss': 'Dismiss',
   'sourceText.note':
-    'Criteria, screening questions and rubric text are shown in English, exactly as their sources publish them. The text in parentheses is an unofficial translation, for reference only.',
+    'Criteria, questions and rubric text are shown in English as published; text in parentheses is an unofficial translation.',
 
   'trl.belowOne': '< TRL 1',
   'trl.level': 'TRL {level}',
@@ -68,13 +68,12 @@ export const domain = {
   'tier1.flag.noAnswers': 'No screening questions have been answered yet.',
 
   'tier2.systemNote':
-    'Conservative summary (minimum of critical CTEs). This is a reporting convention, not a mandated formula.',
+    'Lowest TRL among critical CTEs — a conservative convention, not a mandated formula.',
   'tier2.noCritical': 'Not computed — mark at least one CTE as critical',
   'tier2.noMandatory': 'No mandatory criteria — needs assessor confirmation',
   'tier2.warn.metNoEvidenceMandatory':
-    'Marked "Met" but no evidence is linked (or all linked evidence is Rejected). A mandatory criterion is not satisfied without evidence.',
-  'tier2.warn.metNoEvidenceOptional':
-    'Marked "Met" but no evidence is linked (or all linked evidence is Rejected). It does not count towards completeness.',
+    'Marked "Met" without usable evidence — a mandatory criterion is not satisfied until evidence is linked.',
+  'tier2.warn.metNoEvidenceOptional': 'Marked "Met" without usable evidence — it does not count.',
   'tier2.warn.naNoJustification': '"N/A" needs a justification before it can count as satisfied.',
   'tier2.reason.Met': 'Marked "Met" but no usable evidence is linked.',
   'tier2.reason.Partially met': 'Partially met — a partial result never satisfies a criterion.',
@@ -84,19 +83,19 @@ export const domain = {
   'tier2.reason.naOnly':
     'N/A cannot establish a level on its own — at least one criterion at this level must be Met with usable evidence.',
   'tier2.delta.lower':
-    'The evidence-based assessment is markedly lower than the quick estimate. Check which CTE is limiting and which criteria still lack evidence.',
+    'The evidence-based result is well below the quick estimate. Check the limiting CTE and the criteria still lacking evidence.',
   'tier2.delta.higher':
-    'The evidence-based assessment is markedly higher than the quick estimate. Check whether the quick estimate answered "Unsure" or "No" at a low level, and whether every CTE marked critical really is critical.',
+    'The evidence-based result is well above the quick estimate. Check low-level "Unsure" or "No" answers, and whether each critical CTE is really critical.',
 
   'arl.flag.unsure':
     '"Unsure" at {ids} — counted as High risk. An unsure rating never counts as a lower risk.',
   'arl.flag.notAssessed': 'Not assessed: {count} of {total} ({ids}) — counted as High risk.',
   'arl.flag.naWithoutRationale':
-    'N/A without a rationale at {ids} — counted as High risk until the rationale says why the dimension does not apply.',
+    'N/A without a rationale at {ids} — counted as High risk until a reason is given.',
   'arl.flag.noRationale':
-    'Rated without a rationale: {ids}. The source asks for the rationale and details behind every rating.',
+    'Rated without a rationale: {ids}. The source asks for a rationale behind every rating.',
   'arl.flag.noPlan':
-    'Risk reduction targeted without a planned action: {ids}. Say what the project will do to get there.',
+    'Target set without a planned action: {ids}. Say how the project will get there.',
   'arl.reason.Unsure': 'Unsure — counted as High risk',
   'arl.reason.Not assessed': 'Not assessed — counted as High risk',
   'arl.reason.N/A': 'N/A without a rationale — counted as High risk until one is recorded',

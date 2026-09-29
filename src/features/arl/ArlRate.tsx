@@ -28,11 +28,28 @@ import type { Translator } from '@/i18n/translate';
 
 type Patch = Pick<ArlDimensionAssessment, 'dimensionId'> & Partial<ArlDimensionAssessment>;
 
-const RISK_TONE: Record<ArlRisk, string> = {
-  Low: 'peer-checked:border-emerald-600 peer-checked:bg-emerald-50',
-  Medium: 'peer-checked:border-amber-600 peer-checked:bg-amber-50',
-  High: 'peer-checked:border-red-600 peer-checked:bg-red-50',
+/** The selected option wears its risk colour; unselected options stay neutral cards. */
+const SELECTED_TONE: Record<ArlRisk, string> = {
+  Low: 'border-emerald-600 bg-emerald-50 shadow-sm',
+  Medium: 'border-amber-600 bg-amber-50 shadow-sm',
+  High: 'border-red-600 bg-red-50 shadow-sm',
 };
+const UNSELECTED_TONE =
+  'border-slate-300 bg-white hover:border-brand-500 hover:bg-slate-50 hover:shadow-sm';
+
+/** A visible radio mark, so each option reads as "pick one" at a glance. */
+function RadioMark({ selected }: { selected: boolean }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 ${
+        selected ? 'border-slate-900 bg-white' : 'border-slate-400 bg-white'
+      }`}
+    >
+      {selected ? <span className="h-2.5 w-2.5 rounded-full bg-slate-900" /> : null}
+    </span>
+  );
+}
 
 function riskText(tr: Translator, risk: ArlRisk): string {
   return tr.t(`risk.${risk}` as MessageKey);
@@ -82,31 +99,45 @@ const DimensionCard = memo(function DimensionCard({
       </header>
 
       <fieldset>
-        <legend className="text-sm font-medium text-slate-800">{t('arl.rate.currentRisk')}</legend>
+        <legend className="text-sm font-semibold text-slate-900">
+          {t('arl.rate.currentRisk')}{' '}
+          <span className="font-normal text-slate-600">— {t('arl.rate.chooseOne')}</span>
+        </legend>
         <div className="mt-2 grid gap-2 md:grid-cols-3">
-          {ARL_RISKS.map((risk) => (
-            <label key={risk} className="relative block cursor-pointer">
-              <input
-                type="radio"
-                name={`${id}-current`}
-                value={risk}
-                checked={current === risk}
-                onChange={() => update({ current: risk })}
-                className="peer sr-only"
-              />
-              <span
-                className={`block h-full rounded-md border border-slate-200 p-3 text-sm peer-focus-visible:ring-2 peer-focus-visible:ring-brand-600 ${RISK_TONE[risk]}`}
-              >
-                <span className="flex items-center gap-2 font-semibold">
-                  <RiskGlyph rating={risk} decorative />
-                  {riskText(tr, risk)}
+          {ARL_RISKS.map((risk) => {
+            const selected = current === risk;
+            return (
+              <label key={risk} className="relative block cursor-pointer">
+                <input
+                  type="radio"
+                  name={`${id}-current`}
+                  value={risk}
+                  checked={selected}
+                  onChange={() => update({ current: risk })}
+                  className="peer sr-only"
+                />
+                <span
+                  className={`block h-full rounded-lg border-2 p-3 text-sm transition peer-focus-visible:ring-2 peer-focus-visible:ring-brand-600 peer-focus-visible:ring-offset-1 ${
+                    selected ? SELECTED_TONE[risk] : UNSELECTED_TONE
+                  }`}
+                >
+                  <span className="flex items-center gap-2 font-semibold">
+                    <RadioMark selected={selected} />
+                    <RiskGlyph rating={risk} decorative />
+                    {riskText(tr, risk)}
+                    {selected ? (
+                      <span className="ms-auto rounded-full bg-slate-900 px-2 py-0.5 text-xs font-medium text-white">
+                        ✓ {t('arl.rate.selected')}
+                      </span>
+                    ) : null}
+                  </span>
+                  <span className="mt-2 block whitespace-pre-line text-slate-700">
+                    <SourceText text={dimension.levels[risk]} />
+                  </span>
                 </span>
-                <span className="mt-1 block whitespace-pre-line text-slate-700">
-                  <SourceText text={dimension.levels[risk]} />
-                </span>
-              </span>
-            </label>
-          ))}
+              </label>
+            );
+          })}
         </div>
         <div className="mt-2 flex flex-wrap gap-2">
           {(['N/A', 'Unsure'] as const).map((rating) => (
@@ -119,7 +150,14 @@ const DimensionCard = memo(function DimensionCard({
                 onChange={() => update({ current: rating })}
                 className="peer sr-only"
               />
-              <span className="inline-flex items-center gap-2 rounded-md border border-slate-200 px-3 py-1.5 text-sm peer-checked:border-slate-600 peer-checked:bg-slate-100 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-600">
+              <span
+                className={`inline-flex items-center gap-2 rounded-lg border-2 px-3 py-1.5 text-sm transition peer-focus-visible:ring-2 peer-focus-visible:ring-brand-600 ${
+                  current === rating
+                    ? 'border-slate-700 bg-slate-100 font-semibold'
+                    : 'border-slate-300 bg-white hover:border-brand-500 hover:bg-slate-50'
+                }`}
+              >
+                <RadioMark selected={current === rating} />
                 <RiskGlyph rating={rating} decorative />
                 {rating === 'N/A' ? t('arl.rate.naOption') : ratingText(tr, 'Unsure')}
               </span>
@@ -135,10 +173,12 @@ const DimensionCard = memo(function DimensionCard({
             </button>
           ) : null}
         </div>
-        <p className="mt-2 flex items-center gap-2 text-xs text-slate-600" aria-live="polite">
-          <RiskGlyph rating={current} withLabel />
-          <span>— {arlReasonText(tr, current, reason) ?? countedText(tr, counted)}</span>
-        </p>
+        {reason || current === 'N/A' ? (
+          <p className="mt-2 flex items-center gap-2 text-sm text-slate-700" aria-live="polite">
+            <RiskGlyph rating={current} decorative />
+            <span>{arlReasonText(tr, current, reason) ?? countedText(tr, counted)}</span>
+          </p>
+        ) : null}
       </fieldset>
 
       <div className="grid gap-3 md:grid-cols-2">

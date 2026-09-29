@@ -20,7 +20,7 @@ export const home = {
   'home.tier2.start': 'Start evidence assessment',
   'home.arl.heading': 'Adoption Readiness Level (ARL)',
   'home.arl.body':
-    'Rate the 17 adoption-risk dimensions of the DOE Adoption Readiness Assessment, now and at the end of the project. Reported separately from TRL.',
+    'Rate the 17 adoption-risk dimensions of the DOE rubric, now and at the end of the project. Reported separately from TRL.',
   'home.arl.start': 'Start adoption readiness',
   'home.disclaimer.heading': 'Disclaimer',
 } as const;

@@ -37,7 +37,7 @@ export const guide = {
   'guide.fig.tier2.caption.formula': 'min(4, 3, 3) = TRL 3',
   'guide.fig.tier2.caption.after': '. Nothing is averaged.',
   'guide.fig.statusLegend.caption':
-    'Only the first two count towards a level: “Met” with usable evidence, and “N/A” with a justification. An achieved level always has at least one “Met” with evidence.',
+    'Only “Met” with usable evidence and “N/A” with a justification count; an achieved level needs at least one “Met” with evidence.',
   'guide.fig.arlLookup.mark': 'Example',
   'guide.fig.arlLookup.caption.before':
     'Example — three Medium-risk and one High-risk dimension read as ',
