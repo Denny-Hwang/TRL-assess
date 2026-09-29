@@ -41,14 +41,14 @@ export const es: Messages = {
     'Autoevaluación de la preparación para la adopción — no revisada ni avalada por el DOE',
   'label.arlTarget': 'Objetivo — previsto, no alcanzado',
   'disclaimer.trl':
-    '{app} solo produce una autoevaluación — no una Evaluación de madurez tecnológica (TRA) independiente, ni una auditoría, ni una certificación. Los resultados dependen por completo de la información introducida; la herramienta no verifica nada. Los criterios difieren entre agencias: compruébelos antes de utilizar un resultado en una presentación formal.',
+    '{app} solo produce una autoevaluación — no una Evaluación de madurez tecnológica (TRA) independiente, ni una auditoría, ni una certificación. No se verifica nada de lo que se introduce; los criterios difieren entre agencias, así que compruébelos antes de un uso formal.',
   'disclaimer.arl':
-    '{app} solo produce una autoevaluación. Las cifras de ARL aplican la rúbrica de la Evaluación de preparación para la adopción del DOE a las calificaciones introducidas; la herramienta no verifica nada y el DOE no revisa ni avala el resultado.',
+    '{app} solo produce una autoevaluación. El ARL aplica la rúbrica del DOE a las calificaciones introducidas; la herramienta no verifica nada y el DOE no revisa ni avala el resultado.',
   'notice.sensitive':
-    'No introducir información controlada, clasificada, sujeta a control de exportaciones ni sensible de ningún otro tipo. Esta herramienta se ejecuta en el navegador desde un sitio estático público; para ese tipo de material, utilizar entradas de evidencia «Sensible — solo referencia» que apunten a él en lugar de adjuntarlo.',
+    'Este es un sitio público: no introducir información controlada, clasificada, sujeta a control de exportaciones ni sensible de ningún otro tipo. En su lugar, apuntar a ese tipo de material con una entrada de evidencia «Sensible — solo referencia».',
   'notice.dismiss': 'Cerrar',
   'sourceText.note':
-    'Los criterios, las preguntas de cribado y el texto de la rúbrica se muestran en inglés, tal como los publican sus fuentes. El texto entre paréntesis es una traducción no oficial, solo como referencia.',
+    'Los criterios, las preguntas y el texto de la rúbrica se muestran en inglés, tal como se publicaron; el texto entre paréntesis es una traducción no oficial.',
   'trl.belowOne': '< TRL 1',
   'trl.level': 'TRL {level}',
   'answer.Yes': 'Sí',
@@ -95,13 +95,13 @@ export const es: Messages = {
     'Se seleccionó «Sin certeza» en {levels}. Una respuesta «Sin certeza» nunca cuenta como «Sí», por lo que la estimación se mantiene en ese nivel o por debajo.',
   'tier1.flag.noAnswers': 'Aún no se ha respondido ninguna pregunta de cribado.',
   'tier2.systemNote':
-    'Resumen conservador (mínimo de los CTE críticos). Es una convención de presentación de informes, no una fórmula obligatoria.',
+    'TRL más bajo entre los CTE críticos: una convención conservadora, no una fórmula obligatoria.',
   'tier2.noCritical': 'No calculado — marcar al menos un CTE como crítico',
   'tier2.noMandatory': 'Sin criterios obligatorios — requiere confirmación del evaluador',
   'tier2.warn.metNoEvidenceMandatory':
-    'Marcado como «Cumplido», pero no hay evidencias vinculadas (o todas las vinculadas están rechazadas). Un criterio obligatorio no se satisface sin evidencias.',
+    'Marcado como «Cumplido» sin evidencias utilizables: un criterio obligatorio no se satisface hasta que se vinculen evidencias.',
   'tier2.warn.metNoEvidenceOptional':
-    'Marcado como «Cumplido», pero no hay evidencias vinculadas (o todas las vinculadas están rechazadas). No cuenta para la completitud.',
+    'Marcado como «Cumplido» sin evidencias utilizables: no cuenta.',
   'tier2.warn.naNoJustification':
     '«N/A» requiere una justificación para poder contar como satisfecho.',
   'tier2.reason.Met': 'Marcado como «Cumplido», pero no hay evidencias utilizables vinculadas.',
@@ -113,19 +113,19 @@ export const es: Messages = {
   'tier2.reason.naOnly':
     'N/A no puede establecer un nivel por sí solo: al menos un criterio de este nivel debe estar «Cumplido» con evidencias utilizables.',
   'tier2.delta.lower':
-    'La evaluación basada en evidencias es notablemente inferior a la estimación rápida. Conviene comprobar qué CTE es el limitante y qué criterios siguen sin evidencias.',
+    'El resultado basado en evidencias está muy por debajo de la estimación rápida. Comprobar el CTE limitante y los criterios que aún carecen de evidencias.',
   'tier2.delta.higher':
-    'La evaluación basada en evidencias es notablemente superior a la estimación rápida. Conviene comprobar si en la estimación rápida se respondió «Sin certeza» o «No» en un nivel bajo y si cada CTE marcado como crítico es realmente crítico.',
+    'El resultado basado en evidencias está muy por encima de la estimación rápida. Comprobar las respuestas «Sin certeza» o «No» en niveles bajos y si cada CTE crítico lo es realmente.',
   'arl.flag.unsure':
     '«Sin certeza» en {ids}: contabilizado como riesgo alto. Una calificación sin certeza nunca cuenta como un riesgo menor.',
   'arl.flag.notAssessed':
     'No evaluadas: {count} de {total} ({ids}); contabilizadas como riesgo alto.',
   'arl.flag.naWithoutRationale':
-    'N/A sin justificación en {ids}: contabilizado como riesgo alto hasta que la justificación explique por qué la dimensión no aplica.',
+    'N/A sin justificación en {ids}: contabilizado como riesgo alto hasta que se indique un motivo.',
   'arl.flag.noRationale':
-    'Calificadas sin justificación: {ids}. La fuente pide la justificación y los detalles de cada calificación.',
+    'Calificadas sin justificación: {ids}. La fuente pide una justificación para cada calificación.',
   'arl.flag.noPlan':
-    'Reducción de riesgo prevista sin acción planificada: {ids}. Indicar qué hará el proyecto para lograrla.',
+    'Objetivo fijado sin acción prevista: {ids}. Indicar cómo lo alcanzará el proyecto.',
   'arl.reason.Unsure': 'Sin certeza — contabilizado como riesgo alto',
   'arl.reason.Not assessed': 'No evaluado — contabilizado como riesgo alto',
   'arl.reason.N/A':
@@ -152,12 +152,12 @@ export const es: Messages = {
   'home.tier2.start': 'Iniciar evaluación con evidencias',
   'home.arl.heading': 'Nivel de preparación para la adopción (ARL)',
   'home.arl.body':
-    'Calificar las 17 dimensiones de riesgo de adopción de la Evaluación de preparación para la adopción del DOE, ahora y al final del proyecto. Se presenta por separado del TRL.',
+    'Calificar las 17 dimensiones de riesgo de adopción de la rúbrica del DOE, ahora y al final del proyecto. Se presenta por separado del TRL.',
   'home.arl.start': 'Iniciar preparación para la adopción',
   'home.disclaimer.heading': 'Aviso legal',
   'about.title': 'Acerca de {app}',
   'about.lead':
-    'Herramienta de autoevaluación del Nivel de madurez tecnológica en dos fases, con un módulo de Nivel de preparación para la adopción. Todo se ejecuta en el navegador: no hay backend, ni cuentas, ni telemetría.',
+    'Herramienta de autoevaluación TRL con un módulo ARL. Se ejecuta íntegramente en el navegador: sin backend, cuentas ni telemetría.',
   'about.build.heading': 'Compilación',
   'about.build.version': 'Versión',
   'about.build.sha': 'SHA de Git',
@@ -171,7 +171,7 @@ export const es: Messages = {
   'about.frameworks.sources': 'Fuentes: {list}',
   'about.frameworks.arl.name': 'Módulo complementario ARL — {title}',
   'about.frameworks.arl.body':
-    'Preparación para la adopción, puntuada aparte del TRL: las 17 dimensiones de riesgo de adopción de la rúbrica del DOE y su tabla de consulta, transcritas literalmente.',
+    'Preparación para la adopción, puntuada por separado del TRL: las 17 dimensiones y la tabla de consulta de la rúbrica del DOE, literales.',
   'about.frameworks.arl.link': 'Cómo funciona',
   'about.frameworks.arl.source': 'Fuente: {id} ({version})',
   'about.frameworks.more': 'Qué contiene cada marco y sus limitaciones →',
@@ -237,7 +237,7 @@ export const es: Messages = {
   'tier1.result.ladderLabel':
     'TRL estimado {estimate} de 9. Nivel más alto declarado: {claimed}. Comprobación cruzada construcción y entorno: {matrix}.',
   'tier1.result.ladderNote':
-    'Los peldaños rellenos están confirmados. Un peldaño rayado es un nivel declarado con un nivel inferior sin confirmar: la cadena se interrumpe ahí.',
+    'Los peldaños rellenos están confirmados; un peldaño rayado se declaró por encima de un nivel sin confirmar.',
   'tier1.result.estimated': 'TRL estimado',
   'tier1.result.estimatedHint':
     'Nivel más alto con todos los niveles inferiores también confirmados.',
@@ -247,11 +247,11 @@ export const es: Messages = {
   'tier1.result.matrixHint': '{build} × {environment} — {status}.',
   'tier1.result.consistency': 'Coherencia: {rating}',
   'tier1.result.consistencyHelp.High':
-    'Las respuestas son coherentes entre sí y concuerdan con la comprobación cruzada construcción/entorno. Eso no indica nada sobre si las respuestas son correctas.',
+    'Las respuestas son coherentes con la comprobación cruzada, lo que no indica nada sobre si son correctas.',
   'tier1.result.consistencyHelp.Medium':
-    'Hay cierta tensión entre las respuestas y la comprobación cruzada, o un «Sin certeza» en el nivel declarado o por debajo.',
+    'Cierta tensión con la comprobación cruzada, o un «Sin certeza» en el nivel declarado o por debajo.',
   'tier1.result.consistencyHelp.Low':
-    'Las respuestas discrepan claramente de la comprobación cruzada construcción/entorno, o varios niveles por debajo del declarado están sin confirmar. Revisar antes de utilizar esta cifra.',
+    'Las respuestas contradicen la comprobación cruzada, o varios niveles inferiores están sin confirmar. Revisar antes de utilizar esta cifra.',
   'tier1.result.nextHeading': 'Qué suele venir después',
   'tier1.result.nextMandatory':
     'Lo que exige {trl}: cada uno de estos puntos necesita evidencias en una evaluación de Fase 2.',
@@ -267,7 +267,7 @@ export const es: Messages = {
   'tier1.result.downloadJson': 'Descargar JSON',
   'tier1.result.continue': 'Continuar con la evaluación con evidencias',
   'tier1.result.filesNote':
-    'El archivo JSON restaura esta sesión en la aplicación. El libro es una instantánea estática: editarlo no recalcula el TRL.',
+    'El JSON restaura esta sesión. El libro es una instantánea: las modificaciones en él no se recalculan.',
   'tier1.rail.label': 'Respuestas hasta ahora, de TRL 1 a 9',
   'tier1.rail.yes': 'sí',
   'tier1.rail.no': 'no',
@@ -405,7 +405,7 @@ export const es: Messages = {
   'tier2.criteria.level.locked': 'bloqueado — nivel inferior no alcanzado',
   'tier2.criteria.level.needsEvidence': 'requiere un criterio cumplido con evidencias',
   'tier2.criteria.level.needsEvidenceTitle':
-    'Todos los demás requisitos de este nivel están satisfechos, pero solo mediante N/A. N/A deja constancia de que un criterio no aplica; nunca demuestra el nivel.',
+    'Satisfecho solo mediante N/A. N/A indica que un criterio no aplica; nunca demuestra el nivel.',
   'tier2.criteria.level.lockedTitle':
     'No se ha alcanzado un nivel inferior, por lo que este nivel aún no puede contar.',
   'tier2.levelBar.none': 'Ningún criterio se aplica en este nivel',
@@ -531,6 +531,8 @@ export const es: Messages = {
     'Lo que quede sin calificar, «Sin certeza» o N/A sin justificación cuenta como riesgo alto.',
   'arl.rate.areasNav': 'Áreas de riesgo principales',
   'arl.rate.currentRisk': 'Riesgo actual',
+  'arl.rate.chooseOne': 'elegir la opción que mejor se ajuste',
+  'arl.rate.selected': 'Seleccionado',
   'arl.rate.naOption': 'N/A — no aplica a este alcance',
   'arl.rate.clear': 'Borrar calificación',
   'arl.rate.countedAs': 'contabilizado como {risk}',
@@ -570,6 +572,13 @@ export const es: Messages = {
   'arl.result.flags.current': 'Calificaciones actuales',
   'arl.result.flags.targets': 'Objetivos',
   'arl.result.howRead': 'Cómo se lee la cifra',
+  'arl.result.howRead.step1':
+    'Contar las dimensiones calificadas como riesgo medio y las calificadas como riesgo alto («Sin certeza», sin calificar y N/A sin justificación cuentan como riesgo alto).',
+  'arl.result.howRead.step2':
+    'En la tabla de abajo, tomar la fila correspondiente al recuento de riesgo medio y la columna correspondiente al de riesgo alto (8 o más: «8+»).',
+  'arl.result.howRead.step3': 'El número de esa celda es el ARL.',
+  'arl.result.read.cell': 'Fila {medium}, columna {high}',
+  'arl.result.read.noChange': 'igual que el inicial',
   'arl.result.mark.start': 'Inicial',
   'arl.result.mark.target': 'Objetivo',
   'arl.result.takeAway': 'Exportar',
@@ -579,13 +588,16 @@ export const es: Messages = {
   'arl.result.backToRatings': 'Volver a las calificaciones',
   'arl.result.howScored': 'Cómo se puntúa el ARL',
   'arl.result.jsonNote':
-    'El archivo JSON restaura la sesión completa, TRL y ARL. El libro es una instantánea estática: editarlo no recalcula el ARL.',
+    'El JSON restaura la sesión completa. El libro es una instantánea: las modificaciones en él no se recalculan.',
   'arl.scale.start': 'Inicial: ARL {level}',
   'arl.scale.target': 'Objetivo: ARL {level}',
   'arl.scale.targetNoChange': 'Objetivo: ARL {level} (sin cambios)',
   'arl.grid.caption':
     'Filas: número de dimensiones de riesgo medio. Columnas: número de dimensiones de riesgo alto.',
+  'arl.grid.rows': 'Número de dimensiones de riesgo medio',
+  'arl.grid.columns': 'Número de dimensiones de riesgo alto',
   'arl.grid.summary': '{label}: {medium} de riesgo medio y {high} de riesgo alto → ARL {arl}',
+  'arl.grid.markCounts': '{medium} de riesgo medio · {high} de riesgo alto',
   'arl.glyph.na': 'No aplicable',
   'arl.glyph.legend': 'Leyenda de calificaciones de riesgo',
   'arl.tally.item': '{count} {rating}',
@@ -631,7 +643,7 @@ export const es: Messages = {
   'guide.fig.tier2.caption.formula': 'min(4, 3, 3) = TRL 3',
   'guide.fig.tier2.caption.after': '. No se promedia nada.',
   'guide.fig.statusLegend.caption':
-    'Solo los dos primeros cuentan para un nivel: «Cumplido» con evidencias utilizables y «N/A» con una justificación. Un nivel alcanzado siempre tiene al menos un criterio «Cumplido» con evidencias.',
+    'Solo cuentan «Cumplido» con evidencias utilizables y «N/A» con una justificación; un nivel alcanzado necesita al menos un «Cumplido» con evidencias.',
   'guide.fig.arlLookup.mark': 'Ejemplo',
   'guide.fig.arlLookup.caption.before':
     'Ejemplo — tres dimensiones de riesgo medio y una de riesgo alto se leen como ',
@@ -1056,7 +1068,7 @@ export const es: Messages = {
     'Una autoevaluación, no una Evaluación de madurez tecnológica independiente. Las evidencias marcadas como\n«Sensitive — reference only» (Sensible — solo referencia) nunca se incluyen en el paquete: esas filas apuntan a material conservado\nen otro lugar.',
   'about.data.heading': 'Datos locales',
   'about.data.body':
-    'Las evaluaciones y los archivos de evidencia se guardan solo en este navegador. Exporte lo que quiera conservar antes de borrar.',
+    'Se guardan solo en este navegador. Exporte lo que quiera conservar antes de borrar.',
   'about.data.clear': 'Borrar todos los datos locales',
   'about.data.confirm':
     '¿Eliminar la evaluación y todos los archivos de evidencia almacenados en este navegador? No se puede deshacer.',

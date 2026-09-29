@@ -40,14 +40,14 @@ export const de: Messages = {
   'label.arl': 'Selbstbewertung der Einführungsreife — nicht vom DOE geprüft oder bestätigt',
   'label.arlTarget': 'Ziel — geplant, nicht erreicht',
   'disclaimer.trl':
-    '{app} erstellt ausschließlich eine Selbstbewertung — kein unabhängiges Technology Readiness Assessment (TRA), kein Audit und keine Zertifizierung. Die Ergebnisse hängen vollständig von Ihren Eingaben ab; das Tool überprüft nichts. Die Kriterien unterscheiden sich zwischen Behörden — prüfen Sie sie, bevor Sie ein Ergebnis in einer formellen Einreichung verwenden.',
+    '{app} erstellt ausschließlich eine Selbstbewertung — kein unabhängiges Technology Readiness Assessment (TRA), kein Audit und keine Zertifizierung. Keine Ihrer Eingaben wird überprüft; die Kriterien unterscheiden sich von Behörde zu Behörde, prüfen Sie sie daher vor einer formellen Verwendung.',
   'disclaimer.arl':
-    '{app} erstellt ausschließlich eine Selbstbewertung. Die ARL-Werte wenden das Bewertungsraster des DOE Adoption Readiness Assessment auf die von Ihnen eingegebenen Einstufungen an; das Tool überprüft nichts, und das DOE prüft oder bestätigt das Ergebnis nicht.',
+    '{app} erstellt ausschließlich eine Selbstbewertung. Für den ARL wird das DOE-Bewertungsraster auf Ihre Einstufungen angewandt; das Tool überprüft nichts, und das DOE prüft oder bestätigt das Ergebnis nicht.',
   'notice.sensitive':
-    'Geben Sie keine kontrollierten, eingestuften, exportkontrollierten oder anderweitig sensiblen Informationen ein. Dieses Tool läuft in Ihrem Browser auf einer öffentlichen statischen Website; verwenden Sie Nachweiseinträge mit der Kennzeichnung „Sensibel — nur Verweis“, um auf solches Material zu verweisen, statt es anzuhängen.',
+    'Dies ist eine öffentliche Website: Geben Sie keine kontrollierten, eingestuften, exportkontrollierten oder anderweitig sensiblen Informationen ein. Verweisen Sie stattdessen mit einem als „Sensibel — nur Verweis“ gekennzeichneten Nachweiseintrag auf solches Material.',
   'notice.dismiss': 'Ausblenden',
   'sourceText.note':
-    'Kriterien, Prüffragen und Texte des Bewertungsrasters werden auf Englisch angezeigt, genau so, wie ihre Quellen sie veröffentlichen. Der Text in Klammern ist eine inoffizielle Übersetzung und dient nur zur Orientierung.',
+    'Kriterien, Fragen und Texte des Bewertungsrasters werden auf Englisch im veröffentlichten Wortlaut angezeigt; der Text in Klammern ist eine inoffizielle Übersetzung.',
   'trl.belowOne': '< TRL 1',
   'trl.level': 'TRL {level}',
   'answer.Yes': 'Ja',
@@ -94,14 +94,14 @@ export const de: Messages = {
     'Bei {levels} wurde „Unsicher“ gewählt. Eine Antwort „Unsicher“ zählt nie als „Ja“, daher bleibt die Schätzung auf oder unter dieser Stufe.',
   'tier1.flag.noAnswers': 'Es wurden noch keine Prüffragen beantwortet.',
   'tier2.systemNote':
-    'Konservative Zusammenfassung (Minimum der kritischen CTEs). Dies ist eine Berichtskonvention, keine vorgeschriebene Formel.',
+    'Niedrigster TRL unter den kritischen CTEs — eine konservative Konvention, keine vorgeschriebene Formel.',
   'tier2.noCritical': 'Nicht berechnet — kennzeichnen Sie mindestens ein CTE als kritisch',
   'tier2.noMandatory':
     'Keine verpflichtenden Kriterien — Bestätigung durch den Bewerter erforderlich',
   'tier2.warn.metNoEvidenceMandatory':
-    'Als „Erfüllt“ markiert, aber kein Nachweis verknüpft (oder alle verknüpften Nachweise sind „Abgelehnt“). Ein verpflichtendes Kriterium ist ohne Nachweis nicht anerkannt.',
+    'Als „Erfüllt“ markiert, aber ohne verwendbaren Nachweis — ein verpflichtendes Kriterium ist erst anerkannt, wenn ein Nachweis verknüpft ist.',
   'tier2.warn.metNoEvidenceOptional':
-    'Als „Erfüllt“ markiert, aber kein Nachweis verknüpft (oder alle verknüpften Nachweise sind „Abgelehnt“). Es zählt nicht zur Vollständigkeit.',
+    'Als „Erfüllt“ markiert, aber ohne verwendbaren Nachweis — es zählt nicht.',
   'tier2.warn.naNoJustification':
     '„N/A“ benötigt eine Begründung, bevor es als anerkannt zählen kann.',
   'tier2.reason.Met': 'Als „Erfüllt“ markiert, aber kein verwendbarer Nachweis verknüpft.',
@@ -112,19 +112,19 @@ export const de: Messages = {
   'tier2.reason.naOnly':
     '„N/A“ allein kann keine Stufe begründen — mindestens ein Kriterium auf dieser Stufe muss mit verwendbarem Nachweis „Erfüllt“ sein.',
   'tier2.delta.lower':
-    'Die nachweisbasierte Bewertung liegt deutlich unter der Schnelleinschätzung. Prüfen Sie, welches CTE begrenzend ist und welchen Kriterien noch Nachweise fehlen.',
+    'Das nachweisbasierte Ergebnis liegt deutlich unter der Schnelleinschätzung. Prüfen Sie das begrenzende CTE und die Kriterien, denen noch Nachweise fehlen.',
   'tier2.delta.higher':
-    'Die nachweisbasierte Bewertung liegt deutlich über der Schnelleinschätzung. Prüfen Sie, ob in der Schnelleinschätzung auf einer niedrigen Stufe „Unsicher“ oder „Nein“ angegeben wurde und ob jedes als kritisch gekennzeichnete CTE tatsächlich kritisch ist.',
+    'Das nachweisbasierte Ergebnis liegt deutlich über der Schnelleinschätzung. Prüfen Sie Antworten „Unsicher“ oder „Nein“ auf niedrigen Stufen und ob jedes kritische CTE wirklich kritisch ist.',
   'arl.flag.unsure':
     '„Unsicher“ bei {ids} — als hohes Risiko gewertet. Eine unsichere Einstufung zählt nie als geringeres Risiko.',
   'arl.flag.notAssessed':
     'Nicht bewertet: {count} von {total} ({ids}) — als hohes Risiko gewertet.',
   'arl.flag.naWithoutRationale':
-    'N/A ohne Begründung bei {ids} — als hohes Risiko gewertet, bis die Begründung erklärt, warum die Dimension nicht zutrifft.',
+    'N/A ohne Begründung bei {ids} — als hohes Risiko gewertet, bis ein Grund angegeben ist.',
   'arl.flag.noRationale':
-    'Ohne Begründung eingestuft: {ids}. Die Quelle verlangt zu jeder Einstufung die Begründung und die Einzelheiten.',
+    'Ohne Begründung eingestuft: {ids}. Die Quelle verlangt zu jeder Einstufung eine Begründung.',
   'arl.flag.noPlan':
-    'Risikominderung angestrebt, aber keine Maßnahme geplant: {ids}. Geben Sie an, was das Projekt tun wird, um dorthin zu gelangen.',
+    'Ziel ohne geplante Maßnahme gesetzt: {ids}. Geben Sie an, wie das Projekt es erreichen wird.',
   'arl.reason.Unsure': 'Unsicher — als hohes Risiko gewertet',
   'arl.reason.Not assessed': 'Nicht bewertet — als hohes Risiko gewertet',
   'arl.reason.N/A': 'N/A ohne Begründung — als hohes Risiko gewertet, bis eine erfasst ist',

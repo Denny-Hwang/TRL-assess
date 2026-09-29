@@ -37,14 +37,13 @@ export const zh: Messages = {
   'label.arl': '采用就绪度自评估——未经 DOE 审查或认可',
   'label.arlTarget': '目标——计划中，尚未实现',
   'disclaimer.trl':
-    '{app} 仅生成自评估结果——它不是独立的技术成熟度评价（TRA），不是审计，也不是认证。结果完全取决于您输入的内容；本工具不对任何内容进行核实。各机构的准则不尽相同——在正式提交中使用结果之前，请先核对这些准则。',
+    '{app} 仅生成自评估结果——它不是独立的技术成熟度评价（TRA），不是审计，也不是认证。您输入的内容均未经核实；各机构的准则不尽相同，因此正式使用前请先核对。',
   'disclaimer.arl':
-    '{app} 仅生成自评估结果。ARL 数值是将 DOE 采用就绪度评估（Adoption Readiness Assessment）评分细则应用于您输入的评级而得出的；本工具不对任何内容进行核实，DOE 也不审查或认可该结果。',
+    '{app} 仅生成自评估结果。ARL 是将 DOE 评分细则应用于您的评级而得出的；本工具不对任何内容进行核实，DOE 也不审查或认可该结果。',
   'notice.sensitive':
-    '请勿输入受控、涉密、受出口管制或其他敏感信息。本工具在您的浏览器中运行，托管于公开的静态网站；对于此类材料，请使用“敏感——仅作引用”证据条目指向该材料，而不要附加文件。',
+    '这是一个公开网站：请勿输入受控、涉密、受出口管制或其他敏感信息。请改用“敏感——仅作引用”证据条目指向此类材料。',
   'notice.dismiss': '关闭',
-  'sourceText.note':
-    '准则、筛查问题和评分细则文本以英文显示，与其来源发布的内容完全一致。括号内为非官方译文，仅供参考。',
+  'sourceText.note': '准则、问题和评分细则文本以发布时的英文原样显示；括号内为非官方译文。',
   'trl.belowOne': '< TRL 1',
   'trl.level': 'TRL {level}',
   'answer.Yes': '是',
@@ -89,13 +88,12 @@ export const zh: Messages = {
   'tier1.flag.unsure':
     '在 {levels} 选择了“不确定”。“不确定”的回答绝不计为“是”，因此估算结果不会超过该等级。',
   'tier1.flag.noAnswers': '尚未回答任何筛查问题。',
-  'tier2.systemNote': '保守汇总（关键 CTE 中的最小值）。这是一种报告惯例，并非规定的公式。',
+  'tier2.systemNote': '关键 CTE 中最低的 TRL——一种保守惯例，而非规定的公式。',
   'tier2.noCritical': '未计算——请至少将一个 CTE 标记为关键',
   'tier2.noMandatory': '无必需准则——需由评估人确认',
   'tier2.warn.metNoEvidenceMandatory':
-    '已标记为“符合”，但未关联任何证据（或所关联的证据均已驳回）。没有证据，必需准则就不能视为已满足。',
-  'tier2.warn.metNoEvidenceOptional':
-    '已标记为“符合”，但未关联任何证据（或所关联的证据均已驳回）。该项不计入完成度。',
+    '已标记为“符合”，但没有可用的证据——在关联证据之前，必需准则不视为已满足。',
+  'tier2.warn.metNoEvidenceOptional': '已标记为“符合”，但没有可用的证据——该项不计入。',
   'tier2.warn.naNoJustification': '“不适用”需要提供说明，才能计为已满足。',
   'tier2.reason.Met': '已标记为“符合”，但未关联可用的证据。',
   'tier2.reason.Partially met': '部分符合——部分结果绝不能满足一项准则。',
@@ -104,16 +102,14 @@ export const zh: Messages = {
   'tier2.reason.Not assessed': '尚未评估。',
   'tier2.reason.naOnly':
     '“不适用”不能单独确立等级——该等级必须至少有一条准则为“符合”且有可用的证据。',
-  'tier2.delta.lower':
-    '基于证据的评估结果明显低于快速估算。请检查是哪个 CTE 在起制约作用，以及哪些准则仍缺少证据。',
+  'tier2.delta.lower': '基于证据的结果明显低于快速估算。请检查制约性 CTE 以及仍缺少证据的准则。',
   'tier2.delta.higher':
-    '基于证据的评估结果明显高于快速估算。请检查快速估算是否在较低等级回答了“不确定”或“否”，以及每个标记为关键的 CTE 是否确实关键。',
+    '基于证据的结果明显高于快速估算。请检查较低等级上的“不确定”或“否”回答，以及每个关键 CTE 是否确实关键。',
   'arl.flag.unsure': '{ids} 为“不确定”——计为高风险。不确定的评级绝不计为较低的风险。',
   'arl.flag.notAssessed': '未评估：{total} 项中有 {count} 项（{ids}）——计为高风险。',
-  'arl.flag.naWithoutRationale':
-    '{ids} 为“不适用”但无理由——在理由说明该维度为何不适用之前，计为高风险。',
-  'arl.flag.noRationale': '已评级但无理由：{ids}。来源要求为每项评级提供理由和细节。',
-  'arl.flag.noPlan': '设定了风险降低目标但无计划行动：{ids}。请说明项目将采取什么措施来实现目标。',
+  'arl.flag.naWithoutRationale': '{ids} 为“不适用”但无理由——在给出理由之前计为高风险。',
+  'arl.flag.noRationale': '已评级但无理由：{ids}。来源要求为每项评级提供理由。',
+  'arl.flag.noPlan': '设定了目标但无计划行动：{ids}。请说明项目将如何实现目标。',
   'arl.reason.Unsure': '不确定——计为高风险',
   'arl.reason.Not assessed': '未评估——计为高风险',
   'arl.reason.N/A': '不适用但无理由——在记录理由之前计为高风险',
@@ -135,12 +131,12 @@ export const zh: Messages = {
   'home.tier2.start': '开始证据评估',
   'home.arl.heading': '采用就绪度等级（ARL）',
   'home.arl.body':
-    '对 DOE 采用就绪度评估（Adoption Readiness Assessment）的 17 个采用风险维度，就当前及项目结束时的情况进行评级。与 TRL 分开报告。',
+    '对 DOE 评分细则的 17 个采用风险维度，就当前及项目结束时的情况进行评级。与 TRL 分开报告。',
   'home.arl.start': '开始采用就绪度评估',
   'home.disclaimer.heading': '免责声明',
   'about.title': '关于 {app}',
   'about.lead':
-    '一款两层级的技术成熟度等级（TRL）自评估工具，并附有采用就绪度等级（ARL）模块。所有功能都在您的浏览器中运行——没有后端、无需账户，也没有遥测。',
+    '一款附有 ARL 模块的 TRL 自评估工具。它完全在您的浏览器中运行——无后端、无账户、无遥测。',
   'about.build.heading': '构建信息',
   'about.build.version': '版本',
   'about.build.sha': 'Git SHA',
@@ -154,7 +150,7 @@ export const zh: Messages = {
   'about.frameworks.sources': '来源：{list}',
   'about.frameworks.arl.name': 'ARL 附加模块——{title}',
   'about.frameworks.arl.body':
-    '采用就绪度，与 TRL 分开评分：DOE 评分细则的 17 个采用风险维度及其查询表，均逐字转录。',
+    '采用就绪度，与 TRL 分开评分：DOE 评分细则的 17 个维度及查询表，原文照录。',
   'about.frameworks.arl.link': '工作方式',
   'about.frameworks.arl.source': '来源：{id}（{version}）',
   'about.frameworks.more': '各框架的内容及其局限性 →',
@@ -215,8 +211,7 @@ export const zh: Messages = {
   'tier1.result.marker.crossCheck': '交叉核对',
   'tier1.result.ladderLabel':
     '估算 TRL 为 {estimate}（满级 9）。申报的最高等级：{claimed}。构建与环境交叉核对：{matrix}。',
-  'tier1.result.ladderNote':
-    '实心的梯级已确认。带斜线的梯级表示您申报了该等级，但其下某一等级尚未确认——链条在此中断。',
+  'tier1.result.ladderNote': '实心梯级已确认；带斜线的梯级虽已申报，但其下有未确认的等级。',
   'tier1.result.estimated': '估算 TRL',
   'tier1.result.estimatedHint': '其下每一级也都已确认的最高等级。',
   'tier1.result.claimed': '申报的最高等级',
@@ -224,12 +219,11 @@ export const zh: Messages = {
   'tier1.result.matrix': '构建 × 环境交叉核对',
   'tier1.result.matrixHint': '{build} × {environment}——{status}。',
   'tier1.result.consistency': '一致性：{rating}',
-  'tier1.result.consistencyHelp.High':
-    '您的回答内部一致，且与构建/环境交叉核对相符。但这并不说明回答本身是否正确。',
+  'tier1.result.consistencyHelp.High': '与交叉核对一致——但这并不说明回答是否正确。',
   'tier1.result.consistencyHelp.Medium':
-    '您的回答与交叉核对之间存在一定出入，或在您申报的等级及以下存在“不确定”。',
+    '与交叉核对存在一定出入，或在您申报的等级及以下存在“不确定”。',
   'tier1.result.consistencyHelp.Low':
-    '您的回答与构建/环境交叉核对严重不符，或您申报等级以下的多个等级尚未确认。使用该数值前请重新核查。',
+    '您的回答与交叉核对相冲突，或多个较低等级尚未确认。使用该数值前请重新核查。',
   'tier1.result.nextHeading': '通常的下一步',
   'tier1.result.nextMandatory': '{trl} 的要求——在第二层级评估中，每一项都需要证据。',
   'tier1.result.nextNoMandatory':
@@ -241,8 +235,7 @@ export const zh: Messages = {
   'tier1.result.downloadExcel': '下载 Excel',
   'tier1.result.downloadJson': '下载 JSON',
   'tier1.result.continue': '继续进行证据评估',
-  'tier1.result.filesNote':
-    'JSON 文件可在应用中恢复本次会话。工作簿是静态快照——编辑工作簿不会重新计算 TRL。',
+  'tier1.result.filesNote': 'JSON 可恢复本次会话。工作簿是快照——在其中所做的编辑不会重新计算。',
   'tier1.rail.label': '目前的回答，TRL 1 至 9',
   'tier1.rail.yes': '是',
   'tier1.rail.no': '否',
@@ -373,7 +366,7 @@ export const zh: Messages = {
   'tier2.criteria.level.locked': '已锁定——较低等级未达到',
   'tier2.criteria.level.needsEvidence': '需有一条准则符合且有证据',
   'tier2.criteria.level.needsEvidenceTitle':
-    '该等级的其他各项要求均已满足，但仅是通过“不适用”满足的。“不适用”记录的是某条准则不适用；它绝不能证明该等级。',
+    '仅通过“不适用”满足。“不适用”表示某条准则不适用；它绝不能证明该等级。',
   'tier2.criteria.level.lockedTitle': '某一较低等级尚未达到，因此该等级暂时不能计入。',
   'tier2.levelBar.none': '该等级没有适用的准则',
   'tier2.levelBar.satisfied': '{count} 项已满足',
@@ -491,6 +484,8 @@ export const zh: Messages = {
   'arl.rate.conservative': '未评级、“不确定”或无理由的“不适用”均计为高风险。',
   'arl.rate.areasNav': '核心风险领域',
   'arl.rate.currentRisk': '当前风险',
+  'arl.rate.chooseOne': '请选择最符合的一项',
+  'arl.rate.selected': '已选择',
   'arl.rate.naOption': '不适用——不适用于此范围',
   'arl.rate.clear': '清除评级',
   'arl.rate.countedAs': '计为{risk}',
@@ -526,6 +521,13 @@ export const zh: Messages = {
   'arl.result.flags.current': '当前评级',
   'arl.result.flags.targets': '目标',
   'arl.result.howRead': '数值的读取方式',
+  'arl.result.howRead.step1':
+    '分别统计评为中风险和评为高风险的维度数量（“不确定”、未评级以及无理由的“不适用”均计为高风险）。',
+  'arl.result.howRead.step2':
+    '在下表中，按中风险数量找到行，按高风险数量找到列（8 项及以上时取“8+”）。',
+  'arl.result.howRead.step3': '行列交汇处单元格中的数字即为 ARL。',
+  'arl.result.read.cell': '行 {medium}，列 {high}',
+  'arl.result.read.noChange': '与起点相同',
   'arl.result.mark.start': '起点',
   'arl.result.mark.target': '目标',
   'arl.result.takeAway': '导出带走',
@@ -534,13 +536,15 @@ export const zh: Messages = {
   'arl.result.downloadJson': '下载 JSON',
   'arl.result.backToRatings': '返回评级',
   'arl.result.howScored': 'ARL 的评分方式',
-  'arl.result.jsonNote':
-    'JSON 文件可恢复整个会话，包括 TRL 和 ARL。工作簿是静态快照——编辑工作簿不会重新计算 ARL。',
+  'arl.result.jsonNote': 'JSON 可恢复整个会话。工作簿是快照——在其中所做的编辑不会重新计算。',
   'arl.scale.start': '起点：ARL {level}',
   'arl.scale.target': '目标：ARL {level}',
   'arl.scale.targetNoChange': '目标：ARL {level}（无变化）',
   'arl.grid.caption': '行：中风险维度数量。列：高风险维度数量。',
+  'arl.grid.rows': '中风险维度数量',
+  'arl.grid.columns': '高风险维度数量',
   'arl.grid.summary': '{label}：{medium} 项中风险、{high} 项高风险 → ARL {arl}',
+  'arl.grid.markCounts': '{medium} 项中风险 · {high} 项高风险',
   'arl.glyph.na': '不适用',
   'arl.glyph.legend': '风险评级图例',
   'arl.tally.item': '{rating}：{count}',
@@ -583,7 +587,7 @@ export const zh: Messages = {
   'guide.fig.tier2.caption.formula': 'min(4, 3, 3) = TRL 3',
   'guide.fig.tier2.caption.after': '。不做任何平均。',
   'guide.fig.statusLegend.caption':
-    '只有前两种计入等级：有可用证据的“符合”，以及有说明的“不适用”。已达到的等级始终至少有一项有证据的“符合”。',
+    '只有具备可用证据的“符合”和附有说明的“不适用”才计入；已达到的等级至少需要一项有证据的“符合”。',
   'guide.fig.arlLookup.mark': '示例',
   'guide.fig.arlLookup.caption.before': '示例——三个中风险维度和一个高风险维度，读作 ',
   'guide.fig.arlLookup.caption.value': 'ARL 6',
@@ -980,7 +984,7 @@ export const zh: Messages = {
   'excel.package.readme.not.body':
     '这是一份自评估，而不是独立的技术成熟度评价。标识为\n“Sensitive — reference only”（敏感——仅作引用）的证据绝不会打包：\n这些行指向存放在别处的材料。',
   'about.data.heading': '本地数据',
-  'about.data.body': '评估和证据文件仅保存在此浏览器中。清除前请先导出需要保留的内容。',
+  'about.data.body': '仅保存在此浏览器中。清除前请先导出需要保留的内容。',
   'about.data.clear': '清除所有本地数据',
   'about.data.confirm': '要从此浏览器中删除评估以及所有已存储的证据文件吗？此操作无法撤销。',
   'about.data.yes': '是，全部删除',

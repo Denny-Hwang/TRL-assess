@@ -40,14 +40,14 @@ export const ja: Messages = {
   'label.arl': '導入準備度の自己評価 — DOE によるレビューや承認は受けていません',
   'label.arlTarget': '目標 — 計画値であり、達成済みではありません',
   'disclaimer.trl':
-    '{app} が生成するのは自己評価のみです。独立した技術成熟度評価（TRA）ではなく、監査でも認証でもありません。結果は入力された内容に完全に依存し、ツールは何も検証しません。基準は機関によって異なります。正式な提出物に結果を使用する前に、基準を確認してください。',
+    '{app} が生成するのは自己評価のみです。独立した技術成熟度評価（TRA）ではなく、監査でも認証でもありません。入力した内容は一切検証されません。基準は機関によって異なるため、正式に使用する前に確認してください。',
   'disclaimer.arl':
-    '{app} が生成するのは自己評価のみです。ARL の数値は、入力された評定に DOE Adoption Readiness Assessment のルーブリックを適用したものです。ツールは何も検証せず、DOE が結果をレビューまたは承認することもありません。',
+    '{app} が生成するのは自己評価のみです。ARL は、入力された評定に DOE のルーブリックを適用したものです。ツールは何も検証せず、DOE が結果をレビューまたは承認することもありません。',
   'notice.sensitive':
-    '管理対象情報、秘密指定情報、輸出管理対象情報、その他の機微な情報を入力しないでください。このツールは公開された静的サイト上でブラウザー内で動作します。そのような資料は添付せず、「機微 — 参照のみ」のエビデンス項目でその所在を示してください。',
+    '公開サイトのため、管理対象情報、秘密指定情報、輸出管理対象情報、その他の機微な情報は入力しないでください。代わりに、「機微 — 参照のみ」のエビデンス項目でそのような資料の所在を示してください。',
   'notice.dismiss': '閉じる',
   'sourceText.note':
-    '基準、スクリーニング質問、ルーブリックのテキストは、出典が公開しているとおりに英語で表示しています。括弧内は参考用の非公式訳です。',
+    '基準、質問、ルーブリックのテキストは、公開されたとおりに英語で表示しています。括弧内は非公式訳です。',
   'trl.belowOne': '< TRL 1',
   'trl.level': 'TRL {level}',
   'answer.Yes': 'はい',
@@ -94,13 +94,13 @@ export const ja: Messages = {
     '{levels} で「不明」が選択されました。「不明」の回答が「はい」として数えられることはないため、推定値はそのレベル以下にとどまります。',
   'tier1.flag.noAnswers': 'スクリーニング質問にまだ回答していません。',
   'tier2.systemNote':
-    '保守的なサマリー（重要な CTE の最小値）。これは報告上の慣例であり、義務付けられた計算式ではありません。',
+    '重要な CTE の中で最も低い TRL — 保守的な慣例であり、義務付けられた計算式ではありません。',
   'tier2.noCritical': '未算出 — 少なくとも 1 つの CTE を重要に指定してください',
   'tier2.noMandatory': '必須基準なし — 評価者による確認が必要です',
   'tier2.warn.metNoEvidenceMandatory':
-    '「達成」とされていますが、エビデンスがリンクされていません（またはリンクされたエビデンスがすべて「却下」です）。必須基準はエビデンスなしでは充足されません。',
+    '有効なエビデンスなしで「達成」とされています — 必須基準は、エビデンスがリンクされるまで充足されません。',
   'tier2.warn.metNoEvidenceOptional':
-    '「達成」とされていますが、エビデンスがリンクされていません（またはリンクされたエビデンスがすべて「却下」です）。完了度には算入されません。',
+    '有効なエビデンスなしで「達成」とされています — 算入されません。',
   'tier2.warn.naNoJustification': '「該当なし」を充足として数えるには、理由の記載が必要です。',
   'tier2.reason.Met': '「達成」とされていますが、有効なエビデンスがリンクされていません。',
   'tier2.reason.Partially met': '一部達成 — 部分的な結果で基準が充足されることはありません。',
@@ -110,18 +110,18 @@ export const ja: Messages = {
   'tier2.reason.naOnly':
     '「該当なし」だけではレベルを成立させることはできません — このレベルの基準のうち少なくとも 1 つが、有効なエビデンスのある「達成」である必要があります。',
   'tier2.delta.lower':
-    'エビデンスに基づく評価が、クイック推定を大きく下回っています。どの CTE が制約となっているか、どの基準にまだエビデンスが不足しているかを確認してください。',
+    'エビデンスに基づく結果が、クイック推定を大きく下回っています。制約となっている CTE と、まだエビデンスが不足している基準を確認してください。',
   'tier2.delta.higher':
-    'エビデンスに基づく評価が、クイック推定を大きく上回っています。クイック推定で低いレベルに「不明」または「いいえ」と回答していないか、また重要に指定したすべての CTE が本当に重要かを確認してください。',
+    'エビデンスに基づく結果が、クイック推定を大きく上回っています。低いレベルでの「不明」または「いいえ」の回答と、重要に指定した各 CTE が本当に重要かどうかを確認してください。',
   'arl.flag.unsure':
     '{ids} が「不明」 — 高リスクとして集計されます。「不明」の評定がより低いリスクとして数えられることはありません。',
   'arl.flag.notAssessed': '未評価：{total} 件中 {count} 件（{ids}） — 高リスクとして集計されます。',
   'arl.flag.naWithoutRationale':
-    '{ids} が根拠なしの「該当なし」 — 根拠でその観点が該当しない理由を説明するまで、高リスクとして集計されます。',
+    '{ids} が根拠なしの「該当なし」 — 理由が記載されるまで、高リスクとして集計されます。',
   'arl.flag.noRationale':
-    '根拠なしで評定されています：{ids}。出典は、すべての評定について根拠と詳細を求めています。',
+    '根拠なしで評定されています：{ids}。出典は、すべての評定に根拠を求めています。',
   'arl.flag.noPlan':
-    '計画中の対応がないままリスク低減を目標にしています：{ids}。目標に到達するためにプロジェクトが何を行うかを記載してください。',
+    '計画中の対応なしで目標が設定されています：{ids}。プロジェクトがどのように目標に到達するかを記載してください。',
   'arl.reason.Unsure': '不明 — 高リスクとして集計',
   'arl.reason.Not assessed': '未評価 — 高リスクとして集計',
   'arl.reason.N/A': '根拠なしの「該当なし」 — 根拠が記録されるまで高リスクとして集計',
@@ -146,12 +146,12 @@ export const ja: Messages = {
   'home.tier2.start': 'エビデンス評価を開始',
   'home.arl.heading': '導入準備度レベル（ARL）',
   'home.arl.body':
-    'DOE Adoption Readiness Assessment の 17 の導入リスク観点を、現時点とプロジェクト終了時について評定します。TRL とは別に報告します。',
+    'DOE ルーブリックの 17 の導入リスク観点を、現時点とプロジェクト終了時について評定します。TRL とは別に報告します。',
   'home.arl.start': '導入準備度の評価を開始',
   'home.disclaimer.heading': '免責事項',
   'about.title': '{app} について',
   'about.lead':
-    '導入準備度レベルのモジュールを備えた、2 段階構成の技術成熟度レベル自己評価ツールです。すべてブラウザー内で動作し、バックエンド、アカウント、テレメトリーはありません。',
+    'ARL モジュールを備えた TRL 自己評価ツールです。すべてブラウザー内で動作し、バックエンド、アカウント、テレメトリーはありません。',
   'about.build.heading': 'ビルド',
   'about.build.version': 'バージョン',
   'about.build.sha': 'Git SHA',
@@ -165,7 +165,7 @@ export const ja: Messages = {
   'about.frameworks.sources': '出典：{list}',
   'about.frameworks.arl.name': 'ARL サイドモジュール — {title}',
   'about.frameworks.arl.body':
-    'TRL とは別に採点する導入準備度です。DOE ルーブリックの 17 の導入リスク観点とその参照表を、原文どおりに転記しています。',
+    'TRL とは別に採点する導入準備度です。DOE ルーブリックの 17 の観点と参照表を、原文どおりに収録しています。',
   'about.frameworks.arl.link': '仕組み',
   'about.frameworks.arl.source': '出典：{id}（{version}）',
   'about.frameworks.more': '各フレームワークの内容と制限事項 →',
@@ -230,7 +230,7 @@ export const ja: Messages = {
   'tier1.result.ladderLabel':
     '推定 TRL は 9 段階中 {estimate}。申告された最高レベル：{claimed}。ビルドと環境のクロスチェック：{matrix}。',
   'tier1.result.ladderNote':
-    '塗りつぶされた段は確認済みです。斜線の段は、下位のレベルが未確認のまま申告したレベルで、連鎖はそこで途切れます。',
+    '塗りつぶされた段は確認済み、斜線の段は未確認のレベルより上で申告されたものです。',
   'tier1.result.estimated': '推定 TRL',
   'tier1.result.estimatedHint': '下位のすべてのレベルも確認済みである最も高いレベル。',
   'tier1.result.claimed': '申告された最高レベル',
@@ -239,11 +239,11 @@ export const ja: Messages = {
   'tier1.result.matrixHint': '{build} × {environment} — {status}。',
   'tier1.result.consistency': '整合性：{rating}',
   'tier1.result.consistencyHelp.High':
-    '回答は内部的に整合しており、ビルド/環境のクロスチェックとも一致しています。ただし、回答が正しいかどうかについては何も示していません。',
+    'クロスチェックと整合しています。ただし、これは回答が正しいかどうかについて何も示すものではありません。',
   'tier1.result.consistencyHelp.Medium':
-    '回答とクロスチェックの間に多少の食い違いがあるか、申告したレベル以下に「不明」があります。',
+    'クロスチェックと多少の食い違いがあるか、申告したレベル以下に「不明」があります。',
   'tier1.result.consistencyHelp.Low':
-    '回答がビルド/環境のクロスチェックと大きく食い違っているか、申告したレベルより下の複数のレベルが未確認です。この数値を使用する前に再確認してください。',
+    '回答がクロスチェックと矛盾しているか、下位の複数のレベルが未確認です。この数値を使用する前に再確認してください。',
   'tier1.result.nextHeading': '一般的に次に必要となること',
   'tier1.result.nextMandatory':
     '{trl} に必要なこと — Tier 2 の評価では、これらそれぞれにエビデンスが必要です。',
@@ -259,7 +259,7 @@ export const ja: Messages = {
   'tier1.result.downloadJson': 'JSON をダウンロード',
   'tier1.result.continue': 'エビデンス評価へ進む',
   'tier1.result.filesNote':
-    'JSON ファイルを使うと、このセッションをアプリで復元できます。ワークブックは静的なスナップショットであり、編集しても TRL は再計算されません。',
+    'JSON でこのセッションを復元できます。ワークブックはスナップショットであり、編集しても再計算されません。',
   'tier1.rail.label': 'これまでの回答（TRL 1〜9）',
   'tier1.rail.yes': 'はい',
   'tier1.rail.no': 'いいえ',
@@ -397,7 +397,7 @@ export const ja: Messages = {
   'tier2.criteria.level.locked': 'ロック中 — 下位のレベルが未達成',
   'tier2.criteria.level.needsEvidence': 'エビデンスのある「達成」の基準が必要',
   'tier2.criteria.level.needsEvidenceTitle':
-    'このレベルのその他の要件はすべて、「該当なし」によってのみ充足されています。「該当なし」は基準が当てはまらないことを記録するものであり、レベルを実証することはありません。',
+    '「該当なし」によってのみ充足されています。「該当なし」は基準が当てはまらないことを示すものであり、レベルを実証することはありません。',
   'tier2.criteria.level.lockedTitle':
     '下位のレベルが未達成のため、このレベルはまだ数えられません。',
   'tier2.levelBar.none': 'このレベルに適用される基準はありません',
@@ -522,6 +522,8 @@ export const ja: Messages = {
     '未評定のもの、「不明」、および根拠なしの「該当なし」は、高リスクとして集計されます。',
   'arl.rate.areasNav': '主要リスク領域',
   'arl.rate.currentRisk': '現在のリスク',
+  'arl.rate.chooseOne': '最も当てはまるものを 1 つ選択してください',
+  'arl.rate.selected': '選択中',
   'arl.rate.naOption': '該当なし — この範囲には当てはまらない',
   'arl.rate.clear': '評定をクリア',
   'arl.rate.countedAs': '{risk}として集計',
@@ -558,6 +560,13 @@ export const ja: Messages = {
   'arl.result.flags.current': '現在の評定',
   'arl.result.flags.targets': '目標',
   'arl.result.howRead': '数値の読み取り方',
+  'arl.result.howRead.step1':
+    '中リスクと評定した観点と、高リスクと評定した観点をそれぞれ数えます（「不明」、未評定のもの、根拠なしの「該当なし」は高リスクとして集計されます）。',
+  'arl.result.howRead.step2':
+    '下の表で、中リスクの数に対応する行と、高リスクの数に対応する列を探します（8 以上は「8+」）。',
+  'arl.result.howRead.step3': 'その行と列が交わるセルの数値が ARL です。',
+  'arl.result.read.cell': '行 {medium}、列 {high}',
+  'arl.result.read.noChange': '開始と同じ',
   'arl.result.mark.start': '開始',
   'arl.result.mark.target': '目標',
   'arl.result.takeAway': '持ち出す',
@@ -567,12 +576,15 @@ export const ja: Messages = {
   'arl.result.backToRatings': '評定に戻る',
   'arl.result.howScored': 'ARL の採点方法',
   'arl.result.jsonNote':
-    'JSON ファイルを使うと、TRL と ARL を含むセッション全体を復元できます。ワークブックは静的なスナップショットであり、編集しても ARL は再計算されません。',
+    'JSON でセッション全体を復元できます。ワークブックはスナップショットであり、編集しても再計算されません。',
   'arl.scale.start': '開始：ARL {level}',
   'arl.scale.target': '目標：ARL {level}',
   'arl.scale.targetNoChange': '目標：ARL {level}（変化なし）',
   'arl.grid.caption': '行：中リスクの観点の数。列：高リスクの観点の数。',
+  'arl.grid.rows': '中リスクの観点の数',
+  'arl.grid.columns': '高リスクの観点の数',
   'arl.grid.summary': '{label}：中 {medium} 件、高 {high} 件 → ARL {arl}',
+  'arl.grid.markCounts': '中 {medium} 件 · 高 {high} 件',
   'arl.glyph.na': '該当なし',
   'arl.glyph.legend': 'リスク評定の凡例',
   'arl.tally.item': '{rating} {count} 件',
@@ -616,7 +628,7 @@ export const ja: Messages = {
   'guide.fig.tier2.caption.formula': 'min(4, 3, 3) = TRL 3',
   'guide.fig.tier2.caption.after': ' です。平均は取りません。',
   'guide.fig.statusLegend.caption':
-    'レベルに算入されるのは最初の 2 つだけです。有効なエビデンスのある「達成」と、理由の記載がある「該当なし」です。達成されたレベルには、必ずエビデンスのある「達成」が少なくとも 1 つあります。',
+    '算入されるのは、有効なエビデンスのある「達成」と、理由の記載がある「該当なし」だけです。レベルの達成には、エビデンスのある「達成」が少なくとも 1 つ必要です。',
   'guide.fig.arlLookup.mark': '例',
   'guide.fig.arlLookup.caption.before':
     '例 — 中リスクの観点が 3 つ、高リスクの観点が 1 つの場合は ',
@@ -1035,7 +1047,7 @@ export const ja: Messages = {
     'これは自己評価であり、独立した技術成熟度評価ではありません。「Sensitive — reference only」（機微 — 参照のみ）と\nマークされたエビデンスは同梱されません。これらの行は、別の場所に保管されている\n資料を指しています。',
   'about.data.heading': 'ローカルデータ',
   'about.data.body':
-    '評価とエビデンスファイルはこのブラウザーにのみ保存されます。消去する前に、残したい内容をエクスポートしてください。',
+    'このブラウザーにのみ保存されます。消去する前に、残したい内容をエクスポートしてください。',
   'about.data.clear': 'ローカルデータをすべて消去',
   'about.data.confirm':
     'このブラウザーから評価と保存済みのすべてのエビデンスファイルを削除しますか。元に戻せません。',

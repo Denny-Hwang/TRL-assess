@@ -27,6 +27,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **ARL rating cards** read as a choice: each Low / Medium / High option shows a radio mark, the legend
+  asks you to choose the one that fits best, and the selected card is tinted and tagged "Selected".
+  The status line under the options now appears only when a rule changes how the rating counts.
+- **ARL result — "How the number is read"**: three numbered steps, then a Start card (solid blue) and a
+  Target card (dashed violet) showing the Medium and High counts, the table cell they point to and the
+  resulting ARL in large type. The look-up table, the ARL scale and the summary cards use the same
+  marks, and the table's axes carry the source's titles instead of "M \\ H".
+- Shorter explanatory texts across the screens (disclaimers, notices, hints), keeping every
+  safeguard they state.
 - **Tier 2 scoring: "N/A" can no longer carry a level on its own.** A level is achieved only when, in
   addition to its existing requirements, at least one applicable criterion at that level is "Met"
   with usable evidence. Before, justified N/A answers alone could reach TRL 9 with no evidence at all.

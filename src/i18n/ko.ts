@@ -38,14 +38,14 @@ export const ko: Messages = {
   'label.arl': '도입 준비도 자체 평가 — DOE의 검토 또는 승인을 받지 않음',
   'label.arlTarget': '목표 — 계획된 것이며 달성되지 않음',
   'disclaimer.trl':
-    '{app}은(는) 자체 평가만 제공합니다. 독립적인 기술성숙도 평가(TRA)가 아니며, 감사나 인증도 아닙니다. 결과는 전적으로 사용자가 입력한 정보에 따라 달라지며, 도구는 어떤 내용도 검증하지 않습니다. 평가 기준은 기관마다 다르므로, 결과를 공식 제출에 사용하기 전에 기준을 확인하십시오.',
+    '{app}은(는) 자체 평가만 제공합니다. 독립적인 기술성숙도 평가(TRA)가 아니며, 감사나 인증도 아닙니다. 입력한 내용은 어떤 것도 검증되지 않습니다. 평가 기준은 기관마다 다르므로, 공식적으로 사용하기 전에 확인하십시오.',
   'disclaimer.arl':
-    '{app}은(는) 자체 평가만 제공합니다. ARL 수치는 입력한 등급에 DOE 도입 준비도 평가(Adoption Readiness Assessment) 루브릭을 적용한 것입니다. 도구는 어떤 내용도 검증하지 않으며, DOE는 결과를 검토하거나 승인하지 않습니다.',
+    '{app}은(는) 자체 평가만 제공합니다. ARL은 입력한 등급에 DOE 루브릭을 적용한 것입니다. 도구는 어떤 내용도 검증하지 않으며, DOE는 결과를 검토하거나 승인하지 않습니다.',
   'notice.sensitive':
-    '통제 대상, 기밀, 수출 통제 대상 또는 기타 민감한 정보를 입력하지 마십시오. 이 도구는 공개 정적 사이트에서 브라우저로 실행됩니다. 이러한 자료는 첨부하지 말고 “민감 — 참조 전용” 증거 항목으로 위치를 기록하십시오.',
+    '이곳은 공개 사이트이므로 통제 대상, 기밀, 수출 통제 대상 또는 기타 민감한 정보를 입력하지 마십시오. 이러한 자료는 입력하는 대신 “민감 — 참조 전용” 증거 항목으로 가리키십시오.',
   'notice.dismiss': '닫기',
   'sourceText.note':
-    '기준, 선별 질문 및 루브릭 텍스트는 출처가 게시한 그대로 영어로 표시됩니다. 괄호 안의 내용은 참고용 비공식 번역입니다.',
+    '기준, 질문 및 루브릭 텍스트는 게시된 그대로 영어로 표시되며, 괄호 안의 내용은 비공식 번역입니다.',
   'trl.belowOne': '< TRL 1',
   'trl.level': 'TRL {level}',
   'answer.Yes': '예',
@@ -91,14 +91,13 @@ export const ko: Messages = {
   'tier1.flag.unsure':
     '{levels}에서 “불확실”이 선택되었습니다. “불확실” 답변은 결코 “예”로 간주되지 않으므로, 추정치는 해당 수준 이하에 머뭅니다.',
   'tier1.flag.noAnswers': '아직 답변한 선별 질문이 없습니다.',
-  'tier2.systemNote':
-    '보수적 요약(중요 CTE 중 최솟값). 이는 보고 관례이며, 규정된 공식이 아닙니다.',
+  'tier2.systemNote': '중요 CTE 중 가장 낮은 TRL — 보수적인 관례이며, 규정된 공식이 아닙니다.',
   'tier2.noCritical': '계산되지 않음 — 하나 이상의 CTE를 중요로 표시하십시오',
   'tier2.noMandatory': '필수 기준 없음 — 평가자 확인 필요',
   'tier2.warn.metNoEvidenceMandatory':
-    '“충족”으로 표시되었으나 연결된 증거가 없습니다(또는 연결된 증거가 모두 거부됨). 필수 기준은 증거 없이 충족 인정되지 않습니다.',
+    '사용 가능한 증거 없이 “충족”으로 표시되었습니다 — 필수 기준은 증거가 연결될 때까지 충족 인정되지 않습니다.',
   'tier2.warn.metNoEvidenceOptional':
-    '“충족”으로 표시되었으나 연결된 증거가 없습니다(또는 연결된 증거가 모두 거부됨). 완성도에 반영되지 않습니다.',
+    '사용 가능한 증거 없이 “충족”으로 표시되었습니다 — 반영되지 않습니다.',
   'tier2.warn.naNoJustification': '“해당 없음”은 사유를 입력해야 충족 인정될 수 있습니다.',
   'tier2.reason.Met': '“충족”으로 표시되었으나 사용 가능한 증거가 연결되지 않았습니다.',
   'tier2.reason.Partially met': '부분 충족 — 부분적인 결과는 결코 기준 충족으로 인정되지 않습니다.',
@@ -108,18 +107,18 @@ export const ko: Messages = {
   'tier2.reason.naOnly':
     '해당 없음만으로는 수준을 성립시킬 수 없습니다 — 이 수준의 기준 중 하나 이상이 사용 가능한 증거가 있는 충족 상태여야 합니다.',
   'tier2.delta.lower':
-    '증거 기반 평가가 빠른 추정보다 현저히 낮습니다. 어떤 CTE가 제한 요인인지, 어떤 기준에 아직 증거가 없는지 확인하십시오.',
+    '증거 기반 결과가 빠른 추정보다 훨씬 낮습니다. 제한 요인 CTE와 아직 증거가 없는 기준을 확인하십시오.',
   'tier2.delta.higher':
-    '증거 기반 평가가 빠른 추정보다 현저히 높습니다. 빠른 추정에서 낮은 수준에 “불확실” 또는 “아니요”로 답했는지, 그리고 중요로 표시된 모든 CTE가 실제로 중요한지 확인하십시오.',
+    '증거 기반 결과가 빠른 추정보다 훨씬 높습니다. 낮은 수준의 “불확실” 또는 “아니요” 답변, 그리고 각 중요 CTE가 실제로 중요한지 확인하십시오.',
   'arl.flag.unsure':
     '{ids}에서 “불확실” — 높은 위험으로 간주됩니다. 불확실한 등급은 결코 더 낮은 위험으로 간주되지 않습니다.',
   'arl.flag.notAssessed': '미평가: {total}개 중 {count}개({ids}) — 높은 위험으로 간주됩니다.',
   'arl.flag.naWithoutRationale':
-    '{ids}에서 근거 없는 “해당 없음” — 해당 차원이 적용되지 않는 이유를 근거에 기록할 때까지 높은 위험으로 간주됩니다.',
+    '{ids}에서 근거 없는 “해당 없음” — 이유가 제시될 때까지 높은 위험으로 간주됩니다.',
   'arl.flag.noRationale':
-    '근거 없이 평가됨: {ids}. 출처는 모든 등급에 대한 근거와 세부 내용을 요구합니다.',
+    '근거 없이 평가됨: {ids}. 출처는 모든 등급에 대한 근거를 요구합니다.',
   'arl.flag.noPlan':
-    '계획된 조치 없이 위험 감소 목표가 설정됨: {ids}. 목표에 도달하기 위해 프로젝트가 무엇을 할지 기술하십시오.',
+    '계획된 조치 없이 목표가 설정됨: {ids}. 프로젝트가 목표에 어떻게 도달할지 기술하십시오.',
   'arl.reason.Unsure': '불확실 — 높은 위험으로 간주',
   'arl.reason.Not assessed': '미평가 — 높은 위험으로 간주',
   'arl.reason.N/A': '근거 없는 해당 없음 — 근거가 기록될 때까지 높은 위험으로 간주',
@@ -142,12 +141,12 @@ export const ko: Messages = {
   'home.tier2.start': '증거 기반 평가 시작',
   'home.arl.heading': '도입 준비도(ARL)',
   'home.arl.body':
-    'DOE 도입 준비도 평가(Adoption Readiness Assessment)의 17개 도입 위험 차원을 현재 시점과 프로젝트 종료 시점 기준으로 평가합니다. TRL과 별도로 보고됩니다.',
+    'DOE 루브릭의 17개 도입 위험 차원을 현재 시점과 프로젝트 종료 시점 기준으로 평가합니다. TRL과 별도로 보고됩니다.',
   'home.arl.start': '도입 준비도 평가 시작',
   'home.disclaimer.heading': '면책 고지',
   'about.title': '{app} 소개',
   'about.lead':
-    '도입 준비도(ARL) 모듈을 갖춘, 두 Tier로 구성된 기술성숙도(TRL) 자체 평가 도구입니다. 모든 작업은 브라우저에서 실행되며, 백엔드, 계정, 원격 측정이 없습니다.',
+    'ARL 모듈을 갖춘 TRL 자체 평가 도구입니다. 브라우저에서만 실행되며, 백엔드, 계정, 원격 측정이 없습니다.',
   'about.build.heading': '빌드',
   'about.build.version': '버전',
   'about.build.sha': 'Git SHA',
@@ -161,7 +160,7 @@ export const ko: Messages = {
   'about.frameworks.sources': '출처: {list}',
   'about.frameworks.arl.name': 'ARL 부가 모듈 — {title}',
   'about.frameworks.arl.body':
-    'TRL과 별도로 산정되는 도입 준비도: DOE 루브릭의 17개 도입 위험 차원과 조회표를 원문 그대로 옮겼습니다.',
+    'TRL과 별도로 산정되는 도입 준비도: DOE 루브릭의 17개 차원과 조회표를 원문 그대로 옮겼습니다.',
   'about.frameworks.arl.link': '작동 방식',
   'about.frameworks.arl.source': '출처: {id} ({version})',
   'about.frameworks.more': '각 프레임워크의 구성 내용과 한계 →',
@@ -226,7 +225,7 @@ export const ko: Messages = {
   'tier1.result.ladderLabel':
     '추정 TRL {estimate} / 9. 주장된 최고 수준: {claimed}. 제작 및 환경 교차 점검: {matrix}.',
   'tier1.result.ladderNote':
-    '채워진 칸은 확인된 수준입니다. 빗금 친 칸은 그 아래 수준이 확인되지 않은 상태에서 주장한 수준으로, 사슬은 그 지점에서 끊깁니다.',
+    '채워진 칸은 확인된 수준이고, 빗금 친 칸은 확인되지 않은 수준 위에서 주장된 수준입니다.',
   'tier1.result.estimated': '추정 TRL',
   'tier1.result.estimatedHint': '그 아래의 모든 수준도 확인된 가장 높은 수준.',
   'tier1.result.claimed': '주장된 최고 수준',
@@ -235,11 +234,11 @@ export const ko: Messages = {
   'tier1.result.matrixHint': '{build} × {environment} — {status}.',
   'tier1.result.consistency': '일관성: {rating}',
   'tier1.result.consistencyHelp.High':
-    '답변이 내부적으로 일관되며 제작/환경 교차 점검과도 일치합니다. 다만 이것이 답변의 정확성을 말해 주지는 않습니다.',
+    '교차 점검과 일치합니다 — 답변이 정확한지는 이것으로 알 수 없습니다.',
   'tier1.result.consistencyHelp.Medium':
-    '답변과 교차 점검 사이에 다소 상충이 있거나, 주장한 수준 이하에 “불확실”이 있습니다.',
+    '교차 점검과 다소 상충하거나, 주장한 수준 이하에 “불확실”이 있습니다.',
   'tier1.result.consistencyHelp.Low':
-    '답변이 제작/환경 교차 점검과 크게 어긋나거나, 주장한 수준 아래의 여러 수준이 확인되지 않았습니다. 이 수치를 사용하기 전에 다시 점검하십시오.',
+    '답변이 교차 점검과 상충하거나, 여러 하위 수준이 확인되지 않았습니다. 이 수치를 사용하기 전에 다시 점검하십시오.',
   'tier1.result.nextHeading': '일반적인 다음 단계',
   'tier1.result.nextMandatory':
     '{trl}의 요구 사항 — Tier 2 평가에서는 각 항목에 증거가 필요합니다.',
@@ -255,7 +254,7 @@ export const ko: Messages = {
   'tier1.result.downloadJson': 'JSON 다운로드',
   'tier1.result.continue': '증거 기반 평가로 계속',
   'tier1.result.filesNote':
-    'JSON 파일로 앱에서 이 세션을 복원할 수 있습니다. 워크북은 정적 스냅숏이므로, 편집해도 TRL이 다시 계산되지 않습니다.',
+    'JSON은 이 세션을 복원합니다. 워크북은 스냅숏이므로, 편집해도 다시 계산되지 않습니다.',
   'tier1.rail.label': '지금까지의 답변, TRL 1~9',
   'tier1.rail.yes': '예',
   'tier1.rail.no': '아니요',
@@ -391,7 +390,7 @@ export const ko: Messages = {
   'tier2.criteria.level.locked': '잠김 — 하위 수준 미달성',
   'tier2.criteria.level.needsEvidence': '증거로 충족된 기준 필요',
   'tier2.criteria.level.needsEvidenceTitle':
-    '이 수준의 나머지 요건은 모두 충족 인정되었지만, 전적으로 해당 없음에 의한 것입니다. 해당 없음은 기준이 적용되지 않음을 기록하는 것이며, 결코 수준을 실증하지 않습니다.',
+    '해당 없음으로만 충족 인정되었습니다. 해당 없음은 기준이 적용되지 않는다는 뜻이며, 결코 수준을 실증하지 않습니다.',
   'tier2.criteria.level.lockedTitle':
     '하위 수준이 달성되지 않았으므로 이 수준은 아직 인정될 수 없습니다.',
   'tier2.levelBar.none': '이 수준에 적용되는 기준 없음',
