@@ -376,7 +376,9 @@ function ReadingCard({
       </dl>
       <p className="mt-3 flex flex-wrap items-baseline gap-x-2 text-base text-slate-800">
         <span>{t('arl.result.read.cell', { medium: cell(medium), high: cell(high) })}</span>
-        <span aria-hidden="true">→</span>
+        <span aria-hidden="true" className="inline-block rtl:rotate-180">
+          →
+        </span>
         <strong className="text-3xl font-extrabold text-slate-900">
           {t('arl.common.value', { level: arl })}
         </strong>
