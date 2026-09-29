@@ -54,10 +54,11 @@ export const SOURCES: SourceDoc[] = [
     id: 'nrel-me-risk',
     title: 'Marine Energy Technology Development Risk Management Framework',
     issuer: 'NREL for DOE Water Power Technologies Office',
-    version: 'report number to be confirmed',
+    version: 'NREL report 90212 (FY2024)',
+    url: 'https://docs.nrel.gov/docs/fy24osti/90212.pdf',
     publicDomain: true,
     quotable: false,
-    note: 'Not obtained. Cited as the basis of tailored rationales only; no text is reproduced.',
+    note: 'Located but not obtained (blocked in the build environment). Cited as the basis of tailored rationales only; no text is reproduced and no claim is made about what the report requires.',
   },
   {
     id: 'nrel-tpl',

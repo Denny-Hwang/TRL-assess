@@ -27,6 +27,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Tier 2 scoring: "N/A" can no longer carry a level on its own.** A level is achieved only when, in
+  addition to its existing requirements, at least one applicable criterion at that level is "Met"
+  with usable evidence. Before, justified N/A answers alone could reach TRL 9 with no evidence at all.
+  Such levels now show "needs a criterion Met with evidence", and the gap list names their N/A
+  criteria. Assessments that relied on N/A-only levels score lower after this change.
+- `marine-energy-eere` 1.0.1: the rationale of `MEE-T2-L4-T01` no longer states what the NREL risk
+  framework requires — that report has not been checked; the TRL 4 threshold is this tool's
+  tailoring. The report is now identified (NREL report 90212) in the sources.
+- README: a "How far a result can be trusted" table separating verbatim source text from this tool's
+  own conventions.
 - The default framework is `dod-tra-2025`; `marine-energy-eere` remains available.
 - The fictional example is now a domain-neutral sensor device.
 - Shorter screens and Guide; internal development records removed from the repository.

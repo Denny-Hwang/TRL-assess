@@ -17,9 +17,9 @@ Fase 1 reformulan esas definiciones como preguntas (`adapted`).
 **Dos cosas que conviene saber:**
 
 1. **Nada es obligatorio.** La guía no clasifica los criterios, por lo que cada nivel se marca con
-   «Sin criterios obligatorios — requiere confirmación del evaluador» y se alcanza en cuanto se
-   satisface un criterio aplicable. Aplicar el propio criterio profesional para decidir qué necesita
-   el nivel.
+   «Sin criterios obligatorios — requiere confirmación del evaluador» y se alcanza en cuanto un
+   criterio aplicable está _Cumplido_ con evidencias utilizables. Aplicar el propio criterio
+   profesional para decidir qué necesita el nivel.
 2. **A los CTE de tipo `process` se les ofrecen los criterios de hardware**, ya que la guía solo
    cubre hardware y software. Esa correspondencia es una decisión de esta herramienta.
 
@@ -40,9 +40,11 @@ piezas destinadas a producción, y un procedimiento de calibración y una ruta d
 (7); una vía de envío de datos al programa de observación ya ejercitada (8). Si alguno no aplica,
 marcarlo como _N/A_ con una justificación.
 
-Las justificaciones de los elementos a medida citan el marco de riesgos de energía marina del NREL
-(`nrel-me-risk`) y el GOOS Framework for Ocean Observing (`goos-foo`); no se reproduce ningún texto
-de ellos.
+Las justificaciones de los elementos a medida citan como base el marco de riesgos de energía marina
+del NREL (`nrel-me-risk`) y el GOOS Framework for Ocean Observing (`goos-foo`); no se reproduce
+ningún texto de ellos. Ninguno de los dos documentos se ha contrastado con estos elementos, por lo
+que los requisitos a medida son un razonamiento propio de esta herramienta, no requisitos que
+establezcan esos documentos.
 
 ## `doe-otc-arl-2025` — preparación para la adopción
 

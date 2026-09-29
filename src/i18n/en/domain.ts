@@ -81,6 +81,8 @@ export const domain = {
   'tier2.reason.Not met': 'Not met.',
   'tier2.reason.N/A': 'Marked "N/A" without a justification.',
   'tier2.reason.Not assessed': 'Not assessed yet.',
+  'tier2.reason.naOnly':
+    'N/A cannot establish a level on its own — at least one criterion at this level must be Met with usable evidence.',
   'tier2.delta.lower':
     'The evidence-based assessment is markedly lower than the quick estimate. Check which CTE is limiting and which criteria still lack evidence.',
   'tier2.delta.higher':

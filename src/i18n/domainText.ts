@@ -37,7 +37,8 @@ export function criterionWarningText(tr: Translator, o: CriterionOutcome): strin
   );
 }
 
-export function gapReasonText(tr: Translator, gap: Pick<GapItem, 'status'>): string {
+export function gapReasonText(tr: Translator, gap: Pick<GapItem, 'status' | 'naOnly'>): string {
+  if (gap.naOnly) return tr.t('tier2.reason.naOnly');
   return tr.t(`tier2.reason.${gap.status}` as MessageKey);
 }
 

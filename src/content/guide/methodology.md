@@ -32,12 +32,18 @@ evidence.
 
 :::figure evidence-decision:::
 
-**Level achieved.** Every applicable _mandatory_ criterion at L is satisfied **and** level L−1 is
-achieved (level 0 always counts). A level above an unachieved one shows as _locked_.
+**Level achieved.** Every applicable _mandatory_ criterion at L is satisfied, **at least one**
+applicable criterion at L is _Met_ with usable evidence, **and** level L−1 is achieved (level 0 always
+counts). A level above an unachieved one shows as _locked_.
+
+**N/A never carries a level on its own.** A justified _N/A_ satisfies a criterion — it records that
+the criterion does not apply — but it demonstrates nothing. A level whose requirements are satisfied
+only through _N/A_ is not achieved and shows "needs a criterion Met with evidence"; the gap list then
+names its N/A criteria.
 
 A level with **no** applicable mandatory criteria is achieved when at least one applicable criterion
-is satisfied, and is flagged "No mandatory criteria — needs assessor confirmation" — every level in
-`dod-tra-2025`, which marks nothing mandatory.
+is _Met_ with usable evidence, and is flagged "No mandatory criteria — needs assessor confirmation" —
+every level in `dod-tra-2025`, which marks nothing mandatory.
 
 **CTE TRL.** The highest achieved level; 0 shows as "< TRL 1".
 

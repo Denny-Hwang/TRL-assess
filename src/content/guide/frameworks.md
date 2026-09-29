@@ -18,7 +18,7 @@ those definitions as questions (`adapted`).
 
 1. **Nothing is mandatory.** The guidebook does not classify criteria, so every level is flagged "No
    mandatory criteria — needs assessor confirmation" and is achieved once one applicable criterion is
-   satisfied. Apply your own judgement to what the level needs.
+   _Met_ with usable evidence. Apply your own judgement to what the level needs.
 2. **`process` CTEs are offered the hardware criteria**, since the guidebook covers hardware and
    software only. That mapping is this tool's decision.
 
@@ -37,7 +37,9 @@ calibration procedure and data path (7); an exercised data-submission pathway to
 programme (8). If one does not apply, mark it _N/A_ with a justification.
 
 Tailored rationales cite NREL's marine-energy risk framework (`nrel-me-risk`) and the GOOS Framework
-for Ocean Observing (`goos-foo`); no text from them is reproduced.
+for Ocean Observing (`goos-foo`) as their basis; no text from them is reproduced. Neither document has
+been checked against these items, so the tailored requirements are this tool's own reasoning, not
+requirements those documents set.
 
 ## `doe-otc-arl-2025` — adoption readiness
 

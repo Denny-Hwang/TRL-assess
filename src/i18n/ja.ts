@@ -107,6 +107,8 @@ export const ja: Messages = {
   'tier2.reason.Not met': '未達成。',
   'tier2.reason.N/A': '理由の記載なしで「該当なし」とされています。',
   'tier2.reason.Not assessed': 'まだ評価されていません。',
+  'tier2.reason.naOnly':
+    '「該当なし」だけではレベルを成立させることはできません — このレベルの基準のうち少なくとも 1 つが、有効なエビデンスのある「達成」である必要があります。',
   'tier2.delta.lower':
     'エビデンスに基づく評価が、クイック推定を大きく下回っています。どの CTE が制約となっているか、どの基準にまだエビデンスが不足しているかを確認してください。',
   'tier2.delta.higher':
@@ -393,6 +395,9 @@ export const ja: Messages = {
   'tier2.criteria.level.achieved': '達成',
   'tier2.criteria.level.notAchieved': '未達成',
   'tier2.criteria.level.locked': 'ロック中 — 下位のレベルが未達成',
+  'tier2.criteria.level.needsEvidence': 'エビデンスのある「達成」の基準が必要',
+  'tier2.criteria.level.needsEvidenceTitle':
+    'このレベルのその他の要件はすべて、「該当なし」によってのみ充足されています。「該当なし」は基準が当てはまらないことを記録するものであり、レベルを実証することはありません。',
   'tier2.criteria.level.lockedTitle':
     '下位のレベルが未達成のため、このレベルはまだ数えられません。',
   'tier2.levelBar.none': 'このレベルに適用される基準はありません',
@@ -615,7 +620,7 @@ export const ja: Messages = {
   'guide.fig.tier2.caption.formula': 'min(4, 3, 3) = TRL 3',
   'guide.fig.tier2.caption.after': ' です。平均は取りません。',
   'guide.fig.statusLegend.caption':
-    'レベルに算入されるのは最初の 2 つだけです。有効なエビデンスのある「達成」と、理由の記載がある「該当なし」です。',
+    'レベルに算入されるのは最初の 2 つだけです。有効なエビデンスのある「達成」と、理由の記載がある「該当なし」です。達成されたレベルには、必ずエビデンスのある「達成」が少なくとも 1 つあります。',
   'guide.fig.arlLookup.mark': '例',
   'guide.fig.arlLookup.caption.before':
     '例 — 中リスクの観点が 3 つ、高リスクの観点が 1 つの場合は ',
@@ -878,7 +883,7 @@ export const ja: Messages = {
   'excel.tier2.readme.calc.satisfied':
     '基準が充足されるのは、却下されていないエビデンスが少なくとも 1 件リンクされた「Met」（達成）である場合、または理由の記載がある「N/A」（該当なし）である場合です。',
   'excel.tier2.readme.calc.level':
-    'あるレベルが達成されるのは、そのレベルで適用されるすべての必須基準が充足され、かつ 1 つ下のレベルが達成されている場合です。',
+    'あるレベルが達成されるのは、そのレベルで適用されるすべての必須基準（必須基準がない場合は、いずれか 1 つの基準）が充足され、そのレベルの少なくとも 1 つの基準が有効なエビデンスのある「Met」（達成）であり、かつ 1 つ下のレベルが達成されている場合です。「N/A」（該当なし）だけでレベルが成立することはありません。',
   'excel.tier2.readme.calc.cte': 'CTE の TRL は、達成された最も高いレベルです。',
   'excel.tier2.readme.calc.system':
     'システムサマリーは、重要に指定された CTE 全体での TRL の最小値です。これは保守的な報告上の慣例であり、義務付けられた計算式ではありません。',

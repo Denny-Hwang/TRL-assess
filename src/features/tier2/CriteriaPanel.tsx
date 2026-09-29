@@ -343,6 +343,14 @@ function LevelAccordion({
               {t('tier2.criteria.level.locked')}
             </span>
           ) : null}
+          {level.needsEvidence && !level.locked ? (
+            <span
+              className="badge border-amber-300 bg-amber-50 text-amber-800"
+              title={t('tier2.criteria.level.needsEvidenceTitle')}
+            >
+              {t('tier2.criteria.level.needsEvidence')}
+            </span>
+          ) : null}
           {level.flag ? (
             <span className="badge border-violet-300 bg-violet-50 text-violet-800">
               {t('tier2.noMandatory')}

@@ -298,7 +298,7 @@
       "sourceId": "nrel-me-risk"
     },
     "origin": "tailored",
-    "rationale": "The NREL Marine Energy Technology Development Risk Management Framework requires a risk register and an FMECA from TRL 4 upwards for WPTO open-water projects."
+    "rationale": "This framework asks for a risk register and an FMECA from TRL 4, so that failure modes are identified and ranked before relevant-environment testing. Setting the requirement at TRL 4 is this tool's tailoring. It cites NREL's Marine Energy Technology Development Risk Management Framework as the risk-management basis; the report's own requirements have not been checked against this criterion."
   },
   {
     "id": "MEE-T2-L5-T01",

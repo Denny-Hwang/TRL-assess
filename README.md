@@ -25,6 +25,20 @@ files you download.
 audit and not a certification. It cannot verify anything you tell it. A real TRA is run by a team
 independent of the programme, under an agency's process, and it can reject your evidence.
 
+### How far a result can be trusted
+
+| Part                                                                                                | Basis                                                                                            | Checked                                                                        |
+| --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| ARL rubric and look-up table                                                                        | DOE OTC _Adoption Readiness Assessment_ (April 2025), transcribed verbatim                       | Word by word against the PDF; the look-up table cell by cell                   |
+| TRL definitions (default framework)                                                                 | DoD _TRA Guidebook_ (Feb 2025), Tables 2-1 and 2-2, transcribed verbatim                         | Against the guidebook when transcribed; matches the long-published DoD wording |
+| Scoring rules, system summary (minimum of critical CTEs), Tier 1 cross-check and consistency rating | **This tool's own conventions** — no source prescribes them                                      | Every rule has a named unit test; stated in full in Guide › Methodology        |
+| Evidence                                                                                            | Whatever the assessor links                                                                      | **Not checked** — the tool cannot tell whether a document supports a claim     |
+| Marine tailoring (optional framework)                                                               | This tool's own requirements; the NREL and GOOS documents they cite as a basis were not obtained | **Not checked** against those documents                                        |
+| Translations                                                                                        | Unofficial, machine-produced and machine-reviewed                                                | English is authoritative                                                       |
+
+**When you share a result, describe it as** an internal self-assessment that applies published DoD
+and DOE text verbatim — not a formal TRA or ARL assessment, and not an independent review.
+
 ## Live app and screenshots
 
 **https://denny-hwang.github.io/TRL-assess/**
@@ -42,7 +56,8 @@ things in different rooms. Most self-assessments are a number in a slide with no
 This tool does three things about that:
 
 1. It names the framework and version behind every number, in the app and in every export.
-2. It refuses to count a claim that has no evidence behind it.
+2. It refuses to count a level that no evidence stands behind: "Met" needs linked evidence, and
+   "N/A" can excuse a criterion but never carries a level on its own.
 3. It records where each criterion came from — document, section and page — and whether the wording
    is verbatim, adapted or tailored.
 
@@ -91,7 +106,8 @@ flowchart LR
 The scoring rules in one paragraph: a level counts only if every level below it counts; "Unsure"
 never counts as "Yes"; a criterion is satisfied when it is _Met_ with at least one non-rejected
 evidence item, or _N/A_ with a justification; a level is achieved when every applicable mandatory
-criterion at that level is satisfied; a CTE's TRL is its highest achieved level; and the system
+criterion at that level is satisfied and at least one criterion there is _Met_ with evidence (N/A
+alone never carries a level); a CTE's TRL is its highest achieved level; and the system
 summary is the minimum across the CTEs marked critical. Full detail, with three worked examples, is
 in **Guide › [Methodology](https://denny-hwang.github.io/TRL-assess/#/guide/methodology)**.
 

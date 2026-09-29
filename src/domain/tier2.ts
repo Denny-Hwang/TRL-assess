@@ -20,6 +20,8 @@ export const SYSTEM_SUMMARY_NOTE =
   'Conservative summary (minimum of critical CTEs). This is a reporting convention, not a mandated formula.';
 export const NO_CRITICAL_CTE_MESSAGE = 'Not computed — mark at least one CTE as critical';
 export const NO_MANDATORY_FLAG = 'No mandatory criteria — needs assessor confirmation';
+export const NA_ONLY_REASON =
+  'N/A cannot establish a level on its own: at least one criterion at this level must be Met with usable evidence.';
 
 export interface CriterionOutcome {
   criterion: Tier2Criterion;
@@ -39,6 +41,13 @@ export interface LevelOutcome {
   achieved: boolean;
   /** True when the level has no applicable mandatory criteria (R2-4). */
   noMandatoryCriteria: boolean;
+  /** R2-4a — at least one applicable criterion is "Met" with usable evidence. */
+  evidenceBacked: boolean;
+  /**
+   * R2-4a — every other requirement of the level is satisfied, but only through "N/A": the level is
+   * not achieved until a criterion is "Met" with usable evidence.
+   */
+  needsEvidence: boolean;
   flag?: string;
   applicable: CriterionOutcome[];
   mandatoryUnmet: CriterionOutcome[];
@@ -66,6 +75,8 @@ export interface GapItem {
   criterionText: string;
   status: CriterionStatus;
   reason: string;
+  /** R2-4a — listed because the level rests on "N/A" alone, not because this criterion is unmet. */
+  naOnly?: boolean;
 }
 
 export interface SystemSummary {
@@ -183,14 +194,15 @@ export function evaluateCte(
     const mandatory = outcomes.filter((o) => o.criterion.mandatory);
     const noMandatoryCriteria = mandatory.length === 0;
 
-    let achievedHere = false;
-    let flag: string | undefined;
-    if (noMandatoryCriteria) {
-      achievedHere = outcomes.some((o) => o.satisfied);
-      flag = NO_MANDATORY_FLAG;
-    } else {
-      achievedHere = mandatory.every((o) => o.satisfied);
-    }
+    // R2-4 — the level's own requirement: every mandatory criterion, or (with none) any criterion.
+    const requirementsMet = noMandatoryCriteria
+      ? outcomes.some((o) => o.satisfied)
+      : mandatory.every((o) => o.satisfied);
+    // R2-4a — and at least one criterion must be "Met" with usable evidence: "N/A" records that a
+    // criterion does not apply, it never demonstrates anything, so it cannot carry a level alone.
+    const evidenceBacked = outcomes.some((o) => o.status === 'Met' && o.satisfied);
+    const achievedHere = requirementsMet && evidenceBacked;
+    const flag = noMandatoryCriteria ? NO_MANDATORY_FLAG : undefined;
 
     const achieved: boolean = achievedHere && previousAchieved;
     const locked = !previousAchieved;
@@ -199,6 +211,8 @@ export function evaluateCte(
       level,
       achieved,
       noMandatoryCriteria,
+      evidenceBacked,
+      needsEvidence: requirementsMet && !evidenceBacked,
       ...(flag ? { flag } : {}),
       applicable: outcomes,
       mandatoryUnmet: mandatory.filter((o) => !o.satisfied),
@@ -231,19 +245,31 @@ export function evaluateCte(
   };
 }
 
-/** Gap analysis: the unmet mandatory criteria at the CTE's next level. */
+/**
+ * Gap analysis: the unmet mandatory criteria at the CTE's next level. When nothing is unmet but the
+ * level rests on "N/A" alone (R2-4a), the N/A criteria are listed instead, so the gap list never
+ * reads as empty for a level that is not achieved.
+ */
 export function gapsForLevel(cte: Cte, level: LevelOutcome): GapItem[] {
   const unmet = level.noMandatoryCriteria
     ? level.applicable.filter((o) => !o.satisfied)
     : level.mandatoryUnmet;
-  return unmet.map((o) => ({
+  const toGap = (o: CriterionOutcome, naOnly: boolean): GapItem => ({
     cteId: cte.id,
     level: level.level,
     criterionId: o.criterion.id,
     criterionText: o.criterion.text,
     status: o.status,
-    reason: reasonFor(o),
-  }));
+    reason: naOnly ? NA_ONLY_REASON : reasonFor(o),
+    ...(naOnly ? { naOnly } : {}),
+  });
+  if (unmet.length === 0 && level.needsEvidence) {
+    const scope = level.noMandatoryCriteria
+      ? level.applicable
+      : level.applicable.filter((o) => o.criterion.mandatory);
+    return scope.filter((o) => o.status === 'N/A').map((o) => toGap(o, true));
+  }
+  return unmet.map((o) => toGap(o, false));
 }
 
 function reasonFor(o: CriterionOutcome): string {

@@ -31,13 +31,14 @@ können Sie es nicht beanspruchen.
 ## Was, wenn ein Kriterium nicht zutrifft?
 
 Markieren Sie es mit Begründung als **N/A** — das gilt als anerkannt. Ein N/A ohne Begründung
-nicht.
+nicht. Mit N/A allein wird nie eine Stufe erreicht: Mindestens ein Kriterium auf der Stufe muss mit
+verwendbarem Nachweis **erfüllt** sein.
 
 ## Warum steht bei meiner Stufe „Keine verpflichtenden Kriterien — Bestätigung durch den Bewerter erforderlich“?
 
 Die Quelle des Frameworks klassifiziert Kriterien nicht als verpflichtend, daher ist die Stufe
-erreicht, sobald ein anwendbares Kriterium anerkannt ist, und Sie müssen das bestätigen. Siehe
-[Frameworks](/guide/frameworks).
+erreicht, sobald ein anwendbares Kriterium mit verwendbarem Nachweis **erfüllt** ist, und Sie
+müssen das bestätigen. Siehe [Frameworks](/guide/frameworks).
 
 ## Wo sind meine Daten?
 

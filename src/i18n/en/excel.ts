@@ -167,7 +167,7 @@ export const excel = {
   'excel.tier2.readme.calc.satisfied':
     'A criterion is satisfied when it is "Met" with at least one linked, non-rejected evidence item, or "N/A" with a justification.',
   'excel.tier2.readme.calc.level':
-    'A level is achieved when every applicable mandatory criterion at that level is satisfied and the level below is achieved.',
+    'A level is achieved when every applicable mandatory criterion at that level is satisfied (with none, any one criterion), at least one criterion at that level is "Met" with usable evidence — "N/A" alone never establishes a level — and the level below is achieved.',
   'excel.tier2.readme.calc.cte': "A CTE's TRL is the highest achieved level.",
   'excel.tier2.readme.calc.system':
     'The system summary is the minimum TRL across the CTEs marked critical — a conservative reporting convention, not a mandated formula.',

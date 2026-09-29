@@ -26,12 +26,14 @@ A readiness level claims something was demonstrated. If you are unsure it was, y
 ## What if a criterion does not apply?
 
 Mark it **N/A** with a justification — that counts as satisfied. An N/A without a justification does
-not.
+not. N/A alone never achieves a level: at least one criterion at the level must be **Met** with
+usable evidence.
 
 ## Why does my level say "No mandatory criteria — needs assessor confirmation"?
 
 The framework's source does not classify criteria as mandatory, so the level is achieved once one
-applicable criterion is satisfied, and you must confirm it. See [Frameworks](/guide/frameworks).
+applicable criterion is **Met** with usable evidence, and you must confirm it. See
+[Frameworks](/guide/frameworks).
 
 ## Where is my data?
 

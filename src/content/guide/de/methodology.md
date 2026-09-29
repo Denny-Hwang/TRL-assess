@@ -33,14 +33,20 @@ gilt als anerkannt — auch nicht _Erfüllt_ ohne verwendbaren Nachweis.
 
 :::figure evidence-decision:::
 
-**Erreichte Stufe.** Jedes anwendbare _verpflichtende_ Kriterium auf Stufe L ist anerkannt **und**
-Stufe L−1 ist erreicht (Stufe 0 zählt immer). Eine Stufe über einer nicht erreichten wird als
-_gesperrt_ angezeigt.
+**Erreichte Stufe.** Jedes anwendbare _verpflichtende_ Kriterium auf Stufe L ist anerkannt,
+**mindestens ein** anwendbares Kriterium auf Stufe L ist mit verwendbarem Nachweis _erfüllt_
+**und** Stufe L−1 ist erreicht (Stufe 0 zählt immer). Eine Stufe über einer nicht erreichten wird
+als _gesperrt_ angezeigt.
+
+**N/A allein trägt nie eine Stufe.** Ein begründetes _N/A_ lässt ein Kriterium als anerkannt
+gelten — es hält fest, dass das Kriterium nicht zutrifft —, demonstriert aber nichts. Eine Stufe,
+deren Anforderungen nur durch _N/A_ abgedeckt sind, ist nicht erreicht und zeigt „benötigt ein
+erfülltes Kriterium mit Nachweis“ an; die Lückenliste nennt dann die N/A-Kriterien dieser Stufe.
 
 Eine Stufe **ohne** anwendbare verpflichtende Kriterien ist erreicht, wenn mindestens ein
-anwendbares Kriterium anerkannt ist, und erhält den Warnhinweis „Keine verpflichtenden Kriterien —
-Bestätigung durch den Bewerter erforderlich“ — das betrifft jede Stufe in `dod-tra-2025`, das
-nichts als verpflichtend kennzeichnet.
+anwendbares Kriterium mit verwendbarem Nachweis _erfüllt_ ist, und erhält den Warnhinweis „Keine
+verpflichtenden Kriterien — Bestätigung durch den Bewerter erforderlich“ — das betrifft jede Stufe
+in `dod-tra-2025`, das nichts als verpflichtend kennzeichnet.
 
 **TRL eines CTE.** Die höchste erreichte Stufe; 0 wird als „< TRL 1“ angezeigt.
 
