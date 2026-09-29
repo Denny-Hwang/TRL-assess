@@ -570,8 +570,6 @@ export const es: Messages = {
   'arl.result.flags.current': 'Calificaciones actuales',
   'arl.result.flags.targets': 'Objetivos',
   'arl.result.howRead': 'Cómo se lee la cifra',
-  'arl.result.howRead.body':
-    'La fuente cuenta las dimensiones de riesgo medio y de riesgo alto y obtiene el ARL de su tabla de consulta.',
   'arl.result.mark.start': 'Inicial',
   'arl.result.mark.target': 'Objetivo',
   'arl.result.takeAway': 'Exportar',
@@ -587,9 +585,7 @@ export const es: Messages = {
   'arl.scale.targetNoChange': 'Objetivo: ARL {level} (sin cambios)',
   'arl.grid.caption':
     'Filas: número de dimensiones de riesgo medio. Columnas: número de dimensiones de riesgo alto.',
-  'arl.grid.corner': 'M \\ A',
   'arl.grid.summary': '{label}: {medium} de riesgo medio y {high} de riesgo alto → ARL {arl}',
-  'arl.grid.mark': '{label}: {medium} de riesgo medio, {high} de riesgo alto',
   'arl.glyph.na': 'No aplicable',
   'arl.glyph.legend': 'Leyenda de calificaciones de riesgo',
   'arl.tally.item': '{count} {rating}',

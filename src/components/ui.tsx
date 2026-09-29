@@ -116,16 +116,27 @@ export function Stat({
   value,
   hint,
   emphasis,
+  accent,
   testId,
 }: {
   label: string;
   value: string;
   hint?: string;
   emphasis?: boolean;
+  /** A coloured start edge that ties the card to the same mark in a diagram. */
+  accent?: { color: string; dashed?: boolean };
   testId?: string;
 }) {
   return (
-    <div className="card" data-testid={testId}>
+    <div
+      className="card"
+      data-testid={testId}
+      style={
+        accent
+          ? { borderInlineStart: `6px ${accent.dashed ? 'dashed' : 'solid'} ${accent.color}` }
+          : undefined
+      }
+    >
       <p className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</p>
       <p className={emphasis ? 'mt-1 text-4xl font-semibold' : 'mt-1 text-xl font-semibold'}>
         {value}

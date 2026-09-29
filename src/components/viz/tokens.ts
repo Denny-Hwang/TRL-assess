@@ -22,6 +22,12 @@ export const VIZ = {
   /** The app's brand blue — "achieved" in every diagram. */
   brand: '#1b63f0',
   brandSoft: '#dbeafe',
+  /**
+   * The ARL target (end of project): violet, always dashed, so it never reads as a risk status
+   * (amber / red) or as "achieved" (brand blue). 5.7:1 on white.
+   */
+  target: '#7c3aed',
+  targetSoft: '#ede9fe',
   status: {
     good: '#0ca30c',
     warning: '#fab219',

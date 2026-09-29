@@ -114,7 +114,7 @@ export const tier2 = {
   'tier2.criteria.level.locked': 'locked — lower level not achieved',
   'tier2.criteria.level.needsEvidence': 'needs a criterion Met with evidence',
   'tier2.criteria.level.needsEvidenceTitle':
-    'Every other requirement of this level is satisfied, but only through N/A. N/A records that a criterion does not apply; it never demonstrates the level.',
+    'Satisfied only through N/A. N/A says a criterion does not apply; it never demonstrates the level.',
   'tier2.criteria.level.lockedTitle':
     'A lower level is not achieved, so this level cannot count yet.',
 

@@ -16,6 +16,7 @@ import {
 } from '@/components/ui';
 import { ArlScale } from '@/components/viz/ArlScale';
 import { ArlLookupGrid } from '@/components/viz/ArlLookupGrid';
+import { VIZ } from '@/components/viz/tokens';
 import { RiskGlyph, RiskLegend } from '@/components/viz/RiskGlyph';
 import { RiskTallyBar } from '@/components/viz/RiskTallyBar';
 import { useT } from '@/i18n/store';
@@ -105,6 +106,7 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
             high: start.tally.High,
           })}
           emphasis
+          accent={{ color: VIZ.brand }}
           testId="arl-start"
         />
         <Stat
@@ -114,6 +116,7 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
             band: withTranslation(tr, end.band),
             target: t('label.arlTarget'),
           })}
+          accent={{ color: VIZ.target, dashed: true }}
           testId="arl-end"
         />
         <Stat
@@ -226,9 +229,36 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
         <FlagList flags={end.flags} total={framework.dimensions.length} />
       </section>
 
-      <section className="card space-y-3">
-        <h2 className="text-lg font-semibold">{t('arl.result.howRead')}</h2>
-        <p className="text-sm text-slate-700">{t('arl.result.howRead.body')}</p>
+      <section className="card space-y-4" aria-labelledby="arl-how-read">
+        <h2 id="arl-how-read" className="text-xl font-semibold">
+          {t('arl.result.howRead')}
+        </h2>
+        <ol className="list-decimal space-y-1.5 ps-6 text-base leading-relaxed text-slate-800">
+          <li>{t('arl.result.howRead.step1')}</li>
+          <li>{t('arl.result.howRead.step2')}</li>
+          <li>{t('arl.result.howRead.step3')}</li>
+        </ol>
+        <div className="grid gap-3 md:grid-cols-2">
+          <ReadingCard
+            kind="start"
+            cap={framework.lookup.cap}
+            medium={start.tally.Medium}
+            high={start.tally.High}
+            arl={start.arl}
+            band={start.band}
+          />
+          <ReadingCard
+            kind="target"
+            cap={framework.lookup.cap}
+            medium={end.tally.Medium}
+            high={end.tally.High}
+            arl={end.arl}
+            band={end.band}
+            unchanged={
+              end.tally.Medium === start.tally.Medium && end.tally.High === start.tally.High
+            }
+          />
+        </div>
         <ArlLookupGrid
           framework={framework}
           marks={[
@@ -279,6 +309,79 @@ export function ArlResultPage({ framework }: { framework: ArlFramework }) {
         ) : null}
         <p className="mt-3 text-xs text-slate-500">{t('arl.result.jsonNote')}</p>
       </section>
+    </div>
+  );
+}
+
+/**
+ * One reading of the look-up table, spelled out with the assessment's own numbers:
+ * the two counts, the cell they point to, and the ARL printed there. Start is solid brand blue,
+ * the target dashed violet — the same marks as on the scale and in the table.
+ */
+function ReadingCard({
+  kind,
+  cap,
+  medium,
+  high,
+  arl,
+  band,
+  unchanged = false,
+}: {
+  kind: 'start' | 'target';
+  cap: number;
+  medium: number;
+  high: number;
+  arl: number;
+  band: string;
+  unchanged?: boolean;
+}) {
+  const tr = useT();
+  const { t } = tr;
+  const isStart = kind === 'start';
+  const colour = isStart ? VIZ.brand : VIZ.target;
+  const cell = (n: number) => (n >= cap ? `${cap}+` : String(n));
+  return (
+    <div
+      className="rounded-xl p-4"
+      style={{
+        border: `3px ${isStart ? 'solid' : 'dashed'} ${colour}`,
+        background: isStart ? VIZ.brandSoft : VIZ.targetSoft,
+      }}
+      data-testid={`arl-read-${kind}`}
+    >
+      <p className="flex flex-wrap items-center gap-2">
+        <span
+          className="rounded-full px-3 py-1 text-base font-bold"
+          style={
+            isStart
+              ? { background: colour, color: VIZ.surface }
+              : { background: VIZ.surface, color: colour, border: `2px dashed ${colour}` }
+          }
+        >
+          {t(isStart ? 'arl.result.mark.start' : 'arl.result.mark.target')}
+        </span>
+        {unchanged ? (
+          <span className="text-sm text-slate-700">{t('arl.result.read.noChange')}</span>
+        ) : null}
+      </p>
+      <dl className="mt-3 grid grid-cols-2 gap-2">
+        <div>
+          <dt className="text-sm text-slate-700">{t('risk.Medium')}</dt>
+          <dd className="text-2xl font-bold text-slate-900">{medium}</dd>
+        </div>
+        <div>
+          <dt className="text-sm text-slate-700">{t('risk.High')}</dt>
+          <dd className="text-2xl font-bold text-slate-900">{high}</dd>
+        </div>
+      </dl>
+      <p className="mt-3 flex flex-wrap items-baseline gap-x-2 text-base text-slate-800">
+        <span>{t('arl.result.read.cell', { medium: cell(medium), high: cell(high) })}</span>
+        <span aria-hidden="true">→</span>
+        <strong className="text-3xl font-extrabold text-slate-900">
+          {t('arl.common.value', { level: arl })}
+        </strong>
+      </p>
+      <p className="mt-1 text-sm font-medium text-slate-700">{withTranslation(tr, band)}</p>
     </div>
   );
 }

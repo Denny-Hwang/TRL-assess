@@ -549,8 +549,6 @@ export const ar: Messages = {
   'arl.result.flags.current': 'التقديرات الحالية',
   'arl.result.flags.targets': 'الأهداف',
   'arl.result.howRead': 'كيف يُقرأ الرقم',
-  'arl.result.howRead.body':
-    'يُحصي المصدر الأبعاد ذات المخاطر المتوسطة والمرتفعة ويقرأ قيمة ARL من جدول المطابقة الخاص به.',
   'arl.result.mark.start': 'البداية',
   'arl.result.mark.target': 'الهدف',
   'arl.result.takeAway': 'خذ النتيجة معك',
@@ -566,9 +564,7 @@ export const ar: Messages = {
   'arl.scale.targetNoChange': 'الهدف: ARL {level} (دون تغيير)',
   'arl.grid.caption':
     'الصفوف: عدد الأبعاد ذات المخاطر المتوسطة. الأعمدة: عدد الأبعاد ذات المخاطر المرتفعة.',
-  'arl.grid.corner': 'متوسط \\ مرتفع',
   'arl.grid.summary': '{label}: {medium} «متوسط» و{high} «مرتفع» ← ARL {arl}',
-  'arl.grid.mark': '{label}: {medium} «متوسط»، {high} «مرتفع»',
   'arl.glyph.na': 'لا ينطبق',
   'arl.glyph.legend': 'مفتاح تقديرات المخاطر',
   'arl.tally.item': '{count} {rating}',

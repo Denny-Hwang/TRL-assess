@@ -558,8 +558,6 @@ export const ja: Messages = {
   'arl.result.flags.current': '現在の評定',
   'arl.result.flags.targets': '目標',
   'arl.result.howRead': '数値の読み取り方',
-  'arl.result.howRead.body':
-    '出典は中リスクと高リスクの観点を数え、その参照表から ARL を読み取ります。',
   'arl.result.mark.start': '開始',
   'arl.result.mark.target': '目標',
   'arl.result.takeAway': '持ち出す',
@@ -574,9 +572,7 @@ export const ja: Messages = {
   'arl.scale.target': '目標：ARL {level}',
   'arl.scale.targetNoChange': '目標：ARL {level}（変化なし）',
   'arl.grid.caption': '行：中リスクの観点の数。列：高リスクの観点の数。',
-  'arl.grid.corner': '中 \\ 高',
   'arl.grid.summary': '{label}：中 {medium} 件、高 {high} 件 → ARL {arl}',
-  'arl.grid.mark': '{label}：中 {medium} 件、高 {high} 件',
   'arl.glyph.na': '該当なし',
   'arl.glyph.legend': 'リスク評定の凡例',
   'arl.tally.item': '{rating} {count} 件',

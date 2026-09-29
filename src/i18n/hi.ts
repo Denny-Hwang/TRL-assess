@@ -560,8 +560,6 @@ export const hi: Messages = {
   'arl.result.flags.current': 'वर्तमान रेटिंग',
   'arl.result.flags.targets': 'लक्ष्य',
   'arl.result.howRead': 'संख्या कैसे पढ़ी जाती है',
-  'arl.result.howRead.body':
-    'स्रोत मध्यम- और उच्च-जोखिम वाले आयामों की गिनती करता है और अपनी लुक-अप तालिका से ARL पढ़ता है।',
   'arl.result.mark.start': 'प्रारंभ',
   'arl.result.mark.target': 'लक्ष्य',
   'arl.result.takeAway': 'साथ ले जाएँ',
@@ -577,9 +575,7 @@ export const hi: Messages = {
   'arl.scale.targetNoChange': 'लक्ष्य: ARL {level} (कोई परिवर्तन नहीं)',
   'arl.grid.caption':
     'पंक्तियाँ: मध्यम-जोखिम आयामों की संख्या। स्तंभ: उच्च-जोखिम आयामों की संख्या।',
-  'arl.grid.corner': 'M \\ H',
   'arl.grid.summary': '{label}: {medium} मध्यम और {high} उच्च → ARL {arl}',
-  'arl.grid.mark': '{label}: {medium} मध्यम, {high} उच्च',
   'arl.glyph.na': 'लागू नहीं',
   'arl.glyph.legend': 'जोखिम रेटिंग संकेत-सूची',
   'arl.tally.item': '{count} {rating}',

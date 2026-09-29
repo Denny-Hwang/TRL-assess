@@ -549,8 +549,6 @@ export const ko: Messages = {
   'arl.result.flags.current': '현재 등급',
   'arl.result.flags.targets': '목표',
   'arl.result.howRead': '수치를 읽는 방법',
-  'arl.result.howRead.body':
-    '출처는 중간 위험 및 높은 위험 차원의 수를 집계하고 조회표에서 ARL을 읽습니다.',
   'arl.result.mark.start': '시작',
   'arl.result.mark.target': '목표',
   'arl.result.takeAway': '내보내기',
@@ -565,9 +563,7 @@ export const ko: Messages = {
   'arl.scale.target': '목표: ARL {level}',
   'arl.scale.targetNoChange': '목표: ARL {level} (변화 없음)',
   'arl.grid.caption': '행: 중간 위험 차원의 수. 열: 높은 위험 차원의 수.',
-  'arl.grid.corner': 'M \\ H',
   'arl.grid.summary': '{label}: 중간 {medium}개, 높음 {high}개 → ARL {arl}',
-  'arl.grid.mark': '{label}: 중간 {medium}개, 높음 {high}개',
   'arl.glyph.na': '해당 없음',
   'arl.glyph.legend': '위험 등급 범례',
   'arl.tally.item': '{rating} {count}개',

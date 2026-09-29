@@ -570,8 +570,6 @@ export const de: Messages = {
   'arl.result.flags.current': 'Aktuelle Einstufungen',
   'arl.result.flags.targets': 'Ziele',
   'arl.result.howRead': 'Wie die Zahl abgelesen wird',
-  'arl.result.howRead.body':
-    'Die Quelle zählt die Dimensionen mit mittlerem und hohem Risiko und liest den ARL aus ihrer Nachschlagetabelle ab.',
   'arl.result.mark.start': 'Beginn',
   'arl.result.mark.target': 'Ziel',
   'arl.result.takeAway': 'Ergebnis mitnehmen',
@@ -587,9 +585,7 @@ export const de: Messages = {
   'arl.scale.targetNoChange': 'Ziel: ARL {level} (keine Veränderung)',
   'arl.grid.caption':
     'Zeilen: Anzahl der Dimensionen mit mittlerem Risiko. Spalten: Anzahl der Dimensionen mit hohem Risiko.',
-  'arl.grid.corner': 'M \\ H',
   'arl.grid.summary': '{label}: {medium} × Mittel und {high} × Hoch → ARL {arl}',
-  'arl.grid.mark': '{label}: {medium} × Mittel, {high} × Hoch',
   'arl.glyph.na': 'Nicht zutreffend',
   'arl.glyph.legend': 'Legende der Risikoeinstufung',
   'arl.tally.item': '{count} {rating}',

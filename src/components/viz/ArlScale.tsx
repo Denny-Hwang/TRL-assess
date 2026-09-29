@@ -54,8 +54,9 @@ export function ArlScale({
                 width={CELL - MARK_GAP}
                 height={BAR}
                 rx={MARK_RADIUS}
-                fill={reached ? VIZ.brand : planned ? VIZ.brandSoft : VIZ.neutral.empty}
-                stroke={planned ? VIZ.brand : 'none'}
+                fill={reached ? VIZ.brand : planned ? VIZ.targetSoft : VIZ.neutral.empty}
+                stroke={planned ? VIZ.target : 'none'}
+                strokeWidth={planned ? 1.5 : undefined}
                 strokeDasharray={planned ? '3 2' : undefined}
               />
               <text
@@ -89,20 +90,28 @@ export function ArlScale({
             </g>
           );
         })}
-        <path d={`M${centre(start) - 6} ${markerRow - 8} h12 l-6 8 Z`} fill={VIZ.ink.primary} />
+        <path d={`M${centre(start) - 6} ${markerRow - 8} h12 l-6 8 Z`} fill={VIZ.brand} />
         {end !== undefined && end !== start ? (
           <path
             d={`M${centre(end) - 6} ${markerRow - 8} h12 l-6 8 Z`}
             fill={VIZ.surface}
-            stroke={VIZ.ink.primary}
-            strokeWidth={1.2}
+            stroke={VIZ.target}
+            strokeWidth={1.5}
           />
         ) : null}
       </svg>
-      <p className="mt-1 flex flex-wrap gap-x-4 text-xs text-slate-600" aria-hidden="true">
-        <span>▼ {t('arl.scale.start', { level: start })}</span>
+      <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm" aria-hidden="true">
+        <span
+          className="rounded-full px-2.5 py-0.5 font-semibold text-white"
+          style={{ background: VIZ.brand }}
+        >
+          ▼ {t('arl.scale.start', { level: start })}
+        </span>
         {end !== undefined ? (
-          <span>
+          <span
+            className="rounded-full px-2.5 py-0.5 font-semibold"
+            style={{ color: VIZ.target, border: `2px dashed ${VIZ.target}` }}
+          >
             ▽ {t(end === start ? 'arl.scale.targetNoChange' : 'arl.scale.target', { level: end })}
           </span>
         ) : null}
