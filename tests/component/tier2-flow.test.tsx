@@ -116,7 +116,7 @@ describe('Tier 2 — criteria', () => {
     renderAssess();
     await user.selectOptions(await screen.findByLabelText('Status for MEE-T2-L1-01'), 'Met');
     expect(
-      await screen.findByText(/A mandatory criterion is not satisfied without evidence/),
+      await screen.findByText(/a mandatory criterion is not satisfied until evidence is linked/),
     ).toBeInTheDocument();
   });
 
