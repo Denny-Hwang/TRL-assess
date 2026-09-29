@@ -149,12 +149,12 @@ export const de: Messages = {
   'home.tier2.start': 'Nachweisbewertung starten',
   'home.arl.heading': 'Einführungsreifegrad (ARL)',
   'home.arl.body':
-    'Bewerten Sie die 17 Einführungsrisiko-Dimensionen des DOE Adoption Readiness Assessment, für heute und für das Projektende. Getrennt vom TRL ausgewiesen.',
+    'Bewerten Sie die 17 Einführungsrisiko-Dimensionen des DOE-Bewertungsrasters, für heute und für das Projektende. Getrennt vom TRL ausgewiesen.',
   'home.arl.start': 'Einführungsreife bewerten',
   'home.disclaimer.heading': 'Haftungsausschluss',
   'about.title': 'Über {app}',
   'about.lead':
-    'Ein zweistufiges Tool zur Selbstbewertung des Technologiereifegrads (TRL) mit einem Modul für den Einführungsreifegrad (ARL). Alles läuft in Ihrem Browser — kein Backend, kein Konto, keine Telemetrie.',
+    'Ein Tool zur TRL-Selbstbewertung mit einem ARL-Modul. Es läuft vollständig in Ihrem Browser — ohne Backend, Konto oder Telemetrie.',
   'about.build.heading': 'Build',
   'about.build.version': 'Version',
   'about.build.sha': 'Git-SHA',
@@ -168,7 +168,7 @@ export const de: Messages = {
   'about.frameworks.sources': 'Quellen: {list}',
   'about.frameworks.arl.name': 'ARL-Zusatzmodul — {title}',
   'about.frameworks.arl.body':
-    'Einführungsreife, getrennt vom TRL bewertet: die 17 Einführungsrisiko-Dimensionen des DOE-Bewertungsrasters und dessen Nachschlagetabelle, wörtlich übernommen.',
+    'Einführungsreife, getrennt vom TRL bewertet: die 17 Dimensionen und die Nachschlagetabelle des DOE-Bewertungsrasters, wörtlich übernommen.',
   'about.frameworks.arl.link': 'So funktioniert es',
   'about.frameworks.arl.source': 'Quelle: {id} ({version})',
   'about.frameworks.more': 'Was jedes Framework enthält und wo seine Grenzen liegen →',
@@ -234,7 +234,7 @@ export const de: Messages = {
   'tier1.result.ladderLabel':
     'Geschätzter TRL {estimate} von 9. Höchste beanspruchte Stufe: {claimed}. Gegenprüfung Aufbau und Umgebung: {matrix}.',
   'tier1.result.ladderNote':
-    'Gefüllte Sprossen sind bestätigt. Eine schraffierte Sprosse ist eine Stufe, die Sie beansprucht haben, während eine Stufe darunter unbestätigt ist — dort bricht die Kette ab.',
+    'Gefüllte Sprossen sind bestätigt; eine schraffierte Sprosse wurde oberhalb einer unbestätigten Stufe beansprucht.',
   'tier1.result.estimated': 'Geschätzter TRL',
   'tier1.result.estimatedHint': 'Höchste Stufe, bei der auch jede Stufe darunter bestätigt ist.',
   'tier1.result.claimed': 'Höchste beanspruchte Stufe',
@@ -243,11 +243,11 @@ export const de: Messages = {
   'tier1.result.matrixHint': '{build} × {environment} — {status}.',
   'tier1.result.consistency': 'Konsistenz: {rating}',
   'tier1.result.consistencyHelp.High':
-    'Ihre Antworten sind in sich stimmig und stimmen mit der Gegenprüfung Aufbau/Umgebung überein. Das sagt nichts darüber aus, ob die Antworten richtig sind.',
+    'Konsistent mit der Gegenprüfung — was nichts darüber aussagt, ob die Antworten richtig sind.',
   'tier1.result.consistencyHelp.Medium':
-    'Es gibt gewisse Spannungen zwischen Ihren Antworten und der Gegenprüfung oder ein „Unsicher“ auf oder unter der beanspruchten Stufe.',
+    'Gewisse Spannungen mit der Gegenprüfung oder ein „Unsicher“ auf oder unter der beanspruchten Stufe.',
   'tier1.result.consistencyHelp.Low':
-    'Ihre Antworten weichen stark von der Gegenprüfung Aufbau/Umgebung ab, oder mehrere Stufen unter Ihrer Angabe sind unbestätigt. Prüfen Sie dies erneut, bevor Sie diesen Wert verwenden.',
+    'Ihre Antworten widersprechen der Gegenprüfung, oder mehrere niedrigere Stufen sind unbestätigt. Prüfen Sie dies erneut, bevor Sie diesen Wert verwenden.',
   'tier1.result.nextHeading': 'Was typischerweise als Nächstes kommt',
   'tier1.result.nextMandatory':
     'Was {trl} erfordert — jeder dieser Punkte benötigt in einer Tier-2-Bewertung einen Nachweis.',
@@ -263,7 +263,7 @@ export const de: Messages = {
   'tier1.result.downloadJson': 'JSON herunterladen',
   'tier1.result.continue': 'Weiter zur Nachweisbewertung',
   'tier1.result.filesNote':
-    'Die JSON-Datei stellt diese Sitzung in der App wieder her. Die Arbeitsmappe ist eine statische Momentaufnahme — Änderungen darin berechnen den TRL nicht neu.',
+    'Die JSON-Datei stellt diese Sitzung wieder her. Die Arbeitsmappe ist eine Momentaufnahme — Änderungen darin lösen keine Neuberechnung aus.',
   'tier1.rail.label': 'Bisherige Antworten, TRL 1 bis 9',
   'tier1.rail.yes': 'ja',
   'tier1.rail.no': 'nein',
@@ -406,7 +406,7 @@ export const de: Messages = {
     'Eine niedrigere Stufe ist nicht erreicht, daher kann diese Stufe noch nicht zählen.',
   'tier2.criteria.level.needsEvidence': 'benötigt ein erfülltes Kriterium mit Nachweis',
   'tier2.criteria.level.needsEvidenceTitle':
-    'Alle übrigen Anforderungen dieser Stufe sind abgedeckt, aber nur durch N/A. N/A hält fest, dass ein Kriterium nicht zutrifft; es demonstriert die Stufe nie.',
+    'Nur durch N/A anerkannt. N/A besagt, dass ein Kriterium nicht zutrifft; es demonstriert die Stufe nie.',
   'tier2.levelBar.none': 'Auf dieser Stufe gelten keine Kriterien',
   'tier2.levelBar.satisfied': '{count} anerkannt',
   'tier2.levelBar.partial': '{count} teilweise erfüllt',
@@ -532,6 +532,8 @@ export const de: Messages = {
     'Nicht eingestuft, „Unsicher“ oder „N/A“ ohne Begründung zählen als hohes Risiko.',
   'arl.rate.areasNav': 'Kernrisikobereiche',
   'arl.rate.currentRisk': 'Aktuelles Risiko',
+  'arl.rate.chooseOne': 'wählen Sie die am besten passende Option',
+  'arl.rate.selected': 'Ausgewählt',
   'arl.rate.naOption': 'N/A — trifft auf diesen Umfang nicht zu',
   'arl.rate.clear': 'Einstufung löschen',
   'arl.rate.countedAs': 'gewertet als {risk}',
@@ -570,6 +572,13 @@ export const de: Messages = {
   'arl.result.flags.current': 'Aktuelle Einstufungen',
   'arl.result.flags.targets': 'Ziele',
   'arl.result.howRead': 'Wie die Zahl abgelesen wird',
+  'arl.result.howRead.step1':
+    'Zählen Sie, wie viele Dimensionen als mittleres Risiko und wie viele als hohes Risiko eingestuft sind („Unsicher“, nicht eingestuft und „N/A“ ohne Begründung zählen als hohes Risiko).',
+  'arl.result.howRead.step2':
+    'Suchen Sie in der Tabelle unten die Zeile für die Anzahl mit mittlerem Risiko und die Spalte für die Anzahl mit hohem Risiko (8 oder mehr: „8+“).',
+  'arl.result.howRead.step3': 'Die Zahl in dieser Zelle ist der ARL.',
+  'arl.result.read.cell': 'Zeile {medium}, Spalte {high}',
+  'arl.result.read.noChange': 'wie Beginn',
   'arl.result.mark.start': 'Beginn',
   'arl.result.mark.target': 'Ziel',
   'arl.result.takeAway': 'Ergebnis mitnehmen',
@@ -579,13 +588,16 @@ export const de: Messages = {
   'arl.result.backToRatings': 'Zurück zu den Einstufungen',
   'arl.result.howScored': 'Wie der ARL bewertet wird',
   'arl.result.jsonNote':
-    'Die JSON-Datei stellt die gesamte Sitzung wieder her, TRL und ARL. Die Arbeitsmappe ist eine statische Momentaufnahme — Änderungen darin berechnen den ARL nicht neu.',
+    'Die JSON-Datei stellt die gesamte Sitzung wieder her. Die Arbeitsmappe ist eine Momentaufnahme — Änderungen darin lösen keine Neuberechnung aus.',
   'arl.scale.start': 'Beginn: ARL {level}',
   'arl.scale.target': 'Ziel: ARL {level}',
   'arl.scale.targetNoChange': 'Ziel: ARL {level} (keine Veränderung)',
   'arl.grid.caption':
     'Zeilen: Anzahl der Dimensionen mit mittlerem Risiko. Spalten: Anzahl der Dimensionen mit hohem Risiko.',
+  'arl.grid.rows': 'Anzahl der Dimensionen mit mittlerem Risiko',
+  'arl.grid.columns': 'Anzahl der Dimensionen mit hohem Risiko',
   'arl.grid.summary': '{label}: {medium} × Mittel und {high} × Hoch → ARL {arl}',
+  'arl.grid.markCounts': '{medium} × Mittel · {high} × Hoch',
   'arl.glyph.na': 'Nicht zutreffend',
   'arl.glyph.legend': 'Legende der Risikoeinstufung',
   'arl.tally.item': '{count} {rating}',
@@ -631,7 +643,7 @@ export const de: Messages = {
   'guide.fig.tier2.caption.formula': 'min(4, 3, 3) = TRL 3',
   'guide.fig.tier2.caption.after': '. Es wird nichts gemittelt.',
   'guide.fig.statusLegend.caption':
-    'Nur die ersten beiden zählen für eine Stufe: „Erfüllt“ mit verwendbarem Nachweis und „N/A“ mit Begründung. Eine erreichte Stufe hat immer mindestens ein „Erfüllt“ mit Nachweis.',
+    'Nur „Erfüllt“ mit verwendbarem Nachweis und „N/A“ mit Begründung zählen; eine erreichte Stufe benötigt mindestens ein „Erfüllt“ mit Nachweis.',
   'guide.fig.arlLookup.mark': 'Beispiel',
   'guide.fig.arlLookup.caption.before':
     'Beispiel — drei Dimensionen mit mittlerem und eine mit hohem Risiko ergeben ',
@@ -1056,7 +1068,7 @@ export const de: Messages = {
     'Eine Selbstbewertung, keine unabhängige Technologiereifebewertung (TRA). Mit\n„Sensitive — reference only“ (Sensibel — nur Verweis) gekennzeichnete Nachweise werden nie beigefügt: Diese Zeilen\nverweisen auf Material, das an anderer Stelle aufbewahrt wird.',
   'about.data.heading': 'Lokale Daten',
   'about.data.body':
-    'Bewertungen und Nachweisdateien werden nur in diesem Browser gespeichert. Exportieren Sie vor dem Löschen alles, was Sie behalten möchten.',
+    'Nur in diesem Browser gespeichert. Exportieren Sie vor dem Löschen alles, was Sie behalten möchten.',
   'about.data.clear': 'Alle lokalen Daten löschen',
   'about.data.confirm':
     'Die Bewertung und alle gespeicherten Nachweisdateien aus diesem Browser löschen? Dies kann nicht rückgängig gemacht werden.',
