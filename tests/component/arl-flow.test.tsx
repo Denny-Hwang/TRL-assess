@@ -128,6 +128,38 @@ describe('ARL flow', () => {
     expect(screen.queryAllByText('counted as High')).toHaveLength(0);
   });
 
+  it('shows which risk option is chosen, and a status line only when a rule changes the count', async () => {
+    const user = userEvent.setup();
+    useSession(setArl(createSession('marine-energy-eere', '1.0.0'), ratedArl()));
+    renderArl('/arl/rate');
+    const cost = screen.getByTestId('dimension-ARL-A1');
+    expect(within(cost).getByText(/choose the one that fits best/)).toBeInTheDocument();
+    const low = within(cost).getByRole('radio', { name: /^Low risk/ });
+    expect(low).toBeChecked();
+    expect(within(low.closest('label')!).getByText(/Selected/)).toBeInTheDocument();
+    expect(within(cost).getAllByText(/Selected/)).toHaveLength(1);
+    expect(within(cost).queryByText(/counted as/)).toBeNull();
+
+    await user.click(within(cost).getByRole('radio', { name: /Unsure/ }));
+    expect(within(cost).getByText(/Unsure — counted as High risk/)).toBeVisible();
+  });
+
+  it('reads Start and Target off the look-up table step by step', () => {
+    const data = ratedArl();
+    useSession(setArl(createSession('marine-energy-eere', '1.0.0'), data));
+    renderArl('/arl/result');
+    const { start, end } = scoreArl(arlFramework, data);
+    expect(screen.getByText(/The number in that cell is the ARL/)).toBeInTheDocument();
+
+    const startCard = screen.getByTestId('arl-read-start');
+    expect(startCard).toHaveTextContent(`Row ${start.tally.Medium}, column ${start.tally.High}`);
+    expect(startCard).toHaveTextContent(`ARL ${start.arl}`);
+    const targetCard = screen.getByTestId('arl-read-target');
+    expect(targetCard).toHaveTextContent(`Row ${end.tally.Medium}, column ${end.tally.High}`);
+    expect(targetCard).toHaveTextContent(`ARL ${end.arl}`);
+    expect(screen.getByText('Number of High-risk dimensions')).toBeInTheDocument();
+  });
+
   it('marks conservative counts in both the current and the target column', () => {
     const data = ratedArl();
     data.dimensions = data.dimensions.map((d) =>
