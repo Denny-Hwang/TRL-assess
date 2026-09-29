@@ -5,6 +5,7 @@ import { describe, it, expect } from 'vitest';
 import type { ResolvedFramework } from '@/domain/frameworks';
 import { resolveFramework } from '@/domain/frameworks';
 import {
+  NA_ONLY_REASON,
   NO_CRITICAL_CTE_MESSAGE,
   NO_MANDATORY_FLAG,
   allGaps,
@@ -16,6 +17,8 @@ import {
   tierDelta,
 } from '@/domain/tier2';
 import { TIER2_LABEL } from '@/config/app.config';
+import { gapReasonText } from '@/i18n/domainText';
+import { EN } from '@/i18n/translate';
 import type {
   CriterionAssessment,
   Cte,
@@ -233,8 +236,10 @@ describe('R2-4 level achievement', () => {
     const result = evaluateCte(framework, cte('CTE-01', { kind: 'software' }), [], []);
     expect(result.levels.find((l) => l.level === 1)?.achieved).toBe(false);
   });
+});
 
-  it('treats an all-N/A level as achieved when every N/A is justified', () => {
+describe('R2-4a a level needs a criterion Met with usable evidence — N/A alone never carries it', () => {
+  it('does not achieve an all-N/A level, even when every N/A is justified', () => {
     const framework = fw([criterion('C1', 1), criterion('C2', 1)]);
     const result = evaluateCte(
       framework,
@@ -245,7 +250,120 @@ describe('R2-4 level achievement', () => {
       ],
       [],
     );
-    expect(result.levels.find((l) => l.level === 1)?.achieved).toBe(true);
+    const l1 = result.levels.find((l) => l.level === 1)!;
+    expect(l1.mandatoryUnmet).toHaveLength(0);
+    expect(l1.evidenceBacked).toBe(false);
+    expect(l1.needsEvidence).toBe(true);
+    expect(l1.achieved).toBe(false);
+    expect(result.trl).toBe(0);
+  });
+
+  it('still lets a justified N/A satisfy a mandatory criterion once another is Met with evidence', () => {
+    const framework = fw([criterion('C1', 1), criterion('C2', 1)]);
+    const result = evaluateCte(
+      framework,
+      cte(),
+      [
+        assess('CTE-01', 'C1', 'Met'),
+        assess('CTE-01', 'C2', 'N/A', { justification: 'does not apply to this element' }),
+      ],
+      [evidence('EV-0001', [['CTE-01', 'C1']])],
+    );
+    const l1 = result.levels.find((l) => l.level === 1)!;
+    expect(l1.evidenceBacked).toBe(true);
+    expect(l1.needsEvidence).toBe(false);
+    expect(l1.achieved).toBe(true);
+  });
+
+  it('does not count "Met" backed only by rejected evidence', () => {
+    const framework = fw([criterion('C1', 1, { mandatory: false })]);
+    const result = evaluateCte(
+      framework,
+      cte(),
+      [assess('CTE-01', 'C1', 'Met')],
+      [evidence('EV-0001', [['CTE-01', 'C1']], { verification: 'Rejected' })],
+    );
+    const l1 = result.levels.find((l) => l.level === 1)!;
+    expect(l1.evidenceBacked).toBe(false);
+    expect(l1.achieved).toBe(false);
+  });
+
+  it('with zero mandatory criteria: a justified N/A alone does not achieve the level', () => {
+    const framework = fw([
+      criterion('C1', 1, { mandatory: false }),
+      criterion('C2', 1, { mandatory: false }),
+    ]);
+    const naOnly = evaluateCte(
+      framework,
+      cte(),
+      [assess('CTE-01', 'C1', 'N/A', { justification: 'n/a' })],
+      [],
+    );
+    const l1 = naOnly.levels.find((l) => l.level === 1)!;
+    expect(l1.noMandatoryCriteria).toBe(true);
+    expect(l1.needsEvidence).toBe(true);
+    expect(l1.achieved).toBe(false);
+
+    const withEvidence = evaluateCte(
+      framework,
+      cte(),
+      [assess('CTE-01', 'C1', 'N/A', { justification: 'n/a' }), assess('CTE-01', 'C2', 'Met')],
+      [evidence('EV-0001', [['CTE-01', 'C2']])],
+    );
+    expect(withEvidence.levels.find((l) => l.level === 1)!.achieved).toBe(true);
+  });
+
+  it('closes the zero-evidence route on the real dod-tra-2025 data (one justified N/A per level)', () => {
+    const framework = resolveFramework('dod-tra-2025');
+    const assessments = ([1, 2, 3, 4, 5, 6, 7, 8, 9] as const).map((level) =>
+      assess('CTE-01', `DOD-T2-L${level}-03`, 'N/A', { justification: 'n/a' }),
+    );
+    const result = evaluateCte(framework, cte('CTE-01', { kind: 'hardware' }), assessments, []);
+    expect(result.trl).toBe(0);
+    expect(result.levels[0]!.needsEvidence).toBe(true);
+  });
+
+  it('closes the zero-evidence route on the real marine-energy-eere data (every mandatory criterion N/A)', () => {
+    const framework = resolveFramework('marine-energy-eere');
+    const assessments = framework.tier2
+      .filter((c) => c.mandatory && (!c.appliesTo || c.appliesTo.includes('hardware')))
+      .map((c) => assess('CTE-01', c.id, 'N/A', { justification: 'n/a' }));
+    const result = evaluateCte(framework, cte('CTE-01', { kind: 'hardware' }), assessments, []);
+    expect(result.trl).toBe(0);
+  });
+
+  it('lists the N/A criteria as gaps, with their own reason, when N/A is all that holds the next level', () => {
+    const framework = fw([criterion('C1', 1), criterion('C2', 1)]);
+    const result = evaluateCte(
+      framework,
+      cte(),
+      [
+        assess('CTE-01', 'C1', 'N/A', { justification: 'n/a 1' }),
+        assess('CTE-01', 'C2', 'N/A', { justification: 'n/a 2' }),
+      ],
+      [],
+    );
+    expect(result.nextLevel).toBe(1);
+    expect(result.gaps.map((g) => [g.criterionId, g.naOnly, g.reason])).toEqual([
+      ['C1', true, NA_ONLY_REASON],
+      ['C2', true, NA_ONLY_REASON],
+    ]);
+    expect(gapReasonText(EN, result.gaps[0]!)).toContain('N/A cannot establish a level on its own');
+  });
+
+  it('keeps listing ordinary unmet criteria (not the N/A ones) while those are the blockers', () => {
+    const framework = fw([
+      criterion('C1', 1, { mandatory: false }),
+      criterion('C2', 1, { mandatory: false }),
+    ]);
+    const result = evaluateCte(
+      framework,
+      cte(),
+      [assess('CTE-01', 'C1', 'N/A', { justification: 'n/a' })],
+      [],
+    );
+    expect(result.gaps.map((g) => [g.criterionId, g.naOnly ?? false])).toEqual([['C2', false]]);
+    expect(gapReasonText(EN, result.gaps[0]!)).toBe('Not assessed yet.');
   });
 });
 

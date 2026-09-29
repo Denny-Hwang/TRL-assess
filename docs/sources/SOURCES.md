@@ -14,7 +14,7 @@ Provenance for every framework source. Each Tier 1 question and Tier 2 criterion
 | `doe-otc-arl-2025`    | Adoption Readiness Assessment (ARL rubric and look-up table)                                                          | U.S. DOE, Office of Technology Commercialization                                 | Version: April 2025; file ARL_Assessment_9-23-25_0.pdf, PDF modified 2025-09-23 | Yes (U.S. Government work) | Yes                                                              | Held locally                             |
 | `doe-g413-3-4a`       | DOE G 413.3-4A, Technology Readiness Assessment Guide (Appendix F TRL Calculator)                                     | U.S. DOE                                                                         | 2011, chg 1 2015                                                                | Yes (U.S. Government work) | Yes                                                              | **Not obtained — see "Blocked sources"** |
 | `gao-20-48g`          | GAO-20-48G, Technology Readiness Assessment Guide                                                                     | U.S. GAO                                                                         | January 2020                                                                    | Yes (U.S. Government work) | Yes                                                              | **Not obtained — see "Blocked sources"** |
-| `nrel-me-risk`        | Marine Energy Technology Development Risk Management Framework                                                        | NREL (for DOE WPTO)                                                              | report number to be confirmed                                                   | Yes (U.S. Government work) | **No — not obtained; cited as the basis of tailored items only** | **Not obtained**                         |
+| `nrel-me-risk`        | Marine Energy Technology Development Risk Management Framework                                                        | NREL (for DOE WPTO)                                                              | NREL report 90212 (FY2024)                                                      | Yes (U.S. Government work) | **No — not obtained; cited as the basis of tailored items only** | **Not obtained**                         |
 | `nrel-tpl`            | Technology Performance Level (TPL) Assessment                                                                         | NREL                                                                             | web resource                                                                    | Yes                        | Reference only                                                   | Not obtained                             |
 | `iso-16290`           | ISO 16290:2013, Space systems — Definition of the Technology Readiness Levels (TRLs) and their criteria of assessment | ISO                                                                              | 2013                                                                            | No                         | **Never quote — clause references only**                         | Not obtained (by design)                 |
 | `goos-foo`            | Framework for Ocean Observing                                                                                         | GOOS / UNESCO-IOC                                                                | current web edition                                                             | No (intergovernmental)     | Reference only                                                   | Not obtained                             |
@@ -42,6 +42,7 @@ for the WebFetch tool as well).
 | `doe-otc-arl-2025`    | https://www.energy.gov/technologycommercialization/adoption-readiness-levels-arl-framework (the page the lab call cites) |
 | `doe-g413-3-4a`       | https://www.directives.doe.gov/directives-documents/400-series/0413.3-EGuide-04a/@@images/file                           |
 | `gao-20-48g`          | https://www.gao.gov/assets/gao-20-48g.pdf                                                                                |
+| `nrel-me-risk`        | https://docs.nrel.gov/docs/fy24osti/90212.pdf                                                                            |
 | `nrel-tpl`            | https://tpl.nrel.gov/                                                                                                    |
 | `goos-foo`            | https://goosocean.org/what-we-do/framework/                                                                              |
 
@@ -65,6 +66,9 @@ Page numbers are the printed page numbers of the guidebook, not PDF page indices
 | --------------------------------- | ------------------------------------- | --------------------------------------------------------------------------------------------- |
 | Tier 1 questions `MEE-T1-L{1..8}` | TRL definitions, pp. 1–2              | `adapted`; the verbatim definition is reproduced in the question's help text with attribution |
 | Tier 1 question `MEE-T1-L9`       | **DoD TRA Guidebook Table 2-1, p. 7** | `adapted` — see the transcription note below                                                  |
+
+EERE's programmes were reorganised in 2025 into DOE's Office of Critical Minerals and Energy
+Innovation (CMEI); the document is cited under the issuer printed on it.
 
 **Transcription note — EERE defines TRL 1–8 only.** The retrieved EERE R 540.112-02 PDF (2 pages,
 template version 11/17/15) ends with TRL-8 ("Technology is ready to move from development to
@@ -109,5 +113,8 @@ be downloaded: the build environment's egress proxy denies `directives.doe.gov`,
 `gao.gov` (HTTP 403 on CONNECT). No content from either document appears anywhere in this
 repository, and no framework claims them as a source.
 
-`nrel-me-risk` was not obtained either. It is cited only as the _basis_ of tailored rationales, in
-the tool's own wording; no text from it is reproduced.
+`nrel-me-risk` was not obtained either. It has since been located (NREL report 90212, FY2024,
+https://docs.nrel.gov/docs/fy24osti/90212.pdf) but could not be downloaded here. It is cited only as
+the _basis_ of five tailored rationales (`MEE-T2-L4-T01`, `-L5-T01`, `-L5-T02`, `-L6-T01`,
+`-L6-T02`), in the tool's own wording; no text from it is reproduced and no rationale states what the
+report requires. Checking those five items against the report is tracked in issue #2.
