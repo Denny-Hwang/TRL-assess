@@ -34,17 +34,17 @@ for the WebFetch tool as well).
 
 ## URLs
 
-| id                    | URL                                                                                                                      |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `eere-r540-112-02`    | https://www.energy.gov/sites/default/files/2022-08/EERE_R_540.112-02_Technology_Readiness_Levels_%28TRLs%29.pdf          |
-| `dod-tra-2025`        | https://www.cto.mil/wp-content/uploads/2025/03/TRA-Guide-Feb2025.v2-Cleared.pdf                                          |
-| `dod-mrl-matrix-2018` | https://www.dodmrl.com/                                                                                                  |
-| `doe-otc-arl-2025`    | https://www.energy.gov/technologycommercialization/adoption-readiness-levels-arl-framework (the page the lab call cites) |
-| `doe-g413-3-4a`       | https://www.directives.doe.gov/directives-documents/400-series/0413.3-EGuide-04a/@@images/file                           |
-| `gao-20-48g`          | https://www.gao.gov/assets/gao-20-48g.pdf                                                                                |
-| `nrel-me-risk`        | https://docs.nrel.gov/docs/fy24osti/90212.pdf                                                                            |
-| `nrel-tpl`            | https://tpl.nrel.gov/                                                                                                    |
-| `goos-foo`            | https://goosocean.org/what-we-do/framework/                                                                              |
+| id                    | URL                                                                                                                   |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `eere-r540-112-02`    | https://www.energy.gov/sites/default/files/2022-08/EERE_R_540.112-02_Technology_Readiness_Levels_%28TRLs%29.pdf       |
+| `dod-tra-2025`        | https://www.cto.mil/wp-content/uploads/2025/03/TRA-Guide-Feb2025.v2-Cleared.pdf                                       |
+| `dod-mrl-matrix-2018` | https://www.dodmrl.com/                                                                                               |
+| `doe-otc-arl-2025`    | https://www.energy.gov/technologycommercialization/adoption-readiness-levels-arl-framework (DOE's ARL framework page) |
+| `doe-g413-3-4a`       | https://www.directives.doe.gov/directives-documents/400-series/0413.3-EGuide-04a/@@images/file                        |
+| `gao-20-48g`          | https://www.gao.gov/assets/gao-20-48g.pdf                                                                             |
+| `nrel-me-risk`        | https://docs.nrel.gov/docs/fy24osti/90212.pdf                                                                         |
+| `nrel-tpl`            | https://tpl.nrel.gov/                                                                                                 |
+| `goos-foo`            | https://goosocean.org/what-we-do/framework/                                                                           |
 
 ## What was transcribed, and how
 

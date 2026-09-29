@@ -1,31 +1,96 @@
+<div align="center">
+
 # TRL Assess
 
-**A general-purpose Technology Readiness Level (TRL) and Adoption Readiness Level (ARL) self-assessment — in your browser, with no backend.**
+**Self-assess Technology Readiness (TRL) and Adoption Readiness (ARL) against published DoD and DOE
+criteria — in your browser, in eight languages.**
+
+[![Open the app](https://img.shields.io/badge/Open_the_app-1b63f0?style=for-the-badge)](https://denny-hwang.github.io/TRL-assess/)
+
+**https://denny-hwang.github.io/TRL-assess/**
 
 [![CI](https://github.com/Denny-Hwang/TRL-assess/actions/workflows/ci.yml/badge.svg)](https://github.com/Denny-Hwang/TRL-assess/actions/workflows/ci.yml)
 [![Deploy](https://github.com/Denny-Hwang/TRL-assess/actions/workflows/deploy.yml/badge.svg)](https://github.com/Denny-Hwang/TRL-assess/actions/workflows/deploy.yml)
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Languages](https://img.shields.io/badge/languages-8-7c3aed)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-## What it is
+[Guide](https://denny-hwang.github.io/TRL-assess/#/guide/overview) ·
+[Sources](docs/sources/SOURCES.md) ·
+[Changelog](CHANGELOG.md) ·
+[Report an issue](https://github.com/Denny-Hwang/TRL-assess/issues)
 
-TRL Assess helps a project team work out how mature a technology actually is, and prove it. You can
-run a **quick estimate** in about five minutes with no documents, or build an **evidence-based
-assessment** in which every claim is tied to a report, a test record, a pinned commit or a DOI. Both
-export to Excel; the evidence-based one can be packaged as a `.zip` with the evidence files and a
-SHA-256 manifest. A separate **Adoption Readiness Level (ARL)** module rates the 17 adoption-risk
-dimensions of the DOE Adoption Readiness Assessment — what stands between a working technology and
-its use. The interface is available in English (default), Korean, Chinese, Japanese, Spanish,
-German, Hindi and Arabic — pick a language from the selector in the header. Everything runs
-client-side:
-the app makes no network requests at runtime, and nothing you enter leaves your browser except in
-files you download.
+</div>
 
-**What it is not.** It is not an independent Technology Readiness Assessment (TRA). It is not an
-audit and not a certification. It cannot verify anything you tell it. A real TRA is run by a team
-independent of the programme, under an agency's process, and it can reject your evidence.
+## At a glance
 
-### How far a result can be trusted
+|                   | Technology Readiness Level (TRL)                                                                                                                                                                                         | Adoption Readiness Level (ARL)                                                                                                                                                                                                                                                                  |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Based on**      | U.S. Department of Defense (DoD)<br>[**Technology Readiness Assessment Guidebook**](https://www.cto.mil/wp-content/uploads/2025/03/TRA-Guide-Feb2025.v2-Cleared.pdf), February 2025                                      | U.S. Department of Energy (DOE)<br>[**Adoption Readiness Assessment**](https://www.energy.gov/sites/default/files/2025-04/ARL%20Assessment%204-25-25_0.pdf), Version: April 2025 · [framework page](https://www.energy.gov/technologycommercialization/adoption-readiness-levels-arl-framework) |
+| **Taken from it** | The TRL 1–9 definitions and descriptions for hardware and software (Tables 2-1 and 2-2) and the definitions of relevant and operational environments, word for word. The quick-estimate questions are adapted from them. | The 17 adoption-risk dimensions, their Low / Medium / High rating text and the ARL look-up table, word for word.                                                                                                                                                                                |
+| **You get**       | An estimated TRL in about five minutes, then an evidence-backed TRL for each Critical Technology Element (CTE) and for the system.                                                                                       | ARL Start (now) and ARL End (at the end of the project), read from DOE's look-up table.                                                                                                                                                                                                         |
+
+- 🌐 **Eight languages.** English (default), 한국어, 中文, 日本語, Español, Deutsch, हिन्दी and العربية —
+  choose one from 🌐 at the top right of the app. Criteria and rubric text stay in the original
+  English, with an unofficial translation in parentheses beneath.
+- 🔒 **Stays in your browser.** No sign-up, no backend, no tracking. What you enter is stored in this
+  browser only and leaves it only in the files you download.
+
+> [!IMPORTANT]
+> **For internal self-assessment.** TRL Assess applies published DoD and DOE text to your own
+> answers. It does not replace a formal TRA or ARL assessment or an independent review, and it
+> cannot verify your evidence.
+
+## What you can do
+
+| Quick Estimate · TRL Tier 1                                                                                                       | Evidence-Based Assessment · TRL Tier 2                                                                                                    | Adoption Readiness · ARL                                                                                                            |
+| --------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| ![Quick Estimate result: the TRL ladder, the estimated TRL and the cross-check](docs/img/tier1-result.png)                        | ![Evidence-Based Assessment result: the system summary, the limiting CTEs and per-CTE results](docs/img/tier2-result.png)                 | ![Adoption readiness result: ARL Start and the target on the ARL scale, and the risk profile](docs/img/arl-result.png)              |
+| Nine yes / no questions, about five minutes, no documents. Gives an **estimated TRL**, cross-checked against build × environment. | Break the system into CTEs, mark each criterion Met, Not met or N/A and link the evidence. Gives an **evidence-backed TRL** and the gaps. | Rate 17 adoption-risk dimensions Low, Medium or High, now and at project end. Gives **ARL Start** and **ARL End** from DOE's table. |
+| _Estimate — self-reported, no evidence_                                                                                           | _Evidence-backed self-assessment — not an independent Technology Readiness Assessment_                                                    | _Adoption readiness self-assessment — not reviewed or endorsed by DOE_                                                              |
+
+Every module exports an Excel workbook. The evidence-based assessment can also be packaged as a
+`.zip` with the evidence files and a SHA-256 manifest, and the whole session saves to and restores
+from JSON.
+
+## Quick start
+
+1. Open **https://denny-hwang.github.io/TRL-assess/** and, if you like, pick a language from 🌐.
+2. **TRL:** choose **Quick Estimate**, fill in the context and answer the nine questions (`Y` / `N` /
+   `U` on the keyboard). Then **Continue to Evidence Assessment** to break the system into CTEs and
+   link the evidence.
+3. **ARL:** open **Adoption Readiness**, describe the scope and rate each of the 17 dimensions, now
+   and for the end of the project.
+4. Download the Excel workbook — or the evidence package, to send the files along with it.
+
+Nothing is uploaded, so export or save the session JSON before you clear your browser data.
+
+## How scoring works
+
+**TRL — conservative by design**
+
+- A level counts only if every level below it counts, and "Unsure" never counts as "Yes".
+- A criterion is satisfied when it is **Met** with at least one non-rejected evidence item, or
+  **N/A** with a justification.
+- A level is achieved when every applicable mandatory criterion is satisfied **and** at least one
+  criterion there is Met with evidence — N/A alone never carries a level.
+- A CTE's TRL is its highest achieved level; the system summary is the lowest TRL among the critical
+  CTEs.
+
+**ARL — DOE's look-up method**
+
+- Each of the 17 dimensions is rated Low, Medium or High risk (or N/A), now and at the end of the
+  project.
+- The number of Medium-risk dimensions picks the row of DOE's look-up table, the number of High-risk
+  dimensions picks the column, and that cell is the ARL (1–9).
+- Unsure, unrated and N/A without a rationale count as High — this tool's conservative convention,
+  not DOE's.
+
+Full detail, with worked examples, in the Guide:
+[Methodology](https://denny-hwang.github.io/TRL-assess/#/guide/methodology) ·
+[Adoption readiness](https://denny-hwang.github.io/TRL-assess/#/guide/arl).
+
+## How far a result can be trusted
 
 | Part                                                                                                | Basis                                                                                            | Checked                                                                        |
 | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
@@ -39,103 +104,42 @@ independent of the programme, under an agency's process, and it can reject your 
 **When you share a result, describe it as** an internal self-assessment that applies published DoD
 and DOE text verbatim — not a formal TRA or ARL assessment, and not an independent review.
 
-## Live app and screenshots
+## Screenshots
 
-**https://denny-hwang.github.io/TRL-assess/**
+| Criteria and evidence                                                                                              | Rating an ARL dimension                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| ![Evidence-Based Assessment: CTEs, criteria per TRL and the evidence library](docs/img/tier2-criteria.png)         | ![An ARL dimension card: choose Low, Medium or High risk; the rubric text is on each option](docs/img/arl-rating.png) |
+| **How the ARL is read**                                                                                            | **The interface in Korean**                                                                                           |
+| ![How the ARL is read: Medium and High counts, the look-up table cell, Start and Target](docs/img/arl-reading.png) | ![The ARL rating page in Korean: English source text with the translation in parentheses](docs/img/language-ko.png)   |
 
-| Tier 1 result                                    | Tier 2 criteria                                      | Tier 2 result                                    |
-| ------------------------------------------------ | ---------------------------------------------------- | ------------------------------------------------ |
-| ![Tier 1 result page](docs/img/tier1-result.png) | ![Tier 2 criteria view](docs/img/tier2-criteria.png) | ![Tier 2 result page](docs/img/tier2-result.png) |
-
-## Why
-
-TRL definitions are broadly shared across agencies; the **criteria** — what you must show to claim a
-level — are not. NASA, DoD, DOE, GAO and ISO all publish different ones, so "TRL 6" means different
-things in different rooms. Most self-assessments are a number in a slide with nothing behind it.
-
-This tool does three things about that:
-
-1. It names the framework and version behind every number, in the app and in every export.
-2. It refuses to count a level that no evidence stands behind: "Met" needs linked evidence, and
-   "N/A" can excuse a criterion but never carries a level on its own.
-3. It records where each criterion came from — document, section and page — and whether the wording
-   is verbatim, adapted or tailored.
-
-## Features
-
-- **Tier 1 Quick Estimate** — nine screening questions, presented TRL 9 → 1, with keyboard shortcuts,
-  a build × environment cross-check and a consistency rating.
-- **Tier 2 Evidence-Based Assessment** — Critical Technology Elements, per-TRL criteria with
-  mandatory/optional and origin badges, evidence linking, gap analysis and a conservative system
-  summary.
-- **Adoption readiness (ARL) side module** — the 17 dimensions of the DOE _Adoption Readiness
-  Assessment_ (Version: April 2025) with the rubric text on every card, current and end-of-project
-  ratings, and ARL Start and ARL End read from the source's own look-up table. Scored apart from
-  TRL; never combined.
-- **Excel export** — six sheets for Tier 1, nine for Tier 2, seven for ARL, with data
-  validation, conditional formatting, working `HYPERLINK()` formulas and pre-formatted placeholder
-  rows.
-- **Evidence package** — a `.zip` containing the workbook, the session JSON, the evidence files and a
-  `MANIFEST.sha256.txt` a reviewer can verify.
-- **JSON save/restore** — a lossless round-trip of the whole assessment.
-- **Eight interface languages** — English, 한국어, 中文, 日本語, Español, Deutsch, हिन्दी, العربية
-  (right-to-left).
-- **Offline-capable static site** — no backend, no accounts, no telemetry, no third-party requests.
-
-## How it works
-
-```mermaid
-flowchart LR
-    A[Context<br/>project, environment, build] --> B[Tier 1<br/>9 screening questions]
-    B --> C{Estimate}
-    C -->|contiguous Yes| D[Estimated TRL]
-    C -->|build x environment| E[Cross-check + consistency]
-    D --> F[Tier 1 workbook .xlsx]
-    D --> G[Tier 2<br/>Evidence-Based Assessment]
-    G --> H[CTE register]
-    H --> I[Criteria per TRL<br/>status + justification]
-    I --> J[Evidence<br/>files, commits, DOIs, links]
-    J --> K{Scoring}
-    K --> L[CTE TRLs -> system summary<br/>minimum over critical CTEs]
-    L --> M[Tier 2 workbook .xlsx]
-    L --> N[Evidence package .zip<br/>+ SHA-256 manifest]
-    L --> O[Session JSON]
-    O -.->|import| G
-```
-
-The scoring rules in one paragraph: a level counts only if every level below it counts; "Unsure"
-never counts as "Yes"; a criterion is satisfied when it is _Met_ with at least one non-rejected
-evidence item, or _N/A_ with a justification; a level is achieved when every applicable mandatory
-criterion at that level is satisfied and at least one criterion there is _Met_ with evidence (N/A
-alone never carries a level); a CTE's TRL is its highest achieved level; and the system
-summary is the minimum across the CTEs marked critical. Full detail, with three worked examples, is
-in **Guide › [Methodology](https://denny-hwang.github.io/TRL-assess/#/guide/methodology)**.
-
-The ARL side module stands apart: each of the 17 adoption-risk dimensions is rated Low, Medium or
-High (or N/A), now and at the end of the project; the Medium and High counts are read against the
-source's look-up table to give ARL Start and ARL End; Unsure, unrated and unexplained N/A count as
-High. See **Guide › [Adoption readiness](https://denny-hwang.github.io/TRL-assess/#/guide/arl)**.
-
-## Frameworks & sources
+## Frameworks and sources
 
 | Framework                  | Scope                                     | Tier 1                                | Tier 2                                                   |
 | -------------------------- | ----------------------------------------- | ------------------------------------- | -------------------------------------------------------- |
 | `dod-tra-2025` _(default)_ | Generic hardware, software and process    | Adapted from the DoD hardware table   | Verbatim DoD hardware, software and environment criteria |
 | `marine-energy-eere`       | Marine energy and ocean-observing devices | Adapted from DOE EERE TRL definitions | DoD criteria + 8 marine/ocean tailoring items            |
 
-The ARL side module scores against `doe-otc-arl-2025` — the DOE Adoption Readiness Assessment's 17
+The ARL module scores against `doe-otc-arl-2025` — the DOE Adoption Readiness Assessment's 17
 dimensions, rating text and look-up table, transcribed verbatim.
+
+<details>
+<summary><b>Source documents</b></summary>
 
 | Source id                     | Document                                                              | Held                                             | Quotable                                  |
 | ----------------------------- | --------------------------------------------------------------------- | ------------------------------------------------ | ----------------------------------------- |
-| `eere-r540-112-02`            | DOE EERE R 540.112-02, _Technology Readiness Levels (TRLs)_           | Yes                                              | Yes (public domain)                       |
 | `dod-tra-2025`                | DoD _Technology Readiness Assessment Guidebook_, Feb 2025             | Yes                                              | Yes (public domain)                       |
-| `dod-mrl-matrix-2018`         | DoD _Manufacturing Readiness Level Matrix_ V2018                      | Yes                                              | Reference only                            |
 | `doe-otc-arl-2025`            | DOE OTC _Adoption Readiness Assessment_, Version: April 2025          | Yes                                              | Yes (public domain)                       |
+| `eere-r540-112-02`            | DOE EERE R 540.112-02, _Technology Readiness Levels (TRLs)_           | Yes                                              | Yes (public domain)                       |
+| `dod-mrl-matrix-2018`         | DoD _Manufacturing Readiness Level Matrix_ V2018                      | Yes                                              | Reference only                            |
 | `nrel-me-risk`                | NREL _Marine Energy Technology Development Risk Management Framework_ | No                                               | Basis of tailoring rationales only        |
 | `nrel-tpl`, `goos-foo`        | NREL TPL; GOOS Framework for Ocean Observing                          | No                                               | Reference only                            |
 | `iso-16290`                   | ISO 16290:2013                                                        | No                                               | **Clause references only — never quoted** |
 | `doe-g413-3-4a`, `gao-20-48g` | DOE G 413.3-4A; GAO-20-48G                                            | **No — not obtainable in the build environment** | No content is attributed to them          |
+
+Details, URLs and the SHA-256 hashes of the held documents are in
+[docs/sources/SOURCES.md](docs/sources/SOURCES.md).
+
+</details>
 
 **Provenance policy.** Every question and criterion carries an `origin`:
 
@@ -145,17 +149,16 @@ dimensions, rating text and look-up table, transcribed verbatim.
   rationale is required.
 - `tailored` — not in any source; a rationale is required.
 
-`npm run validate:criteria` enforces all of this, including the ISO rule. Details and SHA-256 hashes
-of the held documents are in [docs/sources/SOURCES.md](docs/sources/SOURCES.md).
+`npm run validate:criteria` enforces all of this, including the rule that ISO text is never quoted.
 
-## Data privacy & security
+## Privacy and security
 
 - **Client-side only.** No backend, no accounts, no analytics, no telemetry. The end-to-end tests
   fail the build if the app makes any cross-origin request.
 - **Where your data lives:** the assessment in `localStorage` (`trl-assess:session:v1`), evidence
   file contents in IndexedDB (`trl-assess-evidence`). Nothing is synced between devices.
-- **Clearing it:** "Clear all local data" in the app removes both; clearing site data in the browser
-  does the same.
+- **Clearing it:** "Clear all local data" on the About page removes both; clearing site data in the
+  browser does the same.
 - **Controlled information:** do not enter classified, export-controlled or CUI material. Evidence
   marked **"Sensitive — reference only"** refuses to accept a file, so you can record a pointer —
   title, custodian, reference number — without placing the content in a tool on a public site. Those
@@ -164,9 +167,26 @@ of the held documents are in [docs/sources/SOURCES.md](docs/sources/SOURCES.md).
 
 See [SECURITY.md](SECURITY.md).
 
-## Excel output
+## Exports
 
-**Tier 1 workbook** — `TRL_Tier1_<project>_<YYYYMMDD-HHmm>.xlsx`
+| Export                             | File                               | Contents                                                                       |
+| ---------------------------------- | ---------------------------------- | ------------------------------------------------------------------------------ |
+| Quick Estimate workbook            | `TRL_Tier1_<project>_<time>.xlsx`  | 6 sheets                                                                       |
+| Evidence-Based Assessment workbook | `TRL_Tier2_<project>_<time>.xlsx`  | 9 sheets                                                                       |
+| ARL workbook                       | `ARL_<project>_<time>.xlsx`        | 7 sheets                                                                       |
+| Evidence package                   | `TRL_Tier2_<project>_<time>.zip`   | The Tier 2 workbook, `session.json`, the evidence files and a SHA-256 manifest |
+| Session                            | Same name as the workbook, `.json` | The whole assessment; imports back without loss                                |
+
+`<time>` is `YYYYMMDD-HHmm`.
+
+Workbooks follow the interface language; sheet names, dropdown values and source text stay in
+English. They carry data validation, conditional formatting and working `HYPERLINK()` formulas, and
+their values are static — edit in the app and export again.
+
+<details>
+<summary><b>Workbook sheets</b></summary>
+
+**Tier 1 workbook**
 
 | Sheet                        | Contents                                                                                  |
 | ---------------------------- | ----------------------------------------------------------------------------------------- |
@@ -177,7 +197,7 @@ See [SECURITY.md](SECURITY.md).
 | `Next_Evidence_Placeholders` | Criteria for the next two levels + 10 blank planning rows                                 |
 | `References`                 | Source documents with clickable URLs                                                      |
 
-**Tier 2 workbook** — `TRL_Tier2_<project>_<YYYYMMDD-HHmm>.xlsx`
+**Tier 2 workbook**
 
 | Sheet                 | Contents                                                                                                        |
 | --------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -191,7 +211,7 @@ See [SECURITY.md](SECURITY.md).
 | `References`          | Every source cited by the framework                                                                             |
 | `Metadata`            | Schema, app and framework versions, git SHA, timestamps, package type, counts                                   |
 
-**ARL workbook** — `ARL_<project>_<YYYYMMDD-HHmm>.xlsx`
+**ARL workbook**
 
 | Sheet             | Contents                                                                                                                      |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -203,12 +223,14 @@ See [SECURITY.md](SECURITY.md).
 | `References`      | The rubric                                                                                                                    |
 | `Metadata`        | Schema, app and rubric versions, the session's TRL framework, git SHA, timestamps                                             |
 
-**How the placeholders work.** Blank rows already carry the validation lists and the `Open` formula
+**Placeholder rows.** Blank rows already carry the validation lists and the `Open` formula
 `=IF(G{r}<>"",HYPERLINK(G{r},"Open file"),IF(F{r}<>"",HYPERLINK(F{r},"Open link"),""))`. Fill in a URL
-or a relative path and the link becomes clickable. Computed values are static: editing the workbook
-does not recompute the TRL — change it in the app and export again.
+or a relative path and the link becomes clickable.
 
-## Evidence package
+</details>
+
+<details>
+<summary><b>Evidence package: layout and verification</b></summary>
 
 ```
 TRL_Tier2_<project>_<YYYYMMDD-HHmm>/
@@ -242,27 +264,24 @@ Unzip the whole folder before opening the workbook, and keep the workbook next t
 that is what makes the relative links work. Files over 50 MB are rejected, and a package over
 250 MB is refused with a list of the largest files.
 
-## Quick start (users)
+</details>
 
-1. Open **https://denny-hwang.github.io/TRL-assess/** and choose **Quick Estimate**.
-2. Fill in the context — project, technology, assessor, and the two dropdowns for environment and
-   build maturity.
-3. Answer the nine questions (`Y` / `N` / `U` on the keyboard). Note anything that is not obvious.
-4. Read the result, then **Continue to Evidence Assessment** to break the system into CTEs and attach
-   the proof.
-5. Export the workbook, or the evidence package if you want the files travelling with it.
+## For developers
 
-Nothing is uploaded, so export before clearing your browser data.
-
-## Local development
-
-Prerequisites: **Node.js ≥ 20** and npm.
+Requires **Node.js ≥ 20** and npm.
 
 ```bash
 git clone https://github.com/Denny-Hwang/TRL-assess.git
 cd TRL-assess
 npm ci
+npm run dev       # dev server on http://localhost:5173/TRL-assess/
+npm run verify    # lint, typecheck, tests, criteria validation, link check, build: the CI gate
+```
 
+<details>
+<summary><b>All commands</b></summary>
+
+```bash
 npm run dev                 # dev server on http://localhost:5173/TRL-assess/
 npm run test                # unit + component tests with coverage thresholds
 npm run test:e2e            # Playwright end-to-end tests (build first)
@@ -270,14 +289,17 @@ npm run validate:criteria   # framework schema + provenance checks
 npm run check:links         # documentation link check
 npm run verify              # everything the CI gate runs
 npm run build && npm run preview
-npm run screenshots         # regenerate docs/img/*.png
+npm run screenshots         # regenerate docs/img/*.png (build first)
 ```
 
 `npm run test:e2e` needs a build (`npm run build`) and a Chromium. On a machine where Playwright's
 own download is unavailable, point it at an existing browser with
 `PLAYWRIGHT_CHROMIUM_PATH=/path/to/chrome npm run test:e2e`.
 
-## Project structure
+</details>
+
+<details>
+<summary><b>Project structure</b></summary>
 
 ```
 src/
@@ -300,7 +322,10 @@ tests/{unit,component,e2e}/     # Vitest unit/component tests, Playwright end-to
 docs/                           # SOURCES, screenshots
 ```
 
-## Configuration
+</details>
+
+<details>
+<summary><b>Configuration</b></summary>
 
 Everything tunable lives in `src/config/app.config.ts`:
 
@@ -322,7 +347,10 @@ Everything tunable lives in `src/config/app.config.ts`:
 
 `VITE_BASE_PATH` overrides the base path at build time; `VITE_GIT_SHA` overrides the build SHA.
 
-## Editing or adding criteria
+</details>
+
+<details>
+<summary><b>Editing or adding criteria</b></summary>
 
 Frameworks are data, not code.
 
@@ -338,13 +366,16 @@ Frameworks are data, not code.
 To report a problem with a criterion rather than fix it, open a **Criteria correction** issue. See
 [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Testing & quality gates
+</details>
+
+<details>
+<summary><b>Testing and quality gates</b></summary>
 
 `npm run verify` runs lint → typecheck → tests → criteria validation → link check → build, and is
 what CI enforces on every pull request.
 
-- **Coverage:** `src/domain` must stay at ≥ 95 % lines, functions and statements and ≥ 85 % branches
-  Every scoring rule has a named test.
+- **Coverage:** `src/domain` must stay at ≥ 95 % lines, functions and statements and ≥ 85 %
+  branches. Every scoring rule has a named test.
 - **Bundle budget:** the entry chunk must stay under 300 kB gzip and must not contain ExcelJS or
   JSZip.
 - **Accessibility:** axe checks run against every route in Playwright; zero serious or critical
@@ -352,7 +383,10 @@ what CI enforces on every pull request.
 - **Network guard:** the end-to-end tests fail if the app issues any cross-origin request.
 - Tests are never skipped or weakened to make CI pass.
 
-## Deployment
+</details>
+
+<details>
+<summary><b>Deployment</b></summary>
 
 GitHub Pages, via `.github/workflows/deploy.yml`, on every push to `main` and on demand
 (`workflow_dispatch`). The workflow builds with `VITE_GIT_SHA` set to the commit, uploads the Pages
@@ -361,25 +395,23 @@ artifact and deploys it with the official Pages actions.
 **First-time setup, required once:** repository **Settings → Pages → Build and deployment →
 Source: GitHub Actions**, then re-run the "Deploy to GitHub Pages" workflow. Until Pages is enabled
 the deploy job fails at `actions/configure-pages` with "Get Pages site failed … Not Found"; the
-workflow's own token is not permitted to create the site. The base path
-must match the repository name — if you fork under another name, change `REPO_NAME` in
-`src/config/app.config.ts` (and the default in `vite.config.ts`).
+workflow's own token is not permitted to create the site. The base path must match the repository
+name — if you fork under another name, change `REPO_NAME` in `src/config/app.config.ts` (and the
+default in `vite.config.ts`).
 
-## Versioning & changelog
+</details>
 
-[Semantic Versioning](https://semver.org/spec/v2.0.0.html), with the history in
-[CHANGELOG.md](CHANGELOG.md) in [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format. The
-running version and git SHA are shown in the app footer and written into every export, so any
-workbook can be traced back to the build that produced it.
+Versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html); the history is in
+[CHANGELOG.md](CHANGELOG.md). The running version and git SHA are shown in the app footer and
+written into every export, so any workbook can be traced back to the build that produced it.
+Contributions: see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Limitations & disclaimer
+## Limitations
 
 TRL Assess produces a **self-assessment only**. It is not an independent Technology Readiness
 Assessment, not an audit, and not a certification. Results depend entirely on the information the
 user enters; nothing is verified by the tool. Assessment criteria differ between agencies and
 programmes — check the criteria and their sources before using a result in any formal submission.
-
-Specific limitations to be aware of:
 
 - The build × environment matrix in Tier 1 is a **heuristic aid created for this tool**, not a
   standard, and never overrides your answers.
@@ -398,7 +430,8 @@ Specific limitations to be aware of:
 
 ## Citation
 
-See [CITATION.cff](CITATION.cff), or cite as: _TRL Assess (version 0.1.0). https://github.com/Denny-Hwang/TRL-assess_
+See [CITATION.cff](CITATION.cff), or cite as: _TRL Assess (version 1.0.0).
+https://github.com/Denny-Hwang/TRL-assess_
 
 ## License
 
