@@ -115,8 +115,7 @@ export const ko: Messages = {
   'arl.flag.notAssessed': '미평가: {total}개 중 {count}개({ids}) — 높은 위험으로 간주됩니다.',
   'arl.flag.naWithoutRationale':
     '{ids}에서 근거 없는 “해당 없음” — 이유가 제시될 때까지 높은 위험으로 간주됩니다.',
-  'arl.flag.noRationale':
-    '근거 없이 평가됨: {ids}. 출처는 모든 등급에 대한 근거를 요구합니다.',
+  'arl.flag.noRationale': '근거 없이 평가됨: {ids}. 출처는 모든 등급에 대한 근거를 요구합니다.',
   'arl.flag.noPlan':
     '계획된 조치 없이 목표가 설정됨: {ids}. 프로젝트가 목표에 어떻게 도달할지 기술하십시오.',
   'arl.reason.Unsure': '불확실 — 높은 위험으로 간주',
@@ -513,6 +512,8 @@ export const ko: Messages = {
     '평가하지 않았거나, “불확실”이거나, 근거 없는 “해당 없음”인 항목은 높은 위험으로 간주됩니다.',
   'arl.rate.areasNav': '핵심 위험 영역',
   'arl.rate.currentRisk': '현재 위험',
+  'arl.rate.chooseOne': '가장 잘 맞는 것을 하나 선택하십시오',
+  'arl.rate.selected': '선택됨',
   'arl.rate.naOption': '해당 없음 — 이 범위에 적용되지 않음',
   'arl.rate.clear': '등급 지우기',
   'arl.rate.countedAs': '{risk}으로 간주',
@@ -548,6 +549,13 @@ export const ko: Messages = {
   'arl.result.flags.current': '현재 등급',
   'arl.result.flags.targets': '목표',
   'arl.result.howRead': '수치를 읽는 방법',
+  'arl.result.howRead.step1':
+    '중간 위험으로 평가된 차원과 높은 위험으로 평가된 차원의 수를 각각 셉니다(“불확실”, 평가하지 않은 차원, 근거 없는 “해당 없음”은 높은 위험으로 간주).',
+  'arl.result.howRead.step2':
+    '아래 표에서 중간 위험 개수에 해당하는 행과 높은 위험 개수에 해당하는 열을 찾습니다(8개 이상이면 “8+”).',
+  'arl.result.howRead.step3': '그 행과 열이 만나는 셀의 숫자가 ARL입니다.',
+  'arl.result.read.cell': '행 {medium}, 열 {high}',
+  'arl.result.read.noChange': '시작과 동일',
   'arl.result.mark.start': '시작',
   'arl.result.mark.target': '목표',
   'arl.result.takeAway': '내보내기',
@@ -557,12 +565,15 @@ export const ko: Messages = {
   'arl.result.backToRatings': '등급 평가로 돌아가기',
   'arl.result.howScored': 'ARL 산정 방식',
   'arl.result.jsonNote':
-    'JSON 파일은 TRL과 ARL을 포함한 전체 세션을 복원합니다. 워크북은 정적 스냅숏이므로, 편집해도 ARL이 다시 계산되지 않습니다.',
+    'JSON은 전체 세션을 복원합니다. 워크북은 스냅숏이므로, 편집해도 다시 계산되지 않습니다.',
   'arl.scale.start': '시작: ARL {level}',
   'arl.scale.target': '목표: ARL {level}',
   'arl.scale.targetNoChange': '목표: ARL {level} (변화 없음)',
   'arl.grid.caption': '행: 중간 위험 차원의 수. 열: 높은 위험 차원의 수.',
+  'arl.grid.rows': '중간 위험 차원의 수',
+  'arl.grid.columns': '높은 위험 차원의 수',
   'arl.grid.summary': '{label}: 중간 {medium}개, 높음 {high}개 → ARL {arl}',
+  'arl.grid.markCounts': '중간 {medium}개 · 높음 {high}개',
   'arl.glyph.na': '해당 없음',
   'arl.glyph.legend': '위험 등급 범례',
   'arl.tally.item': '{rating} {count}개',
@@ -605,7 +616,7 @@ export const ko: Messages = {
   'guide.fig.tier2.caption.formula': 'min(4, 3, 3) = TRL 3',
   'guide.fig.tier2.caption.after': '입니다. 어떤 값도 평균을 내지 않습니다.',
   'guide.fig.statusLegend.caption':
-    '수준에 반영되는 것은 처음 두 가지뿐입니다: 사용 가능한 증거가 있는 “충족”, 그리고 사유가 있는 “해당 없음”. 달성된 수준에는 항상 증거가 있는 “충족”이 하나 이상 있습니다.',
+    '사용 가능한 증거가 있는 “충족”과 사유가 있는 “해당 없음”만 반영되며, 달성된 수준에는 증거가 있는 “충족”이 하나 이상 필요합니다.',
   'guide.fig.arlLookup.mark': '예시',
   'guide.fig.arlLookup.caption.before': '예시 — 중간 위험 차원 3개와 높은 위험 차원 1개는 ',
   'guide.fig.arlLookup.caption.value': 'ARL 6',
@@ -1010,8 +1021,7 @@ export const ko: Messages = {
   'excel.package.readme.not.body':
     '자체 평가이며, 독립적인 기술성숙도 평가(TRA)가 아닙니다. “Sensitive — reference only”\n(민감 — 참조 전용)로 표시된 증거는 결코 패키지에 포함되지 않습니다. 해당 행은\n다른 곳에 보관된 자료를 가리킵니다.',
   'about.data.heading': '로컬 데이터',
-  'about.data.body':
-    '평가와 증거 파일은 이 브라우저에만 저장됩니다. 삭제하기 전에 보관할 내용을 내보내세요.',
+  'about.data.body': '이 브라우저에만 저장됩니다. 삭제하기 전에 보관할 내용을 내보내세요.',
   'about.data.clear': '모든 로컬 데이터 삭제',
   'about.data.confirm':
     '이 브라우저에서 평가와 저장된 모든 증거 파일을 삭제할까요? 되돌릴 수 없습니다.',
