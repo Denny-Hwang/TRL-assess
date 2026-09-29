@@ -18,8 +18,8 @@ formulieren diese Definitionen als Fragen um (`adapted`).
 
 1. **Nichts ist verpflichtend.** Das Guidebook klassifiziert keine Kriterien, daher erhält jede
    Stufe den Warnhinweis „Keine verpflichtenden Kriterien — Bestätigung durch den Bewerter
-   erforderlich“ und ist erreicht, sobald ein anwendbares Kriterium anerkannt ist. Urteilen Sie
-   selbst, was die Stufe erfordert.
+   erforderlich“ und ist erreicht, sobald ein anwendbares Kriterium mit verwendbarem Nachweis
+   _erfüllt_ ist. Urteilen Sie selbst, was die Stufe erfordert.
 2. **CTEs der Art `process` werden die Hardwarekriterien angeboten**, da das Guidebook nur Hardware
    und Software abdeckt. Diese Zuordnung ist eine Entscheidung dieses Tools.
 
@@ -40,9 +40,11 @@ Kalibrierverfahren und ein dokumentierter Datenpfad (7); ein erprobter Weg zur D
 das Beobachtungsprogramm (8). Trifft einer davon nicht zu, markieren Sie ihn mit Begründung als
 _N/A_.
 
-Die Begründungen der zugeschnittenen Einträge zitieren das Risiko-Framework des NREL für
-Meeresenergie (`nrel-me-risk`) und das GOOS Framework for Ocean Observing (`goos-foo`); aus beiden
-wird kein Text wiedergegeben.
+Die Begründungen der zugeschnittenen Einträge nennen das Risiko-Framework des NREL für
+Meeresenergie (`nrel-me-risk`) und das GOOS Framework for Ocean Observing (`goos-foo`) als ihre
+Grundlage; aus beiden wird kein Text wiedergegeben. Keines der beiden Dokumente wurde mit diesen
+Einträgen abgeglichen, daher sind die zugeschnittenen Anforderungen eigene Überlegungen dieses
+Tools und keine Anforderungen, die diese Dokumente stellen.
 
 ## `doe-otc-arl-2025` — Einführungsreife
 

@@ -109,6 +109,8 @@ export const de: Messages = {
   'tier2.reason.Not met': 'Nicht erfüllt.',
   'tier2.reason.N/A': 'Als „N/A“ markiert, ohne Begründung.',
   'tier2.reason.Not assessed': 'Noch nicht bewertet.',
+  'tier2.reason.naOnly':
+    '„N/A“ allein kann keine Stufe begründen — mindestens ein Kriterium auf dieser Stufe muss mit verwendbarem Nachweis „Erfüllt“ sein.',
   'tier2.delta.lower':
     'Die nachweisbasierte Bewertung liegt deutlich unter der Schnelleinschätzung. Prüfen Sie, welches CTE begrenzend ist und welchen Kriterien noch Nachweise fehlen.',
   'tier2.delta.higher':
@@ -402,6 +404,9 @@ export const de: Messages = {
   'tier2.criteria.level.locked': 'gesperrt — niedrigere Stufe nicht erreicht',
   'tier2.criteria.level.lockedTitle':
     'Eine niedrigere Stufe ist nicht erreicht, daher kann diese Stufe noch nicht zählen.',
+  'tier2.criteria.level.needsEvidence': 'benötigt ein erfülltes Kriterium mit Nachweis',
+  'tier2.criteria.level.needsEvidenceTitle':
+    'Alle übrigen Anforderungen dieser Stufe sind abgedeckt, aber nur durch N/A. N/A hält fest, dass ein Kriterium nicht zutrifft; es demonstriert die Stufe nie.',
   'tier2.levelBar.none': 'Auf dieser Stufe gelten keine Kriterien',
   'tier2.levelBar.satisfied': '{count} anerkannt',
   'tier2.levelBar.partial': '{count} teilweise erfüllt',
@@ -630,7 +635,7 @@ export const de: Messages = {
   'guide.fig.tier2.caption.formula': 'min(4, 3, 3) = TRL 3',
   'guide.fig.tier2.caption.after': '. Es wird nichts gemittelt.',
   'guide.fig.statusLegend.caption':
-    'Nur die ersten beiden zählen für eine Stufe: „Erfüllt“ mit verwendbarem Nachweis und „N/A“ mit Begründung.',
+    'Nur die ersten beiden zählen für eine Stufe: „Erfüllt“ mit verwendbarem Nachweis und „N/A“ mit Begründung. Eine erreichte Stufe hat immer mindestens ein „Erfüllt“ mit Nachweis.',
   'guide.fig.arlLookup.mark': 'Beispiel',
   'guide.fig.arlLookup.caption.before':
     'Beispiel — drei Dimensionen mit mittlerem und eine mit hohem Risiko ergeben ',
@@ -900,7 +905,7 @@ export const de: Messages = {
   'excel.tier2.readme.calc.satisfied':
     'Ein Kriterium ist anerkannt, wenn es „Met“ (Erfüllt) ist und mindestens ein verknüpfter, nicht abgelehnter Nachweis vorliegt, oder wenn es „N/A“ mit Begründung ist.',
   'excel.tier2.readme.calc.level':
-    'Eine Stufe ist erreicht, wenn jedes anwendbare verpflichtende Kriterium auf dieser Stufe anerkannt ist und die Stufe darunter erreicht ist.',
+    'Eine Stufe ist erreicht, wenn jedes anwendbare verpflichtende Kriterium auf dieser Stufe anerkannt ist (gibt es keines, dann ein beliebiges Kriterium), mindestens ein Kriterium auf dieser Stufe mit verwendbarem Nachweis „Met“ (Erfüllt) ist — „N/A“ allein begründet nie eine Stufe — und die Stufe darunter erreicht ist.',
   'excel.tier2.readme.calc.cte': 'Der TRL eines CTE ist die höchste erreichte Stufe.',
   'excel.tier2.readme.calc.system':
     'Die Systemzusammenfassung ist der niedrigste TRL unter den als kritisch gekennzeichneten CTEs — eine konservative Berichtskonvention, keine vorgeschriebene Formel.',

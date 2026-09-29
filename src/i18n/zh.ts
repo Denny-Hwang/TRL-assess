@@ -102,6 +102,8 @@ export const zh: Messages = {
   'tier2.reason.Not met': '不符合。',
   'tier2.reason.N/A': '标记为“不适用”但未提供说明。',
   'tier2.reason.Not assessed': '尚未评估。',
+  'tier2.reason.naOnly':
+    '“不适用”不能单独确立等级——该等级必须至少有一条准则为“符合”且有可用的证据。',
   'tier2.delta.lower':
     '基于证据的评估结果明显低于快速估算。请检查是哪个 CTE 在起制约作用，以及哪些准则仍缺少证据。',
   'tier2.delta.higher':
@@ -369,6 +371,9 @@ export const zh: Messages = {
   'tier2.criteria.level.achieved': '已达到',
   'tier2.criteria.level.notAchieved': '未达到',
   'tier2.criteria.level.locked': '已锁定——较低等级未达到',
+  'tier2.criteria.level.needsEvidence': '需有一条准则符合且有证据',
+  'tier2.criteria.level.needsEvidenceTitle':
+    '该等级的其他各项要求均已满足，但仅是通过“不适用”满足的。“不适用”记录的是某条准则不适用；它绝不能证明该等级。',
   'tier2.criteria.level.lockedTitle': '某一较低等级尚未达到，因此该等级暂时不能计入。',
   'tier2.levelBar.none': '该等级没有适用的准则',
   'tier2.levelBar.satisfied': '{count} 项已满足',
@@ -581,7 +586,7 @@ export const zh: Messages = {
   'guide.fig.tier2.caption.formula': 'min(4, 3, 3) = TRL 3',
   'guide.fig.tier2.caption.after': '。不做任何平均。',
   'guide.fig.statusLegend.caption':
-    '只有前两种计入等级：有可用证据的“符合”，以及有说明的“不适用”。',
+    '只有前两种计入等级：有可用证据的“符合”，以及有说明的“不适用”。已达到的等级始终至少有一项有证据的“符合”。',
   'guide.fig.arlLookup.mark': '示例',
   'guide.fig.arlLookup.caption.before': '示例——三个中风险维度和一个高风险维度，读作 ',
   'guide.fig.arlLookup.caption.value': 'ARL 6',
@@ -828,7 +833,7 @@ export const zh: Messages = {
   'excel.tier2.readme.calc.satisfied':
     '当一项准则为“Met”（符合）且至少关联了一项未被驳回的证据，或为“N/A”（不适用）且附有说明时，该准则即为已满足。',
   'excel.tier2.readme.calc.level':
-    '当某一等级的每条适用的必需准则均已满足，且其下一级已达到时，该等级即为已达到。',
+    '当某一等级的每条适用的必需准则均已满足（若无必需准则，则任一准则已满足即可），该等级至少有一条准则为“Met”（符合）且有可用的证据——仅凭“N/A”（不适用）绝不能确立等级——并且其下一级已达到时，该等级即为已达到。',
   'excel.tier2.readme.calc.cte': 'CTE 的 TRL 是其已达到的最高等级。',
   'excel.tier2.readme.calc.system':
     '系统汇总是所有标记为关键的 CTE 中的最小 TRL——这是一种保守的报告惯例，并非规定的公式。',

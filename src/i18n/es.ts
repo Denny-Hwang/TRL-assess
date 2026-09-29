@@ -110,6 +110,8 @@ export const es: Messages = {
   'tier2.reason.Not met': 'No cumplido.',
   'tier2.reason.N/A': 'Marcado como «N/A» sin justificación.',
   'tier2.reason.Not assessed': 'Aún no evaluado.',
+  'tier2.reason.naOnly':
+    'N/A no puede establecer un nivel por sí solo: al menos un criterio de este nivel debe estar «Cumplido» con evidencias utilizables.',
   'tier2.delta.lower':
     'La evaluación basada en evidencias es notablemente inferior a la estimación rápida. Conviene comprobar qué CTE es el limitante y qué criterios siguen sin evidencias.',
   'tier2.delta.higher':
@@ -401,6 +403,9 @@ export const es: Messages = {
   'tier2.criteria.level.achieved': 'alcanzado',
   'tier2.criteria.level.notAchieved': 'no alcanzado',
   'tier2.criteria.level.locked': 'bloqueado — nivel inferior no alcanzado',
+  'tier2.criteria.level.needsEvidence': 'requiere un criterio cumplido con evidencias',
+  'tier2.criteria.level.needsEvidenceTitle':
+    'Todos los demás requisitos de este nivel están satisfechos, pero solo mediante N/A. N/A deja constancia de que un criterio no aplica; nunca demuestra el nivel.',
   'tier2.criteria.level.lockedTitle':
     'No se ha alcanzado un nivel inferior, por lo que este nivel aún no puede contar.',
   'tier2.levelBar.none': 'Ningún criterio se aplica en este nivel',
@@ -630,7 +635,7 @@ export const es: Messages = {
   'guide.fig.tier2.caption.formula': 'min(4, 3, 3) = TRL 3',
   'guide.fig.tier2.caption.after': '. No se promedia nada.',
   'guide.fig.statusLegend.caption':
-    'Solo los dos primeros cuentan para un nivel: «Cumplido» con evidencias utilizables y «N/A» con una justificación.',
+    'Solo los dos primeros cuentan para un nivel: «Cumplido» con evidencias utilizables y «N/A» con una justificación. Un nivel alcanzado siempre tiene al menos un criterio «Cumplido» con evidencias.',
   'guide.fig.arlLookup.mark': 'Ejemplo',
   'guide.fig.arlLookup.caption.before':
     'Ejemplo — tres dimensiones de riesgo medio y una de riesgo alto se leen como ',
@@ -898,7 +903,7 @@ export const es: Messages = {
   'excel.tier2.readme.calc.satisfied':
     'Un criterio está satisfecho cuando su estado es «Met» (Cumplido) con al menos un elemento de evidencia vinculado y no rechazado, o «N/A» con una justificación.',
   'excel.tier2.readme.calc.level':
-    'Un nivel se alcanza cuando todos los criterios obligatorios aplicables de ese nivel están satisfechos y se ha alcanzado el nivel inferior.',
+    'Un nivel se alcanza cuando todos los criterios obligatorios aplicables de ese nivel están satisfechos (si no hay ninguno, basta con que lo esté un criterio cualquiera), al menos un criterio de ese nivel tiene el estado «Met» (Cumplido) con evidencias utilizables —«N/A» por sí solo nunca establece un nivel— y se ha alcanzado el nivel inferior.',
   'excel.tier2.readme.calc.cte': 'El TRL de un CTE es el nivel más alto alcanzado.',
   'excel.tier2.readme.calc.system':
     'El resumen del sistema es el TRL mínimo de los CTE marcados como críticos: una convención conservadora de presentación de informes, no una fórmula obligatoria.',

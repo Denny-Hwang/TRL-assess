@@ -105,6 +105,8 @@ export const ko: Messages = {
   'tier2.reason.Not met': '미충족.',
   'tier2.reason.N/A': '사유 없이 “해당 없음”으로 표시되었습니다.',
   'tier2.reason.Not assessed': '아직 평가되지 않았습니다.',
+  'tier2.reason.naOnly':
+    '해당 없음만으로는 수준을 성립시킬 수 없습니다 — 이 수준의 기준 중 하나 이상이 사용 가능한 증거가 있는 충족 상태여야 합니다.',
   'tier2.delta.lower':
     '증거 기반 평가가 빠른 추정보다 현저히 낮습니다. 어떤 CTE가 제한 요인인지, 어떤 기준에 아직 증거가 없는지 확인하십시오.',
   'tier2.delta.higher':
@@ -387,6 +389,9 @@ export const ko: Messages = {
   'tier2.criteria.level.achieved': '달성',
   'tier2.criteria.level.notAchieved': '미달성',
   'tier2.criteria.level.locked': '잠김 — 하위 수준 미달성',
+  'tier2.criteria.level.needsEvidence': '증거로 충족된 기준 필요',
+  'tier2.criteria.level.needsEvidenceTitle':
+    '이 수준의 나머지 요건은 모두 충족 인정되었지만, 전적으로 해당 없음에 의한 것입니다. 해당 없음은 기준이 적용되지 않음을 기록하는 것이며, 결코 수준을 실증하지 않습니다.',
   'tier2.criteria.level.lockedTitle':
     '하위 수준이 달성되지 않았으므로 이 수준은 아직 인정될 수 없습니다.',
   'tier2.levelBar.none': '이 수준에 적용되는 기준 없음',
@@ -605,7 +610,7 @@ export const ko: Messages = {
   'guide.fig.tier2.caption.formula': 'min(4, 3, 3) = TRL 3',
   'guide.fig.tier2.caption.after': '입니다. 어떤 값도 평균을 내지 않습니다.',
   'guide.fig.statusLegend.caption':
-    '수준에 반영되는 것은 처음 두 가지뿐입니다: 사용 가능한 증거가 있는 “충족”, 그리고 사유가 있는 “해당 없음”.',
+    '수준에 반영되는 것은 처음 두 가지뿐입니다: 사용 가능한 증거가 있는 “충족”, 그리고 사유가 있는 “해당 없음”. 달성된 수준에는 항상 증거가 있는 “충족”이 하나 이상 있습니다.',
   'guide.fig.arlLookup.mark': '예시',
   'guide.fig.arlLookup.caption.before': '예시 — 중간 위험 차원 3개와 높은 위험 차원 1개는 ',
   'guide.fig.arlLookup.caption.value': 'ARL 6',
@@ -857,7 +862,7 @@ export const ko: Messages = {
   'excel.tier2.readme.calc.satisfied':
     '기준은 “Met”(충족)이면서 거부되지 않은 연결된 증거 항목이 하나 이상 있거나, “N/A”(해당 없음)이면서 사유가 있을 때 충족 인정됩니다.',
   'excel.tier2.readme.calc.level':
-    '어떤 수준은 해당 수준에 적용되는 모든 필수 기준이 충족 인정되고 그 아래 수준이 달성되었을 때 달성됩니다.',
+    '어떤 수준은 해당 수준에 적용되는 모든 필수 기준이 충족 인정되고(필수 기준이 없으면 아무 기준이나 하나), “Met”(충족)이면서 사용 가능한 증거가 있는 기준이 해당 수준에 하나 이상 있으며 — “N/A”(해당 없음)만으로는 결코 수준이 성립하지 않음 — 그 아래 수준이 달성되었을 때 달성됩니다.',
   'excel.tier2.readme.calc.cte': 'CTE의 TRL은 달성한 가장 높은 수준입니다.',
   'excel.tier2.readme.calc.system':
     '시스템 요약은 중요로 표시된 CTE 중 최소 TRL로, 보수적인 보고 관례이며 규정된 공식이 아닙니다.',
